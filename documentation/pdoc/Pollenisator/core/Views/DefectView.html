@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Views.DefectView API documentation</title>
+<meta name="description" content="View for defect object. Handle node in treeview and present forms to user when interacted with." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Views.DefectView</code></h1>
+</header>
+<section id="section-intro">
+<p>View for defect object. Handle node in treeview and present forms to user when interacted with.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;View for defect object. Handle node in treeview and present forms to user when interacted with.&#34;&#34;&#34;
+
+from tkinter import TclError
+import tkinter as tk
+from core.Views.ViewElement import ViewElement
+from core.Models.Defect import Defect
+import core.Components.Utils as Utils
+from shutil import which
+import os
+import sys
+import subprocess
+
+
+
+class DefectView(ViewElement):
+    &#34;&#34;&#34;View for defect object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory.
+    &#34;&#34;&#34;
+
+    icon = &#39;defect.png&#39;
+
+    def __init__(self, appTw, appViewFrame, mainApp, controller):
+        &#34;&#34;&#34;Constructor
+        Args:
+            appTw: a PollenisatorTreeview instance to put this view in
+            appViewFrame: an view frame to build the forms in.
+            mainApp: the Application instance
+            controller: a CommandController for this view.
+        &#34;&#34;&#34;
+        super().__init__(appTw, appViewFrame, mainApp, controller)
+        self.easeForm = None
+        self.impactForm = None
+        self.riskForm = None
+
+    def openInsertWindow(self, notes=&#34;&#34;, addButtons=True):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to insert a new Defect
+        Args:
+            notes: default notes to be written in notes text input. Default is &#34;&#34;
+            addButtons: boolean value indicating that insertion buttons should be visible. Default to True
+        &#34;&#34;&#34;
+        settings = self.mainApp.settings
+        settings.reloadSettings()
+        modelData = self.controller.getData()
+        topPanel = self.form.addFormPanel(grid=True)
+        topPanel.addFormLabel(&#34;Title&#34;)
+        topPanel.addFormStr(&#34;Title&#34;, r&#34;.+&#34;, &#34;&#34;, column=1, width=50)
+        topPanel = self.form.addFormPanel(grid=True)
+        topPanel.addFormLabel(&#34;Ease&#34;)
+        self.easeForm = topPanel.addFormCombo(
+            &#34;Ease&#34;, [&#39;Facile&#39;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;], column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+        topPanel.addFormHelper(&#34;0: Trivial to exploit, no tool required\n1: Simple technics and public tools needed to exploit\n2: public vulnerability exploit requiring security skills and/or the development of simple tools.\n3: Use of non-public exploits requiring strong skills in security and/or the development of targeted tools&#34;, column=2)
+        topPanel.addFormLabel(&#34;Impact&#34;, row=1)
+        self.impactForm = topPanel.addFormCombo(
+            &#34;Impact&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], row=1, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+        topPanel.addFormHelper(&#34;0: No direct impact on system security\n1: Impact isolated on precise locations of pentested system security\n2: Impact restricted to a part of the system security.\n3: Global impact on the pentested system security.&#34;, row=1, column=2)
+        topPanel.addFormLabel(&#34;Risk&#34;, row=2)
+        self.riskForm = topPanel.addFormCombo(
+            &#34;Risk&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;risk&#34;], row=2, column=1)
+        topPanel.addFormHelper(
+            &#34;0: small risk that might be fixed\n1: moderate risk that need a planed fix\n2: major risk that need to be fixed quickly.\n3: critical risk that need an immediate fix or an immediate interruption.&#34;, row=2, column=2)
+        topPanel.addFormLabel(&#34;Redactor&#34;, row=3)
+        topPanel.addFormCombo(&#34;Redactor&#34;, self.mainApp.settings.getPentesters()+[&#34;N/A&#34;], &#34;N/A&#34;, row=3, column=1)
+        chklistPanel = self.form.addFormPanel(grid=True)
+        defectTypes = settings.getPentestTypes()
+        if defectTypes is not None:
+            defectTypes = defectTypes.get(settings.getPentestType(), [])
+            if len(defectTypes) == 0:
+                defectTypes = [&#34;N/A&#34;]
+        else:
+            defectTypes = [&#34;N/A&#34;]
+        chklistPanel.addFormChecklist(&#34;Type&#34;, defectTypes, [&#34;N/A&#34;])
+        proofsPanel = self.form.addFormPanel(grid=True)
+        proofsPanel.addFormFile(&#34;Proof&#34;, r&#34;&#34;)
+        notesPanel = self.form.addFormPanel()
+        notesPanel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        notesPanel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;)
+        self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+        self.form.addFormHidden(&#34;proto&#34;, modelData[&#34;proto&#34;])
+        self.form.addFormHidden(&#34;port&#34;, modelData[&#34;port&#34;])
+        if addButtons:
+            self.completeInsertWindow()
+        else:
+            self.showForm()
+
+    def openModifyWindow(self, addButtons=True):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes.
+        This form aims to update or delete an existing Defect
+        Args:
+            addButtons: boolean value indicating that insertion buttons should be visible. Default to True
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        settings = self.mainApp.settings
+        settings.reloadSettings()
+        topPanel = self.form.addFormPanel(grid=True)
+        row = 0
+        if modelData.get(&#34;ip&#34;, &#34;&#34;) != &#34;&#34;:
+            topPanel.addFormLabel(&#34;IP&#34;, row=row, column=0)
+            topPanel.addFormStr(
+                &#34;IP&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, row=row, state=&#34;readonly&#34;)
+            row += 1
+            if modelData.get(&#34;port&#34;, &#34;&#34;) != &#34;&#34; and modelData[&#34;proto&#34;] is not None:
+                topPanel.addFormLabel(&#34;Port&#34;, row=row, column=0)
+                port_str = modelData[&#34;proto&#34;] + \
+                    &#34;/&#34; if modelData[&#34;proto&#34;] != &#34;tcp&#34; else &#34;&#34;
+                port_str += modelData[&#34;port&#34;]
+                topPanel.addFormStr(
+                    &#34;Port&#34;, &#39;&#39;, port_str, None, column=1, row=row, state=&#34;readonly&#34;)
+                row += 1
+        topPanel.addFormLabel(&#34;Title&#34;, row=row, column=0)
+        topPanel.addFormStr(
+            &#34;Title&#34;, &#34;.+&#34;, modelData[&#34;title&#34;], width=50, row=row, column=1)
+        row += 1
+        topPanel = self.form.addFormPanel(grid=True)
+        row = 0
+        topPanel.addFormLabel(&#34;Ease&#34;, row=row)
+        self.easeForm = topPanel.addFormCombo(
+            &#34;Ease&#34;, [&#39;Facile&#39;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;], modelData[&#34;ease&#34;], row=row, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+        topPanel.addFormHelper(&#34;0: Trivial to exploit, no tool required\n1: Simple technics and public tools needed to exploit\n2: public vulnerability exploit requiring security skills and/or the development of simple tools.\n3: Use of non-public exploits requiring strong skills in security and/or the development of targeted tools&#34;, row=row, column=2)
+        row += 1
+        topPanel.addFormLabel(&#34;Impact&#34;, row=row)
+        self.impactForm = topPanel.addFormCombo(
+            &#34;Impact&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;impact&#34;], row=row, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+        topPanel.addFormHelper(&#34;0: No direct impact on system security\n1: Impact isolated on precise locations of pentested system security\n2: Impact restricted to a part of the system security.\n3: Global impact on the pentested system security.&#34;, row=row, column=2)
+        row += 1
+        topPanel.addFormLabel(&#34;Risk&#34;, row=row)
+        self.riskForm = topPanel.addFormCombo(
+            &#34;Risk&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;risk&#34;], row=row, column=1)
+        topPanel.addFormHelper(
+            &#34;0: small risk that might be fixed\n1: moderate risk that need a planed fix\n2: major risk that need to be fixed quickly.\n3: critical risk that need an immediate fix or an immediate interruption.&#34;, row=row, column=2)
+        row += 1
+        chklistPanel = self.form.addFormPanel(grid=True)
+        defect_types = settings.getPentestTypes()[settings.getPentestType()]
+        for savedType in modelData[&#34;type&#34;]:
+            if savedType.strip() not in defect_types:
+                defect_types.insert(0, savedType)
+        chklistPanel.addFormChecklist(&#34;Type&#34;, defect_types, modelData[&#34;type&#34;])
+        topPanel.addFormLabel(&#34;Redactor&#34;, row=row)
+        topPanel.addFormCombo(&#34;Redactor&#34;, list(set(self.mainApp.settings.getPentesters()+[&#34;N/A&#34;]+[modelData[&#34;redactor&#34;]])), modelData[&#34;redactor&#34;], row=row, column=1)
+        row += 1
+        proofPanel = self.form.addFormPanel(grid=True)
+        i = 0
+        for proof in modelData[&#34;proofs&#34;]:
+            proofPanel.addFormLabel(&#34;Proof &#34;+str(i), proof, row=i, column=0)
+            proofPanel.addFormButton(&#34;View&#34;, lambda event, obj=i: self.viewProof(
+                event, obj), row=i, column=1)
+            proofPanel.addFormButton(&#34;Delete&#34;, lambda event, obj=i: self.deleteProof(
+                event, obj), row=i, column=2)
+            i += 1
+        proofPanel.addFormFile(&#34;Proof &#34;+str(i), r&#34;&#34;, &#34;&#34;, row=i, column=0)
+        proofPanel.addFormButton(&#34;Upload&#34;, lambda event, obj=i: self.addAProof(
+            event, obj), row=i, column=1)
+        notesPanel = self.form.addFormPanel()
+        notesPanel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        notesPanel.addFormText(
+            &#34;Notes&#34;, r&#34;&#34;, modelData[&#34;notes&#34;], None, side=&#34;top&#34;, height=10)
+        if addButtons:
+            self.completeModifyWindow()
+        else:
+            self.showForm()
+
+    def updateRiskBox(self, _event=None):
+        &#34;&#34;&#34;Callback when ease or impact is modified.
+        Calculate new resulting risk value
+        Args
+            _event: mandatory but not used
+        &#34;&#34;&#34;
+        ease = self.easeForm.getValue()
+        impact = self.impactForm.getValue()
+        risk = Defect.getRisk(ease, impact)
+        self.riskForm.setValue(risk)
+
+    def viewProof(self, _event, obj):
+        &#34;&#34;&#34;Callback when view proof is clicked.
+        Download and display the file using xdg-open on linux or os.startfile (windows)
+        Args
+            _event: mandatory but not used
+            obj: the clicked index proof
+        &#34;&#34;&#34;
+        proof_local_path = self.controller.getProof(obj)
+        if proof_local_path is not None:
+            if os.path.isfile(proof_local_path):
+                if which(&#34;xdg-open&#34;) is not None:
+                    subprocess.call([&#34;xdg-open&#34;, proof_local_path])
+                else:
+                    try:
+                        os.startfile(proof_local_path)
+                    except Exception:
+                        tk.messagebox.showerror(&#34;Could not open&#34;, &#34;Failed to open this file.&#34;)
+                        proof_local_path = None
+                        return
+        if proof_local_path is None:
+            tk.messagebox.showerror(
+                &#34;Download failed&#34;, &#34;the file does not exist on sftp server&#34;)
+
+    def deleteProof(self, _event, obj):
+        &#34;&#34;&#34;Callback when delete proof is clicked.
+        remove remote proof and update window
+        Args
+            _event: mandatory but not used
+            obj: the clicked index proof
+        &#34;&#34;&#34;
+        self.controller.deleteProof(obj)
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()
+
+    def addAProof(self, _event, obj):
+        &#34;&#34;&#34;Callback when add proof is clicked.
+        Add proof and update window
+        Args
+            _event: mandatory but not used
+            obj: the clicked index proof
+        &#34;&#34;&#34;
+        values = self.form.getValue()
+        formValues = ViewElement.list_tuple_to_dict(values)
+        self.controller.addAProof(formValues, obj)
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()
+
+    def beforeDelete(self, iid=None):
+        &#34;&#34;&#34;Called before defect deletion.
+        Will attempt to remove this defect from global defect table.
+        Args:
+            iid: the mongo ID of the deleted defect
+        &#34;&#34;&#34;
+        if iid is None:
+            if self.controller is not None:
+                iid = self.controller.getDbId()
+        if iid is not None:
+            self.mainApp.report.removeItem(iid)
+
+    def addInTreeview(self, parentNode=None, _addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            _addChildren: not used here
+        &#34;&#34;&#34;
+        if not self.controller.isAssigned():
+            # Unassigned defect are loaded on the report tab
+            return
+        if self.controller.model is None:
+            return
+        if parentNode is None:
+            parentNode = DefectView.DbToTreeviewListId(
+                self.controller.getParent())
+            nodeText = str(self.controller.getModelRepr())
+        elif parentNode == &#39;&#39;:
+            nodeText = self.controller.getDetailedString()
+        else:
+            parentNode = DefectView.DbToTreeviewListId(parentNode)
+            nodeText = str(self.controller.getModelRepr())
+        try:
+            parentNode = self.appliTw.insert(
+                self.controller.getParent(), 0, parentNode, text=&#34;Defects&#34;, image=self.getIcon())
+        except TclError:
+            pass
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        try:
+            self.appliTw.insert(parentNode, &#34;end&#34;, str(self.controller.getDbId()),
+                                text=nodeText, tags=self.controller.getTags(), image=self.getIcon())
+        except TclError:
+            pass
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    @classmethod
+    def DbToTreeviewListId(cls, parent_db_id):
+        &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of defects given its parent
+        Args:
+            parent_db_id: the parent node mongo ID
+        Returns:
+            A string that should be unique to describe the parent list of defect node
+        &#34;&#34;&#34;
+        return str(parent_db_id)+&#34;|Defects&#34;
+
+    @classmethod
+    def treeviewListIdToDb(cls, treeviewId):
+        &#34;&#34;&#34;Extract from the unique string identifying a list of defects the parent db ID
+        Args:
+            treeviewId: the treeview node id of a list of defects node
+        Returns:
+            the parent object mongo id as string
+        &#34;&#34;&#34;
+        return str(treeviewId).split(&#34;|&#34;)[0]
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a defect insertion is received by notification.
+        Insert the node in treeview.
+        Also insert it in global report of defect
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        if self.controller.isAssigned():
+            super().insertReceived()
+        else:
+            self.mainApp.report.addDefect(self.controller.model)
+    
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a defect update is received by notification.
+        Update the defect node and the report defect table.
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        if not self.controller.isAssigned():
+            self.mainApp.report.updateDefectInTreeview(self.controller.model)
+        super().updateReceived()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Views.DefectView.DefectView"><code class="flex name class">
+<span>class <span class="ident">DefectView</span></span>
+<span>(</span><span>appTw, appViewFrame, mainApp, controller)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>View for defect object. Handle node in treeview and present forms to user when interacted with.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>icon</code></strong></dt>
+<dd>icon name to show in treeview. Icon filename must be in icon directory.</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appTw</code></strong></dt>
+<dd>a PollenisatorTreeview instance to put this view in</dd>
+<dt><strong><code>appViewFrame</code></strong></dt>
+<dd>an view frame to build the forms in.</dd>
+<dt><strong><code>mainApp</code></strong></dt>
+<dd>the Application instance</dd>
+<dt><strong><code>controller</code></strong></dt>
+<dd>a CommandController for this view.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DefectView(ViewElement):
+    &#34;&#34;&#34;View for defect object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory.
+    &#34;&#34;&#34;
+
+    icon = &#39;defect.png&#39;
+
+    def __init__(self, appTw, appViewFrame, mainApp, controller):
+        &#34;&#34;&#34;Constructor
+        Args:
+            appTw: a PollenisatorTreeview instance to put this view in
+            appViewFrame: an view frame to build the forms in.
+            mainApp: the Application instance
+            controller: a CommandController for this view.
+        &#34;&#34;&#34;
+        super().__init__(appTw, appViewFrame, mainApp, controller)
+        self.easeForm = None
+        self.impactForm = None
+        self.riskForm = None
+
+    def openInsertWindow(self, notes=&#34;&#34;, addButtons=True):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to insert a new Defect
+        Args:
+            notes: default notes to be written in notes text input. Default is &#34;&#34;
+            addButtons: boolean value indicating that insertion buttons should be visible. Default to True
+        &#34;&#34;&#34;
+        settings = self.mainApp.settings
+        settings.reloadSettings()
+        modelData = self.controller.getData()
+        topPanel = self.form.addFormPanel(grid=True)
+        topPanel.addFormLabel(&#34;Title&#34;)
+        topPanel.addFormStr(&#34;Title&#34;, r&#34;.+&#34;, &#34;&#34;, column=1, width=50)
+        topPanel = self.form.addFormPanel(grid=True)
+        topPanel.addFormLabel(&#34;Ease&#34;)
+        self.easeForm = topPanel.addFormCombo(
+            &#34;Ease&#34;, [&#39;Facile&#39;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;], column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+        topPanel.addFormHelper(&#34;0: Trivial to exploit, no tool required\n1: Simple technics and public tools needed to exploit\n2: public vulnerability exploit requiring security skills and/or the development of simple tools.\n3: Use of non-public exploits requiring strong skills in security and/or the development of targeted tools&#34;, column=2)
+        topPanel.addFormLabel(&#34;Impact&#34;, row=1)
+        self.impactForm = topPanel.addFormCombo(
+            &#34;Impact&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], row=1, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+        topPanel.addFormHelper(&#34;0: No direct impact on system security\n1: Impact isolated on precise locations of pentested system security\n2: Impact restricted to a part of the system security.\n3: Global impact on the pentested system security.&#34;, row=1, column=2)
+        topPanel.addFormLabel(&#34;Risk&#34;, row=2)
+        self.riskForm = topPanel.addFormCombo(
+            &#34;Risk&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;risk&#34;], row=2, column=1)
+        topPanel.addFormHelper(
+            &#34;0: small risk that might be fixed\n1: moderate risk that need a planed fix\n2: major risk that need to be fixed quickly.\n3: critical risk that need an immediate fix or an immediate interruption.&#34;, row=2, column=2)
+        topPanel.addFormLabel(&#34;Redactor&#34;, row=3)
+        topPanel.addFormCombo(&#34;Redactor&#34;, self.mainApp.settings.getPentesters()+[&#34;N/A&#34;], &#34;N/A&#34;, row=3, column=1)
+        chklistPanel = self.form.addFormPanel(grid=True)
+        defectTypes = settings.getPentestTypes()
+        if defectTypes is not None:
+            defectTypes = defectTypes.get(settings.getPentestType(), [])
+            if len(defectTypes) == 0:
+                defectTypes = [&#34;N/A&#34;]
+        else:
+            defectTypes = [&#34;N/A&#34;]
+        chklistPanel.addFormChecklist(&#34;Type&#34;, defectTypes, [&#34;N/A&#34;])
+        proofsPanel = self.form.addFormPanel(grid=True)
+        proofsPanel.addFormFile(&#34;Proof&#34;, r&#34;&#34;)
+        notesPanel = self.form.addFormPanel()
+        notesPanel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        notesPanel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;)
+        self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+        self.form.addFormHidden(&#34;proto&#34;, modelData[&#34;proto&#34;])
+        self.form.addFormHidden(&#34;port&#34;, modelData[&#34;port&#34;])
+        if addButtons:
+            self.completeInsertWindow()
+        else:
+            self.showForm()
+
+    def openModifyWindow(self, addButtons=True):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes.
+        This form aims to update or delete an existing Defect
+        Args:
+            addButtons: boolean value indicating that insertion buttons should be visible. Default to True
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        settings = self.mainApp.settings
+        settings.reloadSettings()
+        topPanel = self.form.addFormPanel(grid=True)
+        row = 0
+        if modelData.get(&#34;ip&#34;, &#34;&#34;) != &#34;&#34;:
+            topPanel.addFormLabel(&#34;IP&#34;, row=row, column=0)
+            topPanel.addFormStr(
+                &#34;IP&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, row=row, state=&#34;readonly&#34;)
+            row += 1
+            if modelData.get(&#34;port&#34;, &#34;&#34;) != &#34;&#34; and modelData[&#34;proto&#34;] is not None:
+                topPanel.addFormLabel(&#34;Port&#34;, row=row, column=0)
+                port_str = modelData[&#34;proto&#34;] + \
+                    &#34;/&#34; if modelData[&#34;proto&#34;] != &#34;tcp&#34; else &#34;&#34;
+                port_str += modelData[&#34;port&#34;]
+                topPanel.addFormStr(
+                    &#34;Port&#34;, &#39;&#39;, port_str, None, column=1, row=row, state=&#34;readonly&#34;)
+                row += 1
+        topPanel.addFormLabel(&#34;Title&#34;, row=row, column=0)
+        topPanel.addFormStr(
+            &#34;Title&#34;, &#34;.+&#34;, modelData[&#34;title&#34;], width=50, row=row, column=1)
+        row += 1
+        topPanel = self.form.addFormPanel(grid=True)
+        row = 0
+        topPanel.addFormLabel(&#34;Ease&#34;, row=row)
+        self.easeForm = topPanel.addFormCombo(
+            &#34;Ease&#34;, [&#39;Facile&#39;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;], modelData[&#34;ease&#34;], row=row, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+        topPanel.addFormHelper(&#34;0: Trivial to exploit, no tool required\n1: Simple technics and public tools needed to exploit\n2: public vulnerability exploit requiring security skills and/or the development of simple tools.\n3: Use of non-public exploits requiring strong skills in security and/or the development of targeted tools&#34;, row=row, column=2)
+        row += 1
+        topPanel.addFormLabel(&#34;Impact&#34;, row=row)
+        self.impactForm = topPanel.addFormCombo(
+            &#34;Impact&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;impact&#34;], row=row, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+        topPanel.addFormHelper(&#34;0: No direct impact on system security\n1: Impact isolated on precise locations of pentested system security\n2: Impact restricted to a part of the system security.\n3: Global impact on the pentested system security.&#34;, row=row, column=2)
+        row += 1
+        topPanel.addFormLabel(&#34;Risk&#34;, row=row)
+        self.riskForm = topPanel.addFormCombo(
+            &#34;Risk&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;risk&#34;], row=row, column=1)
+        topPanel.addFormHelper(
+            &#34;0: small risk that might be fixed\n1: moderate risk that need a planed fix\n2: major risk that need to be fixed quickly.\n3: critical risk that need an immediate fix or an immediate interruption.&#34;, row=row, column=2)
+        row += 1
+        chklistPanel = self.form.addFormPanel(grid=True)
+        defect_types = settings.getPentestTypes()[settings.getPentestType()]
+        for savedType in modelData[&#34;type&#34;]:
+            if savedType.strip() not in defect_types:
+                defect_types.insert(0, savedType)
+        chklistPanel.addFormChecklist(&#34;Type&#34;, defect_types, modelData[&#34;type&#34;])
+        topPanel.addFormLabel(&#34;Redactor&#34;, row=row)
+        topPanel.addFormCombo(&#34;Redactor&#34;, list(set(self.mainApp.settings.getPentesters()+[&#34;N/A&#34;]+[modelData[&#34;redactor&#34;]])), modelData[&#34;redactor&#34;], row=row, column=1)
+        row += 1
+        proofPanel = self.form.addFormPanel(grid=True)
+        i = 0
+        for proof in modelData[&#34;proofs&#34;]:
+            proofPanel.addFormLabel(&#34;Proof &#34;+str(i), proof, row=i, column=0)
+            proofPanel.addFormButton(&#34;View&#34;, lambda event, obj=i: self.viewProof(
+                event, obj), row=i, column=1)
+            proofPanel.addFormButton(&#34;Delete&#34;, lambda event, obj=i: self.deleteProof(
+                event, obj), row=i, column=2)
+            i += 1
+        proofPanel.addFormFile(&#34;Proof &#34;+str(i), r&#34;&#34;, &#34;&#34;, row=i, column=0)
+        proofPanel.addFormButton(&#34;Upload&#34;, lambda event, obj=i: self.addAProof(
+            event, obj), row=i, column=1)
+        notesPanel = self.form.addFormPanel()
+        notesPanel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        notesPanel.addFormText(
+            &#34;Notes&#34;, r&#34;&#34;, modelData[&#34;notes&#34;], None, side=&#34;top&#34;, height=10)
+        if addButtons:
+            self.completeModifyWindow()
+        else:
+            self.showForm()
+
+    def updateRiskBox(self, _event=None):
+        &#34;&#34;&#34;Callback when ease or impact is modified.
+        Calculate new resulting risk value
+        Args
+            _event: mandatory but not used
+        &#34;&#34;&#34;
+        ease = self.easeForm.getValue()
+        impact = self.impactForm.getValue()
+        risk = Defect.getRisk(ease, impact)
+        self.riskForm.setValue(risk)
+
+    def viewProof(self, _event, obj):
+        &#34;&#34;&#34;Callback when view proof is clicked.
+        Download and display the file using xdg-open on linux or os.startfile (windows)
+        Args
+            _event: mandatory but not used
+            obj: the clicked index proof
+        &#34;&#34;&#34;
+        proof_local_path = self.controller.getProof(obj)
+        if proof_local_path is not None:
+            if os.path.isfile(proof_local_path):
+                if which(&#34;xdg-open&#34;) is not None:
+                    subprocess.call([&#34;xdg-open&#34;, proof_local_path])
+                else:
+                    try:
+                        os.startfile(proof_local_path)
+                    except Exception:
+                        tk.messagebox.showerror(&#34;Could not open&#34;, &#34;Failed to open this file.&#34;)
+                        proof_local_path = None
+                        return
+        if proof_local_path is None:
+            tk.messagebox.showerror(
+                &#34;Download failed&#34;, &#34;the file does not exist on sftp server&#34;)
+
+    def deleteProof(self, _event, obj):
+        &#34;&#34;&#34;Callback when delete proof is clicked.
+        remove remote proof and update window
+        Args
+            _event: mandatory but not used
+            obj: the clicked index proof
+        &#34;&#34;&#34;
+        self.controller.deleteProof(obj)
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()
+
+    def addAProof(self, _event, obj):
+        &#34;&#34;&#34;Callback when add proof is clicked.
+        Add proof and update window
+        Args
+            _event: mandatory but not used
+            obj: the clicked index proof
+        &#34;&#34;&#34;
+        values = self.form.getValue()
+        formValues = ViewElement.list_tuple_to_dict(values)
+        self.controller.addAProof(formValues, obj)
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()
+
+    def beforeDelete(self, iid=None):
+        &#34;&#34;&#34;Called before defect deletion.
+        Will attempt to remove this defect from global defect table.
+        Args:
+            iid: the mongo ID of the deleted defect
+        &#34;&#34;&#34;
+        if iid is None:
+            if self.controller is not None:
+                iid = self.controller.getDbId()
+        if iid is not None:
+            self.mainApp.report.removeItem(iid)
+
+    def addInTreeview(self, parentNode=None, _addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            _addChildren: not used here
+        &#34;&#34;&#34;
+        if not self.controller.isAssigned():
+            # Unassigned defect are loaded on the report tab
+            return
+        if self.controller.model is None:
+            return
+        if parentNode is None:
+            parentNode = DefectView.DbToTreeviewListId(
+                self.controller.getParent())
+            nodeText = str(self.controller.getModelRepr())
+        elif parentNode == &#39;&#39;:
+            nodeText = self.controller.getDetailedString()
+        else:
+            parentNode = DefectView.DbToTreeviewListId(parentNode)
+            nodeText = str(self.controller.getModelRepr())
+        try:
+            parentNode = self.appliTw.insert(
+                self.controller.getParent(), 0, parentNode, text=&#34;Defects&#34;, image=self.getIcon())
+        except TclError:
+            pass
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        try:
+            self.appliTw.insert(parentNode, &#34;end&#34;, str(self.controller.getDbId()),
+                                text=nodeText, tags=self.controller.getTags(), image=self.getIcon())
+        except TclError:
+            pass
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    @classmethod
+    def DbToTreeviewListId(cls, parent_db_id):
+        &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of defects given its parent
+        Args:
+            parent_db_id: the parent node mongo ID
+        Returns:
+            A string that should be unique to describe the parent list of defect node
+        &#34;&#34;&#34;
+        return str(parent_db_id)+&#34;|Defects&#34;
+
+    @classmethod
+    def treeviewListIdToDb(cls, treeviewId):
+        &#34;&#34;&#34;Extract from the unique string identifying a list of defects the parent db ID
+        Args:
+            treeviewId: the treeview node id of a list of defects node
+        Returns:
+            the parent object mongo id as string
+        &#34;&#34;&#34;
+        return str(treeviewId).split(&#34;|&#34;)[0]
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a defect insertion is received by notification.
+        Insert the node in treeview.
+        Also insert it in global report of defect
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        if self.controller.isAssigned():
+            super().insertReceived()
+        else:
+            self.mainApp.report.addDefect(self.controller.model)
+    
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a defect update is received by notification.
+        Update the defect node and the report defect table.
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        if not self.controller.isAssigned():
+            self.mainApp.report.updateDefectInTreeview(self.controller.model)
+        super().updateReceived()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Views.ViewElement.ViewElement</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.icon"><code class="name">var <span class="ident">icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.DbToTreeviewListId"><code class="name flex">
+<span>def <span class="ident">DbToTreeviewListId</span></span>(<span>parent_db_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts a mongo Id to a unique string identifying a list of defects given its parent</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent_db_id</code></strong></dt>
+<dd>the parent node mongo ID</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A string that should be unique to describe the parent list</code> of <code>defect node</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def DbToTreeviewListId(cls, parent_db_id):
+    &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of defects given its parent
+    Args:
+        parent_db_id: the parent node mongo ID
+    Returns:
+        A string that should be unique to describe the parent list of defect node
+    &#34;&#34;&#34;
+    return str(parent_db_id)+&#34;|Defects&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.treeviewListIdToDb"><code class="name flex">
+<span>def <span class="ident">treeviewListIdToDb</span></span>(<span>treeviewId)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract from the unique string identifying a list of defects the parent db ID</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>treeviewId</code></strong></dt>
+<dd>the treeview node id of a list of defects node</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the parent object mongo id as string</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def treeviewListIdToDb(cls, treeviewId):
+    &#34;&#34;&#34;Extract from the unique string identifying a list of defects the parent db ID
+    Args:
+        treeviewId: the treeview node id of a list of defects node
+    Returns:
+        the parent object mongo id as string
+    &#34;&#34;&#34;
+    return str(treeviewId).split(&#34;|&#34;)[0]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.addAProof"><code class="name flex">
+<span>def <span class="ident">addAProof</span></span>(<span>self, _event, obj)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback when add proof is clicked.
+Add proof and update window
+Args
+_event: mandatory but not used
+obj: the clicked index proof</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addAProof(self, _event, obj):
+    &#34;&#34;&#34;Callback when add proof is clicked.
+    Add proof and update window
+    Args
+        _event: mandatory but not used
+        obj: the clicked index proof
+    &#34;&#34;&#34;
+    values = self.form.getValue()
+    formValues = ViewElement.list_tuple_to_dict(values)
+    self.controller.addAProof(formValues, obj)
+    self.form.clear()
+    for widget in self.appliViewFrame.winfo_children():
+        widget.destroy()
+    self.openModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.addInTreeview"><code class="name flex">
+<span>def <span class="ident">addInTreeview</span></span>(<span>self, parentNode=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this view in treeview. Also stores infos in application treeview.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentNode</code></strong></dt>
+<dd>if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.</dd>
+<dt><strong><code>_addChildren</code></strong></dt>
+<dd>not used here</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInTreeview(self, parentNode=None, _addChildren=True):
+    &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+    Args:
+        parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+        _addChildren: not used here
+    &#34;&#34;&#34;
+    if not self.controller.isAssigned():
+        # Unassigned defect are loaded on the report tab
+        return
+    if self.controller.model is None:
+        return
+    if parentNode is None:
+        parentNode = DefectView.DbToTreeviewListId(
+            self.controller.getParent())
+        nodeText = str(self.controller.getModelRepr())
+    elif parentNode == &#39;&#39;:
+        nodeText = self.controller.getDetailedString()
+    else:
+        parentNode = DefectView.DbToTreeviewListId(parentNode)
+        nodeText = str(self.controller.getModelRepr())
+    try:
+        parentNode = self.appliTw.insert(
+            self.controller.getParent(), 0, parentNode, text=&#34;Defects&#34;, image=self.getIcon())
+    except TclError:
+        pass
+    self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+    try:
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(self.controller.getDbId()),
+                            text=nodeText, tags=self.controller.getTags(), image=self.getIcon())
+    except TclError:
+        pass
+    if &#34;hidden&#34; in self.controller.getTags():
+        self.hide()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.beforeDelete"><code class="name flex">
+<span>def <span class="ident">beforeDelete</span></span>(<span>self, iid=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called before defect deletion.
+Will attempt to remove this defect from global defect table.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>iid</code></strong></dt>
+<dd>the mongo ID of the deleted defect</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def beforeDelete(self, iid=None):
+    &#34;&#34;&#34;Called before defect deletion.
+    Will attempt to remove this defect from global defect table.
+    Args:
+        iid: the mongo ID of the deleted defect
+    &#34;&#34;&#34;
+    if iid is None:
+        if self.controller is not None:
+            iid = self.controller.getDbId()
+    if iid is not None:
+        self.mainApp.report.removeItem(iid)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.deleteProof"><code class="name flex">
+<span>def <span class="ident">deleteProof</span></span>(<span>self, _event, obj)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback when delete proof is clicked.
+remove remote proof and update window
+Args
+_event: mandatory but not used
+obj: the clicked index proof</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteProof(self, _event, obj):
+    &#34;&#34;&#34;Callback when delete proof is clicked.
+    remove remote proof and update window
+    Args
+        _event: mandatory but not used
+        obj: the clicked index proof
+    &#34;&#34;&#34;
+    self.controller.deleteProof(obj)
+    self.form.clear()
+    for widget in self.appliViewFrame.winfo_children():
+        widget.destroy()
+    self.openModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.insertReceived"><code class="name flex">
+<span>def <span class="ident">insertReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a defect insertion is received by notification.
+Insert the node in treeview.
+Also insert it in global report of defect</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertReceived(self):
+    &#34;&#34;&#34;Called when a defect insertion is received by notification.
+    Insert the node in treeview.
+    Also insert it in global report of defect
+    &#34;&#34;&#34;
+    if self.controller.model is None:
+        return
+    if self.controller.isAssigned():
+        super().insertReceived()
+    else:
+        self.mainApp.report.addDefect(self.controller.model)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.openInsertWindow"><code class="name flex">
+<span>def <span class="ident">openInsertWindow</span></span>(<span>self, notes='', addButtons=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to insert a new Defect</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>notes</code></strong></dt>
+<dd>default notes to be written in notes text input. Default is ""</dd>
+<dt><strong><code>addButtons</code></strong></dt>
+<dd>boolean value indicating that insertion buttons should be visible. Default to True</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openInsertWindow(self, notes=&#34;&#34;, addButtons=True):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to insert a new Defect
+    Args:
+        notes: default notes to be written in notes text input. Default is &#34;&#34;
+        addButtons: boolean value indicating that insertion buttons should be visible. Default to True
+    &#34;&#34;&#34;
+    settings = self.mainApp.settings
+    settings.reloadSettings()
+    modelData = self.controller.getData()
+    topPanel = self.form.addFormPanel(grid=True)
+    topPanel.addFormLabel(&#34;Title&#34;)
+    topPanel.addFormStr(&#34;Title&#34;, r&#34;.+&#34;, &#34;&#34;, column=1, width=50)
+    topPanel = self.form.addFormPanel(grid=True)
+    topPanel.addFormLabel(&#34;Ease&#34;)
+    self.easeForm = topPanel.addFormCombo(
+        &#34;Ease&#34;, [&#39;Facile&#39;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;], column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+    topPanel.addFormHelper(&#34;0: Trivial to exploit, no tool required\n1: Simple technics and public tools needed to exploit\n2: public vulnerability exploit requiring security skills and/or the development of simple tools.\n3: Use of non-public exploits requiring strong skills in security and/or the development of targeted tools&#34;, column=2)
+    topPanel.addFormLabel(&#34;Impact&#34;, row=1)
+    self.impactForm = topPanel.addFormCombo(
+        &#34;Impact&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], row=1, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+    topPanel.addFormHelper(&#34;0: No direct impact on system security\n1: Impact isolated on precise locations of pentested system security\n2: Impact restricted to a part of the system security.\n3: Global impact on the pentested system security.&#34;, row=1, column=2)
+    topPanel.addFormLabel(&#34;Risk&#34;, row=2)
+    self.riskForm = topPanel.addFormCombo(
+        &#34;Risk&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;risk&#34;], row=2, column=1)
+    topPanel.addFormHelper(
+        &#34;0: small risk that might be fixed\n1: moderate risk that need a planed fix\n2: major risk that need to be fixed quickly.\n3: critical risk that need an immediate fix or an immediate interruption.&#34;, row=2, column=2)
+    topPanel.addFormLabel(&#34;Redactor&#34;, row=3)
+    topPanel.addFormCombo(&#34;Redactor&#34;, self.mainApp.settings.getPentesters()+[&#34;N/A&#34;], &#34;N/A&#34;, row=3, column=1)
+    chklistPanel = self.form.addFormPanel(grid=True)
+    defectTypes = settings.getPentestTypes()
+    if defectTypes is not None:
+        defectTypes = defectTypes.get(settings.getPentestType(), [])
+        if len(defectTypes) == 0:
+            defectTypes = [&#34;N/A&#34;]
+    else:
+        defectTypes = [&#34;N/A&#34;]
+    chklistPanel.addFormChecklist(&#34;Type&#34;, defectTypes, [&#34;N/A&#34;])
+    proofsPanel = self.form.addFormPanel(grid=True)
+    proofsPanel.addFormFile(&#34;Proof&#34;, r&#34;&#34;)
+    notesPanel = self.form.addFormPanel()
+    notesPanel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+    notesPanel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;)
+    self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+    self.form.addFormHidden(&#34;proto&#34;, modelData[&#34;proto&#34;])
+    self.form.addFormHidden(&#34;port&#34;, modelData[&#34;port&#34;])
+    if addButtons:
+        self.completeInsertWindow()
+    else:
+        self.showForm()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.openModifyWindow"><code class="name flex">
+<span>def <span class="ident">openModifyWindow</span></span>(<span>self, addButtons=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes.
+This form aims to update or delete an existing Defect</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>addButtons</code></strong></dt>
+<dd>boolean value indicating that insertion buttons should be visible. Default to True</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openModifyWindow(self, addButtons=True):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes.
+    This form aims to update or delete an existing Defect
+    Args:
+        addButtons: boolean value indicating that insertion buttons should be visible. Default to True
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    settings = self.mainApp.settings
+    settings.reloadSettings()
+    topPanel = self.form.addFormPanel(grid=True)
+    row = 0
+    if modelData.get(&#34;ip&#34;, &#34;&#34;) != &#34;&#34;:
+        topPanel.addFormLabel(&#34;IP&#34;, row=row, column=0)
+        topPanel.addFormStr(
+            &#34;IP&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, row=row, state=&#34;readonly&#34;)
+        row += 1
+        if modelData.get(&#34;port&#34;, &#34;&#34;) != &#34;&#34; and modelData[&#34;proto&#34;] is not None:
+            topPanel.addFormLabel(&#34;Port&#34;, row=row, column=0)
+            port_str = modelData[&#34;proto&#34;] + \
+                &#34;/&#34; if modelData[&#34;proto&#34;] != &#34;tcp&#34; else &#34;&#34;
+            port_str += modelData[&#34;port&#34;]
+            topPanel.addFormStr(
+                &#34;Port&#34;, &#39;&#39;, port_str, None, column=1, row=row, state=&#34;readonly&#34;)
+            row += 1
+    topPanel.addFormLabel(&#34;Title&#34;, row=row, column=0)
+    topPanel.addFormStr(
+        &#34;Title&#34;, &#34;.+&#34;, modelData[&#34;title&#34;], width=50, row=row, column=1)
+    row += 1
+    topPanel = self.form.addFormPanel(grid=True)
+    row = 0
+    topPanel.addFormLabel(&#34;Ease&#34;, row=row)
+    self.easeForm = topPanel.addFormCombo(
+        &#34;Ease&#34;, [&#39;Facile&#39;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;], modelData[&#34;ease&#34;], row=row, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+    topPanel.addFormHelper(&#34;0: Trivial to exploit, no tool required\n1: Simple technics and public tools needed to exploit\n2: public vulnerability exploit requiring security skills and/or the development of simple tools.\n3: Use of non-public exploits requiring strong skills in security and/or the development of targeted tools&#34;, row=row, column=2)
+    row += 1
+    topPanel.addFormLabel(&#34;Impact&#34;, row=row)
+    self.impactForm = topPanel.addFormCombo(
+        &#34;Impact&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;impact&#34;], row=row, column=1, binds={&#34;&lt;&lt;ComboboxSelected&gt;&gt;&#34;: self.updateRiskBox})
+    topPanel.addFormHelper(&#34;0: No direct impact on system security\n1: Impact isolated on precise locations of pentested system security\n2: Impact restricted to a part of the system security.\n3: Global impact on the pentested system security.&#34;, row=row, column=2)
+    row += 1
+    topPanel.addFormLabel(&#34;Risk&#34;, row=row)
+    self.riskForm = topPanel.addFormCombo(
+        &#34;Risk&#34;, [&#34;Mineur&#34;, &#34;Important&#34;, &#34;Majeur&#34;, &#34;Critique&#34;, &#34;N/A&#34;], modelData[&#34;risk&#34;], row=row, column=1)
+    topPanel.addFormHelper(
+        &#34;0: small risk that might be fixed\n1: moderate risk that need a planed fix\n2: major risk that need to be fixed quickly.\n3: critical risk that need an immediate fix or an immediate interruption.&#34;, row=row, column=2)
+    row += 1
+    chklistPanel = self.form.addFormPanel(grid=True)
+    defect_types = settings.getPentestTypes()[settings.getPentestType()]
+    for savedType in modelData[&#34;type&#34;]:
+        if savedType.strip() not in defect_types:
+            defect_types.insert(0, savedType)
+    chklistPanel.addFormChecklist(&#34;Type&#34;, defect_types, modelData[&#34;type&#34;])
+    topPanel.addFormLabel(&#34;Redactor&#34;, row=row)
+    topPanel.addFormCombo(&#34;Redactor&#34;, list(set(self.mainApp.settings.getPentesters()+[&#34;N/A&#34;]+[modelData[&#34;redactor&#34;]])), modelData[&#34;redactor&#34;], row=row, column=1)
+    row += 1
+    proofPanel = self.form.addFormPanel(grid=True)
+    i = 0
+    for proof in modelData[&#34;proofs&#34;]:
+        proofPanel.addFormLabel(&#34;Proof &#34;+str(i), proof, row=i, column=0)
+        proofPanel.addFormButton(&#34;View&#34;, lambda event, obj=i: self.viewProof(
+            event, obj), row=i, column=1)
+        proofPanel.addFormButton(&#34;Delete&#34;, lambda event, obj=i: self.deleteProof(
+            event, obj), row=i, column=2)
+        i += 1
+    proofPanel.addFormFile(&#34;Proof &#34;+str(i), r&#34;&#34;, &#34;&#34;, row=i, column=0)
+    proofPanel.addFormButton(&#34;Upload&#34;, lambda event, obj=i: self.addAProof(
+        event, obj), row=i, column=1)
+    notesPanel = self.form.addFormPanel()
+    notesPanel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+    notesPanel.addFormText(
+        &#34;Notes&#34;, r&#34;&#34;, modelData[&#34;notes&#34;], None, side=&#34;top&#34;, height=10)
+    if addButtons:
+        self.completeModifyWindow()
+    else:
+        self.showForm()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.updateReceived"><code class="name flex">
+<span>def <span class="ident">updateReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a defect update is received by notification.
+Update the defect node and the report defect table.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateReceived(self):
+    &#34;&#34;&#34;Called when a defect update is received by notification.
+    Update the defect node and the report defect table.
+    &#34;&#34;&#34;
+    if self.controller.model is None:
+        return
+    if not self.controller.isAssigned():
+        self.mainApp.report.updateDefectInTreeview(self.controller.model)
+    super().updateReceived()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.updateRiskBox"><code class="name flex">
+<span>def <span class="ident">updateRiskBox</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback when ease or impact is modified.
+Calculate new resulting risk value
+Args
+_event: mandatory but not used</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateRiskBox(self, _event=None):
+    &#34;&#34;&#34;Callback when ease or impact is modified.
+    Calculate new resulting risk value
+    Args
+        _event: mandatory but not used
+    &#34;&#34;&#34;
+    ease = self.easeForm.getValue()
+    impact = self.impactForm.getValue()
+    risk = Defect.getRisk(ease, impact)
+    self.riskForm.setValue(risk)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.DefectView.DefectView.viewProof"><code class="name flex">
+<span>def <span class="ident">viewProof</span></span>(<span>self, _event, obj)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback when view proof is clicked.
+Download and display the file using xdg-open on linux or os.startfile (windows)
+Args
+_event: mandatory but not used
+obj: the clicked index proof</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def viewProof(self, _event, obj):
+    &#34;&#34;&#34;Callback when view proof is clicked.
+    Download and display the file using xdg-open on linux or os.startfile (windows)
+    Args
+        _event: mandatory but not used
+        obj: the clicked index proof
+    &#34;&#34;&#34;
+    proof_local_path = self.controller.getProof(obj)
+    if proof_local_path is not None:
+        if os.path.isfile(proof_local_path):
+            if which(&#34;xdg-open&#34;) is not None:
+                subprocess.call([&#34;xdg-open&#34;, proof_local_path])
+            else:
+                try:
+                    os.startfile(proof_local_path)
+                except Exception:
+                    tk.messagebox.showerror(&#34;Could not open&#34;, &#34;Failed to open this file.&#34;)
+                    proof_local_path = None
+                    return
+    if proof_local_path is None:
+        tk.messagebox.showerror(
+            &#34;Download failed&#34;, &#34;the file does not exist on sftp server&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Views" href="index.html">Pollenisator.core.Views</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Views.DefectView.DefectView" href="#Pollenisator.core.Views.DefectView.DefectView">DefectView</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.DbToTreeviewListId" href="#Pollenisator.core.Views.DefectView.DefectView.DbToTreeviewListId">DbToTreeviewListId</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.addAProof" href="#Pollenisator.core.Views.DefectView.DefectView.addAProof">addAProof</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.addInTreeview" href="#Pollenisator.core.Views.DefectView.DefectView.addInTreeview">addInTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.beforeDelete" href="#Pollenisator.core.Views.DefectView.DefectView.beforeDelete">beforeDelete</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.deleteProof" href="#Pollenisator.core.Views.DefectView.DefectView.deleteProof">deleteProof</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.icon" href="#Pollenisator.core.Views.DefectView.DefectView.icon">icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.insertReceived" href="#Pollenisator.core.Views.DefectView.DefectView.insertReceived">insertReceived</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.openInsertWindow" href="#Pollenisator.core.Views.DefectView.DefectView.openInsertWindow">openInsertWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.openModifyWindow" href="#Pollenisator.core.Views.DefectView.DefectView.openModifyWindow">openModifyWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.treeviewListIdToDb" href="#Pollenisator.core.Views.DefectView.DefectView.treeviewListIdToDb">treeviewListIdToDb</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.updateReceived" href="#Pollenisator.core.Views.DefectView.DefectView.updateReceived">updateReceived</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.updateRiskBox" href="#Pollenisator.core.Views.DefectView.DefectView.updateRiskBox">updateRiskBox</a></code></li>
+<li><code><a title="Pollenisator.core.Views.DefectView.DefectView.viewProof" href="#Pollenisator.core.Views.DefectView.DefectView.viewProof">viewProof</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

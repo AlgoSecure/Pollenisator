@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Application.Dialogs.ChildDialogDate API documentation</title>
+<meta name="description" content="Simple calendar using ttk Treeview together with calendar and datetime
+classes.
+Adapted from github." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Application.Dialogs.ChildDialogDate</code></h1>
+</header>
+<section id="section-intro">
+<p>Simple calendar using ttk Treeview together with calendar and datetime
+classes.
+Adapted from github.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Simple calendar using ttk Treeview together with calendar and datetime
+classes.
+Adapted from github.
+&#34;&#34;&#34;
+import calendar
+
+import tkinter as tk
+import tkinter.font as tkFont
+import tkinter.ttk as ttk
+import sys
+from datetime import datetime
+from datetime import timedelta
+
+def get_calendar(locale, fwday):
+    # instantiate proper calendar class
+    if locale is None:
+        return calendar.TextCalendar(fwday)
+    else:
+        return calendar.LocaleTextCalendar(fwday, locale)
+
+class ChildDialogDate:
+    def __init__(self, parent=None):
+        self.parent = parent
+        self.app = tk.Toplevel(self.parent)
+        self.app.resizable(False, False)
+        self.appFrame = ttk.Frame(self.app)
+        self.initCalendar(self.app)
+        self.rvalue = None
+        self.parent = parent
+        self.appFrame.pack(expand=1, fill=&#39;both&#39;)
+        self.app.wait_visibility()
+        self.app.grab_set()
+
+
+    def show(self):
+        &#34;&#34;&#34;Start displaying this window.&#34;&#34;&#34;
+        self.app.update()
+
+    def destroy(self):
+        &#34;&#34;&#34;
+        Close the window.
+        &#34;&#34;&#34;
+        # send the data to the parent
+        self.rvalue = None
+        self.app.destroy()
+
+    def initCalendar(self, master=None, **kw):
+        &#34;&#34;&#34;
+        WIDGET-SPECIFIC OPTIONS
+
+            locale, firstweekday, year, month, selectbackground,
+            selectforeground
+        &#34;&#34;&#34;
+        # remove custom options from kw before initializating ttk.Frame
+        fwday = kw.pop(&#39;firstweekday&#39;, calendar.MONDAY)
+        year = kw.pop(&#39;year&#39;, datetime.now().year)
+        month = kw.pop(&#39;month&#39;, datetime.now().month)
+        locale = kw.pop(&#39;locale&#39;, None)
+        sel_bg = kw.pop(&#39;selectbackground&#39;, &#39;#ecffc4&#39;)
+        sel_fg = kw.pop(&#39;selectforeground&#39;, &#39;#05640e&#39;)
+        self.master = master
+        self._date = datetime(year, month, 1)
+        self._selection = None # no date selected
+
+
+        self._cal = get_calendar(locale, fwday)
+
+        self.__setup_styles()       # creates custom styles
+        self.__place_widgets()      # pack/grid used widgets
+        self.__config_calendar()    # adjust calendar columns and setup tags
+        # configure a canvas, and proper bindings, for selecting dates
+        self.__setup_selection(sel_bg, sel_fg)
+
+        # store items ids, used for insertion later
+        self._items = [self._calendar.insert(&#39;&#39;, &#39;end&#39;, values=&#39;&#39;)
+                            for _ in range(6)]
+        # insert dates in the currently empty calendar
+        self._build_calendar()
+
+        # set the minimal size for the widget
+        self._calendar.bind(&#39;&lt;Map&gt;&#39;, self.__minsize)
+
+    def __setitem__(self, item, value):
+        if item in (&#39;year&#39;, &#39;month&#39;):
+            raise AttributeError(&#34;attribute &#39;%s&#39; is not writeable&#34; % item)
+        elif item == &#39;selectbackground&#39;:
+            self._canvas[&#39;background&#39;] = value
+        elif item == &#39;selectforeground&#39;:
+            self._canvas.itemconfigure(self._canvas.text, item=value)
+        else:
+            ttk.Frame.__setitem__(self, item, value)
+
+    def __getitem__(self, item):
+        if item in (&#39;year&#39;, &#39;month&#39;):
+            return getattr(self._date, item)
+        elif item == &#39;selectbackground&#39;:
+            return self._canvas[&#39;background&#39;]
+        elif item == &#39;selectforeground&#39;:
+            return self._canvas.itemcget(self._canvas.text, &#39;fill&#39;)
+        else:
+            r = ttk.tclobjs_to_py({item: ttk.Frame.__getitem__(self, item)})
+            return r[item]
+
+    def __setup_styles(self):
+        # custom ttk styles
+        style = ttk.Style(self.master)
+        arrow_layout = lambda dir: (
+            [(&#39;Button.focus&#39;, {&#39;children&#39;: [(&#39;Button.%sarrow&#39; % dir, None)]})]
+        )
+        style.layout(&#39;L.TButton&#39;, arrow_layout(&#39;left&#39;))
+        style.layout(&#39;R.TButton&#39;, arrow_layout(&#39;right&#39;))
+
+    def __place_widgets(self):
+        # header frame and its widgets
+        hframe = ttk.Frame(self.appFrame)
+        lbtn = ttk.Button(hframe, style=&#39;L.TButton&#39;, command=self._prev_month)
+        rbtn = ttk.Button(hframe, style=&#39;R.TButton&#39;, command=self._next_month)
+        self._header = ttk.Label(hframe, width=15, anchor=&#39;center&#39;)
+        # the calendar
+        self._calendar = ttk.Treeview(self.app, show=&#39;&#39;, selectmode=&#39;none&#39;, height=7)
+
+        # pack the widgets
+        hframe.pack(in_=self.appFrame, side=&#39;top&#39;, pady=4, anchor=&#39;center&#39;)
+        lbtn.grid(in_=hframe)
+        self._header.grid(in_=hframe, column=1, row=0, padx=12)
+        rbtn.grid(in_=hframe, column=2, row=0)
+        self._calendar.pack(expand=1, fill=&#39;both&#39;, side=&#39;bottom&#39;)
+
+    def __config_calendar(self):
+        cols = self._cal.formatweekheader(3).split()
+        self._calendar[&#39;columns&#39;] = cols
+        self._calendar.tag_configure(&#39;header&#39;, background=&#39;grey90&#39;)
+        self._calendar.insert(&#39;&#39;, &#39;end&#39;, values=cols, tag=&#39;header&#39;)
+        # adjust its columns width
+        font = tkFont.Font()
+        maxwidth = max(font.measure(col) for col in cols)
+        for col in cols:
+            self._calendar.column(col, width=maxwidth, minwidth=maxwidth,
+                anchor=&#39;e&#39;)
+
+    def __setup_selection(self, sel_bg, sel_fg):
+        self._font = tkFont.Font()
+        self._canvas = canvas = tk.Canvas(self._calendar,
+            background=sel_bg, borderwidth=0, highlightthickness=0)
+        canvas.text = canvas.create_text(0, 0, fill=sel_fg, anchor=&#39;w&#39;)
+
+        canvas.bind(&#39;&lt;ButtonPress-1&gt;&#39;, lambda evt: canvas.place_forget())
+        print(&#34;Bindings mouse&#34;)
+        self._calendar.focus_set()
+        self._calendar.bind(&#39;&lt;Configure&gt;&#39;, lambda evt: canvas.place_forget())
+        self._calendar.bind(&#39;&lt;ButtonPress-1&gt;&#39;, self._pressed)
+    def __minsize(self, evt):
+        width, height = self._calendar.master.geometry().split(&#39;x&#39;)
+        height = height[:height.index(&#39;+&#39;)]
+        self._calendar.master.minsize(width, height)
+
+    def _build_calendar(self):
+        year, month = self._date.year, self._date.month
+
+        # update header text (Month, YEAR)
+        header = self._cal.formatmonthname(year, month, 0)
+        self._header[&#39;text&#39;] = header.title()
+
+        # update calendar shown dates
+        cal = self._cal.monthdayscalendar(year, month)
+        for indx, item in enumerate(self._items):
+            week = cal[indx] if indx &lt; len(cal) else []
+            fmt_week = [(&#39;%02d&#39; % day) if day else &#39;&#39; for day in week]
+            self._calendar.item(item, values=fmt_week)
+
+    def _show_selection(self, text, bbox):
+        &#34;&#34;&#34;Configure canvas for a new selection.&#34;&#34;&#34;
+        x, y, width, height = bbox
+
+        textw = self._font.measure(text)
+
+        canvas = self._canvas
+        canvas.configure(width=width, height=height)
+        canvas.coords(canvas.text, width - textw, height / 2 - 1)
+        canvas.itemconfigure(canvas.text, text=text)
+        canvas.place(in_=self._calendar, x=x, y=y)
+
+    # Callbacks
+
+    def _pressed(self, evt):
+        &#34;&#34;&#34;Clicked somewhere in the calendar.&#34;&#34;&#34;
+        print(&#34;PRESSED&#34;)
+        x, y, widget = evt.x, evt.y, evt.widget
+        item = widget.identify_row(y)
+        column = widget.identify_column(x)
+
+        if not column or not item in self._items:
+            # clicked in the weekdays row or just outside the columns
+            return
+
+        item_values = widget.item(item)[&#39;values&#39;]
+        if not len(item_values): # row is empty for this month
+            return
+
+        text = item_values[int(column[1]) - 1]
+        if not text: # date is empty
+            return
+
+        bbox = widget.bbox(item, column)
+        if not bbox: # calendar not visible yet
+            return
+
+        # update and then show selection
+        text = &#39;%02d&#39; % text
+        if self._selection is not None:
+            if self._selection[0] == text and self._selection[1] == item and  self._selection[2] == column:
+                self.rvalue = self.selection
+                self.app.destroy()
+                return
+        self._selection = (text, item, column)
+        self._show_selection(text, bbox)
+
+    def _prev_month(self):
+        &#34;&#34;&#34;Updated calendar to show the previous month.&#34;&#34;&#34;
+        self._canvas.place_forget()
+
+        self._date = self._date - timedelta(days=1)
+        self._date = datetime(self._date.year, self._date.month, 1)
+        self._build_calendar() # reconstuct calendar
+
+    def _next_month(self):
+        &#34;&#34;&#34;Update calendar to show the next month.&#34;&#34;&#34;
+        self._canvas.place_forget()
+
+        year, month = self._date.year, self._date.month
+        self._date = self._date + timedelta(
+            days=calendar.monthrange(year, month)[1] + 1)
+        self._date = datetime(self._date.year, self._date.month, 1)
+        self._build_calendar() # reconstruct calendar
+
+    # Properties
+
+    @property
+    def selection(self):
+        &#34;&#34;&#34;Return a datetime representing the current selected date.&#34;&#34;&#34;
+        if not self._selection:
+            return None
+
+        year, month = self._date.year, self._date.month
+        return datetime(year, month, int(self._selection[0]))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogDate.get_calendar"><code class="name flex">
+<span>def <span class="ident">get_calendar</span></span>(<span>locale, fwday)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_calendar(locale, fwday):
+    # instantiate proper calendar class
+    if locale is None:
+        return calendar.TextCalendar(fwday)
+    else:
+        return calendar.LocaleTextCalendar(fwday, locale)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate"><code class="flex name class">
+<span>class <span class="ident">ChildDialogDate</span></span>
+<span>(</span><span>parent=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChildDialogDate:
+    def __init__(self, parent=None):
+        self.parent = parent
+        self.app = tk.Toplevel(self.parent)
+        self.app.resizable(False, False)
+        self.appFrame = ttk.Frame(self.app)
+        self.initCalendar(self.app)
+        self.rvalue = None
+        self.parent = parent
+        self.appFrame.pack(expand=1, fill=&#39;both&#39;)
+        self.app.wait_visibility()
+        self.app.grab_set()
+
+
+    def show(self):
+        &#34;&#34;&#34;Start displaying this window.&#34;&#34;&#34;
+        self.app.update()
+
+    def destroy(self):
+        &#34;&#34;&#34;
+        Close the window.
+        &#34;&#34;&#34;
+        # send the data to the parent
+        self.rvalue = None
+        self.app.destroy()
+
+    def initCalendar(self, master=None, **kw):
+        &#34;&#34;&#34;
+        WIDGET-SPECIFIC OPTIONS
+
+            locale, firstweekday, year, month, selectbackground,
+            selectforeground
+        &#34;&#34;&#34;
+        # remove custom options from kw before initializating ttk.Frame
+        fwday = kw.pop(&#39;firstweekday&#39;, calendar.MONDAY)
+        year = kw.pop(&#39;year&#39;, datetime.now().year)
+        month = kw.pop(&#39;month&#39;, datetime.now().month)
+        locale = kw.pop(&#39;locale&#39;, None)
+        sel_bg = kw.pop(&#39;selectbackground&#39;, &#39;#ecffc4&#39;)
+        sel_fg = kw.pop(&#39;selectforeground&#39;, &#39;#05640e&#39;)
+        self.master = master
+        self._date = datetime(year, month, 1)
+        self._selection = None # no date selected
+
+
+        self._cal = get_calendar(locale, fwday)
+
+        self.__setup_styles()       # creates custom styles
+        self.__place_widgets()      # pack/grid used widgets
+        self.__config_calendar()    # adjust calendar columns and setup tags
+        # configure a canvas, and proper bindings, for selecting dates
+        self.__setup_selection(sel_bg, sel_fg)
+
+        # store items ids, used for insertion later
+        self._items = [self._calendar.insert(&#39;&#39;, &#39;end&#39;, values=&#39;&#39;)
+                            for _ in range(6)]
+        # insert dates in the currently empty calendar
+        self._build_calendar()
+
+        # set the minimal size for the widget
+        self._calendar.bind(&#39;&lt;Map&gt;&#39;, self.__minsize)
+
+    def __setitem__(self, item, value):
+        if item in (&#39;year&#39;, &#39;month&#39;):
+            raise AttributeError(&#34;attribute &#39;%s&#39; is not writeable&#34; % item)
+        elif item == &#39;selectbackground&#39;:
+            self._canvas[&#39;background&#39;] = value
+        elif item == &#39;selectforeground&#39;:
+            self._canvas.itemconfigure(self._canvas.text, item=value)
+        else:
+            ttk.Frame.__setitem__(self, item, value)
+
+    def __getitem__(self, item):
+        if item in (&#39;year&#39;, &#39;month&#39;):
+            return getattr(self._date, item)
+        elif item == &#39;selectbackground&#39;:
+            return self._canvas[&#39;background&#39;]
+        elif item == &#39;selectforeground&#39;:
+            return self._canvas.itemcget(self._canvas.text, &#39;fill&#39;)
+        else:
+            r = ttk.tclobjs_to_py({item: ttk.Frame.__getitem__(self, item)})
+            return r[item]
+
+    def __setup_styles(self):
+        # custom ttk styles
+        style = ttk.Style(self.master)
+        arrow_layout = lambda dir: (
+            [(&#39;Button.focus&#39;, {&#39;children&#39;: [(&#39;Button.%sarrow&#39; % dir, None)]})]
+        )
+        style.layout(&#39;L.TButton&#39;, arrow_layout(&#39;left&#39;))
+        style.layout(&#39;R.TButton&#39;, arrow_layout(&#39;right&#39;))
+
+    def __place_widgets(self):
+        # header frame and its widgets
+        hframe = ttk.Frame(self.appFrame)
+        lbtn = ttk.Button(hframe, style=&#39;L.TButton&#39;, command=self._prev_month)
+        rbtn = ttk.Button(hframe, style=&#39;R.TButton&#39;, command=self._next_month)
+        self._header = ttk.Label(hframe, width=15, anchor=&#39;center&#39;)
+        # the calendar
+        self._calendar = ttk.Treeview(self.app, show=&#39;&#39;, selectmode=&#39;none&#39;, height=7)
+
+        # pack the widgets
+        hframe.pack(in_=self.appFrame, side=&#39;top&#39;, pady=4, anchor=&#39;center&#39;)
+        lbtn.grid(in_=hframe)
+        self._header.grid(in_=hframe, column=1, row=0, padx=12)
+        rbtn.grid(in_=hframe, column=2, row=0)
+        self._calendar.pack(expand=1, fill=&#39;both&#39;, side=&#39;bottom&#39;)
+
+    def __config_calendar(self):
+        cols = self._cal.formatweekheader(3).split()
+        self._calendar[&#39;columns&#39;] = cols
+        self._calendar.tag_configure(&#39;header&#39;, background=&#39;grey90&#39;)
+        self._calendar.insert(&#39;&#39;, &#39;end&#39;, values=cols, tag=&#39;header&#39;)
+        # adjust its columns width
+        font = tkFont.Font()
+        maxwidth = max(font.measure(col) for col in cols)
+        for col in cols:
+            self._calendar.column(col, width=maxwidth, minwidth=maxwidth,
+                anchor=&#39;e&#39;)
+
+    def __setup_selection(self, sel_bg, sel_fg):
+        self._font = tkFont.Font()
+        self._canvas = canvas = tk.Canvas(self._calendar,
+            background=sel_bg, borderwidth=0, highlightthickness=0)
+        canvas.text = canvas.create_text(0, 0, fill=sel_fg, anchor=&#39;w&#39;)
+
+        canvas.bind(&#39;&lt;ButtonPress-1&gt;&#39;, lambda evt: canvas.place_forget())
+        print(&#34;Bindings mouse&#34;)
+        self._calendar.focus_set()
+        self._calendar.bind(&#39;&lt;Configure&gt;&#39;, lambda evt: canvas.place_forget())
+        self._calendar.bind(&#39;&lt;ButtonPress-1&gt;&#39;, self._pressed)
+    def __minsize(self, evt):
+        width, height = self._calendar.master.geometry().split(&#39;x&#39;)
+        height = height[:height.index(&#39;+&#39;)]
+        self._calendar.master.minsize(width, height)
+
+    def _build_calendar(self):
+        year, month = self._date.year, self._date.month
+
+        # update header text (Month, YEAR)
+        header = self._cal.formatmonthname(year, month, 0)
+        self._header[&#39;text&#39;] = header.title()
+
+        # update calendar shown dates
+        cal = self._cal.monthdayscalendar(year, month)
+        for indx, item in enumerate(self._items):
+            week = cal[indx] if indx &lt; len(cal) else []
+            fmt_week = [(&#39;%02d&#39; % day) if day else &#39;&#39; for day in week]
+            self._calendar.item(item, values=fmt_week)
+
+    def _show_selection(self, text, bbox):
+        &#34;&#34;&#34;Configure canvas for a new selection.&#34;&#34;&#34;
+        x, y, width, height = bbox
+
+        textw = self._font.measure(text)
+
+        canvas = self._canvas
+        canvas.configure(width=width, height=height)
+        canvas.coords(canvas.text, width - textw, height / 2 - 1)
+        canvas.itemconfigure(canvas.text, text=text)
+        canvas.place(in_=self._calendar, x=x, y=y)
+
+    # Callbacks
+
+    def _pressed(self, evt):
+        &#34;&#34;&#34;Clicked somewhere in the calendar.&#34;&#34;&#34;
+        print(&#34;PRESSED&#34;)
+        x, y, widget = evt.x, evt.y, evt.widget
+        item = widget.identify_row(y)
+        column = widget.identify_column(x)
+
+        if not column or not item in self._items:
+            # clicked in the weekdays row or just outside the columns
+            return
+
+        item_values = widget.item(item)[&#39;values&#39;]
+        if not len(item_values): # row is empty for this month
+            return
+
+        text = item_values[int(column[1]) - 1]
+        if not text: # date is empty
+            return
+
+        bbox = widget.bbox(item, column)
+        if not bbox: # calendar not visible yet
+            return
+
+        # update and then show selection
+        text = &#39;%02d&#39; % text
+        if self._selection is not None:
+            if self._selection[0] == text and self._selection[1] == item and  self._selection[2] == column:
+                self.rvalue = self.selection
+                self.app.destroy()
+                return
+        self._selection = (text, item, column)
+        self._show_selection(text, bbox)
+
+    def _prev_month(self):
+        &#34;&#34;&#34;Updated calendar to show the previous month.&#34;&#34;&#34;
+        self._canvas.place_forget()
+
+        self._date = self._date - timedelta(days=1)
+        self._date = datetime(self._date.year, self._date.month, 1)
+        self._build_calendar() # reconstuct calendar
+
+    def _next_month(self):
+        &#34;&#34;&#34;Update calendar to show the next month.&#34;&#34;&#34;
+        self._canvas.place_forget()
+
+        year, month = self._date.year, self._date.month
+        self._date = self._date + timedelta(
+            days=calendar.monthrange(year, month)[1] + 1)
+        self._date = datetime(self._date.year, self._date.month, 1)
+        self._build_calendar() # reconstruct calendar
+
+    # Properties
+
+    @property
+    def selection(self):
+        &#34;&#34;&#34;Return a datetime representing the current selected date.&#34;&#34;&#34;
+        if not self._selection:
+            return None
+
+        year, month = self._date.year, self._date.month
+        return datetime(year, month, int(self._selection[0]))</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.selection"><code class="name">var <span class="ident">selection</span></code></dt>
+<dd>
+<div class="desc"><p>Return a datetime representing the current selected date.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def selection(self):
+    &#34;&#34;&#34;Return a datetime representing the current selected date.&#34;&#34;&#34;
+    if not self._selection:
+        return None
+
+    year, month = self._date.year, self._date.month
+    return datetime(year, month, int(self._selection[0]))</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.destroy"><code class="name flex">
+<span>def <span class="ident">destroy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Close the window.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def destroy(self):
+    &#34;&#34;&#34;
+    Close the window.
+    &#34;&#34;&#34;
+    # send the data to the parent
+    self.rvalue = None
+    self.app.destroy()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.initCalendar"><code class="name flex">
+<span>def <span class="ident">initCalendar</span></span>(<span>self, master=None, **kw)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>WIDGET-SPECIFIC OPTIONS</p>
+<pre><code>locale, firstweekday, year, month, selectbackground,
+selectforeground
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initCalendar(self, master=None, **kw):
+    &#34;&#34;&#34;
+    WIDGET-SPECIFIC OPTIONS
+
+        locale, firstweekday, year, month, selectbackground,
+        selectforeground
+    &#34;&#34;&#34;
+    # remove custom options from kw before initializating ttk.Frame
+    fwday = kw.pop(&#39;firstweekday&#39;, calendar.MONDAY)
+    year = kw.pop(&#39;year&#39;, datetime.now().year)
+    month = kw.pop(&#39;month&#39;, datetime.now().month)
+    locale = kw.pop(&#39;locale&#39;, None)
+    sel_bg = kw.pop(&#39;selectbackground&#39;, &#39;#ecffc4&#39;)
+    sel_fg = kw.pop(&#39;selectforeground&#39;, &#39;#05640e&#39;)
+    self.master = master
+    self._date = datetime(year, month, 1)
+    self._selection = None # no date selected
+
+
+    self._cal = get_calendar(locale, fwday)
+
+    self.__setup_styles()       # creates custom styles
+    self.__place_widgets()      # pack/grid used widgets
+    self.__config_calendar()    # adjust calendar columns and setup tags
+    # configure a canvas, and proper bindings, for selecting dates
+    self.__setup_selection(sel_bg, sel_fg)
+
+    # store items ids, used for insertion later
+    self._items = [self._calendar.insert(&#39;&#39;, &#39;end&#39;, values=&#39;&#39;)
+                        for _ in range(6)]
+    # insert dates in the currently empty calendar
+    self._build_calendar()
+
+    # set the minimal size for the widget
+    self._calendar.bind(&#39;&lt;Map&gt;&#39;, self.__minsize)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.show"><code class="name flex">
+<span>def <span class="ident">show</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Start displaying this window.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def show(self):
+    &#34;&#34;&#34;Start displaying this window.&#34;&#34;&#34;
+    self.app.update()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Application.Dialogs" href="index.html">Pollenisator.core.Application.Dialogs</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogDate.get_calendar" href="#Pollenisator.core.Application.Dialogs.ChildDialogDate.get_calendar">get_calendar</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate" href="#Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate">ChildDialogDate</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.destroy" href="#Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.destroy">destroy</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.initCalendar" href="#Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.initCalendar">initCalendar</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.selection" href="#Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.selection">selection</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.show" href="#Pollenisator.core.Application.Dialogs.ChildDialogDate.ChildDialogDate.show">show</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

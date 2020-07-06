@@ -1,0 +1,1489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.Settings API documentation</title>
+<meta name="description" content="Hold functions to interact with the settings" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.Settings</code></h1>
+</header>
+<section id="section-intro">
+<p>Hold functions to interact with the settings</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Hold functions to interact with the settings&#34;&#34;&#34;
+import os
+import tkinter.ttk as ttk
+import tkinter as tk
+import tkinter.messagebox
+import json
+from core.Components.mongo import MongoCalendar
+from shutil import which
+
+
+class Settings:
+    &#34;&#34;&#34;
+    Represents the settings of pollenisator.
+    There are three level of settings:
+        * local settings: stored in a file under ../../config/settings.cfg
+        * pentest db settings: stored in the pentest database under settings collection
+        * global settings: stored in the pollenisator database under settings collection
+    &#34;&#34;&#34;
+    def __init__(self):
+        &#34;&#34;&#34;
+        Load the tree types of settings and stores them in dictionnaries
+        &#34;&#34;&#34;
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        self.confdir = os.path.join(dir_path, &#34;../../config/settings.cfg&#34;)
+
+        self.local_settings = {}
+        try:
+            with open(self.confdir, &#34;r&#34;) as f:
+                self.local_settings = json.loads(f.read())
+        except json.JSONDecodeError:
+            self.local_settings = {}
+        except IOError:
+            self.local_settings = {}
+        self.db_settings = {}
+        self.global_settings = {}
+        self.text_pentest_types = None
+        self.text_tags = None
+        self.box_pentest_type = None
+        self.visual_include_domains_with_ip_in_scope = None
+        self.visual_include_domains_with_topdomain_in_scope = None
+        self.visual_search_show_hidden = None
+        self.visual_search_exact_match = None
+        self.visual_include_all_domains = None
+        self.text_pentesters = None
+        self.box_favorite_term = None
+        self.text_terms = None
+
+    @classmethod
+    def getTags(cls):
+        &#34;&#34;&#34;
+        Returns tags defined in settings.
+        Returns:
+            If none are defined returns {&#34;todo&#34;:&#34;orange&#34;, &#34;P0wned!&#34;:&#34;red&#34;, &#34;Interesting&#34;:&#34;dark green&#34;, &#34;Uninteresting&#34;:&#34;sky blue&#34;, &#34;Neutral&#34;:&#34;white&#34;}
+            otherwise returns a dict with defined key values
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        tags = mongoInstance.findInDb(
+            &#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: &#34;tags&#34;}, False)
+        if tags is not None:
+            if isinstance(tags[&#34;value&#34;], dict):
+                return tags[&#34;value&#34;]
+        return  {&#34;todo&#34;:&#34;orange&#34;, &#34;P0wned!&#34;:&#34;red&#34;, &#34;Interesting&#34;:&#34;dark green&#34;, &#34;Uninteresting&#34;:&#34;sky blue&#34;, &#34;Neutral&#34;:&#34;white&#34;}
+
+    @classmethod
+    def getPentestTypes(cls):
+        &#34;&#34;&#34;
+        Returns pentest types and associeted defect type defined in settings.
+        Returns:
+            If none are defined returns {&#34;Web&#34;:[&#34;Socle&#34;, &#34;Application&#34;, &#34;Données&#34;, &#34;Politique&#34;], &#34;LAN&#34;:[&#34;Infrastructure&#34;, &#34;Active Directory&#34;, &#34;Données&#34;, &#34;Politique&#34;]}
+            otherwise returns a dict with defined key values
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        pentest_types = mongoInstance.findInDb(
+            &#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: &#34;pentest_types&#34;}, False)
+        if pentest_types is not None:
+            if isinstance(pentest_types[&#34;value&#34;], dict):
+                return pentest_types[&#34;value&#34;]
+        return  {&#34;Web&#34;:[&#34;Socle&#34;, &#34;Application&#34;, &#34;Données&#34;, &#34;Politique&#34;], &#34;LAN&#34;:[&#34;Infrastructure&#34;, &#34;Active Directory&#34;, &#34;Données&#34;, &#34;Politique&#34;]}
+
+
+    def getTerms(self):
+        &#34;&#34;&#34;
+        Returns terminals configured 
+        Returns:
+            If none are defined returns [&#39;&#39;&#39;gnome-terminal --window --title=&#34;Pollenisator terminal&#34; -- bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;,
+             &#39;&#39;&#39;xfce4-terminal -x bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;,
+             &#39;&#39;&#39;xterm -e bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;]
+            otherwise returns a list with defined  values
+        &#34;&#34;&#34;
+        self._reloadLocalSettings()
+        return self.local_settings.get(&#34;terms&#34;,
+            [&#34;&#34;&#34;gnome-terminal --window --title=&#34;Pollenisator terminal&#34; -- bash --rcfile setupTerminalForPentest.sh&#34;&#34;&#34;,
+             &#34;&#34;&#34;xfce4-terminal -x bash --rcfile setupTerminalForPentest.sh&#34;&#34;&#34;,
+             &#34;xterm -e bash --rcfile setupTerminalForPentest.sh&#34;])
+    
+    def getFavoriteTerm(self):
+        &#34;&#34;&#34;
+        Returns favorite terminal configured 
+        Returns:
+            If none are defined returns first in the list of terms
+            Otherwise returns the favorite terminal configured 
+        &#34;&#34;&#34;
+        self._reloadLocalSettings()
+        fav = self.local_settings.get(&#34;fav_term&#34;, None)
+        if fav is None:
+            terms = self.getTerms()
+            for term in terms:
+                term_name = term.split(&#34; &#34;)[0].strip()
+                if which(term_name):
+                    fav = term_name
+        return fav
+
+    def setFavoriteTerm(self):
+        &#34;&#34;&#34;
+        Change favorite term 
+        &#34;&#34;&#34;
+        self._reloadLocalSettings()
+        self.local_settings[&#34;fav_term&#34;] = self.box_favorite_term.get()
+        self.saveLocalSettings()
+    
+    def _reloadLocalSettings(self):
+        &#34;&#34;&#34;
+        Reload local settings from local conf file
+        &#34;&#34;&#34;
+        try:
+            with open(self.confdir, &#34;r&#34;) as f:
+                self.local_settings = json.loads(f.read())
+        except json.JSONDecodeError:
+            self.local_settings = {}
+        except IOError:
+            self.local_settings = {}
+
+    def _reloadDbSettings(self):
+        &#34;&#34;&#34;
+        Reload pentest database settings from pentest database
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        dbSettings = mongoInstance.find(&#34;settings&#34;, {})
+        if dbSettings is None:
+            dbSettings = {}
+        for settings_dict in dbSettings:
+            try:
+                self.db_settings[settings_dict[&#34;key&#34;]] = settings_dict[&#34;value&#34;]
+            except KeyError:
+                pass
+
+    def _reloadGlobalSettings(self):
+        &#34;&#34;&#34;
+        Reload pentest database settings from pollenisator database
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        globalSettings = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {})
+        for settings_dict in globalSettings:
+            self.global_settings[settings_dict[&#34;key&#34;]] = settings_dict[&#34;value&#34;]
+
+    def reloadSettings(self):
+        &#34;&#34;&#34;
+        Reload local, database and global settings.
+        &#34;&#34;&#34;
+        self._reloadLocalSettings()
+        self._reloadDbSettings()
+        self._reloadGlobalSettings()
+
+    def reloadUI(self):
+        &#34;&#34;&#34;
+        Reload all settings and refresh view with values
+        &#34;&#34;&#34;
+        self.reloadSettings()
+        self.visual_include_all_domains.set(
+            self.db_settings.get(&#34;include_all_domains&#34;, False))
+        self.visual_include_domains_with_ip_in_scope.set(
+            self.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False))
+        self.visual_include_domains_with_topdomain_in_scope.set(
+            self.db_settings.get(&#34;include_domains_with_topdomain_in_scope&#34;, False))
+        self.visual_search_show_hidden.set(
+            self.local_settings.get(&#34;search_show_hidden&#34;, True))
+        self.visual_search_exact_match.set(
+            self.local_settings.get(&#34;search_exact_match&#34;, False))
+        self.text_terms.delete(&#39;1.0&#39;, tk.END)
+        terms_cmd = self.getTerms()
+        self.text_terms.insert(tk.INSERT, &#34;\n&#34;.join(terms_cmd))
+        self.text_pentesters.delete(&#39;1.0&#39;, tk.END)
+        self.text_pentesters.insert(
+            tk.INSERT, &#34;\n&#34;.join(
+                self.db_settings.get(&#34;pentesters&#34;, [])))
+        terms_name = [term_cmd.split(&#34; &#34;)[0] for term_cmd in terms_cmd]
+        self.box_favorite_term.config(values=terms_name)
+        fav_term = self.getFavoriteTerm()
+        if fav_term in terms_name:
+            self.box_favorite_term.set(fav_term)
+        self.box_pentest_type.set(self.db_settings.get(&#34;pentest_type&#34;, &#34;None&#34;))
+        self.text_pentest_types.delete(&#39;1.0&#39;, tk.END)
+        pentestTypes = Settings.getPentestTypes()
+        buffer = &#34;&#34;
+        for pentestType, pentestTypeDefectTypes in pentestTypes.items():
+            buffer += pentestType +&#34; : &#34;+ (&#34;, &#34;.join(pentestTypeDefectTypes))+&#34;\n&#34;
+        self.text_pentest_types.insert(
+            tk.INSERT, buffer)
+        self.text_tags.delete(&#39;1.0&#39;, tk.END)
+        tagsRegistered = Settings.getTags()
+        buffer = &#34;&#34;
+        for tagName, tagColor in tagsRegistered.items():
+            buffer += tagName +&#34; : &#34;+ tagColor+&#34;\n&#34;
+        self.text_tags.insert(
+            tk.INSERT, buffer)
+        self.canvas.bind(&#39;&lt;Enter&gt;&#39;, self.boundToMousewheel)
+        self.canvas.bind(&#39;&lt;Leave&gt;&#39;, self.unboundToMousewheel)
+        self.canvas.update()
+        self.canvas.create_window((0, 0), window=self.settingsFrame, anchor=&#39;nw&#39;)
+        self.canvas.configure(scrollregion=self.canvas.bbox(&#34;all&#34;))
+        self.canvas.configure(yscrollcommand=self.myscrollbar.set)
+
+    def saveLocalSettings(self):
+        &#34;&#34;&#34;
+        Save local settings to conf file
+        &#34;&#34;&#34;
+        with open(self.confdir, &#34;w&#34;) as f:
+            f.write(json.dumps(self.local_settings))
+
+    def save(self):
+        &#34;&#34;&#34;
+        Save all the settings (local, database and global)
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        for k, v in self.global_settings.items():
+            if mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: k}, False) is None:
+                mongoInstance.insertInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {
+                                         &#34;key&#34;: k, &#34;value&#34;: v})
+            else:
+                mongoInstance.updateInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {
+                    &#34;key&#34;: k}, {&#34;$set&#34;: {&#34;value&#34;: v}})
+        for k, v in self.db_settings.items():
+            if mongoInstance.find(&#34;settings&#34;, {&#34;key&#34;: k}, False) is None:
+                mongoInstance.insert(&#34;settings&#34;, {
+                    &#34;key&#34;: k, &#34;value&#34;: v})
+            else:
+                mongoInstance.update(&#34;settings&#34;, {
+                    &#34;key&#34;: k}, {&#34;$set&#34;: {&#34;value&#34;: v}})
+        self.local_settings[&#34;terms&#34;] = [x.strip() for x in self.text_terms.get(&#39;1.0&#39;, tk.END).split(&#34;\n&#34;) if x.strip() != &#34;&#34;]
+        self.local_settings[&#34;fav_term&#34;] = self.box_favorite_term.get().strip()
+        self.saveLocalSettings()
+        self.reloadUI()
+
+    def _onMousewheel(self, event):
+        &#34;&#34;&#34;Scroll the settings canvas
+        Args:
+            event: scroll info filled when scroll event is triggered&#34;&#34;&#34;
+        if event.num == 5 or event.delta == -120:
+            count = 1
+        if event.num == 4 or event.delta == 120:
+            count = -1
+        self.canvas.yview_scroll(count, &#34;units&#34;)
+
+    def boundToMousewheel(self, _event):
+        &#34;&#34;&#34;Called when the main view canvas is focused.
+        Bind the command scrollbar button on linux to the main view canvas
+        Args:
+            _event: not used but mandatory&#34;&#34;&#34;
+        self.canvas.bind_all(&#34;&lt;Button-4&gt;&#34;, self._onMousewheel)
+        self.canvas.bind_all(&#34;&lt;Button-5&gt;&#34;, self._onMousewheel)
+
+    def unboundToMousewheel(self, _event):
+        &#34;&#34;&#34;Called when the main view canvas is unfocused.
+        Unbind the command scrollbar button on linux to the main view canvas
+        Args:
+            _event: not used but mandatory&#34;&#34;&#34;
+        self.canvas.unbind_all(&#34;&lt;Button-4&gt;&#34;)
+        self.canvas.unbind_all(&#34;&lt;Button-5&gt;&#34;)
+
+    def initUI(self, parent):
+        &#34;&#34;&#34;Create settings widgets and initialize them
+        Args:
+            parent: parent tkinter container widget&#34;&#34;&#34;
+        if self.visual_include_all_domains is not None:  # Already built
+            self.reloadUI()
+            return
+        self.canvas = tk.Canvas(parent, bg=&#34;white&#34;)
+        self.settingsFrame = ttk.Frame(self.canvas)
+        self.myscrollbar = tk.Scrollbar(parent, orient=&#34;vertical&#34;, command=self.canvas.yview)
+        self.myscrollbar.grid(column=1, row=0, sticky=&#34;ns&#34;)
+        
+        self.canvas.grid(column=0, row=0, sticky=&#34;nsew&#34;)
+        parent.columnconfigure(0, weight=1)
+        parent.rowconfigure(0, weight=1)
+
+        self.visual_include_all_domains = tk.BooleanVar()
+        self.visual_include_domains_with_ip_in_scope = tk.BooleanVar()
+        self.visual_include_domains_with_topdomain_in_scope = tk.BooleanVar()
+        self.visual_search_show_hidden = tk.BooleanVar()
+        self.visual_search_exact_match = tk.BooleanVar()
+
+        lbl_domains = ttk.LabelFrame(
+            self.settingsFrame, text=&#34;Discovered domains options:&#34;)
+        lbl_domains.pack(padx=10, pady=10, side=tk.TOP,
+                         anchor=tk.W, fill=tk.X, expand=tk.YES)
+        chkbox_include_domains_with_ip_in_scope = ttk.Checkbutton(lbl_domains, text=&#34;Check if discovered subdomains ips are in scope&#34;,
+                                                                  variable=self.visual_include_domains_with_ip_in_scope)
+        chkbox_include_domains_with_ip_in_scope.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+
+        chkbox_include_domains_with_topdomain_in_scope = ttk.Checkbutton(lbl_domains, text=&#34;Check if discovered subdomains have a top domain already in scope&#34;,
+                                                                         variable=self.visual_include_domains_with_topdomain_in_scope)
+        chkbox_include_domains_with_topdomain_in_scope.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+        chkbox_include_all_domains = ttk.Checkbutton(lbl_domains, text=&#34;/!\\ Include every domain found in scope&#34;,
+                                                     variable=self.visual_include_all_domains)
+        chkbox_include_all_domains.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+        
+        frame_term = ttk.LabelFrame(self.settingsFrame, text=&#34;Terminals:&#34;)
+        self.text_terms = tk.scrolledtext.ScrolledText(
+            frame_term, relief=tk.SUNKEN, height=4, width=130)
+        self.text_terms.pack(side=tk.TOP, fill=tk.X,pady=5)
+        frame_fav_term = ttk.Frame(frame_term)
+        lbl_fav_term = ttk.Label(frame_term, text=&#34;Favorite term:&#34;)
+        lbl_fav_term.pack(side=tk.LEFT, anchor=tk.W)
+        self.box_favorite_term = ttk.Combobox(frame_term, values=(self.getTerms()), state=&#34;readonly&#34;)
+        self.box_favorite_term.pack(side=tk.LEFT, anchor=tk.W)
+        frame_fav_term.pack(padx=10, pady=10, side=tk.TOP,
+                           anchor=tk.W, fill=tk.X, expand=tk.YES)
+        frame_term.pack(padx=10, pady=10, side=tk.TOP,
+                           anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_SearchBar = ttk.LabelFrame(self.settingsFrame, text=&#34;Search settings:&#34;)
+        lbl_SearchBar.pack(padx=10, pady=10, side=tk.TOP,
+                           anchor=tk.W, fill=tk.X, expand=tk.YES)
+        chkbox_search_show_hidden = ttk.Checkbutton(lbl_SearchBar, text=&#34;Show hidden objects&#34;,
+                                                    variable=self.visual_search_show_hidden)
+        chkbox_search_show_hidden.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+        chkbox_search_exact_match = ttk.Checkbutton(lbl_SearchBar, text=&#34;Exact match&#34;,
+                                                    variable=self.visual_search_exact_match)
+        chkbox_search_exact_match.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+
+        lblframe_pentest_params = ttk.LabelFrame(
+            self.settingsFrame, text=&#34;Pentest parameters:&#34;)
+        lblframe_pentest_params.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_pentest_type = ttk.Label(
+            lblframe_pentest_params, text=&#34;Pentest type:&#34;)
+        lbl_pentest_type.grid(row=0, column=0, sticky=tk.E)
+        self.box_pentest_type = ttk.Combobox(
+            lblframe_pentest_params, values=tuple(Settings.getPentestTypes().keys()), state=&#34;readonly&#34;)
+        self.box_pentest_type.grid(row=1, column=1, sticky=tk.W)
+        self.text_pentesters = tk.scrolledtext.ScrolledText(
+            lblframe_pentest_params, relief=tk.SUNKEN, height=3)
+        lbl_pentesters = ttk.Label(
+            lblframe_pentest_params, text=&#34;Pentester names:&#34;)
+        lbl_pentesters.grid(row=2, column=0, sticky=tk.E)
+        self.text_pentesters.grid(row=2, column=1, sticky=tk.W, pady=5)
+        lblframe_global_params = ttk.LabelFrame(
+            self.settingsFrame, text=&#34;Global parameters:&#34;)
+        lblframe_global_params.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_pentest_types = ttk.Label(
+            lblframe_global_params, text=&#34;Pentests possible types:&#34;)
+        lbl_pentest_types.grid(row=0, column=0, sticky=tk.E)
+        self.text_pentest_types = tk.scrolledtext.ScrolledText(
+            lblframe_global_params, relief=tk.SUNKEN, height=6)
+        self.text_pentest_types.grid(row=0, column=1, sticky=tk.W)
+        lbl_tags = ttk.Label(
+            lblframe_global_params, text=&#34;Registered tags:&#34;)
+        lbl_tags.grid(row=1, column=0, sticky=tk.E)
+        self.text_tags = tk.scrolledtext.ScrolledText(
+            lblframe_global_params, relief=tk.SUNKEN, height=6)
+        self.text_tags.grid(row=1, column=1, sticky=tk.W)
+        btn_save = ttk.Button(parent, text=&#34;Save&#34;, command=self.on_ok)
+        btn_save.grid(row=1, column=0, padx=10, pady=10, sticky=&#34;s&#34;)
+        self.settingsFrame.pack(fill=tk.BOTH, expand=1)
+
+        #self.reloadUI()
+
+    def on_ok(self):
+        &#34;&#34;&#34;Callback on click save button. loads some data and calls save.
+        Args:
+            parent: parent tkinter container widget&#34;&#34;&#34;
+        self.db_settings[&#34;include_all_domains&#34;] = self.visual_include_all_domains.get(
+        ) == 1
+        self.db_settings[&#34;include_domains_with_ip_in_scope&#34;] = self.visual_include_domains_with_ip_in_scope.get(
+        ) == 1
+        self.db_settings[&#34;pentest_type&#34;] = self.box_pentest_type.get()
+        self.db_settings[&#34;include_domains_with_topdomain_in_scope&#34;] = self.visual_include_domains_with_topdomain_in_scope.get(
+        ) == 1
+        self.db_settings[&#34;pentesters&#34;] = []
+        for pentester in self.text_pentesters.get(&#39;1.0&#39;, tk.END).split(
+                &#34;\n&#34;):
+            if pentester.strip() != &#34;&#34;:
+                self.db_settings[&#34;pentesters&#34;].append(
+                    pentester.strip())
+        self.local_settings[&#34;search_show_hidden&#34;] = self.visual_search_show_hidden.get(
+        ) == 1
+        self.local_settings[&#34;search_exact_match&#34;] = self.visual_search_exact_match.get(
+        ) == 1
+        self.global_settings[&#34;pentest_types&#34;] = []
+        for type_of_pentest in self.text_pentest_types.get(&#39;1.0&#39;, tk.END).split(
+                &#34;\n&#34;):
+            if type_of_pentest.strip() != &#34;&#34;:
+                line_splitted = type_of_pentest.strip().split(&#34;:&#34;)
+                if len(line_splitted) == 2:
+                    typesOfDefects = list(map(lambda x: x.strip(), line_splitted[1].split(&#34;,&#34;)))
+                    self.global_settings[&#34;pentest_types&#34;].append(
+                        {line_splitted[0].strip():typesOfDefects})
+        self.global_settings[&#34;tags&#34;] = {}
+        for tagRegistered in self.text_tags.get(&#39;1.0&#39;, tk.END).split(
+                &#34;\n&#34;):
+            if tagRegistered.strip() != &#34;&#34;:
+                line_splitted = tagRegistered.strip().split(&#34;:&#34;)
+                if len(line_splitted) == 2:
+                    self.global_settings[&#34;tags&#34;][line_splitted[0].strip()] = line_splitted[1].strip()
+        self.save()
+        tkinter.messagebox.showinfo(
+            &#34;Settings&#34;, &#34;Settings saved.&#34;)
+
+    def getPentestType(self):
+        &#34;&#34;&#34;Return selected database pentest type.
+        Returns:
+            Open database pentest type. string &#34;None&#34; if not defined&#34;&#34;&#34;
+        return self.db_settings.get(&#34;pentest_type&#34;, &#34;None&#34;)
+
+    def getPentesters(self):
+        &#34;&#34;&#34;Return a list of pentesters registered for open pentest database
+        Returns:
+            List of pentesters names&#34;&#34;&#34;
+        return self.db_settings.get(&#34;pentesters&#34;, [])</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.Settings.Settings"><code class="flex name class">
+<span>class <span class="ident">Settings</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents the settings of pollenisator.
+There are three level of settings:
+* local settings: stored in a file under ../../config/settings.cfg
+* pentest db settings: stored in the pentest database under settings collection
+* global settings: stored in the pollenisator database under settings collection</p>
+<p>Load the tree types of settings and stores them in dictionnaries</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Settings:
+    &#34;&#34;&#34;
+    Represents the settings of pollenisator.
+    There are three level of settings:
+        * local settings: stored in a file under ../../config/settings.cfg
+        * pentest db settings: stored in the pentest database under settings collection
+        * global settings: stored in the pollenisator database under settings collection
+    &#34;&#34;&#34;
+    def __init__(self):
+        &#34;&#34;&#34;
+        Load the tree types of settings and stores them in dictionnaries
+        &#34;&#34;&#34;
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        self.confdir = os.path.join(dir_path, &#34;../../config/settings.cfg&#34;)
+
+        self.local_settings = {}
+        try:
+            with open(self.confdir, &#34;r&#34;) as f:
+                self.local_settings = json.loads(f.read())
+        except json.JSONDecodeError:
+            self.local_settings = {}
+        except IOError:
+            self.local_settings = {}
+        self.db_settings = {}
+        self.global_settings = {}
+        self.text_pentest_types = None
+        self.text_tags = None
+        self.box_pentest_type = None
+        self.visual_include_domains_with_ip_in_scope = None
+        self.visual_include_domains_with_topdomain_in_scope = None
+        self.visual_search_show_hidden = None
+        self.visual_search_exact_match = None
+        self.visual_include_all_domains = None
+        self.text_pentesters = None
+        self.box_favorite_term = None
+        self.text_terms = None
+
+    @classmethod
+    def getTags(cls):
+        &#34;&#34;&#34;
+        Returns tags defined in settings.
+        Returns:
+            If none are defined returns {&#34;todo&#34;:&#34;orange&#34;, &#34;P0wned!&#34;:&#34;red&#34;, &#34;Interesting&#34;:&#34;dark green&#34;, &#34;Uninteresting&#34;:&#34;sky blue&#34;, &#34;Neutral&#34;:&#34;white&#34;}
+            otherwise returns a dict with defined key values
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        tags = mongoInstance.findInDb(
+            &#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: &#34;tags&#34;}, False)
+        if tags is not None:
+            if isinstance(tags[&#34;value&#34;], dict):
+                return tags[&#34;value&#34;]
+        return  {&#34;todo&#34;:&#34;orange&#34;, &#34;P0wned!&#34;:&#34;red&#34;, &#34;Interesting&#34;:&#34;dark green&#34;, &#34;Uninteresting&#34;:&#34;sky blue&#34;, &#34;Neutral&#34;:&#34;white&#34;}
+
+    @classmethod
+    def getPentestTypes(cls):
+        &#34;&#34;&#34;
+        Returns pentest types and associeted defect type defined in settings.
+        Returns:
+            If none are defined returns {&#34;Web&#34;:[&#34;Socle&#34;, &#34;Application&#34;, &#34;Données&#34;, &#34;Politique&#34;], &#34;LAN&#34;:[&#34;Infrastructure&#34;, &#34;Active Directory&#34;, &#34;Données&#34;, &#34;Politique&#34;]}
+            otherwise returns a dict with defined key values
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        pentest_types = mongoInstance.findInDb(
+            &#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: &#34;pentest_types&#34;}, False)
+        if pentest_types is not None:
+            if isinstance(pentest_types[&#34;value&#34;], dict):
+                return pentest_types[&#34;value&#34;]
+        return  {&#34;Web&#34;:[&#34;Socle&#34;, &#34;Application&#34;, &#34;Données&#34;, &#34;Politique&#34;], &#34;LAN&#34;:[&#34;Infrastructure&#34;, &#34;Active Directory&#34;, &#34;Données&#34;, &#34;Politique&#34;]}
+
+
+    def getTerms(self):
+        &#34;&#34;&#34;
+        Returns terminals configured 
+        Returns:
+            If none are defined returns [&#39;&#39;&#39;gnome-terminal --window --title=&#34;Pollenisator terminal&#34; -- bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;,
+             &#39;&#39;&#39;xfce4-terminal -x bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;,
+             &#39;&#39;&#39;xterm -e bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;]
+            otherwise returns a list with defined  values
+        &#34;&#34;&#34;
+        self._reloadLocalSettings()
+        return self.local_settings.get(&#34;terms&#34;,
+            [&#34;&#34;&#34;gnome-terminal --window --title=&#34;Pollenisator terminal&#34; -- bash --rcfile setupTerminalForPentest.sh&#34;&#34;&#34;,
+             &#34;&#34;&#34;xfce4-terminal -x bash --rcfile setupTerminalForPentest.sh&#34;&#34;&#34;,
+             &#34;xterm -e bash --rcfile setupTerminalForPentest.sh&#34;])
+    
+    def getFavoriteTerm(self):
+        &#34;&#34;&#34;
+        Returns favorite terminal configured 
+        Returns:
+            If none are defined returns first in the list of terms
+            Otherwise returns the favorite terminal configured 
+        &#34;&#34;&#34;
+        self._reloadLocalSettings()
+        fav = self.local_settings.get(&#34;fav_term&#34;, None)
+        if fav is None:
+            terms = self.getTerms()
+            for term in terms:
+                term_name = term.split(&#34; &#34;)[0].strip()
+                if which(term_name):
+                    fav = term_name
+        return fav
+
+    def setFavoriteTerm(self):
+        &#34;&#34;&#34;
+        Change favorite term 
+        &#34;&#34;&#34;
+        self._reloadLocalSettings()
+        self.local_settings[&#34;fav_term&#34;] = self.box_favorite_term.get()
+        self.saveLocalSettings()
+    
+    def _reloadLocalSettings(self):
+        &#34;&#34;&#34;
+        Reload local settings from local conf file
+        &#34;&#34;&#34;
+        try:
+            with open(self.confdir, &#34;r&#34;) as f:
+                self.local_settings = json.loads(f.read())
+        except json.JSONDecodeError:
+            self.local_settings = {}
+        except IOError:
+            self.local_settings = {}
+
+    def _reloadDbSettings(self):
+        &#34;&#34;&#34;
+        Reload pentest database settings from pentest database
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        dbSettings = mongoInstance.find(&#34;settings&#34;, {})
+        if dbSettings is None:
+            dbSettings = {}
+        for settings_dict in dbSettings:
+            try:
+                self.db_settings[settings_dict[&#34;key&#34;]] = settings_dict[&#34;value&#34;]
+            except KeyError:
+                pass
+
+    def _reloadGlobalSettings(self):
+        &#34;&#34;&#34;
+        Reload pentest database settings from pollenisator database
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        globalSettings = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {})
+        for settings_dict in globalSettings:
+            self.global_settings[settings_dict[&#34;key&#34;]] = settings_dict[&#34;value&#34;]
+
+    def reloadSettings(self):
+        &#34;&#34;&#34;
+        Reload local, database and global settings.
+        &#34;&#34;&#34;
+        self._reloadLocalSettings()
+        self._reloadDbSettings()
+        self._reloadGlobalSettings()
+
+    def reloadUI(self):
+        &#34;&#34;&#34;
+        Reload all settings and refresh view with values
+        &#34;&#34;&#34;
+        self.reloadSettings()
+        self.visual_include_all_domains.set(
+            self.db_settings.get(&#34;include_all_domains&#34;, False))
+        self.visual_include_domains_with_ip_in_scope.set(
+            self.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False))
+        self.visual_include_domains_with_topdomain_in_scope.set(
+            self.db_settings.get(&#34;include_domains_with_topdomain_in_scope&#34;, False))
+        self.visual_search_show_hidden.set(
+            self.local_settings.get(&#34;search_show_hidden&#34;, True))
+        self.visual_search_exact_match.set(
+            self.local_settings.get(&#34;search_exact_match&#34;, False))
+        self.text_terms.delete(&#39;1.0&#39;, tk.END)
+        terms_cmd = self.getTerms()
+        self.text_terms.insert(tk.INSERT, &#34;\n&#34;.join(terms_cmd))
+        self.text_pentesters.delete(&#39;1.0&#39;, tk.END)
+        self.text_pentesters.insert(
+            tk.INSERT, &#34;\n&#34;.join(
+                self.db_settings.get(&#34;pentesters&#34;, [])))
+        terms_name = [term_cmd.split(&#34; &#34;)[0] for term_cmd in terms_cmd]
+        self.box_favorite_term.config(values=terms_name)
+        fav_term = self.getFavoriteTerm()
+        if fav_term in terms_name:
+            self.box_favorite_term.set(fav_term)
+        self.box_pentest_type.set(self.db_settings.get(&#34;pentest_type&#34;, &#34;None&#34;))
+        self.text_pentest_types.delete(&#39;1.0&#39;, tk.END)
+        pentestTypes = Settings.getPentestTypes()
+        buffer = &#34;&#34;
+        for pentestType, pentestTypeDefectTypes in pentestTypes.items():
+            buffer += pentestType +&#34; : &#34;+ (&#34;, &#34;.join(pentestTypeDefectTypes))+&#34;\n&#34;
+        self.text_pentest_types.insert(
+            tk.INSERT, buffer)
+        self.text_tags.delete(&#39;1.0&#39;, tk.END)
+        tagsRegistered = Settings.getTags()
+        buffer = &#34;&#34;
+        for tagName, tagColor in tagsRegistered.items():
+            buffer += tagName +&#34; : &#34;+ tagColor+&#34;\n&#34;
+        self.text_tags.insert(
+            tk.INSERT, buffer)
+        self.canvas.bind(&#39;&lt;Enter&gt;&#39;, self.boundToMousewheel)
+        self.canvas.bind(&#39;&lt;Leave&gt;&#39;, self.unboundToMousewheel)
+        self.canvas.update()
+        self.canvas.create_window((0, 0), window=self.settingsFrame, anchor=&#39;nw&#39;)
+        self.canvas.configure(scrollregion=self.canvas.bbox(&#34;all&#34;))
+        self.canvas.configure(yscrollcommand=self.myscrollbar.set)
+
+    def saveLocalSettings(self):
+        &#34;&#34;&#34;
+        Save local settings to conf file
+        &#34;&#34;&#34;
+        with open(self.confdir, &#34;w&#34;) as f:
+            f.write(json.dumps(self.local_settings))
+
+    def save(self):
+        &#34;&#34;&#34;
+        Save all the settings (local, database and global)
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        for k, v in self.global_settings.items():
+            if mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: k}, False) is None:
+                mongoInstance.insertInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {
+                                         &#34;key&#34;: k, &#34;value&#34;: v})
+            else:
+                mongoInstance.updateInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {
+                    &#34;key&#34;: k}, {&#34;$set&#34;: {&#34;value&#34;: v}})
+        for k, v in self.db_settings.items():
+            if mongoInstance.find(&#34;settings&#34;, {&#34;key&#34;: k}, False) is None:
+                mongoInstance.insert(&#34;settings&#34;, {
+                    &#34;key&#34;: k, &#34;value&#34;: v})
+            else:
+                mongoInstance.update(&#34;settings&#34;, {
+                    &#34;key&#34;: k}, {&#34;$set&#34;: {&#34;value&#34;: v}})
+        self.local_settings[&#34;terms&#34;] = [x.strip() for x in self.text_terms.get(&#39;1.0&#39;, tk.END).split(&#34;\n&#34;) if x.strip() != &#34;&#34;]
+        self.local_settings[&#34;fav_term&#34;] = self.box_favorite_term.get().strip()
+        self.saveLocalSettings()
+        self.reloadUI()
+
+    def _onMousewheel(self, event):
+        &#34;&#34;&#34;Scroll the settings canvas
+        Args:
+            event: scroll info filled when scroll event is triggered&#34;&#34;&#34;
+        if event.num == 5 or event.delta == -120:
+            count = 1
+        if event.num == 4 or event.delta == 120:
+            count = -1
+        self.canvas.yview_scroll(count, &#34;units&#34;)
+
+    def boundToMousewheel(self, _event):
+        &#34;&#34;&#34;Called when the main view canvas is focused.
+        Bind the command scrollbar button on linux to the main view canvas
+        Args:
+            _event: not used but mandatory&#34;&#34;&#34;
+        self.canvas.bind_all(&#34;&lt;Button-4&gt;&#34;, self._onMousewheel)
+        self.canvas.bind_all(&#34;&lt;Button-5&gt;&#34;, self._onMousewheel)
+
+    def unboundToMousewheel(self, _event):
+        &#34;&#34;&#34;Called when the main view canvas is unfocused.
+        Unbind the command scrollbar button on linux to the main view canvas
+        Args:
+            _event: not used but mandatory&#34;&#34;&#34;
+        self.canvas.unbind_all(&#34;&lt;Button-4&gt;&#34;)
+        self.canvas.unbind_all(&#34;&lt;Button-5&gt;&#34;)
+
+    def initUI(self, parent):
+        &#34;&#34;&#34;Create settings widgets and initialize them
+        Args:
+            parent: parent tkinter container widget&#34;&#34;&#34;
+        if self.visual_include_all_domains is not None:  # Already built
+            self.reloadUI()
+            return
+        self.canvas = tk.Canvas(parent, bg=&#34;white&#34;)
+        self.settingsFrame = ttk.Frame(self.canvas)
+        self.myscrollbar = tk.Scrollbar(parent, orient=&#34;vertical&#34;, command=self.canvas.yview)
+        self.myscrollbar.grid(column=1, row=0, sticky=&#34;ns&#34;)
+        
+        self.canvas.grid(column=0, row=0, sticky=&#34;nsew&#34;)
+        parent.columnconfigure(0, weight=1)
+        parent.rowconfigure(0, weight=1)
+
+        self.visual_include_all_domains = tk.BooleanVar()
+        self.visual_include_domains_with_ip_in_scope = tk.BooleanVar()
+        self.visual_include_domains_with_topdomain_in_scope = tk.BooleanVar()
+        self.visual_search_show_hidden = tk.BooleanVar()
+        self.visual_search_exact_match = tk.BooleanVar()
+
+        lbl_domains = ttk.LabelFrame(
+            self.settingsFrame, text=&#34;Discovered domains options:&#34;)
+        lbl_domains.pack(padx=10, pady=10, side=tk.TOP,
+                         anchor=tk.W, fill=tk.X, expand=tk.YES)
+        chkbox_include_domains_with_ip_in_scope = ttk.Checkbutton(lbl_domains, text=&#34;Check if discovered subdomains ips are in scope&#34;,
+                                                                  variable=self.visual_include_domains_with_ip_in_scope)
+        chkbox_include_domains_with_ip_in_scope.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+
+        chkbox_include_domains_with_topdomain_in_scope = ttk.Checkbutton(lbl_domains, text=&#34;Check if discovered subdomains have a top domain already in scope&#34;,
+                                                                         variable=self.visual_include_domains_with_topdomain_in_scope)
+        chkbox_include_domains_with_topdomain_in_scope.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+        chkbox_include_all_domains = ttk.Checkbutton(lbl_domains, text=&#34;/!\\ Include every domain found in scope&#34;,
+                                                     variable=self.visual_include_all_domains)
+        chkbox_include_all_domains.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+        
+        frame_term = ttk.LabelFrame(self.settingsFrame, text=&#34;Terminals:&#34;)
+        self.text_terms = tk.scrolledtext.ScrolledText(
+            frame_term, relief=tk.SUNKEN, height=4, width=130)
+        self.text_terms.pack(side=tk.TOP, fill=tk.X,pady=5)
+        frame_fav_term = ttk.Frame(frame_term)
+        lbl_fav_term = ttk.Label(frame_term, text=&#34;Favorite term:&#34;)
+        lbl_fav_term.pack(side=tk.LEFT, anchor=tk.W)
+        self.box_favorite_term = ttk.Combobox(frame_term, values=(self.getTerms()), state=&#34;readonly&#34;)
+        self.box_favorite_term.pack(side=tk.LEFT, anchor=tk.W)
+        frame_fav_term.pack(padx=10, pady=10, side=tk.TOP,
+                           anchor=tk.W, fill=tk.X, expand=tk.YES)
+        frame_term.pack(padx=10, pady=10, side=tk.TOP,
+                           anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_SearchBar = ttk.LabelFrame(self.settingsFrame, text=&#34;Search settings:&#34;)
+        lbl_SearchBar.pack(padx=10, pady=10, side=tk.TOP,
+                           anchor=tk.W, fill=tk.X, expand=tk.YES)
+        chkbox_search_show_hidden = ttk.Checkbutton(lbl_SearchBar, text=&#34;Show hidden objects&#34;,
+                                                    variable=self.visual_search_show_hidden)
+        chkbox_search_show_hidden.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+        chkbox_search_exact_match = ttk.Checkbutton(lbl_SearchBar, text=&#34;Exact match&#34;,
+                                                    variable=self.visual_search_exact_match)
+        chkbox_search_exact_match.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+
+        lblframe_pentest_params = ttk.LabelFrame(
+            self.settingsFrame, text=&#34;Pentest parameters:&#34;)
+        lblframe_pentest_params.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_pentest_type = ttk.Label(
+            lblframe_pentest_params, text=&#34;Pentest type:&#34;)
+        lbl_pentest_type.grid(row=0, column=0, sticky=tk.E)
+        self.box_pentest_type = ttk.Combobox(
+            lblframe_pentest_params, values=tuple(Settings.getPentestTypes().keys()), state=&#34;readonly&#34;)
+        self.box_pentest_type.grid(row=1, column=1, sticky=tk.W)
+        self.text_pentesters = tk.scrolledtext.ScrolledText(
+            lblframe_pentest_params, relief=tk.SUNKEN, height=3)
+        lbl_pentesters = ttk.Label(
+            lblframe_pentest_params, text=&#34;Pentester names:&#34;)
+        lbl_pentesters.grid(row=2, column=0, sticky=tk.E)
+        self.text_pentesters.grid(row=2, column=1, sticky=tk.W, pady=5)
+        lblframe_global_params = ttk.LabelFrame(
+            self.settingsFrame, text=&#34;Global parameters:&#34;)
+        lblframe_global_params.pack(
+            padx=10, pady=10, side=tk.TOP, anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_pentest_types = ttk.Label(
+            lblframe_global_params, text=&#34;Pentests possible types:&#34;)
+        lbl_pentest_types.grid(row=0, column=0, sticky=tk.E)
+        self.text_pentest_types = tk.scrolledtext.ScrolledText(
+            lblframe_global_params, relief=tk.SUNKEN, height=6)
+        self.text_pentest_types.grid(row=0, column=1, sticky=tk.W)
+        lbl_tags = ttk.Label(
+            lblframe_global_params, text=&#34;Registered tags:&#34;)
+        lbl_tags.grid(row=1, column=0, sticky=tk.E)
+        self.text_tags = tk.scrolledtext.ScrolledText(
+            lblframe_global_params, relief=tk.SUNKEN, height=6)
+        self.text_tags.grid(row=1, column=1, sticky=tk.W)
+        btn_save = ttk.Button(parent, text=&#34;Save&#34;, command=self.on_ok)
+        btn_save.grid(row=1, column=0, padx=10, pady=10, sticky=&#34;s&#34;)
+        self.settingsFrame.pack(fill=tk.BOTH, expand=1)
+
+        #self.reloadUI()
+
+    def on_ok(self):
+        &#34;&#34;&#34;Callback on click save button. loads some data and calls save.
+        Args:
+            parent: parent tkinter container widget&#34;&#34;&#34;
+        self.db_settings[&#34;include_all_domains&#34;] = self.visual_include_all_domains.get(
+        ) == 1
+        self.db_settings[&#34;include_domains_with_ip_in_scope&#34;] = self.visual_include_domains_with_ip_in_scope.get(
+        ) == 1
+        self.db_settings[&#34;pentest_type&#34;] = self.box_pentest_type.get()
+        self.db_settings[&#34;include_domains_with_topdomain_in_scope&#34;] = self.visual_include_domains_with_topdomain_in_scope.get(
+        ) == 1
+        self.db_settings[&#34;pentesters&#34;] = []
+        for pentester in self.text_pentesters.get(&#39;1.0&#39;, tk.END).split(
+                &#34;\n&#34;):
+            if pentester.strip() != &#34;&#34;:
+                self.db_settings[&#34;pentesters&#34;].append(
+                    pentester.strip())
+        self.local_settings[&#34;search_show_hidden&#34;] = self.visual_search_show_hidden.get(
+        ) == 1
+        self.local_settings[&#34;search_exact_match&#34;] = self.visual_search_exact_match.get(
+        ) == 1
+        self.global_settings[&#34;pentest_types&#34;] = []
+        for type_of_pentest in self.text_pentest_types.get(&#39;1.0&#39;, tk.END).split(
+                &#34;\n&#34;):
+            if type_of_pentest.strip() != &#34;&#34;:
+                line_splitted = type_of_pentest.strip().split(&#34;:&#34;)
+                if len(line_splitted) == 2:
+                    typesOfDefects = list(map(lambda x: x.strip(), line_splitted[1].split(&#34;,&#34;)))
+                    self.global_settings[&#34;pentest_types&#34;].append(
+                        {line_splitted[0].strip():typesOfDefects})
+        self.global_settings[&#34;tags&#34;] = {}
+        for tagRegistered in self.text_tags.get(&#39;1.0&#39;, tk.END).split(
+                &#34;\n&#34;):
+            if tagRegistered.strip() != &#34;&#34;:
+                line_splitted = tagRegistered.strip().split(&#34;:&#34;)
+                if len(line_splitted) == 2:
+                    self.global_settings[&#34;tags&#34;][line_splitted[0].strip()] = line_splitted[1].strip()
+        self.save()
+        tkinter.messagebox.showinfo(
+            &#34;Settings&#34;, &#34;Settings saved.&#34;)
+
+    def getPentestType(self):
+        &#34;&#34;&#34;Return selected database pentest type.
+        Returns:
+            Open database pentest type. string &#34;None&#34; if not defined&#34;&#34;&#34;
+        return self.db_settings.get(&#34;pentest_type&#34;, &#34;None&#34;)
+
+    def getPentesters(self):
+        &#34;&#34;&#34;Return a list of pentesters registered for open pentest database
+        Returns:
+            List of pentesters names&#34;&#34;&#34;
+        return self.db_settings.get(&#34;pentesters&#34;, [])</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Settings.Settings.getPentestTypes"><code class="name flex">
+<span>def <span class="ident">getPentestTypes</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns pentest types and associeted defect type defined in settings.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>If none are defined returns {"Web":["Socle", "Application", "Données", "Politique"], "LAN":["Infrastructure", "Active Directory", "Données", "Politique"]}</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>otherwise returns a dict with defined key values</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getPentestTypes(cls):
+    &#34;&#34;&#34;
+    Returns pentest types and associeted defect type defined in settings.
+    Returns:
+        If none are defined returns {&#34;Web&#34;:[&#34;Socle&#34;, &#34;Application&#34;, &#34;Données&#34;, &#34;Politique&#34;], &#34;LAN&#34;:[&#34;Infrastructure&#34;, &#34;Active Directory&#34;, &#34;Données&#34;, &#34;Politique&#34;]}
+        otherwise returns a dict with defined key values
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    pentest_types = mongoInstance.findInDb(
+        &#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: &#34;pentest_types&#34;}, False)
+    if pentest_types is not None:
+        if isinstance(pentest_types[&#34;value&#34;], dict):
+            return pentest_types[&#34;value&#34;]
+    return  {&#34;Web&#34;:[&#34;Socle&#34;, &#34;Application&#34;, &#34;Données&#34;, &#34;Politique&#34;], &#34;LAN&#34;:[&#34;Infrastructure&#34;, &#34;Active Directory&#34;, &#34;Données&#34;, &#34;Politique&#34;]}</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.getTags"><code class="name flex">
+<span>def <span class="ident">getTags</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns tags defined in settings.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>If none are defined returns {"todo":"orange", "P0wned!":"red", "Interesting":"dark green", "Uninteresting":"sky blue", "Neutral":"white"}</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>otherwise returns a dict with defined key values</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getTags(cls):
+    &#34;&#34;&#34;
+    Returns tags defined in settings.
+    Returns:
+        If none are defined returns {&#34;todo&#34;:&#34;orange&#34;, &#34;P0wned!&#34;:&#34;red&#34;, &#34;Interesting&#34;:&#34;dark green&#34;, &#34;Uninteresting&#34;:&#34;sky blue&#34;, &#34;Neutral&#34;:&#34;white&#34;}
+        otherwise returns a dict with defined key values
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    tags = mongoInstance.findInDb(
+        &#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: &#34;tags&#34;}, False)
+    if tags is not None:
+        if isinstance(tags[&#34;value&#34;], dict):
+            return tags[&#34;value&#34;]
+    return  {&#34;todo&#34;:&#34;orange&#34;, &#34;P0wned!&#34;:&#34;red&#34;, &#34;Interesting&#34;:&#34;dark green&#34;, &#34;Uninteresting&#34;:&#34;sky blue&#34;, &#34;Neutral&#34;:&#34;white&#34;}</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Settings.Settings.boundToMousewheel"><code class="name flex">
+<span>def <span class="ident">boundToMousewheel</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when the main view canvas is focused.
+Bind the command scrollbar button on linux to the main view canvas</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def boundToMousewheel(self, _event):
+    &#34;&#34;&#34;Called when the main view canvas is focused.
+    Bind the command scrollbar button on linux to the main view canvas
+    Args:
+        _event: not used but mandatory&#34;&#34;&#34;
+    self.canvas.bind_all(&#34;&lt;Button-4&gt;&#34;, self._onMousewheel)
+    self.canvas.bind_all(&#34;&lt;Button-5&gt;&#34;, self._onMousewheel)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.getFavoriteTerm"><code class="name flex">
+<span>def <span class="ident">getFavoriteTerm</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns favorite terminal configured </p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>If none are defined returns first in the list</code> of <code>terms</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>Otherwise returns the favorite terminal configured</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getFavoriteTerm(self):
+    &#34;&#34;&#34;
+    Returns favorite terminal configured 
+    Returns:
+        If none are defined returns first in the list of terms
+        Otherwise returns the favorite terminal configured 
+    &#34;&#34;&#34;
+    self._reloadLocalSettings()
+    fav = self.local_settings.get(&#34;fav_term&#34;, None)
+    if fav is None:
+        terms = self.getTerms()
+        for term in terms:
+            term_name = term.split(&#34; &#34;)[0].strip()
+            if which(term_name):
+                fav = term_name
+    return fav</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.getPentestType"><code class="name flex">
+<span>def <span class="ident">getPentestType</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return selected database pentest type.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Open database pentest type. string "None" if not defined</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getPentestType(self):
+    &#34;&#34;&#34;Return selected database pentest type.
+    Returns:
+        Open database pentest type. string &#34;None&#34; if not defined&#34;&#34;&#34;
+    return self.db_settings.get(&#34;pentest_type&#34;, &#34;None&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.getPentesters"><code class="name flex">
+<span>def <span class="ident">getPentesters</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a list of pentesters registered for open pentest database</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List</code> of <code>pentesters names</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getPentesters(self):
+    &#34;&#34;&#34;Return a list of pentesters registered for open pentest database
+    Returns:
+        List of pentesters names&#34;&#34;&#34;
+    return self.db_settings.get(&#34;pentesters&#34;, [])</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.getTerms"><code class="name flex">
+<span>def <span class="ident">getTerms</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns terminals configured </p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>If none are defined returns ['''gnome-terminal --window --title="Pollenisator terminal" -- bash --rcfile setupTerminalForPentest.sh''',</code></dt>
+<dd>&nbsp;</dd>
+<dt>'''xfce4-terminal -x bash &ndash;rcfile setupTerminalForPentest.sh''',</dt>
+<dt>'''xterm -e bash &ndash;rcfile setupTerminalForPentest.sh''']</dt>
+<dt><code>otherwise returns a list with defined
+values</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTerms(self):
+    &#34;&#34;&#34;
+    Returns terminals configured 
+    Returns:
+        If none are defined returns [&#39;&#39;&#39;gnome-terminal --window --title=&#34;Pollenisator terminal&#34; -- bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;,
+         &#39;&#39;&#39;xfce4-terminal -x bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;,
+         &#39;&#39;&#39;xterm -e bash --rcfile setupTerminalForPentest.sh&#39;&#39;&#39;]
+        otherwise returns a list with defined  values
+    &#34;&#34;&#34;
+    self._reloadLocalSettings()
+    return self.local_settings.get(&#34;terms&#34;,
+        [&#34;&#34;&#34;gnome-terminal --window --title=&#34;Pollenisator terminal&#34; -- bash --rcfile setupTerminalForPentest.sh&#34;&#34;&#34;,
+         &#34;&#34;&#34;xfce4-terminal -x bash --rcfile setupTerminalForPentest.sh&#34;&#34;&#34;,
+         &#34;xterm -e bash --rcfile setupTerminalForPentest.sh&#34;])</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.initUI"><code class="name flex">
+<span>def <span class="ident">initUI</span></span>(<span>self, parent)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create settings widgets and initialize them</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>parent tkinter container widget</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initUI(self, parent):
+    &#34;&#34;&#34;Create settings widgets and initialize them
+    Args:
+        parent: parent tkinter container widget&#34;&#34;&#34;
+    if self.visual_include_all_domains is not None:  # Already built
+        self.reloadUI()
+        return
+    self.canvas = tk.Canvas(parent, bg=&#34;white&#34;)
+    self.settingsFrame = ttk.Frame(self.canvas)
+    self.myscrollbar = tk.Scrollbar(parent, orient=&#34;vertical&#34;, command=self.canvas.yview)
+    self.myscrollbar.grid(column=1, row=0, sticky=&#34;ns&#34;)
+    
+    self.canvas.grid(column=0, row=0, sticky=&#34;nsew&#34;)
+    parent.columnconfigure(0, weight=1)
+    parent.rowconfigure(0, weight=1)
+
+    self.visual_include_all_domains = tk.BooleanVar()
+    self.visual_include_domains_with_ip_in_scope = tk.BooleanVar()
+    self.visual_include_domains_with_topdomain_in_scope = tk.BooleanVar()
+    self.visual_search_show_hidden = tk.BooleanVar()
+    self.visual_search_exact_match = tk.BooleanVar()
+
+    lbl_domains = ttk.LabelFrame(
+        self.settingsFrame, text=&#34;Discovered domains options:&#34;)
+    lbl_domains.pack(padx=10, pady=10, side=tk.TOP,
+                     anchor=tk.W, fill=tk.X, expand=tk.YES)
+    chkbox_include_domains_with_ip_in_scope = ttk.Checkbutton(lbl_domains, text=&#34;Check if discovered subdomains ips are in scope&#34;,
+                                                              variable=self.visual_include_domains_with_ip_in_scope)
+    chkbox_include_domains_with_ip_in_scope.pack(
+        padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+
+    chkbox_include_domains_with_topdomain_in_scope = ttk.Checkbutton(lbl_domains, text=&#34;Check if discovered subdomains have a top domain already in scope&#34;,
+                                                                     variable=self.visual_include_domains_with_topdomain_in_scope)
+    chkbox_include_domains_with_topdomain_in_scope.pack(
+        padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+    chkbox_include_all_domains = ttk.Checkbutton(lbl_domains, text=&#34;/!\\ Include every domain found in scope&#34;,
+                                                 variable=self.visual_include_all_domains)
+    chkbox_include_all_domains.pack(
+        padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+    
+    frame_term = ttk.LabelFrame(self.settingsFrame, text=&#34;Terminals:&#34;)
+    self.text_terms = tk.scrolledtext.ScrolledText(
+        frame_term, relief=tk.SUNKEN, height=4, width=130)
+    self.text_terms.pack(side=tk.TOP, fill=tk.X,pady=5)
+    frame_fav_term = ttk.Frame(frame_term)
+    lbl_fav_term = ttk.Label(frame_term, text=&#34;Favorite term:&#34;)
+    lbl_fav_term.pack(side=tk.LEFT, anchor=tk.W)
+    self.box_favorite_term = ttk.Combobox(frame_term, values=(self.getTerms()), state=&#34;readonly&#34;)
+    self.box_favorite_term.pack(side=tk.LEFT, anchor=tk.W)
+    frame_fav_term.pack(padx=10, pady=10, side=tk.TOP,
+                       anchor=tk.W, fill=tk.X, expand=tk.YES)
+    frame_term.pack(padx=10, pady=10, side=tk.TOP,
+                       anchor=tk.W, fill=tk.X, expand=tk.YES)
+    lbl_SearchBar = ttk.LabelFrame(self.settingsFrame, text=&#34;Search settings:&#34;)
+    lbl_SearchBar.pack(padx=10, pady=10, side=tk.TOP,
+                       anchor=tk.W, fill=tk.X, expand=tk.YES)
+    chkbox_search_show_hidden = ttk.Checkbutton(lbl_SearchBar, text=&#34;Show hidden objects&#34;,
+                                                variable=self.visual_search_show_hidden)
+    chkbox_search_show_hidden.pack(
+        padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+    chkbox_search_exact_match = ttk.Checkbutton(lbl_SearchBar, text=&#34;Exact match&#34;,
+                                                variable=self.visual_search_exact_match)
+    chkbox_search_exact_match.pack(
+        padx=10, pady=10, side=tk.TOP, anchor=tk.W)
+
+    lblframe_pentest_params = ttk.LabelFrame(
+        self.settingsFrame, text=&#34;Pentest parameters:&#34;)
+    lblframe_pentest_params.pack(
+        padx=10, pady=10, side=tk.TOP, anchor=tk.W, fill=tk.X, expand=tk.YES)
+    lbl_pentest_type = ttk.Label(
+        lblframe_pentest_params, text=&#34;Pentest type:&#34;)
+    lbl_pentest_type.grid(row=0, column=0, sticky=tk.E)
+    self.box_pentest_type = ttk.Combobox(
+        lblframe_pentest_params, values=tuple(Settings.getPentestTypes().keys()), state=&#34;readonly&#34;)
+    self.box_pentest_type.grid(row=1, column=1, sticky=tk.W)
+    self.text_pentesters = tk.scrolledtext.ScrolledText(
+        lblframe_pentest_params, relief=tk.SUNKEN, height=3)
+    lbl_pentesters = ttk.Label(
+        lblframe_pentest_params, text=&#34;Pentester names:&#34;)
+    lbl_pentesters.grid(row=2, column=0, sticky=tk.E)
+    self.text_pentesters.grid(row=2, column=1, sticky=tk.W, pady=5)
+    lblframe_global_params = ttk.LabelFrame(
+        self.settingsFrame, text=&#34;Global parameters:&#34;)
+    lblframe_global_params.pack(
+        padx=10, pady=10, side=tk.TOP, anchor=tk.W, fill=tk.X, expand=tk.YES)
+    lbl_pentest_types = ttk.Label(
+        lblframe_global_params, text=&#34;Pentests possible types:&#34;)
+    lbl_pentest_types.grid(row=0, column=0, sticky=tk.E)
+    self.text_pentest_types = tk.scrolledtext.ScrolledText(
+        lblframe_global_params, relief=tk.SUNKEN, height=6)
+    self.text_pentest_types.grid(row=0, column=1, sticky=tk.W)
+    lbl_tags = ttk.Label(
+        lblframe_global_params, text=&#34;Registered tags:&#34;)
+    lbl_tags.grid(row=1, column=0, sticky=tk.E)
+    self.text_tags = tk.scrolledtext.ScrolledText(
+        lblframe_global_params, relief=tk.SUNKEN, height=6)
+    self.text_tags.grid(row=1, column=1, sticky=tk.W)
+    btn_save = ttk.Button(parent, text=&#34;Save&#34;, command=self.on_ok)
+    btn_save.grid(row=1, column=0, padx=10, pady=10, sticky=&#34;s&#34;)
+    self.settingsFrame.pack(fill=tk.BOTH, expand=1)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.on_ok"><code class="name flex">
+<span>def <span class="ident">on_ok</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback on click save button. loads some data and calls save.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>parent tkinter container widget</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_ok(self):
+    &#34;&#34;&#34;Callback on click save button. loads some data and calls save.
+    Args:
+        parent: parent tkinter container widget&#34;&#34;&#34;
+    self.db_settings[&#34;include_all_domains&#34;] = self.visual_include_all_domains.get(
+    ) == 1
+    self.db_settings[&#34;include_domains_with_ip_in_scope&#34;] = self.visual_include_domains_with_ip_in_scope.get(
+    ) == 1
+    self.db_settings[&#34;pentest_type&#34;] = self.box_pentest_type.get()
+    self.db_settings[&#34;include_domains_with_topdomain_in_scope&#34;] = self.visual_include_domains_with_topdomain_in_scope.get(
+    ) == 1
+    self.db_settings[&#34;pentesters&#34;] = []
+    for pentester in self.text_pentesters.get(&#39;1.0&#39;, tk.END).split(
+            &#34;\n&#34;):
+        if pentester.strip() != &#34;&#34;:
+            self.db_settings[&#34;pentesters&#34;].append(
+                pentester.strip())
+    self.local_settings[&#34;search_show_hidden&#34;] = self.visual_search_show_hidden.get(
+    ) == 1
+    self.local_settings[&#34;search_exact_match&#34;] = self.visual_search_exact_match.get(
+    ) == 1
+    self.global_settings[&#34;pentest_types&#34;] = []
+    for type_of_pentest in self.text_pentest_types.get(&#39;1.0&#39;, tk.END).split(
+            &#34;\n&#34;):
+        if type_of_pentest.strip() != &#34;&#34;:
+            line_splitted = type_of_pentest.strip().split(&#34;:&#34;)
+            if len(line_splitted) == 2:
+                typesOfDefects = list(map(lambda x: x.strip(), line_splitted[1].split(&#34;,&#34;)))
+                self.global_settings[&#34;pentest_types&#34;].append(
+                    {line_splitted[0].strip():typesOfDefects})
+    self.global_settings[&#34;tags&#34;] = {}
+    for tagRegistered in self.text_tags.get(&#39;1.0&#39;, tk.END).split(
+            &#34;\n&#34;):
+        if tagRegistered.strip() != &#34;&#34;:
+            line_splitted = tagRegistered.strip().split(&#34;:&#34;)
+            if len(line_splitted) == 2:
+                self.global_settings[&#34;tags&#34;][line_splitted[0].strip()] = line_splitted[1].strip()
+    self.save()
+    tkinter.messagebox.showinfo(
+        &#34;Settings&#34;, &#34;Settings saved.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.reloadSettings"><code class="name flex">
+<span>def <span class="ident">reloadSettings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reload local, database and global settings.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reloadSettings(self):
+    &#34;&#34;&#34;
+    Reload local, database and global settings.
+    &#34;&#34;&#34;
+    self._reloadLocalSettings()
+    self._reloadDbSettings()
+    self._reloadGlobalSettings()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.reloadUI"><code class="name flex">
+<span>def <span class="ident">reloadUI</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reload all settings and refresh view with values</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reloadUI(self):
+    &#34;&#34;&#34;
+    Reload all settings and refresh view with values
+    &#34;&#34;&#34;
+    self.reloadSettings()
+    self.visual_include_all_domains.set(
+        self.db_settings.get(&#34;include_all_domains&#34;, False))
+    self.visual_include_domains_with_ip_in_scope.set(
+        self.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False))
+    self.visual_include_domains_with_topdomain_in_scope.set(
+        self.db_settings.get(&#34;include_domains_with_topdomain_in_scope&#34;, False))
+    self.visual_search_show_hidden.set(
+        self.local_settings.get(&#34;search_show_hidden&#34;, True))
+    self.visual_search_exact_match.set(
+        self.local_settings.get(&#34;search_exact_match&#34;, False))
+    self.text_terms.delete(&#39;1.0&#39;, tk.END)
+    terms_cmd = self.getTerms()
+    self.text_terms.insert(tk.INSERT, &#34;\n&#34;.join(terms_cmd))
+    self.text_pentesters.delete(&#39;1.0&#39;, tk.END)
+    self.text_pentesters.insert(
+        tk.INSERT, &#34;\n&#34;.join(
+            self.db_settings.get(&#34;pentesters&#34;, [])))
+    terms_name = [term_cmd.split(&#34; &#34;)[0] for term_cmd in terms_cmd]
+    self.box_favorite_term.config(values=terms_name)
+    fav_term = self.getFavoriteTerm()
+    if fav_term in terms_name:
+        self.box_favorite_term.set(fav_term)
+    self.box_pentest_type.set(self.db_settings.get(&#34;pentest_type&#34;, &#34;None&#34;))
+    self.text_pentest_types.delete(&#39;1.0&#39;, tk.END)
+    pentestTypes = Settings.getPentestTypes()
+    buffer = &#34;&#34;
+    for pentestType, pentestTypeDefectTypes in pentestTypes.items():
+        buffer += pentestType +&#34; : &#34;+ (&#34;, &#34;.join(pentestTypeDefectTypes))+&#34;\n&#34;
+    self.text_pentest_types.insert(
+        tk.INSERT, buffer)
+    self.text_tags.delete(&#39;1.0&#39;, tk.END)
+    tagsRegistered = Settings.getTags()
+    buffer = &#34;&#34;
+    for tagName, tagColor in tagsRegistered.items():
+        buffer += tagName +&#34; : &#34;+ tagColor+&#34;\n&#34;
+    self.text_tags.insert(
+        tk.INSERT, buffer)
+    self.canvas.bind(&#39;&lt;Enter&gt;&#39;, self.boundToMousewheel)
+    self.canvas.bind(&#39;&lt;Leave&gt;&#39;, self.unboundToMousewheel)
+    self.canvas.update()
+    self.canvas.create_window((0, 0), window=self.settingsFrame, anchor=&#39;nw&#39;)
+    self.canvas.configure(scrollregion=self.canvas.bbox(&#34;all&#34;))
+    self.canvas.configure(yscrollcommand=self.myscrollbar.set)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.save"><code class="name flex">
+<span>def <span class="ident">save</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save all the settings (local, database and global)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save(self):
+    &#34;&#34;&#34;
+    Save all the settings (local, database and global)
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    for k, v in self.global_settings.items():
+        if mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {&#34;key&#34;: k}, False) is None:
+            mongoInstance.insertInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {
+                                     &#34;key&#34;: k, &#34;value&#34;: v})
+        else:
+            mongoInstance.updateInDb(&#34;pollenisator&#34;, &#34;settings&#34;, {
+                &#34;key&#34;: k}, {&#34;$set&#34;: {&#34;value&#34;: v}})
+    for k, v in self.db_settings.items():
+        if mongoInstance.find(&#34;settings&#34;, {&#34;key&#34;: k}, False) is None:
+            mongoInstance.insert(&#34;settings&#34;, {
+                &#34;key&#34;: k, &#34;value&#34;: v})
+        else:
+            mongoInstance.update(&#34;settings&#34;, {
+                &#34;key&#34;: k}, {&#34;$set&#34;: {&#34;value&#34;: v}})
+    self.local_settings[&#34;terms&#34;] = [x.strip() for x in self.text_terms.get(&#39;1.0&#39;, tk.END).split(&#34;\n&#34;) if x.strip() != &#34;&#34;]
+    self.local_settings[&#34;fav_term&#34;] = self.box_favorite_term.get().strip()
+    self.saveLocalSettings()
+    self.reloadUI()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.saveLocalSettings"><code class="name flex">
+<span>def <span class="ident">saveLocalSettings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save local settings to conf file</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def saveLocalSettings(self):
+    &#34;&#34;&#34;
+    Save local settings to conf file
+    &#34;&#34;&#34;
+    with open(self.confdir, &#34;w&#34;) as f:
+        f.write(json.dumps(self.local_settings))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.setFavoriteTerm"><code class="name flex">
+<span>def <span class="ident">setFavoriteTerm</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Change favorite term</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setFavoriteTerm(self):
+    &#34;&#34;&#34;
+    Change favorite term 
+    &#34;&#34;&#34;
+    self._reloadLocalSettings()
+    self.local_settings[&#34;fav_term&#34;] = self.box_favorite_term.get()
+    self.saveLocalSettings()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Settings.Settings.unboundToMousewheel"><code class="name flex">
+<span>def <span class="ident">unboundToMousewheel</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when the main view canvas is unfocused.
+Unbind the command scrollbar button on linux to the main view canvas</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unboundToMousewheel(self, _event):
+    &#34;&#34;&#34;Called when the main view canvas is unfocused.
+    Unbind the command scrollbar button on linux to the main view canvas
+    Args:
+        _event: not used but mandatory&#34;&#34;&#34;
+    self.canvas.unbind_all(&#34;&lt;Button-4&gt;&#34;)
+    self.canvas.unbind_all(&#34;&lt;Button-5&gt;&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Settings.Settings" href="#Pollenisator.core.Components.Settings.Settings">Settings</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.boundToMousewheel" href="#Pollenisator.core.Components.Settings.Settings.boundToMousewheel">boundToMousewheel</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.getFavoriteTerm" href="#Pollenisator.core.Components.Settings.Settings.getFavoriteTerm">getFavoriteTerm</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.getPentestType" href="#Pollenisator.core.Components.Settings.Settings.getPentestType">getPentestType</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.getPentestTypes" href="#Pollenisator.core.Components.Settings.Settings.getPentestTypes">getPentestTypes</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.getPentesters" href="#Pollenisator.core.Components.Settings.Settings.getPentesters">getPentesters</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.getTags" href="#Pollenisator.core.Components.Settings.Settings.getTags">getTags</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.getTerms" href="#Pollenisator.core.Components.Settings.Settings.getTerms">getTerms</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.initUI" href="#Pollenisator.core.Components.Settings.Settings.initUI">initUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.on_ok" href="#Pollenisator.core.Components.Settings.Settings.on_ok">on_ok</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.reloadSettings" href="#Pollenisator.core.Components.Settings.Settings.reloadSettings">reloadSettings</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.reloadUI" href="#Pollenisator.core.Components.Settings.Settings.reloadUI">reloadUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.save" href="#Pollenisator.core.Components.Settings.Settings.save">save</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.saveLocalSettings" href="#Pollenisator.core.Components.Settings.Settings.saveLocalSettings">saveLocalSettings</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.setFavoriteTerm" href="#Pollenisator.core.Components.Settings.Settings.setFavoriteTerm">setFavoriteTerm</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Settings.Settings.unboundToMousewheel" href="#Pollenisator.core.Components.Settings.Settings.unboundToMousewheel">unboundToMousewheel</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,2834 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Reporting.WordExport API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Reporting.WordExport</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from docx import Document
+from docx.shared import Inches
+from copy import deepcopy
+import os
+import sys
+from docx.enum.text import WD_BREAK
+from docx.enum.table import WD_ALIGN_VERTICAL # pylint: disable=no-name-in-module
+from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.enum.text import WD_ALIGN_PARAGRAPH # pylint: disable=no-name-in-module
+from docx.enum.style import WD_STYLE_TYPE
+from docx.enum.text import WD_LINE_SPACING # pylint: disable=no-name-in-module
+from docx.oxml.ns import nsdecls, qn
+from docx.oxml import parse_xml
+import docx
+from docx.shared import RGBColor
+from docx.oxml.text.paragraph import CT_P
+from docx.shared import Pt, Cm
+from docx.text.paragraph import Paragraph
+from docx.oxml.xmlchemy import OxmlElement
+import json
+from bson.objectid import ObjectId
+from datetime import datetime
+import requests
+import re
+import io
+from core.Models.Ip import Ip
+from core.Models.Port import Port
+from core.Models.Defect import Defect
+from core.Application.Dialogs.ChildDialogQuestion import ChildDialogQuestion
+import tkinter as tk
+
+class DummyProgressBar:
+    def update(self):
+        return
+
+def downloadImgData(url):
+    data = requests.get(url)
+    if data.status_code != 200:
+        return None
+    data = data.content
+    data = io.BytesIO(data)
+    return data
+
+def getParagraphs(document):
+    &#34;&#34;&#34; Retourne un generateur pour tous les paragraphes du document.
+        La page d&#39;entête n&#39;étant pas incluse dans documents.paragraphs.&#34;&#34;&#34;
+    body = document._body._body # pylint: disable=protected-access
+    ps = body.xpath(&#39;//w:p&#39;)
+    for p in ps:
+        yield Paragraph(p, document._body) # pylint: disable=protected-access
+
+def set_cell_border(cell, **kwargs):
+    &#34;&#34;&#34;
+    Set cell`s border
+    Usage:
+
+    set_cell_border(
+        cell,
+        top={&#34;sz&#34;: 12, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#FF0000&#34;, &#34;space&#34;: &#34;0&#34;},
+        bottom={&#34;sz&#34;: 12, &#34;color&#34;: &#34;#00FF00&#34;, &#34;val&#34;: &#34;single&#34;},
+        start={&#34;sz&#34;: 24, &#34;val&#34;: &#34;dashed&#34;, &#34;shadow&#34;: &#34;true&#34;},
+        end={&#34;sz&#34;: 12, &#34;val&#34;: &#34;dashed&#34;},
+    )
+    &#34;&#34;&#34;
+    tc = cell._tc # pylint: disable=protected-access
+    tcPr = tc.get_or_add_tcPr()
+
+    # check for tag existnace, if none found, then create one
+    tcBorders = tcPr.first_child_found_in(&#34;w:tcBorders&#34;)
+    if tcBorders is None:
+        tcBorders = OxmlElement(&#39;w:tcBorders&#39;)
+        tcPr.append(tcBorders)
+
+    # list over all available tags
+    for edge in (&#39;start&#39;, &#39;top&#39;, &#39;end&#39;, &#39;bottom&#39;, &#39;insideH&#39;, &#39;insideV&#39;):
+        edge_data = kwargs.get(edge)
+        if edge_data:
+            tag = &#39;w:{}&#39;.format(edge)
+
+            # check for tag existnace, if none found, then create one
+            element = tcBorders.find(qn(tag))
+            if element is None:
+                element = OxmlElement(tag)
+                tcBorders.append(element)
+
+            # looks like order of attributes is important
+            for key in [&#34;sz&#34;, &#34;val&#34;, &#34;color&#34;, &#34;space&#34;, &#34;shadow&#34;]:
+                if key in edge_data:
+                    element.set(qn(&#39;w:{}&#39;.format(key)), str(edge_data[key]))
+
+def add_hyperlink(paragraph, text, url, style):
+    # This gets access to the document.xml.rels file and gets a new relation id value
+    part = paragraph.part
+    r_id = part.relate_to(url, docx.opc.constants.RELATIONSHIP_TYPE.HYPERLINK, is_external=True)
+
+    # Create the w:hyperlink tag and add needed values
+    hyperlink = docx.oxml.shared.OxmlElement(&#39;w:hyperlink&#39;)
+    hyperlink.set(docx.oxml.shared.qn(&#39;r:id&#39;), r_id, )
+
+    # Create a w:r element and a new w:rPr element
+    new_run = docx.oxml.shared.OxmlElement(&#39;w:r&#39;)
+    rPr = docx.oxml.shared.OxmlElement(&#39;w:rPr&#39;)
+
+    # Join all the xml elements together add add the required text to the w:r element
+    new_run.append(rPr)
+    new_run.text = text
+    hyperlink.append(new_run)
+
+    # Create a new Run object and add the hyperlink into it
+    r = paragraph.add_run ()
+    r._r.append (hyperlink) # pylint: disable=protected-access
+
+    # A workaround for the lack of a hyperlink style (doesn&#39;t go purple after using the link)
+    # Delete this if using a template that has the hyperlink style in it
+
+    r.font.underline = True
+    if style is not None:
+        paragraph.runs[-1].style = style
+    return hyperlink
+
+def set_hyperlink(paragraph, run, url, text, style):
+    # This gets access to the document.xml.rels file and gets a new relation id value
+    run.font.underline = True
+    if style is not None:
+        run.style = style
+    part = paragraph.part
+    r_id = part.relate_to(url, docx.opc.constants.RELATIONSHIP_TYPE.HYPERLINK, is_external=True)
+    index_in_paragraph = paragraph._p.index(run.element)
+    # Create the w:hyperlink tag and add needed values
+    hyperlink = docx.oxml.shared.OxmlElement(&#39;w:hyperlink&#39;)
+    hyperlink.set(docx.oxml.shared.qn(&#39;r:id&#39;), r_id, )
+    hyperlink.append(run.element)
+    paragraph._p[index_in_paragraph:index_in_paragraph] = [hyperlink]
+    # Delete this if using a template that has the hyperlink style in it
+    return hyperlink
+
+def insert_paragraph_after(paragraph, text=None, style=None):
+    &#34;&#34;&#34;
+    Insert a new paragraph after the given paragraph.
+        Args:
+            paragraph: the paragraph object after which the new paragraph will be created
+        
+        Optional Args:
+            text: a string of text to write in the new paragraph, Default = None
+            style: a style to be applied on the new paragraph, Default = None
+
+        Returns:
+            Returns a paragraph object for the new added paragraph
+    &#34;&#34;&#34;
+    new_p = OxmlElement(&#34;w:p&#34;)
+    paragraph._p.addnext(new_p)  # pylint: disable=protected-access
+    new_para = Paragraph(new_p, paragraph._parent)  # pylint: disable=protected-access
+    if text is not None:
+        new_para.add_run(text)
+    if style is not None:
+        new_para.style = style
+    return new_para
+
+
+def _replaceTextInTable(document, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all table cells.
+        Args:
+            document: the document object (opened word docx with tables inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+    &#34;&#34;&#34;
+    for table in document.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    if search in paragraph.text:
+                        inline = paragraph.runs
+                        # Loop added to work with runs (strings with same style)
+                        for i in range(len(inline)):
+                            if search in inline[i].text:
+                                inline[i].text = inline[i].text.replace(search, replace)
+
+def replaceTextInTable(table, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in the given table cells.
+        Args:
+            table: the table we want to replace a text inside
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+        Returns:
+            Return None if nothing was found, (row&#39;s index, cell&#39;s index) otherwise
+    &#34;&#34;&#34;
+    for i_row, row in enumerate(table.rows):
+        for i_cell, cell in enumerate(row.cells):
+            for paragraph in cell.paragraphs:
+                if search in paragraph.text:
+                    inline = paragraph.runs
+                    # Loop added to work with runs (strings with same style)
+                    for i in range(len(inline)):
+                        if search in inline[i].text:
+                            inline[i].text = inline[i].text.replace(search, replace)
+                            return i_row, i_cell
+
+def replaceTextInParagraph(paragraph, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in the given paragraph.
+        Args:
+            table: the table we want to replace a text inside
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+        Returns:
+            Return None if nothing was found, the run where the string was replaced otherwise
+    &#34;&#34;&#34;
+    if search in paragraph.text:
+        for run in paragraph.runs:
+            inline = paragraph.runs
+            # Loop added to work with runs (strings with same style)
+            for i in range(len(inline)):
+                if search in inline[i].text:
+                    inline[i].text = inline[i].text.replace(search, replace)  
+                    return run
+        paragraph.text = paragraph.text.replace(search, replace)
+        return paragraph
+    return None
+
+def _replaceTextInParagraphes(document, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all the document&#39;s paragraphs.
+        Args:
+            document: the document object (opened word docx with at lease one paragraph inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+    &#34;&#34;&#34;
+    ps = getParagraphs(document)
+    for paragraph in ps:
+        if search in paragraph.text:
+            inline = paragraph.runs
+            # Loop added to work with runs (strings with same style)
+            for i in range(len(inline)):
+                if search in inline[i].text:
+                    inline[i].text = inline[i].text.replace(search, replace)
+
+def _replaceTextInHeaders(document, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all the document&#39;s headers.
+        Args:
+            document: the document object (opened word docx with at lease one paragraph inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+    &#34;&#34;&#34;
+    for section in document.sections:
+        header = section.header
+        for paragraph in header.paragraphs:
+            replaceTextInParagraph(paragraph, search, replace)
+
+
+def replaceTextInDocument(document, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all the document paragraphs and tables.
+        Args:
+            document: the document object (opened word docx with at lease one paragraph or table inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+    &#34;&#34;&#34;
+    _replaceTextInTable(document, search, replace)
+    _replaceTextInParagraphes(document, search, replace)
+    _replaceTextInHeaders(document, search, replace)
+
+def findRowContaining(document, search):
+    &#34;&#34;&#34;
+    Find the first row of a table in all the given document to contain the given search text.
+        Args:
+            document: the document object (opened word docx with at least table inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a paragraph level
+        Returns:
+            Return (None, None) if the text was not found, else, it returns the tuple (table object, table index in document)
+    &#34;&#34;&#34;
+    for table_i, table in enumerate(document.tables):
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    if search in paragraph.text:
+                        return table, table_i
+    return None, None
+
+def findParagraphContaining(document, search):
+    &#34;&#34;&#34;
+    Find the first paragraph in all the given document to contain the given search text.
+        Args:
+            document: the document object (opened word docx with at least one paragraph inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a paragraph level
+        Returns:
+            Return None if the text was not found, else, it returns the paragraph object where the text was found
+    &#34;&#34;&#34;
+    ps = getParagraphs(document)
+    for paragraph in ps:
+        if search in paragraph.text:
+            return paragraph
+    for table in document.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    if search in paragraph.text:
+                        return paragraph
+    return None
+
+
+def delete_paragraph(paragraph):
+    &#34;&#34;&#34;
+    Delete a paragraph.
+        Args:
+            paragraph: the paragraph object to delete.
+    &#34;&#34;&#34;
+    p = paragraph._element  # pylint: disable=protected-access
+    try:
+        p.getparent().remove(p)
+    except Exception: # pylint: disable=broad-except
+        print(&#34;No parent found for element &#34;+str(p))
+    p._p = p._element = None  # pylint: disable=protected-access
+
+def write_res_table_defect_line(table_res, risks_font_colors, risks_bg_colors, count, o_defect):
+    new_row_cells = table_res.add_row().cells
+    level = o_defect[&#34;risk&#34;]
+    fill_cell(new_row_cells[0], &#34;D&#34;+str(count), risks_font_colors[level], risks_bg_colors[level], True)
+    run = new_row_cells[0].paragraphs[0].runs[0]
+    font = run.font
+    run.bold = True
+    font.size = Pt(11)
+    fill_cell(new_row_cells[1], o_defect[&#34;title&#34;], risks_font_colors[level], risks_bg_colors[level])
+    run = new_row_cells[1].paragraphs[0].runs[0]
+    font = run.font
+    font.size = Pt(11)
+    fill_cell(new_row_cells[3], &#34;Risque\n&#34;, risks_font_colors[level], risks_bg_colors[level])
+    new_row_cells[3].paragraphs[0].add_run(o_defect[&#34;risk&#34;], style=&#34;contentStyle&#34;)
+    new_row_cells[3].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    header_run = new_row_cells[3].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    header_run.italic = True
+    value_run = new_row_cells[3].paragraphs[0].runs[1]
+    font = value_run.font
+    font.size = Pt(11)
+    font.color.rgb = risks_font_colors[o_defect[&#34;risk&#34;]]
+    fill_cell(new_row_cells[4], &#34;Exploitation\n&#34;, risks_font_colors[level], risks_bg_colors[level])
+    new_row_cells[4].paragraphs[0].add_run(o_defect[&#34;risk&#34;], style=&#34;contentStyle&#34;)
+    new_row_cells[4].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+    header_run = new_row_cells[4].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    header_run.italic = True
+    value_run = new_row_cells[4].paragraphs[0].runs[1]
+    font = value_run.font
+    font.size = Pt(11)
+    font.color.rgb = risks_font_colors[o_defect[&#34;risk&#34;]]
+    fill_cell(new_row_cells[5], &#34;Impact\n&#34;, risks_font_colors[level], risks_bg_colors[level])
+    new_row_cells[5].paragraphs[0].add_run(o_defect[&#34;impact&#34;], style=&#34;contentStyle&#34;)
+    new_row_cells[5].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+    header_run = new_row_cells[5].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    header_run.italic = True
+    value_run = new_row_cells[5].paragraphs[0].runs[1]
+    font = value_run.font
+    font.size = Pt(11)
+    font.color.rgb = risks_font_colors[o_defect[&#34;risk&#34;]]
+
+def write_res_table_fix_line(table_res, risk_bg_color, id_correctif, fixe):
+    new_row_cells = table_res.add_row().cells
+    black = RGBColor(0x26, 0x32, 0x32)
+    gray = &#34;E9E9E9&#34;
+    lightgray = RGBColor(0x79, 0x79, 0x79)
+    fill_cell(new_row_cells[0], &#34; &#34;, black, risk_bg_color)
+    fill_cell(new_row_cells[1], id_correctif, black, gray, True)
+    run = new_row_cells[1].paragraphs[0].runs[0]
+    font = run.font
+    run.bold = True
+    font.size = Pt(11)
+    fill_cell(new_row_cells[2], fixe[&#34;title&#34;], black, gray)
+    fill_cell(new_row_cells[4], &#34;Mise en œuvre\n&#34;, black, gray)
+    new_row_cells[4].paragraphs[0].add_run(fixe[&#34;execution&#34;], style=&#39;contentStyleFix&#39;)
+    new_row_cells[4].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+    header_run = new_row_cells[4].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    font.color.rgb = lightgray
+    header_run.italic = True
+    fill_cell(new_row_cells[5], &#34;Gain\n&#34;, black, gray)
+    new_row_cells[5].paragraphs[0].add_run(fixe[&#34;gain&#34;], style=&#39;contentStyleFix&#39;)
+    new_row_cells[5].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+    header_run = new_row_cells[5].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    font.color.rgb = lightgray
+    header_run.italic = True
+
+def format_block_res_table(table_res, start_defect_line_on_res_table, nb_line_res_table):
+    cell_title = table_res.cell(start_defect_line_on_res_table, 1)
+    cell_title.merge(table_res.cell(start_defect_line_on_res_table, 2)) # Merge defect title
+    cell_id = table_res.cell(start_defect_line_on_res_table, 0)
+    try:
+        cell_id_fix = table_res.cell(start_defect_line_on_res_table+1, 0)
+        if start_defect_line_on_res_table+1 != nb_line_res_table-1:
+            cell_id_fix.merge(table_res.cell(nb_line_res_table-1, 0)) # Merge defect id
+        set_cell_border(cell_id_fix, start={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+            end={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+            top={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+            bottom={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        )
+    except IndexError:
+        pass
+    for fixe_line in range(start_defect_line_on_res_table+1, nb_line_res_table):
+        cell = table_res.cell(fixe_line, 2)
+        cell.merge(table_res.cell(fixe_line, 3)) # Merge defect id
+    set_cell_border(cell_title, start={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        end={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        top={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        bottom={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+    )
+    cell_risk = table_res.cell(start_defect_line_on_res_table, 3)
+    set_cell_border(cell_risk, start={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        end={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        top={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        bottom={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+    )
+    set_cell_border(cell_id, start={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        end={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        top={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        bottom={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+    )
+
+def populate_defect_summary_table(document, defects_dict):
+    &#34;&#34;&#34;
+    Fill a table found with a decorator var_dsum_colId in a line.
+    This table will contains a summary of the defects given the excel.
+    The template must have a table with var_dsum_colId, var_dsum_colTit, var_dsum_colEase, var_dsum_colImpact, var_dsum_colType
+    The template must have another table next to the previous with var_csum_colId, var_csum_colTit, var_csum_colEase, var_csum_colGain
+        Args:
+            document: the document object (opened word docx with at least one paragraph inside)
+            defects_dict: the dictionary of defect gotten in the getDefectDictFromExcel function
+    &#34;&#34;&#34;
+    table, table_i = findRowContaining(document, &#34;var_dsum_colId&#34;)
+    table_c, table_c_i = findRowContaining(document, &#34;var_csum_colId&#34;)
+    table_res, table_res_i = findRowContaining(document, &#34;var_res_tab&#34;)
+    if table_i is None:
+        raise KeyError(&#34;No table row containing var_dsum_colId found&#34;)
+    if table_c_i is None:
+        raise KeyError(&#34;No table row containing var_csum_colId found&#34;)
+    if table_res_i is not None:
+        remove_row(table_res, table_res.rows[0])
+
+    _replaceTextInTable, cell_id = replaceTextInTable(table, &#34;var_dsum_colId&#34;, &#34;ID&#34;)
+    _replaceTextInTable, cell_tit = replaceTextInTable(table, &#34;var_dsum_colTit&#34;, &#34;Libellé&#34;)
+    _, cell_ease = replaceTextInTable(table, &#34;var_dsum_colEase&#34;, &#34;Exploitation&#34;)
+    _, cell_impact = replaceTextInTable(table, &#34;var_dsum_colImpact&#34;, &#34;Impact&#34;)
+    _replaceTextInParagraphes, cell_type = replaceTextInTable(table, &#34;var_dsum_colType&#34;, &#34;Type&#34;)
+
+    _, cell_c_id = replaceTextInTable(table_c, &#34;var_csum_colId&#34;, &#34;ID&#34;)
+    _, cell_c_tit = replaceTextInTable(table_c, &#34;var_csum_colTit&#34;, &#34;Libellé&#34;)
+    _, cell_c_ease = replaceTextInTable(table_c, &#34;var_csum_colEase&#34;, &#34;Mise en\nœuvre&#34;)
+    _, cell_c_gain = replaceTextInTable(table_c, &#34;var_csum_colGain&#34;, &#34;Gain en sécurité&#34;)
+    strong_color = &#39;002060&#39;
+    medium_color = &#39;0070C0&#39;
+    quick_win_color = &#39;00B0F0&#39;
+    white_rgb = RGBColor(0xff, 0xfb, 0xfa)
+    black_rgb = RGBColor(0x26, 0x32, 0x32)
+    risks_font_colors = {&#34;Critique&#34;:white_rgb, &#34;Majeur&#34;:white_rgb, &#34;Important&#34;:white_rgb, &#34;Mineur&#34;:black_rgb}
+    risks_bg_colors = {&#34;Critique&#34;:&#34;263232&#34;, &#34;Majeur&#34;:&#34;F8453C&#34;, &#34;Important&#34;:&#34;EE8200&#34;, &#34;Mineur&#34;:&#34;FFFF00&#34;}
+    fixes_bg_colors = {&#34;Quick Win&#34;:quick_win_color, &#34;Faible&#34;:quick_win_color, &#34;Modérée&#34;:medium_color, &#34;Moyen&#34;:medium_color, &#34;Fort&#34;:strong_color, &#34;Envergure&#34;:strong_color}
+    levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+    count = 0
+    start_defect_line_on_res_table = 0
+    nb_line_res_table = 0
+    obj_styles = document.styles
+    obj_charstyle = obj_styles.add_style(&#39;contentStyle&#39;, WD_STYLE_TYPE.CHARACTER) # pylint: disable=no-member
+    obj_font = obj_charstyle.font
+    obj_font.size = Pt(11)
+    obj_font.name = &#39;Calibri&#39;
+    obj_styles = document.styles
+    obj_charstyle = obj_styles.add_style(&#39;contentStyleFix&#39;, WD_STYLE_TYPE.CHARACTER) # pylint: disable=no-member
+    obj_font = obj_charstyle.font
+    obj_font.size = Pt(11)
+    obj_font.name = &#39;Calibri&#39;
+    for level in levels:
+        for defect_dict in defects_dict[level].values():
+            o_defect = defect_dict[&#34;description&#34;]
+            new_row_cells = table.add_row().cells
+            count += 1
+            if table_res_i is not None:
+                write_res_table_defect_line(table_res, risks_font_colors, risks_bg_colors, count, o_defect)
+            start_defect_line_on_res_table = nb_line_res_table
+            nb_line_res_table += 1
+            d_types = o_defect[&#34;type&#34;]
+            defect_types = []
+            for types in d_types:
+                words_in_type = types.strip().split(&#34; &#34;)
+                type_acro = &#34;&#34;
+                for word in words_in_type:
+                    if word != &#34;&#34;:
+                        type_acro += word[0].upper()
+                defect_types.append(type_acro)
+            type_first_letters = &#34;, &#34;.join(defect_types)
+            if type_first_letters == &#34;&#34;:
+                type_first_letters = &#34;N/A&#34;
+            fill_cell(new_row_cells[cell_id], &#34;D&#34;+str(count), risks_font_colors[level], risks_bg_colors[level], True)
+            fill_cell(new_row_cells[cell_tit], o_defect[&#34;title&#34;], risks_font_colors[level], risks_bg_colors[level])
+            fill_cell(new_row_cells[cell_ease], o_defect[&#34;ease&#34;], risks_font_colors[level], risks_bg_colors[level])
+            fill_cell(new_row_cells[cell_impact], o_defect[&#34;impact&#34;], risks_font_colors[level], risks_bg_colors[level])
+            fill_cell(new_row_cells[cell_type], type_first_letters, risks_font_colors[level], risks_bg_colors[level])
+            count_correctif = 1
+            id_correctif = &#34;A&#34;+str(count)
+            new_row_c_cells = table_c.add_row().cells
+            if table_res_i is not None:
+                write_res_table_fix_line(table_res, risks_bg_colors[level], id_correctif, {&#34;title&#34;:&#34;A definir&#34;, &#34;execution&#34;:&#34;A def&#34;, &#34;gain&#34;:&#34;A def&#34;})
+                nb_line_res_table += 1
+                format_block_res_table(table_res, start_defect_line_on_res_table, nb_line_res_table)
+            fill_cell(new_row_c_cells[cell_c_id], id_correctif, None, None, True)
+            fill_cell(new_row_c_cells[cell_c_tit], &#34;A definir&#34;)
+            fill_cell(new_row_c_cells[cell_c_ease], &#34;A def&#34;, risks_font_colors[&#34;Critique&#34;], fixes_bg_colors[&#34;Quick Win&#34;])
+            fill_cell(new_row_c_cells[cell_c_gain], &#34;A def&#34;, risks_font_colors[&#34;Critique&#34;], fixes_bg_colors[&#34;Quick Win&#34;])
+            if table_res_i is not None:
+                format_block_res_table(table_res, start_defect_line_on_res_table, nb_line_res_table)
+    # Ajustement de la taille des lignes pour combler la page
+    # pageSize = 19 # Valeur totalement arbitraire calculé en regardant si le résultat était bon *PAN*
+    # for row in table_c.rows:
+    #     row.height = Cm(pageSize/len(table_c.rows))
+    # for row in table.rows:
+    #     row.height = Cm(pageSize/len(table.rows))
+    # Fixe a 1 cm
+    for row in table_c.rows:
+        row.height = Cm(1)
+        row.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    for row in table.rows:
+        row.height = Cm(1)
+        row.line_spacing_rule = WD_LINE_SPACING.SINGLE
+def move_table_after(table, paragraph):
+    &#34;&#34;&#34;
+    Move a given table after a given paragraph
+        Args:
+            table: the table to move
+            paragraph: the paragraph to put the table after.
+    &#34;&#34;&#34;
+    tbl, p = table._tbl, paragraph._p  # pylint: disable=protected-access
+    p.addnext(tbl)
+
+def copy_table_after(table, paragraph, addParagraph=None, addPagebreak=False):
+    &#34;&#34;&#34;
+    Copy a table and insert it after a given paragraph
+        Args:
+            table: the table to move
+            paragraph: the paragraph to put the table after.
+        Optional Args:
+            addParagraph: Add another paragraph after the new copied table. default is None.
+    &#34;&#34;&#34;
+    tbl, p = table._tbl, paragraph._p  # pylint: disable=protected-access
+    new_tbl = deepcopy(tbl)
+    new_p = None
+    if addParagraph is not None:
+        new_p = insert_paragraph_after(paragraph, addParagraph)
+        if addPagebreak:
+            insertPageBreak(new_p)
+    else:
+        if addPagebreak:
+            insertPageBreak(paragraph)
+    p.addnext(new_tbl)
+    return new_tbl, new_p
+
+def insertPageBreak(paragraph):
+    run = paragraph.add_run()
+    run.add_break(WD_BREAK.PAGE)
+
+def write_every_defect_fix(fixes, document, last_defect_paragraph, count):
+    # print(&#34;write fixes for &#34;+str(count)+ &#34; after &#34;+str(last_defect_paragraph.text))
+    for fixe_i in range(len(fixes)-1, -1, -1):
+        id_correctif = &#34;A&#34;+str(count)
+        fixe = fixes[fixe_i]
+        if len(fixes) &gt; 1:
+            id_correctif += &#34;.&#34;+str(fixe_i+1)
+        # Find the original fix to copy and fill
+        table_c, _ = findRowContaining(document, &#34;var_c_id&#34;)
+        if table_c is None:
+            raise Exception(&#34;Error, fixe table was deleted too soon. RIP&#34;)
+        # Add notes paragraph after it
+        _, added_paragraph = copy_table_after(table_c, last_defect_paragraph, &#34;var_c_notes\n&#34;)
+
+        copied_table_c, _ = findRowContaining(document, &#34;var_c_id&#34;)
+        replaceTextInTable(copied_table_c, &#34;var_c_id&#34;, id_correctif)
+        replaceTextInTable(copied_table_c, &#34;var_c_title&#34;, fixe[&#34;title&#34;])
+        replaceTextInTable(copied_table_c, &#34;var_c_ease&#34;, fixe[&#34;execution&#34;])
+        replaceTextInTable(copied_table_c, &#34;var_c_gain&#34;, fixe[&#34;gain&#34;])
+        desc = fixe[&#34;description&#34;].replace(&#34;\r&#34;, &#34;&#34;)
+        desc_paras = desc.split(&#34;\n&#34;)
+        fixe_synthesis = fixe.get(&#34;synthesis&#34;, None)
+        if fixe_synthesis is not None:
+            desc_paras.insert(0, fixe_synthesis)
+        replaceTextInTable(copied_table_c, &#34;var_c_description&#34;, desc_paras[0].strip())
+        # added_paragraph: premier paragraphe dessous le tableau
+        # c_separator: paragraphes supplémentaires éventuelles
+        c_separator = added_paragraph
+        if len(desc_paras) &gt; 1:
+            paragraphAccumulator = &#34;&#34;
+            for note in desc_paras[1:]:
+                if note.strip() != &#34;&#34;:
+                    paragraphAccumulator += note.strip()+&#34;\n&#34;
+                else:
+                    if paragraphAccumulator.strip() != &#34;&#34;:
+                        c_separator = insert_paragraph_after(c_separator, paragraphAccumulator.strip(), normal_style)
+                    paragraphAccumulator = &#34;&#34;
+            if paragraphAccumulator.strip() != &#34;&#34;:
+                c_separator = insert_paragraph_after(c_separator, paragraphAccumulator.strip(), normal_style)
+        if added_paragraph == c_separator:
+            c_separator.text=&#34;\n&#34;
+        else:
+            delete_paragraph(added_paragraph)
+        if fixe_i == len(fixes)-1:
+            c_separator = insert_paragraph_after(c_separator, &#34;\n&#34;, normal_style)
+            insertPageBreak(c_separator)
+
+def insert_images_after(paragraph, pics):
+    new_p = insert_paragraph_after(paragraph, &#34;&#34;, normal_style)
+    new_p.alignement = WD_ALIGN_PARAGRAPH.CENTER
+    for pic in pics:
+        r = new_p.add_run()
+        r.add_picture(pic, width=Cm(17.19))
+    return new_p
+
+def write_defect_from_input(result, document, table_d, separator, o_defect, count):
+    desc = result[0][&#34;description&#34;].replace(&#34;\r&#34;, &#34;&#34;)
+    desc_paras = desc.split(&#34;\n&#34;)
+    synthesis = result[0].get(&#34;synthesis&#34;, None)
+    if synthesis is not None:
+        desc_paras.insert(0, synthesis.replace(&#34;\r&#34;, &#34;&#34;).strip())
+    desc_paras.insert(1, &#34;ToDo &#34;+str(o_defect[&#34;redactor&#34;]))
+    desc_paras.insert(2, &#34;\n&#34;)
+    replaceTextInTable(table_d, &#34;var_d_description&#34;, desc_paras[0].strip())
+    first_separator = separator
+    if len(desc_paras) &gt; 1:
+        paragraphAccumulator = &#34;&#34;
+        for note in desc_paras[1:]:
+            if note.strip() != &#34;&#34;:
+                paragraphAccumulator += note.strip()+&#34;\n&#34;
+            else:
+                if paragraphAccumulator.strip() != &#34;&#34;:
+                    separator = insert_paragraph_after(separator, paragraphAccumulator.strip(), normal_style)
+                paragraphAccumulator = &#34;&#34;
+        if paragraphAccumulator.strip() != &#34;&#34;:
+            separator = insert_paragraph_after(separator, paragraphAccumulator.strip(), normal_style)
+    details = o_defect.get(&#34;details&#34;, {})
+    for detail in details.values():
+        separator = insert_paragraph_after(separator, detail[&#34;notes&#34;].strip(), normal_style)
+        if detail[&#34;pics&#34;]:
+            separator = insert_images_after(separator, detail[&#34;pics&#34;])
+    if first_separator == separator:
+        first_separator.text = &#34;\n&#34;
+    else:
+        delete_paragraph(first_separator)
+    write_every_defect_fix(result[0][&#34;fixes&#34;], document, separator, count)
+
+
+
+def write_each_defect(document, defects_dict):
+    &#34;&#34;&#34;
+    for each default
+       Copy a table and a paragraph form the template marked with var_d_id and var_d_separator.
+       replace the markers var_d_id var_d_separator var_d_id var_d_title var_d_ease var_d_impact var_d_description
+    Then for each fixe of this default
+        Copy a table form the template marked with var_c_id.
+        replace the markers var_c_id var_d_separator var_c_title var_c_ease var_c_gain var_c_description
+
+        Args:
+            document: the document to search elements in
+            defects_dict: the dictionary of defect gotten with the dedicated function getDefectDictFromExcel
+
+    &#34;&#34;&#34;
+    levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+    count = 0
+    total_len = 0
+    for level in levels:
+        total_len += len(defects_dict[level].values())
+    for level in levels:
+        for defect_dict in defects_dict[level].values():
+            count += 1
+            o_defect = defect_dict[&#34;description&#34;]
+            table_d, table_i = findRowContaining(document, &#34;var_d_id&#34;)
+            separator = findParagraphContaining(document, &#39;var_d_separator&#39;)
+            copy_table_after(table_d, separator, &#34;var_d_separator&#34;)
+            replaceTextInTable(table_d, &#34;var_d_id&#34;, &#34;D&#34;+str(count))
+            replaceTextInTable(table_d, &#34;var_d_title&#34;, o_defect[&#34;title&#34;])
+            replaceTextInTable(table_d, &#34;var_d_ease&#34;, o_defect[&#34;ease&#34;])
+            replaceTextInTable(table_d, &#34;var_d_impact&#34;, o_defect[&#34;impact&#34;])
+            result = [
+                    {
+                        &#34;id&#34;:&#34;0&#34;,
+                        &#34;title&#34;: o_defect[&#34;title&#34;],
+                        &#34;ease&#34;: o_defect[&#34;ease&#34;],
+                        &#34;impact&#34;: o_defect[&#34;impact&#34;],
+                        &#34;risk&#34;: o_defect[&#34;risk&#34;],
+                        &#34;type&#34;: o_defect[&#34;type&#34;],
+                        &#34;description&#34;: &#34;Description&#34;,
+                        &#34;details&#34;: {},
+                        &#34;notes&#34;: o_defect.get(&#34;notes&#34;, &#34;&#34;),
+                        &#34;fixes&#34;: [
+                            {
+                                &#34;title&#34;: &#34;A def&#34;,
+                                &#34;execution&#34;: &#34;Modérée&#34;,
+                                &#34;gain&#34;: &#34;Moyen&#34;,
+                                &#34;description&#34;: &#34;A definir&#34;
+                            }
+                        ]
+                    }
+                ]
+            o_defect[&#34;details&#34;] = {}
+            for ids in defect_dict.get(&#34;defects_ids&#34;, []):
+                o_defect[&#34;details&#34;][ids] = o_defect[&#34;details&#34;].get(ids, {})
+                defect_m = Defect.fetchObject({&#34;_id&#34;:ObjectId(ids)})
+                target = &#34;&#34;
+                notes = &#34;&#34;
+                if defect_m.ip != &#34;&#34; and defect_m.ip is not None:
+                    target += defect_m.ip
+                if defect_m.port != &#34;&#34; and defect_m.port is not None:
+                    protostr = &#34;&#34; if defect_m.proto == &#34;tcp&#34; else &#34;udp/&#34;
+                    target += &#34;:&#34;+protostr+defect_m.port
+                if defect_m.notes.strip() == &#34;&#34;:
+                    defect_m.notes = &#34;&#34;
+                elif len(defect_m.notes.strip()) &gt; 2500:
+                    defect_m.notes = &#34;ToDo : Too much notes to paste it there.&#34;
+                if target != &#34;&#34;:
+                    if defect_m.notes.strip() == &#34;&#34;:
+                        notes = target+&#34;: Vulnerable.&#34;
+                    else:
+                        notes = target+&#34;:\n&#34;+defect_m.notes
+                else:
+                    if defect_m.notes.strip() != &#34;&#34;:
+                        notes = &#34;Notes: &#34;+defect_m.notes
+                o_defect[&#34;details&#34;][ids][&#34;notes&#34;] = notes
+                pics = []
+                for i_proof, _proof in enumerate(defect_m.proofs):
+                    ret = defect_m.getProof(i_proof)
+                    if ret is not None:
+                        pics.append(ret)
+                o_defect[&#34;details&#34;][ids][&#34;pics&#34;] = pics
+            write_defect_from_input(result, document, table_d, separator, o_defect, count)
+            progressbar.update()
+        # Delete remaining copies
+        table_d, table_i = findRowContaining(document, &#34;var_d_id&#34;)
+        separator = findParagraphContaining(document, &#39;var_d_separator&#39;)
+        if separator is not None:
+            delete_paragraph(separator)
+        for _ in range(len(table_d.rows)):
+            remove_row(table_d, table_d.rows[0])
+        del document.tables[table_i]
+    # Delete remaining correctif copy
+    table_c, table_c_i = findRowContaining(document, &#34;var_c_id&#34;)
+    for _ in range(len(table_c.rows)):
+        remove_row(table_c, table_c.rows[0])
+    del document.tables[table_c_i]
+
+def remove_row(table, row):
+    &#34;&#34;&#34;
+    remove a given row inside a given table
+        Args:
+            table: the table we want to delete a row in
+            row: the row to delete
+
+    &#34;&#34;&#34;
+    tbl = table._tbl  # pylint: disable=protected-access
+    tr = row._tr  # pylint: disable=protected-access
+    tbl.remove(tr)
+
+def fill_cell(cell, text, font_color=None, bg_color=None, bold=False):
+    &#34;&#34;&#34;
+    Fill a table&#39;s cell&#39;s background with a background color, a text and a font_color for this text
+    Also sets the vertical alignement of every cell as centered.
+        Args:
+            cell: the cell we want to fill
+            text: the text to be written inside the cell
+        Optional Args:
+            font_color: a new font color to use for this text at RGB format (docx rgb). Default is None
+            bg_color: A backgroud color to use for the cell at hexa rgb format (FFFFFF is white) default is None.
+                        The color is written in xml directly as python-docx does not give a function to do that.
+    &#34;&#34;&#34;
+    while len(cell.paragraphs) &gt; 0:
+        delete_paragraph(cell.paragraphs[0])
+    p = cell.add_paragraph(text)
+    p.style = cell_style
+    cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+    if p.runs:
+        p.runs[0].bold = bold
+        if font_color is not None:
+            p.runs[0].font.color.rgb = font_color
+    if bg_color is not None:
+        shading_elm_1 = parse_xml((r&#39;&lt;w:shd {} w:fill=&#34;&#39;+bg_color+r&#39;&#34;/&gt;&#39;).format(nsdecls(&#39;w&#39;)))
+        cell._tc.get_or_add_tcPr().append(shading_elm_1)  # pylint: disable=protected-access
+
+
+def populate_services_table(document, parent):
+    table, _ = findRowContaining(document, &#34;var_ssum_ip&#34;)
+    if table is None:
+        return
+    replaceTextInTable(table, &#34;var_ssum_ip&#34;, &#34;IP&#34;)
+    replaceTextInTable(table, &#34;var_ssum_port&#34;, &#34;Port&#34;)
+    replaceTextInTable(table, &#34;var_ssum_proto&#34;, &#34;Protocole&#34;)
+    replaceTextInTable(table, &#34;var_ssum_comment&#34;, &#34;Commentaires&#34;)
+    ips = Ip.fetchObjects({&#34;in_scopes&#34;: {&#34;$ne&#34;:[]}})
+    cursorAsList = [c for c in ips] # NOT OPTIMIZED
+    nbOfIp = len(cursorAsList)
+    if nbOfIp &gt;= 10:
+        if parent is None:
+            parent = tk.Toplevel()
+        dialog = ChildDialogQuestion(parent,
+            &#34;Warning&#34;, &#34;The service table will contain &#34;+str(nbOfIp)+&#34; IPs with their ports. It would add a lot of pages to the document. Do you want to keep or discard the service table for this report?&#34;, [&#34;Keep&#34;, &#34;Discard&#34;])
+        parent.wait_window(dialog.app)
+        if dialog.rvalue == &#34;Discard&#34;:
+            table._element.getparent().remove(table._element) # pylint: disable=protected-access
+            return
+    for ip in cursorAsList:
+        ligne_deb = len(table.rows)
+        ports = Port.fetchObjects({&#34;ip&#34;:ip.ip})
+        for port in ports:
+            new_row_cells = table.add_row().cells
+            fill_cell(new_row_cells[1], port.port if port.proto == &#34;tcp&#34; else port.proto+&#34;/&#34;+port.port)
+            fill_cell(new_row_cells[2], port.service)
+            fill_cell(new_row_cells[3], port.product)
+
+        ligne_end = len(table.rows)
+        if len(table.rows) != ligne_deb:
+            cell_merge = table.cell(ligne_deb, 0)
+            merged_cell = cell_merge.merge(table.cell(ligne_end-1, 0))
+            merged_cell.text = ip.ip
+            merged_cell.paragraphs[0].style = cell_style
+            merged_cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+    # table.alignment = WD_TABLE_ALIGNMENT.CENTER
+
+def split_run_in_two(paragraph, run, split_index):
+    index_in_paragraph = paragraph._p.index(run.element) # pylint: disable=protected-access
+
+    text_before_split = run.text[0:split_index]
+    text_after_split = run.text[split_index:]
+    
+    run.text = text_before_split
+    new_run = paragraph.add_run(text_after_split)
+    copy_format_manual(run, new_run)
+    paragraph._p[index_in_paragraph+1:index_in_paragraph+1] = [new_run.element] # pylint: disable=protected-access
+    return [run, new_run]
+
+def split_run_in_three(paragraph, run, split_start, split_end):
+    first_split = split_run_in_two(paragraph, run, split_end)
+    second_split = split_run_in_two(paragraph, run, split_start)
+    return second_split + [first_split[-1]]
+
+def copy_format_manual(runA, runB):
+    fontB = runB.font
+    fontA = runA.font
+    fontB.bold = fontA.bold
+    fontB.italic = fontA.italic
+    fontB.underline = fontA.underline
+    fontB.strike = fontA.strike
+    fontB.subscript = fontA.subscript
+    fontB.superscript = fontA.superscript
+    fontB.size = fontA.size
+    fontB.highlight_color = fontA.highlight_color
+    fontB.color.rgb = fontA.color.rgb
+
+def markdownHeaderToWordStyle(paragraph, run, style):
+    regexHeaders = re.compile(r&#34;^#{1,6} (.+)$&#34;, re.MULTILINE)
+    matched = re.search(regexHeaders, run.text)
+    if matched is not None:
+        run.text = matched.group(1)
+        paragraph.style = style
+    return []
+
+def markdownEmphasisToItalic(paragraph, initialRun):
+    &#34;&#34;&#34;
+     de _Man-in-the-Middle_ entre le serveur
+     # Absence de support de TLS_FALLBACK_SCSV
+
+    TLS_FALLBACK_SCSV est une option permettant de mitiger les attaques dites de downgrade (type POODLE), afin d’empêcher un attaquant de forcer l’utilisation d’un protocole vulnérable lorsque des protocoles plus récents et sécurisés sont disponibles.
+
+    &#34;&#34;&#34;
+    runs = [initialRun]
+    i = 0
+    while i &lt; len(runs):
+        splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?&lt;!\*)\*([^\*\n]]+)\*(?!\*)&#34;, &#34;*&#34;)
+        if len(splitted_runs) == 3:
+            splitted_runs[1].italic = True
+            runs.append(splitted_runs[1])
+            runs.append(splitted_runs[2])
+        else:
+            splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?&lt;!\_)\_([^\_\n]+)\_(?!\_)&#34;, &#34;_&#34;)
+            if len(splitted_runs) == 3:
+                splitted_runs[1].italic = True
+                runs.append(splitted_runs[1])
+                runs.append(splitted_runs[2])
+        i+=1
+    return runs
+
+def markdownStrongEmphasisToBold(paragraph, initialRun):
+    runs = [initialRun]
+    i = 0
+    while i &lt; len(runs):
+        splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?!\w)\*\*([^\*\*\n]]+)\*\*(?!\w)&#34;, &#34;**&#34;)
+        if len(splitted_runs) == 3:
+            splitted_runs[1].bold = True
+            runs.append(splitted_runs[1])
+            runs.append(splitted_runs[2])
+        else:
+            splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?!\w)\_\_([^\_\n]]+)\_\_(?!\w)&#34;, &#34;__&#34;)
+            if len(splitted_runs) == 3:
+                splitted_runs[1].bold = True
+                runs.append(splitted_runs[1])
+                runs.append(splitted_runs[2])
+        i+=1
+    return runs
+
+def markdownStrikeThroughToStrike(paragraph, initialRun):
+    runs = [initialRun]
+    i = 0
+    while i &lt; len(runs):
+        splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?!\w)\~\~([^\~\n]]+)\~\~(?!\w)&#34;, &#34;~~&#34;)
+        if len(splitted_runs) == 3:
+            # THE PYDOCX run.strike does not work
+            # Use run.font.strike
+            splitted_runs[1].font.strike = True
+            runs.append(splitted_runs[1])
+            runs.append(splitted_runs[2])
+        i+=1
+    return runs
+
+def markdownCodeToWordStyle(paragraph, initialRun, style):
+    runs = [initialRun]
+    i = 0
+    while i &lt; len(runs):
+        splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?&lt;=\W)\`([^\`\n]]+)\`(?!\`)&#34;, &#34;`&#34;)
+        if len(splitted_runs) == 3:
+            # THE PYDOCX run.strike does not work
+            # Use run.font.strike
+            splitted_runs[1].style = style
+            runs.append(splitted_runs[1])
+            runs.append(splitted_runs[2])
+        i+=1
+    return runs
+def markdownImgToInsertedImage(paragraph, initialRun):
+    runs = [initialRun]
+    regex_hyperlink = r&#34;\!\[([^\]|^\n]+)\]\(([^\)|^\n]+\.(?:png|jpg|jpeg|gif))\)&#34;
+    regex = re.compile(regex_hyperlink)
+    i = 0
+    while i &lt; len(runs):
+        matched = re.search(regex, runs[i].text)
+        if matched is not None:
+            start = runs[i].text.index(matched.group(0))
+            end = start+len(matched.group(0))
+            split_runs = split_run_in_three(paragraph, runs[i], start, end)
+            data = downloadImgData(matched.group(2))
+            if data is not None:
+                split_runs[1].text = &#34;&#34;
+                split_runs[1].add_picture(data, width=Cm(17.19))
+            else:
+                split_runs[1].text = split_runs[1].text.replace(matched.group(0), matched.group(1))
+            
+        i+=1
+    return runs
+
+def markdownLinkToHyperlink(paragraph, initialRun, styles):
+    runs = [initialRun]
+    regex_hyperlink = r&#34;(?&lt;!\!)\[([^\]|^\n]+)\]\(([^\)|^\n]+)\)&#34;
+    regex = re.compile(regex_hyperlink)
+    i = 0
+    while i &lt; len(runs):
+        matched = re.search(regex, runs[i].text)
+        if matched is not None:
+            start = runs[i].text.index(matched.group(0))
+            end = start+len(matched.group(0))
+            split_runs = split_run_in_three(paragraph, runs[i], start, end)
+            split_runs[1].text = split_runs[1].text.replace(matched.group(0), matched.group(1))
+            style = styles[&#34;Hyperlink&#34;]
+            set_hyperlink(paragraph, split_runs[1], matched.group(2), matched.group(1), style)
+        i+=1
+    return runs
+
+def splitRunOnMarker(paragraph, run, regexToSearch, markerToRemove):
+    regex = re.compile(regexToSearch, re.MULTILINE)
+    matched = re.findall(regex, run.text)
+    for match in matched:
+        print(&#34;Found pattern in &#34;+str(run.text)+ &#34; pattern is |&#34;+regexToSearch+&#34;|&#34;)
+        start = run.text.index(markerToRemove+match+markerToRemove)
+        end = start+len(markerToRemove+match+markerToRemove)
+        split_runs = split_run_in_three(paragraph, run, start, end)
+        split_runs[1].text = split_runs[1].text.replace(markerToRemove+match+markerToRemove, match)
+        return split_runs
+    return [run]
+
+def markdownArrayToWordList(document, paragraph):
+    table_line_regex = re.compile(r&#34;^\|(?:[^\|\n-]*\|)*\s*$&#34;, re.MULTILINE)
+    matched = re.findall(table_line_regex, paragraph.text)
+    if len(matched) == 0:
+        return
+    nb_columns = len(matched[0].strip()[1:-1].split(&#34;|&#34;))
+    array = document.add_table(rows=len(matched), cols=nb_columns)
+    for i_row, match in enumerate(matched):
+        line = match.strip()
+        columns = line[1:-1].split(&#34;|&#34;) # [1:-1] strip beginning and ending pipe
+        if len(columns) != nb_columns:
+            raise ValueError(&#34;The array with following headers : &#34;+str(matched[0])+&#34; is supposed to have &#34;+str(nb_columns)+ \
+                                &#34; columns but the line &#34;+str(line)+&#34; has &#34;+str(len(columns))+&#34; columns&#34;)
+        for i_column, column in enumerate(columns):
+            cell = array.cell(i_row, i_column)
+            fill_cell(cell, column)
+    move_table_after(array, paragraph)
+    delete_paragraph(paragraph)
+
+def markdownUnorderedListToWordList(paragraph, style):
+    regex = re.compile(r&#34;^\s*[\*|\-|\+]\s([^\n]+)&#34;, re.MULTILINE)
+    matched = re.findall(regex, paragraph.text)
+    if len(matched) &gt; 0:
+        start = paragraph.text.index(matched[0])
+        end = paragraph.text.index(matched[-1])+len(matched[-1])
+        text_end = paragraph.text[end:]
+        paragraph.text = paragraph.text[:start]
+        new_p = paragraph
+        for match in matched:
+            new_p = insert_paragraph_after(new_p)
+            new_p.style = &#34;BulletList&#34;
+            r = new_p.add_run()
+            r.add_text(match+&#34;\n&#34;)
+        new_p = insert_paragraph_after(new_p, text_end)
+        delete_paragraph(paragraph)
+
+def mardownCodeBlockToWordStyle(paragraph, styles):
+    regex = re.compile(r&#34;(?:^|\s)`{2,3}([^\`]+)`{2,3}(?:$|\s)&#34;, re.MULTILINE)
+    matched = re.findall(regex, paragraph.text)
+    for match in matched:
+        paragraph.style = styles[&#34;Code&#34;]
+        paragraph.text = match
+
+def markdownToWordInParagraph(document, paragraph, styles):
+    markdownArrayToWordList(document, paragraph)
+    markdownUnorderedListToWordList(paragraph, styles[&#34;BulletList&#34;])
+    mardownCodeBlockToWordStyle(paragraph, styles)
+
+def markdownToWordInRun(paragraph, run, styles):
+    markdownHeaderToWordStyle(paragraph, run, styles[&#34;Sous-défaut&#34;])
+    markdownStrongEmphasisToBold(paragraph, run)
+    markdownEmphasisToItalic(paragraph, run)
+    markdownStrikeThroughToStrike(paragraph, run)
+    markdownCodeToWordStyle(paragraph, run, styles[&#34;Code Car&#34;])
+    markdownImgToInsertedImage(paragraph, run)
+    markdownLinkToHyperlink(paragraph, run, styles)
+
+def markdownToWordInDocument(document):
+    ps = getParagraphs(document)
+    for paragraph in ps:
+        markdownToWordInParagraph(document, paragraph, document.styles)
+    ps = getParagraphs(document)
+    for paragraph in ps:
+        for run in paragraph.runs:
+            markdownToWordInRun(paragraph, run, document.styles)
+    for table in document.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    for run in paragraph.runs:
+                        markdownToWordInRun(paragraph, run, document.styles)
+
+def createReport(defects_dict, template, out_name, **kwargs):
+    #print(&#34;Defect dict: &#34;+str(defects_dict))
+    document = Document(template)
+    global cell_style
+    global normal_style
+    global progressbar
+    current_step = 0
+    cell_style = document.styles[&#34;Normal_Cell&#34;]
+    normal_style = document.styles[&#34;Normal&#34;]
+    client_name = kwargs.get(&#34;client&#34;, &#34;&#34;).strip()
+    if client_name != &#34;&#34;:
+        replaceTextInDocument(document, &#34;var_client&#34;, client_name)
+    date = datetime.now()
+    month = date.strftime(&#34;%B&#34;).lower()
+    replaceTextInDocument(document, &#34;var_month&#34;, month)
+    month_fr = {&#34;january&#34;:&#34;janvier&#34;, &#34;february&#34;:&#34;février&#34;, &#34;march&#34;:&#34;mars&#34;, &#34;april&#34;:&#34;avril&#34;, &#34;may&#34;:&#34;mai&#34;, &#34;june&#34;:&#34;juin&#34;,
+                &#34;july&#34;:&#34;juillet&#34;, &#34;august&#34;:&#34;août&#34;, &#34;september&#34;:&#34;septembre&#34;, &#34;october&#34;:&#34;octobre&#34;, &#34;november&#34;:&#34;novembre&#34;, &#34;december&#34;:&#34;décembre&#34;}
+    replaceTextInDocument(document, &#34;var_mois&#34;, month_fr.get(month, month))
+    replaceTextInDocument(document, &#34;var_year&#34;, date.strftime(&#34;%Y&#34;))
+    replaceTextInDocument(document, &#34;var_annee&#34;, date.strftime(&#34;%Y&#34;))
+    contract_name = kwargs.get(&#34;contract&#34;, &#34;&#34;).strip()
+    progressbar = kwargs.get(&#34;progressbar&#34;, None)
+    if progressbar is not None:
+        total_len = 0
+        levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+        for level in levels:
+            total_len += len(defects_dict[level].values())
+        nb_steps = total_len # 1 step by defect 
+        nb_steps += 1 # step for general stuff
+        nb_steps += 1 # step for defect summary
+        nb_steps += 1 # step for service table
+        nb_steps += 1 # step for markdown conversion
+        nb_steps += 1 # step for saving
+        progressbar.show(nb_steps)
+    else:
+        progressbar = DummyProgressBar() # avoid testing for None every time
+    if contract_name != &#34;&#34;:
+        replaceTextInDocument(document, &#34;var_contract&#34;, contract_name)
+    replaceTextInDocument(document, &#34;var_synthesis&#34;, str(kwargs.get(&#34;synthesis&#34;, &#34;ToDo &#34;+kwargs.get(&#34;main_redactor&#34;, &#34;synthesis&#34;))))
+    replaceTextInDocument(document, &#34;var_nb_d_total&#34;, str(len(defects_dict[&#34;Critique&#34;].keys())+len(defects_dict[&#34;Majeur&#34;].keys())+len(defects_dict[&#34;Important&#34;].keys())+len(defects_dict[&#34;Mineur&#34;].keys())))
+    replaceTextInDocument(document, &#34;var_nb_d_critical&#34;, str(len(defects_dict[&#34;Critique&#34;].keys())))
+    replaceTextInDocument(document, &#34;var_nb_d_major&#34;, str(len(defects_dict[&#34;Majeur&#34;].keys())))
+    replaceTextInDocument(document, &#34;var_nb_d_important&#34;, str(len(defects_dict[&#34;Important&#34;].keys())))
+    replaceTextInDocument(document, &#34;var_nb_d_minor&#34;, str(len(defects_dict[&#34;Mineur&#34;].keys())))
+    progressbar.update() # general stuff step
+    print(&#34;Populate defect summary ....&#34;)
+    try:
+        populate_defect_summary_table(document, defects_dict)
+    except KeyError as e:
+        print(&#34;Skipping  defect summary: &#34;+str(e))
+    progressbar.update() # defect summary step
+    print(&#34;Write each defect ...&#34;)
+    write_each_defect(document, defects_dict)
+    print(&#34;Write services table ...&#34;)
+    populate_services_table(document, kwargs.get(&#34;root&#34;, None))
+    progressbar.update() # service table step
+    print(&#34;Converting Markdown ...&#34;)
+    markdownToWordInDocument(document)
+    print(&#34;Saving ...&#34;)
+    # After that, we add the previously copied table
+    #paragraph._p.addnext(new_tbl)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    out_path = os.path.join(dir_path, &#34;../../exports/&#34;, out_name+&#34;.docx&#34;)
+    print(&#34;Generated report at &#34;+str(out_path))
+    document.save(out_path)
+    progressbar.update() # saving step</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.core.Reporting.WordExport.add_hyperlink"><code class="name flex">
+<span>def <span class="ident">add_hyperlink</span></span>(<span>paragraph, text, url, style)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_hyperlink(paragraph, text, url, style):
+    # This gets access to the document.xml.rels file and gets a new relation id value
+    part = paragraph.part
+    r_id = part.relate_to(url, docx.opc.constants.RELATIONSHIP_TYPE.HYPERLINK, is_external=True)
+
+    # Create the w:hyperlink tag and add needed values
+    hyperlink = docx.oxml.shared.OxmlElement(&#39;w:hyperlink&#39;)
+    hyperlink.set(docx.oxml.shared.qn(&#39;r:id&#39;), r_id, )
+
+    # Create a w:r element and a new w:rPr element
+    new_run = docx.oxml.shared.OxmlElement(&#39;w:r&#39;)
+    rPr = docx.oxml.shared.OxmlElement(&#39;w:rPr&#39;)
+
+    # Join all the xml elements together add add the required text to the w:r element
+    new_run.append(rPr)
+    new_run.text = text
+    hyperlink.append(new_run)
+
+    # Create a new Run object and add the hyperlink into it
+    r = paragraph.add_run ()
+    r._r.append (hyperlink) # pylint: disable=protected-access
+
+    # A workaround for the lack of a hyperlink style (doesn&#39;t go purple after using the link)
+    # Delete this if using a template that has the hyperlink style in it
+
+    r.font.underline = True
+    if style is not None:
+        paragraph.runs[-1].style = style
+    return hyperlink</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.copy_format_manual"><code class="name flex">
+<span>def <span class="ident">copy_format_manual</span></span>(<span>runA, runB)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def copy_format_manual(runA, runB):
+    fontB = runB.font
+    fontA = runA.font
+    fontB.bold = fontA.bold
+    fontB.italic = fontA.italic
+    fontB.underline = fontA.underline
+    fontB.strike = fontA.strike
+    fontB.subscript = fontA.subscript
+    fontB.superscript = fontA.superscript
+    fontB.size = fontA.size
+    fontB.highlight_color = fontA.highlight_color
+    fontB.color.rgb = fontA.color.rgb</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.copy_table_after"><code class="name flex">
+<span>def <span class="ident">copy_table_after</span></span>(<span>table, paragraph, addParagraph=None, addPagebreak=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Copy a table and insert it after a given paragraph
+Args:
+table: the table to move
+paragraph: the paragraph to put the table after.
+Optional Args:
+addParagraph: Add another paragraph after the new copied table. default is None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def copy_table_after(table, paragraph, addParagraph=None, addPagebreak=False):
+    &#34;&#34;&#34;
+    Copy a table and insert it after a given paragraph
+        Args:
+            table: the table to move
+            paragraph: the paragraph to put the table after.
+        Optional Args:
+            addParagraph: Add another paragraph after the new copied table. default is None.
+    &#34;&#34;&#34;
+    tbl, p = table._tbl, paragraph._p  # pylint: disable=protected-access
+    new_tbl = deepcopy(tbl)
+    new_p = None
+    if addParagraph is not None:
+        new_p = insert_paragraph_after(paragraph, addParagraph)
+        if addPagebreak:
+            insertPageBreak(new_p)
+    else:
+        if addPagebreak:
+            insertPageBreak(paragraph)
+    p.addnext(new_tbl)
+    return new_tbl, new_p</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.createReport"><code class="name flex">
+<span>def <span class="ident">createReport</span></span>(<span>defects_dict, template, out_name, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createReport(defects_dict, template, out_name, **kwargs):
+    #print(&#34;Defect dict: &#34;+str(defects_dict))
+    document = Document(template)
+    global cell_style
+    global normal_style
+    global progressbar
+    current_step = 0
+    cell_style = document.styles[&#34;Normal_Cell&#34;]
+    normal_style = document.styles[&#34;Normal&#34;]
+    client_name = kwargs.get(&#34;client&#34;, &#34;&#34;).strip()
+    if client_name != &#34;&#34;:
+        replaceTextInDocument(document, &#34;var_client&#34;, client_name)
+    date = datetime.now()
+    month = date.strftime(&#34;%B&#34;).lower()
+    replaceTextInDocument(document, &#34;var_month&#34;, month)
+    month_fr = {&#34;january&#34;:&#34;janvier&#34;, &#34;february&#34;:&#34;février&#34;, &#34;march&#34;:&#34;mars&#34;, &#34;april&#34;:&#34;avril&#34;, &#34;may&#34;:&#34;mai&#34;, &#34;june&#34;:&#34;juin&#34;,
+                &#34;july&#34;:&#34;juillet&#34;, &#34;august&#34;:&#34;août&#34;, &#34;september&#34;:&#34;septembre&#34;, &#34;october&#34;:&#34;octobre&#34;, &#34;november&#34;:&#34;novembre&#34;, &#34;december&#34;:&#34;décembre&#34;}
+    replaceTextInDocument(document, &#34;var_mois&#34;, month_fr.get(month, month))
+    replaceTextInDocument(document, &#34;var_year&#34;, date.strftime(&#34;%Y&#34;))
+    replaceTextInDocument(document, &#34;var_annee&#34;, date.strftime(&#34;%Y&#34;))
+    contract_name = kwargs.get(&#34;contract&#34;, &#34;&#34;).strip()
+    progressbar = kwargs.get(&#34;progressbar&#34;, None)
+    if progressbar is not None:
+        total_len = 0
+        levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+        for level in levels:
+            total_len += len(defects_dict[level].values())
+        nb_steps = total_len # 1 step by defect 
+        nb_steps += 1 # step for general stuff
+        nb_steps += 1 # step for defect summary
+        nb_steps += 1 # step for service table
+        nb_steps += 1 # step for markdown conversion
+        nb_steps += 1 # step for saving
+        progressbar.show(nb_steps)
+    else:
+        progressbar = DummyProgressBar() # avoid testing for None every time
+    if contract_name != &#34;&#34;:
+        replaceTextInDocument(document, &#34;var_contract&#34;, contract_name)
+    replaceTextInDocument(document, &#34;var_synthesis&#34;, str(kwargs.get(&#34;synthesis&#34;, &#34;ToDo &#34;+kwargs.get(&#34;main_redactor&#34;, &#34;synthesis&#34;))))
+    replaceTextInDocument(document, &#34;var_nb_d_total&#34;, str(len(defects_dict[&#34;Critique&#34;].keys())+len(defects_dict[&#34;Majeur&#34;].keys())+len(defects_dict[&#34;Important&#34;].keys())+len(defects_dict[&#34;Mineur&#34;].keys())))
+    replaceTextInDocument(document, &#34;var_nb_d_critical&#34;, str(len(defects_dict[&#34;Critique&#34;].keys())))
+    replaceTextInDocument(document, &#34;var_nb_d_major&#34;, str(len(defects_dict[&#34;Majeur&#34;].keys())))
+    replaceTextInDocument(document, &#34;var_nb_d_important&#34;, str(len(defects_dict[&#34;Important&#34;].keys())))
+    replaceTextInDocument(document, &#34;var_nb_d_minor&#34;, str(len(defects_dict[&#34;Mineur&#34;].keys())))
+    progressbar.update() # general stuff step
+    print(&#34;Populate defect summary ....&#34;)
+    try:
+        populate_defect_summary_table(document, defects_dict)
+    except KeyError as e:
+        print(&#34;Skipping  defect summary: &#34;+str(e))
+    progressbar.update() # defect summary step
+    print(&#34;Write each defect ...&#34;)
+    write_each_defect(document, defects_dict)
+    print(&#34;Write services table ...&#34;)
+    populate_services_table(document, kwargs.get(&#34;root&#34;, None))
+    progressbar.update() # service table step
+    print(&#34;Converting Markdown ...&#34;)
+    markdownToWordInDocument(document)
+    print(&#34;Saving ...&#34;)
+    # After that, we add the previously copied table
+    #paragraph._p.addnext(new_tbl)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    out_path = os.path.join(dir_path, &#34;../../exports/&#34;, out_name+&#34;.docx&#34;)
+    print(&#34;Generated report at &#34;+str(out_path))
+    document.save(out_path)
+    progressbar.update() # saving step</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.delete_paragraph"><code class="name flex">
+<span>def <span class="ident">delete_paragraph</span></span>(<span>paragraph)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete a paragraph.
+Args:
+paragraph: the paragraph object to delete.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete_paragraph(paragraph):
+    &#34;&#34;&#34;
+    Delete a paragraph.
+        Args:
+            paragraph: the paragraph object to delete.
+    &#34;&#34;&#34;
+    p = paragraph._element  # pylint: disable=protected-access
+    try:
+        p.getparent().remove(p)
+    except Exception: # pylint: disable=broad-except
+        print(&#34;No parent found for element &#34;+str(p))
+    p._p = p._element = None  # pylint: disable=protected-access</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.downloadImgData"><code class="name flex">
+<span>def <span class="ident">downloadImgData</span></span>(<span>url)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def downloadImgData(url):
+    data = requests.get(url)
+    if data.status_code != 200:
+        return None
+    data = data.content
+    data = io.BytesIO(data)
+    return data</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.fill_cell"><code class="name flex">
+<span>def <span class="ident">fill_cell</span></span>(<span>cell, text, font_color=None, bg_color=None, bold=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fill a table's cell's background with a background color, a text and a font_color for this text
+Also sets the vertical alignement of every cell as centered.
+Args:
+cell: the cell we want to fill
+text: the text to be written inside the cell
+Optional Args:
+font_color: a new font color to use for this text at RGB format (docx rgb). Default is None
+bg_color: A backgroud color to use for the cell at hexa rgb format (FFFFFF is white) default is None.
+The color is written in xml directly as python-docx does not give a function to do that.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fill_cell(cell, text, font_color=None, bg_color=None, bold=False):
+    &#34;&#34;&#34;
+    Fill a table&#39;s cell&#39;s background with a background color, a text and a font_color for this text
+    Also sets the vertical alignement of every cell as centered.
+        Args:
+            cell: the cell we want to fill
+            text: the text to be written inside the cell
+        Optional Args:
+            font_color: a new font color to use for this text at RGB format (docx rgb). Default is None
+            bg_color: A backgroud color to use for the cell at hexa rgb format (FFFFFF is white) default is None.
+                        The color is written in xml directly as python-docx does not give a function to do that.
+    &#34;&#34;&#34;
+    while len(cell.paragraphs) &gt; 0:
+        delete_paragraph(cell.paragraphs[0])
+    p = cell.add_paragraph(text)
+    p.style = cell_style
+    cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+    if p.runs:
+        p.runs[0].bold = bold
+        if font_color is not None:
+            p.runs[0].font.color.rgb = font_color
+    if bg_color is not None:
+        shading_elm_1 = parse_xml((r&#39;&lt;w:shd {} w:fill=&#34;&#39;+bg_color+r&#39;&#34;/&gt;&#39;).format(nsdecls(&#39;w&#39;)))
+        cell._tc.get_or_add_tcPr().append(shading_elm_1)  # pylint: disable=protected-access</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.findParagraphContaining"><code class="name flex">
+<span>def <span class="ident">findParagraphContaining</span></span>(<span>document, search)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the first paragraph in all the given document to contain the given search text.
+Args:
+document: the document object (opened word docx with at least one paragraph inside)
+search: The string to search for that will be replaced. //!\ The search is done at a paragraph level
+Returns:
+Return None if the text was not found, else, it returns the paragraph object where the text was found</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findParagraphContaining(document, search):
+    &#34;&#34;&#34;
+    Find the first paragraph in all the given document to contain the given search text.
+        Args:
+            document: the document object (opened word docx with at least one paragraph inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a paragraph level
+        Returns:
+            Return None if the text was not found, else, it returns the paragraph object where the text was found
+    &#34;&#34;&#34;
+    ps = getParagraphs(document)
+    for paragraph in ps:
+        if search in paragraph.text:
+            return paragraph
+    for table in document.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    if search in paragraph.text:
+                        return paragraph
+    return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.findRowContaining"><code class="name flex">
+<span>def <span class="ident">findRowContaining</span></span>(<span>document, search)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the first row of a table in all the given document to contain the given search text.
+Args:
+document: the document object (opened word docx with at least table inside)
+search: The string to search for that will be replaced. //!\ The search is done at a paragraph level
+Returns:
+Return (None, None) if the text was not found, else, it returns the tuple (table object, table index in document)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findRowContaining(document, search):
+    &#34;&#34;&#34;
+    Find the first row of a table in all the given document to contain the given search text.
+        Args:
+            document: the document object (opened word docx with at least table inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a paragraph level
+        Returns:
+            Return (None, None) if the text was not found, else, it returns the tuple (table object, table index in document)
+    &#34;&#34;&#34;
+    for table_i, table in enumerate(document.tables):
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    if search in paragraph.text:
+                        return table, table_i
+    return None, None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.format_block_res_table"><code class="name flex">
+<span>def <span class="ident">format_block_res_table</span></span>(<span>table_res, start_defect_line_on_res_table, nb_line_res_table)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def format_block_res_table(table_res, start_defect_line_on_res_table, nb_line_res_table):
+    cell_title = table_res.cell(start_defect_line_on_res_table, 1)
+    cell_title.merge(table_res.cell(start_defect_line_on_res_table, 2)) # Merge defect title
+    cell_id = table_res.cell(start_defect_line_on_res_table, 0)
+    try:
+        cell_id_fix = table_res.cell(start_defect_line_on_res_table+1, 0)
+        if start_defect_line_on_res_table+1 != nb_line_res_table-1:
+            cell_id_fix.merge(table_res.cell(nb_line_res_table-1, 0)) # Merge defect id
+        set_cell_border(cell_id_fix, start={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+            end={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+            top={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+            bottom={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        )
+    except IndexError:
+        pass
+    for fixe_line in range(start_defect_line_on_res_table+1, nb_line_res_table):
+        cell = table_res.cell(fixe_line, 2)
+        cell.merge(table_res.cell(fixe_line, 3)) # Merge defect id
+    set_cell_border(cell_title, start={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        end={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        top={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        bottom={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+    )
+    cell_risk = table_res.cell(start_defect_line_on_res_table, 3)
+    set_cell_border(cell_risk, start={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        end={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        top={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        bottom={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+    )
+    set_cell_border(cell_id, start={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        end={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        top={&#34;sz&#34;: 0.5, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+        bottom={&#34;sz&#34;: 0, &#34;val&#34;: &#34;none&#34;, &#34;color&#34;: &#34;#000000&#34;, &#34;space&#34;: &#34;0&#34;},
+    )</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.getParagraphs"><code class="name flex">
+<span>def <span class="ident">getParagraphs</span></span>(<span>document)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retourne un generateur pour tous les paragraphes du document.
+La page d'entête n'étant pas incluse dans documents.paragraphs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getParagraphs(document):
+    &#34;&#34;&#34; Retourne un generateur pour tous les paragraphes du document.
+        La page d&#39;entête n&#39;étant pas incluse dans documents.paragraphs.&#34;&#34;&#34;
+    body = document._body._body # pylint: disable=protected-access
+    ps = body.xpath(&#39;//w:p&#39;)
+    for p in ps:
+        yield Paragraph(p, document._body) # pylint: disable=protected-access</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.insertPageBreak"><code class="name flex">
+<span>def <span class="ident">insertPageBreak</span></span>(<span>paragraph)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertPageBreak(paragraph):
+    run = paragraph.add_run()
+    run.add_break(WD_BREAK.PAGE)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.insert_images_after"><code class="name flex">
+<span>def <span class="ident">insert_images_after</span></span>(<span>paragraph, pics)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insert_images_after(paragraph, pics):
+    new_p = insert_paragraph_after(paragraph, &#34;&#34;, normal_style)
+    new_p.alignement = WD_ALIGN_PARAGRAPH.CENTER
+    for pic in pics:
+        r = new_p.add_run()
+        r.add_picture(pic, width=Cm(17.19))
+    return new_p</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.insert_paragraph_after"><code class="name flex">
+<span>def <span class="ident">insert_paragraph_after</span></span>(<span>paragraph, text=None, style=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Insert a new paragraph after the given paragraph.
+Args:
+paragraph: the paragraph object after which the new paragraph will be created</p>
+<pre><code>Optional Args:
+    text: a string of text to write in the new paragraph, Default = None
+    style: a style to be applied on the new paragraph, Default = None
+
+Returns:
+    Returns a paragraph object for the new added paragraph
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insert_paragraph_after(paragraph, text=None, style=None):
+    &#34;&#34;&#34;
+    Insert a new paragraph after the given paragraph.
+        Args:
+            paragraph: the paragraph object after which the new paragraph will be created
+        
+        Optional Args:
+            text: a string of text to write in the new paragraph, Default = None
+            style: a style to be applied on the new paragraph, Default = None
+
+        Returns:
+            Returns a paragraph object for the new added paragraph
+    &#34;&#34;&#34;
+    new_p = OxmlElement(&#34;w:p&#34;)
+    paragraph._p.addnext(new_p)  # pylint: disable=protected-access
+    new_para = Paragraph(new_p, paragraph._parent)  # pylint: disable=protected-access
+    if text is not None:
+        new_para.add_run(text)
+    if style is not None:
+        new_para.style = style
+    return new_para</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.mardownCodeBlockToWordStyle"><code class="name flex">
+<span>def <span class="ident">mardownCodeBlockToWordStyle</span></span>(<span>paragraph, styles)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mardownCodeBlockToWordStyle(paragraph, styles):
+    regex = re.compile(r&#34;(?:^|\s)`{2,3}([^\`]+)`{2,3}(?:$|\s)&#34;, re.MULTILINE)
+    matched = re.findall(regex, paragraph.text)
+    for match in matched:
+        paragraph.style = styles[&#34;Code&#34;]
+        paragraph.text = match</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownArrayToWordList"><code class="name flex">
+<span>def <span class="ident">markdownArrayToWordList</span></span>(<span>document, paragraph)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownArrayToWordList(document, paragraph):
+    table_line_regex = re.compile(r&#34;^\|(?:[^\|\n-]*\|)*\s*$&#34;, re.MULTILINE)
+    matched = re.findall(table_line_regex, paragraph.text)
+    if len(matched) == 0:
+        return
+    nb_columns = len(matched[0].strip()[1:-1].split(&#34;|&#34;))
+    array = document.add_table(rows=len(matched), cols=nb_columns)
+    for i_row, match in enumerate(matched):
+        line = match.strip()
+        columns = line[1:-1].split(&#34;|&#34;) # [1:-1] strip beginning and ending pipe
+        if len(columns) != nb_columns:
+            raise ValueError(&#34;The array with following headers : &#34;+str(matched[0])+&#34; is supposed to have &#34;+str(nb_columns)+ \
+                                &#34; columns but the line &#34;+str(line)+&#34; has &#34;+str(len(columns))+&#34; columns&#34;)
+        for i_column, column in enumerate(columns):
+            cell = array.cell(i_row, i_column)
+            fill_cell(cell, column)
+    move_table_after(array, paragraph)
+    delete_paragraph(paragraph)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownCodeToWordStyle"><code class="name flex">
+<span>def <span class="ident">markdownCodeToWordStyle</span></span>(<span>paragraph, initialRun, style)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownCodeToWordStyle(paragraph, initialRun, style):
+    runs = [initialRun]
+    i = 0
+    while i &lt; len(runs):
+        splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?&lt;=\W)\`([^\`\n]]+)\`(?!\`)&#34;, &#34;`&#34;)
+        if len(splitted_runs) == 3:
+            # THE PYDOCX run.strike does not work
+            # Use run.font.strike
+            splitted_runs[1].style = style
+            runs.append(splitted_runs[1])
+            runs.append(splitted_runs[2])
+        i+=1
+    return runs</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownEmphasisToItalic"><code class="name flex">
+<span>def <span class="ident">markdownEmphasisToItalic</span></span>(<span>paragraph, initialRun)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>de <em>Man-in-the-Middle</em> entre le serveur
+# Absence de support de TLS_FALLBACK_SCSV</p>
+<p>TLS_FALLBACK_SCSV est une option permettant de mitiger les attaques dites de downgrade (type POODLE), afin d’empêcher un attaquant de forcer l’utilisation d’un protocole vulnérable lorsque des protocoles plus récents et sécurisés sont disponibles.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownEmphasisToItalic(paragraph, initialRun):
+    &#34;&#34;&#34;
+     de _Man-in-the-Middle_ entre le serveur
+     # Absence de support de TLS_FALLBACK_SCSV
+
+    TLS_FALLBACK_SCSV est une option permettant de mitiger les attaques dites de downgrade (type POODLE), afin d’empêcher un attaquant de forcer l’utilisation d’un protocole vulnérable lorsque des protocoles plus récents et sécurisés sont disponibles.
+
+    &#34;&#34;&#34;
+    runs = [initialRun]
+    i = 0
+    while i &lt; len(runs):
+        splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?&lt;!\*)\*([^\*\n]]+)\*(?!\*)&#34;, &#34;*&#34;)
+        if len(splitted_runs) == 3:
+            splitted_runs[1].italic = True
+            runs.append(splitted_runs[1])
+            runs.append(splitted_runs[2])
+        else:
+            splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?&lt;!\_)\_([^\_\n]+)\_(?!\_)&#34;, &#34;_&#34;)
+            if len(splitted_runs) == 3:
+                splitted_runs[1].italic = True
+                runs.append(splitted_runs[1])
+                runs.append(splitted_runs[2])
+        i+=1
+    return runs</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownHeaderToWordStyle"><code class="name flex">
+<span>def <span class="ident">markdownHeaderToWordStyle</span></span>(<span>paragraph, run, style)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownHeaderToWordStyle(paragraph, run, style):
+    regexHeaders = re.compile(r&#34;^#{1,6} (.+)$&#34;, re.MULTILINE)
+    matched = re.search(regexHeaders, run.text)
+    if matched is not None:
+        run.text = matched.group(1)
+        paragraph.style = style
+    return []</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownImgToInsertedImage"><code class="name flex">
+<span>def <span class="ident">markdownImgToInsertedImage</span></span>(<span>paragraph, initialRun)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownImgToInsertedImage(paragraph, initialRun):
+    runs = [initialRun]
+    regex_hyperlink = r&#34;\!\[([^\]|^\n]+)\]\(([^\)|^\n]+\.(?:png|jpg|jpeg|gif))\)&#34;
+    regex = re.compile(regex_hyperlink)
+    i = 0
+    while i &lt; len(runs):
+        matched = re.search(regex, runs[i].text)
+        if matched is not None:
+            start = runs[i].text.index(matched.group(0))
+            end = start+len(matched.group(0))
+            split_runs = split_run_in_three(paragraph, runs[i], start, end)
+            data = downloadImgData(matched.group(2))
+            if data is not None:
+                split_runs[1].text = &#34;&#34;
+                split_runs[1].add_picture(data, width=Cm(17.19))
+            else:
+                split_runs[1].text = split_runs[1].text.replace(matched.group(0), matched.group(1))
+            
+        i+=1
+    return runs</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownLinkToHyperlink"><code class="name flex">
+<span>def <span class="ident">markdownLinkToHyperlink</span></span>(<span>paragraph, initialRun, styles)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownLinkToHyperlink(paragraph, initialRun, styles):
+    runs = [initialRun]
+    regex_hyperlink = r&#34;(?&lt;!\!)\[([^\]|^\n]+)\]\(([^\)|^\n]+)\)&#34;
+    regex = re.compile(regex_hyperlink)
+    i = 0
+    while i &lt; len(runs):
+        matched = re.search(regex, runs[i].text)
+        if matched is not None:
+            start = runs[i].text.index(matched.group(0))
+            end = start+len(matched.group(0))
+            split_runs = split_run_in_three(paragraph, runs[i], start, end)
+            split_runs[1].text = split_runs[1].text.replace(matched.group(0), matched.group(1))
+            style = styles[&#34;Hyperlink&#34;]
+            set_hyperlink(paragraph, split_runs[1], matched.group(2), matched.group(1), style)
+        i+=1
+    return runs</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownStrikeThroughToStrike"><code class="name flex">
+<span>def <span class="ident">markdownStrikeThroughToStrike</span></span>(<span>paragraph, initialRun)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownStrikeThroughToStrike(paragraph, initialRun):
+    runs = [initialRun]
+    i = 0
+    while i &lt; len(runs):
+        splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?!\w)\~\~([^\~\n]]+)\~\~(?!\w)&#34;, &#34;~~&#34;)
+        if len(splitted_runs) == 3:
+            # THE PYDOCX run.strike does not work
+            # Use run.font.strike
+            splitted_runs[1].font.strike = True
+            runs.append(splitted_runs[1])
+            runs.append(splitted_runs[2])
+        i+=1
+    return runs</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownStrongEmphasisToBold"><code class="name flex">
+<span>def <span class="ident">markdownStrongEmphasisToBold</span></span>(<span>paragraph, initialRun)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownStrongEmphasisToBold(paragraph, initialRun):
+    runs = [initialRun]
+    i = 0
+    while i &lt; len(runs):
+        splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?!\w)\*\*([^\*\*\n]]+)\*\*(?!\w)&#34;, &#34;**&#34;)
+        if len(splitted_runs) == 3:
+            splitted_runs[1].bold = True
+            runs.append(splitted_runs[1])
+            runs.append(splitted_runs[2])
+        else:
+            splitted_runs = splitRunOnMarker(paragraph, runs[i], r&#34;(?!\w)\_\_([^\_\n]]+)\_\_(?!\w)&#34;, &#34;__&#34;)
+            if len(splitted_runs) == 3:
+                splitted_runs[1].bold = True
+                runs.append(splitted_runs[1])
+                runs.append(splitted_runs[2])
+        i+=1
+    return runs</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownToWordInDocument"><code class="name flex">
+<span>def <span class="ident">markdownToWordInDocument</span></span>(<span>document)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownToWordInDocument(document):
+    ps = getParagraphs(document)
+    for paragraph in ps:
+        markdownToWordInParagraph(document, paragraph, document.styles)
+    ps = getParagraphs(document)
+    for paragraph in ps:
+        for run in paragraph.runs:
+            markdownToWordInRun(paragraph, run, document.styles)
+    for table in document.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    for run in paragraph.runs:
+                        markdownToWordInRun(paragraph, run, document.styles)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownToWordInParagraph"><code class="name flex">
+<span>def <span class="ident">markdownToWordInParagraph</span></span>(<span>document, paragraph, styles)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownToWordInParagraph(document, paragraph, styles):
+    markdownArrayToWordList(document, paragraph)
+    markdownUnorderedListToWordList(paragraph, styles[&#34;BulletList&#34;])
+    mardownCodeBlockToWordStyle(paragraph, styles)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownToWordInRun"><code class="name flex">
+<span>def <span class="ident">markdownToWordInRun</span></span>(<span>paragraph, run, styles)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownToWordInRun(paragraph, run, styles):
+    markdownHeaderToWordStyle(paragraph, run, styles[&#34;Sous-défaut&#34;])
+    markdownStrongEmphasisToBold(paragraph, run)
+    markdownEmphasisToItalic(paragraph, run)
+    markdownStrikeThroughToStrike(paragraph, run)
+    markdownCodeToWordStyle(paragraph, run, styles[&#34;Code Car&#34;])
+    markdownImgToInsertedImage(paragraph, run)
+    markdownLinkToHyperlink(paragraph, run, styles)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.markdownUnorderedListToWordList"><code class="name flex">
+<span>def <span class="ident">markdownUnorderedListToWordList</span></span>(<span>paragraph, style)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markdownUnorderedListToWordList(paragraph, style):
+    regex = re.compile(r&#34;^\s*[\*|\-|\+]\s([^\n]+)&#34;, re.MULTILINE)
+    matched = re.findall(regex, paragraph.text)
+    if len(matched) &gt; 0:
+        start = paragraph.text.index(matched[0])
+        end = paragraph.text.index(matched[-1])+len(matched[-1])
+        text_end = paragraph.text[end:]
+        paragraph.text = paragraph.text[:start]
+        new_p = paragraph
+        for match in matched:
+            new_p = insert_paragraph_after(new_p)
+            new_p.style = &#34;BulletList&#34;
+            r = new_p.add_run()
+            r.add_text(match+&#34;\n&#34;)
+        new_p = insert_paragraph_after(new_p, text_end)
+        delete_paragraph(paragraph)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.move_table_after"><code class="name flex">
+<span>def <span class="ident">move_table_after</span></span>(<span>table, paragraph)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Move a given table after a given paragraph
+Args:
+table: the table to move
+paragraph: the paragraph to put the table after.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def move_table_after(table, paragraph):
+    &#34;&#34;&#34;
+    Move a given table after a given paragraph
+        Args:
+            table: the table to move
+            paragraph: the paragraph to put the table after.
+    &#34;&#34;&#34;
+    tbl, p = table._tbl, paragraph._p  # pylint: disable=protected-access
+    p.addnext(tbl)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.populate_defect_summary_table"><code class="name flex">
+<span>def <span class="ident">populate_defect_summary_table</span></span>(<span>document, defects_dict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fill a table found with a decorator var_dsum_colId in a line.
+This table will contains a summary of the defects given the excel.
+The template must have a table with var_dsum_colId, var_dsum_colTit, var_dsum_colEase, var_dsum_colImpact, var_dsum_colType
+The template must have another table next to the previous with var_csum_colId, var_csum_colTit, var_csum_colEase, var_csum_colGain
+Args:
+document: the document object (opened word docx with at least one paragraph inside)
+defects_dict: the dictionary of defect gotten in the getDefectDictFromExcel function</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_defect_summary_table(document, defects_dict):
+    &#34;&#34;&#34;
+    Fill a table found with a decorator var_dsum_colId in a line.
+    This table will contains a summary of the defects given the excel.
+    The template must have a table with var_dsum_colId, var_dsum_colTit, var_dsum_colEase, var_dsum_colImpact, var_dsum_colType
+    The template must have another table next to the previous with var_csum_colId, var_csum_colTit, var_csum_colEase, var_csum_colGain
+        Args:
+            document: the document object (opened word docx with at least one paragraph inside)
+            defects_dict: the dictionary of defect gotten in the getDefectDictFromExcel function
+    &#34;&#34;&#34;
+    table, table_i = findRowContaining(document, &#34;var_dsum_colId&#34;)
+    table_c, table_c_i = findRowContaining(document, &#34;var_csum_colId&#34;)
+    table_res, table_res_i = findRowContaining(document, &#34;var_res_tab&#34;)
+    if table_i is None:
+        raise KeyError(&#34;No table row containing var_dsum_colId found&#34;)
+    if table_c_i is None:
+        raise KeyError(&#34;No table row containing var_csum_colId found&#34;)
+    if table_res_i is not None:
+        remove_row(table_res, table_res.rows[0])
+
+    _replaceTextInTable, cell_id = replaceTextInTable(table, &#34;var_dsum_colId&#34;, &#34;ID&#34;)
+    _replaceTextInTable, cell_tit = replaceTextInTable(table, &#34;var_dsum_colTit&#34;, &#34;Libellé&#34;)
+    _, cell_ease = replaceTextInTable(table, &#34;var_dsum_colEase&#34;, &#34;Exploitation&#34;)
+    _, cell_impact = replaceTextInTable(table, &#34;var_dsum_colImpact&#34;, &#34;Impact&#34;)
+    _replaceTextInParagraphes, cell_type = replaceTextInTable(table, &#34;var_dsum_colType&#34;, &#34;Type&#34;)
+
+    _, cell_c_id = replaceTextInTable(table_c, &#34;var_csum_colId&#34;, &#34;ID&#34;)
+    _, cell_c_tit = replaceTextInTable(table_c, &#34;var_csum_colTit&#34;, &#34;Libellé&#34;)
+    _, cell_c_ease = replaceTextInTable(table_c, &#34;var_csum_colEase&#34;, &#34;Mise en\nœuvre&#34;)
+    _, cell_c_gain = replaceTextInTable(table_c, &#34;var_csum_colGain&#34;, &#34;Gain en sécurité&#34;)
+    strong_color = &#39;002060&#39;
+    medium_color = &#39;0070C0&#39;
+    quick_win_color = &#39;00B0F0&#39;
+    white_rgb = RGBColor(0xff, 0xfb, 0xfa)
+    black_rgb = RGBColor(0x26, 0x32, 0x32)
+    risks_font_colors = {&#34;Critique&#34;:white_rgb, &#34;Majeur&#34;:white_rgb, &#34;Important&#34;:white_rgb, &#34;Mineur&#34;:black_rgb}
+    risks_bg_colors = {&#34;Critique&#34;:&#34;263232&#34;, &#34;Majeur&#34;:&#34;F8453C&#34;, &#34;Important&#34;:&#34;EE8200&#34;, &#34;Mineur&#34;:&#34;FFFF00&#34;}
+    fixes_bg_colors = {&#34;Quick Win&#34;:quick_win_color, &#34;Faible&#34;:quick_win_color, &#34;Modérée&#34;:medium_color, &#34;Moyen&#34;:medium_color, &#34;Fort&#34;:strong_color, &#34;Envergure&#34;:strong_color}
+    levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+    count = 0
+    start_defect_line_on_res_table = 0
+    nb_line_res_table = 0
+    obj_styles = document.styles
+    obj_charstyle = obj_styles.add_style(&#39;contentStyle&#39;, WD_STYLE_TYPE.CHARACTER) # pylint: disable=no-member
+    obj_font = obj_charstyle.font
+    obj_font.size = Pt(11)
+    obj_font.name = &#39;Calibri&#39;
+    obj_styles = document.styles
+    obj_charstyle = obj_styles.add_style(&#39;contentStyleFix&#39;, WD_STYLE_TYPE.CHARACTER) # pylint: disable=no-member
+    obj_font = obj_charstyle.font
+    obj_font.size = Pt(11)
+    obj_font.name = &#39;Calibri&#39;
+    for level in levels:
+        for defect_dict in defects_dict[level].values():
+            o_defect = defect_dict[&#34;description&#34;]
+            new_row_cells = table.add_row().cells
+            count += 1
+            if table_res_i is not None:
+                write_res_table_defect_line(table_res, risks_font_colors, risks_bg_colors, count, o_defect)
+            start_defect_line_on_res_table = nb_line_res_table
+            nb_line_res_table += 1
+            d_types = o_defect[&#34;type&#34;]
+            defect_types = []
+            for types in d_types:
+                words_in_type = types.strip().split(&#34; &#34;)
+                type_acro = &#34;&#34;
+                for word in words_in_type:
+                    if word != &#34;&#34;:
+                        type_acro += word[0].upper()
+                defect_types.append(type_acro)
+            type_first_letters = &#34;, &#34;.join(defect_types)
+            if type_first_letters == &#34;&#34;:
+                type_first_letters = &#34;N/A&#34;
+            fill_cell(new_row_cells[cell_id], &#34;D&#34;+str(count), risks_font_colors[level], risks_bg_colors[level], True)
+            fill_cell(new_row_cells[cell_tit], o_defect[&#34;title&#34;], risks_font_colors[level], risks_bg_colors[level])
+            fill_cell(new_row_cells[cell_ease], o_defect[&#34;ease&#34;], risks_font_colors[level], risks_bg_colors[level])
+            fill_cell(new_row_cells[cell_impact], o_defect[&#34;impact&#34;], risks_font_colors[level], risks_bg_colors[level])
+            fill_cell(new_row_cells[cell_type], type_first_letters, risks_font_colors[level], risks_bg_colors[level])
+            count_correctif = 1
+            id_correctif = &#34;A&#34;+str(count)
+            new_row_c_cells = table_c.add_row().cells
+            if table_res_i is not None:
+                write_res_table_fix_line(table_res, risks_bg_colors[level], id_correctif, {&#34;title&#34;:&#34;A definir&#34;, &#34;execution&#34;:&#34;A def&#34;, &#34;gain&#34;:&#34;A def&#34;})
+                nb_line_res_table += 1
+                format_block_res_table(table_res, start_defect_line_on_res_table, nb_line_res_table)
+            fill_cell(new_row_c_cells[cell_c_id], id_correctif, None, None, True)
+            fill_cell(new_row_c_cells[cell_c_tit], &#34;A definir&#34;)
+            fill_cell(new_row_c_cells[cell_c_ease], &#34;A def&#34;, risks_font_colors[&#34;Critique&#34;], fixes_bg_colors[&#34;Quick Win&#34;])
+            fill_cell(new_row_c_cells[cell_c_gain], &#34;A def&#34;, risks_font_colors[&#34;Critique&#34;], fixes_bg_colors[&#34;Quick Win&#34;])
+            if table_res_i is not None:
+                format_block_res_table(table_res, start_defect_line_on_res_table, nb_line_res_table)
+    # Ajustement de la taille des lignes pour combler la page
+    # pageSize = 19 # Valeur totalement arbitraire calculé en regardant si le résultat était bon *PAN*
+    # for row in table_c.rows:
+    #     row.height = Cm(pageSize/len(table_c.rows))
+    # for row in table.rows:
+    #     row.height = Cm(pageSize/len(table.rows))
+    # Fixe a 1 cm
+    for row in table_c.rows:
+        row.height = Cm(1)
+        row.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    for row in table.rows:
+        row.height = Cm(1)
+        row.line_spacing_rule = WD_LINE_SPACING.SINGLE</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.populate_services_table"><code class="name flex">
+<span>def <span class="ident">populate_services_table</span></span>(<span>document, parent)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_services_table(document, parent):
+    table, _ = findRowContaining(document, &#34;var_ssum_ip&#34;)
+    if table is None:
+        return
+    replaceTextInTable(table, &#34;var_ssum_ip&#34;, &#34;IP&#34;)
+    replaceTextInTable(table, &#34;var_ssum_port&#34;, &#34;Port&#34;)
+    replaceTextInTable(table, &#34;var_ssum_proto&#34;, &#34;Protocole&#34;)
+    replaceTextInTable(table, &#34;var_ssum_comment&#34;, &#34;Commentaires&#34;)
+    ips = Ip.fetchObjects({&#34;in_scopes&#34;: {&#34;$ne&#34;:[]}})
+    cursorAsList = [c for c in ips] # NOT OPTIMIZED
+    nbOfIp = len(cursorAsList)
+    if nbOfIp &gt;= 10:
+        if parent is None:
+            parent = tk.Toplevel()
+        dialog = ChildDialogQuestion(parent,
+            &#34;Warning&#34;, &#34;The service table will contain &#34;+str(nbOfIp)+&#34; IPs with their ports. It would add a lot of pages to the document. Do you want to keep or discard the service table for this report?&#34;, [&#34;Keep&#34;, &#34;Discard&#34;])
+        parent.wait_window(dialog.app)
+        if dialog.rvalue == &#34;Discard&#34;:
+            table._element.getparent().remove(table._element) # pylint: disable=protected-access
+            return
+    for ip in cursorAsList:
+        ligne_deb = len(table.rows)
+        ports = Port.fetchObjects({&#34;ip&#34;:ip.ip})
+        for port in ports:
+            new_row_cells = table.add_row().cells
+            fill_cell(new_row_cells[1], port.port if port.proto == &#34;tcp&#34; else port.proto+&#34;/&#34;+port.port)
+            fill_cell(new_row_cells[2], port.service)
+            fill_cell(new_row_cells[3], port.product)
+
+        ligne_end = len(table.rows)
+        if len(table.rows) != ligne_deb:
+            cell_merge = table.cell(ligne_deb, 0)
+            merged_cell = cell_merge.merge(table.cell(ligne_end-1, 0))
+            merged_cell.text = ip.ip
+            merged_cell.paragraphs[0].style = cell_style
+            merged_cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.remove_row"><code class="name flex">
+<span>def <span class="ident">remove_row</span></span>(<span>table, row)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>remove a given row inside a given table
+Args:
+table: the table we want to delete a row in
+row: the row to delete</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_row(table, row):
+    &#34;&#34;&#34;
+    remove a given row inside a given table
+        Args:
+            table: the table we want to delete a row in
+            row: the row to delete
+
+    &#34;&#34;&#34;
+    tbl = table._tbl  # pylint: disable=protected-access
+    tr = row._tr  # pylint: disable=protected-access
+    tbl.remove(tr)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.replaceTextInDocument"><code class="name flex">
+<span>def <span class="ident">replaceTextInDocument</span></span>(<span>document, search, replace)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Replace at a run level a text that will be searched in all the document paragraphs and tables.
+Args:
+document: the document object (opened word docx with at lease one paragraph or table inside)
+search: The string to search for that will be replaced. //!\ The search is done at a run level
+replace: The string to replace the search by.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaceTextInDocument(document, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all the document paragraphs and tables.
+        Args:
+            document: the document object (opened word docx with at lease one paragraph or table inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+    &#34;&#34;&#34;
+    _replaceTextInTable(document, search, replace)
+    _replaceTextInParagraphes(document, search, replace)
+    _replaceTextInHeaders(document, search, replace)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.replaceTextInParagraph"><code class="name flex">
+<span>def <span class="ident">replaceTextInParagraph</span></span>(<span>paragraph, search, replace)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Replace at a run level a text that will be searched in the given paragraph.
+Args:
+table: the table we want to replace a text inside
+search: The string to search for that will be replaced. //!\ The search is done at a run level
+replace: The string to replace the search by.
+Returns:
+Return None if nothing was found, the run where the string was replaced otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaceTextInParagraph(paragraph, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in the given paragraph.
+        Args:
+            table: the table we want to replace a text inside
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+        Returns:
+            Return None if nothing was found, the run where the string was replaced otherwise
+    &#34;&#34;&#34;
+    if search in paragraph.text:
+        for run in paragraph.runs:
+            inline = paragraph.runs
+            # Loop added to work with runs (strings with same style)
+            for i in range(len(inline)):
+                if search in inline[i].text:
+                    inline[i].text = inline[i].text.replace(search, replace)  
+                    return run
+        paragraph.text = paragraph.text.replace(search, replace)
+        return paragraph
+    return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.replaceTextInTable"><code class="name flex">
+<span>def <span class="ident">replaceTextInTable</span></span>(<span>table, search, replace)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Replace at a run level a text that will be searched in the given table cells.
+Args:
+table: the table we want to replace a text inside
+search: The string to search for that will be replaced. //!\ The search is done at a run level
+replace: The string to replace the search by.
+Returns:
+Return None if nothing was found, (row's index, cell's index) otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaceTextInTable(table, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in the given table cells.
+        Args:
+            table: the table we want to replace a text inside
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+        Returns:
+            Return None if nothing was found, (row&#39;s index, cell&#39;s index) otherwise
+    &#34;&#34;&#34;
+    for i_row, row in enumerate(table.rows):
+        for i_cell, cell in enumerate(row.cells):
+            for paragraph in cell.paragraphs:
+                if search in paragraph.text:
+                    inline = paragraph.runs
+                    # Loop added to work with runs (strings with same style)
+                    for i in range(len(inline)):
+                        if search in inline[i].text:
+                            inline[i].text = inline[i].text.replace(search, replace)
+                            return i_row, i_cell</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.set_cell_border"><code class="name flex">
+<span>def <span class="ident">set_cell_border</span></span>(<span>cell, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set cell`s border
+Usage:</p>
+<p>set_cell_border(
+cell,
+top={"sz": 12, "val": "single", "color": "#FF0000", "space": "0"},
+bottom={"sz": 12, "color": "#00FF00", "val": "single"},
+start={"sz": 24, "val": "dashed", "shadow": "true"},
+end={"sz": 12, "val": "dashed"},
+)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_cell_border(cell, **kwargs):
+    &#34;&#34;&#34;
+    Set cell`s border
+    Usage:
+
+    set_cell_border(
+        cell,
+        top={&#34;sz&#34;: 12, &#34;val&#34;: &#34;single&#34;, &#34;color&#34;: &#34;#FF0000&#34;, &#34;space&#34;: &#34;0&#34;},
+        bottom={&#34;sz&#34;: 12, &#34;color&#34;: &#34;#00FF00&#34;, &#34;val&#34;: &#34;single&#34;},
+        start={&#34;sz&#34;: 24, &#34;val&#34;: &#34;dashed&#34;, &#34;shadow&#34;: &#34;true&#34;},
+        end={&#34;sz&#34;: 12, &#34;val&#34;: &#34;dashed&#34;},
+    )
+    &#34;&#34;&#34;
+    tc = cell._tc # pylint: disable=protected-access
+    tcPr = tc.get_or_add_tcPr()
+
+    # check for tag existnace, if none found, then create one
+    tcBorders = tcPr.first_child_found_in(&#34;w:tcBorders&#34;)
+    if tcBorders is None:
+        tcBorders = OxmlElement(&#39;w:tcBorders&#39;)
+        tcPr.append(tcBorders)
+
+    # list over all available tags
+    for edge in (&#39;start&#39;, &#39;top&#39;, &#39;end&#39;, &#39;bottom&#39;, &#39;insideH&#39;, &#39;insideV&#39;):
+        edge_data = kwargs.get(edge)
+        if edge_data:
+            tag = &#39;w:{}&#39;.format(edge)
+
+            # check for tag existnace, if none found, then create one
+            element = tcBorders.find(qn(tag))
+            if element is None:
+                element = OxmlElement(tag)
+                tcBorders.append(element)
+
+            # looks like order of attributes is important
+            for key in [&#34;sz&#34;, &#34;val&#34;, &#34;color&#34;, &#34;space&#34;, &#34;shadow&#34;]:
+                if key in edge_data:
+                    element.set(qn(&#39;w:{}&#39;.format(key)), str(edge_data[key]))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.set_hyperlink"><code class="name flex">
+<span>def <span class="ident">set_hyperlink</span></span>(<span>paragraph, run, url, text, style)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_hyperlink(paragraph, run, url, text, style):
+    # This gets access to the document.xml.rels file and gets a new relation id value
+    run.font.underline = True
+    if style is not None:
+        run.style = style
+    part = paragraph.part
+    r_id = part.relate_to(url, docx.opc.constants.RELATIONSHIP_TYPE.HYPERLINK, is_external=True)
+    index_in_paragraph = paragraph._p.index(run.element)
+    # Create the w:hyperlink tag and add needed values
+    hyperlink = docx.oxml.shared.OxmlElement(&#39;w:hyperlink&#39;)
+    hyperlink.set(docx.oxml.shared.qn(&#39;r:id&#39;), r_id, )
+    hyperlink.append(run.element)
+    paragraph._p[index_in_paragraph:index_in_paragraph] = [hyperlink]
+    # Delete this if using a template that has the hyperlink style in it
+    return hyperlink</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.splitRunOnMarker"><code class="name flex">
+<span>def <span class="ident">splitRunOnMarker</span></span>(<span>paragraph, run, regexToSearch, markerToRemove)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def splitRunOnMarker(paragraph, run, regexToSearch, markerToRemove):
+    regex = re.compile(regexToSearch, re.MULTILINE)
+    matched = re.findall(regex, run.text)
+    for match in matched:
+        print(&#34;Found pattern in &#34;+str(run.text)+ &#34; pattern is |&#34;+regexToSearch+&#34;|&#34;)
+        start = run.text.index(markerToRemove+match+markerToRemove)
+        end = start+len(markerToRemove+match+markerToRemove)
+        split_runs = split_run_in_three(paragraph, run, start, end)
+        split_runs[1].text = split_runs[1].text.replace(markerToRemove+match+markerToRemove, match)
+        return split_runs
+    return [run]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.split_run_in_three"><code class="name flex">
+<span>def <span class="ident">split_run_in_three</span></span>(<span>paragraph, run, split_start, split_end)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_run_in_three(paragraph, run, split_start, split_end):
+    first_split = split_run_in_two(paragraph, run, split_end)
+    second_split = split_run_in_two(paragraph, run, split_start)
+    return second_split + [first_split[-1]]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.split_run_in_two"><code class="name flex">
+<span>def <span class="ident">split_run_in_two</span></span>(<span>paragraph, run, split_index)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_run_in_two(paragraph, run, split_index):
+    index_in_paragraph = paragraph._p.index(run.element) # pylint: disable=protected-access
+
+    text_before_split = run.text[0:split_index]
+    text_after_split = run.text[split_index:]
+    
+    run.text = text_before_split
+    new_run = paragraph.add_run(text_after_split)
+    copy_format_manual(run, new_run)
+    paragraph._p[index_in_paragraph+1:index_in_paragraph+1] = [new_run.element] # pylint: disable=protected-access
+    return [run, new_run]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.write_defect_from_input"><code class="name flex">
+<span>def <span class="ident">write_defect_from_input</span></span>(<span>result, document, table_d, separator, o_defect, count)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_defect_from_input(result, document, table_d, separator, o_defect, count):
+    desc = result[0][&#34;description&#34;].replace(&#34;\r&#34;, &#34;&#34;)
+    desc_paras = desc.split(&#34;\n&#34;)
+    synthesis = result[0].get(&#34;synthesis&#34;, None)
+    if synthesis is not None:
+        desc_paras.insert(0, synthesis.replace(&#34;\r&#34;, &#34;&#34;).strip())
+    desc_paras.insert(1, &#34;ToDo &#34;+str(o_defect[&#34;redactor&#34;]))
+    desc_paras.insert(2, &#34;\n&#34;)
+    replaceTextInTable(table_d, &#34;var_d_description&#34;, desc_paras[0].strip())
+    first_separator = separator
+    if len(desc_paras) &gt; 1:
+        paragraphAccumulator = &#34;&#34;
+        for note in desc_paras[1:]:
+            if note.strip() != &#34;&#34;:
+                paragraphAccumulator += note.strip()+&#34;\n&#34;
+            else:
+                if paragraphAccumulator.strip() != &#34;&#34;:
+                    separator = insert_paragraph_after(separator, paragraphAccumulator.strip(), normal_style)
+                paragraphAccumulator = &#34;&#34;
+        if paragraphAccumulator.strip() != &#34;&#34;:
+            separator = insert_paragraph_after(separator, paragraphAccumulator.strip(), normal_style)
+    details = o_defect.get(&#34;details&#34;, {})
+    for detail in details.values():
+        separator = insert_paragraph_after(separator, detail[&#34;notes&#34;].strip(), normal_style)
+        if detail[&#34;pics&#34;]:
+            separator = insert_images_after(separator, detail[&#34;pics&#34;])
+    if first_separator == separator:
+        first_separator.text = &#34;\n&#34;
+    else:
+        delete_paragraph(first_separator)
+    write_every_defect_fix(result[0][&#34;fixes&#34;], document, separator, count)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.write_each_defect"><code class="name flex">
+<span>def <span class="ident">write_each_defect</span></span>(<span>document, defects_dict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>for each default
+Copy a table and a paragraph form the template marked with var_d_id and var_d_separator.
+replace the markers var_d_id var_d_separator var_d_id var_d_title var_d_ease var_d_impact var_d_description
+Then for each fixe of this default
+Copy a table form the template marked with var_c_id.
+replace the markers var_c_id var_d_separator var_c_title var_c_ease var_c_gain var_c_description</p>
+<pre><code>Args:
+    document: the document to search elements in
+    defects_dict: the dictionary of defect gotten with the dedicated function getDefectDictFromExcel
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_each_defect(document, defects_dict):
+    &#34;&#34;&#34;
+    for each default
+       Copy a table and a paragraph form the template marked with var_d_id and var_d_separator.
+       replace the markers var_d_id var_d_separator var_d_id var_d_title var_d_ease var_d_impact var_d_description
+    Then for each fixe of this default
+        Copy a table form the template marked with var_c_id.
+        replace the markers var_c_id var_d_separator var_c_title var_c_ease var_c_gain var_c_description
+
+        Args:
+            document: the document to search elements in
+            defects_dict: the dictionary of defect gotten with the dedicated function getDefectDictFromExcel
+
+    &#34;&#34;&#34;
+    levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+    count = 0
+    total_len = 0
+    for level in levels:
+        total_len += len(defects_dict[level].values())
+    for level in levels:
+        for defect_dict in defects_dict[level].values():
+            count += 1
+            o_defect = defect_dict[&#34;description&#34;]
+            table_d, table_i = findRowContaining(document, &#34;var_d_id&#34;)
+            separator = findParagraphContaining(document, &#39;var_d_separator&#39;)
+            copy_table_after(table_d, separator, &#34;var_d_separator&#34;)
+            replaceTextInTable(table_d, &#34;var_d_id&#34;, &#34;D&#34;+str(count))
+            replaceTextInTable(table_d, &#34;var_d_title&#34;, o_defect[&#34;title&#34;])
+            replaceTextInTable(table_d, &#34;var_d_ease&#34;, o_defect[&#34;ease&#34;])
+            replaceTextInTable(table_d, &#34;var_d_impact&#34;, o_defect[&#34;impact&#34;])
+            result = [
+                    {
+                        &#34;id&#34;:&#34;0&#34;,
+                        &#34;title&#34;: o_defect[&#34;title&#34;],
+                        &#34;ease&#34;: o_defect[&#34;ease&#34;],
+                        &#34;impact&#34;: o_defect[&#34;impact&#34;],
+                        &#34;risk&#34;: o_defect[&#34;risk&#34;],
+                        &#34;type&#34;: o_defect[&#34;type&#34;],
+                        &#34;description&#34;: &#34;Description&#34;,
+                        &#34;details&#34;: {},
+                        &#34;notes&#34;: o_defect.get(&#34;notes&#34;, &#34;&#34;),
+                        &#34;fixes&#34;: [
+                            {
+                                &#34;title&#34;: &#34;A def&#34;,
+                                &#34;execution&#34;: &#34;Modérée&#34;,
+                                &#34;gain&#34;: &#34;Moyen&#34;,
+                                &#34;description&#34;: &#34;A definir&#34;
+                            }
+                        ]
+                    }
+                ]
+            o_defect[&#34;details&#34;] = {}
+            for ids in defect_dict.get(&#34;defects_ids&#34;, []):
+                o_defect[&#34;details&#34;][ids] = o_defect[&#34;details&#34;].get(ids, {})
+                defect_m = Defect.fetchObject({&#34;_id&#34;:ObjectId(ids)})
+                target = &#34;&#34;
+                notes = &#34;&#34;
+                if defect_m.ip != &#34;&#34; and defect_m.ip is not None:
+                    target += defect_m.ip
+                if defect_m.port != &#34;&#34; and defect_m.port is not None:
+                    protostr = &#34;&#34; if defect_m.proto == &#34;tcp&#34; else &#34;udp/&#34;
+                    target += &#34;:&#34;+protostr+defect_m.port
+                if defect_m.notes.strip() == &#34;&#34;:
+                    defect_m.notes = &#34;&#34;
+                elif len(defect_m.notes.strip()) &gt; 2500:
+                    defect_m.notes = &#34;ToDo : Too much notes to paste it there.&#34;
+                if target != &#34;&#34;:
+                    if defect_m.notes.strip() == &#34;&#34;:
+                        notes = target+&#34;: Vulnerable.&#34;
+                    else:
+                        notes = target+&#34;:\n&#34;+defect_m.notes
+                else:
+                    if defect_m.notes.strip() != &#34;&#34;:
+                        notes = &#34;Notes: &#34;+defect_m.notes
+                o_defect[&#34;details&#34;][ids][&#34;notes&#34;] = notes
+                pics = []
+                for i_proof, _proof in enumerate(defect_m.proofs):
+                    ret = defect_m.getProof(i_proof)
+                    if ret is not None:
+                        pics.append(ret)
+                o_defect[&#34;details&#34;][ids][&#34;pics&#34;] = pics
+            write_defect_from_input(result, document, table_d, separator, o_defect, count)
+            progressbar.update()
+        # Delete remaining copies
+        table_d, table_i = findRowContaining(document, &#34;var_d_id&#34;)
+        separator = findParagraphContaining(document, &#39;var_d_separator&#39;)
+        if separator is not None:
+            delete_paragraph(separator)
+        for _ in range(len(table_d.rows)):
+            remove_row(table_d, table_d.rows[0])
+        del document.tables[table_i]
+    # Delete remaining correctif copy
+    table_c, table_c_i = findRowContaining(document, &#34;var_c_id&#34;)
+    for _ in range(len(table_c.rows)):
+        remove_row(table_c, table_c.rows[0])
+    del document.tables[table_c_i]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.write_every_defect_fix"><code class="name flex">
+<span>def <span class="ident">write_every_defect_fix</span></span>(<span>fixes, document, last_defect_paragraph, count)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_every_defect_fix(fixes, document, last_defect_paragraph, count):
+    # print(&#34;write fixes for &#34;+str(count)+ &#34; after &#34;+str(last_defect_paragraph.text))
+    for fixe_i in range(len(fixes)-1, -1, -1):
+        id_correctif = &#34;A&#34;+str(count)
+        fixe = fixes[fixe_i]
+        if len(fixes) &gt; 1:
+            id_correctif += &#34;.&#34;+str(fixe_i+1)
+        # Find the original fix to copy and fill
+        table_c, _ = findRowContaining(document, &#34;var_c_id&#34;)
+        if table_c is None:
+            raise Exception(&#34;Error, fixe table was deleted too soon. RIP&#34;)
+        # Add notes paragraph after it
+        _, added_paragraph = copy_table_after(table_c, last_defect_paragraph, &#34;var_c_notes\n&#34;)
+
+        copied_table_c, _ = findRowContaining(document, &#34;var_c_id&#34;)
+        replaceTextInTable(copied_table_c, &#34;var_c_id&#34;, id_correctif)
+        replaceTextInTable(copied_table_c, &#34;var_c_title&#34;, fixe[&#34;title&#34;])
+        replaceTextInTable(copied_table_c, &#34;var_c_ease&#34;, fixe[&#34;execution&#34;])
+        replaceTextInTable(copied_table_c, &#34;var_c_gain&#34;, fixe[&#34;gain&#34;])
+        desc = fixe[&#34;description&#34;].replace(&#34;\r&#34;, &#34;&#34;)
+        desc_paras = desc.split(&#34;\n&#34;)
+        fixe_synthesis = fixe.get(&#34;synthesis&#34;, None)
+        if fixe_synthesis is not None:
+            desc_paras.insert(0, fixe_synthesis)
+        replaceTextInTable(copied_table_c, &#34;var_c_description&#34;, desc_paras[0].strip())
+        # added_paragraph: premier paragraphe dessous le tableau
+        # c_separator: paragraphes supplémentaires éventuelles
+        c_separator = added_paragraph
+        if len(desc_paras) &gt; 1:
+            paragraphAccumulator = &#34;&#34;
+            for note in desc_paras[1:]:
+                if note.strip() != &#34;&#34;:
+                    paragraphAccumulator += note.strip()+&#34;\n&#34;
+                else:
+                    if paragraphAccumulator.strip() != &#34;&#34;:
+                        c_separator = insert_paragraph_after(c_separator, paragraphAccumulator.strip(), normal_style)
+                    paragraphAccumulator = &#34;&#34;
+            if paragraphAccumulator.strip() != &#34;&#34;:
+                c_separator = insert_paragraph_after(c_separator, paragraphAccumulator.strip(), normal_style)
+        if added_paragraph == c_separator:
+            c_separator.text=&#34;\n&#34;
+        else:
+            delete_paragraph(added_paragraph)
+        if fixe_i == len(fixes)-1:
+            c_separator = insert_paragraph_after(c_separator, &#34;\n&#34;, normal_style)
+            insertPageBreak(c_separator)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.write_res_table_defect_line"><code class="name flex">
+<span>def <span class="ident">write_res_table_defect_line</span></span>(<span>table_res, risks_font_colors, risks_bg_colors, count, o_defect)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_res_table_defect_line(table_res, risks_font_colors, risks_bg_colors, count, o_defect):
+    new_row_cells = table_res.add_row().cells
+    level = o_defect[&#34;risk&#34;]
+    fill_cell(new_row_cells[0], &#34;D&#34;+str(count), risks_font_colors[level], risks_bg_colors[level], True)
+    run = new_row_cells[0].paragraphs[0].runs[0]
+    font = run.font
+    run.bold = True
+    font.size = Pt(11)
+    fill_cell(new_row_cells[1], o_defect[&#34;title&#34;], risks_font_colors[level], risks_bg_colors[level])
+    run = new_row_cells[1].paragraphs[0].runs[0]
+    font = run.font
+    font.size = Pt(11)
+    fill_cell(new_row_cells[3], &#34;Risque\n&#34;, risks_font_colors[level], risks_bg_colors[level])
+    new_row_cells[3].paragraphs[0].add_run(o_defect[&#34;risk&#34;], style=&#34;contentStyle&#34;)
+    new_row_cells[3].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    header_run = new_row_cells[3].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    header_run.italic = True
+    value_run = new_row_cells[3].paragraphs[0].runs[1]
+    font = value_run.font
+    font.size = Pt(11)
+    font.color.rgb = risks_font_colors[o_defect[&#34;risk&#34;]]
+    fill_cell(new_row_cells[4], &#34;Exploitation\n&#34;, risks_font_colors[level], risks_bg_colors[level])
+    new_row_cells[4].paragraphs[0].add_run(o_defect[&#34;risk&#34;], style=&#34;contentStyle&#34;)
+    new_row_cells[4].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+    header_run = new_row_cells[4].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    header_run.italic = True
+    value_run = new_row_cells[4].paragraphs[0].runs[1]
+    font = value_run.font
+    font.size = Pt(11)
+    font.color.rgb = risks_font_colors[o_defect[&#34;risk&#34;]]
+    fill_cell(new_row_cells[5], &#34;Impact\n&#34;, risks_font_colors[level], risks_bg_colors[level])
+    new_row_cells[5].paragraphs[0].add_run(o_defect[&#34;impact&#34;], style=&#34;contentStyle&#34;)
+    new_row_cells[5].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+    header_run = new_row_cells[5].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    header_run.italic = True
+    value_run = new_row_cells[5].paragraphs[0].runs[1]
+    font = value_run.font
+    font.size = Pt(11)
+    font.color.rgb = risks_font_colors[o_defect[&#34;risk&#34;]]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.WordExport.write_res_table_fix_line"><code class="name flex">
+<span>def <span class="ident">write_res_table_fix_line</span></span>(<span>table_res, risk_bg_color, id_correctif, fixe)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_res_table_fix_line(table_res, risk_bg_color, id_correctif, fixe):
+    new_row_cells = table_res.add_row().cells
+    black = RGBColor(0x26, 0x32, 0x32)
+    gray = &#34;E9E9E9&#34;
+    lightgray = RGBColor(0x79, 0x79, 0x79)
+    fill_cell(new_row_cells[0], &#34; &#34;, black, risk_bg_color)
+    fill_cell(new_row_cells[1], id_correctif, black, gray, True)
+    run = new_row_cells[1].paragraphs[0].runs[0]
+    font = run.font
+    run.bold = True
+    font.size = Pt(11)
+    fill_cell(new_row_cells[2], fixe[&#34;title&#34;], black, gray)
+    fill_cell(new_row_cells[4], &#34;Mise en œuvre\n&#34;, black, gray)
+    new_row_cells[4].paragraphs[0].add_run(fixe[&#34;execution&#34;], style=&#39;contentStyleFix&#39;)
+    new_row_cells[4].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+    header_run = new_row_cells[4].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    font.color.rgb = lightgray
+    header_run.italic = True
+    fill_cell(new_row_cells[5], &#34;Gain\n&#34;, black, gray)
+    new_row_cells[5].paragraphs[0].add_run(fixe[&#34;gain&#34;], style=&#39;contentStyleFix&#39;)
+    new_row_cells[5].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+    header_run = new_row_cells[5].paragraphs[0].runs[0]
+    font = header_run.font
+    font.size = Pt(9)
+    font.color.rgb = lightgray
+    header_run.italic = True</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Reporting.WordExport.DummyProgressBar"><code class="flex name class">
+<span>class <span class="ident">DummyProgressBar</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DummyProgressBar:
+    def update(self):
+        return</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Reporting.WordExport.DummyProgressBar.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self):
+    return</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Reporting" href="index.html">Pollenisator.core.Reporting</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.core.Reporting.WordExport.add_hyperlink" href="#Pollenisator.core.Reporting.WordExport.add_hyperlink">add_hyperlink</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.copy_format_manual" href="#Pollenisator.core.Reporting.WordExport.copy_format_manual">copy_format_manual</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.copy_table_after" href="#Pollenisator.core.Reporting.WordExport.copy_table_after">copy_table_after</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.createReport" href="#Pollenisator.core.Reporting.WordExport.createReport">createReport</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.delete_paragraph" href="#Pollenisator.core.Reporting.WordExport.delete_paragraph">delete_paragraph</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.downloadImgData" href="#Pollenisator.core.Reporting.WordExport.downloadImgData">downloadImgData</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.fill_cell" href="#Pollenisator.core.Reporting.WordExport.fill_cell">fill_cell</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.findParagraphContaining" href="#Pollenisator.core.Reporting.WordExport.findParagraphContaining">findParagraphContaining</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.findRowContaining" href="#Pollenisator.core.Reporting.WordExport.findRowContaining">findRowContaining</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.format_block_res_table" href="#Pollenisator.core.Reporting.WordExport.format_block_res_table">format_block_res_table</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.getParagraphs" href="#Pollenisator.core.Reporting.WordExport.getParagraphs">getParagraphs</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.insertPageBreak" href="#Pollenisator.core.Reporting.WordExport.insertPageBreak">insertPageBreak</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.insert_images_after" href="#Pollenisator.core.Reporting.WordExport.insert_images_after">insert_images_after</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.insert_paragraph_after" href="#Pollenisator.core.Reporting.WordExport.insert_paragraph_after">insert_paragraph_after</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.mardownCodeBlockToWordStyle" href="#Pollenisator.core.Reporting.WordExport.mardownCodeBlockToWordStyle">mardownCodeBlockToWordStyle</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownArrayToWordList" href="#Pollenisator.core.Reporting.WordExport.markdownArrayToWordList">markdownArrayToWordList</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownCodeToWordStyle" href="#Pollenisator.core.Reporting.WordExport.markdownCodeToWordStyle">markdownCodeToWordStyle</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownEmphasisToItalic" href="#Pollenisator.core.Reporting.WordExport.markdownEmphasisToItalic">markdownEmphasisToItalic</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownHeaderToWordStyle" href="#Pollenisator.core.Reporting.WordExport.markdownHeaderToWordStyle">markdownHeaderToWordStyle</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownImgToInsertedImage" href="#Pollenisator.core.Reporting.WordExport.markdownImgToInsertedImage">markdownImgToInsertedImage</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownLinkToHyperlink" href="#Pollenisator.core.Reporting.WordExport.markdownLinkToHyperlink">markdownLinkToHyperlink</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownStrikeThroughToStrike" href="#Pollenisator.core.Reporting.WordExport.markdownStrikeThroughToStrike">markdownStrikeThroughToStrike</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownStrongEmphasisToBold" href="#Pollenisator.core.Reporting.WordExport.markdownStrongEmphasisToBold">markdownStrongEmphasisToBold</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownToWordInDocument" href="#Pollenisator.core.Reporting.WordExport.markdownToWordInDocument">markdownToWordInDocument</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownToWordInParagraph" href="#Pollenisator.core.Reporting.WordExport.markdownToWordInParagraph">markdownToWordInParagraph</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownToWordInRun" href="#Pollenisator.core.Reporting.WordExport.markdownToWordInRun">markdownToWordInRun</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.markdownUnorderedListToWordList" href="#Pollenisator.core.Reporting.WordExport.markdownUnorderedListToWordList">markdownUnorderedListToWordList</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.move_table_after" href="#Pollenisator.core.Reporting.WordExport.move_table_after">move_table_after</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.populate_defect_summary_table" href="#Pollenisator.core.Reporting.WordExport.populate_defect_summary_table">populate_defect_summary_table</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.populate_services_table" href="#Pollenisator.core.Reporting.WordExport.populate_services_table">populate_services_table</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.remove_row" href="#Pollenisator.core.Reporting.WordExport.remove_row">remove_row</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.replaceTextInDocument" href="#Pollenisator.core.Reporting.WordExport.replaceTextInDocument">replaceTextInDocument</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.replaceTextInParagraph" href="#Pollenisator.core.Reporting.WordExport.replaceTextInParagraph">replaceTextInParagraph</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.replaceTextInTable" href="#Pollenisator.core.Reporting.WordExport.replaceTextInTable">replaceTextInTable</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.set_cell_border" href="#Pollenisator.core.Reporting.WordExport.set_cell_border">set_cell_border</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.set_hyperlink" href="#Pollenisator.core.Reporting.WordExport.set_hyperlink">set_hyperlink</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.splitRunOnMarker" href="#Pollenisator.core.Reporting.WordExport.splitRunOnMarker">splitRunOnMarker</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.split_run_in_three" href="#Pollenisator.core.Reporting.WordExport.split_run_in_three">split_run_in_three</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.split_run_in_two" href="#Pollenisator.core.Reporting.WordExport.split_run_in_two">split_run_in_two</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.write_defect_from_input" href="#Pollenisator.core.Reporting.WordExport.write_defect_from_input">write_defect_from_input</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.write_each_defect" href="#Pollenisator.core.Reporting.WordExport.write_each_defect">write_each_defect</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.write_every_defect_fix" href="#Pollenisator.core.Reporting.WordExport.write_every_defect_fix">write_every_defect_fix</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.write_res_table_defect_line" href="#Pollenisator.core.Reporting.WordExport.write_res_table_defect_line">write_res_table_defect_line</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.WordExport.write_res_table_fix_line" href="#Pollenisator.core.Reporting.WordExport.write_res_table_fix_line">write_res_table_fix_line</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Reporting.WordExport.DummyProgressBar" href="#Pollenisator.core.Reporting.WordExport.DummyProgressBar">DummyProgressBar</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Reporting.WordExport.DummyProgressBar.update" href="#Pollenisator.core.Reporting.WordExport.DummyProgressBar.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

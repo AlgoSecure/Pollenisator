@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.Monitor API documentation</title>
+<meta name="description" content="Keep track of all celery workers. Also launchs, monitors and stops celery tasks." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.Monitor</code></h1>
+</header>
+<section id="section-intro">
+<p>Keep track of all celery workers. Also launchs, monitors and stops celery tasks.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Keep track of all celery workers. Also launchs, monitors and stops celery tasks.
+&#34;&#34;&#34;
+from celery import Celery
+import threading
+import multiprocessing
+from core.Components.Worker import Worker
+import core.Components.Utils as Utils
+import json
+import os
+from bson.objectid import ObjectId
+from bson.errors import InvalidId
+import ssl
+from core.Models.Tool import Tool
+from core.Components.mongo import MongoCalendar
+import AutoScanWorker as slave
+
+
+class Monitor:
+    &#34;&#34;&#34;
+    Keep track of all celery workers. Also launchs, monitors and stops celery tasks.
+    &#34;&#34;&#34;
+    def __init__(self, calendar):
+        &#34;&#34;&#34;
+        Constructor. Connect to Celery and start the thread receiving celery worker&#39;s events.
+        Args:
+            calendar: the pentest database name to monitor
+        &#34;&#34;&#34;
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        ssldir = os.path.join(dir_path, &#34;../../ssl/&#34;)
+        certs = {
+            &#39;keyfile&#39;: ssldir+&#39;client.pem&#39;,
+            &#39;certfile&#39;: ssldir+&#39;server.pem&#39;,
+            &#39;ca_certs&#39;: ssldir+&#39;ca.pem&#39;,
+            &#39;cert_reqs&#39;: ssl.CERT_REQUIRED
+        }
+        # manager = multiprocessing.Manager()
+        # self.worker_list = manager.dict()
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        cfg = Utils.loadClientConfig()
+        userString = cfg[&#34;user&#34;]+&#39;:&#39;+cfg[&#34;password&#34;] + \
+            &#39;@&#39; if cfg[&#39;user&#39;].strip() != &#34;&#34; else &#34;&#34;
+        if cfg[&#34;ssl&#34;] == &#34;True&#34;:
+            self.app = Celery(&#39;tasks&#39;, broker=&#39;mongodb://&#39; + userString + cfg[&#34;host&#34;] + &#34;:&#34;+cfg[&#34;mongo_port&#34;] +
+                              &#39;/broker_pollenisator?authSource=admin&amp;ssl=true&amp;ssl_ca_certs=&#39;+certs[&#34;ca_certs&#34;]+&#39;&amp;ssl_certfile=&#39;+certs[&#34;keyfile&#34;], connect_timeout=5000)
+        else:
+            self.app = Celery(&#39;tasks&#39;, broker=&#39;mongodb://&#39; + userString + cfg[&#34;host&#34;] + &#34;:&#34;+cfg[&#34;mongo_port&#34;] +
+                              &#39;/broker_pollenisator?authSource=admin&#39;, connect_timeout=5000)
+
+        self.state = self.app.events.State()
+        self.tasks_running = []
+        self.recv = None
+        self.calendar = calendar
+        # Shared worker list between the child process and main.
+        self.willStop = False
+        self.removeInactiveWorkersTimer = threading.Timer(
+            30, self.removeInactiveWorkers)
+        self.removeInactiveWorkersTimer.start()
+        self.processEvent = None
+        self.processEvent = threading.Thread(
+            target=self.run, args=(str(calendar), ))  #  This a thread not a process as it needs to catch this app Ctrl+C
+        self.processEvent.start()
+
+    def removeInactiveWorkers(self):
+        &#34;&#34;&#34;
+        Remove inactive workers every 30s
+        &#34;&#34;&#34;
+        print(&#34;Time to remove inactive workers !&#34;)
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.removeInactiveWorkers()
+        # if not self.willStop:
+        #     self.removeInactiveWorkersTimer = threading.Timer(
+        #         30, self.removeInactiveWorkers)
+        #     self.removeInactiveWorkersTimer.start()
+
+    def stopWorkersTimer(self):
+        &#34;&#34;&#34;
+        Stops the removing of inactive workers.
+        &#34;&#34;&#34;
+        self.willStop = True
+        if self.removeInactiveWorkers is not None:
+            self.removeInactiveWorkersTimer.cancel()
+
+    def stopTask(self, launchableTool):
+        &#34;&#34;&#34;
+        Stop the celery task corresponding to the given tool
+
+        Args:
+            launchableTool: a Tool document instance that was presumably launched.
+
+        Returns:
+            Return True if a tasks has been stopped, False otherwise.
+        &#34;&#34;&#34;
+        for task_running in self.tasks_running:
+            if task_running[1] == launchableTool[&#34;_id&#34;]:
+                task_running[0].revoke(terminate=True)
+                del task_running
+
+                return True
+        return False
+
+    
+    def launchTask(self, calendarName, launchableTool, parser=&#34;&#34;, checks=True, workerName=&#34;&#34;):
+        &#34;&#34;&#34;
+        launch the celery task corresponding to the given tool
+
+        Args:
+            calendarNamse: the calendar where the tool given is
+            launchableTool: a Tool document instance to launch.
+            parser: the plugin to use when the tool will be over, default to &#34;&#34; which means let the worker conf file decides.
+            checks: will check if worker selected has registered the launchable tool, default to True.
+            workerName: (Opt.) a worker name to use (&#34;localhost&#34; is valid)
+
+        Returns:
+            False if no worker was found capable of launching the given tool, True otherwise
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        # Check all workers to see if any space is availiable
+        from AutoScanWorker import executeCommand
+        if workerName == &#34;&#34;:
+            workers = mongoInstance.getWorkers()
+            for worker in workers:
+                if launchableTool is None:
+                    continue
+                worker = Worker(worker[&#34;name&#34;])
+                if worker.hasRegistered(launchableTool):
+                    if checks == False:
+                        workerName = worker.name
+                    else:
+                        if launchableTool is None:
+                            continue
+                        if worker.hasSpaceFor(launchableTool):
+                            workerName = worker.name
+                            break
+        # If no workers are availiable, stop there
+        if workerName == &#34;&#34;:
+            return False
+
+        launchableToolId = launchableTool.getId()
+        launchableTool.markAsRunning(workerName)
+        # Mark the tool as running (scanner_ip is set and dated is set, datef is &#34;None&#34;)
+        # Add a queue to the selected worker for this tool, So that only this worker will receive this task
+        if workerName != &#34;localhost&#34;:
+            queueName = str(mongoInstance.calendarName)+&#34;&amp;&#34; + \
+                workerName+&#34;&amp;&#34;+launchableTool.name
+            self.app.control.add_consumer(
+                queue=queueName,
+                reply=True,
+                exchange=&#34;celery&#34;,
+                exchange_type=&#34;direct&#34;,
+                routing_key=&#34;transient&#34;,
+                destination=[workerName])
+            result_async = executeCommand.apply_async(args=[calendarName, str(
+                launchableToolId), parser], queue=queueName, retry=False, serializer=&#34;json&#34;)
+            # Append to running tasks this celery result and the corresponding tool id
+            self.tasks_running.append([result_async, launchableToolId])
+        else:
+            thread = None
+            thread = multiprocessing.Process(target=slave.executeCommand, args=(
+                mongoInstance.calendarName, str(launchableToolId), parser))
+            thread.start()
+
+        # Execute this celery task
+        return True
+
+    def getWorkerList(self):
+        &#34;&#34;&#34;
+        Return the worker list
+
+        Returns:
+            Return the workers name list
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        l = []
+        workers = mongoInstance.getWorkers()
+        for worker in workers:
+            l.append(worker[&#34;name&#34;])
+        return l
+
+    def hasWorkers(self):
+        &#34;&#34;&#34;
+        Check if any worker is availiable
+
+        Returns:
+            Return True if at least one worker is availiable, False otherwise.
+        &#34;&#34;&#34;
+        return len(self.getWorkerList()) &gt; 0
+
+    def stop(self):
+        &#34;&#34;&#34;
+        Stop monitoring the celery events and revoke all celery tasks
+        &#34;&#34;&#34;
+
+        for task_running in self.tasks_running:
+            task_running[0].revoke(terminate=True)
+        self.stopWorkersTimer()
+        if self.processEvent is not None:
+            self.app.control.purge()
+            self.app.connection()
+            # if self.processEvent._popen is not None:  # pylint: disable=protected-access
+            print(&#34;Stopping monitoring... &#34;)
+            self.recv.should_stop = True
+            print(&#34;Stopped monitoring&#34;)
+
+    def addOnlineWorker(self, worker_hostname):
+        &#34;&#34;&#34;
+        Register a celery worker on the worker&#39;s list. Also deletes old queues and messages
+
+        Args:
+            worker_hostname: the worker hostname to register on worker&#39;s list
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        agg_queues = mongoInstance.aggregateFromDb(&#34;broker_pollenisator&#34;, &#34;messages.routing&#34;, [{&#34;$group&#34;: {&#34;_id&#34;: &#34;$queue&#34;}}, {
+            &#34;$match&#34;: {&#34;_id&#34;: {&#34;$regex&#34;: &#34;^.*&amp;&#34;+worker_hostname+&#34;&amp;.*$&#34;}}}])
+        mongoInstance.deleteFromDb(&#34;broker_pollenisator&#34;, &#34;messages.routing&#34;, {
+            &#34;queue&#34;: {&#34;$regex&#34;: &#34;^.*&amp;&#34;+worker_hostname+&#34;&amp;.*$&#34;}}, True)
+        for agg_queue in agg_queues:
+            Utils.execute(&#34;celery -A slave purge -f -Q &#39;&#34; +
+
+                          agg_queue[&#34;_id&#34;]+&#34;&#39;&#34;, None, False)
+        
+        self.workerRegisterCommands(worker_hostname)
+
+    def updateWorkerLastHeartbeat(self, worker_hostname):
+        &#34;&#34;&#34;Update the given worker last hearthbeat
+        Args:
+            worker_hostname: the worker name to be refreshed
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.updateWorkerLastHeartbeat(worker_hostname)
+
+    def workerRegisterCommands(self, worker_hostname):
+        &#34;&#34;&#34;Force a worker to register its configured command in database
+        Args:
+            worker_hostname: the worker name to be forced to register its commands
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        queueName = str(worker_hostname)+&#34;&amp;getcommands&#34;
+        self.app.control.add_consumer(
+            queue=queueName,
+            reply=True,
+            exchange=&#34;celery&#34;,
+            exchange_type=&#34;direct&#34;,
+            routing_key=&#34;transient&#34;,
+            destination=[worker_hostname])
+        # print &#34;adding get command&#34;
+        from AutoScanWorker import getCommands
+        getCommands.apply_async(
+            args=[mongoInstance.calendarName, worker_hostname], queue=queueName, retry=True, serializer=&#34;json&#34;)
+        return
+
+    def removeWorker(self, worker_hostname):
+        &#34;&#34;&#34;Remove a worker from database
+        Args:
+            worker_hostname: the worker name to be removed
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.removeWorker(worker_hostname)
+
+    ########################################################
+    ############# CELERY EVENTS CALLBACK BLOCK #############
+    ########################################################
+
+    def announce_failed_tasks(self, event):
+        &#34;&#34;&#34;
+        Called when a celery task fails. Is used to reset dates and scanner of the targeted tool.
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the task
+        &#34;&#34;&#34;
+        self.state.event(event)
+        task = self.state.tasks.get(event[&#39;uuid&#39;])  # get task
+        # Get tasks arguments
+        try:
+            argsWere = json.loads(task.info()[&#34;args&#34;].replace(&#34;&#39;&#34;, &#34;\&#34;&#34;))
+            args = argsWere[0]
+            toolId = ObjectId(args[1])  # args[1] is the tool_id
+            for task_running in self.tasks_running:
+                if str(task_running[1]) == str(toolId):
+                    task_running[0].revoke(terminate=True)
+                    del task_running
+            tool = Tool.fetchObject({&#34;_id&#34;: ObjectId(toolId)})
+            tool.markAsNotDone()
+        except InvalidId:
+            pass
+        except json.decoder.JSONDecodeError:
+            pass
+        except KeyError:
+            pass  # Plugin failed so &#34;args&#34; does not exist
+
+    def announce_online_worker(self, event):
+        &#34;&#34;&#34;
+        Called when a celery worker get online. Is used to register this worker in the worker_list
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the worker
+        &#34;&#34;&#34;
+        print(&#34;RECEIVED ONLINE EVENT&#34;)
+        worker_hostname = event[&#34;hostname&#34;].strip()
+        workers = self.getWorkerList()
+        # print &#34;WORKER ONLINE :&#34;+str(worker_hostname)
+        if worker_hostname not in list(workers):
+            self.addOnlineWorker(worker_hostname)
+
+    def announce_offline_worker(self, event):
+        &#34;&#34;&#34;
+        Called when a celery worker gets offline nicely. Is used to remove this worker from the worker_list
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the worker
+        &#34;&#34;&#34;
+        worker_hostname = event[&#34;hostname&#34;].strip()
+        workers = self.getWorkerList()
+        print(&#34;RECEIVE OFFLINE WORKER &#34;+str(worker_hostname))
+
+        if worker_hostname in list(workers):
+            toolsToReset = Tool.fetchObjects(
+                {&#34;datef&#34;: &#34;None&#34;, &#34;scanner_ip&#34;: worker_hostname})
+            for tool in toolsToReset:
+                tool.markAsNotDone()
+            self.removeWorker(worker_hostname)
+
+    def announce_heartbeat_worker(self, event):
+        &#34;&#34;&#34;
+        Called when a celery worker sends a heartbeat. Is used to register this worker in the worker_list if not already in.
+        Online event is only sent once. If celery workers were already launched, this will not be resend.
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the worker
+        &#34;&#34;&#34;
+        worker_hostname = event[&#34;hostname&#34;].strip()
+        workers = self.getWorkerList()
+        # print &#34;WORKER Heartbeat, can be received without having online if worker was already live :&#34;+worker_hostname
+        if worker_hostname not in workers:
+            # datef &#34;added worker already up&#34;
+            self.addOnlineWorker(worker_hostname)
+        else:
+            self.updateWorkerLastHeartbeat(worker_hostname)
+
+    def on_event(self, event):
+        &#34;&#34;&#34;
+        Capture all other events.
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the event
+        &#34;&#34;&#34;
+        # pass
+
+    def run(self, calendar):
+        &#34;&#34;&#34;
+        Start monitoring celery events
+        Will stop when receiving a KeyboardInterrupt
+        Args:
+            calendar: the pentest database name to monitor
+        &#34;&#34;&#34;
+        print(&#34;Starting monitor thread&#34;)
+        try:
+            self.recv = None
+            self.calendar = calendar
+            with self.app.connection() as connection:
+                self.recv = self.app.events.Receiver(connection, handlers={
+                    &#39;task-failed&#39;: self.announce_failed_tasks,
+                    &#39;worker-online&#39;: self.announce_online_worker,
+                    &#39;worker-offline&#39;: self.announce_offline_worker,
+                    &#39;worker-heartbeat&#39;: self.announce_heartbeat_worker,
+                    &#39;*&#39;: self.on_event,
+                })
+                self.recv.capture(limit=None, timeout=None, wakeup=True)
+        except(KeyboardInterrupt, SystemExit):
+            self.recv.should_stop = True
+            print(&#34;Should stop received...&#34;)
+            self.stop()
+        self.recv.should_stop = True
+        print(&#34;Should stop received...&#34;)
+        self.stop()
+        print(&#34;Ending monitor thread&#34;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.Monitor.Monitor"><code class="flex name class">
+<span>class <span class="ident">Monitor</span></span>
+<span>(</span><span>calendar)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Keep track of all celery workers. Also launchs, monitors and stops celery tasks.</p>
+<p>Constructor. Connect to Celery and start the thread receiving celery worker's events.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>calendar</code></strong></dt>
+<dd>the pentest database name to monitor</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Monitor:
+    &#34;&#34;&#34;
+    Keep track of all celery workers. Also launchs, monitors and stops celery tasks.
+    &#34;&#34;&#34;
+    def __init__(self, calendar):
+        &#34;&#34;&#34;
+        Constructor. Connect to Celery and start the thread receiving celery worker&#39;s events.
+        Args:
+            calendar: the pentest database name to monitor
+        &#34;&#34;&#34;
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        ssldir = os.path.join(dir_path, &#34;../../ssl/&#34;)
+        certs = {
+            &#39;keyfile&#39;: ssldir+&#39;client.pem&#39;,
+            &#39;certfile&#39;: ssldir+&#39;server.pem&#39;,
+            &#39;ca_certs&#39;: ssldir+&#39;ca.pem&#39;,
+            &#39;cert_reqs&#39;: ssl.CERT_REQUIRED
+        }
+        # manager = multiprocessing.Manager()
+        # self.worker_list = manager.dict()
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        cfg = Utils.loadClientConfig()
+        userString = cfg[&#34;user&#34;]+&#39;:&#39;+cfg[&#34;password&#34;] + \
+            &#39;@&#39; if cfg[&#39;user&#39;].strip() != &#34;&#34; else &#34;&#34;
+        if cfg[&#34;ssl&#34;] == &#34;True&#34;:
+            self.app = Celery(&#39;tasks&#39;, broker=&#39;mongodb://&#39; + userString + cfg[&#34;host&#34;] + &#34;:&#34;+cfg[&#34;mongo_port&#34;] +
+                              &#39;/broker_pollenisator?authSource=admin&amp;ssl=true&amp;ssl_ca_certs=&#39;+certs[&#34;ca_certs&#34;]+&#39;&amp;ssl_certfile=&#39;+certs[&#34;keyfile&#34;], connect_timeout=5000)
+        else:
+            self.app = Celery(&#39;tasks&#39;, broker=&#39;mongodb://&#39; + userString + cfg[&#34;host&#34;] + &#34;:&#34;+cfg[&#34;mongo_port&#34;] +
+                              &#39;/broker_pollenisator?authSource=admin&#39;, connect_timeout=5000)
+
+        self.state = self.app.events.State()
+        self.tasks_running = []
+        self.recv = None
+        self.calendar = calendar
+        # Shared worker list between the child process and main.
+        self.willStop = False
+        self.removeInactiveWorkersTimer = threading.Timer(
+            30, self.removeInactiveWorkers)
+        self.removeInactiveWorkersTimer.start()
+        self.processEvent = None
+        self.processEvent = threading.Thread(
+            target=self.run, args=(str(calendar), ))  #  This a thread not a process as it needs to catch this app Ctrl+C
+        self.processEvent.start()
+
+    def removeInactiveWorkers(self):
+        &#34;&#34;&#34;
+        Remove inactive workers every 30s
+        &#34;&#34;&#34;
+        print(&#34;Time to remove inactive workers !&#34;)
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.removeInactiveWorkers()
+        # if not self.willStop:
+        #     self.removeInactiveWorkersTimer = threading.Timer(
+        #         30, self.removeInactiveWorkers)
+        #     self.removeInactiveWorkersTimer.start()
+
+    def stopWorkersTimer(self):
+        &#34;&#34;&#34;
+        Stops the removing of inactive workers.
+        &#34;&#34;&#34;
+        self.willStop = True
+        if self.removeInactiveWorkers is not None:
+            self.removeInactiveWorkersTimer.cancel()
+
+    def stopTask(self, launchableTool):
+        &#34;&#34;&#34;
+        Stop the celery task corresponding to the given tool
+
+        Args:
+            launchableTool: a Tool document instance that was presumably launched.
+
+        Returns:
+            Return True if a tasks has been stopped, False otherwise.
+        &#34;&#34;&#34;
+        for task_running in self.tasks_running:
+            if task_running[1] == launchableTool[&#34;_id&#34;]:
+                task_running[0].revoke(terminate=True)
+                del task_running
+
+                return True
+        return False
+
+    
+    def launchTask(self, calendarName, launchableTool, parser=&#34;&#34;, checks=True, workerName=&#34;&#34;):
+        &#34;&#34;&#34;
+        launch the celery task corresponding to the given tool
+
+        Args:
+            calendarNamse: the calendar where the tool given is
+            launchableTool: a Tool document instance to launch.
+            parser: the plugin to use when the tool will be over, default to &#34;&#34; which means let the worker conf file decides.
+            checks: will check if worker selected has registered the launchable tool, default to True.
+            workerName: (Opt.) a worker name to use (&#34;localhost&#34; is valid)
+
+        Returns:
+            False if no worker was found capable of launching the given tool, True otherwise
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        # Check all workers to see if any space is availiable
+        from AutoScanWorker import executeCommand
+        if workerName == &#34;&#34;:
+            workers = mongoInstance.getWorkers()
+            for worker in workers:
+                if launchableTool is None:
+                    continue
+                worker = Worker(worker[&#34;name&#34;])
+                if worker.hasRegistered(launchableTool):
+                    if checks == False:
+                        workerName = worker.name
+                    else:
+                        if launchableTool is None:
+                            continue
+                        if worker.hasSpaceFor(launchableTool):
+                            workerName = worker.name
+                            break
+        # If no workers are availiable, stop there
+        if workerName == &#34;&#34;:
+            return False
+
+        launchableToolId = launchableTool.getId()
+        launchableTool.markAsRunning(workerName)
+        # Mark the tool as running (scanner_ip is set and dated is set, datef is &#34;None&#34;)
+        # Add a queue to the selected worker for this tool, So that only this worker will receive this task
+        if workerName != &#34;localhost&#34;:
+            queueName = str(mongoInstance.calendarName)+&#34;&amp;&#34; + \
+                workerName+&#34;&amp;&#34;+launchableTool.name
+            self.app.control.add_consumer(
+                queue=queueName,
+                reply=True,
+                exchange=&#34;celery&#34;,
+                exchange_type=&#34;direct&#34;,
+                routing_key=&#34;transient&#34;,
+                destination=[workerName])
+            result_async = executeCommand.apply_async(args=[calendarName, str(
+                launchableToolId), parser], queue=queueName, retry=False, serializer=&#34;json&#34;)
+            # Append to running tasks this celery result and the corresponding tool id
+            self.tasks_running.append([result_async, launchableToolId])
+        else:
+            thread = None
+            thread = multiprocessing.Process(target=slave.executeCommand, args=(
+                mongoInstance.calendarName, str(launchableToolId), parser))
+            thread.start()
+
+        # Execute this celery task
+        return True
+
+    def getWorkerList(self):
+        &#34;&#34;&#34;
+        Return the worker list
+
+        Returns:
+            Return the workers name list
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        l = []
+        workers = mongoInstance.getWorkers()
+        for worker in workers:
+            l.append(worker[&#34;name&#34;])
+        return l
+
+    def hasWorkers(self):
+        &#34;&#34;&#34;
+        Check if any worker is availiable
+
+        Returns:
+            Return True if at least one worker is availiable, False otherwise.
+        &#34;&#34;&#34;
+        return len(self.getWorkerList()) &gt; 0
+
+    def stop(self):
+        &#34;&#34;&#34;
+        Stop monitoring the celery events and revoke all celery tasks
+        &#34;&#34;&#34;
+
+        for task_running in self.tasks_running:
+            task_running[0].revoke(terminate=True)
+        self.stopWorkersTimer()
+        if self.processEvent is not None:
+            self.app.control.purge()
+            self.app.connection()
+            # if self.processEvent._popen is not None:  # pylint: disable=protected-access
+            print(&#34;Stopping monitoring... &#34;)
+            self.recv.should_stop = True
+            print(&#34;Stopped monitoring&#34;)
+
+    def addOnlineWorker(self, worker_hostname):
+        &#34;&#34;&#34;
+        Register a celery worker on the worker&#39;s list. Also deletes old queues and messages
+
+        Args:
+            worker_hostname: the worker hostname to register on worker&#39;s list
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        agg_queues = mongoInstance.aggregateFromDb(&#34;broker_pollenisator&#34;, &#34;messages.routing&#34;, [{&#34;$group&#34;: {&#34;_id&#34;: &#34;$queue&#34;}}, {
+            &#34;$match&#34;: {&#34;_id&#34;: {&#34;$regex&#34;: &#34;^.*&amp;&#34;+worker_hostname+&#34;&amp;.*$&#34;}}}])
+        mongoInstance.deleteFromDb(&#34;broker_pollenisator&#34;, &#34;messages.routing&#34;, {
+            &#34;queue&#34;: {&#34;$regex&#34;: &#34;^.*&amp;&#34;+worker_hostname+&#34;&amp;.*$&#34;}}, True)
+        for agg_queue in agg_queues:
+            Utils.execute(&#34;celery -A slave purge -f -Q &#39;&#34; +
+
+                          agg_queue[&#34;_id&#34;]+&#34;&#39;&#34;, None, False)
+        
+        self.workerRegisterCommands(worker_hostname)
+
+    def updateWorkerLastHeartbeat(self, worker_hostname):
+        &#34;&#34;&#34;Update the given worker last hearthbeat
+        Args:
+            worker_hostname: the worker name to be refreshed
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.updateWorkerLastHeartbeat(worker_hostname)
+
+    def workerRegisterCommands(self, worker_hostname):
+        &#34;&#34;&#34;Force a worker to register its configured command in database
+        Args:
+            worker_hostname: the worker name to be forced to register its commands
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        queueName = str(worker_hostname)+&#34;&amp;getcommands&#34;
+        self.app.control.add_consumer(
+            queue=queueName,
+            reply=True,
+            exchange=&#34;celery&#34;,
+            exchange_type=&#34;direct&#34;,
+            routing_key=&#34;transient&#34;,
+            destination=[worker_hostname])
+        # print &#34;adding get command&#34;
+        from AutoScanWorker import getCommands
+        getCommands.apply_async(
+            args=[mongoInstance.calendarName, worker_hostname], queue=queueName, retry=True, serializer=&#34;json&#34;)
+        return
+
+    def removeWorker(self, worker_hostname):
+        &#34;&#34;&#34;Remove a worker from database
+        Args:
+            worker_hostname: the worker name to be removed
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.removeWorker(worker_hostname)
+
+    ########################################################
+    ############# CELERY EVENTS CALLBACK BLOCK #############
+    ########################################################
+
+    def announce_failed_tasks(self, event):
+        &#34;&#34;&#34;
+        Called when a celery task fails. Is used to reset dates and scanner of the targeted tool.
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the task
+        &#34;&#34;&#34;
+        self.state.event(event)
+        task = self.state.tasks.get(event[&#39;uuid&#39;])  # get task
+        # Get tasks arguments
+        try:
+            argsWere = json.loads(task.info()[&#34;args&#34;].replace(&#34;&#39;&#34;, &#34;\&#34;&#34;))
+            args = argsWere[0]
+            toolId = ObjectId(args[1])  # args[1] is the tool_id
+            for task_running in self.tasks_running:
+                if str(task_running[1]) == str(toolId):
+                    task_running[0].revoke(terminate=True)
+                    del task_running
+            tool = Tool.fetchObject({&#34;_id&#34;: ObjectId(toolId)})
+            tool.markAsNotDone()
+        except InvalidId:
+            pass
+        except json.decoder.JSONDecodeError:
+            pass
+        except KeyError:
+            pass  # Plugin failed so &#34;args&#34; does not exist
+
+    def announce_online_worker(self, event):
+        &#34;&#34;&#34;
+        Called when a celery worker get online. Is used to register this worker in the worker_list
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the worker
+        &#34;&#34;&#34;
+        print(&#34;RECEIVED ONLINE EVENT&#34;)
+        worker_hostname = event[&#34;hostname&#34;].strip()
+        workers = self.getWorkerList()
+        # print &#34;WORKER ONLINE :&#34;+str(worker_hostname)
+        if worker_hostname not in list(workers):
+            self.addOnlineWorker(worker_hostname)
+
+    def announce_offline_worker(self, event):
+        &#34;&#34;&#34;
+        Called when a celery worker gets offline nicely. Is used to remove this worker from the worker_list
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the worker
+        &#34;&#34;&#34;
+        worker_hostname = event[&#34;hostname&#34;].strip()
+        workers = self.getWorkerList()
+        print(&#34;RECEIVE OFFLINE WORKER &#34;+str(worker_hostname))
+
+        if worker_hostname in list(workers):
+            toolsToReset = Tool.fetchObjects(
+                {&#34;datef&#34;: &#34;None&#34;, &#34;scanner_ip&#34;: worker_hostname})
+            for tool in toolsToReset:
+                tool.markAsNotDone()
+            self.removeWorker(worker_hostname)
+
+    def announce_heartbeat_worker(self, event):
+        &#34;&#34;&#34;
+        Called when a celery worker sends a heartbeat. Is used to register this worker in the worker_list if not already in.
+        Online event is only sent once. If celery workers were already launched, this will not be resend.
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the worker
+        &#34;&#34;&#34;
+        worker_hostname = event[&#34;hostname&#34;].strip()
+        workers = self.getWorkerList()
+        # print &#34;WORKER Heartbeat, can be received without having online if worker was already live :&#34;+worker_hostname
+        if worker_hostname not in workers:
+            # datef &#34;added worker already up&#34;
+            self.addOnlineWorker(worker_hostname)
+        else:
+            self.updateWorkerLastHeartbeat(worker_hostname)
+
+    def on_event(self, event):
+        &#34;&#34;&#34;
+        Capture all other events.
+
+        Args:
+            event: created automatically when the event occurs. Contains some info about the event
+        &#34;&#34;&#34;
+        # pass
+
+    def run(self, calendar):
+        &#34;&#34;&#34;
+        Start monitoring celery events
+        Will stop when receiving a KeyboardInterrupt
+        Args:
+            calendar: the pentest database name to monitor
+        &#34;&#34;&#34;
+        print(&#34;Starting monitor thread&#34;)
+        try:
+            self.recv = None
+            self.calendar = calendar
+            with self.app.connection() as connection:
+                self.recv = self.app.events.Receiver(connection, handlers={
+                    &#39;task-failed&#39;: self.announce_failed_tasks,
+                    &#39;worker-online&#39;: self.announce_online_worker,
+                    &#39;worker-offline&#39;: self.announce_offline_worker,
+                    &#39;worker-heartbeat&#39;: self.announce_heartbeat_worker,
+                    &#39;*&#39;: self.on_event,
+                })
+                self.recv.capture(limit=None, timeout=None, wakeup=True)
+        except(KeyboardInterrupt, SystemExit):
+            self.recv.should_stop = True
+            print(&#34;Should stop received...&#34;)
+            self.stop()
+        self.recv.should_stop = True
+        print(&#34;Should stop received...&#34;)
+        self.stop()
+        print(&#34;Ending monitor thread&#34;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.addOnlineWorker"><code class="name flex">
+<span>def <span class="ident">addOnlineWorker</span></span>(<span>self, worker_hostname)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Register a celery worker on the worker's list. Also deletes old queues and messages</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>worker_hostname</code></strong></dt>
+<dd>the worker hostname to register on worker's list</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addOnlineWorker(self, worker_hostname):
+    &#34;&#34;&#34;
+    Register a celery worker on the worker&#39;s list. Also deletes old queues and messages
+
+    Args:
+        worker_hostname: the worker hostname to register on worker&#39;s list
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    agg_queues = mongoInstance.aggregateFromDb(&#34;broker_pollenisator&#34;, &#34;messages.routing&#34;, [{&#34;$group&#34;: {&#34;_id&#34;: &#34;$queue&#34;}}, {
+        &#34;$match&#34;: {&#34;_id&#34;: {&#34;$regex&#34;: &#34;^.*&amp;&#34;+worker_hostname+&#34;&amp;.*$&#34;}}}])
+    mongoInstance.deleteFromDb(&#34;broker_pollenisator&#34;, &#34;messages.routing&#34;, {
+        &#34;queue&#34;: {&#34;$regex&#34;: &#34;^.*&amp;&#34;+worker_hostname+&#34;&amp;.*$&#34;}}, True)
+    for agg_queue in agg_queues:
+        Utils.execute(&#34;celery -A slave purge -f -Q &#39;&#34; +
+
+                      agg_queue[&#34;_id&#34;]+&#34;&#39;&#34;, None, False)
+    
+    self.workerRegisterCommands(worker_hostname)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.announce_failed_tasks"><code class="name flex">
+<span>def <span class="ident">announce_failed_tasks</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a celery task fails. Is used to reset dates and scanner of the targeted tool.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>created automatically when the event occurs. Contains some info about the task</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def announce_failed_tasks(self, event):
+    &#34;&#34;&#34;
+    Called when a celery task fails. Is used to reset dates and scanner of the targeted tool.
+
+    Args:
+        event: created automatically when the event occurs. Contains some info about the task
+    &#34;&#34;&#34;
+    self.state.event(event)
+    task = self.state.tasks.get(event[&#39;uuid&#39;])  # get task
+    # Get tasks arguments
+    try:
+        argsWere = json.loads(task.info()[&#34;args&#34;].replace(&#34;&#39;&#34;, &#34;\&#34;&#34;))
+        args = argsWere[0]
+        toolId = ObjectId(args[1])  # args[1] is the tool_id
+        for task_running in self.tasks_running:
+            if str(task_running[1]) == str(toolId):
+                task_running[0].revoke(terminate=True)
+                del task_running
+        tool = Tool.fetchObject({&#34;_id&#34;: ObjectId(toolId)})
+        tool.markAsNotDone()
+    except InvalidId:
+        pass
+    except json.decoder.JSONDecodeError:
+        pass
+    except KeyError:
+        pass  # Plugin failed so &#34;args&#34; does not exist</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.announce_heartbeat_worker"><code class="name flex">
+<span>def <span class="ident">announce_heartbeat_worker</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a celery worker sends a heartbeat. Is used to register this worker in the worker_list if not already in.
+Online event is only sent once. If celery workers were already launched, this will not be resend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>created automatically when the event occurs. Contains some info about the worker</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def announce_heartbeat_worker(self, event):
+    &#34;&#34;&#34;
+    Called when a celery worker sends a heartbeat. Is used to register this worker in the worker_list if not already in.
+    Online event is only sent once. If celery workers were already launched, this will not be resend.
+
+    Args:
+        event: created automatically when the event occurs. Contains some info about the worker
+    &#34;&#34;&#34;
+    worker_hostname = event[&#34;hostname&#34;].strip()
+    workers = self.getWorkerList()
+    # print &#34;WORKER Heartbeat, can be received without having online if worker was already live :&#34;+worker_hostname
+    if worker_hostname not in workers:
+        # datef &#34;added worker already up&#34;
+        self.addOnlineWorker(worker_hostname)
+    else:
+        self.updateWorkerLastHeartbeat(worker_hostname)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.announce_offline_worker"><code class="name flex">
+<span>def <span class="ident">announce_offline_worker</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a celery worker gets offline nicely. Is used to remove this worker from the worker_list</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>created automatically when the event occurs. Contains some info about the worker</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def announce_offline_worker(self, event):
+    &#34;&#34;&#34;
+    Called when a celery worker gets offline nicely. Is used to remove this worker from the worker_list
+
+    Args:
+        event: created automatically when the event occurs. Contains some info about the worker
+    &#34;&#34;&#34;
+    worker_hostname = event[&#34;hostname&#34;].strip()
+    workers = self.getWorkerList()
+    print(&#34;RECEIVE OFFLINE WORKER &#34;+str(worker_hostname))
+
+    if worker_hostname in list(workers):
+        toolsToReset = Tool.fetchObjects(
+            {&#34;datef&#34;: &#34;None&#34;, &#34;scanner_ip&#34;: worker_hostname})
+        for tool in toolsToReset:
+            tool.markAsNotDone()
+        self.removeWorker(worker_hostname)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.announce_online_worker"><code class="name flex">
+<span>def <span class="ident">announce_online_worker</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a celery worker get online. Is used to register this worker in the worker_list</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>created automatically when the event occurs. Contains some info about the worker</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def announce_online_worker(self, event):
+    &#34;&#34;&#34;
+    Called when a celery worker get online. Is used to register this worker in the worker_list
+
+    Args:
+        event: created automatically when the event occurs. Contains some info about the worker
+    &#34;&#34;&#34;
+    print(&#34;RECEIVED ONLINE EVENT&#34;)
+    worker_hostname = event[&#34;hostname&#34;].strip()
+    workers = self.getWorkerList()
+    # print &#34;WORKER ONLINE :&#34;+str(worker_hostname)
+    if worker_hostname not in list(workers):
+        self.addOnlineWorker(worker_hostname)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.getWorkerList"><code class="name flex">
+<span>def <span class="ident">getWorkerList</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the worker list</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Return the workers name list</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getWorkerList(self):
+    &#34;&#34;&#34;
+    Return the worker list
+
+    Returns:
+        Return the workers name list
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    l = []
+    workers = mongoInstance.getWorkers()
+    for worker in workers:
+        l.append(worker[&#34;name&#34;])
+    return l</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.hasWorkers"><code class="name flex">
+<span>def <span class="ident">hasWorkers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if any worker is availiable</p>
+<h2 id="returns">Returns</h2>
+<p>Return True if at least one worker is availiable, False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hasWorkers(self):
+    &#34;&#34;&#34;
+    Check if any worker is availiable
+
+    Returns:
+        Return True if at least one worker is availiable, False otherwise.
+    &#34;&#34;&#34;
+    return len(self.getWorkerList()) &gt; 0</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.launchTask"><code class="name flex">
+<span>def <span class="ident">launchTask</span></span>(<span>self, calendarName, launchableTool, parser='', checks=True, workerName='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>launch the celery task corresponding to the given tool</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>calendarNamse</code></strong></dt>
+<dd>the calendar where the tool given is</dd>
+<dt><strong><code>launchableTool</code></strong></dt>
+<dd>a Tool document instance to launch.</dd>
+<dt><strong><code>parser</code></strong></dt>
+<dd>the plugin to use when the tool will be over, default to "" which means let the worker conf file decides.</dd>
+<dt><strong><code>checks</code></strong></dt>
+<dd>will check if worker selected has registered the launchable tool, default to True.</dd>
+<dt><strong><code>workerName</code></strong></dt>
+<dd>(Opt.) a worker name to use ("localhost" is valid)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>False if no worker was found capable</code> of <code>launching the given tool, True otherwise</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def launchTask(self, calendarName, launchableTool, parser=&#34;&#34;, checks=True, workerName=&#34;&#34;):
+    &#34;&#34;&#34;
+    launch the celery task corresponding to the given tool
+
+    Args:
+        calendarNamse: the calendar where the tool given is
+        launchableTool: a Tool document instance to launch.
+        parser: the plugin to use when the tool will be over, default to &#34;&#34; which means let the worker conf file decides.
+        checks: will check if worker selected has registered the launchable tool, default to True.
+        workerName: (Opt.) a worker name to use (&#34;localhost&#34; is valid)
+
+    Returns:
+        False if no worker was found capable of launching the given tool, True otherwise
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    # Check all workers to see if any space is availiable
+    from AutoScanWorker import executeCommand
+    if workerName == &#34;&#34;:
+        workers = mongoInstance.getWorkers()
+        for worker in workers:
+            if launchableTool is None:
+                continue
+            worker = Worker(worker[&#34;name&#34;])
+            if worker.hasRegistered(launchableTool):
+                if checks == False:
+                    workerName = worker.name
+                else:
+                    if launchableTool is None:
+                        continue
+                    if worker.hasSpaceFor(launchableTool):
+                        workerName = worker.name
+                        break
+    # If no workers are availiable, stop there
+    if workerName == &#34;&#34;:
+        return False
+
+    launchableToolId = launchableTool.getId()
+    launchableTool.markAsRunning(workerName)
+    # Mark the tool as running (scanner_ip is set and dated is set, datef is &#34;None&#34;)
+    # Add a queue to the selected worker for this tool, So that only this worker will receive this task
+    if workerName != &#34;localhost&#34;:
+        queueName = str(mongoInstance.calendarName)+&#34;&amp;&#34; + \
+            workerName+&#34;&amp;&#34;+launchableTool.name
+        self.app.control.add_consumer(
+            queue=queueName,
+            reply=True,
+            exchange=&#34;celery&#34;,
+            exchange_type=&#34;direct&#34;,
+            routing_key=&#34;transient&#34;,
+            destination=[workerName])
+        result_async = executeCommand.apply_async(args=[calendarName, str(
+            launchableToolId), parser], queue=queueName, retry=False, serializer=&#34;json&#34;)
+        # Append to running tasks this celery result and the corresponding tool id
+        self.tasks_running.append([result_async, launchableToolId])
+    else:
+        thread = None
+        thread = multiprocessing.Process(target=slave.executeCommand, args=(
+            mongoInstance.calendarName, str(launchableToolId), parser))
+        thread.start()
+
+    # Execute this celery task
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.on_event"><code class="name flex">
+<span>def <span class="ident">on_event</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Capture all other events.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>created automatically when the event occurs. Contains some info about the event</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_event(self, event):
+    &#34;&#34;&#34;
+    Capture all other events.
+
+    Args:
+        event: created automatically when the event occurs. Contains some info about the event
+    &#34;&#34;&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.removeInactiveWorkers"><code class="name flex">
+<span>def <span class="ident">removeInactiveWorkers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove inactive workers every 30s</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeInactiveWorkers(self):
+    &#34;&#34;&#34;
+    Remove inactive workers every 30s
+    &#34;&#34;&#34;
+    print(&#34;Time to remove inactive workers !&#34;)
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.removeInactiveWorkers()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.removeWorker"><code class="name flex">
+<span>def <span class="ident">removeWorker</span></span>(<span>self, worker_hostname)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove a worker from database</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>worker_hostname</code></strong></dt>
+<dd>the worker name to be removed</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeWorker(self, worker_hostname):
+    &#34;&#34;&#34;Remove a worker from database
+    Args:
+        worker_hostname: the worker name to be removed
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.removeWorker(worker_hostname)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, calendar)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Start monitoring celery events
+Will stop when receiving a KeyboardInterrupt</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>calendar</code></strong></dt>
+<dd>the pentest database name to monitor</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, calendar):
+    &#34;&#34;&#34;
+    Start monitoring celery events
+    Will stop when receiving a KeyboardInterrupt
+    Args:
+        calendar: the pentest database name to monitor
+    &#34;&#34;&#34;
+    print(&#34;Starting monitor thread&#34;)
+    try:
+        self.recv = None
+        self.calendar = calendar
+        with self.app.connection() as connection:
+            self.recv = self.app.events.Receiver(connection, handlers={
+                &#39;task-failed&#39;: self.announce_failed_tasks,
+                &#39;worker-online&#39;: self.announce_online_worker,
+                &#39;worker-offline&#39;: self.announce_offline_worker,
+                &#39;worker-heartbeat&#39;: self.announce_heartbeat_worker,
+                &#39;*&#39;: self.on_event,
+            })
+            self.recv.capture(limit=None, timeout=None, wakeup=True)
+    except(KeyboardInterrupt, SystemExit):
+        self.recv.should_stop = True
+        print(&#34;Should stop received...&#34;)
+        self.stop()
+    self.recv.should_stop = True
+    print(&#34;Should stop received...&#34;)
+    self.stop()
+    print(&#34;Ending monitor thread&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.stop"><code class="name flex">
+<span>def <span class="ident">stop</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stop monitoring the celery events and revoke all celery tasks</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop(self):
+    &#34;&#34;&#34;
+    Stop monitoring the celery events and revoke all celery tasks
+    &#34;&#34;&#34;
+
+    for task_running in self.tasks_running:
+        task_running[0].revoke(terminate=True)
+    self.stopWorkersTimer()
+    if self.processEvent is not None:
+        self.app.control.purge()
+        self.app.connection()
+        # if self.processEvent._popen is not None:  # pylint: disable=protected-access
+        print(&#34;Stopping monitoring... &#34;)
+        self.recv.should_stop = True
+        print(&#34;Stopped monitoring&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.stopTask"><code class="name flex">
+<span>def <span class="ident">stopTask</span></span>(<span>self, launchableTool)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stop the celery task corresponding to the given tool</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>launchableTool</code></strong></dt>
+<dd>a Tool document instance that was presumably launched.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return True if a tasks has been stopped, False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stopTask(self, launchableTool):
+    &#34;&#34;&#34;
+    Stop the celery task corresponding to the given tool
+
+    Args:
+        launchableTool: a Tool document instance that was presumably launched.
+
+    Returns:
+        Return True if a tasks has been stopped, False otherwise.
+    &#34;&#34;&#34;
+    for task_running in self.tasks_running:
+        if task_running[1] == launchableTool[&#34;_id&#34;]:
+            task_running[0].revoke(terminate=True)
+            del task_running
+
+            return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.stopWorkersTimer"><code class="name flex">
+<span>def <span class="ident">stopWorkersTimer</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stops the removing of inactive workers.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stopWorkersTimer(self):
+    &#34;&#34;&#34;
+    Stops the removing of inactive workers.
+    &#34;&#34;&#34;
+    self.willStop = True
+    if self.removeInactiveWorkers is not None:
+        self.removeInactiveWorkersTimer.cancel()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.updateWorkerLastHeartbeat"><code class="name flex">
+<span>def <span class="ident">updateWorkerLastHeartbeat</span></span>(<span>self, worker_hostname)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update the given worker last hearthbeat</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>worker_hostname</code></strong></dt>
+<dd>the worker name to be refreshed</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateWorkerLastHeartbeat(self, worker_hostname):
+    &#34;&#34;&#34;Update the given worker last hearthbeat
+    Args:
+        worker_hostname: the worker name to be refreshed
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.updateWorkerLastHeartbeat(worker_hostname)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Monitor.Monitor.workerRegisterCommands"><code class="name flex">
+<span>def <span class="ident">workerRegisterCommands</span></span>(<span>self, worker_hostname)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Force a worker to register its configured command in database</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>worker_hostname</code></strong></dt>
+<dd>the worker name to be forced to register its commands</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def workerRegisterCommands(self, worker_hostname):
+    &#34;&#34;&#34;Force a worker to register its configured command in database
+    Args:
+        worker_hostname: the worker name to be forced to register its commands
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    queueName = str(worker_hostname)+&#34;&amp;getcommands&#34;
+    self.app.control.add_consumer(
+        queue=queueName,
+        reply=True,
+        exchange=&#34;celery&#34;,
+        exchange_type=&#34;direct&#34;,
+        routing_key=&#34;transient&#34;,
+        destination=[worker_hostname])
+    # print &#34;adding get command&#34;
+    from AutoScanWorker import getCommands
+    getCommands.apply_async(
+        args=[mongoInstance.calendarName, worker_hostname], queue=queueName, retry=True, serializer=&#34;json&#34;)
+    return</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Monitor.Monitor" href="#Pollenisator.core.Components.Monitor.Monitor">Monitor</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.addOnlineWorker" href="#Pollenisator.core.Components.Monitor.Monitor.addOnlineWorker">addOnlineWorker</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.announce_failed_tasks" href="#Pollenisator.core.Components.Monitor.Monitor.announce_failed_tasks">announce_failed_tasks</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.announce_heartbeat_worker" href="#Pollenisator.core.Components.Monitor.Monitor.announce_heartbeat_worker">announce_heartbeat_worker</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.announce_offline_worker" href="#Pollenisator.core.Components.Monitor.Monitor.announce_offline_worker">announce_offline_worker</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.announce_online_worker" href="#Pollenisator.core.Components.Monitor.Monitor.announce_online_worker">announce_online_worker</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.getWorkerList" href="#Pollenisator.core.Components.Monitor.Monitor.getWorkerList">getWorkerList</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.hasWorkers" href="#Pollenisator.core.Components.Monitor.Monitor.hasWorkers">hasWorkers</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.launchTask" href="#Pollenisator.core.Components.Monitor.Monitor.launchTask">launchTask</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.on_event" href="#Pollenisator.core.Components.Monitor.Monitor.on_event">on_event</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.removeInactiveWorkers" href="#Pollenisator.core.Components.Monitor.Monitor.removeInactiveWorkers">removeInactiveWorkers</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.removeWorker" href="#Pollenisator.core.Components.Monitor.Monitor.removeWorker">removeWorker</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.run" href="#Pollenisator.core.Components.Monitor.Monitor.run">run</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.stop" href="#Pollenisator.core.Components.Monitor.Monitor.stop">stop</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.stopTask" href="#Pollenisator.core.Components.Monitor.Monitor.stopTask">stopTask</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.stopWorkersTimer" href="#Pollenisator.core.Components.Monitor.Monitor.stopWorkersTimer">stopWorkersTimer</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.updateWorkerLastHeartbeat" href="#Pollenisator.core.Components.Monitor.Monitor.updateWorkerLastHeartbeat">updateWorkerLastHeartbeat</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Monitor.Monitor.workerRegisterCommands" href="#Pollenisator.core.Components.Monitor.Monitor.workerRegisterCommands">workerRegisterCommands</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

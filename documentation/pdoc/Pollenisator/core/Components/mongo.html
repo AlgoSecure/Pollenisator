@@ -1,0 +1,2860 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.mongo API documentation</title>
+<meta name="description" content="Handle mongo database connection and add shortcut functions to common stuff." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.mongo</code></h1>
+</header>
+<section id="section-intro">
+<p>Handle mongo database connection and add shortcut functions to common stuff.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Handle mongo database connection and add shortcut functions to common stuff.&#34;&#34;&#34;
+import os
+import ssl
+import tkinter.messagebox
+import tkinter.simpledialog
+import tkinter.filedialog
+import datetime
+from pymongo import MongoClient
+from pymongo.errors import ServerSelectionTimeoutError, OperationFailure
+import core.Components.Utils as Utils
+
+
+class MongoCalendar:
+    # pylint: disable=unsubscriptable-object
+    &#34;&#34;&#34;
+    Centralize all direct contacts with the database.
+    &#34;&#34;&#34;
+    __instances = {}
+
+    @staticmethod
+    def getInstance():
+        &#34;&#34;&#34; Singleton Static access method.
+        &#34;&#34;&#34;
+        pid = os.getpid()  # HACK : One mongo per process.
+        instance = MongoCalendar.__instances.get(pid, None)
+        if instance is None:
+            MongoCalendar()
+        return MongoCalendar.__instances[pid]
+
+    def __init__(self):
+        &#34;&#34;&#34; DO NOT USE THIS CONSTRUCTOR IT IS A
+        Virtually private constructor.  Use MongoCalendar.getInstance()
+        Args:
+            client: a MongoClient instance or None
+            host: the host where the database is running
+            user: a user login to the database
+            password: a password corresponding with the user to connect to the database
+            ssl: A boolean string &#34;True&#34; or &#34;False&#34; indicating if ssl should be used to connect with the database.
+            calendarName: the calendar name the db has connected to. Or None if not connected to any calendar.
+            ssldir: The string path to a folder where all the ssl certificates are to be found.
+            db: The database to the client last connected.
+            forbiddenNames: A list of names forbidden for calendars because they are reserved by mongo, celery or this application. (&#34;admin&#34;, &#34;config&#34;, &#34;local&#34;, &#34;broker_pollenisator&#34;, &#34;pollenisator&#34;)
+        Raises:
+            Exception if it is instanciated.
+        &#34;&#34;&#34;
+        pid = os.getpid()  # HACK : One mongo per process.
+        if MongoCalendar.__instances.get(pid, None) is not None:
+            raise Exception(&#34;This class is a singleton!&#34;)
+        else:
+            self.client = None
+            self.host = &#34;&#34;
+            self.password = &#34;&#34;
+            self.user = &#34;&#34;
+            self.ssl = &#34;&#34;
+            self.port = &#34;&#34;
+            self.calendarName = None
+            self.ssldir = &#34;&#34;
+            self.db = None
+            self.forbiddenNames = [&#34;admin&#34;, &#34;config&#34;, &#34;local&#34;,
+                                   &#34;broker_pollenisator&#34;, &#34;pollenisator&#34;]
+            self._observers = []
+            MongoCalendar.__instances[pid] = self
+
+    def reinitConnection(self):
+        &#34;&#34;&#34;Reset client connection&#34;&#34;&#34;
+        self.client = None
+
+    def getWorkers(self):
+        &#34;&#34;&#34;Return workers documents from database
+        Returns:
+            Mongo result of workers. Cursor of dictionnary.&#34;&#34;&#34;
+        return self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;)
+
+    def removeInactiveWorkers(self):
+        &#34;&#34;&#34;Remove workers that did not sent a heart beat in 30 sec.&#34;&#34;&#34;
+        nowTime = datetime.datetime.now()
+        deltaTime = nowTime - datetime.timedelta(seconds=30)
+        res = self.deleteFromDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+            &#34;last_heartbeat&#34;: {&#34;$lt&#34;: deltaTime}}, True, True)
+        print(&#34;Removed inactive workers:&#34;+str(res.deleted_count))
+
+
+    def updateWorkerLastHeartbeat(self, worker_hostname):
+        &#34;&#34;&#34;Update a worker last heart beat sent
+        Args:
+            worker_hostname: the worker shortname to update.
+        &#34;&#34;&#34;
+        self.updateInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {&#34;name&#34;: worker_hostname}, {
+                        &#34;$set&#34;: {&#34;last_heartbeat&#34;: datetime.datetime.now()}})
+
+    def connect(self, config=None, timeoutInMS=500):
+        &#34;&#34;&#34;
+        Connect the mongo client to the database using the login provided and ssl certificates if ssl is activated.
+        Args:
+            config: A dictionnary with client.cfg config values (host, mongo_port, password, user, ssl).
+                    Default to None. If None, the client.cfg file will be read.
+            timeoutInMs: milliseconds to wait before timeout. Default to 500ms.
+        Raises:
+            ServerSelectionTimeoutError: if unable to connect to the mongo database
+            OperationFailure: if unable to authenticate using user/password.
+        Returns:
+            None if not connected
+            False if connection failed
+            True if connected succeeded
+        &#34;&#34;&#34;
+        if self.client is not None:
+            return
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        cfg = config if config is not None else Utils.loadCfg(
+            os.path.join(dir_path, &#34;../../config/client.cfg&#34;))
+        try:
+            self.host = str(cfg[&#34;host&#34;])
+            self.port = str(cfg.get(&#34;mongo_port&#34;, 27017))
+            self.password = str(cfg[&#34;password&#34;])
+            self.user = str(cfg[&#34;user&#34;])
+            self.ssl = str(cfg[&#34;ssl&#34;])
+            connectionString = &#34;&#34;
+            if self.user != &#34;&#34;:
+                connectionString = self.user+&#39;:&#39;+self.password+&#39;@&#39;
+            self.calendarName = None
+            try:
+                if cfg[&#34;ssl&#34;] == &#34;True&#34;:
+                    self.ssldir = os.path.abspath(
+                        os.path.join(dir_path, &#34;../../ssl/&#34;))
+                    self.client = MongoClient(&#39;mongodb://&#39;+connectionString+self.host+&#34;:&#34;+self.port, ssl=True, ssl_certfile=os.path.join(
+                        self.ssldir, &#34;client.pem&#34;), ssl_cert_reqs=ssl.CERT_REQUIRED, ssl_ca_certs=os.path.join(self.ssldir, &#34;ca.pem&#34;), serverSelectionTimeoutMS=timeoutInMS)
+                else:
+                    self.client = MongoClient(
+                        &#39;mongodb://&#39;+connectionString+self.host+&#34;:&#34;+self.port, serverSelectionTimeoutMS=timeoutInMS)
+                server_info = self.client.server_info()
+                return True and self.client is not None and server_info is not None
+            except ServerSelectionTimeoutError as e:  # Unable to connect
+                raise e
+            except OperationFailure as e:  #  Authentication failed
+                raise e
+        except KeyError as e:
+            raise e
+        return False
+
+    def isUserConnected(self):
+        &#34;&#34;&#34;Return True if the user is able to list databases. False otherwise.
+        Returns: bool&#34;&#34;&#34;
+        return self.listCalendars() is not None
+
+    def connectToDb(self, calendarName):
+        &#34;&#34;&#34;
+        Connect to the pentest database given by calendarName (pentestName).
+
+        Args:
+            calendarName: the pentest name to which you want to connect
+        &#34;&#34;&#34;
+        try:
+            if self.client is None:
+                self.connect()
+                if self.client is None:
+                    raise IOError()
+            self.calendarName = calendarName
+            if calendarName is not None:
+                self.db = self.client[calendarName]
+        except IOError as e:
+            print(&#34;Failed to connect.&#34; + str(e))
+            print(&#34;Please verify that the mongod service is running on host &#34; +
+                  self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+            self.client = None
+
+    def removeWorker(self, worker_name):
+        &#34;&#34;&#34;Remove the given worker shortname from database.
+        Args:
+            worker_name: the worker shortname to be deleted from database.&#34;&#34;&#34;
+        print(&#34;Remove worker as offline received&#34;)
+        self.deleteFromDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+            &#34;name&#34;: worker_name}, False, True)
+
+    def registerCommands(self, worker_name, command_names):
+        &#34;&#34;&#34;Update or insert the worker name with given commands.
+        Args:
+            worker_name: the worker shortname.
+            command_names: a list of commands that the worker want to register.&#34;&#34;&#34;
+        try:
+            if self.client is None:
+                self.connect()
+                if self.client is None:
+                    raise IOError(&#34;Failed to register commands&#34;)
+            res = self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+                &#34;name&#34;: worker_name}, False)
+            worker_shortname = worker_name.split(&#34;@&#34;)[-1]
+            if res is not None:
+                print(&#34;UPDATE COMMANDS&#34;)
+                self.updateInDb(&#34;pollenisator&#34;, &#34;workers&#34;,
+                                {&#34;name&#34;: worker_name}, {&#34;$set&#34;: {&#34;registeredCommands&#34;: command_names}}, False, True)
+            else:
+                print(&#34;INSERT COMMANDS&#34;)
+                self.insertInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+                    &#34;name&#34;: worker_name, &#34;shortname&#34;: worker_shortname, &#34;registeredCommands&#34;: command_names}, &#39;&#39;, True)
+            print(&#34;Registered commands &#34;+str(command_names) +
+                  &#34; for  &#34;+str(worker_name))
+        except IOError as e:
+            print(&#34;Failed to connect.&#34; + str(e))
+            print(&#34;Please verify that the mongod service is running on host &#34; +
+                  self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+            self.client = None
+
+    def getRegisteredCommands(self, worker_name):
+        &#34;&#34;&#34;Return the commands list registered by the given worker name
+        Args:
+            worker_name: the wworker shortname.
+        &#34;&#34;&#34;
+        try:
+            if self.client is None:
+                self.connect()
+                if self.client is None:
+                    raise ServerSelectionTimeoutError()
+            worker_res = self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+                &#34;name&#34;: worker_name}, False)
+            if worker_res is not None:
+                return worker_res[&#34;registeredCommands&#34;]
+        except ServerSelectionTimeoutError as e:
+            print(&#34;Failed to connect.&#34; + str(e))
+            print(&#34;Please verify that the mongod service is running on host &#34; +
+                  self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+            self.client = None
+
+    def attach(self, observer):
+        &#34;&#34;&#34;
+        Attach an observer to the database. All attached observers will be notified when a modication is done to a calendar through the methods presented below.
+
+        Args:
+            observer: the observer that implements a notify(collection, iid, action) function
+        &#34;&#34;&#34;
+        self._observers.append(observer)
+
+    def dettach(self, observer):
+        &#34;&#34;&#34;
+        Dettach the given observer from the database.
+
+        Args:
+            observer: the observer to detach
+        &#34;&#34;&#34;
+        try:
+            self._observers.remove(observer)
+        except ValueError:
+            pass
+
+    def notify(self, db, collection, iid, action, parentId=&#34;&#34;):
+        &#34;&#34;&#34;
+        Notify all observers of the modified record from database.
+        Uses the observer&#39;s notify implementation. This implementation must take the same args as this.
+
+        Args:
+            collection: the collection where a document has been modified
+            iid: the mongo ObjectId of the document that has been modified
+            action: the type of modification performed on this document (&#34;insert&#34;, &#34;update&#34; or &#34;delete&#34;)
+            parentId: (not used) default to &#34;&#34;, a node parent id as str
+        &#34;&#34;&#34;
+        if self._observers is not None:
+            if len(self._observers) &gt; 1:
+                for observer in self._observers:
+                    observer.notify(db, collection, iid, action)
+            else:
+                self.client[&#34;pollenisator&#34;][&#34;notifications&#34;].insert_one(
+                    {&#34;iid&#34;: iid, &#34;db&#34;: db, &#34;collection&#34;: collection, &#34;action&#34;: action, &#34;parent&#34;: parentId})
+
+    def update(self, collection, pipeline, updatePipeline, many=False, notify=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo update and update_many functions. Then notify observers.
+
+        Args:
+            collection: the collection that holds the document to update
+            pipeline: a first &#34;match&#34; pipeline mongo to select which document to update
+            updatePipeline: a second &#34;action&#34; pipeline mongo to apply changes to the selected document(s)
+            many: a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to True.
+        Returns:
+            Return the pymongo result of the update or update_many function.
+        &#34;&#34;&#34;
+        return self._update(self.calendarName, collection, pipeline, updatePipeline, many=many, notify=notify)
+
+    def updateInDb(self, db, collection, pipeline, updatePipeline, many=False, notify=False):
+        &#34;&#34;&#34;
+        update something in the database.
+        Args:
+            db: the database name where the object to update is
+            collection: the collection that holds the document to update
+            pipeline: a first &#34;match&#34; pipeline mongo to select which document to update
+            updatePipeline: a second &#34;action&#34; pipeline mongo to apply changes to the selected document(s)
+            many: a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to False.
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        self.connect()
+        return self._update(db, collection, pipeline, updatePipeline, many=many, notify=notify)
+
+    def _update(self, dbName, collection, pipeline, updatePipeline, many=False, notify=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo update and update_many functions. Then notify observers  if notify is true.
+
+        Args:
+            dbName: the database name to use
+            collection: the collection that holds the document to update
+            pipeline: a first &#34;match&#34; pipeline mongo to select which document to update
+            updatePipeline: a second &#34;action&#34; pipeline mongo to apply changes to the selected document(s)
+            many: a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to True.
+        Returns:
+            Return the pymongo result of the update or update_many function.
+        &#34;&#34;&#34;
+        self.connect()
+        db = self.client[dbName]
+        if many:
+            res = db[collection].update_many(
+                pipeline, updatePipeline)
+            elems = db[collection].find(pipeline)
+            if notify:
+                for elem in elems:
+                    self.notify(dbName, collection, elem[&#34;_id&#34;], &#34;update&#34;)
+        else:
+            res = db[collection].update(pipeline, updatePipeline)
+            elem = db[collection].find_one(pipeline)
+            if elem is not None:
+                if notify:
+                    self.notify(dbName, collection, elem[&#34;_id&#34;], &#34;update&#34;)
+        return res
+
+    def insert(self, collection, values, parent=&#39;&#39;):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo insert_one. Then notify observers.
+
+        Args:
+            collection: the collection that will hold the document to insert
+            values: the document to insert into the given collection
+            parent: not used, default to &#39;&#39;. Was used to give info about parent node
+
+        Returns:
+            Return the pymongo result of the insert_one function.
+        &#34;&#34;&#34;
+        return self._insert(self.calendarName, collection, values, True, parent)
+
+    def insertInDb(self, db, collection, values, _parent=&#39;&#39;, notify=False):
+        &#34;&#34;&#34;
+        insert something in the database after ensuring connection.
+        Args:
+            db: the database name to use
+            collection: the collection that holds the document to insert
+            values: the document to insert into the given collection
+            parent: not used, default to &#39;&#39;. Was used to give info about parent node
+            notify: a boolean asking for all client to be notified of this update. Default to False.
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        self.connect()
+        return self._insert(db, collection, values, notify)
+
+    def _insert(self, dbName, collection, values, notify=True, parentId=&#39;&#39;):
+        &#34;&#34;&#34;
+        Perform insertion in the database&#34;.
+        Args:
+            dbName: the database name object to use
+            collection: the collection that holds the document to insert
+            values: the document to insert into the given collection
+            notify: a boolean asking for all client to be notified of this update. Default to True.
+            parentId: not used, default to &#39;&#39;. Was used to give info about parent node
+
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        self.connect()
+        db = self.client[dbName]
+        res = db[collection].insert_one(values)
+        if notify:
+            self.notify(dbName, collection,
+                        res.inserted_id, &#34;insert&#34;, parentId)
+        return res
+
+    def find(self, collection, pipeline=None, multi=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo find and find_one.
+
+        Args:
+            collection: the collection to search for
+            pipeline: the document caracteristics to search for, default to None which means no filtering.
+            multi: a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.
+
+        Returns:
+            Return the pymongo result of the find or find_one function.
+        &#34;&#34;&#34;
+        if pipeline is None:
+            pipeline = {}
+        return self._find(self.db, collection, pipeline, multi)
+
+    def findInDb(self, db, collection, pipeline=None, multi=True):
+        &#34;&#34;&#34;
+        find something in the database.
+        Args:
+            collection: the collection to search for
+            pipeline: the document caracteristics to search for, default to None which means no filtering.
+            multi: a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        if pipeline is None:
+            pipeline = {}
+        self.connect()
+        dbMongo = self.client[db]
+        return self._find(dbMongo, collection, pipeline, multi)
+
+    def _find(self, db, collection, pipeline=None, multi=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo find and find_one.
+
+        Args:
+            db: the database name to search in
+            collection: the collection to search in
+            pipeline: the document caracteristics to search for, default to None which means no filtering.
+            multi: a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.
+
+        Returns:
+            Return the pymongo result of the find or find_one function.
+        &#34;&#34;&#34;
+        if pipeline is None:
+            pipeline = {}
+        self.connect()
+        try:
+            if multi:
+                res = db[collection].find(pipeline)
+            else:
+                res = db[collection].find_one(pipeline)
+        except TypeError:
+            return None
+        return res
+
+    def aggregate(self, collection, pipelines=None):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo aggregate.
+
+        Args:
+            collection: the collection to aggregate.
+            pipelines: the mongo pipeline for aggregation. Default to None which means empty list pipeline
+
+        Returns:
+            Return the pymongo result of the aggregate function
+        &#34;&#34;&#34;
+        if pipelines is None:
+            pipelines = []
+        return self._aggregate(self.db, collection, pipelines)
+
+    def aggregateFromDb(self, db, collection, pipelines=None):
+        &#34;&#34;&#34;
+        aggregate something in the database.
+        Args:
+            db: the database name to search in
+            collection: the collection to search in
+            pipelines: the mongo pipeline for aggregation. Default to None which means empty list pipeline
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        if pipelines is None:
+            pipelines = []
+        self.connect()
+        dbMongo = self.client[db]
+        return self._aggregate(dbMongo, collection, pipelines)
+
+    def _aggregate(self, db, collection, pipelines=None):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo aggregate.
+
+        Args:
+            db: the database to search in as mongo object
+            collection: the collection to aggregate as str.
+            pipelines: the mongo pipeline for aggregation.  Default to None which means empty list pipeline
+
+        Returns:
+            Return the pymongo result of the aggregate function
+        &#34;&#34;&#34;
+        if pipelines is None:
+            pipelines = []
+        self.connect()
+        return db[collection].aggregate(pipelines)
+
+    def delete(self, collection, pipeline, many=False):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo delete_one or delete_many. Then notify observers.
+
+        Args:
+            collection: the collection that holds the document to delete
+            pipeline: the document caracteristics to search for deletion.
+            many: a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False
+
+        Returns:
+            Return the pymongo result of the delete_one or delete_many function.
+        &#34;&#34;&#34;
+        return self._delete(self.calendarName, collection, pipeline, many, True)
+
+    def deleteFromDb(self, db, collection, pipeline, many=False, notify=False):
+        &#34;&#34;&#34;
+        aggregate something in the database.
+        Args:
+            db: the target database name 
+            collection: the collection that holds the document to delete
+            pipeline: the document caracteristics to search for deletion.
+            many: a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to False.
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        self.connect()
+        return self._delete(db, collection, pipeline, many, notify)
+
+    def _delete(self, dbName, collection, pipeline, many=False, notify=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo delete_one or delete_many. Then notify observers.
+
+        Args:
+            dbName: the database to search in
+            collection: the collection that holds the document to delete
+            pipeline: the document caracteristics to search for deletion.
+            many: a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to True.
+        Returns:
+            Return the pymongo result of the delete_one or delete_many function.
+        &#34;&#34;&#34;
+        self.connect()
+        db = self.client[dbName]
+        res = None
+        if many:
+            elems = db[collection].find(pipeline)
+            if notify:
+                for elem in elems:
+                    self.notify(dbName, collection, elem[&#34;_id&#34;], &#34;delete&#34;)
+            res = db[collection].delete_many(pipeline)
+        else:
+            elem = db[collection].find_one(pipeline)
+            if elem is not None:
+                if notify:
+                    self.notify(dbName, collection, elem[&#34;_id&#34;], &#34;delete&#34;)
+                res = db[collection].delete_one(pipeline)
+        return res
+
+    def listCalendars(self):
+        &#34;&#34;&#34;Return the list of pollenisator databases.
+        Raises:
+            Raise Exception if client is not connected to database
+        Returns:
+            None if the server connection is not established. A list of string with pollenisator databases.
+        &#34;&#34;&#34;
+        ret = []
+        try:
+            if self.client is None:
+                self.connect()
+                if self.client is None:
+                    raise Exception()
+            calendars = self.findInDb(&#34;pollenisator&#34;, &#34;calendars&#34;)
+            for calendar in calendars:
+                ret.append(calendar[&#34;nom&#34;])
+        except ServerSelectionTimeoutError as e:
+            print(&#34;Failed to connect.&#34; + str(e))
+            print(&#34;Please verify that the mongod service is running on host &#34; +
+                  self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+            self.client = None
+            return None
+        return ret
+
+    def hasACalendarOpen(self):
+        &#34;&#34;&#34;
+        Return wether or not a calendar is open.
+
+        Returns:
+            Return True if a calendar is open, False otherwise.
+        &#34;&#34;&#34;
+        return self.calendarName is not None
+
+    def doDeleteCalendar(self, calendarName):
+        &#34;&#34;&#34;
+        Remove the given calendar name from the database.
+
+        Args:
+            calendarName: the calendar name to delete.
+        &#34;&#34;&#34;
+        result = self.deleteFromDb(
+            &#34;pollenisator&#34;, &#34;calendars&#34;, {&#34;nom&#34;: calendarName})
+        if result is not None:
+            if result.deleted_count == 1:
+                self.client.drop_database(calendarName)
+                tkinter.messagebox.showinfo(
+                    &#34;Success&#34;, &#34;Deleted from &#34;+&#34;calendars&#34;+&#34; \&#34;&#34;+str(calendarName)+&#34;\&#34;&#34;)
+                return
+
+        tkinter.messagebox.showinfo(
+            &#34;Error&#34;, &#34;Deleting &#34;+str(calendarName)+&#34; is not allowed because it is not a database.&#34;)
+
+    def validateCalendarName(self, calendarName):
+        &#34;&#34;&#34;Check the database name to see if it usable.
+        Checks mongo and pollenisator name overlapping.
+        Check space and dot in name.
+        Check existing pollenisator pentest database names.
+        Returns: a boolean&#34;&#34;&#34;
+        # check for forbidden names
+        if calendarName.strip().lower() in self.forbiddenNames:
+            msg = &#34;This name is forbidden.&#34;
+            return False, msg
+        elif &#34;.&#34; in calendarName.strip():
+            msg = &#34;The name cannot contain a dot (.).&#34;
+            return False, msg
+        elif &#34; &#34; in calendarName.strip():
+            msg = &#34;The name cannot contain a space.&#34;
+            return False, msg
+        calendars = [x.lower() for x in self.listCalendars()]
+        if calendarName.strip().lower() in calendars:
+            msg = &#34;A database with the same name already exists.&#34;
+            return False, msg
+        return True, &#34;&#34;
+
+    def registerCalendar(self, saveAsName, askDeleteIfExists=True, autoconnect=True):
+        &#34;&#34;&#34;
+        Register a new calendar into database.
+
+        Args:
+            saveAsName: the calendar name to register
+            askDeleteIfExists: boolean to ask the user for a deletion in case of an already existing calendar with the same name.
+                                If false, and the case appends, calendar will not be registered. Default is True.
+            autoconnect: boolean indicating if the database should connect to the calendar after it is registered. Default to True.
+
+        Returns:
+            Returns True if calendar was successfully registered, False otherwise.
+        &#34;&#34;&#34;
+        oldConnection = self.calendarName
+        authorized, msg = self.validateCalendarName(saveAsName.strip().lower())
+        # check for forbidden names
+        if not authorized:
+            tkinter.messagebox.showinfo(&#34;add database attempt:&#34;, msg)
+            return False
+        else:
+            # check if already exists
+            self.connectToDb(&#34;pollenisator&#34;)
+            if self.db.calendars.find_one({&#34;nom&#34;: saveAsName.strip()}) is not None and askDeleteIfExists:
+                authorized = tkinter.messagebox.askyesno(
+                    &#34;Already exists&#34;, &#34;A database already exists with that name, override (cannot be reversed)?&#34;)
+                if not authorized:
+                    msg = &#34;The database has not been overwritten choose a different name to save it.&#34;
+                else:
+                    self.doDeleteCalendar(saveAsName.strip())
+            # If authorized to registered from previous tests
+            if authorized:
+                # insert in database  calendars
+                self.connectToDb(&#34;pollenisator&#34;)
+                self.db.calendars.insert({&#34;nom&#34;: saveAsName.strip()})
+                self.connectToDb(saveAsName.strip())
+            if autoconnect:
+                self.connectToDb(saveAsName.strip())
+            else:
+                self.connectToDb(oldConnection)
+        return True
+
+    def copyDb(self, ToCopyName=&#34;&#34;, fromCopyName=&#34;&#34;):
+        &#34;&#34;&#34;
+        Copy a database.
+
+        Args:
+            ToCopyName: the output calendar will have this name. If default empty string is given, a user window prompt will be used.
+            fromCopyName: the calendar name to be copied. If default empty string is given, the opened calendar will be used.
+
+        Returns:
+            Returns the output database name or None if the copy failed.
+        &#34;&#34;&#34;
+        if self.calendarName is None and fromCopyName == &#34;&#34;:
+            tkinter.messagebox.showinfo(
+                &#34;Copy database failed:&#34;, &#34;You must open a database before duplicating it.&#34;)
+            return None
+        if fromCopyName == &#34;&#34; and self.calendarName is not None:
+            fromCopyName = self.calendarName
+        if ToCopyName == &#34;&#34;:
+            ToCopyName = tkinter.simpledialog.askstring(
+                &#34;Copy name&#34;, &#34;New copy of &#34;+fromCopyName+&#34; database name :&#34;)
+        if ToCopyName is not None:
+            succeed = self.registerCalendar(
+                ToCopyName, True, True)
+            if succeed:
+                self.client.admin.command(&#39;copydb&#39;,
+                                          fromdb=fromCopyName,
+                                          todb=ToCopyName)
+            else:
+                return None
+
+            return ToCopyName
+        else:
+            tkinter.messagebox.showinfo(&#34;Copy database canceled&#34;, &#34;Canceled.&#34;)
+            return None
+
+    def dumpDb(self, dbName, collection=&#34;&#34;):
+        &#34;&#34;&#34;
+        Export a database dump into the exports/ folder as a gzip archive.
+        It uses the mongodump utily installed with mongodb-org-tools
+
+        Args:
+            dbName: the database name to dump
+            collection: (Opt.) the collection to dump.
+        &#34;&#34;&#34;
+        from core.Components.Utils import execute
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        out_path = os.path.join(
+            dir_path, &#34;../../exports/&#34;, dbName if collection == &#34;&#34; else dbName+&#34;_&#34;+collection)
+        connectionString = &#39;&#39; if self.user == &#39;&#39; else &#34;-u &#34;+self.user + \
+            &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+        cmd = &#34;mongodump &#34;+connectionString+&#34;--host &#34; + \
+            self.host+&#34;  --db &#34;+dbName+&#34; --archive=&#34;+out_path+&#34;.gzip --gzip&#34;
+        if collection.strip() != &#34;&#34;:
+            cmd += &#34; -c &#34;+str(collection).strip()
+        if self.ssl == &#34;True&#34;:
+            cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+                self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+        execute(cmd)
+
+    def importDatabase(self, filename):
+        &#34;&#34;&#34;
+        Import a database dump into a calendar database.
+            It uses the mongorestore utily installed with mongodb-org-tools
+
+        Args:
+            filename: the gzip archive name that was exported to be reimported.
+
+        Returns:
+            returns True if the import is successfull, False
+        &#34;&#34;&#34;
+        from core.Components.Utils import execute
+        success = self.registerCalendar(os.path.splitext(
+            os.path.basename(filename))[0], True, False)
+        if success:
+            connectionString = &#39;&#39; if self.user == &#39;&#39; else &#34;-u &#34;+self.user + \
+                &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+            cmd = &#34;mongorestore &#34;+connectionString+&#34;--host &#34; + \
+                self.host+&#34; --archive=&#34;+filename+&#34; --gzip&#34;
+            if self.ssl == &#34;True&#34;:
+                cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+                    self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+            execute(cmd, None, False)
+        return success
+
+    def importCommands(self, filename):
+        &#34;&#34;&#34;
+        Import a database dump into a calendar database.
+            It uses the mongorestore utily installed with mongodb-org-tools
+
+        Args:
+            filename: the gzip archive name that was exported to be reimported.
+
+        Returns:
+            returns True if the import is successfull, False
+        &#34;&#34;&#34;
+        from core.Components.Utils import execute
+        if not os.path.isfile(filename):
+            raise IOError(&#34;File does not exist&#34;)
+        connectionString = &#39;&#39; if self.user.strip() == &#39;&#39; else &#34;-u &#34;+self.user + \
+            &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+        cmd = &#34;mongorestore &#34;+connectionString+&#34;--host &#34; + \
+            self.host+&#34; --archive=&#34;+filename+&#34; --gzip&#34;
+        if self.ssl == &#34;True&#34;:
+            cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+                self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+
+        execute(cmd, None, False)
+        return True</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar"><code class="flex name class">
+<span>class <span class="ident">MongoCalendar</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Centralize all direct contacts with the database.</p>
+<p>DO NOT USE THIS CONSTRUCTOR IT IS A
+Virtually private constructor.
+Use MongoCalendar.getInstance()</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>client</code></strong></dt>
+<dd>a MongoClient instance or None</dd>
+<dt><strong><code>host</code></strong></dt>
+<dd>the host where the database is running</dd>
+<dt><strong><code>user</code></strong></dt>
+<dd>a user login to the database</dd>
+<dt><strong><code>password</code></strong></dt>
+<dd>a password corresponding with the user to connect to the database</dd>
+<dt><strong><code>ssl</code></strong></dt>
+<dd>A boolean string "True" or "False" indicating if ssl should be used to connect with the database.</dd>
+<dt><strong><code>calendarName</code></strong></dt>
+<dd>the calendar name the db has connected to. Or None if not connected to any calendar.</dd>
+<dt><strong><code>ssldir</code></strong></dt>
+<dd>The string path to a folder where all the ssl certificates are to be found.</dd>
+<dt><strong><code>db</code></strong></dt>
+<dd>The database to the client last connected.</dd>
+<dt><strong><code>forbiddenNames</code></strong></dt>
+<dd>A list of names forbidden for calendars because they are reserved by mongo, celery or this application. ("admin", "config", "local", "broker_pollenisator", "pollenisator")</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>Exception if it is instanciated.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MongoCalendar:
+    # pylint: disable=unsubscriptable-object
+    &#34;&#34;&#34;
+    Centralize all direct contacts with the database.
+    &#34;&#34;&#34;
+    __instances = {}
+
+    @staticmethod
+    def getInstance():
+        &#34;&#34;&#34; Singleton Static access method.
+        &#34;&#34;&#34;
+        pid = os.getpid()  # HACK : One mongo per process.
+        instance = MongoCalendar.__instances.get(pid, None)
+        if instance is None:
+            MongoCalendar()
+        return MongoCalendar.__instances[pid]
+
+    def __init__(self):
+        &#34;&#34;&#34; DO NOT USE THIS CONSTRUCTOR IT IS A
+        Virtually private constructor.  Use MongoCalendar.getInstance()
+        Args:
+            client: a MongoClient instance or None
+            host: the host where the database is running
+            user: a user login to the database
+            password: a password corresponding with the user to connect to the database
+            ssl: A boolean string &#34;True&#34; or &#34;False&#34; indicating if ssl should be used to connect with the database.
+            calendarName: the calendar name the db has connected to. Or None if not connected to any calendar.
+            ssldir: The string path to a folder where all the ssl certificates are to be found.
+            db: The database to the client last connected.
+            forbiddenNames: A list of names forbidden for calendars because they are reserved by mongo, celery or this application. (&#34;admin&#34;, &#34;config&#34;, &#34;local&#34;, &#34;broker_pollenisator&#34;, &#34;pollenisator&#34;)
+        Raises:
+            Exception if it is instanciated.
+        &#34;&#34;&#34;
+        pid = os.getpid()  # HACK : One mongo per process.
+        if MongoCalendar.__instances.get(pid, None) is not None:
+            raise Exception(&#34;This class is a singleton!&#34;)
+        else:
+            self.client = None
+            self.host = &#34;&#34;
+            self.password = &#34;&#34;
+            self.user = &#34;&#34;
+            self.ssl = &#34;&#34;
+            self.port = &#34;&#34;
+            self.calendarName = None
+            self.ssldir = &#34;&#34;
+            self.db = None
+            self.forbiddenNames = [&#34;admin&#34;, &#34;config&#34;, &#34;local&#34;,
+                                   &#34;broker_pollenisator&#34;, &#34;pollenisator&#34;]
+            self._observers = []
+            MongoCalendar.__instances[pid] = self
+
+    def reinitConnection(self):
+        &#34;&#34;&#34;Reset client connection&#34;&#34;&#34;
+        self.client = None
+
+    def getWorkers(self):
+        &#34;&#34;&#34;Return workers documents from database
+        Returns:
+            Mongo result of workers. Cursor of dictionnary.&#34;&#34;&#34;
+        return self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;)
+
+    def removeInactiveWorkers(self):
+        &#34;&#34;&#34;Remove workers that did not sent a heart beat in 30 sec.&#34;&#34;&#34;
+        nowTime = datetime.datetime.now()
+        deltaTime = nowTime - datetime.timedelta(seconds=30)
+        res = self.deleteFromDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+            &#34;last_heartbeat&#34;: {&#34;$lt&#34;: deltaTime}}, True, True)
+        print(&#34;Removed inactive workers:&#34;+str(res.deleted_count))
+
+
+    def updateWorkerLastHeartbeat(self, worker_hostname):
+        &#34;&#34;&#34;Update a worker last heart beat sent
+        Args:
+            worker_hostname: the worker shortname to update.
+        &#34;&#34;&#34;
+        self.updateInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {&#34;name&#34;: worker_hostname}, {
+                        &#34;$set&#34;: {&#34;last_heartbeat&#34;: datetime.datetime.now()}})
+
+    def connect(self, config=None, timeoutInMS=500):
+        &#34;&#34;&#34;
+        Connect the mongo client to the database using the login provided and ssl certificates if ssl is activated.
+        Args:
+            config: A dictionnary with client.cfg config values (host, mongo_port, password, user, ssl).
+                    Default to None. If None, the client.cfg file will be read.
+            timeoutInMs: milliseconds to wait before timeout. Default to 500ms.
+        Raises:
+            ServerSelectionTimeoutError: if unable to connect to the mongo database
+            OperationFailure: if unable to authenticate using user/password.
+        Returns:
+            None if not connected
+            False if connection failed
+            True if connected succeeded
+        &#34;&#34;&#34;
+        if self.client is not None:
+            return
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        cfg = config if config is not None else Utils.loadCfg(
+            os.path.join(dir_path, &#34;../../config/client.cfg&#34;))
+        try:
+            self.host = str(cfg[&#34;host&#34;])
+            self.port = str(cfg.get(&#34;mongo_port&#34;, 27017))
+            self.password = str(cfg[&#34;password&#34;])
+            self.user = str(cfg[&#34;user&#34;])
+            self.ssl = str(cfg[&#34;ssl&#34;])
+            connectionString = &#34;&#34;
+            if self.user != &#34;&#34;:
+                connectionString = self.user+&#39;:&#39;+self.password+&#39;@&#39;
+            self.calendarName = None
+            try:
+                if cfg[&#34;ssl&#34;] == &#34;True&#34;:
+                    self.ssldir = os.path.abspath(
+                        os.path.join(dir_path, &#34;../../ssl/&#34;))
+                    self.client = MongoClient(&#39;mongodb://&#39;+connectionString+self.host+&#34;:&#34;+self.port, ssl=True, ssl_certfile=os.path.join(
+                        self.ssldir, &#34;client.pem&#34;), ssl_cert_reqs=ssl.CERT_REQUIRED, ssl_ca_certs=os.path.join(self.ssldir, &#34;ca.pem&#34;), serverSelectionTimeoutMS=timeoutInMS)
+                else:
+                    self.client = MongoClient(
+                        &#39;mongodb://&#39;+connectionString+self.host+&#34;:&#34;+self.port, serverSelectionTimeoutMS=timeoutInMS)
+                server_info = self.client.server_info()
+                return True and self.client is not None and server_info is not None
+            except ServerSelectionTimeoutError as e:  # Unable to connect
+                raise e
+            except OperationFailure as e:  #  Authentication failed
+                raise e
+        except KeyError as e:
+            raise e
+        return False
+
+    def isUserConnected(self):
+        &#34;&#34;&#34;Return True if the user is able to list databases. False otherwise.
+        Returns: bool&#34;&#34;&#34;
+        return self.listCalendars() is not None
+
+    def connectToDb(self, calendarName):
+        &#34;&#34;&#34;
+        Connect to the pentest database given by calendarName (pentestName).
+
+        Args:
+            calendarName: the pentest name to which you want to connect
+        &#34;&#34;&#34;
+        try:
+            if self.client is None:
+                self.connect()
+                if self.client is None:
+                    raise IOError()
+            self.calendarName = calendarName
+            if calendarName is not None:
+                self.db = self.client[calendarName]
+        except IOError as e:
+            print(&#34;Failed to connect.&#34; + str(e))
+            print(&#34;Please verify that the mongod service is running on host &#34; +
+                  self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+            self.client = None
+
+    def removeWorker(self, worker_name):
+        &#34;&#34;&#34;Remove the given worker shortname from database.
+        Args:
+            worker_name: the worker shortname to be deleted from database.&#34;&#34;&#34;
+        print(&#34;Remove worker as offline received&#34;)
+        self.deleteFromDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+            &#34;name&#34;: worker_name}, False, True)
+
+    def registerCommands(self, worker_name, command_names):
+        &#34;&#34;&#34;Update or insert the worker name with given commands.
+        Args:
+            worker_name: the worker shortname.
+            command_names: a list of commands that the worker want to register.&#34;&#34;&#34;
+        try:
+            if self.client is None:
+                self.connect()
+                if self.client is None:
+                    raise IOError(&#34;Failed to register commands&#34;)
+            res = self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+                &#34;name&#34;: worker_name}, False)
+            worker_shortname = worker_name.split(&#34;@&#34;)[-1]
+            if res is not None:
+                print(&#34;UPDATE COMMANDS&#34;)
+                self.updateInDb(&#34;pollenisator&#34;, &#34;workers&#34;,
+                                {&#34;name&#34;: worker_name}, {&#34;$set&#34;: {&#34;registeredCommands&#34;: command_names}}, False, True)
+            else:
+                print(&#34;INSERT COMMANDS&#34;)
+                self.insertInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+                    &#34;name&#34;: worker_name, &#34;shortname&#34;: worker_shortname, &#34;registeredCommands&#34;: command_names}, &#39;&#39;, True)
+            print(&#34;Registered commands &#34;+str(command_names) +
+                  &#34; for  &#34;+str(worker_name))
+        except IOError as e:
+            print(&#34;Failed to connect.&#34; + str(e))
+            print(&#34;Please verify that the mongod service is running on host &#34; +
+                  self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+            self.client = None
+
+    def getRegisteredCommands(self, worker_name):
+        &#34;&#34;&#34;Return the commands list registered by the given worker name
+        Args:
+            worker_name: the wworker shortname.
+        &#34;&#34;&#34;
+        try:
+            if self.client is None:
+                self.connect()
+                if self.client is None:
+                    raise ServerSelectionTimeoutError()
+            worker_res = self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+                &#34;name&#34;: worker_name}, False)
+            if worker_res is not None:
+                return worker_res[&#34;registeredCommands&#34;]
+        except ServerSelectionTimeoutError as e:
+            print(&#34;Failed to connect.&#34; + str(e))
+            print(&#34;Please verify that the mongod service is running on host &#34; +
+                  self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+            self.client = None
+
+    def attach(self, observer):
+        &#34;&#34;&#34;
+        Attach an observer to the database. All attached observers will be notified when a modication is done to a calendar through the methods presented below.
+
+        Args:
+            observer: the observer that implements a notify(collection, iid, action) function
+        &#34;&#34;&#34;
+        self._observers.append(observer)
+
+    def dettach(self, observer):
+        &#34;&#34;&#34;
+        Dettach the given observer from the database.
+
+        Args:
+            observer: the observer to detach
+        &#34;&#34;&#34;
+        try:
+            self._observers.remove(observer)
+        except ValueError:
+            pass
+
+    def notify(self, db, collection, iid, action, parentId=&#34;&#34;):
+        &#34;&#34;&#34;
+        Notify all observers of the modified record from database.
+        Uses the observer&#39;s notify implementation. This implementation must take the same args as this.
+
+        Args:
+            collection: the collection where a document has been modified
+            iid: the mongo ObjectId of the document that has been modified
+            action: the type of modification performed on this document (&#34;insert&#34;, &#34;update&#34; or &#34;delete&#34;)
+            parentId: (not used) default to &#34;&#34;, a node parent id as str
+        &#34;&#34;&#34;
+        if self._observers is not None:
+            if len(self._observers) &gt; 1:
+                for observer in self._observers:
+                    observer.notify(db, collection, iid, action)
+            else:
+                self.client[&#34;pollenisator&#34;][&#34;notifications&#34;].insert_one(
+                    {&#34;iid&#34;: iid, &#34;db&#34;: db, &#34;collection&#34;: collection, &#34;action&#34;: action, &#34;parent&#34;: parentId})
+
+    def update(self, collection, pipeline, updatePipeline, many=False, notify=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo update and update_many functions. Then notify observers.
+
+        Args:
+            collection: the collection that holds the document to update
+            pipeline: a first &#34;match&#34; pipeline mongo to select which document to update
+            updatePipeline: a second &#34;action&#34; pipeline mongo to apply changes to the selected document(s)
+            many: a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to True.
+        Returns:
+            Return the pymongo result of the update or update_many function.
+        &#34;&#34;&#34;
+        return self._update(self.calendarName, collection, pipeline, updatePipeline, many=many, notify=notify)
+
+    def updateInDb(self, db, collection, pipeline, updatePipeline, many=False, notify=False):
+        &#34;&#34;&#34;
+        update something in the database.
+        Args:
+            db: the database name where the object to update is
+            collection: the collection that holds the document to update
+            pipeline: a first &#34;match&#34; pipeline mongo to select which document to update
+            updatePipeline: a second &#34;action&#34; pipeline mongo to apply changes to the selected document(s)
+            many: a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to False.
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        self.connect()
+        return self._update(db, collection, pipeline, updatePipeline, many=many, notify=notify)
+
+    def _update(self, dbName, collection, pipeline, updatePipeline, many=False, notify=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo update and update_many functions. Then notify observers  if notify is true.
+
+        Args:
+            dbName: the database name to use
+            collection: the collection that holds the document to update
+            pipeline: a first &#34;match&#34; pipeline mongo to select which document to update
+            updatePipeline: a second &#34;action&#34; pipeline mongo to apply changes to the selected document(s)
+            many: a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to True.
+        Returns:
+            Return the pymongo result of the update or update_many function.
+        &#34;&#34;&#34;
+        self.connect()
+        db = self.client[dbName]
+        if many:
+            res = db[collection].update_many(
+                pipeline, updatePipeline)
+            elems = db[collection].find(pipeline)
+            if notify:
+                for elem in elems:
+                    self.notify(dbName, collection, elem[&#34;_id&#34;], &#34;update&#34;)
+        else:
+            res = db[collection].update(pipeline, updatePipeline)
+            elem = db[collection].find_one(pipeline)
+            if elem is not None:
+                if notify:
+                    self.notify(dbName, collection, elem[&#34;_id&#34;], &#34;update&#34;)
+        return res
+
+    def insert(self, collection, values, parent=&#39;&#39;):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo insert_one. Then notify observers.
+
+        Args:
+            collection: the collection that will hold the document to insert
+            values: the document to insert into the given collection
+            parent: not used, default to &#39;&#39;. Was used to give info about parent node
+
+        Returns:
+            Return the pymongo result of the insert_one function.
+        &#34;&#34;&#34;
+        return self._insert(self.calendarName, collection, values, True, parent)
+
+    def insertInDb(self, db, collection, values, _parent=&#39;&#39;, notify=False):
+        &#34;&#34;&#34;
+        insert something in the database after ensuring connection.
+        Args:
+            db: the database name to use
+            collection: the collection that holds the document to insert
+            values: the document to insert into the given collection
+            parent: not used, default to &#39;&#39;. Was used to give info about parent node
+            notify: a boolean asking for all client to be notified of this update. Default to False.
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        self.connect()
+        return self._insert(db, collection, values, notify)
+
+    def _insert(self, dbName, collection, values, notify=True, parentId=&#39;&#39;):
+        &#34;&#34;&#34;
+        Perform insertion in the database&#34;.
+        Args:
+            dbName: the database name object to use
+            collection: the collection that holds the document to insert
+            values: the document to insert into the given collection
+            notify: a boolean asking for all client to be notified of this update. Default to True.
+            parentId: not used, default to &#39;&#39;. Was used to give info about parent node
+
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        self.connect()
+        db = self.client[dbName]
+        res = db[collection].insert_one(values)
+        if notify:
+            self.notify(dbName, collection,
+                        res.inserted_id, &#34;insert&#34;, parentId)
+        return res
+
+    def find(self, collection, pipeline=None, multi=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo find and find_one.
+
+        Args:
+            collection: the collection to search for
+            pipeline: the document caracteristics to search for, default to None which means no filtering.
+            multi: a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.
+
+        Returns:
+            Return the pymongo result of the find or find_one function.
+        &#34;&#34;&#34;
+        if pipeline is None:
+            pipeline = {}
+        return self._find(self.db, collection, pipeline, multi)
+
+    def findInDb(self, db, collection, pipeline=None, multi=True):
+        &#34;&#34;&#34;
+        find something in the database.
+        Args:
+            collection: the collection to search for
+            pipeline: the document caracteristics to search for, default to None which means no filtering.
+            multi: a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        if pipeline is None:
+            pipeline = {}
+        self.connect()
+        dbMongo = self.client[db]
+        return self._find(dbMongo, collection, pipeline, multi)
+
+    def _find(self, db, collection, pipeline=None, multi=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo find and find_one.
+
+        Args:
+            db: the database name to search in
+            collection: the collection to search in
+            pipeline: the document caracteristics to search for, default to None which means no filtering.
+            multi: a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.
+
+        Returns:
+            Return the pymongo result of the find or find_one function.
+        &#34;&#34;&#34;
+        if pipeline is None:
+            pipeline = {}
+        self.connect()
+        try:
+            if multi:
+                res = db[collection].find(pipeline)
+            else:
+                res = db[collection].find_one(pipeline)
+        except TypeError:
+            return None
+        return res
+
+    def aggregate(self, collection, pipelines=None):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo aggregate.
+
+        Args:
+            collection: the collection to aggregate.
+            pipelines: the mongo pipeline for aggregation. Default to None which means empty list pipeline
+
+        Returns:
+            Return the pymongo result of the aggregate function
+        &#34;&#34;&#34;
+        if pipelines is None:
+            pipelines = []
+        return self._aggregate(self.db, collection, pipelines)
+
+    def aggregateFromDb(self, db, collection, pipelines=None):
+        &#34;&#34;&#34;
+        aggregate something in the database.
+        Args:
+            db: the database name to search in
+            collection: the collection to search in
+            pipelines: the mongo pipeline for aggregation. Default to None which means empty list pipeline
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        if pipelines is None:
+            pipelines = []
+        self.connect()
+        dbMongo = self.client[db]
+        return self._aggregate(dbMongo, collection, pipelines)
+
+    def _aggregate(self, db, collection, pipelines=None):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo aggregate.
+
+        Args:
+            db: the database to search in as mongo object
+            collection: the collection to aggregate as str.
+            pipelines: the mongo pipeline for aggregation.  Default to None which means empty list pipeline
+
+        Returns:
+            Return the pymongo result of the aggregate function
+        &#34;&#34;&#34;
+        if pipelines is None:
+            pipelines = []
+        self.connect()
+        return db[collection].aggregate(pipelines)
+
+    def delete(self, collection, pipeline, many=False):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo delete_one or delete_many. Then notify observers.
+
+        Args:
+            collection: the collection that holds the document to delete
+            pipeline: the document caracteristics to search for deletion.
+            many: a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False
+
+        Returns:
+            Return the pymongo result of the delete_one or delete_many function.
+        &#34;&#34;&#34;
+        return self._delete(self.calendarName, collection, pipeline, many, True)
+
+    def deleteFromDb(self, db, collection, pipeline, many=False, notify=False):
+        &#34;&#34;&#34;
+        aggregate something in the database.
+        Args:
+            db: the target database name 
+            collection: the collection that holds the document to delete
+            pipeline: the document caracteristics to search for deletion.
+            many: a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to False.
+        Returns:
+            Return the pymongo result of the find command for the command collection
+        &#34;&#34;&#34;
+        self.connect()
+        return self._delete(db, collection, pipeline, many, notify)
+
+    def _delete(self, dbName, collection, pipeline, many=False, notify=True):
+        &#34;&#34;&#34;
+        Wrapper for the pymongo delete_one or delete_many. Then notify observers.
+
+        Args:
+            dbName: the database to search in
+            collection: the collection that holds the document to delete
+            pipeline: the document caracteristics to search for deletion.
+            many: a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False
+            notify: a boolean asking for all client to be notified of this update. Default to True.
+        Returns:
+            Return the pymongo result of the delete_one or delete_many function.
+        &#34;&#34;&#34;
+        self.connect()
+        db = self.client[dbName]
+        res = None
+        if many:
+            elems = db[collection].find(pipeline)
+            if notify:
+                for elem in elems:
+                    self.notify(dbName, collection, elem[&#34;_id&#34;], &#34;delete&#34;)
+            res = db[collection].delete_many(pipeline)
+        else:
+            elem = db[collection].find_one(pipeline)
+            if elem is not None:
+                if notify:
+                    self.notify(dbName, collection, elem[&#34;_id&#34;], &#34;delete&#34;)
+                res = db[collection].delete_one(pipeline)
+        return res
+
+    def listCalendars(self):
+        &#34;&#34;&#34;Return the list of pollenisator databases.
+        Raises:
+            Raise Exception if client is not connected to database
+        Returns:
+            None if the server connection is not established. A list of string with pollenisator databases.
+        &#34;&#34;&#34;
+        ret = []
+        try:
+            if self.client is None:
+                self.connect()
+                if self.client is None:
+                    raise Exception()
+            calendars = self.findInDb(&#34;pollenisator&#34;, &#34;calendars&#34;)
+            for calendar in calendars:
+                ret.append(calendar[&#34;nom&#34;])
+        except ServerSelectionTimeoutError as e:
+            print(&#34;Failed to connect.&#34; + str(e))
+            print(&#34;Please verify that the mongod service is running on host &#34; +
+                  self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+            self.client = None
+            return None
+        return ret
+
+    def hasACalendarOpen(self):
+        &#34;&#34;&#34;
+        Return wether or not a calendar is open.
+
+        Returns:
+            Return True if a calendar is open, False otherwise.
+        &#34;&#34;&#34;
+        return self.calendarName is not None
+
+    def doDeleteCalendar(self, calendarName):
+        &#34;&#34;&#34;
+        Remove the given calendar name from the database.
+
+        Args:
+            calendarName: the calendar name to delete.
+        &#34;&#34;&#34;
+        result = self.deleteFromDb(
+            &#34;pollenisator&#34;, &#34;calendars&#34;, {&#34;nom&#34;: calendarName})
+        if result is not None:
+            if result.deleted_count == 1:
+                self.client.drop_database(calendarName)
+                tkinter.messagebox.showinfo(
+                    &#34;Success&#34;, &#34;Deleted from &#34;+&#34;calendars&#34;+&#34; \&#34;&#34;+str(calendarName)+&#34;\&#34;&#34;)
+                return
+
+        tkinter.messagebox.showinfo(
+            &#34;Error&#34;, &#34;Deleting &#34;+str(calendarName)+&#34; is not allowed because it is not a database.&#34;)
+
+    def validateCalendarName(self, calendarName):
+        &#34;&#34;&#34;Check the database name to see if it usable.
+        Checks mongo and pollenisator name overlapping.
+        Check space and dot in name.
+        Check existing pollenisator pentest database names.
+        Returns: a boolean&#34;&#34;&#34;
+        # check for forbidden names
+        if calendarName.strip().lower() in self.forbiddenNames:
+            msg = &#34;This name is forbidden.&#34;
+            return False, msg
+        elif &#34;.&#34; in calendarName.strip():
+            msg = &#34;The name cannot contain a dot (.).&#34;
+            return False, msg
+        elif &#34; &#34; in calendarName.strip():
+            msg = &#34;The name cannot contain a space.&#34;
+            return False, msg
+        calendars = [x.lower() for x in self.listCalendars()]
+        if calendarName.strip().lower() in calendars:
+            msg = &#34;A database with the same name already exists.&#34;
+            return False, msg
+        return True, &#34;&#34;
+
+    def registerCalendar(self, saveAsName, askDeleteIfExists=True, autoconnect=True):
+        &#34;&#34;&#34;
+        Register a new calendar into database.
+
+        Args:
+            saveAsName: the calendar name to register
+            askDeleteIfExists: boolean to ask the user for a deletion in case of an already existing calendar with the same name.
+                                If false, and the case appends, calendar will not be registered. Default is True.
+            autoconnect: boolean indicating if the database should connect to the calendar after it is registered. Default to True.
+
+        Returns:
+            Returns True if calendar was successfully registered, False otherwise.
+        &#34;&#34;&#34;
+        oldConnection = self.calendarName
+        authorized, msg = self.validateCalendarName(saveAsName.strip().lower())
+        # check for forbidden names
+        if not authorized:
+            tkinter.messagebox.showinfo(&#34;add database attempt:&#34;, msg)
+            return False
+        else:
+            # check if already exists
+            self.connectToDb(&#34;pollenisator&#34;)
+            if self.db.calendars.find_one({&#34;nom&#34;: saveAsName.strip()}) is not None and askDeleteIfExists:
+                authorized = tkinter.messagebox.askyesno(
+                    &#34;Already exists&#34;, &#34;A database already exists with that name, override (cannot be reversed)?&#34;)
+                if not authorized:
+                    msg = &#34;The database has not been overwritten choose a different name to save it.&#34;
+                else:
+                    self.doDeleteCalendar(saveAsName.strip())
+            # If authorized to registered from previous tests
+            if authorized:
+                # insert in database  calendars
+                self.connectToDb(&#34;pollenisator&#34;)
+                self.db.calendars.insert({&#34;nom&#34;: saveAsName.strip()})
+                self.connectToDb(saveAsName.strip())
+            if autoconnect:
+                self.connectToDb(saveAsName.strip())
+            else:
+                self.connectToDb(oldConnection)
+        return True
+
+    def copyDb(self, ToCopyName=&#34;&#34;, fromCopyName=&#34;&#34;):
+        &#34;&#34;&#34;
+        Copy a database.
+
+        Args:
+            ToCopyName: the output calendar will have this name. If default empty string is given, a user window prompt will be used.
+            fromCopyName: the calendar name to be copied. If default empty string is given, the opened calendar will be used.
+
+        Returns:
+            Returns the output database name or None if the copy failed.
+        &#34;&#34;&#34;
+        if self.calendarName is None and fromCopyName == &#34;&#34;:
+            tkinter.messagebox.showinfo(
+                &#34;Copy database failed:&#34;, &#34;You must open a database before duplicating it.&#34;)
+            return None
+        if fromCopyName == &#34;&#34; and self.calendarName is not None:
+            fromCopyName = self.calendarName
+        if ToCopyName == &#34;&#34;:
+            ToCopyName = tkinter.simpledialog.askstring(
+                &#34;Copy name&#34;, &#34;New copy of &#34;+fromCopyName+&#34; database name :&#34;)
+        if ToCopyName is not None:
+            succeed = self.registerCalendar(
+                ToCopyName, True, True)
+            if succeed:
+                self.client.admin.command(&#39;copydb&#39;,
+                                          fromdb=fromCopyName,
+                                          todb=ToCopyName)
+            else:
+                return None
+
+            return ToCopyName
+        else:
+            tkinter.messagebox.showinfo(&#34;Copy database canceled&#34;, &#34;Canceled.&#34;)
+            return None
+
+    def dumpDb(self, dbName, collection=&#34;&#34;):
+        &#34;&#34;&#34;
+        Export a database dump into the exports/ folder as a gzip archive.
+        It uses the mongodump utily installed with mongodb-org-tools
+
+        Args:
+            dbName: the database name to dump
+            collection: (Opt.) the collection to dump.
+        &#34;&#34;&#34;
+        from core.Components.Utils import execute
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        out_path = os.path.join(
+            dir_path, &#34;../../exports/&#34;, dbName if collection == &#34;&#34; else dbName+&#34;_&#34;+collection)
+        connectionString = &#39;&#39; if self.user == &#39;&#39; else &#34;-u &#34;+self.user + \
+            &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+        cmd = &#34;mongodump &#34;+connectionString+&#34;--host &#34; + \
+            self.host+&#34;  --db &#34;+dbName+&#34; --archive=&#34;+out_path+&#34;.gzip --gzip&#34;
+        if collection.strip() != &#34;&#34;:
+            cmd += &#34; -c &#34;+str(collection).strip()
+        if self.ssl == &#34;True&#34;:
+            cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+                self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+        execute(cmd)
+
+    def importDatabase(self, filename):
+        &#34;&#34;&#34;
+        Import a database dump into a calendar database.
+            It uses the mongorestore utily installed with mongodb-org-tools
+
+        Args:
+            filename: the gzip archive name that was exported to be reimported.
+
+        Returns:
+            returns True if the import is successfull, False
+        &#34;&#34;&#34;
+        from core.Components.Utils import execute
+        success = self.registerCalendar(os.path.splitext(
+            os.path.basename(filename))[0], True, False)
+        if success:
+            connectionString = &#39;&#39; if self.user == &#39;&#39; else &#34;-u &#34;+self.user + \
+                &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+            cmd = &#34;mongorestore &#34;+connectionString+&#34;--host &#34; + \
+                self.host+&#34; --archive=&#34;+filename+&#34; --gzip&#34;
+            if self.ssl == &#34;True&#34;:
+                cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+                    self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+            execute(cmd, None, False)
+        return success
+
+    def importCommands(self, filename):
+        &#34;&#34;&#34;
+        Import a database dump into a calendar database.
+            It uses the mongorestore utily installed with mongodb-org-tools
+
+        Args:
+            filename: the gzip archive name that was exported to be reimported.
+
+        Returns:
+            returns True if the import is successfull, False
+        &#34;&#34;&#34;
+        from core.Components.Utils import execute
+        if not os.path.isfile(filename):
+            raise IOError(&#34;File does not exist&#34;)
+        connectionString = &#39;&#39; if self.user.strip() == &#39;&#39; else &#34;-u &#34;+self.user + \
+            &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+        cmd = &#34;mongorestore &#34;+connectionString+&#34;--host &#34; + \
+            self.host+&#34; --archive=&#34;+filename+&#34; --gzip&#34;
+        if self.ssl == &#34;True&#34;:
+            cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+                self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+
+        execute(cmd, None, False)
+        return True</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.getInstance"><code class="name flex">
+<span>def <span class="ident">getInstance</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Singleton Static access method.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def getInstance():
+    &#34;&#34;&#34; Singleton Static access method.
+    &#34;&#34;&#34;
+    pid = os.getpid()  # HACK : One mongo per process.
+    instance = MongoCalendar.__instances.get(pid, None)
+    if instance is None:
+        MongoCalendar()
+    return MongoCalendar.__instances[pid]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.aggregate"><code class="name flex">
+<span>def <span class="ident">aggregate</span></span>(<span>self, collection, pipelines=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wrapper for the pymongo aggregate.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection to aggregate.</dd>
+<dt><strong><code>pipelines</code></strong></dt>
+<dd>the mongo pipeline for aggregation. Default to None which means empty list pipeline</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Return the pymongo result</code> of <code>the aggregate function</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def aggregate(self, collection, pipelines=None):
+    &#34;&#34;&#34;
+    Wrapper for the pymongo aggregate.
+
+    Args:
+        collection: the collection to aggregate.
+        pipelines: the mongo pipeline for aggregation. Default to None which means empty list pipeline
+
+    Returns:
+        Return the pymongo result of the aggregate function
+    &#34;&#34;&#34;
+    if pipelines is None:
+        pipelines = []
+    return self._aggregate(self.db, collection, pipelines)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.aggregateFromDb"><code class="name flex">
+<span>def <span class="ident">aggregateFromDb</span></span>(<span>self, db, collection, pipelines=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>aggregate something in the database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>db</code></strong></dt>
+<dd>the database name to search in</dd>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection to search in</dd>
+<dt><strong><code>pipelines</code></strong></dt>
+<dd>the mongo pipeline for aggregation. Default to None which means empty list pipeline</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Return the pymongo result</code> of <code>the find command for the command collection</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def aggregateFromDb(self, db, collection, pipelines=None):
+    &#34;&#34;&#34;
+    aggregate something in the database.
+    Args:
+        db: the database name to search in
+        collection: the collection to search in
+        pipelines: the mongo pipeline for aggregation. Default to None which means empty list pipeline
+    Returns:
+        Return the pymongo result of the find command for the command collection
+    &#34;&#34;&#34;
+    if pipelines is None:
+        pipelines = []
+    self.connect()
+    dbMongo = self.client[db]
+    return self._aggregate(dbMongo, collection, pipelines)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.attach"><code class="name flex">
+<span>def <span class="ident">attach</span></span>(<span>self, observer)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Attach an observer to the database. All attached observers will be notified when a modication is done to a calendar through the methods presented below.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>observer</code></strong></dt>
+<dd>the observer that implements a notify(collection, iid, action) function</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def attach(self, observer):
+    &#34;&#34;&#34;
+    Attach an observer to the database. All attached observers will be notified when a modication is done to a calendar through the methods presented below.
+
+    Args:
+        observer: the observer that implements a notify(collection, iid, action) function
+    &#34;&#34;&#34;
+    self._observers.append(observer)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.connect"><code class="name flex">
+<span>def <span class="ident">connect</span></span>(<span>self, config=None, timeoutInMS=500)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Connect the mongo client to the database using the login provided and ssl certificates if ssl is activated.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>config</code></strong></dt>
+<dd>A dictionnary with client.cfg config values (host, mongo_port, password, user, ssl).
+Default to None. If None, the client.cfg file will be read.</dd>
+<dt><strong><code>timeoutInMs</code></strong></dt>
+<dd>milliseconds to wait before timeout. Default to 500ms.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ServerSelectionTimeoutError</code></dt>
+<dd>if unable to connect to the mongo database</dd>
+<dt><code>OperationFailure</code></dt>
+<dd>if unable to authenticate using user/password.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None if not connected</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>False if connection failed</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>True if connected succeeded</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connect(self, config=None, timeoutInMS=500):
+    &#34;&#34;&#34;
+    Connect the mongo client to the database using the login provided and ssl certificates if ssl is activated.
+    Args:
+        config: A dictionnary with client.cfg config values (host, mongo_port, password, user, ssl).
+                Default to None. If None, the client.cfg file will be read.
+        timeoutInMs: milliseconds to wait before timeout. Default to 500ms.
+    Raises:
+        ServerSelectionTimeoutError: if unable to connect to the mongo database
+        OperationFailure: if unable to authenticate using user/password.
+    Returns:
+        None if not connected
+        False if connection failed
+        True if connected succeeded
+    &#34;&#34;&#34;
+    if self.client is not None:
+        return
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    cfg = config if config is not None else Utils.loadCfg(
+        os.path.join(dir_path, &#34;../../config/client.cfg&#34;))
+    try:
+        self.host = str(cfg[&#34;host&#34;])
+        self.port = str(cfg.get(&#34;mongo_port&#34;, 27017))
+        self.password = str(cfg[&#34;password&#34;])
+        self.user = str(cfg[&#34;user&#34;])
+        self.ssl = str(cfg[&#34;ssl&#34;])
+        connectionString = &#34;&#34;
+        if self.user != &#34;&#34;:
+            connectionString = self.user+&#39;:&#39;+self.password+&#39;@&#39;
+        self.calendarName = None
+        try:
+            if cfg[&#34;ssl&#34;] == &#34;True&#34;:
+                self.ssldir = os.path.abspath(
+                    os.path.join(dir_path, &#34;../../ssl/&#34;))
+                self.client = MongoClient(&#39;mongodb://&#39;+connectionString+self.host+&#34;:&#34;+self.port, ssl=True, ssl_certfile=os.path.join(
+                    self.ssldir, &#34;client.pem&#34;), ssl_cert_reqs=ssl.CERT_REQUIRED, ssl_ca_certs=os.path.join(self.ssldir, &#34;ca.pem&#34;), serverSelectionTimeoutMS=timeoutInMS)
+            else:
+                self.client = MongoClient(
+                    &#39;mongodb://&#39;+connectionString+self.host+&#34;:&#34;+self.port, serverSelectionTimeoutMS=timeoutInMS)
+            server_info = self.client.server_info()
+            return True and self.client is not None and server_info is not None
+        except ServerSelectionTimeoutError as e:  # Unable to connect
+            raise e
+        except OperationFailure as e:  #  Authentication failed
+            raise e
+    except KeyError as e:
+        raise e
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.connectToDb"><code class="name flex">
+<span>def <span class="ident">connectToDb</span></span>(<span>self, calendarName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Connect to the pentest database given by calendarName (pentestName).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>calendarName</code></strong></dt>
+<dd>the pentest name to which you want to connect</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connectToDb(self, calendarName):
+    &#34;&#34;&#34;
+    Connect to the pentest database given by calendarName (pentestName).
+
+    Args:
+        calendarName: the pentest name to which you want to connect
+    &#34;&#34;&#34;
+    try:
+        if self.client is None:
+            self.connect()
+            if self.client is None:
+                raise IOError()
+        self.calendarName = calendarName
+        if calendarName is not None:
+            self.db = self.client[calendarName]
+    except IOError as e:
+        print(&#34;Failed to connect.&#34; + str(e))
+        print(&#34;Please verify that the mongod service is running on host &#34; +
+              self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+        self.client = None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.copyDb"><code class="name flex">
+<span>def <span class="ident">copyDb</span></span>(<span>self, ToCopyName='', fromCopyName='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Copy a database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ToCopyName</code></strong></dt>
+<dd>the output calendar will have this name. If default empty string is given, a user window prompt will be used.</dd>
+<dt><strong><code>fromCopyName</code></strong></dt>
+<dd>the calendar name to be copied. If default empty string is given, the opened calendar will be used.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Returns the output database name or None if the copy failed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def copyDb(self, ToCopyName=&#34;&#34;, fromCopyName=&#34;&#34;):
+    &#34;&#34;&#34;
+    Copy a database.
+
+    Args:
+        ToCopyName: the output calendar will have this name. If default empty string is given, a user window prompt will be used.
+        fromCopyName: the calendar name to be copied. If default empty string is given, the opened calendar will be used.
+
+    Returns:
+        Returns the output database name or None if the copy failed.
+    &#34;&#34;&#34;
+    if self.calendarName is None and fromCopyName == &#34;&#34;:
+        tkinter.messagebox.showinfo(
+            &#34;Copy database failed:&#34;, &#34;You must open a database before duplicating it.&#34;)
+        return None
+    if fromCopyName == &#34;&#34; and self.calendarName is not None:
+        fromCopyName = self.calendarName
+    if ToCopyName == &#34;&#34;:
+        ToCopyName = tkinter.simpledialog.askstring(
+            &#34;Copy name&#34;, &#34;New copy of &#34;+fromCopyName+&#34; database name :&#34;)
+    if ToCopyName is not None:
+        succeed = self.registerCalendar(
+            ToCopyName, True, True)
+        if succeed:
+            self.client.admin.command(&#39;copydb&#39;,
+                                      fromdb=fromCopyName,
+                                      todb=ToCopyName)
+        else:
+            return None
+
+        return ToCopyName
+    else:
+        tkinter.messagebox.showinfo(&#34;Copy database canceled&#34;, &#34;Canceled.&#34;)
+        return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self, collection, pipeline, many=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wrapper for the pymongo delete_one or delete_many. Then notify observers.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection that holds the document to delete</dd>
+<dt><strong><code>pipeline</code></strong></dt>
+<dd>the document caracteristics to search for deletion.</dd>
+<dt><strong><code>many</code></strong></dt>
+<dd>a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the pymongo result of the delete_one or delete_many function.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self, collection, pipeline, many=False):
+    &#34;&#34;&#34;
+    Wrapper for the pymongo delete_one or delete_many. Then notify observers.
+
+    Args:
+        collection: the collection that holds the document to delete
+        pipeline: the document caracteristics to search for deletion.
+        many: a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False
+
+    Returns:
+        Return the pymongo result of the delete_one or delete_many function.
+    &#34;&#34;&#34;
+    return self._delete(self.calendarName, collection, pipeline, many, True)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.deleteFromDb"><code class="name flex">
+<span>def <span class="ident">deleteFromDb</span></span>(<span>self, db, collection, pipeline, many=False, notify=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>aggregate something in the database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>db</code></strong></dt>
+<dd>the target database name </dd>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection that holds the document to delete</dd>
+<dt><strong><code>pipeline</code></strong></dt>
+<dd>the document caracteristics to search for deletion.</dd>
+<dt><strong><code>many</code></strong></dt>
+<dd>a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False</dd>
+<dt><strong><code>notify</code></strong></dt>
+<dd>a boolean asking for all client to be notified of this update. Default to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Return the pymongo result</code> of <code>the find command for the command collection</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteFromDb(self, db, collection, pipeline, many=False, notify=False):
+    &#34;&#34;&#34;
+    aggregate something in the database.
+    Args:
+        db: the target database name 
+        collection: the collection that holds the document to delete
+        pipeline: the document caracteristics to search for deletion.
+        many: a boolean defining if eventually many documents can be deleted at once. (If False, only zero or one document will be deleted.). Default to False
+        notify: a boolean asking for all client to be notified of this update. Default to False.
+    Returns:
+        Return the pymongo result of the find command for the command collection
+    &#34;&#34;&#34;
+    self.connect()
+    return self._delete(db, collection, pipeline, many, notify)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.dettach"><code class="name flex">
+<span>def <span class="ident">dettach</span></span>(<span>self, observer)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dettach the given observer from the database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>observer</code></strong></dt>
+<dd>the observer to detach</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dettach(self, observer):
+    &#34;&#34;&#34;
+    Dettach the given observer from the database.
+
+    Args:
+        observer: the observer to detach
+    &#34;&#34;&#34;
+    try:
+        self._observers.remove(observer)
+    except ValueError:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.doDeleteCalendar"><code class="name flex">
+<span>def <span class="ident">doDeleteCalendar</span></span>(<span>self, calendarName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove the given calendar name from the database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>calendarName</code></strong></dt>
+<dd>the calendar name to delete.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def doDeleteCalendar(self, calendarName):
+    &#34;&#34;&#34;
+    Remove the given calendar name from the database.
+
+    Args:
+        calendarName: the calendar name to delete.
+    &#34;&#34;&#34;
+    result = self.deleteFromDb(
+        &#34;pollenisator&#34;, &#34;calendars&#34;, {&#34;nom&#34;: calendarName})
+    if result is not None:
+        if result.deleted_count == 1:
+            self.client.drop_database(calendarName)
+            tkinter.messagebox.showinfo(
+                &#34;Success&#34;, &#34;Deleted from &#34;+&#34;calendars&#34;+&#34; \&#34;&#34;+str(calendarName)+&#34;\&#34;&#34;)
+            return
+
+    tkinter.messagebox.showinfo(
+        &#34;Error&#34;, &#34;Deleting &#34;+str(calendarName)+&#34; is not allowed because it is not a database.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.dumpDb"><code class="name flex">
+<span>def <span class="ident">dumpDb</span></span>(<span>self, dbName, collection='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export a database dump into the exports/ folder as a gzip archive.
+It uses the mongodump utily installed with mongodb-org-tools</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dbName</code></strong></dt>
+<dd>the database name to dump</dd>
+<dt><strong><code>collection</code></strong></dt>
+<dd>(Opt.) the collection to dump.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dumpDb(self, dbName, collection=&#34;&#34;):
+    &#34;&#34;&#34;
+    Export a database dump into the exports/ folder as a gzip archive.
+    It uses the mongodump utily installed with mongodb-org-tools
+
+    Args:
+        dbName: the database name to dump
+        collection: (Opt.) the collection to dump.
+    &#34;&#34;&#34;
+    from core.Components.Utils import execute
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    out_path = os.path.join(
+        dir_path, &#34;../../exports/&#34;, dbName if collection == &#34;&#34; else dbName+&#34;_&#34;+collection)
+    connectionString = &#39;&#39; if self.user == &#39;&#39; else &#34;-u &#34;+self.user + \
+        &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+    cmd = &#34;mongodump &#34;+connectionString+&#34;--host &#34; + \
+        self.host+&#34;  --db &#34;+dbName+&#34; --archive=&#34;+out_path+&#34;.gzip --gzip&#34;
+    if collection.strip() != &#34;&#34;:
+        cmd += &#34; -c &#34;+str(collection).strip()
+    if self.ssl == &#34;True&#34;:
+        cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+            self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+    execute(cmd)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.find"><code class="name flex">
+<span>def <span class="ident">find</span></span>(<span>self, collection, pipeline=None, multi=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wrapper for the pymongo find and find_one.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection to search for</dd>
+<dt><strong><code>pipeline</code></strong></dt>
+<dd>the document caracteristics to search for, default to None which means no filtering.</dd>
+<dt><strong><code>multi</code></strong></dt>
+<dd>a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the pymongo result of the find or find_one function.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def find(self, collection, pipeline=None, multi=True):
+    &#34;&#34;&#34;
+    Wrapper for the pymongo find and find_one.
+
+    Args:
+        collection: the collection to search for
+        pipeline: the document caracteristics to search for, default to None which means no filtering.
+        multi: a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.
+
+    Returns:
+        Return the pymongo result of the find or find_one function.
+    &#34;&#34;&#34;
+    if pipeline is None:
+        pipeline = {}
+    return self._find(self.db, collection, pipeline, multi)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.findInDb"><code class="name flex">
+<span>def <span class="ident">findInDb</span></span>(<span>self, db, collection, pipeline=None, multi=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>find something in the database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection to search for</dd>
+<dt><strong><code>pipeline</code></strong></dt>
+<dd>the document caracteristics to search for, default to None which means no filtering.</dd>
+<dt><strong><code>multi</code></strong></dt>
+<dd>a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Return the pymongo result</code> of <code>the find command for the command collection</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findInDb(self, db, collection, pipeline=None, multi=True):
+    &#34;&#34;&#34;
+    find something in the database.
+    Args:
+        collection: the collection to search for
+        pipeline: the document caracteristics to search for, default to None which means no filtering.
+        multi: a boolean defining if eventually many documents can be found at once. (If False, only zero or one document will be found). Default to True.
+    Returns:
+        Return the pymongo result of the find command for the command collection
+    &#34;&#34;&#34;
+    if pipeline is None:
+        pipeline = {}
+    self.connect()
+    dbMongo = self.client[db]
+    return self._find(dbMongo, collection, pipeline, multi)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.getRegisteredCommands"><code class="name flex">
+<span>def <span class="ident">getRegisteredCommands</span></span>(<span>self, worker_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the commands list registered by the given worker name</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>worker_name</code></strong></dt>
+<dd>the wworker shortname.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getRegisteredCommands(self, worker_name):
+    &#34;&#34;&#34;Return the commands list registered by the given worker name
+    Args:
+        worker_name: the wworker shortname.
+    &#34;&#34;&#34;
+    try:
+        if self.client is None:
+            self.connect()
+            if self.client is None:
+                raise ServerSelectionTimeoutError()
+        worker_res = self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+            &#34;name&#34;: worker_name}, False)
+        if worker_res is not None:
+            return worker_res[&#34;registeredCommands&#34;]
+    except ServerSelectionTimeoutError as e:
+        print(&#34;Failed to connect.&#34; + str(e))
+        print(&#34;Please verify that the mongod service is running on host &#34; +
+              self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+        self.client = None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.getWorkers"><code class="name flex">
+<span>def <span class="ident">getWorkers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return workers documents from database</p>
+<h2 id="returns">Returns</h2>
+<p>Mongo result of workers. Cursor of dictionnary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getWorkers(self):
+    &#34;&#34;&#34;Return workers documents from database
+    Returns:
+        Mongo result of workers. Cursor of dictionnary.&#34;&#34;&#34;
+    return self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.hasACalendarOpen"><code class="name flex">
+<span>def <span class="ident">hasACalendarOpen</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return wether or not a calendar is open.</p>
+<h2 id="returns">Returns</h2>
+<p>Return True if a calendar is open, False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hasACalendarOpen(self):
+    &#34;&#34;&#34;
+    Return wether or not a calendar is open.
+
+    Returns:
+        Return True if a calendar is open, False otherwise.
+    &#34;&#34;&#34;
+    return self.calendarName is not None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.importCommands"><code class="name flex">
+<span>def <span class="ident">importCommands</span></span>(<span>self, filename)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Import a database dump into a calendar database.
+It uses the mongorestore utily installed with mongodb-org-tools</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>filename</code></strong></dt>
+<dd>the gzip archive name that was exported to be reimported.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>returns True if the import is successfull, False</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def importCommands(self, filename):
+    &#34;&#34;&#34;
+    Import a database dump into a calendar database.
+        It uses the mongorestore utily installed with mongodb-org-tools
+
+    Args:
+        filename: the gzip archive name that was exported to be reimported.
+
+    Returns:
+        returns True if the import is successfull, False
+    &#34;&#34;&#34;
+    from core.Components.Utils import execute
+    if not os.path.isfile(filename):
+        raise IOError(&#34;File does not exist&#34;)
+    connectionString = &#39;&#39; if self.user.strip() == &#39;&#39; else &#34;-u &#34;+self.user + \
+        &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+    cmd = &#34;mongorestore &#34;+connectionString+&#34;--host &#34; + \
+        self.host+&#34; --archive=&#34;+filename+&#34; --gzip&#34;
+    if self.ssl == &#34;True&#34;:
+        cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+            self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+
+    execute(cmd, None, False)
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.importDatabase"><code class="name flex">
+<span>def <span class="ident">importDatabase</span></span>(<span>self, filename)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Import a database dump into a calendar database.
+It uses the mongorestore utily installed with mongodb-org-tools</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>filename</code></strong></dt>
+<dd>the gzip archive name that was exported to be reimported.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>returns True if the import is successfull, False</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def importDatabase(self, filename):
+    &#34;&#34;&#34;
+    Import a database dump into a calendar database.
+        It uses the mongorestore utily installed with mongodb-org-tools
+
+    Args:
+        filename: the gzip archive name that was exported to be reimported.
+
+    Returns:
+        returns True if the import is successfull, False
+    &#34;&#34;&#34;
+    from core.Components.Utils import execute
+    success = self.registerCalendar(os.path.splitext(
+        os.path.basename(filename))[0], True, False)
+    if success:
+        connectionString = &#39;&#39; if self.user == &#39;&#39; else &#34;-u &#34;+self.user + \
+            &#34; -p &#34;+self.password + &#34; --authenticationDatabase admin &#34;
+        cmd = &#34;mongorestore &#34;+connectionString+&#34;--host &#34; + \
+            self.host+&#34; --archive=&#34;+filename+&#34; --gzip&#34;
+        if self.ssl == &#34;True&#34;:
+            cmd += &#34; --ssl --sslPEMKeyFile &#34;+self.ssldir+&#34;/client.pem --sslCAFile &#34; + \
+                self.ssldir+&#34;/ca.pem --sslAllowInvalidHostnames&#34;
+        execute(cmd, None, False)
+    return success</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.insert"><code class="name flex">
+<span>def <span class="ident">insert</span></span>(<span>self, collection, values, parent='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wrapper for the pymongo insert_one. Then notify observers.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection that will hold the document to insert</dd>
+<dt><strong><code>values</code></strong></dt>
+<dd>the document to insert into the given collection</dd>
+<dt><strong><code>parent</code></strong></dt>
+<dd>not used, default to ''. Was used to give info about parent node</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the pymongo result of the insert_one function.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insert(self, collection, values, parent=&#39;&#39;):
+    &#34;&#34;&#34;
+    Wrapper for the pymongo insert_one. Then notify observers.
+
+    Args:
+        collection: the collection that will hold the document to insert
+        values: the document to insert into the given collection
+        parent: not used, default to &#39;&#39;. Was used to give info about parent node
+
+    Returns:
+        Return the pymongo result of the insert_one function.
+    &#34;&#34;&#34;
+    return self._insert(self.calendarName, collection, values, True, parent)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.insertInDb"><code class="name flex">
+<span>def <span class="ident">insertInDb</span></span>(<span>self, db, collection, values, notify=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>insert something in the database after ensuring connection.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>db</code></strong></dt>
+<dd>the database name to use</dd>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection that holds the document to insert</dd>
+<dt><strong><code>values</code></strong></dt>
+<dd>the document to insert into the given collection</dd>
+<dt><strong><code>parent</code></strong></dt>
+<dd>not used, default to ''. Was used to give info about parent node</dd>
+<dt><strong><code>notify</code></strong></dt>
+<dd>a boolean asking for all client to be notified of this update. Default to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Return the pymongo result</code> of <code>the find command for the command collection</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertInDb(self, db, collection, values, _parent=&#39;&#39;, notify=False):
+    &#34;&#34;&#34;
+    insert something in the database after ensuring connection.
+    Args:
+        db: the database name to use
+        collection: the collection that holds the document to insert
+        values: the document to insert into the given collection
+        parent: not used, default to &#39;&#39;. Was used to give info about parent node
+        notify: a boolean asking for all client to be notified of this update. Default to False.
+    Returns:
+        Return the pymongo result of the find command for the command collection
+    &#34;&#34;&#34;
+    self.connect()
+    return self._insert(db, collection, values, notify)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.isUserConnected"><code class="name flex">
+<span>def <span class="ident">isUserConnected</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return True if the user is able to list databases. False otherwise.
+Returns: bool</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isUserConnected(self):
+    &#34;&#34;&#34;Return True if the user is able to list databases. False otherwise.
+    Returns: bool&#34;&#34;&#34;
+    return self.listCalendars() is not None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.listCalendars"><code class="name flex">
+<span>def <span class="ident">listCalendars</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the list of pollenisator databases.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>Raise Exception if client is not connected to database</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None if the server connection is not established. A list of string with pollenisator databases.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def listCalendars(self):
+    &#34;&#34;&#34;Return the list of pollenisator databases.
+    Raises:
+        Raise Exception if client is not connected to database
+    Returns:
+        None if the server connection is not established. A list of string with pollenisator databases.
+    &#34;&#34;&#34;
+    ret = []
+    try:
+        if self.client is None:
+            self.connect()
+            if self.client is None:
+                raise Exception()
+        calendars = self.findInDb(&#34;pollenisator&#34;, &#34;calendars&#34;)
+        for calendar in calendars:
+            ret.append(calendar[&#34;nom&#34;])
+    except ServerSelectionTimeoutError as e:
+        print(&#34;Failed to connect.&#34; + str(e))
+        print(&#34;Please verify that the mongod service is running on host &#34; +
+              self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+        self.client = None
+        return None
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.notify"><code class="name flex">
+<span>def <span class="ident">notify</span></span>(<span>self, db, collection, iid, action, parentId='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Notify all observers of the modified record from database.
+Uses the observer's notify implementation. This implementation must take the same args as this.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection where a document has been modified</dd>
+<dt><strong><code>iid</code></strong></dt>
+<dd>the mongo ObjectId of the document that has been modified</dd>
+<dt><strong><code>action</code></strong></dt>
+<dd>the type of modification performed on this document ("insert", "update" or "delete")</dd>
+<dt><strong><code>parentId</code></strong></dt>
+<dd>(not used) default to "", a node parent id as str</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def notify(self, db, collection, iid, action, parentId=&#34;&#34;):
+    &#34;&#34;&#34;
+    Notify all observers of the modified record from database.
+    Uses the observer&#39;s notify implementation. This implementation must take the same args as this.
+
+    Args:
+        collection: the collection where a document has been modified
+        iid: the mongo ObjectId of the document that has been modified
+        action: the type of modification performed on this document (&#34;insert&#34;, &#34;update&#34; or &#34;delete&#34;)
+        parentId: (not used) default to &#34;&#34;, a node parent id as str
+    &#34;&#34;&#34;
+    if self._observers is not None:
+        if len(self._observers) &gt; 1:
+            for observer in self._observers:
+                observer.notify(db, collection, iid, action)
+        else:
+            self.client[&#34;pollenisator&#34;][&#34;notifications&#34;].insert_one(
+                {&#34;iid&#34;: iid, &#34;db&#34;: db, &#34;collection&#34;: collection, &#34;action&#34;: action, &#34;parent&#34;: parentId})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.registerCalendar"><code class="name flex">
+<span>def <span class="ident">registerCalendar</span></span>(<span>self, saveAsName, askDeleteIfExists=True, autoconnect=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Register a new calendar into database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>saveAsName</code></strong></dt>
+<dd>the calendar name to register</dd>
+<dt><strong><code>askDeleteIfExists</code></strong></dt>
+<dd>boolean to ask the user for a deletion in case of an already existing calendar with the same name.
+If false, and the case appends, calendar will not be registered. Default is True.</dd>
+<dt><strong><code>autoconnect</code></strong></dt>
+<dd>boolean indicating if the database should connect to the calendar after it is registered. Default to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Returns True if calendar was successfully registered, False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def registerCalendar(self, saveAsName, askDeleteIfExists=True, autoconnect=True):
+    &#34;&#34;&#34;
+    Register a new calendar into database.
+
+    Args:
+        saveAsName: the calendar name to register
+        askDeleteIfExists: boolean to ask the user for a deletion in case of an already existing calendar with the same name.
+                            If false, and the case appends, calendar will not be registered. Default is True.
+        autoconnect: boolean indicating if the database should connect to the calendar after it is registered. Default to True.
+
+    Returns:
+        Returns True if calendar was successfully registered, False otherwise.
+    &#34;&#34;&#34;
+    oldConnection = self.calendarName
+    authorized, msg = self.validateCalendarName(saveAsName.strip().lower())
+    # check for forbidden names
+    if not authorized:
+        tkinter.messagebox.showinfo(&#34;add database attempt:&#34;, msg)
+        return False
+    else:
+        # check if already exists
+        self.connectToDb(&#34;pollenisator&#34;)
+        if self.db.calendars.find_one({&#34;nom&#34;: saveAsName.strip()}) is not None and askDeleteIfExists:
+            authorized = tkinter.messagebox.askyesno(
+                &#34;Already exists&#34;, &#34;A database already exists with that name, override (cannot be reversed)?&#34;)
+            if not authorized:
+                msg = &#34;The database has not been overwritten choose a different name to save it.&#34;
+            else:
+                self.doDeleteCalendar(saveAsName.strip())
+        # If authorized to registered from previous tests
+        if authorized:
+            # insert in database  calendars
+            self.connectToDb(&#34;pollenisator&#34;)
+            self.db.calendars.insert({&#34;nom&#34;: saveAsName.strip()})
+            self.connectToDb(saveAsName.strip())
+        if autoconnect:
+            self.connectToDb(saveAsName.strip())
+        else:
+            self.connectToDb(oldConnection)
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.registerCommands"><code class="name flex">
+<span>def <span class="ident">registerCommands</span></span>(<span>self, worker_name, command_names)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update or insert the worker name with given commands.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>worker_name</code></strong></dt>
+<dd>the worker shortname.</dd>
+<dt><strong><code>command_names</code></strong></dt>
+<dd>a list of commands that the worker want to register.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def registerCommands(self, worker_name, command_names):
+    &#34;&#34;&#34;Update or insert the worker name with given commands.
+    Args:
+        worker_name: the worker shortname.
+        command_names: a list of commands that the worker want to register.&#34;&#34;&#34;
+    try:
+        if self.client is None:
+            self.connect()
+            if self.client is None:
+                raise IOError(&#34;Failed to register commands&#34;)
+        res = self.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+            &#34;name&#34;: worker_name}, False)
+        worker_shortname = worker_name.split(&#34;@&#34;)[-1]
+        if res is not None:
+            print(&#34;UPDATE COMMANDS&#34;)
+            self.updateInDb(&#34;pollenisator&#34;, &#34;workers&#34;,
+                            {&#34;name&#34;: worker_name}, {&#34;$set&#34;: {&#34;registeredCommands&#34;: command_names}}, False, True)
+        else:
+            print(&#34;INSERT COMMANDS&#34;)
+            self.insertInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+                &#34;name&#34;: worker_name, &#34;shortname&#34;: worker_shortname, &#34;registeredCommands&#34;: command_names}, &#39;&#39;, True)
+        print(&#34;Registered commands &#34;+str(command_names) +
+              &#34; for  &#34;+str(worker_name))
+    except IOError as e:
+        print(&#34;Failed to connect.&#34; + str(e))
+        print(&#34;Please verify that the mongod service is running on host &#34; +
+              self.host + &#34; and has a user mongAdmin with the correct password.&#34;)
+        self.client = None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.reinitConnection"><code class="name flex">
+<span>def <span class="ident">reinitConnection</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset client connection</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reinitConnection(self):
+    &#34;&#34;&#34;Reset client connection&#34;&#34;&#34;
+    self.client = None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.removeInactiveWorkers"><code class="name flex">
+<span>def <span class="ident">removeInactiveWorkers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove workers that did not sent a heart beat in 30 sec.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeInactiveWorkers(self):
+    &#34;&#34;&#34;Remove workers that did not sent a heart beat in 30 sec.&#34;&#34;&#34;
+    nowTime = datetime.datetime.now()
+    deltaTime = nowTime - datetime.timedelta(seconds=30)
+    res = self.deleteFromDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+        &#34;last_heartbeat&#34;: {&#34;$lt&#34;: deltaTime}}, True, True)
+    print(&#34;Removed inactive workers:&#34;+str(res.deleted_count))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.removeWorker"><code class="name flex">
+<span>def <span class="ident">removeWorker</span></span>(<span>self, worker_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove the given worker shortname from database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>worker_name</code></strong></dt>
+<dd>the worker shortname to be deleted from database.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeWorker(self, worker_name):
+    &#34;&#34;&#34;Remove the given worker shortname from database.
+    Args:
+        worker_name: the worker shortname to be deleted from database.&#34;&#34;&#34;
+    print(&#34;Remove worker as offline received&#34;)
+    self.deleteFromDb(&#34;pollenisator&#34;, &#34;workers&#34;, {
+        &#34;name&#34;: worker_name}, False, True)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, collection, pipeline, updatePipeline, many=False, notify=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wrapper for the pymongo update and update_many functions. Then notify observers.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection that holds the document to update</dd>
+<dt><strong><code>pipeline</code></strong></dt>
+<dd>a first "match" pipeline mongo to select which document to update</dd>
+<dt><strong><code>updatePipeline</code></strong></dt>
+<dd>a second "action" pipeline mongo to apply changes to the selected document(s)</dd>
+<dt><strong><code>many</code></strong></dt>
+<dd>a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False</dd>
+<dt><strong><code>notify</code></strong></dt>
+<dd>a boolean asking for all client to be notified of this update. Default to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the pymongo result of the update or update_many function.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, collection, pipeline, updatePipeline, many=False, notify=True):
+    &#34;&#34;&#34;
+    Wrapper for the pymongo update and update_many functions. Then notify observers.
+
+    Args:
+        collection: the collection that holds the document to update
+        pipeline: a first &#34;match&#34; pipeline mongo to select which document to update
+        updatePipeline: a second &#34;action&#34; pipeline mongo to apply changes to the selected document(s)
+        many: a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False
+        notify: a boolean asking for all client to be notified of this update. Default to True.
+    Returns:
+        Return the pymongo result of the update or update_many function.
+    &#34;&#34;&#34;
+    return self._update(self.calendarName, collection, pipeline, updatePipeline, many=many, notify=notify)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.updateInDb"><code class="name flex">
+<span>def <span class="ident">updateInDb</span></span>(<span>self, db, collection, pipeline, updatePipeline, many=False, notify=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>update something in the database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>db</code></strong></dt>
+<dd>the database name where the object to update is</dd>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection that holds the document to update</dd>
+<dt><strong><code>pipeline</code></strong></dt>
+<dd>a first "match" pipeline mongo to select which document to update</dd>
+<dt><strong><code>updatePipeline</code></strong></dt>
+<dd>a second "action" pipeline mongo to apply changes to the selected document(s)</dd>
+<dt><strong><code>many</code></strong></dt>
+<dd>a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False</dd>
+<dt><strong><code>notify</code></strong></dt>
+<dd>a boolean asking for all client to be notified of this update. Default to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Return the pymongo result</code> of <code>the find command for the command collection</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateInDb(self, db, collection, pipeline, updatePipeline, many=False, notify=False):
+    &#34;&#34;&#34;
+    update something in the database.
+    Args:
+        db: the database name where the object to update is
+        collection: the collection that holds the document to update
+        pipeline: a first &#34;match&#34; pipeline mongo to select which document to update
+        updatePipeline: a second &#34;action&#34; pipeline mongo to apply changes to the selected document(s)
+        many: a boolean defining if eventually many documents can be modified at once. (If False, only zero or one document will be updated.). Default to False
+        notify: a boolean asking for all client to be notified of this update. Default to False.
+    Returns:
+        Return the pymongo result of the find command for the command collection
+    &#34;&#34;&#34;
+    self.connect()
+    return self._update(db, collection, pipeline, updatePipeline, many=many, notify=notify)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.updateWorkerLastHeartbeat"><code class="name flex">
+<span>def <span class="ident">updateWorkerLastHeartbeat</span></span>(<span>self, worker_hostname)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update a worker last heart beat sent</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>worker_hostname</code></strong></dt>
+<dd>the worker shortname to update.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateWorkerLastHeartbeat(self, worker_hostname):
+    &#34;&#34;&#34;Update a worker last heart beat sent
+    Args:
+        worker_hostname: the worker shortname to update.
+    &#34;&#34;&#34;
+    self.updateInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {&#34;name&#34;: worker_hostname}, {
+                    &#34;$set&#34;: {&#34;last_heartbeat&#34;: datetime.datetime.now()}})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.mongo.MongoCalendar.validateCalendarName"><code class="name flex">
+<span>def <span class="ident">validateCalendarName</span></span>(<span>self, calendarName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check the database name to see if it usable.
+Checks mongo and pollenisator name overlapping.
+Check space and dot in name.
+Check existing pollenisator pentest database names.
+Returns: a boolean</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validateCalendarName(self, calendarName):
+    &#34;&#34;&#34;Check the database name to see if it usable.
+    Checks mongo and pollenisator name overlapping.
+    Check space and dot in name.
+    Check existing pollenisator pentest database names.
+    Returns: a boolean&#34;&#34;&#34;
+    # check for forbidden names
+    if calendarName.strip().lower() in self.forbiddenNames:
+        msg = &#34;This name is forbidden.&#34;
+        return False, msg
+    elif &#34;.&#34; in calendarName.strip():
+        msg = &#34;The name cannot contain a dot (.).&#34;
+        return False, msg
+    elif &#34; &#34; in calendarName.strip():
+        msg = &#34;The name cannot contain a space.&#34;
+        return False, msg
+    calendars = [x.lower() for x in self.listCalendars()]
+    if calendarName.strip().lower() in calendars:
+        msg = &#34;A database with the same name already exists.&#34;
+        return False, msg
+    return True, &#34;&#34;</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.mongo.MongoCalendar" href="#Pollenisator.core.Components.mongo.MongoCalendar">MongoCalendar</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.aggregate" href="#Pollenisator.core.Components.mongo.MongoCalendar.aggregate">aggregate</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.aggregateFromDb" href="#Pollenisator.core.Components.mongo.MongoCalendar.aggregateFromDb">aggregateFromDb</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.attach" href="#Pollenisator.core.Components.mongo.MongoCalendar.attach">attach</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.connect" href="#Pollenisator.core.Components.mongo.MongoCalendar.connect">connect</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.connectToDb" href="#Pollenisator.core.Components.mongo.MongoCalendar.connectToDb">connectToDb</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.copyDb" href="#Pollenisator.core.Components.mongo.MongoCalendar.copyDb">copyDb</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.delete" href="#Pollenisator.core.Components.mongo.MongoCalendar.delete">delete</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.deleteFromDb" href="#Pollenisator.core.Components.mongo.MongoCalendar.deleteFromDb">deleteFromDb</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.dettach" href="#Pollenisator.core.Components.mongo.MongoCalendar.dettach">dettach</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.doDeleteCalendar" href="#Pollenisator.core.Components.mongo.MongoCalendar.doDeleteCalendar">doDeleteCalendar</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.dumpDb" href="#Pollenisator.core.Components.mongo.MongoCalendar.dumpDb">dumpDb</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.find" href="#Pollenisator.core.Components.mongo.MongoCalendar.find">find</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.findInDb" href="#Pollenisator.core.Components.mongo.MongoCalendar.findInDb">findInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.getInstance" href="#Pollenisator.core.Components.mongo.MongoCalendar.getInstance">getInstance</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.getRegisteredCommands" href="#Pollenisator.core.Components.mongo.MongoCalendar.getRegisteredCommands">getRegisteredCommands</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.getWorkers" href="#Pollenisator.core.Components.mongo.MongoCalendar.getWorkers">getWorkers</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.hasACalendarOpen" href="#Pollenisator.core.Components.mongo.MongoCalendar.hasACalendarOpen">hasACalendarOpen</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.importCommands" href="#Pollenisator.core.Components.mongo.MongoCalendar.importCommands">importCommands</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.importDatabase" href="#Pollenisator.core.Components.mongo.MongoCalendar.importDatabase">importDatabase</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.insert" href="#Pollenisator.core.Components.mongo.MongoCalendar.insert">insert</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.insertInDb" href="#Pollenisator.core.Components.mongo.MongoCalendar.insertInDb">insertInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.isUserConnected" href="#Pollenisator.core.Components.mongo.MongoCalendar.isUserConnected">isUserConnected</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.listCalendars" href="#Pollenisator.core.Components.mongo.MongoCalendar.listCalendars">listCalendars</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.notify" href="#Pollenisator.core.Components.mongo.MongoCalendar.notify">notify</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.registerCalendar" href="#Pollenisator.core.Components.mongo.MongoCalendar.registerCalendar">registerCalendar</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.registerCommands" href="#Pollenisator.core.Components.mongo.MongoCalendar.registerCommands">registerCommands</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.reinitConnection" href="#Pollenisator.core.Components.mongo.MongoCalendar.reinitConnection">reinitConnection</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.removeInactiveWorkers" href="#Pollenisator.core.Components.mongo.MongoCalendar.removeInactiveWorkers">removeInactiveWorkers</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.removeWorker" href="#Pollenisator.core.Components.mongo.MongoCalendar.removeWorker">removeWorker</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.update" href="#Pollenisator.core.Components.mongo.MongoCalendar.update">update</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.updateInDb" href="#Pollenisator.core.Components.mongo.MongoCalendar.updateInDb">updateInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.updateWorkerLastHeartbeat" href="#Pollenisator.core.Components.mongo.MongoCalendar.updateWorkerLastHeartbeat">updateWorkerLastHeartbeat</a></code></li>
+<li><code><a title="Pollenisator.core.Components.mongo.MongoCalendar.validateCalendarName" href="#Pollenisator.core.Components.mongo.MongoCalendar.validateCalendarName">validateCalendarName</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

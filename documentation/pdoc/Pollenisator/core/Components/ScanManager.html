@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.ScanManager API documentation</title>
+<meta name="description" content="Hold functions to interact form the scan tab in the notebook" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.ScanManager</code></h1>
+</header>
+<section id="section-intro">
+<p>Hold functions to interact form the scan tab in the notebook</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Hold functions to interact form the scan tab in the notebook&#34;&#34;&#34;
+from core.Components.Monitor import Monitor
+from core.Components.mongo import MongoCalendar
+import tkinter as tk
+import tkinter.ttk as ttk
+import multiprocessing
+from core.Models.Command import Command
+from core.Models.Tool import Tool
+from core.Application.Dialogs.ChildDialogFileParser import ChildDialogFileParser
+from core.Components.AutoScanMaster import autoScan
+from PIL import Image, ImageTk
+import os
+
+
+def autoscan_execute(calendarName):
+    &#34;&#34;&#34;
+    Call the autoScan function with given pentest name as endless and no reprint.
+
+    Args:
+        calendarName: the pentest database name to auto scan.
+    &#34;&#34;&#34;
+    autoScan(calendarName, True, True)
+
+
+class ScanManager:
+    &#34;&#34;&#34;Scan model class&#34;&#34;&#34;
+
+    def __init__(self, nbk, linkedTreeview, calendarToScan, settings):
+        &#34;&#34;&#34;Constructor, initialize a Monitor object&#34;&#34;&#34;
+        self.monitor = Monitor(calendarToScan)
+        self.calendarToScan = calendarToScan
+        self.nbk = nbk
+        self.running_auto_scans = []
+        self.settings = settings
+        self.btn_autoscan = None
+        
+        self.parent = None
+        self.workerTv = None
+        self.linkTw = linkedTreeview
+        abs_path = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(abs_path, &#34;../../icon/&#34;)
+        self.ok_icon = ImageTk.PhotoImage(Image.open(path+&#34;tool.png&#34;))
+        self.nok_icon = ImageTk.PhotoImage(Image.open(path+&#34;cross.png&#34;))
+        self.running_icon = ImageTk.PhotoImage(Image.open(path+&#34;running.png&#34;))
+
+    def startAutoscan(self):
+        &#34;&#34;&#34;Start an automatic scan. Will try to launch all undone tools.&#34;&#34;&#34;
+
+        if self.settings.db_settings.get(&#34;include_all_domains&#34;, False):
+            answer = tk.messagebox.askyesno(
+                &#34;Autoscan warning&#34;, &#34;The current settings will add every domain found in attack&#39;s scope. Are you sure ?&#34;)
+            if not answer:
+                return
+        from core.Components.AutoScanMaster import sendStartAutoScan
+        self.btn_autoscan.configure(
+            text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+        tasks = sendStartAutoScan(MongoCalendar.getInstance().calendarName)
+        self.running_auto_scans = tasks
+    
+    
+
+    def stop(self):
+        &#34;&#34;&#34;Stop an automatic scan. Will try to stop running tools.&#34;&#34;&#34;
+        
+        self.stopAutoscan()
+        if self.monitor is not None:
+            self.monitor.stop()
+
+    def refreshUI(self):
+        &#34;&#34;&#34;Reload informations and renew widgets&#34;&#34;&#34;
+        registeredCommands = set()
+        mongoInstance = MongoCalendar.getInstance()
+        workernames = self.monitor.getWorkerList()
+        running_scans = Tool.fetchObjects({&#34;status&#34;:&#34;running&#34;})
+        for children in self.scanTv.get_children():
+            self.scanTv.delete(children)
+        for running_scan in running_scans:
+            self.scanTv.insert(&#39;&#39;,&#39;end&#39;, running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
+        for children in self.workerTv.get_children():
+            self.workerTv.delete(children)
+        for workername in workernames:
+            try:
+                worker_node = self.workerTv.insert(
+                    &#39;&#39;, &#39;end&#39;, workername, text=workername, image=self.ok_icon)
+            except tk.TclError:
+                worker_node = self.workerTv.item(workername)
+            worker_registered = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {&#34;name&#34;:workername}, False)
+            commands_registered = worker_registered[&#34;registeredCommands&#34;]
+            for command in commands_registered:
+                try:
+                    self.workerTv.insert(
+                        worker_node, &#39;end&#39;, command, text=command, image=self.ok_icon)
+                except tk.TclError:
+                    pass
+                registeredCommands.add(str(command))
+        allCommands = Command.getList()
+        for command in allCommands:
+            if command not in registeredCommands:
+                try:
+                    self.workerTv.insert(
+                        &#39;&#39;, &#39;end&#39;, &#39;notRegistered&#39;, text=&#39;Laking commands&#39;, image=self.nok_icon)
+                except tk.TclError:
+                    pass
+                try:
+                    self.workerTv.insert(
+                        &#39;notRegistered&#39;, &#39;end&#39;, &#39;notRegistered|&#39;+command, text=command, image=self.nok_icon)
+                except tk.TclError:
+                    pass
+            else:
+                try:
+                    self.workerTv.delete(&#39;notRegistered|&#39;+command)
+                except tk.TclError:
+                    pass
+        if len(registeredCommands) &gt; 0 and self.btn_autoscan is None:
+            if self.running_auto_scans:
+                self.btn_autoscan = ttk.Button(
+                    self.parent, text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+                self.btn_autoscan.pack()
+            else:
+                self.btn_autoscan = ttk.Button(
+                    self.parent, text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+                self.btn_autoscan.pack()
+
+    def initUI(self, parent):
+        &#34;&#34;&#34;Create widgets and initialize them
+        Args:
+            parent: the parent tkinter widget container.&#34;&#34;&#34;
+        if self.workerTv is not None:
+            self.refreshUI()
+            return
+        mongoInstance = MongoCalendar.getInstance()
+        self.parent = parent
+        ### WORKER TREEVIEW : Which worker knows which commands
+        lblworker = ttk.Label(self.parent, text=&#34;Workers:&#34;)
+        lblworker.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
+        self.workerTv = ttk.Treeview(self.parent)
+        self.workerTv[&#39;columns&#39;] = (&#39;workers&#39;)
+        self.workerTv.heading(&#34;#0&#34;, text=&#39;Workers&#39;, anchor=tk.W)
+        self.workerTv.column(&#34;#0&#34;, anchor=tk.W)
+        self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
+        registeredCommands = set()
+        workernames = self.monitor.getWorkerList()
+        for workername in workernames:
+            worker_node = self.workerTv.insert(
+                &#39;&#39;, &#39;end&#39;, workername, text=workername, image=self.ok_icon)
+            commands_registered = mongoInstance.getRegisteredCommands(
+                workername)
+            for command in commands_registered:
+                self.workerTv.insert(worker_node, &#39;end&#39;, None,
+                                   text=command, image=self.ok_icon)
+                registeredCommands.add(str(command))
+        allCommands = Command.getList()
+        for command in allCommands:
+            if command not in registeredCommands:
+                try:
+                    self.workerTv.insert(
+                        &#39;&#39;, &#39;end&#39;, &#39;notRegistered&#39;, text=&#39;Laking commands&#39;, image=self.nok_icon)
+                except tk.TclError:
+                    self.workerTv.item(&#39;notRegistered&#39;)
+                try:
+                    self.workerTv.insert(&#39;notRegistered&#39;, &#39;end&#39;, &#39;notRegistered|&#39; +
+                                       str(command), text=str(command), image=self.nok_icon)
+                except tk.TclError:
+                    pass
+        #### TREEVIEW SCANS : overview of ongoing auto scan####
+        lblscan = ttk.Label(self.parent, text=&#34;Scan overview:&#34;)
+        lblscan.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
+        self.scanTv = ttk.Treeview(self.parent)
+        self.scanTv[&#39;columns&#39;] = (&#39;Started at&#39;)
+        self.scanTv.heading(&#34;#0&#34;, text=&#39;Scans&#39;, anchor=tk.W)
+        self.scanTv.column(&#34;#0&#34;, anchor=tk.W)
+        self.scanTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
+        self.scanTv.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+        running_scans = Tool.fetchObjects({&#34;status&#34;:&#34;running&#34;})
+        for running_scan in running_scans:
+            self.scanTv.insert(&#39;&#39;,&#39;end&#39;, running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
+        #### BUTTONS FOR AUTO SCANNING ####
+        if len(registeredCommands) &gt; 0:
+            if self.running_auto_scans:
+                self.btn_autoscan = ttk.Button(
+                    self.parent, text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+                self.btn_autoscan.pack()
+            else:
+                self.btn_autoscan = ttk.Button(
+                    self.parent, text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+                self.btn_autoscan.pack()
+        btn_parse_scans = ttk.Button(
+            self.parent, text=&#34;Parse existing files&#34;, command=self.parseFiles)
+        btn_parse_scans.pack()
+
+    def OnDoubleClick(self, event):
+        &#34;&#34;&#34;Callback for a double click on ongoing scan tool treeview. Open the clicked tool in main view and focus on it.
+        Args:
+            event: Automatically filled when event is triggered. Holds info about which line was double clicked
+        &#34;&#34;&#34;
+        if self.scanTv is not None:
+            self.nbk.select(0)
+            tv = event.widget
+            item = tv.identify(&#34;item&#34;, event.x, event.y)
+            self.linkTw.see(item)
+            self.linkTw.selection_set(item)
+            self.linkTw.focus(item)
+
+
+    def stopAutoscan(self):
+        &#34;&#34;&#34;
+        Stop an automatic scan. Will terminate celery running tasks.
+        &#34;&#34;&#34;
+        try:
+            if self.btn_autoscan is not None:
+                self.btn_autoscan.configure(
+                    text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+        except tk.TclError:
+            pass
+        print(&#34;Stopping auto... &#34;)
+        for task in self.running_auto_scans:
+            task.revoke(terminate=True)
+
+    def parseFiles(self):
+        &#34;&#34;&#34;
+        Ask user to import existing files to import.
+        &#34;&#34;&#34;
+        dialog = ChildDialogFileParser(self.parent)
+        self.parent.wait_window(dialog.app)
+
+    def notify(self, _iid, _action):
+        &#34;&#34;&#34;
+        Reload UI when notified
+        &#34;&#34;&#34;
+        if self.workerTv is not None:
+            self.refreshUI()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.core.Components.ScanManager.autoscan_execute"><code class="name flex">
+<span>def <span class="ident">autoscan_execute</span></span>(<span>calendarName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Call the autoScan function with given pentest name as endless and no reprint.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>calendarName</code></strong></dt>
+<dd>the pentest database name to auto scan.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def autoscan_execute(calendarName):
+    &#34;&#34;&#34;
+    Call the autoScan function with given pentest name as endless and no reprint.
+
+    Args:
+        calendarName: the pentest database name to auto scan.
+    &#34;&#34;&#34;
+    autoScan(calendarName, True, True)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager"><code class="flex name class">
+<span>class <span class="ident">ScanManager</span></span>
+<span>(</span><span>nbk, linkedTreeview, calendarToScan, settings)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Scan model class</p>
+<p>Constructor, initialize a Monitor object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ScanManager:
+    &#34;&#34;&#34;Scan model class&#34;&#34;&#34;
+
+    def __init__(self, nbk, linkedTreeview, calendarToScan, settings):
+        &#34;&#34;&#34;Constructor, initialize a Monitor object&#34;&#34;&#34;
+        self.monitor = Monitor(calendarToScan)
+        self.calendarToScan = calendarToScan
+        self.nbk = nbk
+        self.running_auto_scans = []
+        self.settings = settings
+        self.btn_autoscan = None
+        
+        self.parent = None
+        self.workerTv = None
+        self.linkTw = linkedTreeview
+        abs_path = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(abs_path, &#34;../../icon/&#34;)
+        self.ok_icon = ImageTk.PhotoImage(Image.open(path+&#34;tool.png&#34;))
+        self.nok_icon = ImageTk.PhotoImage(Image.open(path+&#34;cross.png&#34;))
+        self.running_icon = ImageTk.PhotoImage(Image.open(path+&#34;running.png&#34;))
+
+    def startAutoscan(self):
+        &#34;&#34;&#34;Start an automatic scan. Will try to launch all undone tools.&#34;&#34;&#34;
+
+        if self.settings.db_settings.get(&#34;include_all_domains&#34;, False):
+            answer = tk.messagebox.askyesno(
+                &#34;Autoscan warning&#34;, &#34;The current settings will add every domain found in attack&#39;s scope. Are you sure ?&#34;)
+            if not answer:
+                return
+        from core.Components.AutoScanMaster import sendStartAutoScan
+        self.btn_autoscan.configure(
+            text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+        tasks = sendStartAutoScan(MongoCalendar.getInstance().calendarName)
+        self.running_auto_scans = tasks
+    
+    
+
+    def stop(self):
+        &#34;&#34;&#34;Stop an automatic scan. Will try to stop running tools.&#34;&#34;&#34;
+        
+        self.stopAutoscan()
+        if self.monitor is not None:
+            self.monitor.stop()
+
+    def refreshUI(self):
+        &#34;&#34;&#34;Reload informations and renew widgets&#34;&#34;&#34;
+        registeredCommands = set()
+        mongoInstance = MongoCalendar.getInstance()
+        workernames = self.monitor.getWorkerList()
+        running_scans = Tool.fetchObjects({&#34;status&#34;:&#34;running&#34;})
+        for children in self.scanTv.get_children():
+            self.scanTv.delete(children)
+        for running_scan in running_scans:
+            self.scanTv.insert(&#39;&#39;,&#39;end&#39;, running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
+        for children in self.workerTv.get_children():
+            self.workerTv.delete(children)
+        for workername in workernames:
+            try:
+                worker_node = self.workerTv.insert(
+                    &#39;&#39;, &#39;end&#39;, workername, text=workername, image=self.ok_icon)
+            except tk.TclError:
+                worker_node = self.workerTv.item(workername)
+            worker_registered = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {&#34;name&#34;:workername}, False)
+            commands_registered = worker_registered[&#34;registeredCommands&#34;]
+            for command in commands_registered:
+                try:
+                    self.workerTv.insert(
+                        worker_node, &#39;end&#39;, command, text=command, image=self.ok_icon)
+                except tk.TclError:
+                    pass
+                registeredCommands.add(str(command))
+        allCommands = Command.getList()
+        for command in allCommands:
+            if command not in registeredCommands:
+                try:
+                    self.workerTv.insert(
+                        &#39;&#39;, &#39;end&#39;, &#39;notRegistered&#39;, text=&#39;Laking commands&#39;, image=self.nok_icon)
+                except tk.TclError:
+                    pass
+                try:
+                    self.workerTv.insert(
+                        &#39;notRegistered&#39;, &#39;end&#39;, &#39;notRegistered|&#39;+command, text=command, image=self.nok_icon)
+                except tk.TclError:
+                    pass
+            else:
+                try:
+                    self.workerTv.delete(&#39;notRegistered|&#39;+command)
+                except tk.TclError:
+                    pass
+        if len(registeredCommands) &gt; 0 and self.btn_autoscan is None:
+            if self.running_auto_scans:
+                self.btn_autoscan = ttk.Button(
+                    self.parent, text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+                self.btn_autoscan.pack()
+            else:
+                self.btn_autoscan = ttk.Button(
+                    self.parent, text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+                self.btn_autoscan.pack()
+
+    def initUI(self, parent):
+        &#34;&#34;&#34;Create widgets and initialize them
+        Args:
+            parent: the parent tkinter widget container.&#34;&#34;&#34;
+        if self.workerTv is not None:
+            self.refreshUI()
+            return
+        mongoInstance = MongoCalendar.getInstance()
+        self.parent = parent
+        ### WORKER TREEVIEW : Which worker knows which commands
+        lblworker = ttk.Label(self.parent, text=&#34;Workers:&#34;)
+        lblworker.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
+        self.workerTv = ttk.Treeview(self.parent)
+        self.workerTv[&#39;columns&#39;] = (&#39;workers&#39;)
+        self.workerTv.heading(&#34;#0&#34;, text=&#39;Workers&#39;, anchor=tk.W)
+        self.workerTv.column(&#34;#0&#34;, anchor=tk.W)
+        self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
+        registeredCommands = set()
+        workernames = self.monitor.getWorkerList()
+        for workername in workernames:
+            worker_node = self.workerTv.insert(
+                &#39;&#39;, &#39;end&#39;, workername, text=workername, image=self.ok_icon)
+            commands_registered = mongoInstance.getRegisteredCommands(
+                workername)
+            for command in commands_registered:
+                self.workerTv.insert(worker_node, &#39;end&#39;, None,
+                                   text=command, image=self.ok_icon)
+                registeredCommands.add(str(command))
+        allCommands = Command.getList()
+        for command in allCommands:
+            if command not in registeredCommands:
+                try:
+                    self.workerTv.insert(
+                        &#39;&#39;, &#39;end&#39;, &#39;notRegistered&#39;, text=&#39;Laking commands&#39;, image=self.nok_icon)
+                except tk.TclError:
+                    self.workerTv.item(&#39;notRegistered&#39;)
+                try:
+                    self.workerTv.insert(&#39;notRegistered&#39;, &#39;end&#39;, &#39;notRegistered|&#39; +
+                                       str(command), text=str(command), image=self.nok_icon)
+                except tk.TclError:
+                    pass
+        #### TREEVIEW SCANS : overview of ongoing auto scan####
+        lblscan = ttk.Label(self.parent, text=&#34;Scan overview:&#34;)
+        lblscan.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
+        self.scanTv = ttk.Treeview(self.parent)
+        self.scanTv[&#39;columns&#39;] = (&#39;Started at&#39;)
+        self.scanTv.heading(&#34;#0&#34;, text=&#39;Scans&#39;, anchor=tk.W)
+        self.scanTv.column(&#34;#0&#34;, anchor=tk.W)
+        self.scanTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
+        self.scanTv.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+        running_scans = Tool.fetchObjects({&#34;status&#34;:&#34;running&#34;})
+        for running_scan in running_scans:
+            self.scanTv.insert(&#39;&#39;,&#39;end&#39;, running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
+        #### BUTTONS FOR AUTO SCANNING ####
+        if len(registeredCommands) &gt; 0:
+            if self.running_auto_scans:
+                self.btn_autoscan = ttk.Button(
+                    self.parent, text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+                self.btn_autoscan.pack()
+            else:
+                self.btn_autoscan = ttk.Button(
+                    self.parent, text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+                self.btn_autoscan.pack()
+        btn_parse_scans = ttk.Button(
+            self.parent, text=&#34;Parse existing files&#34;, command=self.parseFiles)
+        btn_parse_scans.pack()
+
+    def OnDoubleClick(self, event):
+        &#34;&#34;&#34;Callback for a double click on ongoing scan tool treeview. Open the clicked tool in main view and focus on it.
+        Args:
+            event: Automatically filled when event is triggered. Holds info about which line was double clicked
+        &#34;&#34;&#34;
+        if self.scanTv is not None:
+            self.nbk.select(0)
+            tv = event.widget
+            item = tv.identify(&#34;item&#34;, event.x, event.y)
+            self.linkTw.see(item)
+            self.linkTw.selection_set(item)
+            self.linkTw.focus(item)
+
+
+    def stopAutoscan(self):
+        &#34;&#34;&#34;
+        Stop an automatic scan. Will terminate celery running tasks.
+        &#34;&#34;&#34;
+        try:
+            if self.btn_autoscan is not None:
+                self.btn_autoscan.configure(
+                    text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+        except tk.TclError:
+            pass
+        print(&#34;Stopping auto... &#34;)
+        for task in self.running_auto_scans:
+            task.revoke(terminate=True)
+
+    def parseFiles(self):
+        &#34;&#34;&#34;
+        Ask user to import existing files to import.
+        &#34;&#34;&#34;
+        dialog = ChildDialogFileParser(self.parent)
+        self.parent.wait_window(dialog.app)
+
+    def notify(self, _iid, _action):
+        &#34;&#34;&#34;
+        Reload UI when notified
+        &#34;&#34;&#34;
+        if self.workerTv is not None:
+            self.refreshUI()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager.OnDoubleClick"><code class="name flex">
+<span>def <span class="ident">OnDoubleClick</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for a double click on ongoing scan tool treeview. Open the clicked tool in main view and focus on it.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>Automatically filled when event is triggered. Holds info about which line was double clicked</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OnDoubleClick(self, event):
+    &#34;&#34;&#34;Callback for a double click on ongoing scan tool treeview. Open the clicked tool in main view and focus on it.
+    Args:
+        event: Automatically filled when event is triggered. Holds info about which line was double clicked
+    &#34;&#34;&#34;
+    if self.scanTv is not None:
+        self.nbk.select(0)
+        tv = event.widget
+        item = tv.identify(&#34;item&#34;, event.x, event.y)
+        self.linkTw.see(item)
+        self.linkTw.selection_set(item)
+        self.linkTw.focus(item)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager.initUI"><code class="name flex">
+<span>def <span class="ident">initUI</span></span>(<span>self, parent)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create widgets and initialize them</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>the parent tkinter widget container.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initUI(self, parent):
+    &#34;&#34;&#34;Create widgets and initialize them
+    Args:
+        parent: the parent tkinter widget container.&#34;&#34;&#34;
+    if self.workerTv is not None:
+        self.refreshUI()
+        return
+    mongoInstance = MongoCalendar.getInstance()
+    self.parent = parent
+    ### WORKER TREEVIEW : Which worker knows which commands
+    lblworker = ttk.Label(self.parent, text=&#34;Workers:&#34;)
+    lblworker.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
+    self.workerTv = ttk.Treeview(self.parent)
+    self.workerTv[&#39;columns&#39;] = (&#39;workers&#39;)
+    self.workerTv.heading(&#34;#0&#34;, text=&#39;Workers&#39;, anchor=tk.W)
+    self.workerTv.column(&#34;#0&#34;, anchor=tk.W)
+    self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
+    registeredCommands = set()
+    workernames = self.monitor.getWorkerList()
+    for workername in workernames:
+        worker_node = self.workerTv.insert(
+            &#39;&#39;, &#39;end&#39;, workername, text=workername, image=self.ok_icon)
+        commands_registered = mongoInstance.getRegisteredCommands(
+            workername)
+        for command in commands_registered:
+            self.workerTv.insert(worker_node, &#39;end&#39;, None,
+                               text=command, image=self.ok_icon)
+            registeredCommands.add(str(command))
+    allCommands = Command.getList()
+    for command in allCommands:
+        if command not in registeredCommands:
+            try:
+                self.workerTv.insert(
+                    &#39;&#39;, &#39;end&#39;, &#39;notRegistered&#39;, text=&#39;Laking commands&#39;, image=self.nok_icon)
+            except tk.TclError:
+                self.workerTv.item(&#39;notRegistered&#39;)
+            try:
+                self.workerTv.insert(&#39;notRegistered&#39;, &#39;end&#39;, &#39;notRegistered|&#39; +
+                                   str(command), text=str(command), image=self.nok_icon)
+            except tk.TclError:
+                pass
+    #### TREEVIEW SCANS : overview of ongoing auto scan####
+    lblscan = ttk.Label(self.parent, text=&#34;Scan overview:&#34;)
+    lblscan.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
+    self.scanTv = ttk.Treeview(self.parent)
+    self.scanTv[&#39;columns&#39;] = (&#39;Started at&#39;)
+    self.scanTv.heading(&#34;#0&#34;, text=&#39;Scans&#39;, anchor=tk.W)
+    self.scanTv.column(&#34;#0&#34;, anchor=tk.W)
+    self.scanTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
+    self.scanTv.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+    running_scans = Tool.fetchObjects({&#34;status&#34;:&#34;running&#34;})
+    for running_scan in running_scans:
+        self.scanTv.insert(&#39;&#39;,&#39;end&#39;, running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
+    #### BUTTONS FOR AUTO SCANNING ####
+    if len(registeredCommands) &gt; 0:
+        if self.running_auto_scans:
+            self.btn_autoscan = ttk.Button(
+                self.parent, text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+            self.btn_autoscan.pack()
+        else:
+            self.btn_autoscan = ttk.Button(
+                self.parent, text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+            self.btn_autoscan.pack()
+    btn_parse_scans = ttk.Button(
+        self.parent, text=&#34;Parse existing files&#34;, command=self.parseFiles)
+    btn_parse_scans.pack()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager.notify"><code class="name flex">
+<span>def <span class="ident">notify</span></span>(<span>self, _iid, _action)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reload UI when notified</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def notify(self, _iid, _action):
+    &#34;&#34;&#34;
+    Reload UI when notified
+    &#34;&#34;&#34;
+    if self.workerTv is not None:
+        self.refreshUI()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager.parseFiles"><code class="name flex">
+<span>def <span class="ident">parseFiles</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Ask user to import existing files to import.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parseFiles(self):
+    &#34;&#34;&#34;
+    Ask user to import existing files to import.
+    &#34;&#34;&#34;
+    dialog = ChildDialogFileParser(self.parent)
+    self.parent.wait_window(dialog.app)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager.refreshUI"><code class="name flex">
+<span>def <span class="ident">refreshUI</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reload informations and renew widgets</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def refreshUI(self):
+    &#34;&#34;&#34;Reload informations and renew widgets&#34;&#34;&#34;
+    registeredCommands = set()
+    mongoInstance = MongoCalendar.getInstance()
+    workernames = self.monitor.getWorkerList()
+    running_scans = Tool.fetchObjects({&#34;status&#34;:&#34;running&#34;})
+    for children in self.scanTv.get_children():
+        self.scanTv.delete(children)
+    for running_scan in running_scans:
+        self.scanTv.insert(&#39;&#39;,&#39;end&#39;, running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
+    for children in self.workerTv.get_children():
+        self.workerTv.delete(children)
+    for workername in workernames:
+        try:
+            worker_node = self.workerTv.insert(
+                &#39;&#39;, &#39;end&#39;, workername, text=workername, image=self.ok_icon)
+        except tk.TclError:
+            worker_node = self.workerTv.item(workername)
+        worker_registered = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {&#34;name&#34;:workername}, False)
+        commands_registered = worker_registered[&#34;registeredCommands&#34;]
+        for command in commands_registered:
+            try:
+                self.workerTv.insert(
+                    worker_node, &#39;end&#39;, command, text=command, image=self.ok_icon)
+            except tk.TclError:
+                pass
+            registeredCommands.add(str(command))
+    allCommands = Command.getList()
+    for command in allCommands:
+        if command not in registeredCommands:
+            try:
+                self.workerTv.insert(
+                    &#39;&#39;, &#39;end&#39;, &#39;notRegistered&#39;, text=&#39;Laking commands&#39;, image=self.nok_icon)
+            except tk.TclError:
+                pass
+            try:
+                self.workerTv.insert(
+                    &#39;notRegistered&#39;, &#39;end&#39;, &#39;notRegistered|&#39;+command, text=command, image=self.nok_icon)
+            except tk.TclError:
+                pass
+        else:
+            try:
+                self.workerTv.delete(&#39;notRegistered|&#39;+command)
+            except tk.TclError:
+                pass
+    if len(registeredCommands) &gt; 0 and self.btn_autoscan is None:
+        if self.running_auto_scans:
+            self.btn_autoscan = ttk.Button(
+                self.parent, text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+            self.btn_autoscan.pack()
+        else:
+            self.btn_autoscan = ttk.Button(
+                self.parent, text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+            self.btn_autoscan.pack()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager.startAutoscan"><code class="name flex">
+<span>def <span class="ident">startAutoscan</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Start an automatic scan. Will try to launch all undone tools.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def startAutoscan(self):
+    &#34;&#34;&#34;Start an automatic scan. Will try to launch all undone tools.&#34;&#34;&#34;
+
+    if self.settings.db_settings.get(&#34;include_all_domains&#34;, False):
+        answer = tk.messagebox.askyesno(
+            &#34;Autoscan warning&#34;, &#34;The current settings will add every domain found in attack&#39;s scope. Are you sure ?&#34;)
+        if not answer:
+            return
+    from core.Components.AutoScanMaster import sendStartAutoScan
+    self.btn_autoscan.configure(
+        text=&#34;Stop Scanning&#34;, command=self.stopAutoscan)
+    tasks = sendStartAutoScan(MongoCalendar.getInstance().calendarName)
+    self.running_auto_scans = tasks</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager.stop"><code class="name flex">
+<span>def <span class="ident">stop</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stop an automatic scan. Will try to stop running tools.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop(self):
+    &#34;&#34;&#34;Stop an automatic scan. Will try to stop running tools.&#34;&#34;&#34;
+    
+    self.stopAutoscan()
+    if self.monitor is not None:
+        self.monitor.stop()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.ScanManager.ScanManager.stopAutoscan"><code class="name flex">
+<span>def <span class="ident">stopAutoscan</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stop an automatic scan. Will terminate celery running tasks.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stopAutoscan(self):
+    &#34;&#34;&#34;
+    Stop an automatic scan. Will terminate celery running tasks.
+    &#34;&#34;&#34;
+    try:
+        if self.btn_autoscan is not None:
+            self.btn_autoscan.configure(
+                text=&#34;Start Scanning&#34;, command=self.startAutoscan)
+    except tk.TclError:
+        pass
+    print(&#34;Stopping auto... &#34;)
+    for task in self.running_auto_scans:
+        task.revoke(terminate=True)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.ScanManager.autoscan_execute" href="#Pollenisator.core.Components.ScanManager.autoscan_execute">autoscan_execute</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.ScanManager.ScanManager" href="#Pollenisator.core.Components.ScanManager.ScanManager">ScanManager</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Components.ScanManager.ScanManager.OnDoubleClick" href="#Pollenisator.core.Components.ScanManager.ScanManager.OnDoubleClick">OnDoubleClick</a></code></li>
+<li><code><a title="Pollenisator.core.Components.ScanManager.ScanManager.initUI" href="#Pollenisator.core.Components.ScanManager.ScanManager.initUI">initUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.ScanManager.ScanManager.notify" href="#Pollenisator.core.Components.ScanManager.ScanManager.notify">notify</a></code></li>
+<li><code><a title="Pollenisator.core.Components.ScanManager.ScanManager.parseFiles" href="#Pollenisator.core.Components.ScanManager.ScanManager.parseFiles">parseFiles</a></code></li>
+<li><code><a title="Pollenisator.core.Components.ScanManager.ScanManager.refreshUI" href="#Pollenisator.core.Components.ScanManager.ScanManager.refreshUI">refreshUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.ScanManager.ScanManager.startAutoscan" href="#Pollenisator.core.Components.ScanManager.ScanManager.startAutoscan">startAutoscan</a></code></li>
+<li><code><a title="Pollenisator.core.Components.ScanManager.ScanManager.stop" href="#Pollenisator.core.Components.ScanManager.ScanManager.stop">stop</a></code></li>
+<li><code><a title="Pollenisator.core.Components.ScanManager.ScanManager.stopAutoscan" href="#Pollenisator.core.Components.ScanManager.ScanManager.stopAutoscan">stopAutoscan</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

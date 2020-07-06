@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.Search API documentation</title>
+<meta name="description" content="DEPRECATED Hold functions to interact with the search bar. NOW LOCATED IN Filter.py" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.Search</code></h1>
+</header>
+<section id="section-intro">
+<p>DEPRECATED Hold functions to interact with the search bar. NOW LOCATED IN Filter.py</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;DEPRECATED Hold functions to interact with the search bar. NOW LOCATED IN Filter.py&#34;&#34;&#34;
+
+from core.Components.mongo import MongoCalendar
+from core.Models.Ip import Ip
+from core.Models.Port import Port
+from core.Models.Scope import Scope
+from core.Models.Tool import Tool
+from core.Models.Defect import Defect
+from core.Views.IpView import IpView
+from core.Views.PortView import PortView
+from core.Views.ScopeView import ScopeView
+from core.Views.ToolView import ToolView
+from core.Views.DefectView import DefectView
+import re
+
+
+class Operator:
+    def __init__(self, op, arg, exact_match=True):
+        self.op = op
+        self.arg = arg
+        try:
+            regex = &#39;^&#39;+self.arg+&#39;$&#39; if exact_match else self.arg
+            self.reg = re.compile(regex, re.IGNORECASE | re.MULTILINE)
+        except re.error as e:
+            raise e
+
+    def getMongo(self):
+        key = self.op
+        val = {}
+        val[&#34;$regex&#34;] = self.reg
+        return key, val
+
+
+class ParseError(Exception):
+    &#34;&#34;&#34;To raise parsing error&#34;&#34;&#34;
+
+
+class Search:
+    exact_match = True
+    classes = {
+        &#34;port&#34;: {&#34;collection&#34;: &#34;ports&#34;, &#34;view&#34;: PortView, &#34;model&#34;: Port, &#34;keywords&#34;: [&#34;port&#34;, &#34;proto&#34;, &#34;service&#34;, &#34;product&#34;, &#34;ip&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;, &#34;infos.&#34;]},
+        &#34;ip&#34;: {&#34;collection&#34;: &#34;ips&#34;, &#34;view&#34;: IpView, &#34;model&#34;: Ip, &#34;keywords&#34;: [&#34;ip&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;, &#34;infos.&#34;]},
+        &#34;scope&#34;: {&#34;collection&#34;: &#34;scopes&#34;, &#34;view&#34;: ScopeView, &#34;model&#34;: Scope, &#34;keywords&#34;: [&#34;wave&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;]},
+        &#34;tool&#34;: {&#34;collection&#34;: &#34;tools&#34;, &#34;view&#34;: ToolView, &#34;model&#34;: Tool, &#34;keywords&#34;: [&#34;name&#34;, &#34;dated&#34;, &#34;datef&#34;, &#34;lvl&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;ip&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;]},
+        &#34;defect&#34;: {&#34;collection&#34;: &#34;defects&#34;, &#34;view&#34;: DefectView, &#34;model&#34;: Defect, &#34;keywords&#34;: [&#34;title&#34;, &#34;ease&#34;, &#34;impact&#34;, &#34;risk&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;ip&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;]},
+    }
+
+    @classmethod
+    def help(cls):
+        # pylint: disable=anomalous-backslash-in-string
+        return &#34;&#34;&#34;Search examples in match: (python regex)
+every ports                       || class:port
+every 443 ports                || class:port port:^443$
+ports ending with 443      || class:port port:443$
+all 80 or 443 ports            || class:port port:^80$|^443$
+every port excepted 443  || port:(?!^443$) class:port
+ports excepted 80|443     || port:(?!^443$|^80$) class:port
+all defects                        || class:defect
+every defect with Foo      || class:defect title:foo
+all domains                      || class:ip ip:[A-Za-z]
+every ip starting as 1.2    || ip:^1\.2 class:ip
+every finished tool         || class:tool datef:^(?!None).+
+every tool not done         || class:tool datef:None
+search an ip infos for ABC info value || class:ip ip.infos.ABC:value
+----------------------------------------------------
+Search examples in exact match: (python regex)
+every ports                       || class:port
+every 443 ports                || class:port port:443
+ports ending with 443      || class:port port:.*443
+all 80 or 443 ports            || class:port port|80|443
+every port excepted 443  || port:(?!443).* class:port
+ports excepted 80|443     || port:(?!443|80).* class:port
+all defects                        || class:defect
+every defect with Foo      || class:defect title:.*foo.*
+all domains                      || class:ip ip:.*[A-Za-z].*
+every ip starting as 1.2    || ip:1\.2\..* class:ip&#34;&#34;&#34;
+    @classmethod
+    def getKeywordsSuggestion(cls, coll, start, terms):
+        liste = [keyword for keyword in cls.classes[coll][&#34;keywords&#34;]
+                 if keyword.startswith(start) and keyword not in terms]
+        if coll in [&#34;ip&#34;, &#34;port&#34;] and start.startswith(&#34;infos.&#34;):
+            mongoInstance = MongoCalendar.getInstance()
+            infosInDb = mongoInstance.find(
+                Search.classes[coll][&#34;collection&#34;], {&#34;infos&#34;: {&#34;$ne&#34;: {}}})
+            keys = set()
+            for infoInDb in infosInDb:
+                for k in infoInDb[&#34;infos&#34;].keys():
+                    keys.add(&#34;infos.&#34;+k)
+            liste = list(keys)
+            liste.sort()
+
+        return liste
+
+    @classmethod
+    def getSuggestions(cls, searchValue, entry):
+        initialValue = str(searchValue.get())
+        pos = entry.index(&#39;insert&#39;)
+        wordPos = initialValue.find(&#34; &#34;, pos)
+        wordBeforePos = initialValue.find(&#34; &#34;, 0, pos)
+        nextValuePos = initialValue.find(&#34;:&#34;, pos)
+        editingTheKw = wordPos &lt;= nextValuePos
+        toComplete = initialValue[:wordPos] if wordPos != -1 else initialValue
+        words = toComplete.split()
+        # EMPTY SEARCH BAR, return class choice
+        if len(words) == 0:
+            ret = list(map(lambda x: &#34;class:&#34;+x, cls.classes.keys()))
+            return ret
+        ret = []
+        # get word to complete, if a space just has been placed, we have a new word
+        if toComplete[wordPos] == &#34; &#34;:
+            word = &#34;&#34;
+        else:
+            word = words[-1].strip()
+        posValue = word.find(&#39;:&#39;)  # Search a key:value delimiter
+        try:
+            # Check if a class has been found
+            coll, terms = cls.parse(toComplete, True)
+        except ParseError:
+            return ret
+        # No class found, suggests class
+        if coll == &#34;&#34;:
+            try:
+                value = word[posValue+1:]
+                if value != &#34;&#34;.strip() and not editingTheKw and posValue != -1:
+                    classes = [classe for classe in cls.classes.keys()
+                               if classe.startswith(value)]
+                else:
+                    classes = cls.classes.keys()
+            except IndexError:
+                classes = cls.classes.keys()
+            ret = list(map(lambda x: &#34;class:&#34;+x, classes))
+            return ret
+        # No : found, suggests keyword
+        if posValue == -1:
+            ret = list(map(lambda x: initialValue[:wordBeforePos]+&#34; &#34;+x, cls.getKeywordsSuggestion(
+                coll, word, list(map(lambda x: x.op, terms)))))
+        return ret
+
+    def __init__(self, query=&#34;&#34;, exactMatch=True):
+        try:
+            self.query = query
+            self.coll = &#34;&#34;
+            Search.exact_match = exactMatch
+            self.terms = []
+            if self.query != &#34;&#34;:
+                self.coll, self.terms = Search.parse(query)
+        except ParseError as e:
+            raise e
+
+    def getViews(self, appTw, viewFrame, mainApp):
+        mongoLine = {}
+        mongoInstance = MongoCalendar.getInstance()
+        for term in self.terms:
+            key, val = term.getMongo()
+            mongoLine[key] = val
+        found_res = mongoInstance.find(
+            Search.classes[self.coll][&#34;collection&#34;], mongoLine)
+        print(&#34;Searchinging in &#34;+str(self.coll)+&#34; mogoline:&#34;+str(mongoLine))
+        ret = []
+        for found in found_res:
+            view_cls = Search.classes[self.coll][&#34;view&#34;]
+            model_cls = Search.classes[self.coll][&#34;model&#34;]
+            ret.append(view_cls(appTw, viewFrame, mainApp, model_cls(found)))
+        return ret
+
+    def getIds(self):
+        ret = []
+        mongoInstance = MongoCalendar.getInstance()
+        if self.coll == &#39;&#39;:
+            return ret
+        mongoLine = {}
+        for term in self.terms:
+            key, val = term.getMongo()
+            mongoLine[key] = val
+        found_res = mongoInstance.find(
+            Search.classes[self.coll][&#34;collection&#34;], mongoLine)
+        for found in found_res:
+            ret.append(str(found[&#34;_id&#34;]))
+        return ret
+
+    @classmethod
+    def parse(cls, query, ignoreException=False):
+        ret = []
+        vals = query.split(&#34; &#34;)
+        coll = &#34;&#34;
+        for val in vals:
+            kv = val.split(&#34;:&#34;)
+            if len(kv) != 2 and not ignoreException:
+                raise ParseError(&#34;Incorrect search term: &#39;&#34; +
+                                 str(val)+&#34;&#39;. Parameter name or value missing.&#34;)
+            operator = kv[0].strip()
+            if len(kv) == 2:
+                args = kv[1].strip()
+            else:
+                args = &#34;&#34;
+            if operator == &#34;class&#34;:
+                if args in Search.classes.keys():
+                    coll = args
+                elif not ignoreException:
+                    raise ParseError(
+                        &#34;invalid class. Valid classes are &#34;+(&#39;, &#39;.join(Search.classes.keys())))
+            else:
+                try:
+                    op = Operator(operator, args, Search.exact_match)
+                except:
+                    raise ParseError(
+                        &#34;Argument &#34;+str(operator)+&#34;:&#34;+str(args) + &#34; is not a valid python regex.&#34;)
+                ret.append(op)
+        if coll == &#34;&#34; and not ignoreException:
+            raise ParseError(&#34;Term class required class:&lt;value&gt;&#34;)
+        return coll, ret</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.Search.Operator"><code class="flex name class">
+<span>class <span class="ident">Operator</span></span>
+<span>(</span><span>op, arg, exact_match=True)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Operator:
+    def __init__(self, op, arg, exact_match=True):
+        self.op = op
+        self.arg = arg
+        try:
+            regex = &#39;^&#39;+self.arg+&#39;$&#39; if exact_match else self.arg
+            self.reg = re.compile(regex, re.IGNORECASE | re.MULTILINE)
+        except re.error as e:
+            raise e
+
+    def getMongo(self):
+        key = self.op
+        val = {}
+        val[&#34;$regex&#34;] = self.reg
+        return key, val</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Search.Operator.getMongo"><code class="name flex">
+<span>def <span class="ident">getMongo</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMongo(self):
+    key = self.op
+    val = {}
+    val[&#34;$regex&#34;] = self.reg
+    return key, val</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Pollenisator.core.Components.Search.ParseError"><code class="flex name class">
+<span>class <span class="ident">ParseError</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>To raise parsing error</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ParseError(Exception):
+    &#34;&#34;&#34;To raise parsing error&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="Pollenisator.core.Components.Search.Search"><code class="flex name class">
+<span>class <span class="ident">Search</span></span>
+<span>(</span><span>query='', exactMatch=True)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Search:
+    exact_match = True
+    classes = {
+        &#34;port&#34;: {&#34;collection&#34;: &#34;ports&#34;, &#34;view&#34;: PortView, &#34;model&#34;: Port, &#34;keywords&#34;: [&#34;port&#34;, &#34;proto&#34;, &#34;service&#34;, &#34;product&#34;, &#34;ip&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;, &#34;infos.&#34;]},
+        &#34;ip&#34;: {&#34;collection&#34;: &#34;ips&#34;, &#34;view&#34;: IpView, &#34;model&#34;: Ip, &#34;keywords&#34;: [&#34;ip&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;, &#34;infos.&#34;]},
+        &#34;scope&#34;: {&#34;collection&#34;: &#34;scopes&#34;, &#34;view&#34;: ScopeView, &#34;model&#34;: Scope, &#34;keywords&#34;: [&#34;wave&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;]},
+        &#34;tool&#34;: {&#34;collection&#34;: &#34;tools&#34;, &#34;view&#34;: ToolView, &#34;model&#34;: Tool, &#34;keywords&#34;: [&#34;name&#34;, &#34;dated&#34;, &#34;datef&#34;, &#34;lvl&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;ip&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;]},
+        &#34;defect&#34;: {&#34;collection&#34;: &#34;defects&#34;, &#34;view&#34;: DefectView, &#34;model&#34;: Defect, &#34;keywords&#34;: [&#34;title&#34;, &#34;ease&#34;, &#34;impact&#34;, &#34;risk&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;ip&#34;, &#34;scope&#34;, &#34;notes&#34;, &#34;tags&#34;]},
+    }
+
+    @classmethod
+    def help(cls):
+        # pylint: disable=anomalous-backslash-in-string
+        return &#34;&#34;&#34;Search examples in match: (python regex)
+every ports                       || class:port
+every 443 ports                || class:port port:^443$
+ports ending with 443      || class:port port:443$
+all 80 or 443 ports            || class:port port:^80$|^443$
+every port excepted 443  || port:(?!^443$) class:port
+ports excepted 80|443     || port:(?!^443$|^80$) class:port
+all defects                        || class:defect
+every defect with Foo      || class:defect title:foo
+all domains                      || class:ip ip:[A-Za-z]
+every ip starting as 1.2    || ip:^1\.2 class:ip
+every finished tool         || class:tool datef:^(?!None).+
+every tool not done         || class:tool datef:None
+search an ip infos for ABC info value || class:ip ip.infos.ABC:value
+----------------------------------------------------
+Search examples in exact match: (python regex)
+every ports                       || class:port
+every 443 ports                || class:port port:443
+ports ending with 443      || class:port port:.*443
+all 80 or 443 ports            || class:port port|80|443
+every port excepted 443  || port:(?!443).* class:port
+ports excepted 80|443     || port:(?!443|80).* class:port
+all defects                        || class:defect
+every defect with Foo      || class:defect title:.*foo.*
+all domains                      || class:ip ip:.*[A-Za-z].*
+every ip starting as 1.2    || ip:1\.2\..* class:ip&#34;&#34;&#34;
+    @classmethod
+    def getKeywordsSuggestion(cls, coll, start, terms):
+        liste = [keyword for keyword in cls.classes[coll][&#34;keywords&#34;]
+                 if keyword.startswith(start) and keyword not in terms]
+        if coll in [&#34;ip&#34;, &#34;port&#34;] and start.startswith(&#34;infos.&#34;):
+            mongoInstance = MongoCalendar.getInstance()
+            infosInDb = mongoInstance.find(
+                Search.classes[coll][&#34;collection&#34;], {&#34;infos&#34;: {&#34;$ne&#34;: {}}})
+            keys = set()
+            for infoInDb in infosInDb:
+                for k in infoInDb[&#34;infos&#34;].keys():
+                    keys.add(&#34;infos.&#34;+k)
+            liste = list(keys)
+            liste.sort()
+
+        return liste
+
+    @classmethod
+    def getSuggestions(cls, searchValue, entry):
+        initialValue = str(searchValue.get())
+        pos = entry.index(&#39;insert&#39;)
+        wordPos = initialValue.find(&#34; &#34;, pos)
+        wordBeforePos = initialValue.find(&#34; &#34;, 0, pos)
+        nextValuePos = initialValue.find(&#34;:&#34;, pos)
+        editingTheKw = wordPos &lt;= nextValuePos
+        toComplete = initialValue[:wordPos] if wordPos != -1 else initialValue
+        words = toComplete.split()
+        # EMPTY SEARCH BAR, return class choice
+        if len(words) == 0:
+            ret = list(map(lambda x: &#34;class:&#34;+x, cls.classes.keys()))
+            return ret
+        ret = []
+        # get word to complete, if a space just has been placed, we have a new word
+        if toComplete[wordPos] == &#34; &#34;:
+            word = &#34;&#34;
+        else:
+            word = words[-1].strip()
+        posValue = word.find(&#39;:&#39;)  # Search a key:value delimiter
+        try:
+            # Check if a class has been found
+            coll, terms = cls.parse(toComplete, True)
+        except ParseError:
+            return ret
+        # No class found, suggests class
+        if coll == &#34;&#34;:
+            try:
+                value = word[posValue+1:]
+                if value != &#34;&#34;.strip() and not editingTheKw and posValue != -1:
+                    classes = [classe for classe in cls.classes.keys()
+                               if classe.startswith(value)]
+                else:
+                    classes = cls.classes.keys()
+            except IndexError:
+                classes = cls.classes.keys()
+            ret = list(map(lambda x: &#34;class:&#34;+x, classes))
+            return ret
+        # No : found, suggests keyword
+        if posValue == -1:
+            ret = list(map(lambda x: initialValue[:wordBeforePos]+&#34; &#34;+x, cls.getKeywordsSuggestion(
+                coll, word, list(map(lambda x: x.op, terms)))))
+        return ret
+
+    def __init__(self, query=&#34;&#34;, exactMatch=True):
+        try:
+            self.query = query
+            self.coll = &#34;&#34;
+            Search.exact_match = exactMatch
+            self.terms = []
+            if self.query != &#34;&#34;:
+                self.coll, self.terms = Search.parse(query)
+        except ParseError as e:
+            raise e
+
+    def getViews(self, appTw, viewFrame, mainApp):
+        mongoLine = {}
+        mongoInstance = MongoCalendar.getInstance()
+        for term in self.terms:
+            key, val = term.getMongo()
+            mongoLine[key] = val
+        found_res = mongoInstance.find(
+            Search.classes[self.coll][&#34;collection&#34;], mongoLine)
+        print(&#34;Searchinging in &#34;+str(self.coll)+&#34; mogoline:&#34;+str(mongoLine))
+        ret = []
+        for found in found_res:
+            view_cls = Search.classes[self.coll][&#34;view&#34;]
+            model_cls = Search.classes[self.coll][&#34;model&#34;]
+            ret.append(view_cls(appTw, viewFrame, mainApp, model_cls(found)))
+        return ret
+
+    def getIds(self):
+        ret = []
+        mongoInstance = MongoCalendar.getInstance()
+        if self.coll == &#39;&#39;:
+            return ret
+        mongoLine = {}
+        for term in self.terms:
+            key, val = term.getMongo()
+            mongoLine[key] = val
+        found_res = mongoInstance.find(
+            Search.classes[self.coll][&#34;collection&#34;], mongoLine)
+        for found in found_res:
+            ret.append(str(found[&#34;_id&#34;]))
+        return ret
+
+    @classmethod
+    def parse(cls, query, ignoreException=False):
+        ret = []
+        vals = query.split(&#34; &#34;)
+        coll = &#34;&#34;
+        for val in vals:
+            kv = val.split(&#34;:&#34;)
+            if len(kv) != 2 and not ignoreException:
+                raise ParseError(&#34;Incorrect search term: &#39;&#34; +
+                                 str(val)+&#34;&#39;. Parameter name or value missing.&#34;)
+            operator = kv[0].strip()
+            if len(kv) == 2:
+                args = kv[1].strip()
+            else:
+                args = &#34;&#34;
+            if operator == &#34;class&#34;:
+                if args in Search.classes.keys():
+                    coll = args
+                elif not ignoreException:
+                    raise ParseError(
+                        &#34;invalid class. Valid classes are &#34;+(&#39;, &#39;.join(Search.classes.keys())))
+            else:
+                try:
+                    op = Operator(operator, args, Search.exact_match)
+                except:
+                    raise ParseError(
+                        &#34;Argument &#34;+str(operator)+&#34;:&#34;+str(args) + &#34; is not a valid python regex.&#34;)
+                ret.append(op)
+        if coll == &#34;&#34; and not ignoreException:
+            raise ParseError(&#34;Term class required class:&lt;value&gt;&#34;)
+        return coll, ret</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Search.Search.classes"><code class="name">var <span class="ident">classes</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Components.Search.Search.exact_match"><code class="name">var <span class="ident">exact_match</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Search.Search.getKeywordsSuggestion"><code class="name flex">
+<span>def <span class="ident">getKeywordsSuggestion</span></span>(<span>coll, start, terms)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getKeywordsSuggestion(cls, coll, start, terms):
+    liste = [keyword for keyword in cls.classes[coll][&#34;keywords&#34;]
+             if keyword.startswith(start) and keyword not in terms]
+    if coll in [&#34;ip&#34;, &#34;port&#34;] and start.startswith(&#34;infos.&#34;):
+        mongoInstance = MongoCalendar.getInstance()
+        infosInDb = mongoInstance.find(
+            Search.classes[coll][&#34;collection&#34;], {&#34;infos&#34;: {&#34;$ne&#34;: {}}})
+        keys = set()
+        for infoInDb in infosInDb:
+            for k in infoInDb[&#34;infos&#34;].keys():
+                keys.add(&#34;infos.&#34;+k)
+        liste = list(keys)
+        liste.sort()
+
+    return liste</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Search.Search.getSuggestions"><code class="name flex">
+<span>def <span class="ident">getSuggestions</span></span>(<span>searchValue, entry)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getSuggestions(cls, searchValue, entry):
+    initialValue = str(searchValue.get())
+    pos = entry.index(&#39;insert&#39;)
+    wordPos = initialValue.find(&#34; &#34;, pos)
+    wordBeforePos = initialValue.find(&#34; &#34;, 0, pos)
+    nextValuePos = initialValue.find(&#34;:&#34;, pos)
+    editingTheKw = wordPos &lt;= nextValuePos
+    toComplete = initialValue[:wordPos] if wordPos != -1 else initialValue
+    words = toComplete.split()
+    # EMPTY SEARCH BAR, return class choice
+    if len(words) == 0:
+        ret = list(map(lambda x: &#34;class:&#34;+x, cls.classes.keys()))
+        return ret
+    ret = []
+    # get word to complete, if a space just has been placed, we have a new word
+    if toComplete[wordPos] == &#34; &#34;:
+        word = &#34;&#34;
+    else:
+        word = words[-1].strip()
+    posValue = word.find(&#39;:&#39;)  # Search a key:value delimiter
+    try:
+        # Check if a class has been found
+        coll, terms = cls.parse(toComplete, True)
+    except ParseError:
+        return ret
+    # No class found, suggests class
+    if coll == &#34;&#34;:
+        try:
+            value = word[posValue+1:]
+            if value != &#34;&#34;.strip() and not editingTheKw and posValue != -1:
+                classes = [classe for classe in cls.classes.keys()
+                           if classe.startswith(value)]
+            else:
+                classes = cls.classes.keys()
+        except IndexError:
+            classes = cls.classes.keys()
+        ret = list(map(lambda x: &#34;class:&#34;+x, classes))
+        return ret
+    # No : found, suggests keyword
+    if posValue == -1:
+        ret = list(map(lambda x: initialValue[:wordBeforePos]+&#34; &#34;+x, cls.getKeywordsSuggestion(
+            coll, word, list(map(lambda x: x.op, terms)))))
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Search.Search.help"><code class="name flex">
+<span>def <span class="ident">help</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    @classmethod
+    def help(cls):
+        # pylint: disable=anomalous-backslash-in-string
+        return &#34;&#34;&#34;Search examples in match: (python regex)
+every ports                       || class:port
+every 443 ports                || class:port port:^443$
+ports ending with 443      || class:port port:443$
+all 80 or 443 ports            || class:port port:^80$|^443$
+every port excepted 443  || port:(?!^443$) class:port
+ports excepted 80|443     || port:(?!^443$|^80$) class:port
+all defects                        || class:defect
+every defect with Foo      || class:defect title:foo
+all domains                      || class:ip ip:[A-Za-z]
+every ip starting as 1.2    || ip:^1\.2 class:ip
+every finished tool         || class:tool datef:^(?!None).+
+every tool not done         || class:tool datef:None
+search an ip infos for ABC info value || class:ip ip.infos.ABC:value
+----------------------------------------------------
+Search examples in exact match: (python regex)
+every ports                       || class:port
+every 443 ports                || class:port port:443
+ports ending with 443      || class:port port:.*443
+all 80 or 443 ports            || class:port port|80|443
+every port excepted 443  || port:(?!443).* class:port
+ports excepted 80|443     || port:(?!443|80).* class:port
+all defects                        || class:defect
+every defect with Foo      || class:defect title:.*foo.*
+all domains                      || class:ip ip:.*[A-Za-z].*
+every ip starting as 1.2    || ip:1\.2\..* class:ip&#34;&#34;&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Search.Search.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>query, ignoreException=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, query, ignoreException=False):
+    ret = []
+    vals = query.split(&#34; &#34;)
+    coll = &#34;&#34;
+    for val in vals:
+        kv = val.split(&#34;:&#34;)
+        if len(kv) != 2 and not ignoreException:
+            raise ParseError(&#34;Incorrect search term: &#39;&#34; +
+                             str(val)+&#34;&#39;. Parameter name or value missing.&#34;)
+        operator = kv[0].strip()
+        if len(kv) == 2:
+            args = kv[1].strip()
+        else:
+            args = &#34;&#34;
+        if operator == &#34;class&#34;:
+            if args in Search.classes.keys():
+                coll = args
+            elif not ignoreException:
+                raise ParseError(
+                    &#34;invalid class. Valid classes are &#34;+(&#39;, &#39;.join(Search.classes.keys())))
+        else:
+            try:
+                op = Operator(operator, args, Search.exact_match)
+            except:
+                raise ParseError(
+                    &#34;Argument &#34;+str(operator)+&#34;:&#34;+str(args) + &#34; is not a valid python regex.&#34;)
+            ret.append(op)
+    if coll == &#34;&#34; and not ignoreException:
+        raise ParseError(&#34;Term class required class:&lt;value&gt;&#34;)
+    return coll, ret</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Search.Search.getIds"><code class="name flex">
+<span>def <span class="ident">getIds</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getIds(self):
+    ret = []
+    mongoInstance = MongoCalendar.getInstance()
+    if self.coll == &#39;&#39;:
+        return ret
+    mongoLine = {}
+    for term in self.terms:
+        key, val = term.getMongo()
+        mongoLine[key] = val
+    found_res = mongoInstance.find(
+        Search.classes[self.coll][&#34;collection&#34;], mongoLine)
+    for found in found_res:
+        ret.append(str(found[&#34;_id&#34;]))
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Search.Search.getViews"><code class="name flex">
+<span>def <span class="ident">getViews</span></span>(<span>self, appTw, viewFrame, mainApp)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getViews(self, appTw, viewFrame, mainApp):
+    mongoLine = {}
+    mongoInstance = MongoCalendar.getInstance()
+    for term in self.terms:
+        key, val = term.getMongo()
+        mongoLine[key] = val
+    found_res = mongoInstance.find(
+        Search.classes[self.coll][&#34;collection&#34;], mongoLine)
+    print(&#34;Searchinging in &#34;+str(self.coll)+&#34; mogoline:&#34;+str(mongoLine))
+    ret = []
+    for found in found_res:
+        view_cls = Search.classes[self.coll][&#34;view&#34;]
+        model_cls = Search.classes[self.coll][&#34;model&#34;]
+        ret.append(view_cls(appTw, viewFrame, mainApp, model_cls(found)))
+    return ret</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Search.Operator" href="#Pollenisator.core.Components.Search.Operator">Operator</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.Search.Operator.getMongo" href="#Pollenisator.core.Components.Search.Operator.getMongo">getMongo</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Search.ParseError" href="#Pollenisator.core.Components.Search.ParseError">ParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Search.Search" href="#Pollenisator.core.Components.Search.Search">Search</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.Search.Search.classes" href="#Pollenisator.core.Components.Search.Search.classes">classes</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Search.Search.exact_match" href="#Pollenisator.core.Components.Search.Search.exact_match">exact_match</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Search.Search.getIds" href="#Pollenisator.core.Components.Search.Search.getIds">getIds</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Search.Search.getKeywordsSuggestion" href="#Pollenisator.core.Components.Search.Search.getKeywordsSuggestion">getKeywordsSuggestion</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Search.Search.getSuggestions" href="#Pollenisator.core.Components.Search.Search.getSuggestions">getSuggestions</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Search.Search.getViews" href="#Pollenisator.core.Components.Search.Search.getViews">getViews</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Search.Search.help" href="#Pollenisator.core.Components.Search.Search.help">help</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Search.Search.parse" href="#Pollenisator.core.Components.Search.Search.parse">parse</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Models.Port API documentation</title>
+<meta name="description" content="Port Model" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Models.Port</code></h1>
+</header>
+<section id="section-intro">
+<p>Port Model</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Port Model&#34;&#34;&#34;
+
+from core.Models.Element import Element
+from core.Models.Tool import Tool
+from core.Models.Defect import Defect
+from core.Components.mongo import MongoCalendar
+from bson.objectid import ObjectId
+
+
+class Port(Element):
+    &#34;&#34;&#34;
+    Represents an Port object that defines an Port that will be targeted by port level tools.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;ports&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+                        ip(&#34;&#34;), port(&#34;&#34;), proto(&#34;tcp&#34;), service(&#34;&#34;), product(&#34;&#34;), notes(&#34;&#34;)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;ip&#34;, &#34;&#34;), valuesFromDb.get(&#34;port&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;proto&#34;, &#34;tcp&#34;), valuesFromDb.get(
+                            &#34;service&#34;, &#34;&#34;), valuesFromDb.get(&#34;product&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;notes&#34;, &#34;&#34;), valuesFromDb.get(&#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, ip, port=&#34;&#34;, proto=&#34;tcp&#34;, service=&#34;&#34;, product=&#34;&#34;, notes=&#34;&#34;, tags=None, infos=None):
+        &#34;&#34;&#34;Set values of port
+        Args:
+            ip: the parent host (ip or domain) where this port is open
+            port: a port number as string. Default &#34;&#34;
+            proto: a protocol to reach this port (&#34;tcp&#34; by default, send &#34;udp&#34; if udp port.) Default &#34;tcp&#34;
+            service: the service running behind this port. Can be &#34;unknown&#34;. Default &#34;&#34;
+            notes: notes took by a pentester regarding this port. Default &#34;&#34;
+            tags: a list of tag. Default is None (empty array)
+            infos: a dictionnary of additional info. Default is None (empty dict)
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.ip = ip
+        self.port = port
+        self.proto = proto
+        self.service = service
+        self.product = product
+        self.notes = notes
+        self.infos = infos if infos is not None else {}
+        self.tags = tags if tags is not None else []
+        return self
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Deletes the Port represented by this model in database.
+        Also deletes the tools associated with this port
+        Also deletes the defects associated with this port
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        tools = mongoInstance.find(&#34;tools&#34;, {&#34;port&#34;: self.port, &#34;proto&#34;: self.proto,
+                                             &#34;ip&#34;: self.ip}, True)
+        for tool in tools:
+            tool_model = Tool(tool)
+            tool_model.delete()
+        defects = mongoInstance.find(&#34;defects&#34;, {&#34;port&#34;: self.port, &#34;proto&#34;: self.proto,
+                                                 &#34;ip&#34;: self.ip}, True)
+        for defect in defects:
+            defect_model = Defect(defect)
+            defect_model.delete()
+        mongoInstance.delete(&#34;ports&#34;, {&#34;_id&#34;:  ObjectId(self._id)})
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        oldPort = Port.fetchObject({&#34;_id&#34;: ObjectId(self._id)})
+        if oldPort is None:
+            return
+        oldService = oldPort.service
+        mongoInstance = MongoCalendar.getInstance()
+        if oldService != self.service:
+            mongoInstance.delete(&#34;tools&#34;, {
+                                 &#34;lvl&#34;: &#34;port&#34;, &#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}, many=True)
+            port_commands = mongoInstance.findInDb(
+                &#34;pollenisator&#34;, &#34;commands&#34;, {&#34;lvl&#34;: &#34;port&#34;})
+            for port_command in port_commands:
+                allowed_services = port_command[&#34;ports&#34;].split(&#34;,&#34;)
+                for i, elem in enumerate(allowed_services):
+                    if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                        allowed_services[i] = &#34;tcp/&#34;+str(elem)
+                if self.proto+&#34;/&#34;+str(self.service) in allowed_services:
+                    waves = mongoInstance.find(&#34;waves&#34;, {&#34;wave_commands&#34;: {&#34;$elemMatch&#34;: {
+                        &#34;$eq&#34;: port_command[&#34;name&#34;].strip()}}})
+                    for wave in waves:
+                        tool_m = Tool().initialize(port_command[&#34;name&#34;], wave[&#34;wave&#34;], &#34;&#34;,
+                                                   self.ip, self.port, self.proto, &#34;port&#34;)
+                        tool_m.addInDb()
+        # Update variable instance. (this avoid to refetch the whole command in database)
+        if pipeline_set is None:
+            mongoInstance.update(&#34;ports&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;service&#34;: self.service, &#34;product&#34;:self.product, &#34;notes&#34;: self.notes, &#34;tags&#34;: self.tags, &#34;infos&#34;: self.infos}})
+        else:
+            mongoInstance.update(&#34;ports&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: pipeline_set})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this Port in database.
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        base = self.getDbKey()
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;ports&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Inserting port
+        parent = self.getParent()
+        base[&#34;parent&#34;] = parent
+        base[&#34;service&#34;] = self.service
+        base[&#34;product&#34;] = self.product
+        base[&#34;notes&#34;] = self.notes
+        base[&#34;tags&#34;] = self.tags
+        base[&#34;infos&#34;] = self.infos
+        res = mongoInstance.insert(&#34;ports&#34;, base, parent)
+        ret = res.inserted_id
+        self._id = ret
+        # adding the appropriate tools for this port.
+        # 1. fetching the wave&#39;s commands
+        waves = mongoInstance.find(&#34;waves&#34;, {})
+        for wave in waves:
+            waveName = wave[&#34;wave&#34;]
+            commands = wave[&#34;wave_commands&#34;]
+            for commName in commands:
+                # 2. finding the command only if lvl is port
+                comm = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;,
+                                              {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;port&#34;}, False)
+                if comm is not None:
+                    # 3. checking if the added port fit into the command&#39;s allowed service
+                    # 3.1 first, default the selected port as tcp if no protocole is defined.
+                    allowed_ports_services = comm[&#34;ports&#34;].split(&#34;,&#34;)
+                    for i, elem in enumerate(allowed_ports_services):
+                        if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                            allowed_ports_services[i] = &#34;tcp/&#34;+str(elem.strip())
+                    for allowed in allowed_ports_services:
+                        protoRange = &#34;udp&#34; if allowed.startswith(&#34;udp/&#34;) else &#34;tcp&#34;
+                        maybeRange = str(allowed)[4:].split(&#34;-&#34;)
+                        startAllowedRange = -1
+                        endAllowedRange = -1
+                        if len(maybeRange) == 2:
+                            try:
+                                startAllowedRange = int(maybeRange[0])
+                                endAllowedRange = int(maybeRange[1])
+                            except ValueError:
+                                pass
+                        if (self.proto+&#34;/&#34;+str(self.port) == allowed) or \
+                        (self.proto+&#34;/&#34;+self.service == allowed) or \
+                        (self.proto == protoRange and
+                            int(self.port) &gt;= int(startAllowedRange) and
+                                int(self.port) &lt;= int(endAllowedRange)):
+                            # finally add tool
+                            newTool = Tool()
+                            newTool.initialize(
+                                comm[&#34;name&#34;], waveName, &#34;&#34;, self.ip, self.port, self.proto, &#34;port&#34;)
+                            newTool.addInDb()
+        return True, ret
+
+    def addAllTool(self, command_name, wave_name, scope, check=True):
+        &#34;&#34;&#34;
+        Add the appropriate tools (level check and wave&#39;s commands check) for this port.
+
+        Args:
+            command_name: The command that we want to create all the tools for.
+            wave_name: name of the was to fetch allowed commands from
+            scope: a scope matching this tool (should only be used by network level tools)
+            check: A boolean to bypass checks. Force adding this command tool to this port if False. Default is True
+        &#34;&#34;&#34;
+        if check == False:
+            newTool = Tool()
+            newTool.initialize(command_name, wave_name, scope,
+                               self.ip, self.port, self.proto, &#34;port&#34;)
+            newTool.addInDb()
+            return
+        # retrieve wave&#39;s command
+        mongoInstance = MongoCalendar.getInstance()
+        wave = mongoInstance.find(
+            &#34;waves&#34;, {&#34;wave&#34;: wave_name}, False)
+        commands = wave[&#34;wave_commands&#34;]
+        try:
+            index = commands.index(command_name)
+            # retrieve the command level
+            command = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                             &#34;commands&#34;, {&#34;name&#34;: commands[index]}, False)
+            if command[&#34;lvl&#34;] == &#34;port&#34;:
+                # 3. checking if the added port fit into the command&#39;s allowed service
+                # 3.1 first, default the selected port as tcp if no protocole is defined.
+                allowed_ports_services = command[&#34;ports&#34;].split(&#34;,&#34;)
+                for i, elem in enumerate(allowed_ports_services):
+                    if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                        allowed_ports_services[i] = &#34;tcp/&#34;+str(elem.strip())
+                for allowed in allowed_ports_services:
+                    protoRange = &#34;udp&#34; if allowed.startswith(&#34;udp/&#34;) else &#34;tcp&#34;
+                    maybeRange = str(allowed)[4:].split(&#34;-&#34;)
+                    startAllowedRange = -1
+                    endAllowedRange = -1
+                    if len(maybeRange) == 2:
+                        try:
+                            startAllowedRange = int(maybeRange[0])
+                            endAllowedRange = int(maybeRange[1])
+                        except ValueError:
+                            pass
+                    if (self.proto+&#34;/&#34;+str(self.port) == allowed) or \
+                       (self.proto+&#34;/&#34;+self.service == allowed) or \
+                       (self.proto == protoRange and
+                           int(self.port) &gt;= int(startAllowedRange) and
+                            int(self.port) &lt;= int(endAllowedRange)):
+                        # finally add tool
+                        newTool = Tool()
+                        newTool.initialize(
+                            command_name, wave_name, scope, self.ip, self.port, self.proto, &#34;port&#34;)
+                        newTool.addInDb()
+        except ValueError:
+            pass
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object. For a port it is the ip.
+
+        Returns:
+            Returns the parent ip&#39;s ObjectId _id&#34;.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;: self.ip}, False)[&#34;_id&#34;]
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a port.
+
+        Returns:
+            Returns the string protocole/port number.
+        &#34;&#34;&#34;
+        return self.proto+&#34;/&#34;+str(self.port)
+
+    def getDetailedString(self):
+        &#34;&#34;&#34;Returns a detailed string describing this port.
+        Returns:
+            string : ip:proto/port
+        &#34;&#34;&#34;
+        return str(self.ip)+&#34;:&#34;+str(self)
+
+    def getTools(self):
+        &#34;&#34;&#34;Return port assigned tools as a list of mongo fetched defects dict
+        Returns:
+            list of tool raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;tools&#34;, {&#34;lvl&#34;: &#34;port&#34;, &#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto})
+
+    def getDefects(self):
+        &#34;&#34;&#34;Return port assigned defects as a list of mongo fetched defects dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;defects&#34;, {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto})
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (3 keys :&#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;)
+        &#34;&#34;&#34;
+        return {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Models.Port.Port"><code class="flex name class">
+<span>class <span class="ident">Port</span></span>
+<span>(</span><span>valuesFromDb=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents an Port object that defines an Port that will be targeted by port level tools.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>coll_name</code></strong></dt>
+<dd>collection name in pollenisator database</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>valueFromDb</code></strong></dt>
+<dd>a dict holding values to load into the object. A mongo fetched interval is optimal.
+possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+ip(""), port(""), proto("tcp"), service(""), product(""), notes("")</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Port(Element):
+    &#34;&#34;&#34;
+    Represents an Port object that defines an Port that will be targeted by port level tools.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;ports&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+                        ip(&#34;&#34;), port(&#34;&#34;), proto(&#34;tcp&#34;), service(&#34;&#34;), product(&#34;&#34;), notes(&#34;&#34;)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;ip&#34;, &#34;&#34;), valuesFromDb.get(&#34;port&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;proto&#34;, &#34;tcp&#34;), valuesFromDb.get(
+                            &#34;service&#34;, &#34;&#34;), valuesFromDb.get(&#34;product&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;notes&#34;, &#34;&#34;), valuesFromDb.get(&#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, ip, port=&#34;&#34;, proto=&#34;tcp&#34;, service=&#34;&#34;, product=&#34;&#34;, notes=&#34;&#34;, tags=None, infos=None):
+        &#34;&#34;&#34;Set values of port
+        Args:
+            ip: the parent host (ip or domain) where this port is open
+            port: a port number as string. Default &#34;&#34;
+            proto: a protocol to reach this port (&#34;tcp&#34; by default, send &#34;udp&#34; if udp port.) Default &#34;tcp&#34;
+            service: the service running behind this port. Can be &#34;unknown&#34;. Default &#34;&#34;
+            notes: notes took by a pentester regarding this port. Default &#34;&#34;
+            tags: a list of tag. Default is None (empty array)
+            infos: a dictionnary of additional info. Default is None (empty dict)
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.ip = ip
+        self.port = port
+        self.proto = proto
+        self.service = service
+        self.product = product
+        self.notes = notes
+        self.infos = infos if infos is not None else {}
+        self.tags = tags if tags is not None else []
+        return self
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Deletes the Port represented by this model in database.
+        Also deletes the tools associated with this port
+        Also deletes the defects associated with this port
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        tools = mongoInstance.find(&#34;tools&#34;, {&#34;port&#34;: self.port, &#34;proto&#34;: self.proto,
+                                             &#34;ip&#34;: self.ip}, True)
+        for tool in tools:
+            tool_model = Tool(tool)
+            tool_model.delete()
+        defects = mongoInstance.find(&#34;defects&#34;, {&#34;port&#34;: self.port, &#34;proto&#34;: self.proto,
+                                                 &#34;ip&#34;: self.ip}, True)
+        for defect in defects:
+            defect_model = Defect(defect)
+            defect_model.delete()
+        mongoInstance.delete(&#34;ports&#34;, {&#34;_id&#34;:  ObjectId(self._id)})
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        oldPort = Port.fetchObject({&#34;_id&#34;: ObjectId(self._id)})
+        if oldPort is None:
+            return
+        oldService = oldPort.service
+        mongoInstance = MongoCalendar.getInstance()
+        if oldService != self.service:
+            mongoInstance.delete(&#34;tools&#34;, {
+                                 &#34;lvl&#34;: &#34;port&#34;, &#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}, many=True)
+            port_commands = mongoInstance.findInDb(
+                &#34;pollenisator&#34;, &#34;commands&#34;, {&#34;lvl&#34;: &#34;port&#34;})
+            for port_command in port_commands:
+                allowed_services = port_command[&#34;ports&#34;].split(&#34;,&#34;)
+                for i, elem in enumerate(allowed_services):
+                    if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                        allowed_services[i] = &#34;tcp/&#34;+str(elem)
+                if self.proto+&#34;/&#34;+str(self.service) in allowed_services:
+                    waves = mongoInstance.find(&#34;waves&#34;, {&#34;wave_commands&#34;: {&#34;$elemMatch&#34;: {
+                        &#34;$eq&#34;: port_command[&#34;name&#34;].strip()}}})
+                    for wave in waves:
+                        tool_m = Tool().initialize(port_command[&#34;name&#34;], wave[&#34;wave&#34;], &#34;&#34;,
+                                                   self.ip, self.port, self.proto, &#34;port&#34;)
+                        tool_m.addInDb()
+        # Update variable instance. (this avoid to refetch the whole command in database)
+        if pipeline_set is None:
+            mongoInstance.update(&#34;ports&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;service&#34;: self.service, &#34;product&#34;:self.product, &#34;notes&#34;: self.notes, &#34;tags&#34;: self.tags, &#34;infos&#34;: self.infos}})
+        else:
+            mongoInstance.update(&#34;ports&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: pipeline_set})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this Port in database.
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        base = self.getDbKey()
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;ports&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Inserting port
+        parent = self.getParent()
+        base[&#34;parent&#34;] = parent
+        base[&#34;service&#34;] = self.service
+        base[&#34;product&#34;] = self.product
+        base[&#34;notes&#34;] = self.notes
+        base[&#34;tags&#34;] = self.tags
+        base[&#34;infos&#34;] = self.infos
+        res = mongoInstance.insert(&#34;ports&#34;, base, parent)
+        ret = res.inserted_id
+        self._id = ret
+        # adding the appropriate tools for this port.
+        # 1. fetching the wave&#39;s commands
+        waves = mongoInstance.find(&#34;waves&#34;, {})
+        for wave in waves:
+            waveName = wave[&#34;wave&#34;]
+            commands = wave[&#34;wave_commands&#34;]
+            for commName in commands:
+                # 2. finding the command only if lvl is port
+                comm = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;,
+                                              {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;port&#34;}, False)
+                if comm is not None:
+                    # 3. checking if the added port fit into the command&#39;s allowed service
+                    # 3.1 first, default the selected port as tcp if no protocole is defined.
+                    allowed_ports_services = comm[&#34;ports&#34;].split(&#34;,&#34;)
+                    for i, elem in enumerate(allowed_ports_services):
+                        if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                            allowed_ports_services[i] = &#34;tcp/&#34;+str(elem.strip())
+                    for allowed in allowed_ports_services:
+                        protoRange = &#34;udp&#34; if allowed.startswith(&#34;udp/&#34;) else &#34;tcp&#34;
+                        maybeRange = str(allowed)[4:].split(&#34;-&#34;)
+                        startAllowedRange = -1
+                        endAllowedRange = -1
+                        if len(maybeRange) == 2:
+                            try:
+                                startAllowedRange = int(maybeRange[0])
+                                endAllowedRange = int(maybeRange[1])
+                            except ValueError:
+                                pass
+                        if (self.proto+&#34;/&#34;+str(self.port) == allowed) or \
+                        (self.proto+&#34;/&#34;+self.service == allowed) or \
+                        (self.proto == protoRange and
+                            int(self.port) &gt;= int(startAllowedRange) and
+                                int(self.port) &lt;= int(endAllowedRange)):
+                            # finally add tool
+                            newTool = Tool()
+                            newTool.initialize(
+                                comm[&#34;name&#34;], waveName, &#34;&#34;, self.ip, self.port, self.proto, &#34;port&#34;)
+                            newTool.addInDb()
+        return True, ret
+
+    def addAllTool(self, command_name, wave_name, scope, check=True):
+        &#34;&#34;&#34;
+        Add the appropriate tools (level check and wave&#39;s commands check) for this port.
+
+        Args:
+            command_name: The command that we want to create all the tools for.
+            wave_name: name of the was to fetch allowed commands from
+            scope: a scope matching this tool (should only be used by network level tools)
+            check: A boolean to bypass checks. Force adding this command tool to this port if False. Default is True
+        &#34;&#34;&#34;
+        if check == False:
+            newTool = Tool()
+            newTool.initialize(command_name, wave_name, scope,
+                               self.ip, self.port, self.proto, &#34;port&#34;)
+            newTool.addInDb()
+            return
+        # retrieve wave&#39;s command
+        mongoInstance = MongoCalendar.getInstance()
+        wave = mongoInstance.find(
+            &#34;waves&#34;, {&#34;wave&#34;: wave_name}, False)
+        commands = wave[&#34;wave_commands&#34;]
+        try:
+            index = commands.index(command_name)
+            # retrieve the command level
+            command = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                             &#34;commands&#34;, {&#34;name&#34;: commands[index]}, False)
+            if command[&#34;lvl&#34;] == &#34;port&#34;:
+                # 3. checking if the added port fit into the command&#39;s allowed service
+                # 3.1 first, default the selected port as tcp if no protocole is defined.
+                allowed_ports_services = command[&#34;ports&#34;].split(&#34;,&#34;)
+                for i, elem in enumerate(allowed_ports_services):
+                    if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                        allowed_ports_services[i] = &#34;tcp/&#34;+str(elem.strip())
+                for allowed in allowed_ports_services:
+                    protoRange = &#34;udp&#34; if allowed.startswith(&#34;udp/&#34;) else &#34;tcp&#34;
+                    maybeRange = str(allowed)[4:].split(&#34;-&#34;)
+                    startAllowedRange = -1
+                    endAllowedRange = -1
+                    if len(maybeRange) == 2:
+                        try:
+                            startAllowedRange = int(maybeRange[0])
+                            endAllowedRange = int(maybeRange[1])
+                        except ValueError:
+                            pass
+                    if (self.proto+&#34;/&#34;+str(self.port) == allowed) or \
+                       (self.proto+&#34;/&#34;+self.service == allowed) or \
+                       (self.proto == protoRange and
+                           int(self.port) &gt;= int(startAllowedRange) and
+                            int(self.port) &lt;= int(endAllowedRange)):
+                        # finally add tool
+                        newTool = Tool()
+                        newTool.initialize(
+                            command_name, wave_name, scope, self.ip, self.port, self.proto, &#34;port&#34;)
+                        newTool.addInDb()
+        except ValueError:
+            pass
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object. For a port it is the ip.
+
+        Returns:
+            Returns the parent ip&#39;s ObjectId _id&#34;.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;: self.ip}, False)[&#34;_id&#34;]
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a port.
+
+        Returns:
+            Returns the string protocole/port number.
+        &#34;&#34;&#34;
+        return self.proto+&#34;/&#34;+str(self.port)
+
+    def getDetailedString(self):
+        &#34;&#34;&#34;Returns a detailed string describing this port.
+        Returns:
+            string : ip:proto/port
+        &#34;&#34;&#34;
+        return str(self.ip)+&#34;:&#34;+str(self)
+
+    def getTools(self):
+        &#34;&#34;&#34;Return port assigned tools as a list of mongo fetched defects dict
+        Returns:
+            list of tool raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;tools&#34;, {&#34;lvl&#34;: &#34;port&#34;, &#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto})
+
+    def getDefects(self):
+        &#34;&#34;&#34;Return port assigned defects as a list of mongo fetched defects dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;defects&#34;, {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto})
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (3 keys :&#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;)
+        &#34;&#34;&#34;
+        return {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Models.Element.Element</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Port.Port.coll_name"><code class="name">var <span class="ident">coll_name</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Port.Port.addAllTool"><code class="name flex">
+<span>def <span class="ident">addAllTool</span></span>(<span>self, command_name, wave_name, scope, check=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add the appropriate tools (level check and wave's commands check) for this port.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>command_name</code></strong></dt>
+<dd>The command that we want to create all the tools for.</dd>
+<dt><strong><code>wave_name</code></strong></dt>
+<dd>name of the was to fetch allowed commands from</dd>
+<dt><strong><code>scope</code></strong></dt>
+<dd>a scope matching this tool (should only be used by network level tools)</dd>
+<dt><strong><code>check</code></strong></dt>
+<dd>A boolean to bypass checks. Force adding this command tool to this port if False. Default is True</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addAllTool(self, command_name, wave_name, scope, check=True):
+    &#34;&#34;&#34;
+    Add the appropriate tools (level check and wave&#39;s commands check) for this port.
+
+    Args:
+        command_name: The command that we want to create all the tools for.
+        wave_name: name of the was to fetch allowed commands from
+        scope: a scope matching this tool (should only be used by network level tools)
+        check: A boolean to bypass checks. Force adding this command tool to this port if False. Default is True
+    &#34;&#34;&#34;
+    if check == False:
+        newTool = Tool()
+        newTool.initialize(command_name, wave_name, scope,
+                           self.ip, self.port, self.proto, &#34;port&#34;)
+        newTool.addInDb()
+        return
+    # retrieve wave&#39;s command
+    mongoInstance = MongoCalendar.getInstance()
+    wave = mongoInstance.find(
+        &#34;waves&#34;, {&#34;wave&#34;: wave_name}, False)
+    commands = wave[&#34;wave_commands&#34;]
+    try:
+        index = commands.index(command_name)
+        # retrieve the command level
+        command = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                         &#34;commands&#34;, {&#34;name&#34;: commands[index]}, False)
+        if command[&#34;lvl&#34;] == &#34;port&#34;:
+            # 3. checking if the added port fit into the command&#39;s allowed service
+            # 3.1 first, default the selected port as tcp if no protocole is defined.
+            allowed_ports_services = command[&#34;ports&#34;].split(&#34;,&#34;)
+            for i, elem in enumerate(allowed_ports_services):
+                if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                    allowed_ports_services[i] = &#34;tcp/&#34;+str(elem.strip())
+            for allowed in allowed_ports_services:
+                protoRange = &#34;udp&#34; if allowed.startswith(&#34;udp/&#34;) else &#34;tcp&#34;
+                maybeRange = str(allowed)[4:].split(&#34;-&#34;)
+                startAllowedRange = -1
+                endAllowedRange = -1
+                if len(maybeRange) == 2:
+                    try:
+                        startAllowedRange = int(maybeRange[0])
+                        endAllowedRange = int(maybeRange[1])
+                    except ValueError:
+                        pass
+                if (self.proto+&#34;/&#34;+str(self.port) == allowed) or \
+                   (self.proto+&#34;/&#34;+self.service == allowed) or \
+                   (self.proto == protoRange and
+                       int(self.port) &gt;= int(startAllowedRange) and
+                        int(self.port) &lt;= int(endAllowedRange)):
+                    # finally add tool
+                    newTool = Tool()
+                    newTool.initialize(
+                        command_name, wave_name, scope, self.ip, self.port, self.proto, &#34;port&#34;)
+                    newTool.addInDb()
+    except ValueError:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Port.Port.addInDb"><code class="name flex">
+<span>def <span class="ident">addInDb</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this Port in database.</p>
+<p>Returns: a tuple with :
+* bool for success
+* mongo ObjectId : already existing object if duplicate, create object id otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInDb(self):
+    &#34;&#34;&#34;
+    Add this Port in database.
+
+    Returns: a tuple with :
+            * bool for success
+            * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+    &#34;&#34;&#34;
+    base = self.getDbKey()
+    mongoInstance = MongoCalendar.getInstance()
+    existing = mongoInstance.find(&#34;ports&#34;, base, False)
+    if existing is not None:
+        return False, existing[&#34;_id&#34;]
+    # Inserting port
+    parent = self.getParent()
+    base[&#34;parent&#34;] = parent
+    base[&#34;service&#34;] = self.service
+    base[&#34;product&#34;] = self.product
+    base[&#34;notes&#34;] = self.notes
+    base[&#34;tags&#34;] = self.tags
+    base[&#34;infos&#34;] = self.infos
+    res = mongoInstance.insert(&#34;ports&#34;, base, parent)
+    ret = res.inserted_id
+    self._id = ret
+    # adding the appropriate tools for this port.
+    # 1. fetching the wave&#39;s commands
+    waves = mongoInstance.find(&#34;waves&#34;, {})
+    for wave in waves:
+        waveName = wave[&#34;wave&#34;]
+        commands = wave[&#34;wave_commands&#34;]
+        for commName in commands:
+            # 2. finding the command only if lvl is port
+            comm = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;,
+                                          {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;port&#34;}, False)
+            if comm is not None:
+                # 3. checking if the added port fit into the command&#39;s allowed service
+                # 3.1 first, default the selected port as tcp if no protocole is defined.
+                allowed_ports_services = comm[&#34;ports&#34;].split(&#34;,&#34;)
+                for i, elem in enumerate(allowed_ports_services):
+                    if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                        allowed_ports_services[i] = &#34;tcp/&#34;+str(elem.strip())
+                for allowed in allowed_ports_services:
+                    protoRange = &#34;udp&#34; if allowed.startswith(&#34;udp/&#34;) else &#34;tcp&#34;
+                    maybeRange = str(allowed)[4:].split(&#34;-&#34;)
+                    startAllowedRange = -1
+                    endAllowedRange = -1
+                    if len(maybeRange) == 2:
+                        try:
+                            startAllowedRange = int(maybeRange[0])
+                            endAllowedRange = int(maybeRange[1])
+                        except ValueError:
+                            pass
+                    if (self.proto+&#34;/&#34;+str(self.port) == allowed) or \
+                    (self.proto+&#34;/&#34;+self.service == allowed) or \
+                    (self.proto == protoRange and
+                        int(self.port) &gt;= int(startAllowedRange) and
+                            int(self.port) &lt;= int(endAllowedRange)):
+                        # finally add tool
+                        newTool = Tool()
+                        newTool.initialize(
+                            comm[&#34;name&#34;], waveName, &#34;&#34;, self.ip, self.port, self.proto, &#34;port&#34;)
+                        newTool.addInDb()
+    return True, ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Port.Port.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Deletes the Port represented by this model in database.
+Also deletes the tools associated with this port
+Also deletes the defects associated with this port</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self):
+    &#34;&#34;&#34;
+    Deletes the Port represented by this model in database.
+    Also deletes the tools associated with this port
+    Also deletes the defects associated with this port
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    tools = mongoInstance.find(&#34;tools&#34;, {&#34;port&#34;: self.port, &#34;proto&#34;: self.proto,
+                                         &#34;ip&#34;: self.ip}, True)
+    for tool in tools:
+        tool_model = Tool(tool)
+        tool_model.delete()
+    defects = mongoInstance.find(&#34;defects&#34;, {&#34;port&#34;: self.port, &#34;proto&#34;: self.proto,
+                                             &#34;ip&#34;: self.ip}, True)
+    for defect in defects:
+        defect_model = Defect(defect)
+        defect_model.delete()
+    mongoInstance.delete(&#34;ports&#34;, {&#34;_id&#34;:  ObjectId(self._id)})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Port.Port.getDbKey"><code class="name flex">
+<span>def <span class="ident">getDbKey</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a dict from model to use as unique composed key.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A dict (3 keys :"ip", "port", "proto")</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDbKey(self):
+    &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+    Returns:
+        A dict (3 keys :&#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;)
+    &#34;&#34;&#34;
+    return {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Port.Port.getDefects"><code class="name flex">
+<span>def <span class="ident">getDefects</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return port assigned defects as a list of mongo fetched defects dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>defect raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDefects(self):
+    &#34;&#34;&#34;Return port assigned defects as a list of mongo fetched defects dict
+    Returns:
+        list of defect raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    return mongoInstance.find(&#34;defects&#34;, {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Port.Port.getDetailedString"><code class="name flex">
+<span>def <span class="ident">getDetailedString</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a detailed string describing this port.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>string </code></dt>
+<dd>ip:proto/port</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDetailedString(self):
+    &#34;&#34;&#34;Returns a detailed string describing this port.
+    Returns:
+        string : ip:proto/port
+    &#34;&#34;&#34;
+    return str(self.ip)+&#34;:&#34;+str(self)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Port.Port.getTools"><code class="name flex">
+<span>def <span class="ident">getTools</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return port assigned tools as a list of mongo fetched defects dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>tool raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTools(self):
+    &#34;&#34;&#34;Return port assigned tools as a list of mongo fetched defects dict
+    Returns:
+        list of tool raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    return mongoInstance.find(&#34;tools&#34;, {&#34;lvl&#34;: &#34;port&#34;, &#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Port.Port.initialize"><code class="name flex">
+<span>def <span class="ident">initialize</span></span>(<span>self, ip, port='', proto='tcp', service='', product='', notes='', tags=None, infos=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set values of port</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ip</code></strong></dt>
+<dd>the parent host (ip or domain) where this port is open</dd>
+<dt><strong><code>port</code></strong></dt>
+<dd>a port number as string. Default ""</dd>
+<dt><strong><code>proto</code></strong></dt>
+<dd>a protocol to reach this port ("tcp" by default, send "udp" if udp port.) Default "tcp"</dd>
+<dt><strong><code>service</code></strong></dt>
+<dd>the service running behind this port. Can be "unknown". Default ""</dd>
+<dt><strong><code>notes</code></strong></dt>
+<dd>notes took by a pentester regarding this port. Default ""</dd>
+<dt><strong><code>tags</code></strong></dt>
+<dd>a list of tag. Default is None (empty array)</dd>
+<dt><strong><code>infos</code></strong></dt>
+<dd>a dictionnary of additional info. Default is None (empty dict)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>this object</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initialize(self, ip, port=&#34;&#34;, proto=&#34;tcp&#34;, service=&#34;&#34;, product=&#34;&#34;, notes=&#34;&#34;, tags=None, infos=None):
+    &#34;&#34;&#34;Set values of port
+    Args:
+        ip: the parent host (ip or domain) where this port is open
+        port: a port number as string. Default &#34;&#34;
+        proto: a protocol to reach this port (&#34;tcp&#34; by default, send &#34;udp&#34; if udp port.) Default &#34;tcp&#34;
+        service: the service running behind this port. Can be &#34;unknown&#34;. Default &#34;&#34;
+        notes: notes took by a pentester regarding this port. Default &#34;&#34;
+        tags: a list of tag. Default is None (empty array)
+        infos: a dictionnary of additional info. Default is None (empty dict)
+    Returns:
+        this object
+    &#34;&#34;&#34;
+    self.ip = ip
+    self.port = port
+    self.proto = proto
+    self.service = service
+    self.product = product
+    self.notes = notes
+    self.infos = infos if infos is not None else {}
+    self.tags = tags if tags is not None else []
+    return self</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Port.Port.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, pipeline_set=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update this object in database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pipeline_set</code></strong></dt>
+<dd>(Opt.) A dictionnary with custom values. If None (default) use model attributes.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, pipeline_set=None):
+    &#34;&#34;&#34;Update this object in database.
+    Args:
+        pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+    &#34;&#34;&#34;
+    oldPort = Port.fetchObject({&#34;_id&#34;: ObjectId(self._id)})
+    if oldPort is None:
+        return
+    oldService = oldPort.service
+    mongoInstance = MongoCalendar.getInstance()
+    if oldService != self.service:
+        mongoInstance.delete(&#34;tools&#34;, {
+                             &#34;lvl&#34;: &#34;port&#34;, &#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}, many=True)
+        port_commands = mongoInstance.findInDb(
+            &#34;pollenisator&#34;, &#34;commands&#34;, {&#34;lvl&#34;: &#34;port&#34;})
+        for port_command in port_commands:
+            allowed_services = port_command[&#34;ports&#34;].split(&#34;,&#34;)
+            for i, elem in enumerate(allowed_services):
+                if not(elem.strip().startswith(&#34;tcp/&#34;) or elem.strip().startswith(&#34;udp/&#34;)):
+                    allowed_services[i] = &#34;tcp/&#34;+str(elem)
+            if self.proto+&#34;/&#34;+str(self.service) in allowed_services:
+                waves = mongoInstance.find(&#34;waves&#34;, {&#34;wave_commands&#34;: {&#34;$elemMatch&#34;: {
+                    &#34;$eq&#34;: port_command[&#34;name&#34;].strip()}}})
+                for wave in waves:
+                    tool_m = Tool().initialize(port_command[&#34;name&#34;], wave[&#34;wave&#34;], &#34;&#34;,
+                                               self.ip, self.port, self.proto, &#34;port&#34;)
+                    tool_m.addInDb()
+    # Update variable instance. (this avoid to refetch the whole command in database)
+    if pipeline_set is None:
+        mongoInstance.update(&#34;ports&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: {&#34;service&#34;: self.service, &#34;product&#34;:self.product, &#34;notes&#34;: self.notes, &#34;tags&#34;: self.tags, &#34;infos&#34;: self.infos}})
+    else:
+        mongoInstance.update(&#34;ports&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: pipeline_set})</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Models" href="index.html">Pollenisator.core.Models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Models.Port.Port" href="#Pollenisator.core.Models.Port.Port">Port</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Models.Port.Port.addAllTool" href="#Pollenisator.core.Models.Port.Port.addAllTool">addAllTool</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.addInDb" href="#Pollenisator.core.Models.Port.Port.addInDb">addInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.coll_name" href="#Pollenisator.core.Models.Port.Port.coll_name">coll_name</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.delete" href="#Pollenisator.core.Models.Port.Port.delete">delete</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.getDbKey" href="#Pollenisator.core.Models.Port.Port.getDbKey">getDbKey</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.getDefects" href="#Pollenisator.core.Models.Port.Port.getDefects">getDefects</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.getDetailedString" href="#Pollenisator.core.Models.Port.Port.getDetailedString">getDetailedString</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.getTools" href="#Pollenisator.core.Models.Port.Port.getTools">getTools</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.initialize" href="#Pollenisator.core.Models.Port.Port.initialize">initialize</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Port.Port.update" href="#Pollenisator.core.Models.Port.Port.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.pollenisator API documentation</title>
+<meta name="description" content="@author: Fabien Barré for AlgoSecure
+Date: 11/07/2017
+Major version released: 09/2019
+@version: 1.0" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.pollenisator</code></h1>
+</header>
+<section id="section-intro">
+<p>@author: Fabien Barré for AlgoSecure</p>
+<h1 id="date-11072017">Date: 11/07/2017</h1>
+<h1 id="major-version-released-092019">Major version released: 09/2019</h1>
+<h1 id="version-10">@version: 1.0</h1>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+@author: Fabien Barré for AlgoSecure
+# Date: 11/07/2017
+# Major version released: 09/2019
+# @version: 1.0
+&#34;&#34;&#34;
+import tkinter as tk
+import os
+import argparse
+import signal
+import time
+from core.Components.mongo import MongoCalendar
+from core.Application.Appli import Appli
+import AutoScanWorker as slave
+from core.Models.Wave import Wave
+from core.Models.Tool import Tool
+
+class GracefulKiller:
+    &#34;&#34;&#34;
+    Signal handler to shut down properly.
+
+    Attributes:
+        kill_now: a boolean that can checked to know that it&#39;s time to stop.
+    &#34;&#34;&#34;
+    kill_now = False
+
+    def __init__(self, app):
+        &#34;&#34;&#34;
+        Constructor. Hook the signals SIGINT and SIGTERM to method exitGracefully
+
+        Args:
+            app: The appli object to stop
+        &#34;&#34;&#34;
+        signal.signal(signal.SIGINT, self.exitGracefully)
+        signal.signal(signal.SIGTERM, self.exitGracefully)
+        # signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+        self.app = app
+
+    def exitGracefully(self, _signum, _frame):
+        &#34;&#34;&#34;
+        Set the kill_now class attributes to True. Call the onClosing function of the application given at init.
+
+        Args:
+            signum: not used
+            frame: not used
+        &#34;&#34;&#34;
+        print(&#39;You pressed Ctrl+C!&#39;)
+        self.app.onClosing()
+        self.kill_now = True
+
+
+#######################################
+############## MAIN ###################
+#######################################
+
+
+def main():
+    &#34;&#34;&#34;Main function. Start pollenisator application
+    &#34;&#34;&#34;
+    parser = argparse.ArgumentParser(
+        description=&#34;Edit database stored in mongo database&#34;)
+    parser.add_argument(&#34;--import&#34;, dest=&#34;importName&#34;,
+                        action=&#34;store&#34;, nargs=&#34;?&#34;)
+    parser.add_argument(&#34;--calendar&#34;, dest=&#34;calendarName&#34;, action=&#34;store&#34;)
+    parser.add_argument(&#34;--exec&#34;, dest=&#34;execCmd&#34;, action=&#34;store&#34;)
+    args, remainingArgs = parser.parse_known_args()
+    if args.importName:
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.importDatabase(args.importName)
+        return
+    if args.execCmd and args.calendarName:
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.connectToDb(args.calendarName)
+        cmdName = os.path.splitext(os.path.basename(args.execCmd.split(&#34; &#34;)[0]))[0]
+        cmdName +=&#34;::&#34;+str(time.time()).replace(&#34; &#34;,&#34;-&#34;)
+        wave = Wave().initialize(&#34;Custom commands&#34;)
+        wave.addInDb()
+        tool = Tool()
+        tool.initialize(cmdName, &#34;Custom commands&#34;, &#34;&#34;, None, None, None, &#34;wave&#34;, args.execCmd+&#34; &#34;+(&#34; &#34;.join(remainingArgs)), dated=&#34;None&#34;, datef=&#34;None&#34;, scanner_ip=&#34;localhost&#34;)
+        tool.updateInfos({&#34;args&#34;:args.execCmd})
+        res, iid = tool.addInDb()
+        if res:
+            slave.executeCommand(args.calendarName, str(iid), &#34;auto-detect&#34;)
+        return
+    print(&#34;&#34;&#34;
+.__    ..              ,       
+[__) _ || _ ._ * __ _.-+- _ ._.
+|   (_)||(/,[ )|_) (_] | (_)[  
+                               
+&#34;&#34;&#34;)
+    root = tk.Tk()
+    root.resizable(True, True)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    dir_path = os.path.join(dir_path, &#34;icon/favicon.png&#34;)
+    img = tk.PhotoImage(file=dir_path)
+    root.iconphoto(True, img)
+
+    root.minsize(width=400, height=400)
+    root.resizable(True, True)
+    root.title(&#34;Pollenisator&#34;)
+    root.geometry(&#34;1220x830&#34;)
+    gc = None
+    app = Appli(root)
+    try:
+        root.protocol(&#34;WM_DELETE_WINDOW&#34;, app.onClosing)
+        gc = GracefulKiller(app)
+        root.mainloop()
+        print(&#34;Exiting tkinter main loop&#34;)
+    except tk.TclError:
+        pass
+    try:
+        root.destroy()
+        print(&#34;Destroying app window&#34;)
+    except tk.TclError:
+        pass
+    app.onClosing()
+    if gc is not None:
+        gc.kill_now = True
+
+
+if __name__ == &#39;__main__&#39;:
+    main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.pollenisator.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Main function. Start pollenisator application</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main():
+    &#34;&#34;&#34;Main function. Start pollenisator application
+    &#34;&#34;&#34;
+    parser = argparse.ArgumentParser(
+        description=&#34;Edit database stored in mongo database&#34;)
+    parser.add_argument(&#34;--import&#34;, dest=&#34;importName&#34;,
+                        action=&#34;store&#34;, nargs=&#34;?&#34;)
+    parser.add_argument(&#34;--calendar&#34;, dest=&#34;calendarName&#34;, action=&#34;store&#34;)
+    parser.add_argument(&#34;--exec&#34;, dest=&#34;execCmd&#34;, action=&#34;store&#34;)
+    args, remainingArgs = parser.parse_known_args()
+    if args.importName:
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.importDatabase(args.importName)
+        return
+    if args.execCmd and args.calendarName:
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.connectToDb(args.calendarName)
+        cmdName = os.path.splitext(os.path.basename(args.execCmd.split(&#34; &#34;)[0]))[0]
+        cmdName +=&#34;::&#34;+str(time.time()).replace(&#34; &#34;,&#34;-&#34;)
+        wave = Wave().initialize(&#34;Custom commands&#34;)
+        wave.addInDb()
+        tool = Tool()
+        tool.initialize(cmdName, &#34;Custom commands&#34;, &#34;&#34;, None, None, None, &#34;wave&#34;, args.execCmd+&#34; &#34;+(&#34; &#34;.join(remainingArgs)), dated=&#34;None&#34;, datef=&#34;None&#34;, scanner_ip=&#34;localhost&#34;)
+        tool.updateInfos({&#34;args&#34;:args.execCmd})
+        res, iid = tool.addInDb()
+        if res:
+            slave.executeCommand(args.calendarName, str(iid), &#34;auto-detect&#34;)
+        return
+    print(&#34;&#34;&#34;
+.__    ..              ,       
+[__) _ || _ ._ * __ _.-+- _ ._.
+|   (_)||(/,[ )|_) (_] | (_)[  
+                               
+&#34;&#34;&#34;)
+    root = tk.Tk()
+    root.resizable(True, True)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    dir_path = os.path.join(dir_path, &#34;icon/favicon.png&#34;)
+    img = tk.PhotoImage(file=dir_path)
+    root.iconphoto(True, img)
+
+    root.minsize(width=400, height=400)
+    root.resizable(True, True)
+    root.title(&#34;Pollenisator&#34;)
+    root.geometry(&#34;1220x830&#34;)
+    gc = None
+    app = Appli(root)
+    try:
+        root.protocol(&#34;WM_DELETE_WINDOW&#34;, app.onClosing)
+        gc = GracefulKiller(app)
+        root.mainloop()
+        print(&#34;Exiting tkinter main loop&#34;)
+    except tk.TclError:
+        pass
+    try:
+        root.destroy()
+        print(&#34;Destroying app window&#34;)
+    except tk.TclError:
+        pass
+    app.onClosing()
+    if gc is not None:
+        gc.kill_now = True</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.pollenisator.GracefulKiller"><code class="flex name class">
+<span>class <span class="ident">GracefulKiller</span></span>
+<span>(</span><span>app)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Signal handler to shut down properly.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>kill_now</code></strong></dt>
+<dd>a boolean that can checked to know that it's time to stop.</dd>
+</dl>
+<p>Constructor. Hook the signals SIGINT and SIGTERM to method exitGracefully</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>app</code></strong></dt>
+<dd>The appli object to stop</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GracefulKiller:
+    &#34;&#34;&#34;
+    Signal handler to shut down properly.
+
+    Attributes:
+        kill_now: a boolean that can checked to know that it&#39;s time to stop.
+    &#34;&#34;&#34;
+    kill_now = False
+
+    def __init__(self, app):
+        &#34;&#34;&#34;
+        Constructor. Hook the signals SIGINT and SIGTERM to method exitGracefully
+
+        Args:
+            app: The appli object to stop
+        &#34;&#34;&#34;
+        signal.signal(signal.SIGINT, self.exitGracefully)
+        signal.signal(signal.SIGTERM, self.exitGracefully)
+        # signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+        self.app = app
+
+    def exitGracefully(self, _signum, _frame):
+        &#34;&#34;&#34;
+        Set the kill_now class attributes to True. Call the onClosing function of the application given at init.
+
+        Args:
+            signum: not used
+            frame: not used
+        &#34;&#34;&#34;
+        print(&#39;You pressed Ctrl+C!&#39;)
+        self.app.onClosing()
+        self.kill_now = True</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.pollenisator.GracefulKiller.kill_now"><code class="name">var <span class="ident">kill_now</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.pollenisator.GracefulKiller.exitGracefully"><code class="name flex">
+<span>def <span class="ident">exitGracefully</span></span>(<span>self, _signum, _frame)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the kill_now class attributes to True. Call the onClosing function of the application given at init.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>signum</code></strong></dt>
+<dd>not used</dd>
+<dt><strong><code>frame</code></strong></dt>
+<dd>not used</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def exitGracefully(self, _signum, _frame):
+    &#34;&#34;&#34;
+    Set the kill_now class attributes to True. Call the onClosing function of the application given at init.
+
+    Args:
+        signum: not used
+        frame: not used
+    &#34;&#34;&#34;
+    print(&#39;You pressed Ctrl+C!&#39;)
+    self.app.onClosing()
+    self.kill_now = True</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#date-11072017">Date: 11/07/2017</a></li>
+<li><a href="#major-version-released-092019">Major version released: 09/2019</a></li>
+<li><a href="#version-10">@version: 1.0</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator" href="index.html">Pollenisator</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.pollenisator.main" href="#Pollenisator.pollenisator.main">main</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.pollenisator.GracefulKiller" href="#Pollenisator.pollenisator.GracefulKiller">GracefulKiller</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.pollenisator.GracefulKiller.exitGracefully" href="#Pollenisator.pollenisator.GracefulKiller.exitGracefully">exitGracefully</a></code></li>
+<li><code><a title="Pollenisator.pollenisator.GracefulKiller.kill_now" href="#Pollenisator.pollenisator.GracefulKiller.kill_now">kill_now</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

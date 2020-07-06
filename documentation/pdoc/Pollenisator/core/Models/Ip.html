@@ -1,0 +1,1467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Models.Ip API documentation</title>
+<meta name="description" content="Ip Model. Describes Hosts (not just IP now but domains too)" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Models.Ip</code></h1>
+</header>
+<section id="section-intro">
+<p>Ip Model. Describes Hosts (not just IP now but domains too)</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Ip Model. Describes Hosts (not just IP now but domains too)&#34;&#34;&#34;
+
+from core.Models.Element import Element
+from bson.objectid import ObjectId
+from core.Components.mongo import MongoCalendar
+from netaddr import IPNetwork, IPAddress
+from netaddr.core import AddrFormatError
+from core.Models.Port import Port
+from core.Models.Tool import Tool
+from core.Models.Defect import Defect
+from core.Components.Utils import isNetworkIp, performLookUp
+import re
+
+
+class Ip(Element):
+    &#34;&#34;&#34;
+    Represents an Ip object that defines an Ip or a domain that will be targeted by ip tools.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;ips&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+                        ip(&#34;&#34;), notes(&#34;&#34;), in_scopes(None)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;ip&#34;, &#34;&#34;), valuesFromDb.get(&#34;notes&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;in_scopes&#34;, None), tags=valuesFromDb.get(&#34;tags&#34;, []), infos=valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, ip=&#34;&#34;, notes=&#34;&#34;, in_scopes=None, tags=None, infos=None):
+        &#34;&#34;&#34;Set values of ip
+        Args:
+            ip: the host (ip or domain) to represent
+            notes: notes concerning this IP (opt). Default to &#34;&#34;
+            in_scopes: a list of scopes that matches this host. If empty this IP will be OOS (Out of Scope). Default to None
+            tags: a list of tags. Default to None
+            infos: a dictionnary of additional info
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.ip = ip
+        self.notes = notes
+        self.in_scopes = in_scopes if in_scopes is not None else self.getScopesFittingMe()
+        self.tags = tags if tags is not None else []
+        self.infos = infos if infos is not None else {}
+        return self
+
+    def fitInScope(self, scope):
+        &#34;&#34;&#34;Checks if this IP is the given scope.
+        Args:
+            scope: a string of perimeter (Network Ip, IP or domain)
+        Returns:
+            boolean: True if this ip/domain is in given scope. False otherwise.
+        &#34;&#34;&#34;
+        if isNetworkIp(scope):
+            if Ip.checkIpScope(scope, self.ip):
+                return True
+        elif Ip.isSubDomain(scope, self.ip):
+            return True
+        elif self.ip == scope:
+            return True
+        return False
+
+    def getScopesFittingMe(self):
+        &#34;&#34;&#34;Returns a list of scope objects ids where this IP object fits.
+        Returns:
+            a list of scopes objects Mongo Ids where this IP/Domain is in scope.
+        &#34;&#34;&#34;
+        ret = []
+        mongoInstance = MongoCalendar.getInstance()
+        scopes = mongoInstance.find(&#34;scopes&#34;, {})
+        for scope in scopes:
+            if self.fitInScope(scope[&#34;scope&#34;]):
+                ret.append(str(scope[&#34;_id&#34;]))
+        return ret
+
+    def addScopeFitting(self, scopeId):
+        &#34;&#34;&#34;Add the given scopeId to the list of scopes this IP fits in.
+        Args:
+            scopeId: a mongo ObjectId of a Scope object.
+        &#34;&#34;&#34;
+        if not self.in_scopes:
+            tools = Tool.fetchObjects({&#34;ip&#34;: self.ip})
+            for tool in tools:
+                tool.setInScope()
+        if str(scopeId) not in self.in_scopes:
+            self.in_scopes.append(str(scopeId))
+            self.update()
+
+    def removeScopeFitting(self, scopeId):
+        &#34;&#34;&#34;Remove the given scopeId from the list of scopes this IP fits in.
+        Args:
+            scopeId: a mongo ObjectId of a scope object.
+        &#34;&#34;&#34;
+        if str(scopeId) in self.in_scopes:
+            self.in_scopes.remove(str(scopeId))
+            self.update()
+            if not self.in_scopes:
+                tools = Tool.fetchObjects({&#34;ip&#34;: self.ip})
+                for tool in tools:
+                    tool.setOutOfScope()
+
+    @classmethod
+    def getIpsInScope(cls, scopeId):
+        &#34;&#34;&#34;Returns a list of IP objects that have the given scope id in there matching scopes.
+        Args:
+            scopeId: a mongo ObjectId of a scope object.
+        Returns:
+            a mongo cursor of IP objects matching the given scopeId
+        &#34;&#34;&#34;
+        return Ip.fetchObjects({&#34;in_scopes&#34;: {&#34;$elemMatch&#34;: {&#34;$eq&#34;: str(scopeId)}}})
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Deletes the Ip represented by this model in database.
+        Also deletes the tools associated with this ip
+        Also deletes the ports associated with this ip
+        Also deletes the defects associated with this ip and its ports
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        tools = mongoInstance.find(&#34;tools&#34;,
+                                   {&#34;ip&#34;: self.ip}, True)
+        for tool in tools:
+            tool_model = Tool(tool)
+            tool_model.delete()
+        defects = mongoInstance.find(&#34;defects&#34;,
+                                     {&#34;ip&#34;: self.ip, &#34;$or&#34;: [{&#34;port&#34;: {&#34;$exists&#34;: False}}, {&#34;port&#34;: None}]}, True)
+        for defect in defects:
+            defect_model = Defect(defect)
+            defect_model.delete()
+        ports = mongoInstance.find(&#34;ports&#34;,
+                                   {&#34;ip&#34;: self.ip}, True)
+        for port in ports:
+            port_model = Port(port)
+            port_model.delete()
+        mongoInstance.delete(&#34;ips&#34;, {&#34;_id&#34;: self._id})
+
+    def addPort(self, values):
+        &#34;&#34;&#34;
+        Add a port object to database associated with this Ip.
+
+        Args:
+            values: A dictionary crafted by PortView containg all form fields values needed.
+
+        Returns:ret
+                &#39;_id&#39;: The mongo ObjectId _idret of the inserted port document or None if insertion failed (unicity broken).
+        &#34;&#34;&#34;
+        portToInsert = {&#34;ip&#34;: self.ip, &#34;port&#34;: str(
+            values[&#34;Port&#34;]), &#34;proto&#34;: str(values[&#34;Protocole&#34;]), &#34;service&#34;: values[&#34;Service&#34;], &#34;product&#34;: values[&#34;Product&#34;]}
+        newPort = Port()
+        newPort.initialize(
+            self.ip, portToInsert[&#34;port&#34;], portToInsert[&#34;proto&#34;], portToInsert[&#34;service&#34;], portToInsert[&#34;product&#34;])
+        return newPort.addInDb()
+
+    @classmethod
+    def checkIpScope(cls, scope, ip):
+        &#34;&#34;&#34;
+        Check if the given ip is in the given scope
+
+        Args:
+            scope: A network range ip or a domain
+            ip: An ipv4 like X.X.X.X
+
+        Returns:
+                True if the ip is in the network range or if scope == ip. False otherwise.
+        &#34;&#34;&#34;
+        if cls.isIp(scope):
+            network_mask = scope.split(&#34;/&#34;)
+            mask = &#34;32&#34;
+            if len(network_mask) == 2:
+                mask = network_mask[1]
+            try:
+                res = IPAddress(ip) in IPNetwork(network_mask[0]+&#34;/&#34;+mask)
+            except AddrFormatError:
+                return False
+            except ValueError:
+                return False
+            return res
+        elif scope == ip:
+            return True
+        return False
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;ips&#34;,
+                                 {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: {&#34;notes&#34;: self.notes, &#34;in_scopes&#34;: self.in_scopes, &#34;tags&#34;: self.tags, &#34;infos&#34;: self.infos}})
+        else:
+            mongoInstance.update(&#34;ips&#34;,
+                                 {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: pipeline_set})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this IP in database.
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        # Checking unicity
+        if self.ip.strip() == &#34;&#34;:
+            raise ValueError(&#34;Ip insertion error: Cannot insert empty ip&#34;)
+        base = self.getDbKey()
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(
+            &#34;ips&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Add ip as it is unique
+        base[&#34;parent&#34;] = self.getParent()
+        base[&#34;notes&#34;] = self.notes
+        base[&#34;tags&#34;] = self.tags
+        base[&#34;in_scopes&#34;] = self.in_scopes
+        base[&#34;infos&#34;] = self.infos
+        resInsert = mongoInstance.insert(
+            &#34;ips&#34;, base)
+        self._id = resInsert.inserted_id
+        # adding the appropriate tools for this port.
+        # 1. fetching the wave&#39;s commands
+        waves = mongoInstance.find(&#34;waves&#34;, {})
+        for wave in waves:
+            waveName = wave[&#34;wave&#34;]
+            commands = wave[&#34;wave_commands&#34;]
+            for commName in commands:
+                # 2. finding the command only if lvl is port
+                comm = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;,
+                                              {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;ip&#34;}, False)
+                if comm is not None:
+                    # 3. checking if the added port fit into the command&#39;s allowed service
+                    # 3.1 first, default the selected port as tcp if no protocole is defined.
+                    newTool = Tool()
+                    newTool.initialize(
+                        comm[&#34;name&#34;], waveName, &#34;&#34;, self.ip, &#34;&#34;, &#34;&#34;, &#34;ip&#34;)
+                    newTool.addInDb()
+
+        return True, self._id
+
+    def addAllTool(self, command_name, wave_name, scope):
+        &#34;&#34;&#34;
+        Kind of recursive operation as it will call the same function in its children ports.
+        Add the appropriate tools (level check and wave&#39;s commands check) for this ip.
+        Also add for all registered ports the appropriate tools.
+
+        Args:
+            command_name: The command that we want to create all the tools for.
+            wave_name: the wave name from where we want to load tools
+            scope: a scope object allowing to launch this command. Opt
+        &#34;&#34;&#34;
+        # retrieve the command level
+        mongoInstance = MongoCalendar.getInstance()
+        command = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                         &#34;commands&#34;, {&#34;name&#34;: command_name}, False)
+        if command[&#34;lvl&#34;] == &#34;ip&#34;:
+            # finally add tool
+            newTool = Tool()
+            newTool.initialize(command_name, wave_name,
+                               &#34;&#34;, self.ip, &#34;&#34;, &#34;&#34;, &#34;ip&#34;)
+            newTool.addInDb()
+            return
+        # Do the same thing for all children ports.
+        ports = mongoInstance.find(&#34;ports&#34;, {&#34;ip&#34;: self.ip})
+        for port in ports:
+            p = Port(port)
+            p.addAllTool(command_name, wave_name, scope)
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of an ip.
+
+        Returns:
+            Returns the string ipv4 of this ip.
+        &#34;&#34;&#34;
+        return self.ip
+
+    def getTools(self):
+        &#34;&#34;&#34;Return ip assigned tools as a list of mongo fetched defects dict
+        Returns:
+            list of tool raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;tools&#34;, {&#34;lvl&#34;: &#34;ip&#34;, &#34;ip&#34;: self.ip})
+
+    def getPorts(self):
+        &#34;&#34;&#34;Returns ip assigned ports as a list of mongo fetched defects dict
+        Returns:
+            list of port raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;ports&#34;, {&#34;ip&#34;: self.ip})
+
+    def getDefects(self):
+        &#34;&#34;&#34;Returns ip assigned tools as a list of mongo fetched defects dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;defects&#34;, {&#34;ip&#34;: self.ip, &#34;$or&#34;: [{&#34;port&#34;: {&#34;$exists&#34;: False}}, {&#34;port&#34;: None}]})
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (1 key :&#34;ip&#34;)
+        &#34;&#34;&#34;
+        return {&#34;ip&#34;: self.ip}
+
+    @classmethod
+    def isSubDomain(cls, parentDomain, subDomainTest):
+        &#34;&#34;&#34;Check if the given domain is a subdomain of another given domain
+        Args:
+            parentDomain: a domain that could be the parent domain of the second arg
+            subDomainTest: a domain to be tested as a subdomain of first arg
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        splitted_domain = subDomainTest.split(&#34;.&#34;)
+        # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+        topDomainExists = len(splitted_domain) &gt; 2
+        if topDomainExists:
+            if &#34;.&#34;.join(splitted_domain[1:]) == parentDomain:
+                return True
+        return False
+
+    @classmethod
+    def isIp(cls, ip):
+        &#34;&#34;&#34;Checks if the given string is a valid IP
+        Args:
+            ip: a string that could be representing an ip
+        Returns:
+            boolean
+        &#34;&#34;&#34;
+        return re.search(r&#34;([0-9]{1,3}\.){3}[0-9]{1,3}&#34;, ip) is not None
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object.
+
+        Returns:
+            Returns the parent&#39;s ObjectId _id&#34;.
+        &#34;&#34;&#34;
+        if self.parent is not None:
+            return self.parent
+        try:
+            if IPAddress(self.ip).is_private():
+                return None
+        except AddrFormatError:
+            return None
+        except ValueError:
+            return None
+        ip_real = performLookUp(self.ip)
+        if ip_real is not None:
+            mongoInstance = MongoCalendar.getInstance()
+            ip_in_db = mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;: ip_real}, False)
+            if ip_in_db is None:
+                return None
+            self.parent = ip_in_db[&#34;_id&#34;]
+            self.update({&#34;parent&#34;: self.parent})
+            return ip_in_db[&#34;_id&#34;]
+        return None</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Models.Ip.Ip"><code class="flex name class">
+<span>class <span class="ident">Ip</span></span>
+<span>(</span><span>valuesFromDb=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents an Ip object that defines an Ip or a domain that will be targeted by ip tools.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>coll_name</code></strong></dt>
+<dd>collection name in pollenisator database</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>valueFromDb</code></strong></dt>
+<dd>a dict holding values to load into the object. A mongo fetched interval is optimal.
+possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+ip(""), notes(""), in_scopes(None)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Ip(Element):
+    &#34;&#34;&#34;
+    Represents an Ip object that defines an Ip or a domain that will be targeted by ip tools.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;ips&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+                        ip(&#34;&#34;), notes(&#34;&#34;), in_scopes(None)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;ip&#34;, &#34;&#34;), valuesFromDb.get(&#34;notes&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;in_scopes&#34;, None), tags=valuesFromDb.get(&#34;tags&#34;, []), infos=valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, ip=&#34;&#34;, notes=&#34;&#34;, in_scopes=None, tags=None, infos=None):
+        &#34;&#34;&#34;Set values of ip
+        Args:
+            ip: the host (ip or domain) to represent
+            notes: notes concerning this IP (opt). Default to &#34;&#34;
+            in_scopes: a list of scopes that matches this host. If empty this IP will be OOS (Out of Scope). Default to None
+            tags: a list of tags. Default to None
+            infos: a dictionnary of additional info
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.ip = ip
+        self.notes = notes
+        self.in_scopes = in_scopes if in_scopes is not None else self.getScopesFittingMe()
+        self.tags = tags if tags is not None else []
+        self.infos = infos if infos is not None else {}
+        return self
+
+    def fitInScope(self, scope):
+        &#34;&#34;&#34;Checks if this IP is the given scope.
+        Args:
+            scope: a string of perimeter (Network Ip, IP or domain)
+        Returns:
+            boolean: True if this ip/domain is in given scope. False otherwise.
+        &#34;&#34;&#34;
+        if isNetworkIp(scope):
+            if Ip.checkIpScope(scope, self.ip):
+                return True
+        elif Ip.isSubDomain(scope, self.ip):
+            return True
+        elif self.ip == scope:
+            return True
+        return False
+
+    def getScopesFittingMe(self):
+        &#34;&#34;&#34;Returns a list of scope objects ids where this IP object fits.
+        Returns:
+            a list of scopes objects Mongo Ids where this IP/Domain is in scope.
+        &#34;&#34;&#34;
+        ret = []
+        mongoInstance = MongoCalendar.getInstance()
+        scopes = mongoInstance.find(&#34;scopes&#34;, {})
+        for scope in scopes:
+            if self.fitInScope(scope[&#34;scope&#34;]):
+                ret.append(str(scope[&#34;_id&#34;]))
+        return ret
+
+    def addScopeFitting(self, scopeId):
+        &#34;&#34;&#34;Add the given scopeId to the list of scopes this IP fits in.
+        Args:
+            scopeId: a mongo ObjectId of a Scope object.
+        &#34;&#34;&#34;
+        if not self.in_scopes:
+            tools = Tool.fetchObjects({&#34;ip&#34;: self.ip})
+            for tool in tools:
+                tool.setInScope()
+        if str(scopeId) not in self.in_scopes:
+            self.in_scopes.append(str(scopeId))
+            self.update()
+
+    def removeScopeFitting(self, scopeId):
+        &#34;&#34;&#34;Remove the given scopeId from the list of scopes this IP fits in.
+        Args:
+            scopeId: a mongo ObjectId of a scope object.
+        &#34;&#34;&#34;
+        if str(scopeId) in self.in_scopes:
+            self.in_scopes.remove(str(scopeId))
+            self.update()
+            if not self.in_scopes:
+                tools = Tool.fetchObjects({&#34;ip&#34;: self.ip})
+                for tool in tools:
+                    tool.setOutOfScope()
+
+    @classmethod
+    def getIpsInScope(cls, scopeId):
+        &#34;&#34;&#34;Returns a list of IP objects that have the given scope id in there matching scopes.
+        Args:
+            scopeId: a mongo ObjectId of a scope object.
+        Returns:
+            a mongo cursor of IP objects matching the given scopeId
+        &#34;&#34;&#34;
+        return Ip.fetchObjects({&#34;in_scopes&#34;: {&#34;$elemMatch&#34;: {&#34;$eq&#34;: str(scopeId)}}})
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Deletes the Ip represented by this model in database.
+        Also deletes the tools associated with this ip
+        Also deletes the ports associated with this ip
+        Also deletes the defects associated with this ip and its ports
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        tools = mongoInstance.find(&#34;tools&#34;,
+                                   {&#34;ip&#34;: self.ip}, True)
+        for tool in tools:
+            tool_model = Tool(tool)
+            tool_model.delete()
+        defects = mongoInstance.find(&#34;defects&#34;,
+                                     {&#34;ip&#34;: self.ip, &#34;$or&#34;: [{&#34;port&#34;: {&#34;$exists&#34;: False}}, {&#34;port&#34;: None}]}, True)
+        for defect in defects:
+            defect_model = Defect(defect)
+            defect_model.delete()
+        ports = mongoInstance.find(&#34;ports&#34;,
+                                   {&#34;ip&#34;: self.ip}, True)
+        for port in ports:
+            port_model = Port(port)
+            port_model.delete()
+        mongoInstance.delete(&#34;ips&#34;, {&#34;_id&#34;: self._id})
+
+    def addPort(self, values):
+        &#34;&#34;&#34;
+        Add a port object to database associated with this Ip.
+
+        Args:
+            values: A dictionary crafted by PortView containg all form fields values needed.
+
+        Returns:ret
+                &#39;_id&#39;: The mongo ObjectId _idret of the inserted port document or None if insertion failed (unicity broken).
+        &#34;&#34;&#34;
+        portToInsert = {&#34;ip&#34;: self.ip, &#34;port&#34;: str(
+            values[&#34;Port&#34;]), &#34;proto&#34;: str(values[&#34;Protocole&#34;]), &#34;service&#34;: values[&#34;Service&#34;], &#34;product&#34;: values[&#34;Product&#34;]}
+        newPort = Port()
+        newPort.initialize(
+            self.ip, portToInsert[&#34;port&#34;], portToInsert[&#34;proto&#34;], portToInsert[&#34;service&#34;], portToInsert[&#34;product&#34;])
+        return newPort.addInDb()
+
+    @classmethod
+    def checkIpScope(cls, scope, ip):
+        &#34;&#34;&#34;
+        Check if the given ip is in the given scope
+
+        Args:
+            scope: A network range ip or a domain
+            ip: An ipv4 like X.X.X.X
+
+        Returns:
+                True if the ip is in the network range or if scope == ip. False otherwise.
+        &#34;&#34;&#34;
+        if cls.isIp(scope):
+            network_mask = scope.split(&#34;/&#34;)
+            mask = &#34;32&#34;
+            if len(network_mask) == 2:
+                mask = network_mask[1]
+            try:
+                res = IPAddress(ip) in IPNetwork(network_mask[0]+&#34;/&#34;+mask)
+            except AddrFormatError:
+                return False
+            except ValueError:
+                return False
+            return res
+        elif scope == ip:
+            return True
+        return False
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;ips&#34;,
+                                 {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: {&#34;notes&#34;: self.notes, &#34;in_scopes&#34;: self.in_scopes, &#34;tags&#34;: self.tags, &#34;infos&#34;: self.infos}})
+        else:
+            mongoInstance.update(&#34;ips&#34;,
+                                 {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: pipeline_set})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this IP in database.
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        # Checking unicity
+        if self.ip.strip() == &#34;&#34;:
+            raise ValueError(&#34;Ip insertion error: Cannot insert empty ip&#34;)
+        base = self.getDbKey()
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(
+            &#34;ips&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Add ip as it is unique
+        base[&#34;parent&#34;] = self.getParent()
+        base[&#34;notes&#34;] = self.notes
+        base[&#34;tags&#34;] = self.tags
+        base[&#34;in_scopes&#34;] = self.in_scopes
+        base[&#34;infos&#34;] = self.infos
+        resInsert = mongoInstance.insert(
+            &#34;ips&#34;, base)
+        self._id = resInsert.inserted_id
+        # adding the appropriate tools for this port.
+        # 1. fetching the wave&#39;s commands
+        waves = mongoInstance.find(&#34;waves&#34;, {})
+        for wave in waves:
+            waveName = wave[&#34;wave&#34;]
+            commands = wave[&#34;wave_commands&#34;]
+            for commName in commands:
+                # 2. finding the command only if lvl is port
+                comm = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;,
+                                              {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;ip&#34;}, False)
+                if comm is not None:
+                    # 3. checking if the added port fit into the command&#39;s allowed service
+                    # 3.1 first, default the selected port as tcp if no protocole is defined.
+                    newTool = Tool()
+                    newTool.initialize(
+                        comm[&#34;name&#34;], waveName, &#34;&#34;, self.ip, &#34;&#34;, &#34;&#34;, &#34;ip&#34;)
+                    newTool.addInDb()
+
+        return True, self._id
+
+    def addAllTool(self, command_name, wave_name, scope):
+        &#34;&#34;&#34;
+        Kind of recursive operation as it will call the same function in its children ports.
+        Add the appropriate tools (level check and wave&#39;s commands check) for this ip.
+        Also add for all registered ports the appropriate tools.
+
+        Args:
+            command_name: The command that we want to create all the tools for.
+            wave_name: the wave name from where we want to load tools
+            scope: a scope object allowing to launch this command. Opt
+        &#34;&#34;&#34;
+        # retrieve the command level
+        mongoInstance = MongoCalendar.getInstance()
+        command = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                         &#34;commands&#34;, {&#34;name&#34;: command_name}, False)
+        if command[&#34;lvl&#34;] == &#34;ip&#34;:
+            # finally add tool
+            newTool = Tool()
+            newTool.initialize(command_name, wave_name,
+                               &#34;&#34;, self.ip, &#34;&#34;, &#34;&#34;, &#34;ip&#34;)
+            newTool.addInDb()
+            return
+        # Do the same thing for all children ports.
+        ports = mongoInstance.find(&#34;ports&#34;, {&#34;ip&#34;: self.ip})
+        for port in ports:
+            p = Port(port)
+            p.addAllTool(command_name, wave_name, scope)
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of an ip.
+
+        Returns:
+            Returns the string ipv4 of this ip.
+        &#34;&#34;&#34;
+        return self.ip
+
+    def getTools(self):
+        &#34;&#34;&#34;Return ip assigned tools as a list of mongo fetched defects dict
+        Returns:
+            list of tool raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;tools&#34;, {&#34;lvl&#34;: &#34;ip&#34;, &#34;ip&#34;: self.ip})
+
+    def getPorts(self):
+        &#34;&#34;&#34;Returns ip assigned ports as a list of mongo fetched defects dict
+        Returns:
+            list of port raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;ports&#34;, {&#34;ip&#34;: self.ip})
+
+    def getDefects(self):
+        &#34;&#34;&#34;Returns ip assigned tools as a list of mongo fetched defects dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;defects&#34;, {&#34;ip&#34;: self.ip, &#34;$or&#34;: [{&#34;port&#34;: {&#34;$exists&#34;: False}}, {&#34;port&#34;: None}]})
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (1 key :&#34;ip&#34;)
+        &#34;&#34;&#34;
+        return {&#34;ip&#34;: self.ip}
+
+    @classmethod
+    def isSubDomain(cls, parentDomain, subDomainTest):
+        &#34;&#34;&#34;Check if the given domain is a subdomain of another given domain
+        Args:
+            parentDomain: a domain that could be the parent domain of the second arg
+            subDomainTest: a domain to be tested as a subdomain of first arg
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        splitted_domain = subDomainTest.split(&#34;.&#34;)
+        # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+        topDomainExists = len(splitted_domain) &gt; 2
+        if topDomainExists:
+            if &#34;.&#34;.join(splitted_domain[1:]) == parentDomain:
+                return True
+        return False
+
+    @classmethod
+    def isIp(cls, ip):
+        &#34;&#34;&#34;Checks if the given string is a valid IP
+        Args:
+            ip: a string that could be representing an ip
+        Returns:
+            boolean
+        &#34;&#34;&#34;
+        return re.search(r&#34;([0-9]{1,3}\.){3}[0-9]{1,3}&#34;, ip) is not None
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object.
+
+        Returns:
+            Returns the parent&#39;s ObjectId _id&#34;.
+        &#34;&#34;&#34;
+        if self.parent is not None:
+            return self.parent
+        try:
+            if IPAddress(self.ip).is_private():
+                return None
+        except AddrFormatError:
+            return None
+        except ValueError:
+            return None
+        ip_real = performLookUp(self.ip)
+        if ip_real is not None:
+            mongoInstance = MongoCalendar.getInstance()
+            ip_in_db = mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;: ip_real}, False)
+            if ip_in_db is None:
+                return None
+            self.parent = ip_in_db[&#34;_id&#34;]
+            self.update({&#34;parent&#34;: self.parent})
+            return ip_in_db[&#34;_id&#34;]
+        return None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Models.Element.Element</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Ip.Ip.coll_name"><code class="name">var <span class="ident">coll_name</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Ip.Ip.checkIpScope"><code class="name flex">
+<span>def <span class="ident">checkIpScope</span></span>(<span>scope, ip)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the given ip is in the given scope</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>scope</code></strong></dt>
+<dd>A network range ip or a domain</dd>
+<dt><strong><code>ip</code></strong></dt>
+<dd>An ipv4 like X.X.X.X</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>True if the ip is in the network range or if scope == ip. False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def checkIpScope(cls, scope, ip):
+    &#34;&#34;&#34;
+    Check if the given ip is in the given scope
+
+    Args:
+        scope: A network range ip or a domain
+        ip: An ipv4 like X.X.X.X
+
+    Returns:
+            True if the ip is in the network range or if scope == ip. False otherwise.
+    &#34;&#34;&#34;
+    if cls.isIp(scope):
+        network_mask = scope.split(&#34;/&#34;)
+        mask = &#34;32&#34;
+        if len(network_mask) == 2:
+            mask = network_mask[1]
+        try:
+            res = IPAddress(ip) in IPNetwork(network_mask[0]+&#34;/&#34;+mask)
+        except AddrFormatError:
+            return False
+        except ValueError:
+            return False
+        return res
+    elif scope == ip:
+        return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.getIpsInScope"><code class="name flex">
+<span>def <span class="ident">getIpsInScope</span></span>(<span>scopeId)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of IP objects that have the given scope id in there matching scopes.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>scopeId</code></strong></dt>
+<dd>a mongo ObjectId of a scope object.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>a mongo cursor</code> of <code>IP objects matching the given scopeId</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getIpsInScope(cls, scopeId):
+    &#34;&#34;&#34;Returns a list of IP objects that have the given scope id in there matching scopes.
+    Args:
+        scopeId: a mongo ObjectId of a scope object.
+    Returns:
+        a mongo cursor of IP objects matching the given scopeId
+    &#34;&#34;&#34;
+    return Ip.fetchObjects({&#34;in_scopes&#34;: {&#34;$elemMatch&#34;: {&#34;$eq&#34;: str(scopeId)}}})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.isIp"><code class="name flex">
+<span>def <span class="ident">isIp</span></span>(<span>ip)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the given string is a valid IP</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ip</code></strong></dt>
+<dd>a string that could be representing an ip</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>boolean</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def isIp(cls, ip):
+    &#34;&#34;&#34;Checks if the given string is a valid IP
+    Args:
+        ip: a string that could be representing an ip
+    Returns:
+        boolean
+    &#34;&#34;&#34;
+    return re.search(r&#34;([0-9]{1,3}\.){3}[0-9]{1,3}&#34;, ip) is not None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.isSubDomain"><code class="name flex">
+<span>def <span class="ident">isSubDomain</span></span>(<span>parentDomain, subDomainTest)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the given domain is a subdomain of another given domain</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentDomain</code></strong></dt>
+<dd>a domain that could be the parent domain of the second arg</dd>
+<dt><strong><code>subDomainTest</code></strong></dt>
+<dd>a domain to be tested as a subdomain of first arg</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def isSubDomain(cls, parentDomain, subDomainTest):
+    &#34;&#34;&#34;Check if the given domain is a subdomain of another given domain
+    Args:
+        parentDomain: a domain that could be the parent domain of the second arg
+        subDomainTest: a domain to be tested as a subdomain of first arg
+    Returns:
+        bool
+    &#34;&#34;&#34;
+    splitted_domain = subDomainTest.split(&#34;.&#34;)
+    # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+    topDomainExists = len(splitted_domain) &gt; 2
+    if topDomainExists:
+        if &#34;.&#34;.join(splitted_domain[1:]) == parentDomain:
+            return True
+    return False</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Ip.Ip.addAllTool"><code class="name flex">
+<span>def <span class="ident">addAllTool</span></span>(<span>self, command_name, wave_name, scope)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Kind of recursive operation as it will call the same function in its children ports.
+Add the appropriate tools (level check and wave's commands check) for this ip.
+Also add for all registered ports the appropriate tools.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>command_name</code></strong></dt>
+<dd>The command that we want to create all the tools for.</dd>
+<dt><strong><code>wave_name</code></strong></dt>
+<dd>the wave name from where we want to load tools</dd>
+<dt><strong><code>scope</code></strong></dt>
+<dd>a scope object allowing to launch this command. Opt</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addAllTool(self, command_name, wave_name, scope):
+    &#34;&#34;&#34;
+    Kind of recursive operation as it will call the same function in its children ports.
+    Add the appropriate tools (level check and wave&#39;s commands check) for this ip.
+    Also add for all registered ports the appropriate tools.
+
+    Args:
+        command_name: The command that we want to create all the tools for.
+        wave_name: the wave name from where we want to load tools
+        scope: a scope object allowing to launch this command. Opt
+    &#34;&#34;&#34;
+    # retrieve the command level
+    mongoInstance = MongoCalendar.getInstance()
+    command = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                     &#34;commands&#34;, {&#34;name&#34;: command_name}, False)
+    if command[&#34;lvl&#34;] == &#34;ip&#34;:
+        # finally add tool
+        newTool = Tool()
+        newTool.initialize(command_name, wave_name,
+                           &#34;&#34;, self.ip, &#34;&#34;, &#34;&#34;, &#34;ip&#34;)
+        newTool.addInDb()
+        return
+    # Do the same thing for all children ports.
+    ports = mongoInstance.find(&#34;ports&#34;, {&#34;ip&#34;: self.ip})
+    for port in ports:
+        p = Port(port)
+        p.addAllTool(command_name, wave_name, scope)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.addInDb"><code class="name flex">
+<span>def <span class="ident">addInDb</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this IP in database.</p>
+<p>Returns: a tuple with :
+* bool for success
+* mongo ObjectId : already existing object if duplicate, create object id otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInDb(self):
+    &#34;&#34;&#34;
+    Add this IP in database.
+
+    Returns: a tuple with :
+            * bool for success
+            * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+    &#34;&#34;&#34;
+    # Checking unicity
+    if self.ip.strip() == &#34;&#34;:
+        raise ValueError(&#34;Ip insertion error: Cannot insert empty ip&#34;)
+    base = self.getDbKey()
+    mongoInstance = MongoCalendar.getInstance()
+    existing = mongoInstance.find(
+        &#34;ips&#34;, base, False)
+    if existing is not None:
+        return False, existing[&#34;_id&#34;]
+    # Add ip as it is unique
+    base[&#34;parent&#34;] = self.getParent()
+    base[&#34;notes&#34;] = self.notes
+    base[&#34;tags&#34;] = self.tags
+    base[&#34;in_scopes&#34;] = self.in_scopes
+    base[&#34;infos&#34;] = self.infos
+    resInsert = mongoInstance.insert(
+        &#34;ips&#34;, base)
+    self._id = resInsert.inserted_id
+    # adding the appropriate tools for this port.
+    # 1. fetching the wave&#39;s commands
+    waves = mongoInstance.find(&#34;waves&#34;, {})
+    for wave in waves:
+        waveName = wave[&#34;wave&#34;]
+        commands = wave[&#34;wave_commands&#34;]
+        for commName in commands:
+            # 2. finding the command only if lvl is port
+            comm = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;,
+                                          {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;ip&#34;}, False)
+            if comm is not None:
+                # 3. checking if the added port fit into the command&#39;s allowed service
+                # 3.1 first, default the selected port as tcp if no protocole is defined.
+                newTool = Tool()
+                newTool.initialize(
+                    comm[&#34;name&#34;], waveName, &#34;&#34;, self.ip, &#34;&#34;, &#34;&#34;, &#34;ip&#34;)
+                newTool.addInDb()
+
+    return True, self._id</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.addPort"><code class="name flex">
+<span>def <span class="ident">addPort</span></span>(<span>self, values)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a port object to database associated with this Ip.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>values</code></strong></dt>
+<dd>A dictionary crafted by PortView containg all form fields values needed.</dd>
+</dl>
+<p>Returns:ret
+'_id': The mongo ObjectId _idret of the inserted port document or None if insertion failed (unicity broken).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addPort(self, values):
+    &#34;&#34;&#34;
+    Add a port object to database associated with this Ip.
+
+    Args:
+        values: A dictionary crafted by PortView containg all form fields values needed.
+
+    Returns:ret
+            &#39;_id&#39;: The mongo ObjectId _idret of the inserted port document or None if insertion failed (unicity broken).
+    &#34;&#34;&#34;
+    portToInsert = {&#34;ip&#34;: self.ip, &#34;port&#34;: str(
+        values[&#34;Port&#34;]), &#34;proto&#34;: str(values[&#34;Protocole&#34;]), &#34;service&#34;: values[&#34;Service&#34;], &#34;product&#34;: values[&#34;Product&#34;]}
+    newPort = Port()
+    newPort.initialize(
+        self.ip, portToInsert[&#34;port&#34;], portToInsert[&#34;proto&#34;], portToInsert[&#34;service&#34;], portToInsert[&#34;product&#34;])
+    return newPort.addInDb()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.addScopeFitting"><code class="name flex">
+<span>def <span class="ident">addScopeFitting</span></span>(<span>self, scopeId)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add the given scopeId to the list of scopes this IP fits in.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>scopeId</code></strong></dt>
+<dd>a mongo ObjectId of a Scope object.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addScopeFitting(self, scopeId):
+    &#34;&#34;&#34;Add the given scopeId to the list of scopes this IP fits in.
+    Args:
+        scopeId: a mongo ObjectId of a Scope object.
+    &#34;&#34;&#34;
+    if not self.in_scopes:
+        tools = Tool.fetchObjects({&#34;ip&#34;: self.ip})
+        for tool in tools:
+            tool.setInScope()
+    if str(scopeId) not in self.in_scopes:
+        self.in_scopes.append(str(scopeId))
+        self.update()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Deletes the Ip represented by this model in database.
+Also deletes the tools associated with this ip
+Also deletes the ports associated with this ip
+Also deletes the defects associated with this ip and its ports</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self):
+    &#34;&#34;&#34;
+    Deletes the Ip represented by this model in database.
+    Also deletes the tools associated with this ip
+    Also deletes the ports associated with this ip
+    Also deletes the defects associated with this ip and its ports
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    tools = mongoInstance.find(&#34;tools&#34;,
+                               {&#34;ip&#34;: self.ip}, True)
+    for tool in tools:
+        tool_model = Tool(tool)
+        tool_model.delete()
+    defects = mongoInstance.find(&#34;defects&#34;,
+                                 {&#34;ip&#34;: self.ip, &#34;$or&#34;: [{&#34;port&#34;: {&#34;$exists&#34;: False}}, {&#34;port&#34;: None}]}, True)
+    for defect in defects:
+        defect_model = Defect(defect)
+        defect_model.delete()
+    ports = mongoInstance.find(&#34;ports&#34;,
+                               {&#34;ip&#34;: self.ip}, True)
+    for port in ports:
+        port_model = Port(port)
+        port_model.delete()
+    mongoInstance.delete(&#34;ips&#34;, {&#34;_id&#34;: self._id})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.fitInScope"><code class="name flex">
+<span>def <span class="ident">fitInScope</span></span>(<span>self, scope)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if this IP is the given scope.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>scope</code></strong></dt>
+<dd>a string of perimeter (Network Ip, IP or domain)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>boolean</code></dt>
+<dd>True if this ip/domain is in given scope. False otherwise.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fitInScope(self, scope):
+    &#34;&#34;&#34;Checks if this IP is the given scope.
+    Args:
+        scope: a string of perimeter (Network Ip, IP or domain)
+    Returns:
+        boolean: True if this ip/domain is in given scope. False otherwise.
+    &#34;&#34;&#34;
+    if isNetworkIp(scope):
+        if Ip.checkIpScope(scope, self.ip):
+            return True
+    elif Ip.isSubDomain(scope, self.ip):
+        return True
+    elif self.ip == scope:
+        return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.getDbKey"><code class="name flex">
+<span>def <span class="ident">getDbKey</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a dict from model to use as unique composed key.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A dict (1 key :"ip")</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDbKey(self):
+    &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+    Returns:
+        A dict (1 key :&#34;ip&#34;)
+    &#34;&#34;&#34;
+    return {&#34;ip&#34;: self.ip}</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.getDefects"><code class="name flex">
+<span>def <span class="ident">getDefects</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns ip assigned tools as a list of mongo fetched defects dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>defect raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDefects(self):
+    &#34;&#34;&#34;Returns ip assigned tools as a list of mongo fetched defects dict
+    Returns:
+        list of defect raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    return mongoInstance.find(&#34;defects&#34;, {&#34;ip&#34;: self.ip, &#34;$or&#34;: [{&#34;port&#34;: {&#34;$exists&#34;: False}}, {&#34;port&#34;: None}]})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.getPorts"><code class="name flex">
+<span>def <span class="ident">getPorts</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns ip assigned ports as a list of mongo fetched defects dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>port raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getPorts(self):
+    &#34;&#34;&#34;Returns ip assigned ports as a list of mongo fetched defects dict
+    Returns:
+        list of port raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    return mongoInstance.find(&#34;ports&#34;, {&#34;ip&#34;: self.ip})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.getScopesFittingMe"><code class="name flex">
+<span>def <span class="ident">getScopesFittingMe</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of scope objects ids where this IP object fits.</p>
+<h2 id="returns">Returns</h2>
+<p>a list of scopes objects Mongo Ids where this IP/Domain is in scope.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getScopesFittingMe(self):
+    &#34;&#34;&#34;Returns a list of scope objects ids where this IP object fits.
+    Returns:
+        a list of scopes objects Mongo Ids where this IP/Domain is in scope.
+    &#34;&#34;&#34;
+    ret = []
+    mongoInstance = MongoCalendar.getInstance()
+    scopes = mongoInstance.find(&#34;scopes&#34;, {})
+    for scope in scopes:
+        if self.fitInScope(scope[&#34;scope&#34;]):
+            ret.append(str(scope[&#34;_id&#34;]))
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.getTools"><code class="name flex">
+<span>def <span class="ident">getTools</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return ip assigned tools as a list of mongo fetched defects dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>tool raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTools(self):
+    &#34;&#34;&#34;Return ip assigned tools as a list of mongo fetched defects dict
+    Returns:
+        list of tool raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    return mongoInstance.find(&#34;tools&#34;, {&#34;lvl&#34;: &#34;ip&#34;, &#34;ip&#34;: self.ip})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.initialize"><code class="name flex">
+<span>def <span class="ident">initialize</span></span>(<span>self, ip='', notes='', in_scopes=None, tags=None, infos=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set values of ip</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ip</code></strong></dt>
+<dd>the host (ip or domain) to represent</dd>
+<dt><strong><code>notes</code></strong></dt>
+<dd>notes concerning this IP (opt). Default to ""</dd>
+<dt><strong><code>in_scopes</code></strong></dt>
+<dd>a list of scopes that matches this host. If empty this IP will be OOS (Out of Scope). Default to None</dd>
+<dt><strong><code>tags</code></strong></dt>
+<dd>a list of tags. Default to None</dd>
+<dt><strong><code>infos</code></strong></dt>
+<dd>a dictionnary of additional info</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>this object</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initialize(self, ip=&#34;&#34;, notes=&#34;&#34;, in_scopes=None, tags=None, infos=None):
+    &#34;&#34;&#34;Set values of ip
+    Args:
+        ip: the host (ip or domain) to represent
+        notes: notes concerning this IP (opt). Default to &#34;&#34;
+        in_scopes: a list of scopes that matches this host. If empty this IP will be OOS (Out of Scope). Default to None
+        tags: a list of tags. Default to None
+        infos: a dictionnary of additional info
+    Returns:
+        this object
+    &#34;&#34;&#34;
+    self.ip = ip
+    self.notes = notes
+    self.in_scopes = in_scopes if in_scopes is not None else self.getScopesFittingMe()
+    self.tags = tags if tags is not None else []
+    self.infos = infos if infos is not None else {}
+    return self</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.removeScopeFitting"><code class="name flex">
+<span>def <span class="ident">removeScopeFitting</span></span>(<span>self, scopeId)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove the given scopeId from the list of scopes this IP fits in.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>scopeId</code></strong></dt>
+<dd>a mongo ObjectId of a scope object.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeScopeFitting(self, scopeId):
+    &#34;&#34;&#34;Remove the given scopeId from the list of scopes this IP fits in.
+    Args:
+        scopeId: a mongo ObjectId of a scope object.
+    &#34;&#34;&#34;
+    if str(scopeId) in self.in_scopes:
+        self.in_scopes.remove(str(scopeId))
+        self.update()
+        if not self.in_scopes:
+            tools = Tool.fetchObjects({&#34;ip&#34;: self.ip})
+            for tool in tools:
+                tool.setOutOfScope()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Ip.Ip.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, pipeline_set=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update this object in database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pipeline_set</code></strong></dt>
+<dd>(Opt.) A dictionnary with custom values. If None (default) use model attributes.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, pipeline_set=None):
+    &#34;&#34;&#34;Update this object in database.
+    Args:
+        pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    if pipeline_set is None:
+        mongoInstance.update(&#34;ips&#34;,
+                             {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: {&#34;notes&#34;: self.notes, &#34;in_scopes&#34;: self.in_scopes, &#34;tags&#34;: self.tags, &#34;infos&#34;: self.infos}})
+    else:
+        mongoInstance.update(&#34;ips&#34;,
+                             {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: pipeline_set})</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Models" href="index.html">Pollenisator.core.Models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Models.Ip.Ip" href="#Pollenisator.core.Models.Ip.Ip">Ip</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.addAllTool" href="#Pollenisator.core.Models.Ip.Ip.addAllTool">addAllTool</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.addInDb" href="#Pollenisator.core.Models.Ip.Ip.addInDb">addInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.addPort" href="#Pollenisator.core.Models.Ip.Ip.addPort">addPort</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.addScopeFitting" href="#Pollenisator.core.Models.Ip.Ip.addScopeFitting">addScopeFitting</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.checkIpScope" href="#Pollenisator.core.Models.Ip.Ip.checkIpScope">checkIpScope</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.coll_name" href="#Pollenisator.core.Models.Ip.Ip.coll_name">coll_name</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.delete" href="#Pollenisator.core.Models.Ip.Ip.delete">delete</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.fitInScope" href="#Pollenisator.core.Models.Ip.Ip.fitInScope">fitInScope</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.getDbKey" href="#Pollenisator.core.Models.Ip.Ip.getDbKey">getDbKey</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.getDefects" href="#Pollenisator.core.Models.Ip.Ip.getDefects">getDefects</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.getIpsInScope" href="#Pollenisator.core.Models.Ip.Ip.getIpsInScope">getIpsInScope</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.getPorts" href="#Pollenisator.core.Models.Ip.Ip.getPorts">getPorts</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.getScopesFittingMe" href="#Pollenisator.core.Models.Ip.Ip.getScopesFittingMe">getScopesFittingMe</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.getTools" href="#Pollenisator.core.Models.Ip.Ip.getTools">getTools</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.initialize" href="#Pollenisator.core.Models.Ip.Ip.initialize">initialize</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.isIp" href="#Pollenisator.core.Models.Ip.Ip.isIp">isIp</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.isSubDomain" href="#Pollenisator.core.Models.Ip.Ip.isSubDomain">isSubDomain</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.removeScopeFitting" href="#Pollenisator.core.Models.Ip.Ip.removeScopeFitting">removeScopeFitting</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Ip.Ip.update" href="#Pollenisator.core.Models.Ip.Ip.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

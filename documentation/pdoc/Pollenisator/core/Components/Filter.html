@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.Filter API documentation</title>
+<meta name="description" content="Module using Lark parser to parse filter query and return according results" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.Filter</code></h1>
+</header>
+<section id="section-intro">
+<p>Module using Lark parser to parse filter query and return according results</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Module using Lark parser to parse filter query and return according results&#34;&#34;&#34;
+from lark import Lark, Transformer, exceptions
+import re
+
+class Term:
+    &#34;&#34;&#34;A search term, meaning &#34;key.name&#34; == (value) &#34;&#34;&#34;
+    def __init__(self, val):
+        &#34;&#34;&#34;Constructor&#34;&#34;&#34;
+        self.val = val
+
+class TreeToCondition(Transformer):
+    &#34;&#34;&#34;Inherits lark.Transformer
+    A Lark Transformer to process the parse-tree returned by lark
+    Attributes:
+        null: value will be converted to python None
+        true: value will be converted to python True
+        false: value will be converted to python False
+        eq: value will be converted to string &#34;==&#34;
+        neq: value will be converted to string &#34;!=&#34;
+        gt: value will be converted to string &#34;&gt;&#34;
+        ge: value will be converted to string &#34;&gt;=&#34;
+        le: value will be converted to string &#34;&lt;=&#34;
+        lt: value will be converted to string &#34;&lt;&#34;
+        regex: value will be converted to string &#34;||regex||&#34;
+        inside: value will be converted to string &#34;in&#34;
+        notin: value will be converted to string &#34;not in&#34;
+        andcond: value will be converted to string &#34;and&#34;
+        orcond: value will be converted to string &#34;or&#34;
+        notcond: value will be converted to string &#34;not&#34;
+    &#34;&#34;&#34;
+    null = lambda self, _: None
+    true = lambda self, _: True
+    false = lambda self, _: False
+    eq = lambda self, _: &#34;==&#34;
+    neq = lambda self, _: &#34;!=&#34;
+    gt = lambda self, _: &#34;&gt;&#34;
+    ge = lambda self, _: &#34;&gt;=&#34;
+    le = lambda self, _: &#34;&lt;=&#34;
+    lt = lambda self, _: &#34;&lt;&#34;
+    regex = lambda self, _: &#34;||regex||&#34;
+    inside = lambda self, _: &#34;in&#34;
+    notin = lambda self, _: &#34;not in&#34;
+    andcond = lambda self, _: &#34;and&#34;
+    orcond = lambda self, _: &#34;or&#34;
+    notcond = lambda self, _: &#34;not&#34;
+
+    def term(self, items):
+        &#34;&#34;&#34;Applied on parse-tree terms objects.
+        Args:
+            items: the parse-tree term object
+        Returns:
+            the given item as a list
+        &#34;&#34;&#34;
+        return list(items)
+
+    def var(self, s):
+        &#34;&#34;&#34;Applied on parse-tree var objects.
+        Args:
+            s: the parse-tree var object
+        Returns:
+            the given item as a Term
+        &#34;&#34;&#34;
+        (s,) = s
+        return Term(s)
+
+    def string(self, s):
+        &#34;&#34;&#34;Applied on parse-tree string objects.
+        Args:
+            s: the parse-tree string object
+        Returns:
+            the given item as a str
+        &#34;&#34;&#34;
+        (s,) = s
+        return str(s)
+    def number(self, n):
+        &#34;&#34;&#34;Applied on parse-tree number objects.
+        Args:
+            s: the parse-tree number object
+        Returns:
+            the given item as a str with double quotes around them
+        &#34;&#34;&#34;
+        (n,) = n
+        return &#34;\&#34;&#34;+str(n)+&#34;\&#34;&#34;
+
+
+
+class ParseError(Exception):
+    &#34;&#34;&#34;Inherits Exception
+    Class to raise parsing error&#34;&#34;&#34;
+
+class Filter:
+    &#34;&#34;&#34;
+    Class to perform Lark parsing and filter database search.
+    Attributes:
+        exact_match: (DEPRECATED use in, or regex to perform partial match) default to True, can be changed in constructor
+        condition_parser: The parsing syntax of Lark is used to search
+                        * term: is a (var == value)   
+                        * uniopcond: is unary operation (not)
+                        * opcond: logical operator on temrs (&#34;and&#34; and &#34;or&#34;)       
+                        * opregex: the regex operator
+                        * STRING: an alphanumeric string with extras characs &#39;.&#39;, &#39;[&#39; and &#39;]&#39;
+    &#34;&#34;&#34;
+    exact_match = True
+    condition_parser = Lark(r&#34;&#34;&#34;
+    ?term: &#34;(&#34;fixedvalue op fixedvalue&#34;)&#34;
+                | fixedvalue op fixedvalue
+                | STRING opregex ESCAPED_STRING
+                | uniopcond term
+                | &#34;(&#34;uniopcond term&#34;)&#34;
+                | term opcond term
+                | &#34;(&#34;term opcond term&#34;)&#34;
+    uniopcond: &#34;not&#34; -&gt; notcond
+    opcond: &#34;and&#34; -&gt; andcond | &#34;or&#34; -&gt; orcond
+    op: &#34;==&#34; -&gt; eq | &#34;!=&#34; -&gt; neq | &#34;&gt;&#34; -&gt; gt | &#34;&lt;&#34; -&gt; lt 
+        | &#34;&lt;=&#34; -&gt; le | &#34;&gt;=&#34; -&gt; ge | &#34;in&#34; -&gt; inside | &#34;not in&#34; -&gt; notin 
+    opregex: &#34;regex&#34; -&gt; regex
+    STRING: /[A-Za-z0-9\.\[\]]+/
+    fixedvalue: SIGNED_NUMBER -&gt; number
+         | &#34;true&#34; -&gt; true
+         | &#34;false&#34; -&gt; false
+         | &#34;null&#34; -&gt; null
+         | ESCAPED_STRING -&gt; string
+         | STRING -&gt; var
+
+    %import common.ESCAPED_STRING
+    %import common.SIGNED_NUMBER
+    %import common.WS
+    %ignore WS
+    &#34;&#34;&#34;, start=&#39;term&#39;, parser=&#34;lalr&#34;, transformer=TreeToCondition())
+
+    @classmethod
+    def help(cls):
+        &#34;&#34;&#34;Return a string to help typing request by providing examples
+        Returns:
+            A string of examples
+        &#34;&#34;&#34;
+        # pylint: disable=anomalous-backslash-in-string
+        return &#34;&#34;&#34;
+Search examples in match (python condition):
+type == &#34;port&#34;
+type == &#34;port&#34; and port == 443
+type == &#34;port&#34; and port regex &#34;443$&#34;
+type == &#34;port&#34; and (port == 80 or port == 443)
+type == &#34;port&#34; and port != 443
+type == &#34;port&#34; and port != 443 and port != 80
+type == &#34;defect&#34;
+type == &#34;defect&#34; and &#34;Foo&#34; in title
+type == &#34;ip&#34; and ip regex &#34;[A-Za-z]&#34;
+type == &#34;ip&#34; and ip regex &#34;^1\.2&#34;
+type == &#34;tool&#34; and &#34;done&#34; in status
+type == &#34;tool&#34; and &#34;done&#34; not in status
+type == &#34;tool&#34; and &#34;ready&#34; in status
+type == &#34;ip&#34; and infos.key == &#34;ABC&#34;
+&#34;&#34;&#34;
+    def __init__(self, query=&#34;&#34;, exactMatch=True):
+        &#34;&#34;&#34;Constructor
+        Args:
+            query: the query to parse
+            exactMatch: not used
+        Raises:
+            ParseError if Lark raises an UnexpectedToken or an UnexptectedCharacters exception.
+        &#34;&#34;&#34;
+        Filter.exact_match = exactMatch
+        try:
+            self.parsed = Filter.condition_parser.parse(query)
+        except exceptions.UnexpectedToken as e:
+            raise ParseError(e)
+        except exceptions.UnexpectedCharacters as e:
+            raise ParseError(e)
+
+    def evaluate(self, parsedcopy, data):
+        &#34;&#34;&#34;Replace parsed items with corresponding formated data and eval the condition using python eval()
+        Args:
+            parsedcopy: parsed items generated by Lark
+            data: data of any object as dictionnary.
+        Returns:
+            returns result of final eval function
+        &#34;&#34;&#34;
+        phrase = &#34;&#34;
+        if &#34;||regex||&#34; in parsedcopy:
+            val = data.get(parsedcopy[0], None)
+            if val is None:
+                return False
+            return re.search(str(parsedcopy[2])[1:-1], str(val)) is not None
+        for children in parsedcopy:
+            if isinstance(children, Term):
+                if children.val in data.keys():
+                    val = data[children.val]
+                    if isinstance(val, str):
+                        val = &#34;\&#34;\&#34;\&#34;&#34;+val.lower()+&#34;\&#34;\&#34;\&#34;&#34;
+                    else:
+                        val = str(val).lower().replace(&#34;\&#34;&#34;,&#34;\\\&#34;&#34;)
+                    phrase += val+&#34; &#34;
+                else:
+                    return False
+            elif isinstance(children, list):
+                res = self.evaluate(children, data)
+                phrase += str(res).lower()+&#34; &#34;
+            else:
+                phrase += children.lower()+&#34; &#34;
+        phrase = phrase.replace(&#34;false&#34;,&#34;False&#34;)
+        phrase = phrase.replace(&#34;true&#34;,&#34;True&#34;)
+        return eval(phrase)
+
+    def getIds(self, appTw):
+        &#34;&#34;&#34;Return Ids of the models in a PollenisatorTreeview matching the filter
+        Args:
+            appTw: a PollenisatorTreeview
+        Raises:
+            ParseError if Lark raises an UnexpectedToken or an UnexptectedCharacters exception.
+        Returns:
+            A list of Mongo iid which data matched the filter
+        &#34;&#34;&#34;
+        found_res = []
+        views = appTw.views
+        for dbId in views:
+            view_object = views[dbId][&#34;view&#34;]
+            data = view_object.controller.getData()
+            if data is None:
+                continue
+            keys = list(data.keys())
+            it_key = 0
+            len_keys = len(keys)
+            while it_key &lt; len_keys :
+                key = keys[it_key]
+                val = data[key]
+                if isinstance(val, dict):
+                    for subkey, subval in val.items():
+                        data[key+&#34;.&#34;+str(subkey)] = subval
+                        keys.append(key+&#34;.&#34;+str(subkey))
+                elif isinstance(val, list):
+                    for i,subval in enumerate(val):
+                        data[key+&#34;[&#34;+str(i)+&#34;]&#34;] = subval
+                it_key += 1
+                len_keys = len(keys)
+            dtype = view_object.controller.getType()
+            data[&#34;type&#34;] = dtype
+            result = self.evaluate(self.parsed, data)
+            if result:
+                found_res.append(dbId)
+        return found_res</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.Filter.Filter"><code class="flex name class">
+<span>class <span class="ident">Filter</span></span>
+<span>(</span><span>query='', exactMatch=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class to perform Lark parsing and filter database search.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>exact_match</code></strong></dt>
+<dd>(DEPRECATED use in, or regex to perform partial match) default to True, can be changed in constructor</dd>
+<dt><strong><code>condition_parser</code></strong></dt>
+<dd>The parsing syntax of Lark is used to search
+* term: is a (var == value) <br>
+* uniopcond: is unary operation (not)
+* opcond: logical operator on temrs ("and" and "or")
+<br>
+* opregex: the regex operator
+* STRING: an alphanumeric string with extras characs '.', '[' and ']'</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>query</code></strong></dt>
+<dd>the query to parse</dd>
+<dt><strong><code>exactMatch</code></strong></dt>
+<dd>not used</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>ParseError if Lark raises an UnexpectedToken or an UnexptectedCharacters exception.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Filter:
+    &#34;&#34;&#34;
+    Class to perform Lark parsing and filter database search.
+    Attributes:
+        exact_match: (DEPRECATED use in, or regex to perform partial match) default to True, can be changed in constructor
+        condition_parser: The parsing syntax of Lark is used to search
+                        * term: is a (var == value)   
+                        * uniopcond: is unary operation (not)
+                        * opcond: logical operator on temrs (&#34;and&#34; and &#34;or&#34;)       
+                        * opregex: the regex operator
+                        * STRING: an alphanumeric string with extras characs &#39;.&#39;, &#39;[&#39; and &#39;]&#39;
+    &#34;&#34;&#34;
+    exact_match = True
+    condition_parser = Lark(r&#34;&#34;&#34;
+    ?term: &#34;(&#34;fixedvalue op fixedvalue&#34;)&#34;
+                | fixedvalue op fixedvalue
+                | STRING opregex ESCAPED_STRING
+                | uniopcond term
+                | &#34;(&#34;uniopcond term&#34;)&#34;
+                | term opcond term
+                | &#34;(&#34;term opcond term&#34;)&#34;
+    uniopcond: &#34;not&#34; -&gt; notcond
+    opcond: &#34;and&#34; -&gt; andcond | &#34;or&#34; -&gt; orcond
+    op: &#34;==&#34; -&gt; eq | &#34;!=&#34; -&gt; neq | &#34;&gt;&#34; -&gt; gt | &#34;&lt;&#34; -&gt; lt 
+        | &#34;&lt;=&#34; -&gt; le | &#34;&gt;=&#34; -&gt; ge | &#34;in&#34; -&gt; inside | &#34;not in&#34; -&gt; notin 
+    opregex: &#34;regex&#34; -&gt; regex
+    STRING: /[A-Za-z0-9\.\[\]]+/
+    fixedvalue: SIGNED_NUMBER -&gt; number
+         | &#34;true&#34; -&gt; true
+         | &#34;false&#34; -&gt; false
+         | &#34;null&#34; -&gt; null
+         | ESCAPED_STRING -&gt; string
+         | STRING -&gt; var
+
+    %import common.ESCAPED_STRING
+    %import common.SIGNED_NUMBER
+    %import common.WS
+    %ignore WS
+    &#34;&#34;&#34;, start=&#39;term&#39;, parser=&#34;lalr&#34;, transformer=TreeToCondition())
+
+    @classmethod
+    def help(cls):
+        &#34;&#34;&#34;Return a string to help typing request by providing examples
+        Returns:
+            A string of examples
+        &#34;&#34;&#34;
+        # pylint: disable=anomalous-backslash-in-string
+        return &#34;&#34;&#34;
+Search examples in match (python condition):
+type == &#34;port&#34;
+type == &#34;port&#34; and port == 443
+type == &#34;port&#34; and port regex &#34;443$&#34;
+type == &#34;port&#34; and (port == 80 or port == 443)
+type == &#34;port&#34; and port != 443
+type == &#34;port&#34; and port != 443 and port != 80
+type == &#34;defect&#34;
+type == &#34;defect&#34; and &#34;Foo&#34; in title
+type == &#34;ip&#34; and ip regex &#34;[A-Za-z]&#34;
+type == &#34;ip&#34; and ip regex &#34;^1\.2&#34;
+type == &#34;tool&#34; and &#34;done&#34; in status
+type == &#34;tool&#34; and &#34;done&#34; not in status
+type == &#34;tool&#34; and &#34;ready&#34; in status
+type == &#34;ip&#34; and infos.key == &#34;ABC&#34;
+&#34;&#34;&#34;
+    def __init__(self, query=&#34;&#34;, exactMatch=True):
+        &#34;&#34;&#34;Constructor
+        Args:
+            query: the query to parse
+            exactMatch: not used
+        Raises:
+            ParseError if Lark raises an UnexpectedToken or an UnexptectedCharacters exception.
+        &#34;&#34;&#34;
+        Filter.exact_match = exactMatch
+        try:
+            self.parsed = Filter.condition_parser.parse(query)
+        except exceptions.UnexpectedToken as e:
+            raise ParseError(e)
+        except exceptions.UnexpectedCharacters as e:
+            raise ParseError(e)
+
+    def evaluate(self, parsedcopy, data):
+        &#34;&#34;&#34;Replace parsed items with corresponding formated data and eval the condition using python eval()
+        Args:
+            parsedcopy: parsed items generated by Lark
+            data: data of any object as dictionnary.
+        Returns:
+            returns result of final eval function
+        &#34;&#34;&#34;
+        phrase = &#34;&#34;
+        if &#34;||regex||&#34; in parsedcopy:
+            val = data.get(parsedcopy[0], None)
+            if val is None:
+                return False
+            return re.search(str(parsedcopy[2])[1:-1], str(val)) is not None
+        for children in parsedcopy:
+            if isinstance(children, Term):
+                if children.val in data.keys():
+                    val = data[children.val]
+                    if isinstance(val, str):
+                        val = &#34;\&#34;\&#34;\&#34;&#34;+val.lower()+&#34;\&#34;\&#34;\&#34;&#34;
+                    else:
+                        val = str(val).lower().replace(&#34;\&#34;&#34;,&#34;\\\&#34;&#34;)
+                    phrase += val+&#34; &#34;
+                else:
+                    return False
+            elif isinstance(children, list):
+                res = self.evaluate(children, data)
+                phrase += str(res).lower()+&#34; &#34;
+            else:
+                phrase += children.lower()+&#34; &#34;
+        phrase = phrase.replace(&#34;false&#34;,&#34;False&#34;)
+        phrase = phrase.replace(&#34;true&#34;,&#34;True&#34;)
+        return eval(phrase)
+
+    def getIds(self, appTw):
+        &#34;&#34;&#34;Return Ids of the models in a PollenisatorTreeview matching the filter
+        Args:
+            appTw: a PollenisatorTreeview
+        Raises:
+            ParseError if Lark raises an UnexpectedToken or an UnexptectedCharacters exception.
+        Returns:
+            A list of Mongo iid which data matched the filter
+        &#34;&#34;&#34;
+        found_res = []
+        views = appTw.views
+        for dbId in views:
+            view_object = views[dbId][&#34;view&#34;]
+            data = view_object.controller.getData()
+            if data is None:
+                continue
+            keys = list(data.keys())
+            it_key = 0
+            len_keys = len(keys)
+            while it_key &lt; len_keys :
+                key = keys[it_key]
+                val = data[key]
+                if isinstance(val, dict):
+                    for subkey, subval in val.items():
+                        data[key+&#34;.&#34;+str(subkey)] = subval
+                        keys.append(key+&#34;.&#34;+str(subkey))
+                elif isinstance(val, list):
+                    for i,subval in enumerate(val):
+                        data[key+&#34;[&#34;+str(i)+&#34;]&#34;] = subval
+                it_key += 1
+                len_keys = len(keys)
+            dtype = view_object.controller.getType()
+            data[&#34;type&#34;] = dtype
+            result = self.evaluate(self.parsed, data)
+            if result:
+                found_res.append(dbId)
+        return found_res</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Filter.Filter.condition_parser"><code class="name">var <span class="ident">condition_parser</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.Filter.exact_match"><code class="name">var <span class="ident">exact_match</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Filter.Filter.help"><code class="name flex">
+<span>def <span class="ident">help</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a string to help typing request by providing examples</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A string</code> of <code>examples</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">    @classmethod
+    def help(cls):
+        &#34;&#34;&#34;Return a string to help typing request by providing examples
+        Returns:
+            A string of examples
+        &#34;&#34;&#34;
+        # pylint: disable=anomalous-backslash-in-string
+        return &#34;&#34;&#34;
+Search examples in match (python condition):
+type == &#34;port&#34;
+type == &#34;port&#34; and port == 443
+type == &#34;port&#34; and port regex &#34;443$&#34;
+type == &#34;port&#34; and (port == 80 or port == 443)
+type == &#34;port&#34; and port != 443
+type == &#34;port&#34; and port != 443 and port != 80
+type == &#34;defect&#34;
+type == &#34;defect&#34; and &#34;Foo&#34; in title
+type == &#34;ip&#34; and ip regex &#34;[A-Za-z]&#34;
+type == &#34;ip&#34; and ip regex &#34;^1\.2&#34;
+type == &#34;tool&#34; and &#34;done&#34; in status
+type == &#34;tool&#34; and &#34;done&#34; not in status
+type == &#34;tool&#34; and &#34;ready&#34; in status
+type == &#34;ip&#34; and infos.key == &#34;ABC&#34;
+&#34;&#34;&#34;</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Filter.Filter.evaluate"><code class="name flex">
+<span>def <span class="ident">evaluate</span></span>(<span>self, parsedcopy, data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Replace parsed items with corresponding formated data and eval the condition using python eval()</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parsedcopy</code></strong></dt>
+<dd>parsed items generated by Lark</dd>
+<dt><strong><code>data</code></strong></dt>
+<dd>data of any object as dictionnary.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>returns result</code> of <code>final eval function</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def evaluate(self, parsedcopy, data):
+    &#34;&#34;&#34;Replace parsed items with corresponding formated data and eval the condition using python eval()
+    Args:
+        parsedcopy: parsed items generated by Lark
+        data: data of any object as dictionnary.
+    Returns:
+        returns result of final eval function
+    &#34;&#34;&#34;
+    phrase = &#34;&#34;
+    if &#34;||regex||&#34; in parsedcopy:
+        val = data.get(parsedcopy[0], None)
+        if val is None:
+            return False
+        return re.search(str(parsedcopy[2])[1:-1], str(val)) is not None
+    for children in parsedcopy:
+        if isinstance(children, Term):
+            if children.val in data.keys():
+                val = data[children.val]
+                if isinstance(val, str):
+                    val = &#34;\&#34;\&#34;\&#34;&#34;+val.lower()+&#34;\&#34;\&#34;\&#34;&#34;
+                else:
+                    val = str(val).lower().replace(&#34;\&#34;&#34;,&#34;\\\&#34;&#34;)
+                phrase += val+&#34; &#34;
+            else:
+                return False
+        elif isinstance(children, list):
+            res = self.evaluate(children, data)
+            phrase += str(res).lower()+&#34; &#34;
+        else:
+            phrase += children.lower()+&#34; &#34;
+    phrase = phrase.replace(&#34;false&#34;,&#34;False&#34;)
+    phrase = phrase.replace(&#34;true&#34;,&#34;True&#34;)
+    return eval(phrase)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.Filter.getIds"><code class="name flex">
+<span>def <span class="ident">getIds</span></span>(<span>self, appTw)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return Ids of the models in a PollenisatorTreeview matching the filter</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appTw</code></strong></dt>
+<dd>a PollenisatorTreeview</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<p>ParseError if Lark raises an UnexpectedToken or an UnexptectedCharacters exception.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A list</code> of <code>Mongo iid which data matched the filter</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getIds(self, appTw):
+    &#34;&#34;&#34;Return Ids of the models in a PollenisatorTreeview matching the filter
+    Args:
+        appTw: a PollenisatorTreeview
+    Raises:
+        ParseError if Lark raises an UnexpectedToken or an UnexptectedCharacters exception.
+    Returns:
+        A list of Mongo iid which data matched the filter
+    &#34;&#34;&#34;
+    found_res = []
+    views = appTw.views
+    for dbId in views:
+        view_object = views[dbId][&#34;view&#34;]
+        data = view_object.controller.getData()
+        if data is None:
+            continue
+        keys = list(data.keys())
+        it_key = 0
+        len_keys = len(keys)
+        while it_key &lt; len_keys :
+            key = keys[it_key]
+            val = data[key]
+            if isinstance(val, dict):
+                for subkey, subval in val.items():
+                    data[key+&#34;.&#34;+str(subkey)] = subval
+                    keys.append(key+&#34;.&#34;+str(subkey))
+            elif isinstance(val, list):
+                for i,subval in enumerate(val):
+                    data[key+&#34;[&#34;+str(i)+&#34;]&#34;] = subval
+            it_key += 1
+            len_keys = len(keys)
+        dtype = view_object.controller.getType()
+        data[&#34;type&#34;] = dtype
+        result = self.evaluate(self.parsed, data)
+        if result:
+            found_res.append(dbId)
+    return found_res</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.ParseError"><code class="flex name class">
+<span>class <span class="ident">ParseError</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Inherits Exception
+Class to raise parsing error</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ParseError(Exception):
+    &#34;&#34;&#34;Inherits Exception
+    Class to raise parsing error&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.Term"><code class="flex name class">
+<span>class <span class="ident">Term</span></span>
+<span>(</span><span>val)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A search term, meaning "key.name" == (value) </p>
+<p>Constructor</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Term:
+    &#34;&#34;&#34;A search term, meaning &#34;key.name&#34; == (value) &#34;&#34;&#34;
+    def __init__(self, val):
+        &#34;&#34;&#34;Constructor&#34;&#34;&#34;
+        self.val = val</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition"><code class="flex name class">
+<span>class <span class="ident">TreeToCondition</span></span>
+<span>(</span><span>visit_tokens=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Inherits lark.Transformer
+A Lark Transformer to process the parse-tree returned by lark</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>null</code></strong></dt>
+<dd>value will be converted to python None</dd>
+<dt><strong><code>true</code></strong></dt>
+<dd>value will be converted to python True</dd>
+<dt><strong><code>false</code></strong></dt>
+<dd>value will be converted to python False</dd>
+<dt><strong><code>eq</code></strong></dt>
+<dd>value will be converted to string "=="</dd>
+<dt><strong><code>neq</code></strong></dt>
+<dd>value will be converted to string "!="</dd>
+<dt><strong><code>gt</code></strong></dt>
+<dd>value will be converted to string "&gt;"</dd>
+<dt><strong><code>ge</code></strong></dt>
+<dd>value will be converted to string "&gt;="</dd>
+<dt><strong><code>le</code></strong></dt>
+<dd>value will be converted to string "&lt;="</dd>
+<dt><strong><code>lt</code></strong></dt>
+<dd>value will be converted to string "&lt;"</dd>
+<dt><strong><code>regex</code></strong></dt>
+<dd>value will be converted to string "||regex||"</dd>
+<dt><strong><code>inside</code></strong></dt>
+<dd>value will be converted to string "in"</dd>
+<dt><strong><code>notin</code></strong></dt>
+<dd>value will be converted to string "not in"</dd>
+<dt><strong><code>andcond</code></strong></dt>
+<dd>value will be converted to string "and"</dd>
+<dt><strong><code>orcond</code></strong></dt>
+<dd>value will be converted to string "or"</dd>
+<dt><strong><code>notcond</code></strong></dt>
+<dd>value will be converted to string "not"</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TreeToCondition(Transformer):
+    &#34;&#34;&#34;Inherits lark.Transformer
+    A Lark Transformer to process the parse-tree returned by lark
+    Attributes:
+        null: value will be converted to python None
+        true: value will be converted to python True
+        false: value will be converted to python False
+        eq: value will be converted to string &#34;==&#34;
+        neq: value will be converted to string &#34;!=&#34;
+        gt: value will be converted to string &#34;&gt;&#34;
+        ge: value will be converted to string &#34;&gt;=&#34;
+        le: value will be converted to string &#34;&lt;=&#34;
+        lt: value will be converted to string &#34;&lt;&#34;
+        regex: value will be converted to string &#34;||regex||&#34;
+        inside: value will be converted to string &#34;in&#34;
+        notin: value will be converted to string &#34;not in&#34;
+        andcond: value will be converted to string &#34;and&#34;
+        orcond: value will be converted to string &#34;or&#34;
+        notcond: value will be converted to string &#34;not&#34;
+    &#34;&#34;&#34;
+    null = lambda self, _: None
+    true = lambda self, _: True
+    false = lambda self, _: False
+    eq = lambda self, _: &#34;==&#34;
+    neq = lambda self, _: &#34;!=&#34;
+    gt = lambda self, _: &#34;&gt;&#34;
+    ge = lambda self, _: &#34;&gt;=&#34;
+    le = lambda self, _: &#34;&lt;=&#34;
+    lt = lambda self, _: &#34;&lt;&#34;
+    regex = lambda self, _: &#34;||regex||&#34;
+    inside = lambda self, _: &#34;in&#34;
+    notin = lambda self, _: &#34;not in&#34;
+    andcond = lambda self, _: &#34;and&#34;
+    orcond = lambda self, _: &#34;or&#34;
+    notcond = lambda self, _: &#34;not&#34;
+
+    def term(self, items):
+        &#34;&#34;&#34;Applied on parse-tree terms objects.
+        Args:
+            items: the parse-tree term object
+        Returns:
+            the given item as a list
+        &#34;&#34;&#34;
+        return list(items)
+
+    def var(self, s):
+        &#34;&#34;&#34;Applied on parse-tree var objects.
+        Args:
+            s: the parse-tree var object
+        Returns:
+            the given item as a Term
+        &#34;&#34;&#34;
+        (s,) = s
+        return Term(s)
+
+    def string(self, s):
+        &#34;&#34;&#34;Applied on parse-tree string objects.
+        Args:
+            s: the parse-tree string object
+        Returns:
+            the given item as a str
+        &#34;&#34;&#34;
+        (s,) = s
+        return str(s)
+    def number(self, n):
+        &#34;&#34;&#34;Applied on parse-tree number objects.
+        Args:
+            s: the parse-tree number object
+        Returns:
+            the given item as a str with double quotes around them
+        &#34;&#34;&#34;
+        (n,) = n
+        return &#34;\&#34;&#34;+str(n)+&#34;\&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>lark.visitors.Transformer</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.andcond"><code class="name flex">
+<span>def <span class="ident">andcond</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">andcond = lambda self, _: &#34;and&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.eq"><code class="name flex">
+<span>def <span class="ident">eq</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">eq = lambda self, _: &#34;==&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.false"><code class="name flex">
+<span>def <span class="ident">false</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">false = lambda self, _: False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.ge"><code class="name flex">
+<span>def <span class="ident">ge</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">ge = lambda self, _: &#34;&gt;=&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.gt"><code class="name flex">
+<span>def <span class="ident">gt</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">gt = lambda self, _: &#34;&gt;&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.inside"><code class="name flex">
+<span>def <span class="ident">inside</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">inside = lambda self, _: &#34;in&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.le"><code class="name flex">
+<span>def <span class="ident">le</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">le = lambda self, _: &#34;&lt;=&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.lt"><code class="name flex">
+<span>def <span class="ident">lt</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">lt = lambda self, _: &#34;&lt;&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.neq"><code class="name flex">
+<span>def <span class="ident">neq</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">neq = lambda self, _: &#34;!=&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.notcond"><code class="name flex">
+<span>def <span class="ident">notcond</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">notcond = lambda self, _: &#34;not&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.notin"><code class="name flex">
+<span>def <span class="ident">notin</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">notin = lambda self, _: &#34;not in&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.null"><code class="name flex">
+<span>def <span class="ident">null</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">null = lambda self, _: None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.number"><code class="name flex">
+<span>def <span class="ident">number</span></span>(<span>self, n)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applied on parse-tree number objects.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s</code></strong></dt>
+<dd>the parse-tree number object</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the given item as a str with double quotes around them</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def number(self, n):
+    &#34;&#34;&#34;Applied on parse-tree number objects.
+    Args:
+        s: the parse-tree number object
+    Returns:
+        the given item as a str with double quotes around them
+    &#34;&#34;&#34;
+    (n,) = n
+    return &#34;\&#34;&#34;+str(n)+&#34;\&#34;&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.orcond"><code class="name flex">
+<span>def <span class="ident">orcond</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">orcond = lambda self, _: &#34;or&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.regex"><code class="name flex">
+<span>def <span class="ident">regex</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">regex = lambda self, _: &#34;||regex||&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.string"><code class="name flex">
+<span>def <span class="ident">string</span></span>(<span>self, s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applied on parse-tree string objects.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s</code></strong></dt>
+<dd>the parse-tree string object</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the given item as a str</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def string(self, s):
+    &#34;&#34;&#34;Applied on parse-tree string objects.
+    Args:
+        s: the parse-tree string object
+    Returns:
+        the given item as a str
+    &#34;&#34;&#34;
+    (s,) = s
+    return str(s)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.term"><code class="name flex">
+<span>def <span class="ident">term</span></span>(<span>self, items)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applied on parse-tree terms objects.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>items</code></strong></dt>
+<dd>the parse-tree term object</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the given item as a list</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def term(self, items):
+    &#34;&#34;&#34;Applied on parse-tree terms objects.
+    Args:
+        items: the parse-tree term object
+    Returns:
+        the given item as a list
+    &#34;&#34;&#34;
+    return list(items)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.true"><code class="name flex">
+<span>def <span class="ident">true</span></span>(<span>self, _)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">true = lambda self, _: True</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Filter.TreeToCondition.var"><code class="name flex">
+<span>def <span class="ident">var</span></span>(<span>self, s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applied on parse-tree var objects.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>s</code></strong></dt>
+<dd>the parse-tree var object</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the given item as a <a title="Pollenisator.core.Components.Filter.Term" href="#Pollenisator.core.Components.Filter.Term">Term</a></code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def var(self, s):
+    &#34;&#34;&#34;Applied on parse-tree var objects.
+    Args:
+        s: the parse-tree var object
+    Returns:
+        the given item as a Term
+    &#34;&#34;&#34;
+    (s,) = s
+    return Term(s)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Filter.Filter" href="#Pollenisator.core.Components.Filter.Filter">Filter</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.Filter.Filter.condition_parser" href="#Pollenisator.core.Components.Filter.Filter.condition_parser">condition_parser</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.Filter.evaluate" href="#Pollenisator.core.Components.Filter.Filter.evaluate">evaluate</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.Filter.exact_match" href="#Pollenisator.core.Components.Filter.Filter.exact_match">exact_match</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.Filter.getIds" href="#Pollenisator.core.Components.Filter.Filter.getIds">getIds</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.Filter.help" href="#Pollenisator.core.Components.Filter.Filter.help">help</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Filter.ParseError" href="#Pollenisator.core.Components.Filter.ParseError">ParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Filter.Term" href="#Pollenisator.core.Components.Filter.Term">Term</a></code></h4>
+</li>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Filter.TreeToCondition" href="#Pollenisator.core.Components.Filter.TreeToCondition">TreeToCondition</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.andcond" href="#Pollenisator.core.Components.Filter.TreeToCondition.andcond">andcond</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.eq" href="#Pollenisator.core.Components.Filter.TreeToCondition.eq">eq</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.false" href="#Pollenisator.core.Components.Filter.TreeToCondition.false">false</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.ge" href="#Pollenisator.core.Components.Filter.TreeToCondition.ge">ge</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.gt" href="#Pollenisator.core.Components.Filter.TreeToCondition.gt">gt</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.inside" href="#Pollenisator.core.Components.Filter.TreeToCondition.inside">inside</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.le" href="#Pollenisator.core.Components.Filter.TreeToCondition.le">le</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.lt" href="#Pollenisator.core.Components.Filter.TreeToCondition.lt">lt</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.neq" href="#Pollenisator.core.Components.Filter.TreeToCondition.neq">neq</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.notcond" href="#Pollenisator.core.Components.Filter.TreeToCondition.notcond">notcond</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.notin" href="#Pollenisator.core.Components.Filter.TreeToCondition.notin">notin</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.null" href="#Pollenisator.core.Components.Filter.TreeToCondition.null">null</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.number" href="#Pollenisator.core.Components.Filter.TreeToCondition.number">number</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.orcond" href="#Pollenisator.core.Components.Filter.TreeToCondition.orcond">orcond</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.regex" href="#Pollenisator.core.Components.Filter.TreeToCondition.regex">regex</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.string" href="#Pollenisator.core.Components.Filter.TreeToCondition.string">string</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.term" href="#Pollenisator.core.Components.Filter.TreeToCondition.term">term</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.true" href="#Pollenisator.core.Components.Filter.TreeToCondition.true">true</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Filter.TreeToCondition.var" href="#Pollenisator.core.Components.Filter.TreeToCondition.var">var</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

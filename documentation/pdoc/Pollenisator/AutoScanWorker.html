@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.AutoScanWorker API documentation</title>
+<meta name="description" content="Celery worker module. Execute code and store results in database, files in the SFTP server." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.AutoScanWorker</code></h1>
+</header>
+<section id="section-intro">
+<p>Celery worker module. Execute code and store results in database, files in the SFTP server.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Celery worker module. Execute code and store results in database, files in the SFTP server.
+&#34;&#34;&#34;
+
+import errno
+import os
+import ssl
+import sys
+import time
+from datetime import datetime
+import io
+from bson.objectid import ObjectId
+from celery import Celery
+from multiprocessing import Process
+from core.Components.mongo import MongoCalendar
+import core.Components.Utils as Utils
+from core.Models.Interval import Interval
+from core.Models.Tool import Tool
+from core.Models.Wave import Wave
+from core.Models.Command import Command
+from core.Components.Worker import Worker
+# Module variables
+dir_path = os.path.dirname(os.path.realpath(__file__))  # fullpath to this file
+ssldir = os.path.join(dir_path, &#34;./ssl/&#34;)  # fullepath to ssl directory
+certs = {
+    &#39;keyfile&#39;: ssldir+&#39;client.pem&#39;,
+    &#39;certfile&#39;: ssldir+&#39;server.pem&#39;,
+    &#39;ca_certs&#39;: ssldir+&#39;ca.pem&#39;,
+    &#39;cert_reqs&#39;: ssl.CERT_REQUIRED
+}
+try:
+    cfg = Utils.loadCfg(os.path.join(dir_path, &#34;./config/client.cfg&#34;))
+except FileNotFoundError:
+    print(&#34;No client config was found under Pollenisator/config/client.cfg. Create one from the sample provided in this directory.&#34;)
+    sys.exit(0)
+user_string = cfg[&#34;user&#34;]+&#39;:&#39;+cfg[&#34;password&#34;] + \
+    &#39;@&#39; if cfg[&#39;user&#39;].strip() != &#34;&#34; else &#34;&#34;
+if cfg[&#34;ssl&#34;] == &#34;True&#34;:
+    app = Celery(&#39;tasks&#39;, broker=&#39;mongodb://&#39;+user_string+cfg[&#34;host&#34;] + &#39;:&#39; + cfg[&#34;mongo_port&#34;] +
+                 &#39;/broker_pollenisator?authSource=admin&amp;ssl=true&amp;ssl_ca_certs=&#39;+certs[&#34;ca_certs&#34;]+&#39;&amp;ssl_certfile=&#39;+certs[&#34;keyfile&#34;])
+else:
+    app = Celery(&#39;tasks&#39;, broker=&#39;mongodb://&#39; + user_string +
+                 cfg[&#34;host&#34;] + &#39;:&#39;+cfg[&#34;mongo_port&#34;] + &#39;/broker_pollenisator?authSource=admin&#39;)
+
+
+&#34;&#34;&#34;FIX MULTIPROCESING INSIDE CELERY TASK&#34;&#34;&#34;
+from celery.signals import worker_process_init
+from multiprocessing import current_process
+
+@worker_process_init.connect
+def fix_multiprocessing(**kwargs):
+    try:
+        current_process()._config
+    except AttributeError:
+        current_process()._config = {&#39;semprefix&#39;: &#39;/mp&#39;}
+
+def getWaveTimeLimit(waveName):
+    &#34;&#34;&#34;
+    Return the latest time limit in which this tool fits. The tool should timeout after that limit
+
+    Args:
+        tool: a tool belonging to a wave to get the time limit of.
+
+    Returns:
+        Return the latest time limit in which this tool fits.
+    &#34;&#34;&#34;
+    intervals = Interval.fetchObjects({&#34;wave&#34;: waveName})
+    furthestTimeLimit = datetime.now()
+    for intervalModel in intervals:
+        if Utils.fitNowTime(intervalModel.dated, intervalModel.datef):
+            endingDate = intervalModel.getEndingDate()
+            if endingDate is not None:
+                if endingDate &gt; furthestTimeLimit:
+                    furthestTimeLimit = endingDate
+    return furthestTimeLimit
+
+
+def launchTask(calendarName, worker, launchableTool):
+    launchableToolId = launchableTool.getId()
+    launchableTool.markAsRunning(worker.name)
+    # Mark the tool as running (scanner_ip is set and dated is set, datef is &#34;None&#34;)
+    from AutoScanWorker import executeCommand
+    print(&#34;Launching command &#34;+str(launchableTool))
+    p = Process(target=executeCommand, args=(calendarName, launchableToolId))
+    p.start()
+    # Append to running tasks this celery result and the corresponding tool id
+    return True
+
+
+def dispatchLaunchableToolsv2(launchableTools, worker):
+    &#34;&#34;&#34;
+    Try to launch given tools within the monitor
+
+    Args:
+        my_monitor: A Monitor instance which knows what tools are already launched and online workers
+        launchableTools: A list of tools within a Wave that passed the Intervals checking.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    for launchableTool in launchableTools:
+        tool = Tool.fetchObject({&#34;_id&#34;: ObjectId(launchableTool[&#34;_id&#34;])})
+        if worker.hasSpaceFor(tool):
+            launchTask(mongoInstance.calendarName, worker, tool)
+
+def findLaunchableToolsOnWorker(worker, calendarName):
+    &#34;&#34;&#34; 
+    Try to find tools that matches all criteria.
+    Args:
+        workerName: the current working worker
+    Returns:
+        A tuple with two values:
+            * A list of launchable tools as dictionary with values _id, name and priority
+            * A dictionary of waiting tools with tool&#39;s names as keys and integer as value.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    toolsLaunchable = []
+    worker_registered = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {&#34;name&#34;:worker.name}, False)
+    commands_registered = worker_registered[&#34;registeredCommands&#34;]
+    
+    waiting = {}
+    time_compatible_waves_id = Wave.searchForAddressCompatibleWithTime()
+    for wave_id in time_compatible_waves_id:
+        commandsLaunchableWave = Wave.getNotDoneTools(wave_id)
+        for tool in commandsLaunchableWave:
+            
+            toolModel = Tool.fetchObject({&#34;_id&#34;: tool})
+            if toolModel.name not in commands_registered:
+                continue
+            if worker.hasRegistered(toolModel):
+                
+                try:
+                    waiting[str(toolModel)] += 1
+                except KeyError:
+                    waiting[str(toolModel)] = 1
+                command = toolModel.getCommand()
+                if command is None:
+                    prio = 0
+                else:
+                    prio = int(command.get(&#34;priority&#34;, 0))
+                toolsLaunchable.append(
+                    {&#34;_id&#34;: tool, &#34;name&#34;: str(toolModel), &#34;priority&#34;: prio})
+
+    return toolsLaunchable, waiting
+
+
+
+@app.task
+def getCommands(calendarName, worker_name):
+    &#34;&#34;&#34;
+    CELERY remote task
+    List worker registered tools in configuration folder.
+    Store the results in mongo database in pollenisator.workers database.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    tools_to_register = Utils.loadToolsConfig()
+    print(&#34;Registering commands : &#34;+str(list(tools_to_register.keys())))
+    mongoInstance.registerCommands(worker_name, list(tools_to_register.keys()))
+    return
+
+
+@app.task
+def startAutoScan(calendarName, workerName):
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    print(&#34;Starting auto scan on &#34;+str(calendarName))
+    autoScanv2(calendarName, workerName)
+    return
+
+
+def autoScanv2(databaseName, workerName):
+    &#34;&#34;&#34;
+    Search tools to launch within defined conditions and attempts to launch them this celery worker.
+    Gives a visual feedback on stdout
+
+    Args:
+        databaseName: The database to search tools in
+        endless: a boolean that indicates if the autoscan will be endless or if it will stop at the moment it does not found anymore launchable tools.
+        useReprinter: a boolean that indicates if the array outpur will be entirely reprinted or if it will be overwritten.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(databaseName)
+    time_compatible_waves_id = Wave.searchForAddressCompatibleWithTime()
+    worker = Worker(workerName)
+    while True:
+        # Extract commands with compatible time and not yet done
+        launchableTools, waiting = findLaunchableToolsOnWorker(worker, databaseName)
+        # Sort by command priority
+        launchableTools.sort(key=lambda tup: int(tup[&#34;priority&#34;]))
+        dispatchLaunchableToolsv2(launchableTools, worker)
+        
+        time.sleep(3)
+
+@app.task
+def executeCommand(calendarName, toolId, parser=&#34;&#34;):
+    &#34;&#34;&#34;
+    CELERY remote task
+    Execute the tool with the given toolId on the given calendar name.
+    Then execute the plugin corresponding.
+    Any unhandled exception will result in a task-failed event in the Monitor class.
+
+    Args:
+        calendarName: The calendar to search the given tool id for.
+        toolId: the mongo Object id corresponding to the tool to execute.
+        parser: plugin name to execute. If empty, the plugin specified in tools.d will be feteched.
+    Raises:
+        Terminated: if the task gets terminated
+        OSError: if the output directory cannot be created (not if it already exists)
+        Exception: if an exception unhandled occurs during the bash command execution.
+        Exception: if a plugin considered a failure.
+    &#34;&#34;&#34;
+    # Connect to given calendar
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    msg = &#34;&#34;
+    # retrieve tool from tool sid
+    toolModel = Tool.fetchObject({&#34;_id&#34;: ObjectId(toolId)})
+    if toolModel is None:
+        raise Exception(&#34;Tool does not exist : &#34;+str(toolId))
+    command = Command.fetchObject({&#34;name&#34;: toolModel.name})
+    # Get time limit and output directory
+    timeLimit = getWaveTimeLimit(toolModel.wave)
+    outputRelDir = toolModel.getOutputDir(calendarName)
+    abs_path = os.path.dirname(os.path.abspath(__file__))
+    outputDir = os.path.join(abs_path, &#34;./results&#34;, outputRelDir)
+    # Create the output directory
+    try:
+        os.makedirs(outputDir)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(outputDir):
+            pass
+        else:
+            raise exc
+    # Read Tool config file
+    tools_infos = Utils.loadToolsConfig()
+    comm = toolModel.getCommandToExecute(outputDir)
+
+    if parser.strip() == &#34;&#34;:
+        if toolModel.name not in list(tools_infos.keys()):
+            msg = &#34;TASK FAILED Received tool that was not registered : &#34; + \
+                str(toolModel.name)+&#34; not in &#34;+str(list(tools_infos.keys()))
+            raise Exception(msg)
+    # Fetch the command to execute
+    if tools_infos.get(toolModel.name, None) is None:
+        bin_path = &#34;&#34;
+    else:
+        bin_path = tools_infos[toolModel.name].get(&#34;bin&#34;)
+        if bin_path is not None:
+            if not bin_path.endswith(&#34; &#34;):
+                bin_path = bin_path+&#34; &#34;
+    comm = bin_path+comm
+    if comm != &#34;&#34;:
+        try:
+
+            # Load the plugin
+            if parser.strip() == &#34;&#34;:
+                mod = Utils.loadPlugin(tools_infos[toolModel.name][&#34;plugin&#34;])
+            elif parser.strip() == &#34;auto-detect&#34;:
+                mod = Utils.loadPluginByBin(toolModel.name.split(&#34;::&#34;)[0])
+            else:
+                mod = Utils.loadPlugin(parser)
+            # Complete command with file output
+            toolFileName = toolModel.name+&#34;_&#34; + \
+                str(time.time())+mod.getFileOutputExt()
+            comm = mod.changeCommand(comm, outputDir, toolFileName)
+            print((&#39;TASK STARTED:&#39;+toolModel.name))
+            print(&#34;Will timeout at &#34;+str(timeLimit))
+            # Execute the command with a timeout
+            returncode = Utils.execute(comm, timeLimit, True)
+        except Exception as e:
+            raise e
+        # Execute found plugin if there is one
+        if mod is not None:
+            filepath = mod.getFileOutputPath(comm)
+            try:
+                # Open generated file as utf8
+                with io.open(filepath, &#34;r&#34;, encoding=&#34;utf-8&#34;, errors=&#39;ignore&#39;) as file_opened:
+                    # Check return code by plugin (can be always true if the return code is inconsistent)
+                    if mod.checkReturnCode(returncode):
+                        notes, tags, _, _ = mod.Parse(file_opened)
+                        if notes is None:
+                            notes = &#34;No results found by plugin.&#34;
+                        if tags is None:
+                            tags = []
+                        if isinstance(tags, str):
+                            tags = [tags]
+                        # Success could be change to False by the plugin function (evaluating the return code for exemple)
+                        # if the success is validated, mark tool as done
+                        toolModel.markAsDone(
+                            os.path.join(outputRelDir, os.path.basename(filepath)))
+                        # And update the tool in database
+                        toolModel.notes = notes
+                        toolModel.tags = tags
+                        toolModel.update()
+                        # Upload file to SFTP
+                        mod.centralizeFile(filepath, outputDir)
+                        msg = &#34;TASK SUCCESS : &#34;+toolModel.name
+                    else:  # BAS RESULT OF PLUGIN
+                        msg = &#34;TASK FAILED (says the mod) : &#34;+toolModel.name
+                        msg += &#34;The return code was not the expected one. (&#34;+str(
+                            returncode)+&#34;).&#34;
+                        toolModel.markAsNotDone()
+                        raise Exception(msg)
+            except IOError as e:
+                toolModel.tags = [&#34;todo&#34;]
+                toolModel.notes = &#34;Failed to read results file&#34;
+                toolModel.markAsDone()
+        else:
+            msg = &#34;TASK FAILED (no plugin found) : &#34;+toolModel.name
+            toolModel.markAsNotDone()
+            raise Exception(msg)
+        # Delay
+        if command is not None:
+            if float(command.sleep_between) &gt; 0.0:
+                msg += &#34; (will sleep for &#34; + \
+                    str(float(command.sleep_between))+&#34;)&#34;
+            print(msg)
+            time.sleep(float(command.sleep_between))
+        return</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.AutoScanWorker.autoScanv2"><code class="name flex">
+<span>def <span class="ident">autoScanv2</span></span>(<span>databaseName, workerName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Search tools to launch within defined conditions and attempts to launch them this celery worker.
+Gives a visual feedback on stdout</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>databaseName</code></strong></dt>
+<dd>The database to search tools in</dd>
+<dt><strong><code>endless</code></strong></dt>
+<dd>a boolean that indicates if the autoscan will be endless or if it will stop at the moment it does not found anymore launchable tools.</dd>
+<dt><strong><code>useReprinter</code></strong></dt>
+<dd>a boolean that indicates if the array outpur will be entirely reprinted or if it will be overwritten.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def autoScanv2(databaseName, workerName):
+    &#34;&#34;&#34;
+    Search tools to launch within defined conditions and attempts to launch them this celery worker.
+    Gives a visual feedback on stdout
+
+    Args:
+        databaseName: The database to search tools in
+        endless: a boolean that indicates if the autoscan will be endless or if it will stop at the moment it does not found anymore launchable tools.
+        useReprinter: a boolean that indicates if the array outpur will be entirely reprinted or if it will be overwritten.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(databaseName)
+    time_compatible_waves_id = Wave.searchForAddressCompatibleWithTime()
+    worker = Worker(workerName)
+    while True:
+        # Extract commands with compatible time and not yet done
+        launchableTools, waiting = findLaunchableToolsOnWorker(worker, databaseName)
+        # Sort by command priority
+        launchableTools.sort(key=lambda tup: int(tup[&#34;priority&#34;]))
+        dispatchLaunchableToolsv2(launchableTools, worker)
+        
+        time.sleep(3)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.AutoScanWorker.dispatchLaunchableToolsv2"><code class="name flex">
+<span>def <span class="ident">dispatchLaunchableToolsv2</span></span>(<span>launchableTools, worker)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Try to launch given tools within the monitor</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>my_monitor</code></strong></dt>
+<dd>A Monitor instance which knows what tools are already launched and online workers</dd>
+<dt><strong><code>launchableTools</code></strong></dt>
+<dd>A list of tools within a Wave that passed the Intervals checking.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dispatchLaunchableToolsv2(launchableTools, worker):
+    &#34;&#34;&#34;
+    Try to launch given tools within the monitor
+
+    Args:
+        my_monitor: A Monitor instance which knows what tools are already launched and online workers
+        launchableTools: A list of tools within a Wave that passed the Intervals checking.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    for launchableTool in launchableTools:
+        tool = Tool.fetchObject({&#34;_id&#34;: ObjectId(launchableTool[&#34;_id&#34;])})
+        if worker.hasSpaceFor(tool):
+            launchTask(mongoInstance.calendarName, worker, tool)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.AutoScanWorker.executeCommand"><code class="name flex">
+<span>def <span class="ident">executeCommand</span></span>(<span>toolId, parser='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>CELERY remote task
+Execute the tool with the given toolId on the given calendar name.
+Then execute the plugin corresponding.
+Any unhandled exception will result in a task-failed event in the Monitor class.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>calendarName</code></strong></dt>
+<dd>The calendar to search the given tool id for.</dd>
+<dt><strong><code>toolId</code></strong></dt>
+<dd>the mongo Object id corresponding to the tool to execute.</dd>
+<dt><strong><code>parser</code></strong></dt>
+<dd>plugin name to execute. If empty, the plugin specified in tools.d will be feteched.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>Terminated</code></dt>
+<dd>if the task gets terminated</dd>
+<dt><code>OSError</code></dt>
+<dd>if the output directory cannot be created (not if it already exists)</dd>
+<dt><code>Exception</code></dt>
+<dd>if an exception unhandled occurs during the bash command execution.</dd>
+<dt><code>Exception</code></dt>
+<dd>if a plugin considered a failure.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.task
+def executeCommand(calendarName, toolId, parser=&#34;&#34;):
+    &#34;&#34;&#34;
+    CELERY remote task
+    Execute the tool with the given toolId on the given calendar name.
+    Then execute the plugin corresponding.
+    Any unhandled exception will result in a task-failed event in the Monitor class.
+
+    Args:
+        calendarName: The calendar to search the given tool id for.
+        toolId: the mongo Object id corresponding to the tool to execute.
+        parser: plugin name to execute. If empty, the plugin specified in tools.d will be feteched.
+    Raises:
+        Terminated: if the task gets terminated
+        OSError: if the output directory cannot be created (not if it already exists)
+        Exception: if an exception unhandled occurs during the bash command execution.
+        Exception: if a plugin considered a failure.
+    &#34;&#34;&#34;
+    # Connect to given calendar
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    msg = &#34;&#34;
+    # retrieve tool from tool sid
+    toolModel = Tool.fetchObject({&#34;_id&#34;: ObjectId(toolId)})
+    if toolModel is None:
+        raise Exception(&#34;Tool does not exist : &#34;+str(toolId))
+    command = Command.fetchObject({&#34;name&#34;: toolModel.name})
+    # Get time limit and output directory
+    timeLimit = getWaveTimeLimit(toolModel.wave)
+    outputRelDir = toolModel.getOutputDir(calendarName)
+    abs_path = os.path.dirname(os.path.abspath(__file__))
+    outputDir = os.path.join(abs_path, &#34;./results&#34;, outputRelDir)
+    # Create the output directory
+    try:
+        os.makedirs(outputDir)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(outputDir):
+            pass
+        else:
+            raise exc
+    # Read Tool config file
+    tools_infos = Utils.loadToolsConfig()
+    comm = toolModel.getCommandToExecute(outputDir)
+
+    if parser.strip() == &#34;&#34;:
+        if toolModel.name not in list(tools_infos.keys()):
+            msg = &#34;TASK FAILED Received tool that was not registered : &#34; + \
+                str(toolModel.name)+&#34; not in &#34;+str(list(tools_infos.keys()))
+            raise Exception(msg)
+    # Fetch the command to execute
+    if tools_infos.get(toolModel.name, None) is None:
+        bin_path = &#34;&#34;
+    else:
+        bin_path = tools_infos[toolModel.name].get(&#34;bin&#34;)
+        if bin_path is not None:
+            if not bin_path.endswith(&#34; &#34;):
+                bin_path = bin_path+&#34; &#34;
+    comm = bin_path+comm
+    if comm != &#34;&#34;:
+        try:
+
+            # Load the plugin
+            if parser.strip() == &#34;&#34;:
+                mod = Utils.loadPlugin(tools_infos[toolModel.name][&#34;plugin&#34;])
+            elif parser.strip() == &#34;auto-detect&#34;:
+                mod = Utils.loadPluginByBin(toolModel.name.split(&#34;::&#34;)[0])
+            else:
+                mod = Utils.loadPlugin(parser)
+            # Complete command with file output
+            toolFileName = toolModel.name+&#34;_&#34; + \
+                str(time.time())+mod.getFileOutputExt()
+            comm = mod.changeCommand(comm, outputDir, toolFileName)
+            print((&#39;TASK STARTED:&#39;+toolModel.name))
+            print(&#34;Will timeout at &#34;+str(timeLimit))
+            # Execute the command with a timeout
+            returncode = Utils.execute(comm, timeLimit, True)
+        except Exception as e:
+            raise e
+        # Execute found plugin if there is one
+        if mod is not None:
+            filepath = mod.getFileOutputPath(comm)
+            try:
+                # Open generated file as utf8
+                with io.open(filepath, &#34;r&#34;, encoding=&#34;utf-8&#34;, errors=&#39;ignore&#39;) as file_opened:
+                    # Check return code by plugin (can be always true if the return code is inconsistent)
+                    if mod.checkReturnCode(returncode):
+                        notes, tags, _, _ = mod.Parse(file_opened)
+                        if notes is None:
+                            notes = &#34;No results found by plugin.&#34;
+                        if tags is None:
+                            tags = []
+                        if isinstance(tags, str):
+                            tags = [tags]
+                        # Success could be change to False by the plugin function (evaluating the return code for exemple)
+                        # if the success is validated, mark tool as done
+                        toolModel.markAsDone(
+                            os.path.join(outputRelDir, os.path.basename(filepath)))
+                        # And update the tool in database
+                        toolModel.notes = notes
+                        toolModel.tags = tags
+                        toolModel.update()
+                        # Upload file to SFTP
+                        mod.centralizeFile(filepath, outputDir)
+                        msg = &#34;TASK SUCCESS : &#34;+toolModel.name
+                    else:  # BAS RESULT OF PLUGIN
+                        msg = &#34;TASK FAILED (says the mod) : &#34;+toolModel.name
+                        msg += &#34;The return code was not the expected one. (&#34;+str(
+                            returncode)+&#34;).&#34;
+                        toolModel.markAsNotDone()
+                        raise Exception(msg)
+            except IOError as e:
+                toolModel.tags = [&#34;todo&#34;]
+                toolModel.notes = &#34;Failed to read results file&#34;
+                toolModel.markAsDone()
+        else:
+            msg = &#34;TASK FAILED (no plugin found) : &#34;+toolModel.name
+            toolModel.markAsNotDone()
+            raise Exception(msg)
+        # Delay
+        if command is not None:
+            if float(command.sleep_between) &gt; 0.0:
+                msg += &#34; (will sleep for &#34; + \
+                    str(float(command.sleep_between))+&#34;)&#34;
+            print(msg)
+            time.sleep(float(command.sleep_between))
+        return</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.AutoScanWorker.findLaunchableToolsOnWorker"><code class="name flex">
+<span>def <span class="ident">findLaunchableToolsOnWorker</span></span>(<span>worker, calendarName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Try to find tools that matches all criteria.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>workerName</code></strong></dt>
+<dd>the current working worker</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A tuple with two values:</code></dt>
+<dd>
+<ul>
+<li>A list of launchable tools as dictionary with values _id, name and priority</li>
+<li>A dictionary of waiting tools with tool's names as keys and integer as value.</li>
+</ul>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findLaunchableToolsOnWorker(worker, calendarName):
+    &#34;&#34;&#34; 
+    Try to find tools that matches all criteria.
+    Args:
+        workerName: the current working worker
+    Returns:
+        A tuple with two values:
+            * A list of launchable tools as dictionary with values _id, name and priority
+            * A dictionary of waiting tools with tool&#39;s names as keys and integer as value.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    toolsLaunchable = []
+    worker_registered = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;workers&#34;, {&#34;name&#34;:worker.name}, False)
+    commands_registered = worker_registered[&#34;registeredCommands&#34;]
+    
+    waiting = {}
+    time_compatible_waves_id = Wave.searchForAddressCompatibleWithTime()
+    for wave_id in time_compatible_waves_id:
+        commandsLaunchableWave = Wave.getNotDoneTools(wave_id)
+        for tool in commandsLaunchableWave:
+            
+            toolModel = Tool.fetchObject({&#34;_id&#34;: tool})
+            if toolModel.name not in commands_registered:
+                continue
+            if worker.hasRegistered(toolModel):
+                
+                try:
+                    waiting[str(toolModel)] += 1
+                except KeyError:
+                    waiting[str(toolModel)] = 1
+                command = toolModel.getCommand()
+                if command is None:
+                    prio = 0
+                else:
+                    prio = int(command.get(&#34;priority&#34;, 0))
+                toolsLaunchable.append(
+                    {&#34;_id&#34;: tool, &#34;name&#34;: str(toolModel), &#34;priority&#34;: prio})
+
+    return toolsLaunchable, waiting</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.AutoScanWorker.fix_multiprocessing"><code class="name flex">
+<span>def <span class="ident">fix_multiprocessing</span></span>(<span>**kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@worker_process_init.connect
+def fix_multiprocessing(**kwargs):
+    try:
+        current_process()._config
+    except AttributeError:
+        current_process()._config = {&#39;semprefix&#39;: &#39;/mp&#39;}</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.AutoScanWorker.getCommands"><code class="name flex">
+<span>def <span class="ident">getCommands</span></span>(<span>worker_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>CELERY remote task
+List worker registered tools in configuration folder.
+Store the results in mongo database in pollenisator.workers database.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.task
+def getCommands(calendarName, worker_name):
+    &#34;&#34;&#34;
+    CELERY remote task
+    List worker registered tools in configuration folder.
+    Store the results in mongo database in pollenisator.workers database.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    tools_to_register = Utils.loadToolsConfig()
+    print(&#34;Registering commands : &#34;+str(list(tools_to_register.keys())))
+    mongoInstance.registerCommands(worker_name, list(tools_to_register.keys()))
+    return</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.AutoScanWorker.getWaveTimeLimit"><code class="name flex">
+<span>def <span class="ident">getWaveTimeLimit</span></span>(<span>waveName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the latest time limit in which this tool fits. The tool should timeout after that limit</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tool</code></strong></dt>
+<dd>a tool belonging to a wave to get the time limit of.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the latest time limit in which this tool fits.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getWaveTimeLimit(waveName):
+    &#34;&#34;&#34;
+    Return the latest time limit in which this tool fits. The tool should timeout after that limit
+
+    Args:
+        tool: a tool belonging to a wave to get the time limit of.
+
+    Returns:
+        Return the latest time limit in which this tool fits.
+    &#34;&#34;&#34;
+    intervals = Interval.fetchObjects({&#34;wave&#34;: waveName})
+    furthestTimeLimit = datetime.now()
+    for intervalModel in intervals:
+        if Utils.fitNowTime(intervalModel.dated, intervalModel.datef):
+            endingDate = intervalModel.getEndingDate()
+            if endingDate is not None:
+                if endingDate &gt; furthestTimeLimit:
+                    furthestTimeLimit = endingDate
+    return furthestTimeLimit</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.AutoScanWorker.launchTask"><code class="name flex">
+<span>def <span class="ident">launchTask</span></span>(<span>calendarName, worker, launchableTool)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def launchTask(calendarName, worker, launchableTool):
+    launchableToolId = launchableTool.getId()
+    launchableTool.markAsRunning(worker.name)
+    # Mark the tool as running (scanner_ip is set and dated is set, datef is &#34;None&#34;)
+    from AutoScanWorker import executeCommand
+    print(&#34;Launching command &#34;+str(launchableTool))
+    p = Process(target=executeCommand, args=(calendarName, launchableToolId))
+    p.start()
+    # Append to running tasks this celery result and the corresponding tool id
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.AutoScanWorker.startAutoScan"><code class="name flex">
+<span>def <span class="ident">startAutoScan</span></span>(<span>workerName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.task
+def startAutoScan(calendarName, workerName):
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    print(&#34;Starting auto scan on &#34;+str(calendarName))
+    autoScanv2(calendarName, workerName)
+    return</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator" href="index.html">Pollenisator</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.AutoScanWorker.autoScanv2" href="#Pollenisator.AutoScanWorker.autoScanv2">autoScanv2</a></code></li>
+<li><code><a title="Pollenisator.AutoScanWorker.dispatchLaunchableToolsv2" href="#Pollenisator.AutoScanWorker.dispatchLaunchableToolsv2">dispatchLaunchableToolsv2</a></code></li>
+<li><code><a title="Pollenisator.AutoScanWorker.executeCommand" href="#Pollenisator.AutoScanWorker.executeCommand">executeCommand</a></code></li>
+<li><code><a title="Pollenisator.AutoScanWorker.findLaunchableToolsOnWorker" href="#Pollenisator.AutoScanWorker.findLaunchableToolsOnWorker">findLaunchableToolsOnWorker</a></code></li>
+<li><code><a title="Pollenisator.AutoScanWorker.fix_multiprocessing" href="#Pollenisator.AutoScanWorker.fix_multiprocessing">fix_multiprocessing</a></code></li>
+<li><code><a title="Pollenisator.AutoScanWorker.getCommands" href="#Pollenisator.AutoScanWorker.getCommands">getCommands</a></code></li>
+<li><code><a title="Pollenisator.AutoScanWorker.getWaveTimeLimit" href="#Pollenisator.AutoScanWorker.getWaveTimeLimit">getWaveTimeLimit</a></code></li>
+<li><code><a title="Pollenisator.AutoScanWorker.launchTask" href="#Pollenisator.AutoScanWorker.launchTask">launchTask</a></code></li>
+<li><code><a title="Pollenisator.AutoScanWorker.startAutoScan" href="#Pollenisator.AutoScanWorker.startAutoScan">startAutoScan</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

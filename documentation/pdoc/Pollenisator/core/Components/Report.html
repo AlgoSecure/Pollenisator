@@ -1,0 +1,2431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.Report API documentation</title>
+<meta name="description" content="Module to add defects and export them" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.Report</code></h1>
+</header>
+<section id="section-intro">
+<p>Module to add defects and export them</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Module to add defects and export them
+&#34;&#34;&#34;
+import tkinter.ttk as ttk
+import tkinter as tk
+import tkinter.messagebox
+import os
+from os import listdir
+from os.path import isfile, join
+from bson.objectid import ObjectId
+from datetime import datetime
+from core.Components.mongo import MongoCalendar
+import core.Reporting.WordExport as WordExport
+import core.Reporting.PowerpointExport as PowerpointExport
+import core.Reporting.ExcelExport as ExcelExport
+from core.Models.Defect import Defect
+from core.Application.Dialogs.ChildDialogCombo import ChildDialogCombo
+from core.Application.Dialogs.ChildDialogProgress import ChildDialogProgress
+from core.Application.Dialogs.ChildDialogQuestion import ChildDialogQuestion
+from core.Application.Dialogs.ChildDialogDefectView import ChildDialogDefectView
+from core.Forms.FormHelper import FormHelper
+
+class Report:
+    &#34;&#34;&#34;
+    Store elements to report and create docx or xlsx with them
+    &#34;&#34;&#34;
+
+    def __init__(self, settings):
+        &#34;&#34;&#34;
+        Constructor
+        &#34;&#34;&#34;
+        self.dir_path = os.path.dirname(os.path.realpath(__file__))
+        self.dir_path = os.path.normpath(os.path.join(self.dir_path, &#34;../../Templates/&#34;))
+        self.default_ppt = os.path.join(self.dir_path, &#34;Modele.pptx&#34;)
+        self.default_word = os.path.join(self.dir_path, &#34;Modele.docx&#34;)
+        self.mainRedac = &#34;N/A&#34;
+        self.settings = settings
+        self.dragging = None
+        self.parent = None
+        self.reportFrame = None
+        self.rowHeight = 0
+        self.style = None
+        self.treevw = None
+        self.ent_client = None
+        self.ent_contract = None
+        self.val_word = None
+        self.entry_word = None
+        self.val_ppt = None
+        self.entry_ppt = None
+        return
+
+    @classmethod
+    def getEases(cls):
+        &#34;&#34;&#34;
+        Returns: 
+            Returns a list of ease of exploitation levels for a security defect.
+        &#34;&#34;&#34;
+        return [&#34;Facile&#34;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;]
+
+    @classmethod
+    def getImpacts(cls):
+        &#34;&#34;&#34;
+        Returns: 
+            Returns a list of impact levels for a security defect.
+        &#34;&#34;&#34;
+        return [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;, &#34;N/A&#34;]
+
+    @classmethod
+    def getRisks(cls):
+        &#34;&#34;&#34;
+        Returns: 
+            Returns a list of risk levels for a security defect.
+        &#34;&#34;&#34;
+        return [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;, &#34;N/A&#34;]
+
+    @classmethod
+    def getTypes(cls):
+        &#34;&#34;&#34;
+        Returns: 
+            Returns a list of type for a security defect.
+        &#34;&#34;&#34;
+        return [&#34;Socle&#34;, &#34;Application&#34;, &#34;Politique&#34;, &#34;Active Directory&#34;, &#34;Infrastructure&#34;, &#34;Données&#34;]
+
+    def refreshUI(self):
+        &#34;&#34;&#34;
+        Reload informations and reload them into the widgets
+        &#34;&#34;&#34;
+        self.default_word = os.path.join(self.dir_path, &#34;Modele.docx&#34;)
+        self.settings.reloadSettings()
+        pentest_type = self.settings.getPentestType().lower()
+        models = [f for f in listdir(
+            self.dir_path) if isfile(join(self.dir_path, f)) and f.endswith(&#34;.docx&#34;) and pentest_type in f.lower()]
+        if models:
+            self.default_word = join(self.dir_path, models[0])
+        self.val_word.set(self.default_word)
+
+    def initUI(self, parent):
+        &#34;&#34;&#34;
+        Initialize window and widgets.
+        &#34;&#34;&#34;
+        if self.parent is not None:  # Already initialized
+            self.reset()
+            self.fillWithDefects()
+            return
+        self.parent = parent
+        ### MAIN PAGE FRAME ###
+        self.reportFrame = ttk.Frame(parent)
+        self.paned = tk.PanedWindow(self.reportFrame, orient=tk.VERTICAL, height=800)
+        ### DEFECT TABLE ###
+        self.rowHeight = 20
+        self.style = ttk.Style()
+        self.style.configure(&#39;Report.Treeview&#39;, rowheight=self.rowHeight)
+        self.frameTw = ttk.Frame(self.paned)
+        self.treevw = ttk.Treeview(self.frameTw, style=&#39;Report.Treeview&#39;, height=0)
+        self.treevw[&#39;columns&#39;] = (&#39;ease&#39;, &#39;impact&#39;, &#39;risk&#39;, &#39;type&#39;, &#39;redactor&#39;)
+        self.treevw.heading(&#34;#0&#34;, text=&#39;Title&#39;, anchor=tk.W)
+        self.treevw.column(&#34;#0&#34;, anchor=tk.W, width=150)
+        self.treevw.heading(&#39;ease&#39;, text=&#39;Ease&#39;)
+        self.treevw.column(&#39;ease&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevw.heading(&#39;impact&#39;, text=&#39;Impact&#39;)
+        self.treevw.column(&#39;impact&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevw.heading(&#39;risk&#39;, text=&#39;Risk&#39;)
+        self.treevw.column(&#39;risk&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevw.heading(&#39;type&#39;, text=&#39;Type&#39;)
+        self.treevw.column(&#39;type&#39;, anchor=&#39;center&#39;, width=10)
+        self.treevw.heading(&#39;redactor&#39;, text=&#39;Redactor&#39;)
+        self.treevw.column(&#39;redactor&#39;, anchor=&#39;center&#39;, width=20)
+        self.treevw.tag_configure(
+            &#34;Critique&#34;, background=&#34;black&#34;, foreground=&#34;white&#34;)
+        self.treevw.tag_configure(
+            &#34;Majeur&#34;, background=&#34;red&#34;, foreground=&#34;white&#34;)
+        self.treevw.tag_configure(
+            &#34;Important&#34;, background=&#34;orange&#34;, foreground=&#34;white&#34;)
+        self.treevw.tag_configure(
+            &#34;Mineur&#34;, background=&#34;yellow&#34;, foreground=&#34;black&#34;)
+        self.treevw.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+        self.treevw.bind(&#34;&lt;Alt-Up&gt;&#34;, self.moveItemUp)
+        self.treevw.bind(&#34;&lt;Alt-Down&gt;&#34;, self.moveItemDown)
+        self.treevw.bind(&#34;&lt;Delete&gt;&#34;, self.deleteSelectedItem)
+        self.treevw.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(self.frameTw,
+                                orient=tk.VERTICAL,
+                                command=self.treevw.yview)
+        self.treevw.configure(yscrollcommand=scbVSel.set)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        self.frameTw.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+        self.frameTw.columnconfigure(0, weight=1)
+        self.frameTw.rowconfigure(0, weight=1)
+        ### OFFICE EXPORT FRAME ###
+        belowFrame = ttk.Frame(self.paned)
+        frameBtn = ttk.Frame(belowFrame)
+        #lbl_help = FormHelper(&#34;DefectHelper&#34;, &#34;Use del to delete a defect, use Alt+Arrows to order them&#34;)
+        #lbl_help.constructView(frameBtn)
+        btn_addDefect = ttk.Button(
+            frameBtn, text=&#34;Add a security defect&#34;, command=self.addDefectCallback)
+        btn_addDefect.pack(side=tk.RIGHT)
+        btn_setMainRedactor = ttk.Button(
+            frameBtn, text=&#34;Set main redactor&#34;, command=self.setMainRedactor)
+        btn_setMainRedactor.pack(side=tk.RIGHT)
+        frameBtn.pack(side=tk.TOP)
+        officeFrame = ttk.LabelFrame(belowFrame, text=&#34; Office reports &#34;)
+        ### INFORMATION EXPORT FRAME ###
+        informations_frame = ttk.Frame(officeFrame)
+        lbl_client = ttk.Label(informations_frame, text=&#34;Client&#39;s name :&#34;)
+        lbl_client.grid(row=0, column=0, sticky=tk.E)
+        self.ent_client = ttk.Entry(informations_frame, width=50)
+        self.ent_client.grid(row=0, column=1, sticky=tk.W)
+        lbl_contract = ttk.Label(informations_frame, text=&#34;Contract&#39;s name :&#34;)
+        lbl_contract.grid(row=1, column=0, sticky=tk.E)
+        self.ent_contract = ttk.Entry(informations_frame, width=50)
+        self.ent_contract.grid(row=1, column=1, sticky=tk.W)
+        informations_frame.pack(side=tk.TOP, pady=10)
+        ### WORD EXPORT FRAME ###
+        wordFrame = ttk.Frame(officeFrame)
+        lbl = ttk.Label(
+            wordFrame, text=&#34;Choose a word template : &#34;, background=&#34;white&#34;)
+        lbl.pack(side=tk.LEFT)
+        self.val_word = tk.StringVar()
+        self.entry_word = tk.Entry(
+            wordFrame, textvariable=self.val_word, width=50)
+        self.entry_word.bind(&#34;&lt;Control-a&gt;&#34;, self.selectAll)
+        self.entry_word.pack(side=tk.LEFT, padx=10)
+        self.val_word.set(self.default_word)
+        search_btn = ttk.Button(wordFrame, text=&#34;...&#34;,
+                                command=self.on_click, width=5)
+        search_btn.pack(side=tk.LEFT, padx=10)
+        btn_word = ttk.Button(
+            wordFrame, text=&#34;Generate Word report&#34;, command=self.generateReportWord, width=30)
+        btn_word.pack(side=tk.RIGHT, padx=10)
+        wordFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        ### POWERPOINT EXPORT FRAME ###
+        powerpointFrame = ttk.Frame(officeFrame)
+        lbl = ttk.Label(powerpointFrame,
+                        text=&#34;Choose a pptx template : &#34;, background=&#34;white&#34;)
+        lbl.pack(side=tk.LEFT)
+        self.val_ppt = tk.StringVar()
+        self.entry_ppt = tk.Entry(
+            powerpointFrame, textvariable=self.val_ppt, width=50)
+        self.entry_ppt.bind(&#34;&lt;Control-a&gt;&#34;, self.selectAll)
+        self.entry_ppt.pack(side=tk.LEFT, padx=10)
+        self.val_ppt.set(self.default_ppt)
+        search_btn = ttk.Button(
+            powerpointFrame, text=&#34;...&#34;, command=self.on_click_pptx, width=5)
+        search_btn.pack(side=tk.LEFT, padx=10)
+        btn_ppt = ttk.Button(
+            powerpointFrame, text=&#34;Generate Powerpoint report&#34;, command=self.generateReportPowerpoint, width=30)
+        btn_ppt.pack(side=tk.RIGHT, padx=10)
+        powerpointFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        #### EXCEL EXPORT FRAME ###
+        excelFrame = ttk.Frame(officeFrame)
+        btn_excel = ttk.Button(
+            excelFrame, text=&#34;Generate Excel report&#34;, command=self.generateReportExcel, width=30)
+        btn_excel.pack(side=tk.RIGHT, padx=10)
+        excelFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        officeFrame.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+        self.paned.add(self.frameTw)
+        self.paned.add(belowFrame)
+        self.paned.pack(fill=tk.BOTH, expand=1)
+        self.reportFrame.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+        self.fillWithDefects()
+
+    def reset(self):
+        &#34;&#34;&#34;
+        reset defect treeview by deleting every item inside.
+        &#34;&#34;&#34;
+        for item in self.treevw.get_children():
+            self.treevw.delete(item)
+
+    def deleteSelectedItem(self, _event=None):
+        &#34;&#34;&#34;
+        Remove selected defect from treeview
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        selected = self.treevw.selection()[0]
+        self.removeItem(selected)
+
+    def removeItem(self, toDeleteIid):
+        &#34;&#34;&#34;
+        Remove defect from given iid in defect treeview
+        Args:
+            toDeleteIid: database ID of defect to delete
+        &#34;&#34;&#34;
+        item = self.treevw.item(toDeleteIid)
+        dialog = ChildDialogQuestion(self.parent,
+                                     &#34;DELETE WARNING&#34;, &#34;Are you sure you want to delete defect &#34;+str(item[&#34;text&#34;])+&#34; ?&#34;, [&#34;Delete&#34;, &#34;Cancel&#34;])
+        self.parent.wait_window(dialog.app)
+        if dialog.rvalue != &#34;Delete&#34;:
+            return
+        self.treevw.delete(toDeleteIid)
+        defectToDelete = Defect.fetchObject({&#34;title&#34;: item[&#34;text&#34;], &#34;ip&#34;:&#34;&#34;, &#34;port&#34;:&#34;&#34;, &#34;proto&#34;:&#34;&#34;})
+        if defectToDelete is not None:
+            if defectToDelete.index is not None:
+                index = int(defectToDelete.index)
+                children = self.treevw.get_children()
+                for i in range(index+1,len(children),1):
+                    d_o = Defect({&#34;_id&#34;:children[i]})
+                    d_o.update({&#34;index&#34;:str(i)})
+            defectToDelete.delete()
+            self.resizeDefectTreeview()
+
+    def moveItemUp(self, _event=None):
+        &#34;&#34;&#34;
+        Swap the selected treeview item with the one up above it.
+        Args:
+            _event: not used but mandatory
+        Returns:
+            returns &#34;break&#34; to stop the interrupt the event thus preventing cursor to move up
+        &#34;&#34;&#34;
+        selected = self.treevw.selection()[0]
+        currentIndice = 0
+        children = self.treevw.get_children()
+        for i, child in enumerate(children):
+            if child == selected:
+                currentIndice = i
+                break
+        if currentIndice != 0:
+            self.treevw.move(selected, &#39;&#39;, currentIndice-1)
+            mongoInstance = MongoCalendar.getInstance()
+            selected = children[currentIndice]
+            moved_by_side_effect = children[currentIndice-1]
+            mongoInstance.update(Defect.coll_name,
+                             {&#34;_id&#34;: ObjectId(selected)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice-1)}})
+            mongoInstance.update(Defect.coll_name,
+                             {&#34;_id&#34;: ObjectId(moved_by_side_effect)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice)}})
+        return &#34;break&#34;
+
+    def moveItemDown(self, _event=None):
+        &#34;&#34;&#34;
+        Swap the selected treeview item with the one down below it.
+        Args:
+            _event: not used but mandatory
+        Returns:
+            returns &#34;break&#34; to stop the interrupt the event thus preventing cursor to move down
+        &#34;&#34;&#34;
+        selected = self.treevw.selection()[0]
+        len_max = len(self.treevw.get_children())
+        currentIndice = len_max-1
+        children = self.treevw.get_children()
+        for i, child in enumerate(children):
+            if child == selected:
+                currentIndice = i
+                break
+        if currentIndice &lt; len_max-1:
+            self.treevw.move(selected, &#39;&#39;, currentIndice+1)
+            mongoInstance = MongoCalendar.getInstance()
+            selected = children[currentIndice]
+            moved_by_side_effect = children[currentIndice+1]
+            mongoInstance.update(Defect.coll_name,
+                             {&#34;_id&#34;: ObjectId(selected)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice+1)}})
+            mongoInstance.update(Defect.coll_name,
+                             {&#34;_id&#34;: ObjectId(moved_by_side_effect)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice)}})
+        return &#34;break&#34;
+
+    def on_click(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for selecting word template.
+        Open a filedialog window and sets the entry value to the selected file
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        ftypes = [
+            (&#39;Word files&#39;, &#39;*.docx&#39;),
+            (&#39;All files&#39;, &#39;*&#39;),
+        ]
+        f = tkinter.filedialog.askopenfilename(
+            initialdir=self.dir_path, title=&#34;Select template for report&#34;, defaultextension=&#34;.docx&#34;, filetypes=ftypes)
+        if f is None:  # asksaveasfile return `None` if dialog closed with &#34;cancel&#34;.
+            return
+        filename = str(f)
+        if filename == &#34;()&#34;:
+            return
+        self.val_word.set(filename)
+
+    def on_click_pptx(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for selecting powerpoint template.
+        Open a filedialog window and sets the entry value to the selected file
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        ftypes = [
+            (&#39;Powerpoint files&#39;, &#39;*.pptx&#39;),
+            (&#39;All files&#39;, &#39;*&#39;),
+        ]
+        f = tkinter.filedialog.askopenfilename(
+            initialdir=self.dir_path, title=&#34;Select template for report&#34;, defaultextension=&#34;.pptx&#34;, filetypes=ftypes)
+        if f is None:  # asksaveasfile return `None` if dialog closed with &#34;cancel&#34;.
+            return
+        filename = str(f)
+        if filename == &#34;()&#34;:
+            return
+        self.val_ppt.set(filename)
+
+    def selectAll(self, _event):
+        &#34;&#34;&#34;
+        Select all text in an entry
+        Args:
+            _event: not used but mandatory
+        Returns:
+            returns &#34;break&#34; to stop the interrupt the event thus preventing the shortcut key to be written
+        &#34;&#34;&#34;
+        # select text
+        self.entry_word.select_range(0, &#39;end&#39;)
+        # move cursor to the end
+        self.entry_word.icursor(&#39;end&#39;)
+        return &#34;break&#34;
+
+    def addDefectCallback(self):
+        &#34;&#34;&#34;Open an insert defect view form in a child window&#34;&#34;&#34;
+        dialog = ChildDialogDefectView(self.parent, self.settings)
+        self.parent.wait_window(dialog.app)
+
+    def setMainRedactor(self):
+        &#34;&#34;&#34;Sets a main redactor for a pentest. Each not assigned defect will be assigned to him/her&#34;&#34;&#34;
+        self.settings.reloadSettings()
+        dialog = ChildDialogCombo(self.parent, self.settings.getPentesters()+[&#34;N/A&#34;], &#34;Set main redactor&#34;, &#34;N/A&#34;)
+        newVal = self.parent.wait_window(dialog.app)
+        if newVal is None:
+            return
+        if not newVal or newVal.strip() == &#34;&#34;:
+            return
+        columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+        for it in self.treevw.get_children():
+            oldValues = self.treevw.item(it)[&#34;values&#34;]
+            if oldValues[columnRedactor] == &#34;N/A&#34;:
+                oldValues[columnRedactor] = newVal
+                self.treevw.item(it, values=oldValues)
+                d_o = Defect({&#34;_id&#34;:it})
+                d_o.update({&#34;redactor&#34;:newVal})
+        self.mainRedac = newVal
+
+    def updateDefectInTreevw(self, defect_m, redactor=None):
+        &#34;&#34;&#34;
+        Change values of a selected defect in the treeview
+        Args:
+            defect_m: a defect model with updated values
+            redactor: a redactor name for this defect, can be None (default)
+        &#34;&#34;&#34;
+        columnEase = self.treevw[&#39;columns&#39;].index(&#34;ease&#34;)
+        columnImpact = self.treevw[&#39;columns&#39;].index(&#34;impact&#34;)
+        columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+        columnType = self.treevw[&#39;columns&#39;].index(&#34;type&#34;)
+        columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+        oldValues = self.treevw.item(defect_m.getId())[&#34;values&#34;]
+        oldRisk = oldValues[columnRisk]
+        newRisk = defect_m.risk
+        newValues = [&#34;&#34;]*5
+        newValues[columnEase] = defect_m.ease
+        newValues[columnImpact] = defect_m.impact
+        newValues[columnRisk] = defect_m.risk
+        newValues[columnType] = &#34;, &#34;.join(defect_m.mtype)
+        newValues[columnRedactor] = defect_m.redactor
+        self.treevw.item(defect_m.getId(), text=defect_m.title,
+                         tags=(newRisk), values=newValues)
+        if oldRisk != newRisk:
+            self.treevw.move(defect_m.getId(), &#39;&#39;,
+                             self.findInsertIndex(defect_m))
+
+    def OnDoubleClick(self, event):
+        &#34;&#34;&#34;
+        Callback for double click on treeview.
+        Opens a window to update the double clicked defect view.
+        Args:
+            event: automatically created with the event catch. stores data about line in treeview that was double clicked.
+        &#34;&#34;&#34;
+        item = self.treevw.identify(&#34;item&#34;, event.x, event.y)
+        defect_m = Defect.fetchObject({&#34;_id&#34;: ObjectId(item)})
+        dialog = ChildDialogDefectView(self.parent, self.settings, defect_m)
+        self.parent.wait_window(dialog.app)
+        self.updateDefectInTreevw(defect_m)
+
+    def fillWithDefects(self):
+        &#34;&#34;&#34;
+        Fetch defects that are global (not assigned to an ip) and fill the defect table with them.
+        &#34;&#34;&#34;
+        defects = Defect.fetchObjects({&#34;ip&#34;:&#34;&#34;})
+        d_list = {}
+        end_defect = []
+        for defect in defects:
+            if defect.index is None:
+                end_defect.append(defect)
+            elif str(defect.index) == &#34;end&#34;:
+                end_defect.append(defect)
+            else:
+                ind = int(defect.index)
+                if ind not in d_list:
+                    d_list[ind] = defect
+                else:
+                    new_ind = ind + 1
+                    while new_ind in d_list:
+                        new_ind += 1
+                    d_list[new_ind] = defect
+                    defect.index = new_ind
+                    defect.update({&#34;index&#34;:str(new_ind)})
+        # Fix dict order to index between 0 and *
+        keys_ordered = sorted(list(d_list.keys()))
+        for i in range(len(keys_ordered)):
+            self.addDefect(d_list[keys_ordered[i]])
+        for defect in end_defect:
+            self.addDefect(defect)
+
+    def findInsertIndex(self, defect_o):
+        &#34;&#34;&#34;
+        Find the inserting position for the given defect (treeview is sorted by risk)
+        Args:
+            defect_o: a Models.Defect object to be inserted in treeview
+        Returns:
+            the string &#34;end&#34; to insert at the end of the treeview
+            an integer between 0 and the nb of lines-1 otherwise
+        &#34;&#34;&#34;
+        children = self.treevw.get_children()
+        order = Report.getRisks()
+        columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+        for i in range(len(children)):
+            if str(defect_o.getId()) != str(children[i]):
+                cursorRisk = self.treevw.item(
+                    children[i])[&#34;values&#34;][columnRisk]
+                if order.index(defect_o.risk) &lt;= order.index(cursorRisk):
+                    return i
+        return &#34;end&#34;
+
+    def addDefect(self, defect_o):
+        &#34;&#34;&#34;
+        Add the given defect object in the treeview
+        Args:
+            defect_o: a Models.Defect object to be inserted in treeview
+        &#34;&#34;&#34;
+        if defect_o is None:
+            return
+        children = self.treevw.get_children()
+        if defect_o.index is None or str(defect_o.index) == &#34;&#34;:
+            indToInsert = self.findInsertIndex(defect_o)
+            if str(indToInsert) != &#34;end&#34;:
+                for i in range(int(indToInsert), len(children), 1):
+                    d_o = Defect({&#34;_id&#34;:children[i]})
+                    d_o.update({&#34;index&#34;:str(i+1)})
+        else:
+            indToInsert = defect_o.index
+        types = defect_o.mtype
+        types = &#34;, &#34;.join(defect_o.mtype)
+        new_values = (defect_o.ease, defect_o.impact,
+                      defect_o.risk, types, defect_o.redactor if defect_o.redactor != &#34;N/A&#34; else self.mainRedac)
+        already_inserted = False
+        already_inserted_iid = None
+        for child in children:
+            title = self.treevw.item(child)[&#34;text&#34;]
+            if title == defect_o.title:
+                already_inserted = True
+                already_inserted_iid = child
+                break
+        if not already_inserted:
+            try:
+                self.treevw.insert(&#39;&#39;, indToInsert, defect_o.getId(), text=defect_o.title,
+                                   values=new_values,
+                                   tags=(defect_o.risk))
+                defect_o.update({&#34;index&#34;:str(indToInsert)})
+            except tk.TclError:
+                # The defect already exists
+                already_inserted = True
+                already_inserted_iid = defect_o.getId()
+        if already_inserted:
+            existing = self.treevw.item(already_inserted_iid)
+            values = existing[&#34;values&#34;]
+            if values[4].strip() == &#34;N/A&#34;:
+                values[4] = defect_o.redactor
+            elif defect_o.redactor not in values[4].split(&#34;, &#34;):
+                values[4] += &#34;, &#34;+defect_o.redactor
+            self.treevw.item(already_inserted_iid, values=values)
+        # mongoInstance.insert(&#34;defects_table&#34;,{&#34;&#34;})
+        self.resizeDefectTreeview()
+    
+    def resizeDefectTreeview(self):
+        currentHeight = len(self.treevw.get_children())
+        if currentHeight &lt;= 15:
+            self.treevw.config(height=currentHeight)
+            self.paned.paneconfigure(self.frameTw, height=(currentHeight)*self.rowHeight+30)
+
+    def getDefectsAsDict(self):
+        &#34;&#34;&#34;
+        Returns a dictionnary with treeview defects stored inside
+        Returns:
+            The returned dict will be formed this way (shown as json):
+            {
+                &#34;Risk level describer 1&#34;:{
+                    &#34;defect title 1&#34;: {
+                        &#34;description&#34;:{
+                            &#34;title&#34;: &#34;defect title 1&#34;,
+                            &#34;risk&#34;: &#34;Risk level 1&#34;,
+                            &#34;ease&#34;: &#34;Ease of exploitation 1&#34;,
+                            &#34;impact&#34;: &#34;Impact 1&#34;,
+                            &#34;redactor&#34;: &#34;Redactor name&#34;,
+                            &#34;type&#34;: [&#39;D&#39;, &#39;T&#39;, ...]
+                        },
+                        &#34;defects_ids&#34;:[
+                            id 1,
+                            id 2...
+                        ]
+                    },
+                    &#34;defect title 2&#34;:{
+                        ...
+                    }
+                    ...
+                },
+                &#34;Risk level describer 2&#34;:{
+                    ...
+                }
+                ...
+            }
+        &#34;&#34;&#34;
+        defects_dict = dict()
+        defects_dict[&#34;Critique&#34;] = dict()
+        defects_dict[&#34;Majeur&#34;] = dict()
+        defects_dict[&#34;Important&#34;] = dict()
+        defects_dict[&#34;Mineur&#34;] = dict()
+        columnEase = self.treevw[&#39;columns&#39;].index(&#34;ease&#34;)
+        columnImpact = self.treevw[&#39;columns&#39;].index(&#34;impact&#34;)
+        columnType = self.treevw[&#39;columns&#39;].index(&#34;type&#34;)
+        columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+        columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+        for children_id in self.treevw.get_children():
+            children = self.treevw.item(children_id)
+            title = children[&#34;text&#34;]
+            defect_recap = dict()
+            defect_recap[&#34;title&#34;] = title
+            defect_recap[&#34;risk&#34;] = children[&#34;values&#34;][columnRisk]
+            defect_recap[&#34;ease&#34;] = children[&#34;values&#34;][columnEase]
+            defect_recap[&#34;impact&#34;] = children[&#34;values&#34;][columnImpact]
+            defect_recap[&#34;redactor&#34;] = children[&#34;values&#34;][columnRedactor]
+            types = children[&#34;values&#34;][columnType].split(&#34;,&#34;)
+            d_types = []
+            for d_type in types:
+                d_types.append(d_type.strip())
+            defect_recap[&#34;type&#34;] = d_types
+            defects_dict[defect_recap[&#34;risk&#34;]][title] = dict()
+            defects_dict[defect_recap[&#34;risk&#34;]
+                         ][title][&#34;description&#34;] = defect_recap
+            defects_dict[defect_recap[&#34;risk&#34;]][title][&#34;defects_ids&#34;] = []
+            defects = Defect.fetchObjects({&#34;title&#34;: title})
+            for defect in defects:
+                defects_dict[defect_recap[&#34;risk&#34;]
+                             ][title][&#34;defects_ids&#34;].append(defect.getId())
+        return defects_dict
+
+    def generateReportWord(self):
+        &#34;&#34;&#34;
+        Export a calendar defects to a word formatted file.
+        &#34;&#34;&#34;
+        if self.ent_client.get().strip() == &#34;&#34;:
+            tk.messagebox.showerror(
+                &#34;Missing required field&#34;, &#34;The client&#39;s name input must be filled.&#34;)
+            return
+        if self.ent_contract.get().strip() == &#34;&#34;:
+            tk.messagebox.showerror(
+                &#34;Missing required field&#34;, &#34;The contract&#39;s name input must be filled.&#34;)
+            return
+        mongoInstance = MongoCalendar.getInstance()
+        toExport = mongoInstance.calendarName
+        if toExport != &#34;&#34;:
+            modele_docx = str(self.val_word.get())
+            timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+            basename = self.ent_client.get().strip() + &#34; - &#34;+self.ent_contract.get().strip()
+            out_name = str(timestr)+&#34; - &#34;+basename
+            dialog = ChildDialogProgress(
+                self.parent, &#34;Word Report&#34;, &#34;Creating report &#34;+str(out_name) + &#34;. Please wait.&#34;, 200, &#34;determinate&#34;)
+            WordExport.createReport(self.getDefectsAsDict(), modele_docx, out_name, main_redactor=self.mainRedac,
+                                    client=self.ent_client.get().strip(), contract=self.ent_contract.get().strip(), root=self.parent, progressbar=dialog)
+            dialog.destroy()
+            tkinter.messagebox.showinfo(
+                &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))
+
+    def generateReportPowerpoint(self):
+        &#34;&#34;&#34;
+        Export a calendar defects to a pptx formatted file.
+        &#34;&#34;&#34;
+        if self.ent_client.get().strip() == &#34;&#34;:
+            tk.messagebox.showerror(
+                &#34;Missing required field&#34;, &#34;The client&#39;s name input must be filled.&#34;)
+            return
+        if self.ent_contract.get().strip() == &#34;&#34;:
+            tk.messagebox.showerror(
+                &#34;Missing required field&#34;, &#34;The contract&#39;s name input must be filled.&#34;)
+            return
+        mongoInstance = MongoCalendar.getInstance()
+        toExport = mongoInstance.calendarName
+        if toExport != &#34;&#34;:
+            modele_pptx = str(self.val_ppt.get())
+            timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+            basename = self.ent_client.get().strip() + &#34; - &#34;+self.ent_contract.get().strip()
+            out_name = str(timestr)+&#34; - &#34;+basename
+            dialog = ChildDialogProgress(
+                self.parent, &#34;Powerpoint Report&#34;, &#34;Creating report &#34;+str(out_name) + &#34;. Please wait.&#34;, 200, progress_mode=&#34;determinate&#34;)
+            PowerpointExport.createReport(self.getDefectsAsDict(), modele_pptx, out_name, client=self.ent_client.get(
+            ).strip(), contract=self.ent_contract.get().strip(), root=self.parent, progressbar=dialog)
+            dialog.destroy()
+            tkinter.messagebox.showinfo(
+                &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))
+
+    def generateReportExcel(self):
+        &#34;&#34;&#34;
+        Export a calendar status to an excel file.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        toExport = mongoInstance.calendarName
+        if toExport != &#34;&#34;:
+            timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+            out_name = toExport+&#34;_&#34;+str(timestr)+&#34;.xlsx&#34;
+            ExcelExport.exportExcel(self.getDefectsAsDict(), out_name)
+            tkinter.messagebox.showinfo(
+                &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.Report.Report"><code class="flex name class">
+<span>class <span class="ident">Report</span></span>
+<span>(</span><span>settings)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Store elements to report and create docx or xlsx with them</p>
+<p>Constructor</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Report:
+    &#34;&#34;&#34;
+    Store elements to report and create docx or xlsx with them
+    &#34;&#34;&#34;
+
+    def __init__(self, settings):
+        &#34;&#34;&#34;
+        Constructor
+        &#34;&#34;&#34;
+        self.dir_path = os.path.dirname(os.path.realpath(__file__))
+        self.dir_path = os.path.normpath(os.path.join(self.dir_path, &#34;../../Templates/&#34;))
+        self.default_ppt = os.path.join(self.dir_path, &#34;Modele.pptx&#34;)
+        self.default_word = os.path.join(self.dir_path, &#34;Modele.docx&#34;)
+        self.mainRedac = &#34;N/A&#34;
+        self.settings = settings
+        self.dragging = None
+        self.parent = None
+        self.reportFrame = None
+        self.rowHeight = 0
+        self.style = None
+        self.treevw = None
+        self.ent_client = None
+        self.ent_contract = None
+        self.val_word = None
+        self.entry_word = None
+        self.val_ppt = None
+        self.entry_ppt = None
+        return
+
+    @classmethod
+    def getEases(cls):
+        &#34;&#34;&#34;
+        Returns: 
+            Returns a list of ease of exploitation levels for a security defect.
+        &#34;&#34;&#34;
+        return [&#34;Facile&#34;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;]
+
+    @classmethod
+    def getImpacts(cls):
+        &#34;&#34;&#34;
+        Returns: 
+            Returns a list of impact levels for a security defect.
+        &#34;&#34;&#34;
+        return [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;, &#34;N/A&#34;]
+
+    @classmethod
+    def getRisks(cls):
+        &#34;&#34;&#34;
+        Returns: 
+            Returns a list of risk levels for a security defect.
+        &#34;&#34;&#34;
+        return [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;, &#34;N/A&#34;]
+
+    @classmethod
+    def getTypes(cls):
+        &#34;&#34;&#34;
+        Returns: 
+            Returns a list of type for a security defect.
+        &#34;&#34;&#34;
+        return [&#34;Socle&#34;, &#34;Application&#34;, &#34;Politique&#34;, &#34;Active Directory&#34;, &#34;Infrastructure&#34;, &#34;Données&#34;]
+
+    def refreshUI(self):
+        &#34;&#34;&#34;
+        Reload informations and reload them into the widgets
+        &#34;&#34;&#34;
+        self.default_word = os.path.join(self.dir_path, &#34;Modele.docx&#34;)
+        self.settings.reloadSettings()
+        pentest_type = self.settings.getPentestType().lower()
+        models = [f for f in listdir(
+            self.dir_path) if isfile(join(self.dir_path, f)) and f.endswith(&#34;.docx&#34;) and pentest_type in f.lower()]
+        if models:
+            self.default_word = join(self.dir_path, models[0])
+        self.val_word.set(self.default_word)
+
+    def initUI(self, parent):
+        &#34;&#34;&#34;
+        Initialize window and widgets.
+        &#34;&#34;&#34;
+        if self.parent is not None:  # Already initialized
+            self.reset()
+            self.fillWithDefects()
+            return
+        self.parent = parent
+        ### MAIN PAGE FRAME ###
+        self.reportFrame = ttk.Frame(parent)
+        self.paned = tk.PanedWindow(self.reportFrame, orient=tk.VERTICAL, height=800)
+        ### DEFECT TABLE ###
+        self.rowHeight = 20
+        self.style = ttk.Style()
+        self.style.configure(&#39;Report.Treeview&#39;, rowheight=self.rowHeight)
+        self.frameTw = ttk.Frame(self.paned)
+        self.treevw = ttk.Treeview(self.frameTw, style=&#39;Report.Treeview&#39;, height=0)
+        self.treevw[&#39;columns&#39;] = (&#39;ease&#39;, &#39;impact&#39;, &#39;risk&#39;, &#39;type&#39;, &#39;redactor&#39;)
+        self.treevw.heading(&#34;#0&#34;, text=&#39;Title&#39;, anchor=tk.W)
+        self.treevw.column(&#34;#0&#34;, anchor=tk.W, width=150)
+        self.treevw.heading(&#39;ease&#39;, text=&#39;Ease&#39;)
+        self.treevw.column(&#39;ease&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevw.heading(&#39;impact&#39;, text=&#39;Impact&#39;)
+        self.treevw.column(&#39;impact&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevw.heading(&#39;risk&#39;, text=&#39;Risk&#39;)
+        self.treevw.column(&#39;risk&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevw.heading(&#39;type&#39;, text=&#39;Type&#39;)
+        self.treevw.column(&#39;type&#39;, anchor=&#39;center&#39;, width=10)
+        self.treevw.heading(&#39;redactor&#39;, text=&#39;Redactor&#39;)
+        self.treevw.column(&#39;redactor&#39;, anchor=&#39;center&#39;, width=20)
+        self.treevw.tag_configure(
+            &#34;Critique&#34;, background=&#34;black&#34;, foreground=&#34;white&#34;)
+        self.treevw.tag_configure(
+            &#34;Majeur&#34;, background=&#34;red&#34;, foreground=&#34;white&#34;)
+        self.treevw.tag_configure(
+            &#34;Important&#34;, background=&#34;orange&#34;, foreground=&#34;white&#34;)
+        self.treevw.tag_configure(
+            &#34;Mineur&#34;, background=&#34;yellow&#34;, foreground=&#34;black&#34;)
+        self.treevw.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+        self.treevw.bind(&#34;&lt;Alt-Up&gt;&#34;, self.moveItemUp)
+        self.treevw.bind(&#34;&lt;Alt-Down&gt;&#34;, self.moveItemDown)
+        self.treevw.bind(&#34;&lt;Delete&gt;&#34;, self.deleteSelectedItem)
+        self.treevw.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(self.frameTw,
+                                orient=tk.VERTICAL,
+                                command=self.treevw.yview)
+        self.treevw.configure(yscrollcommand=scbVSel.set)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        self.frameTw.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+        self.frameTw.columnconfigure(0, weight=1)
+        self.frameTw.rowconfigure(0, weight=1)
+        ### OFFICE EXPORT FRAME ###
+        belowFrame = ttk.Frame(self.paned)
+        frameBtn = ttk.Frame(belowFrame)
+        #lbl_help = FormHelper(&#34;DefectHelper&#34;, &#34;Use del to delete a defect, use Alt+Arrows to order them&#34;)
+        #lbl_help.constructView(frameBtn)
+        btn_addDefect = ttk.Button(
+            frameBtn, text=&#34;Add a security defect&#34;, command=self.addDefectCallback)
+        btn_addDefect.pack(side=tk.RIGHT)
+        btn_setMainRedactor = ttk.Button(
+            frameBtn, text=&#34;Set main redactor&#34;, command=self.setMainRedactor)
+        btn_setMainRedactor.pack(side=tk.RIGHT)
+        frameBtn.pack(side=tk.TOP)
+        officeFrame = ttk.LabelFrame(belowFrame, text=&#34; Office reports &#34;)
+        ### INFORMATION EXPORT FRAME ###
+        informations_frame = ttk.Frame(officeFrame)
+        lbl_client = ttk.Label(informations_frame, text=&#34;Client&#39;s name :&#34;)
+        lbl_client.grid(row=0, column=0, sticky=tk.E)
+        self.ent_client = ttk.Entry(informations_frame, width=50)
+        self.ent_client.grid(row=0, column=1, sticky=tk.W)
+        lbl_contract = ttk.Label(informations_frame, text=&#34;Contract&#39;s name :&#34;)
+        lbl_contract.grid(row=1, column=0, sticky=tk.E)
+        self.ent_contract = ttk.Entry(informations_frame, width=50)
+        self.ent_contract.grid(row=1, column=1, sticky=tk.W)
+        informations_frame.pack(side=tk.TOP, pady=10)
+        ### WORD EXPORT FRAME ###
+        wordFrame = ttk.Frame(officeFrame)
+        lbl = ttk.Label(
+            wordFrame, text=&#34;Choose a word template : &#34;, background=&#34;white&#34;)
+        lbl.pack(side=tk.LEFT)
+        self.val_word = tk.StringVar()
+        self.entry_word = tk.Entry(
+            wordFrame, textvariable=self.val_word, width=50)
+        self.entry_word.bind(&#34;&lt;Control-a&gt;&#34;, self.selectAll)
+        self.entry_word.pack(side=tk.LEFT, padx=10)
+        self.val_word.set(self.default_word)
+        search_btn = ttk.Button(wordFrame, text=&#34;...&#34;,
+                                command=self.on_click, width=5)
+        search_btn.pack(side=tk.LEFT, padx=10)
+        btn_word = ttk.Button(
+            wordFrame, text=&#34;Generate Word report&#34;, command=self.generateReportWord, width=30)
+        btn_word.pack(side=tk.RIGHT, padx=10)
+        wordFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        ### POWERPOINT EXPORT FRAME ###
+        powerpointFrame = ttk.Frame(officeFrame)
+        lbl = ttk.Label(powerpointFrame,
+                        text=&#34;Choose a pptx template : &#34;, background=&#34;white&#34;)
+        lbl.pack(side=tk.LEFT)
+        self.val_ppt = tk.StringVar()
+        self.entry_ppt = tk.Entry(
+            powerpointFrame, textvariable=self.val_ppt, width=50)
+        self.entry_ppt.bind(&#34;&lt;Control-a&gt;&#34;, self.selectAll)
+        self.entry_ppt.pack(side=tk.LEFT, padx=10)
+        self.val_ppt.set(self.default_ppt)
+        search_btn = ttk.Button(
+            powerpointFrame, text=&#34;...&#34;, command=self.on_click_pptx, width=5)
+        search_btn.pack(side=tk.LEFT, padx=10)
+        btn_ppt = ttk.Button(
+            powerpointFrame, text=&#34;Generate Powerpoint report&#34;, command=self.generateReportPowerpoint, width=30)
+        btn_ppt.pack(side=tk.RIGHT, padx=10)
+        powerpointFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        #### EXCEL EXPORT FRAME ###
+        excelFrame = ttk.Frame(officeFrame)
+        btn_excel = ttk.Button(
+            excelFrame, text=&#34;Generate Excel report&#34;, command=self.generateReportExcel, width=30)
+        btn_excel.pack(side=tk.RIGHT, padx=10)
+        excelFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        officeFrame.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+        self.paned.add(self.frameTw)
+        self.paned.add(belowFrame)
+        self.paned.pack(fill=tk.BOTH, expand=1)
+        self.reportFrame.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+        self.fillWithDefects()
+
+    def reset(self):
+        &#34;&#34;&#34;
+        reset defect treeview by deleting every item inside.
+        &#34;&#34;&#34;
+        for item in self.treevw.get_children():
+            self.treevw.delete(item)
+
+    def deleteSelectedItem(self, _event=None):
+        &#34;&#34;&#34;
+        Remove selected defect from treeview
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        selected = self.treevw.selection()[0]
+        self.removeItem(selected)
+
+    def removeItem(self, toDeleteIid):
+        &#34;&#34;&#34;
+        Remove defect from given iid in defect treeview
+        Args:
+            toDeleteIid: database ID of defect to delete
+        &#34;&#34;&#34;
+        item = self.treevw.item(toDeleteIid)
+        dialog = ChildDialogQuestion(self.parent,
+                                     &#34;DELETE WARNING&#34;, &#34;Are you sure you want to delete defect &#34;+str(item[&#34;text&#34;])+&#34; ?&#34;, [&#34;Delete&#34;, &#34;Cancel&#34;])
+        self.parent.wait_window(dialog.app)
+        if dialog.rvalue != &#34;Delete&#34;:
+            return
+        self.treevw.delete(toDeleteIid)
+        defectToDelete = Defect.fetchObject({&#34;title&#34;: item[&#34;text&#34;], &#34;ip&#34;:&#34;&#34;, &#34;port&#34;:&#34;&#34;, &#34;proto&#34;:&#34;&#34;})
+        if defectToDelete is not None:
+            if defectToDelete.index is not None:
+                index = int(defectToDelete.index)
+                children = self.treevw.get_children()
+                for i in range(index+1,len(children),1):
+                    d_o = Defect({&#34;_id&#34;:children[i]})
+                    d_o.update({&#34;index&#34;:str(i)})
+            defectToDelete.delete()
+            self.resizeDefectTreeview()
+
+    def moveItemUp(self, _event=None):
+        &#34;&#34;&#34;
+        Swap the selected treeview item with the one up above it.
+        Args:
+            _event: not used but mandatory
+        Returns:
+            returns &#34;break&#34; to stop the interrupt the event thus preventing cursor to move up
+        &#34;&#34;&#34;
+        selected = self.treevw.selection()[0]
+        currentIndice = 0
+        children = self.treevw.get_children()
+        for i, child in enumerate(children):
+            if child == selected:
+                currentIndice = i
+                break
+        if currentIndice != 0:
+            self.treevw.move(selected, &#39;&#39;, currentIndice-1)
+            mongoInstance = MongoCalendar.getInstance()
+            selected = children[currentIndice]
+            moved_by_side_effect = children[currentIndice-1]
+            mongoInstance.update(Defect.coll_name,
+                             {&#34;_id&#34;: ObjectId(selected)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice-1)}})
+            mongoInstance.update(Defect.coll_name,
+                             {&#34;_id&#34;: ObjectId(moved_by_side_effect)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice)}})
+        return &#34;break&#34;
+
+    def moveItemDown(self, _event=None):
+        &#34;&#34;&#34;
+        Swap the selected treeview item with the one down below it.
+        Args:
+            _event: not used but mandatory
+        Returns:
+            returns &#34;break&#34; to stop the interrupt the event thus preventing cursor to move down
+        &#34;&#34;&#34;
+        selected = self.treevw.selection()[0]
+        len_max = len(self.treevw.get_children())
+        currentIndice = len_max-1
+        children = self.treevw.get_children()
+        for i, child in enumerate(children):
+            if child == selected:
+                currentIndice = i
+                break
+        if currentIndice &lt; len_max-1:
+            self.treevw.move(selected, &#39;&#39;, currentIndice+1)
+            mongoInstance = MongoCalendar.getInstance()
+            selected = children[currentIndice]
+            moved_by_side_effect = children[currentIndice+1]
+            mongoInstance.update(Defect.coll_name,
+                             {&#34;_id&#34;: ObjectId(selected)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice+1)}})
+            mongoInstance.update(Defect.coll_name,
+                             {&#34;_id&#34;: ObjectId(moved_by_side_effect)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice)}})
+        return &#34;break&#34;
+
+    def on_click(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for selecting word template.
+        Open a filedialog window and sets the entry value to the selected file
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        ftypes = [
+            (&#39;Word files&#39;, &#39;*.docx&#39;),
+            (&#39;All files&#39;, &#39;*&#39;),
+        ]
+        f = tkinter.filedialog.askopenfilename(
+            initialdir=self.dir_path, title=&#34;Select template for report&#34;, defaultextension=&#34;.docx&#34;, filetypes=ftypes)
+        if f is None:  # asksaveasfile return `None` if dialog closed with &#34;cancel&#34;.
+            return
+        filename = str(f)
+        if filename == &#34;()&#34;:
+            return
+        self.val_word.set(filename)
+
+    def on_click_pptx(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for selecting powerpoint template.
+        Open a filedialog window and sets the entry value to the selected file
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        ftypes = [
+            (&#39;Powerpoint files&#39;, &#39;*.pptx&#39;),
+            (&#39;All files&#39;, &#39;*&#39;),
+        ]
+        f = tkinter.filedialog.askopenfilename(
+            initialdir=self.dir_path, title=&#34;Select template for report&#34;, defaultextension=&#34;.pptx&#34;, filetypes=ftypes)
+        if f is None:  # asksaveasfile return `None` if dialog closed with &#34;cancel&#34;.
+            return
+        filename = str(f)
+        if filename == &#34;()&#34;:
+            return
+        self.val_ppt.set(filename)
+
+    def selectAll(self, _event):
+        &#34;&#34;&#34;
+        Select all text in an entry
+        Args:
+            _event: not used but mandatory
+        Returns:
+            returns &#34;break&#34; to stop the interrupt the event thus preventing the shortcut key to be written
+        &#34;&#34;&#34;
+        # select text
+        self.entry_word.select_range(0, &#39;end&#39;)
+        # move cursor to the end
+        self.entry_word.icursor(&#39;end&#39;)
+        return &#34;break&#34;
+
+    def addDefectCallback(self):
+        &#34;&#34;&#34;Open an insert defect view form in a child window&#34;&#34;&#34;
+        dialog = ChildDialogDefectView(self.parent, self.settings)
+        self.parent.wait_window(dialog.app)
+
+    def setMainRedactor(self):
+        &#34;&#34;&#34;Sets a main redactor for a pentest. Each not assigned defect will be assigned to him/her&#34;&#34;&#34;
+        self.settings.reloadSettings()
+        dialog = ChildDialogCombo(self.parent, self.settings.getPentesters()+[&#34;N/A&#34;], &#34;Set main redactor&#34;, &#34;N/A&#34;)
+        newVal = self.parent.wait_window(dialog.app)
+        if newVal is None:
+            return
+        if not newVal or newVal.strip() == &#34;&#34;:
+            return
+        columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+        for it in self.treevw.get_children():
+            oldValues = self.treevw.item(it)[&#34;values&#34;]
+            if oldValues[columnRedactor] == &#34;N/A&#34;:
+                oldValues[columnRedactor] = newVal
+                self.treevw.item(it, values=oldValues)
+                d_o = Defect({&#34;_id&#34;:it})
+                d_o.update({&#34;redactor&#34;:newVal})
+        self.mainRedac = newVal
+
+    def updateDefectInTreevw(self, defect_m, redactor=None):
+        &#34;&#34;&#34;
+        Change values of a selected defect in the treeview
+        Args:
+            defect_m: a defect model with updated values
+            redactor: a redactor name for this defect, can be None (default)
+        &#34;&#34;&#34;
+        columnEase = self.treevw[&#39;columns&#39;].index(&#34;ease&#34;)
+        columnImpact = self.treevw[&#39;columns&#39;].index(&#34;impact&#34;)
+        columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+        columnType = self.treevw[&#39;columns&#39;].index(&#34;type&#34;)
+        columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+        oldValues = self.treevw.item(defect_m.getId())[&#34;values&#34;]
+        oldRisk = oldValues[columnRisk]
+        newRisk = defect_m.risk
+        newValues = [&#34;&#34;]*5
+        newValues[columnEase] = defect_m.ease
+        newValues[columnImpact] = defect_m.impact
+        newValues[columnRisk] = defect_m.risk
+        newValues[columnType] = &#34;, &#34;.join(defect_m.mtype)
+        newValues[columnRedactor] = defect_m.redactor
+        self.treevw.item(defect_m.getId(), text=defect_m.title,
+                         tags=(newRisk), values=newValues)
+        if oldRisk != newRisk:
+            self.treevw.move(defect_m.getId(), &#39;&#39;,
+                             self.findInsertIndex(defect_m))
+
+    def OnDoubleClick(self, event):
+        &#34;&#34;&#34;
+        Callback for double click on treeview.
+        Opens a window to update the double clicked defect view.
+        Args:
+            event: automatically created with the event catch. stores data about line in treeview that was double clicked.
+        &#34;&#34;&#34;
+        item = self.treevw.identify(&#34;item&#34;, event.x, event.y)
+        defect_m = Defect.fetchObject({&#34;_id&#34;: ObjectId(item)})
+        dialog = ChildDialogDefectView(self.parent, self.settings, defect_m)
+        self.parent.wait_window(dialog.app)
+        self.updateDefectInTreevw(defect_m)
+
+    def fillWithDefects(self):
+        &#34;&#34;&#34;
+        Fetch defects that are global (not assigned to an ip) and fill the defect table with them.
+        &#34;&#34;&#34;
+        defects = Defect.fetchObjects({&#34;ip&#34;:&#34;&#34;})
+        d_list = {}
+        end_defect = []
+        for defect in defects:
+            if defect.index is None:
+                end_defect.append(defect)
+            elif str(defect.index) == &#34;end&#34;:
+                end_defect.append(defect)
+            else:
+                ind = int(defect.index)
+                if ind not in d_list:
+                    d_list[ind] = defect
+                else:
+                    new_ind = ind + 1
+                    while new_ind in d_list:
+                        new_ind += 1
+                    d_list[new_ind] = defect
+                    defect.index = new_ind
+                    defect.update({&#34;index&#34;:str(new_ind)})
+        # Fix dict order to index between 0 and *
+        keys_ordered = sorted(list(d_list.keys()))
+        for i in range(len(keys_ordered)):
+            self.addDefect(d_list[keys_ordered[i]])
+        for defect in end_defect:
+            self.addDefect(defect)
+
+    def findInsertIndex(self, defect_o):
+        &#34;&#34;&#34;
+        Find the inserting position for the given defect (treeview is sorted by risk)
+        Args:
+            defect_o: a Models.Defect object to be inserted in treeview
+        Returns:
+            the string &#34;end&#34; to insert at the end of the treeview
+            an integer between 0 and the nb of lines-1 otherwise
+        &#34;&#34;&#34;
+        children = self.treevw.get_children()
+        order = Report.getRisks()
+        columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+        for i in range(len(children)):
+            if str(defect_o.getId()) != str(children[i]):
+                cursorRisk = self.treevw.item(
+                    children[i])[&#34;values&#34;][columnRisk]
+                if order.index(defect_o.risk) &lt;= order.index(cursorRisk):
+                    return i
+        return &#34;end&#34;
+
+    def addDefect(self, defect_o):
+        &#34;&#34;&#34;
+        Add the given defect object in the treeview
+        Args:
+            defect_o: a Models.Defect object to be inserted in treeview
+        &#34;&#34;&#34;
+        if defect_o is None:
+            return
+        children = self.treevw.get_children()
+        if defect_o.index is None or str(defect_o.index) == &#34;&#34;:
+            indToInsert = self.findInsertIndex(defect_o)
+            if str(indToInsert) != &#34;end&#34;:
+                for i in range(int(indToInsert), len(children), 1):
+                    d_o = Defect({&#34;_id&#34;:children[i]})
+                    d_o.update({&#34;index&#34;:str(i+1)})
+        else:
+            indToInsert = defect_o.index
+        types = defect_o.mtype
+        types = &#34;, &#34;.join(defect_o.mtype)
+        new_values = (defect_o.ease, defect_o.impact,
+                      defect_o.risk, types, defect_o.redactor if defect_o.redactor != &#34;N/A&#34; else self.mainRedac)
+        already_inserted = False
+        already_inserted_iid = None
+        for child in children:
+            title = self.treevw.item(child)[&#34;text&#34;]
+            if title == defect_o.title:
+                already_inserted = True
+                already_inserted_iid = child
+                break
+        if not already_inserted:
+            try:
+                self.treevw.insert(&#39;&#39;, indToInsert, defect_o.getId(), text=defect_o.title,
+                                   values=new_values,
+                                   tags=(defect_o.risk))
+                defect_o.update({&#34;index&#34;:str(indToInsert)})
+            except tk.TclError:
+                # The defect already exists
+                already_inserted = True
+                already_inserted_iid = defect_o.getId()
+        if already_inserted:
+            existing = self.treevw.item(already_inserted_iid)
+            values = existing[&#34;values&#34;]
+            if values[4].strip() == &#34;N/A&#34;:
+                values[4] = defect_o.redactor
+            elif defect_o.redactor not in values[4].split(&#34;, &#34;):
+                values[4] += &#34;, &#34;+defect_o.redactor
+            self.treevw.item(already_inserted_iid, values=values)
+        # mongoInstance.insert(&#34;defects_table&#34;,{&#34;&#34;})
+        self.resizeDefectTreeview()
+    
+    def resizeDefectTreeview(self):
+        currentHeight = len(self.treevw.get_children())
+        if currentHeight &lt;= 15:
+            self.treevw.config(height=currentHeight)
+            self.paned.paneconfigure(self.frameTw, height=(currentHeight)*self.rowHeight+30)
+
+    def getDefectsAsDict(self):
+        &#34;&#34;&#34;
+        Returns a dictionnary with treeview defects stored inside
+        Returns:
+            The returned dict will be formed this way (shown as json):
+            {
+                &#34;Risk level describer 1&#34;:{
+                    &#34;defect title 1&#34;: {
+                        &#34;description&#34;:{
+                            &#34;title&#34;: &#34;defect title 1&#34;,
+                            &#34;risk&#34;: &#34;Risk level 1&#34;,
+                            &#34;ease&#34;: &#34;Ease of exploitation 1&#34;,
+                            &#34;impact&#34;: &#34;Impact 1&#34;,
+                            &#34;redactor&#34;: &#34;Redactor name&#34;,
+                            &#34;type&#34;: [&#39;D&#39;, &#39;T&#39;, ...]
+                        },
+                        &#34;defects_ids&#34;:[
+                            id 1,
+                            id 2...
+                        ]
+                    },
+                    &#34;defect title 2&#34;:{
+                        ...
+                    }
+                    ...
+                },
+                &#34;Risk level describer 2&#34;:{
+                    ...
+                }
+                ...
+            }
+        &#34;&#34;&#34;
+        defects_dict = dict()
+        defects_dict[&#34;Critique&#34;] = dict()
+        defects_dict[&#34;Majeur&#34;] = dict()
+        defects_dict[&#34;Important&#34;] = dict()
+        defects_dict[&#34;Mineur&#34;] = dict()
+        columnEase = self.treevw[&#39;columns&#39;].index(&#34;ease&#34;)
+        columnImpact = self.treevw[&#39;columns&#39;].index(&#34;impact&#34;)
+        columnType = self.treevw[&#39;columns&#39;].index(&#34;type&#34;)
+        columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+        columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+        for children_id in self.treevw.get_children():
+            children = self.treevw.item(children_id)
+            title = children[&#34;text&#34;]
+            defect_recap = dict()
+            defect_recap[&#34;title&#34;] = title
+            defect_recap[&#34;risk&#34;] = children[&#34;values&#34;][columnRisk]
+            defect_recap[&#34;ease&#34;] = children[&#34;values&#34;][columnEase]
+            defect_recap[&#34;impact&#34;] = children[&#34;values&#34;][columnImpact]
+            defect_recap[&#34;redactor&#34;] = children[&#34;values&#34;][columnRedactor]
+            types = children[&#34;values&#34;][columnType].split(&#34;,&#34;)
+            d_types = []
+            for d_type in types:
+                d_types.append(d_type.strip())
+            defect_recap[&#34;type&#34;] = d_types
+            defects_dict[defect_recap[&#34;risk&#34;]][title] = dict()
+            defects_dict[defect_recap[&#34;risk&#34;]
+                         ][title][&#34;description&#34;] = defect_recap
+            defects_dict[defect_recap[&#34;risk&#34;]][title][&#34;defects_ids&#34;] = []
+            defects = Defect.fetchObjects({&#34;title&#34;: title})
+            for defect in defects:
+                defects_dict[defect_recap[&#34;risk&#34;]
+                             ][title][&#34;defects_ids&#34;].append(defect.getId())
+        return defects_dict
+
+    def generateReportWord(self):
+        &#34;&#34;&#34;
+        Export a calendar defects to a word formatted file.
+        &#34;&#34;&#34;
+        if self.ent_client.get().strip() == &#34;&#34;:
+            tk.messagebox.showerror(
+                &#34;Missing required field&#34;, &#34;The client&#39;s name input must be filled.&#34;)
+            return
+        if self.ent_contract.get().strip() == &#34;&#34;:
+            tk.messagebox.showerror(
+                &#34;Missing required field&#34;, &#34;The contract&#39;s name input must be filled.&#34;)
+            return
+        mongoInstance = MongoCalendar.getInstance()
+        toExport = mongoInstance.calendarName
+        if toExport != &#34;&#34;:
+            modele_docx = str(self.val_word.get())
+            timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+            basename = self.ent_client.get().strip() + &#34; - &#34;+self.ent_contract.get().strip()
+            out_name = str(timestr)+&#34; - &#34;+basename
+            dialog = ChildDialogProgress(
+                self.parent, &#34;Word Report&#34;, &#34;Creating report &#34;+str(out_name) + &#34;. Please wait.&#34;, 200, &#34;determinate&#34;)
+            WordExport.createReport(self.getDefectsAsDict(), modele_docx, out_name, main_redactor=self.mainRedac,
+                                    client=self.ent_client.get().strip(), contract=self.ent_contract.get().strip(), root=self.parent, progressbar=dialog)
+            dialog.destroy()
+            tkinter.messagebox.showinfo(
+                &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))
+
+    def generateReportPowerpoint(self):
+        &#34;&#34;&#34;
+        Export a calendar defects to a pptx formatted file.
+        &#34;&#34;&#34;
+        if self.ent_client.get().strip() == &#34;&#34;:
+            tk.messagebox.showerror(
+                &#34;Missing required field&#34;, &#34;The client&#39;s name input must be filled.&#34;)
+            return
+        if self.ent_contract.get().strip() == &#34;&#34;:
+            tk.messagebox.showerror(
+                &#34;Missing required field&#34;, &#34;The contract&#39;s name input must be filled.&#34;)
+            return
+        mongoInstance = MongoCalendar.getInstance()
+        toExport = mongoInstance.calendarName
+        if toExport != &#34;&#34;:
+            modele_pptx = str(self.val_ppt.get())
+            timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+            basename = self.ent_client.get().strip() + &#34; - &#34;+self.ent_contract.get().strip()
+            out_name = str(timestr)+&#34; - &#34;+basename
+            dialog = ChildDialogProgress(
+                self.parent, &#34;Powerpoint Report&#34;, &#34;Creating report &#34;+str(out_name) + &#34;. Please wait.&#34;, 200, progress_mode=&#34;determinate&#34;)
+            PowerpointExport.createReport(self.getDefectsAsDict(), modele_pptx, out_name, client=self.ent_client.get(
+            ).strip(), contract=self.ent_contract.get().strip(), root=self.parent, progressbar=dialog)
+            dialog.destroy()
+            tkinter.messagebox.showinfo(
+                &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))
+
+    def generateReportExcel(self):
+        &#34;&#34;&#34;
+        Export a calendar status to an excel file.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        toExport = mongoInstance.calendarName
+        if toExport != &#34;&#34;:
+            timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+            out_name = toExport+&#34;_&#34;+str(timestr)+&#34;.xlsx&#34;
+            ExcelExport.exportExcel(self.getDefectsAsDict(), out_name)
+            tkinter.messagebox.showinfo(
+                &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Report.Report.getEases"><code class="name flex">
+<span>def <span class="ident">getEases</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+Returns a list of ease of exploitation levels for a security defect.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getEases(cls):
+    &#34;&#34;&#34;
+    Returns: 
+        Returns a list of ease of exploitation levels for a security defect.
+    &#34;&#34;&#34;
+    return [&#34;Facile&#34;, &#34;Modérée&#34;, &#34;Difficile&#34;, &#34;Très difficile&#34;, &#34;N/A&#34;]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.getImpacts"><code class="name flex">
+<span>def <span class="ident">getImpacts</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+Returns a list of impact levels for a security defect.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getImpacts(cls):
+    &#34;&#34;&#34;
+    Returns: 
+        Returns a list of impact levels for a security defect.
+    &#34;&#34;&#34;
+    return [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;, &#34;N/A&#34;]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.getRisks"><code class="name flex">
+<span>def <span class="ident">getRisks</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+Returns a list of risk levels for a security defect.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getRisks(cls):
+    &#34;&#34;&#34;
+    Returns: 
+        Returns a list of risk levels for a security defect.
+    &#34;&#34;&#34;
+    return [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;, &#34;N/A&#34;]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.getTypes"><code class="name flex">
+<span>def <span class="ident">getTypes</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+Returns a list of type for a security defect.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getTypes(cls):
+    &#34;&#34;&#34;
+    Returns: 
+        Returns a list of type for a security defect.
+    &#34;&#34;&#34;
+    return [&#34;Socle&#34;, &#34;Application&#34;, &#34;Politique&#34;, &#34;Active Directory&#34;, &#34;Infrastructure&#34;, &#34;Données&#34;]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Report.Report.OnDoubleClick"><code class="name flex">
+<span>def <span class="ident">OnDoubleClick</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for double click on treeview.
+Opens a window to update the double clicked defect view.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>automatically created with the event catch. stores data about line in treeview that was double clicked.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OnDoubleClick(self, event):
+    &#34;&#34;&#34;
+    Callback for double click on treeview.
+    Opens a window to update the double clicked defect view.
+    Args:
+        event: automatically created with the event catch. stores data about line in treeview that was double clicked.
+    &#34;&#34;&#34;
+    item = self.treevw.identify(&#34;item&#34;, event.x, event.y)
+    defect_m = Defect.fetchObject({&#34;_id&#34;: ObjectId(item)})
+    dialog = ChildDialogDefectView(self.parent, self.settings, defect_m)
+    self.parent.wait_window(dialog.app)
+    self.updateDefectInTreevw(defect_m)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.addDefect"><code class="name flex">
+<span>def <span class="ident">addDefect</span></span>(<span>self, defect_o)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add the given defect object in the treeview</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>defect_o</code></strong></dt>
+<dd>a Models.Defect object to be inserted in treeview</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addDefect(self, defect_o):
+    &#34;&#34;&#34;
+    Add the given defect object in the treeview
+    Args:
+        defect_o: a Models.Defect object to be inserted in treeview
+    &#34;&#34;&#34;
+    if defect_o is None:
+        return
+    children = self.treevw.get_children()
+    if defect_o.index is None or str(defect_o.index) == &#34;&#34;:
+        indToInsert = self.findInsertIndex(defect_o)
+        if str(indToInsert) != &#34;end&#34;:
+            for i in range(int(indToInsert), len(children), 1):
+                d_o = Defect({&#34;_id&#34;:children[i]})
+                d_o.update({&#34;index&#34;:str(i+1)})
+    else:
+        indToInsert = defect_o.index
+    types = defect_o.mtype
+    types = &#34;, &#34;.join(defect_o.mtype)
+    new_values = (defect_o.ease, defect_o.impact,
+                  defect_o.risk, types, defect_o.redactor if defect_o.redactor != &#34;N/A&#34; else self.mainRedac)
+    already_inserted = False
+    already_inserted_iid = None
+    for child in children:
+        title = self.treevw.item(child)[&#34;text&#34;]
+        if title == defect_o.title:
+            already_inserted = True
+            already_inserted_iid = child
+            break
+    if not already_inserted:
+        try:
+            self.treevw.insert(&#39;&#39;, indToInsert, defect_o.getId(), text=defect_o.title,
+                               values=new_values,
+                               tags=(defect_o.risk))
+            defect_o.update({&#34;index&#34;:str(indToInsert)})
+        except tk.TclError:
+            # The defect already exists
+            already_inserted = True
+            already_inserted_iid = defect_o.getId()
+    if already_inserted:
+        existing = self.treevw.item(already_inserted_iid)
+        values = existing[&#34;values&#34;]
+        if values[4].strip() == &#34;N/A&#34;:
+            values[4] = defect_o.redactor
+        elif defect_o.redactor not in values[4].split(&#34;, &#34;):
+            values[4] += &#34;, &#34;+defect_o.redactor
+        self.treevw.item(already_inserted_iid, values=values)
+    # mongoInstance.insert(&#34;defects_table&#34;,{&#34;&#34;})
+    self.resizeDefectTreeview()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.addDefectCallback"><code class="name flex">
+<span>def <span class="ident">addDefectCallback</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Open an insert defect view form in a child window</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addDefectCallback(self):
+    &#34;&#34;&#34;Open an insert defect view form in a child window&#34;&#34;&#34;
+    dialog = ChildDialogDefectView(self.parent, self.settings)
+    self.parent.wait_window(dialog.app)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.deleteSelectedItem"><code class="name flex">
+<span>def <span class="ident">deleteSelectedItem</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove selected defect from treeview</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteSelectedItem(self, _event=None):
+    &#34;&#34;&#34;
+    Remove selected defect from treeview
+    Args:
+        _event: not used but mandatory
+    &#34;&#34;&#34;
+    selected = self.treevw.selection()[0]
+    self.removeItem(selected)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.fillWithDefects"><code class="name flex">
+<span>def <span class="ident">fillWithDefects</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fetch defects that are global (not assigned to an ip) and fill the defect table with them.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fillWithDefects(self):
+    &#34;&#34;&#34;
+    Fetch defects that are global (not assigned to an ip) and fill the defect table with them.
+    &#34;&#34;&#34;
+    defects = Defect.fetchObjects({&#34;ip&#34;:&#34;&#34;})
+    d_list = {}
+    end_defect = []
+    for defect in defects:
+        if defect.index is None:
+            end_defect.append(defect)
+        elif str(defect.index) == &#34;end&#34;:
+            end_defect.append(defect)
+        else:
+            ind = int(defect.index)
+            if ind not in d_list:
+                d_list[ind] = defect
+            else:
+                new_ind = ind + 1
+                while new_ind in d_list:
+                    new_ind += 1
+                d_list[new_ind] = defect
+                defect.index = new_ind
+                defect.update({&#34;index&#34;:str(new_ind)})
+    # Fix dict order to index between 0 and *
+    keys_ordered = sorted(list(d_list.keys()))
+    for i in range(len(keys_ordered)):
+        self.addDefect(d_list[keys_ordered[i]])
+    for defect in end_defect:
+        self.addDefect(defect)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.findInsertIndex"><code class="name flex">
+<span>def <span class="ident">findInsertIndex</span></span>(<span>self, defect_o)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Find the inserting position for the given defect (treeview is sorted by risk)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>defect_o</code></strong></dt>
+<dd>a Models.Defect object to be inserted in treeview</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the string "end" to insert at the end</code> of <code>the treeview</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>an integer between 0 and the nb</code> of <code>lines-1 otherwise</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findInsertIndex(self, defect_o):
+    &#34;&#34;&#34;
+    Find the inserting position for the given defect (treeview is sorted by risk)
+    Args:
+        defect_o: a Models.Defect object to be inserted in treeview
+    Returns:
+        the string &#34;end&#34; to insert at the end of the treeview
+        an integer between 0 and the nb of lines-1 otherwise
+    &#34;&#34;&#34;
+    children = self.treevw.get_children()
+    order = Report.getRisks()
+    columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+    for i in range(len(children)):
+        if str(defect_o.getId()) != str(children[i]):
+            cursorRisk = self.treevw.item(
+                children[i])[&#34;values&#34;][columnRisk]
+            if order.index(defect_o.risk) &lt;= order.index(cursorRisk):
+                return i
+    return &#34;end&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.generateReportExcel"><code class="name flex">
+<span>def <span class="ident">generateReportExcel</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export a calendar status to an excel file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generateReportExcel(self):
+    &#34;&#34;&#34;
+    Export a calendar status to an excel file.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    toExport = mongoInstance.calendarName
+    if toExport != &#34;&#34;:
+        timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+        out_name = toExport+&#34;_&#34;+str(timestr)+&#34;.xlsx&#34;
+        ExcelExport.exportExcel(self.getDefectsAsDict(), out_name)
+        tkinter.messagebox.showinfo(
+            &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.generateReportPowerpoint"><code class="name flex">
+<span>def <span class="ident">generateReportPowerpoint</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export a calendar defects to a pptx formatted file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generateReportPowerpoint(self):
+    &#34;&#34;&#34;
+    Export a calendar defects to a pptx formatted file.
+    &#34;&#34;&#34;
+    if self.ent_client.get().strip() == &#34;&#34;:
+        tk.messagebox.showerror(
+            &#34;Missing required field&#34;, &#34;The client&#39;s name input must be filled.&#34;)
+        return
+    if self.ent_contract.get().strip() == &#34;&#34;:
+        tk.messagebox.showerror(
+            &#34;Missing required field&#34;, &#34;The contract&#39;s name input must be filled.&#34;)
+        return
+    mongoInstance = MongoCalendar.getInstance()
+    toExport = mongoInstance.calendarName
+    if toExport != &#34;&#34;:
+        modele_pptx = str(self.val_ppt.get())
+        timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+        basename = self.ent_client.get().strip() + &#34; - &#34;+self.ent_contract.get().strip()
+        out_name = str(timestr)+&#34; - &#34;+basename
+        dialog = ChildDialogProgress(
+            self.parent, &#34;Powerpoint Report&#34;, &#34;Creating report &#34;+str(out_name) + &#34;. Please wait.&#34;, 200, progress_mode=&#34;determinate&#34;)
+        PowerpointExport.createReport(self.getDefectsAsDict(), modele_pptx, out_name, client=self.ent_client.get(
+        ).strip(), contract=self.ent_contract.get().strip(), root=self.parent, progressbar=dialog)
+        dialog.destroy()
+        tkinter.messagebox.showinfo(
+            &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.generateReportWord"><code class="name flex">
+<span>def <span class="ident">generateReportWord</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export a calendar defects to a word formatted file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generateReportWord(self):
+    &#34;&#34;&#34;
+    Export a calendar defects to a word formatted file.
+    &#34;&#34;&#34;
+    if self.ent_client.get().strip() == &#34;&#34;:
+        tk.messagebox.showerror(
+            &#34;Missing required field&#34;, &#34;The client&#39;s name input must be filled.&#34;)
+        return
+    if self.ent_contract.get().strip() == &#34;&#34;:
+        tk.messagebox.showerror(
+            &#34;Missing required field&#34;, &#34;The contract&#39;s name input must be filled.&#34;)
+        return
+    mongoInstance = MongoCalendar.getInstance()
+    toExport = mongoInstance.calendarName
+    if toExport != &#34;&#34;:
+        modele_docx = str(self.val_word.get())
+        timestr = datetime.now().strftime(&#34;%Y%m%d-%H%M%S&#34;)
+        basename = self.ent_client.get().strip() + &#34; - &#34;+self.ent_contract.get().strip()
+        out_name = str(timestr)+&#34; - &#34;+basename
+        dialog = ChildDialogProgress(
+            self.parent, &#34;Word Report&#34;, &#34;Creating report &#34;+str(out_name) + &#34;. Please wait.&#34;, 200, &#34;determinate&#34;)
+        WordExport.createReport(self.getDefectsAsDict(), modele_docx, out_name, main_redactor=self.mainRedac,
+                                client=self.ent_client.get().strip(), contract=self.ent_contract.get().strip(), root=self.parent, progressbar=dialog)
+        dialog.destroy()
+        tkinter.messagebox.showinfo(
+            &#34;Success&#34;, &#34;The document was generated in ./exports/&#34;+str(out_name))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.getDefectsAsDict"><code class="name flex">
+<span>def <span class="ident">getDefectsAsDict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a dictionnary with treeview defects stored inside</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The returned dict will be formed this way (shown as json):</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>{
+"Risk level describer 1":{
+"defect title 1": {
+"description":{
+"title": "defect title 1",
+"risk": "Risk level 1",
+"ease": "Ease of exploitation 1",
+"impact": "Impact 1",
+"redactor": "Redactor name",
+"type": ['D', 'T', &hellip;]
+},
+"defects_ids":[
+id 1,
+id 2&hellip;
+]
+},
+"defect title 2":{
+&hellip;
+}
+&hellip;
+},
+"Risk level describer 2":{
+&hellip;
+}
+&hellip;
+}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDefectsAsDict(self):
+    &#34;&#34;&#34;
+    Returns a dictionnary with treeview defects stored inside
+    Returns:
+        The returned dict will be formed this way (shown as json):
+        {
+            &#34;Risk level describer 1&#34;:{
+                &#34;defect title 1&#34;: {
+                    &#34;description&#34;:{
+                        &#34;title&#34;: &#34;defect title 1&#34;,
+                        &#34;risk&#34;: &#34;Risk level 1&#34;,
+                        &#34;ease&#34;: &#34;Ease of exploitation 1&#34;,
+                        &#34;impact&#34;: &#34;Impact 1&#34;,
+                        &#34;redactor&#34;: &#34;Redactor name&#34;,
+                        &#34;type&#34;: [&#39;D&#39;, &#39;T&#39;, ...]
+                    },
+                    &#34;defects_ids&#34;:[
+                        id 1,
+                        id 2...
+                    ]
+                },
+                &#34;defect title 2&#34;:{
+                    ...
+                }
+                ...
+            },
+            &#34;Risk level describer 2&#34;:{
+                ...
+            }
+            ...
+        }
+    &#34;&#34;&#34;
+    defects_dict = dict()
+    defects_dict[&#34;Critique&#34;] = dict()
+    defects_dict[&#34;Majeur&#34;] = dict()
+    defects_dict[&#34;Important&#34;] = dict()
+    defects_dict[&#34;Mineur&#34;] = dict()
+    columnEase = self.treevw[&#39;columns&#39;].index(&#34;ease&#34;)
+    columnImpact = self.treevw[&#39;columns&#39;].index(&#34;impact&#34;)
+    columnType = self.treevw[&#39;columns&#39;].index(&#34;type&#34;)
+    columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+    columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+    for children_id in self.treevw.get_children():
+        children = self.treevw.item(children_id)
+        title = children[&#34;text&#34;]
+        defect_recap = dict()
+        defect_recap[&#34;title&#34;] = title
+        defect_recap[&#34;risk&#34;] = children[&#34;values&#34;][columnRisk]
+        defect_recap[&#34;ease&#34;] = children[&#34;values&#34;][columnEase]
+        defect_recap[&#34;impact&#34;] = children[&#34;values&#34;][columnImpact]
+        defect_recap[&#34;redactor&#34;] = children[&#34;values&#34;][columnRedactor]
+        types = children[&#34;values&#34;][columnType].split(&#34;,&#34;)
+        d_types = []
+        for d_type in types:
+            d_types.append(d_type.strip())
+        defect_recap[&#34;type&#34;] = d_types
+        defects_dict[defect_recap[&#34;risk&#34;]][title] = dict()
+        defects_dict[defect_recap[&#34;risk&#34;]
+                     ][title][&#34;description&#34;] = defect_recap
+        defects_dict[defect_recap[&#34;risk&#34;]][title][&#34;defects_ids&#34;] = []
+        defects = Defect.fetchObjects({&#34;title&#34;: title})
+        for defect in defects:
+            defects_dict[defect_recap[&#34;risk&#34;]
+                         ][title][&#34;defects_ids&#34;].append(defect.getId())
+    return defects_dict</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.initUI"><code class="name flex">
+<span>def <span class="ident">initUI</span></span>(<span>self, parent)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize window and widgets.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initUI(self, parent):
+    &#34;&#34;&#34;
+    Initialize window and widgets.
+    &#34;&#34;&#34;
+    if self.parent is not None:  # Already initialized
+        self.reset()
+        self.fillWithDefects()
+        return
+    self.parent = parent
+    ### MAIN PAGE FRAME ###
+    self.reportFrame = ttk.Frame(parent)
+    self.paned = tk.PanedWindow(self.reportFrame, orient=tk.VERTICAL, height=800)
+    ### DEFECT TABLE ###
+    self.rowHeight = 20
+    self.style = ttk.Style()
+    self.style.configure(&#39;Report.Treeview&#39;, rowheight=self.rowHeight)
+    self.frameTw = ttk.Frame(self.paned)
+    self.treevw = ttk.Treeview(self.frameTw, style=&#39;Report.Treeview&#39;, height=0)
+    self.treevw[&#39;columns&#39;] = (&#39;ease&#39;, &#39;impact&#39;, &#39;risk&#39;, &#39;type&#39;, &#39;redactor&#39;)
+    self.treevw.heading(&#34;#0&#34;, text=&#39;Title&#39;, anchor=tk.W)
+    self.treevw.column(&#34;#0&#34;, anchor=tk.W, width=150)
+    self.treevw.heading(&#39;ease&#39;, text=&#39;Ease&#39;)
+    self.treevw.column(&#39;ease&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevw.heading(&#39;impact&#39;, text=&#39;Impact&#39;)
+    self.treevw.column(&#39;impact&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevw.heading(&#39;risk&#39;, text=&#39;Risk&#39;)
+    self.treevw.column(&#39;risk&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevw.heading(&#39;type&#39;, text=&#39;Type&#39;)
+    self.treevw.column(&#39;type&#39;, anchor=&#39;center&#39;, width=10)
+    self.treevw.heading(&#39;redactor&#39;, text=&#39;Redactor&#39;)
+    self.treevw.column(&#39;redactor&#39;, anchor=&#39;center&#39;, width=20)
+    self.treevw.tag_configure(
+        &#34;Critique&#34;, background=&#34;black&#34;, foreground=&#34;white&#34;)
+    self.treevw.tag_configure(
+        &#34;Majeur&#34;, background=&#34;red&#34;, foreground=&#34;white&#34;)
+    self.treevw.tag_configure(
+        &#34;Important&#34;, background=&#34;orange&#34;, foreground=&#34;white&#34;)
+    self.treevw.tag_configure(
+        &#34;Mineur&#34;, background=&#34;yellow&#34;, foreground=&#34;black&#34;)
+    self.treevw.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+    self.treevw.bind(&#34;&lt;Alt-Up&gt;&#34;, self.moveItemUp)
+    self.treevw.bind(&#34;&lt;Alt-Down&gt;&#34;, self.moveItemDown)
+    self.treevw.bind(&#34;&lt;Delete&gt;&#34;, self.deleteSelectedItem)
+    self.treevw.grid(row=0, column=0, sticky=tk.NSEW)
+    scbVSel = ttk.Scrollbar(self.frameTw,
+                            orient=tk.VERTICAL,
+                            command=self.treevw.yview)
+    self.treevw.configure(yscrollcommand=scbVSel.set)
+    scbVSel.grid(row=0, column=1, sticky=tk.NS)
+    self.frameTw.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+    self.frameTw.columnconfigure(0, weight=1)
+    self.frameTw.rowconfigure(0, weight=1)
+    ### OFFICE EXPORT FRAME ###
+    belowFrame = ttk.Frame(self.paned)
+    frameBtn = ttk.Frame(belowFrame)
+    #lbl_help = FormHelper(&#34;DefectHelper&#34;, &#34;Use del to delete a defect, use Alt+Arrows to order them&#34;)
+    #lbl_help.constructView(frameBtn)
+    btn_addDefect = ttk.Button(
+        frameBtn, text=&#34;Add a security defect&#34;, command=self.addDefectCallback)
+    btn_addDefect.pack(side=tk.RIGHT)
+    btn_setMainRedactor = ttk.Button(
+        frameBtn, text=&#34;Set main redactor&#34;, command=self.setMainRedactor)
+    btn_setMainRedactor.pack(side=tk.RIGHT)
+    frameBtn.pack(side=tk.TOP)
+    officeFrame = ttk.LabelFrame(belowFrame, text=&#34; Office reports &#34;)
+    ### INFORMATION EXPORT FRAME ###
+    informations_frame = ttk.Frame(officeFrame)
+    lbl_client = ttk.Label(informations_frame, text=&#34;Client&#39;s name :&#34;)
+    lbl_client.grid(row=0, column=0, sticky=tk.E)
+    self.ent_client = ttk.Entry(informations_frame, width=50)
+    self.ent_client.grid(row=0, column=1, sticky=tk.W)
+    lbl_contract = ttk.Label(informations_frame, text=&#34;Contract&#39;s name :&#34;)
+    lbl_contract.grid(row=1, column=0, sticky=tk.E)
+    self.ent_contract = ttk.Entry(informations_frame, width=50)
+    self.ent_contract.grid(row=1, column=1, sticky=tk.W)
+    informations_frame.pack(side=tk.TOP, pady=10)
+    ### WORD EXPORT FRAME ###
+    wordFrame = ttk.Frame(officeFrame)
+    lbl = ttk.Label(
+        wordFrame, text=&#34;Choose a word template : &#34;, background=&#34;white&#34;)
+    lbl.pack(side=tk.LEFT)
+    self.val_word = tk.StringVar()
+    self.entry_word = tk.Entry(
+        wordFrame, textvariable=self.val_word, width=50)
+    self.entry_word.bind(&#34;&lt;Control-a&gt;&#34;, self.selectAll)
+    self.entry_word.pack(side=tk.LEFT, padx=10)
+    self.val_word.set(self.default_word)
+    search_btn = ttk.Button(wordFrame, text=&#34;...&#34;,
+                            command=self.on_click, width=5)
+    search_btn.pack(side=tk.LEFT, padx=10)
+    btn_word = ttk.Button(
+        wordFrame, text=&#34;Generate Word report&#34;, command=self.generateReportWord, width=30)
+    btn_word.pack(side=tk.RIGHT, padx=10)
+    wordFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+    ### POWERPOINT EXPORT FRAME ###
+    powerpointFrame = ttk.Frame(officeFrame)
+    lbl = ttk.Label(powerpointFrame,
+                    text=&#34;Choose a pptx template : &#34;, background=&#34;white&#34;)
+    lbl.pack(side=tk.LEFT)
+    self.val_ppt = tk.StringVar()
+    self.entry_ppt = tk.Entry(
+        powerpointFrame, textvariable=self.val_ppt, width=50)
+    self.entry_ppt.bind(&#34;&lt;Control-a&gt;&#34;, self.selectAll)
+    self.entry_ppt.pack(side=tk.LEFT, padx=10)
+    self.val_ppt.set(self.default_ppt)
+    search_btn = ttk.Button(
+        powerpointFrame, text=&#34;...&#34;, command=self.on_click_pptx, width=5)
+    search_btn.pack(side=tk.LEFT, padx=10)
+    btn_ppt = ttk.Button(
+        powerpointFrame, text=&#34;Generate Powerpoint report&#34;, command=self.generateReportPowerpoint, width=30)
+    btn_ppt.pack(side=tk.RIGHT, padx=10)
+    powerpointFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+    #### EXCEL EXPORT FRAME ###
+    excelFrame = ttk.Frame(officeFrame)
+    btn_excel = ttk.Button(
+        excelFrame, text=&#34;Generate Excel report&#34;, command=self.generateReportExcel, width=30)
+    btn_excel.pack(side=tk.RIGHT, padx=10)
+    excelFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+    officeFrame.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+    self.paned.add(self.frameTw)
+    self.paned.add(belowFrame)
+    self.paned.pack(fill=tk.BOTH, expand=1)
+    self.reportFrame.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+    self.fillWithDefects()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.moveItemDown"><code class="name flex">
+<span>def <span class="ident">moveItemDown</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Swap the selected treeview item with the one down below it.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>returns "break" to stop the interrupt the event thus preventing cursor to move down</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def moveItemDown(self, _event=None):
+    &#34;&#34;&#34;
+    Swap the selected treeview item with the one down below it.
+    Args:
+        _event: not used but mandatory
+    Returns:
+        returns &#34;break&#34; to stop the interrupt the event thus preventing cursor to move down
+    &#34;&#34;&#34;
+    selected = self.treevw.selection()[0]
+    len_max = len(self.treevw.get_children())
+    currentIndice = len_max-1
+    children = self.treevw.get_children()
+    for i, child in enumerate(children):
+        if child == selected:
+            currentIndice = i
+            break
+    if currentIndice &lt; len_max-1:
+        self.treevw.move(selected, &#39;&#39;, currentIndice+1)
+        mongoInstance = MongoCalendar.getInstance()
+        selected = children[currentIndice]
+        moved_by_side_effect = children[currentIndice+1]
+        mongoInstance.update(Defect.coll_name,
+                         {&#34;_id&#34;: ObjectId(selected)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice+1)}})
+        mongoInstance.update(Defect.coll_name,
+                         {&#34;_id&#34;: ObjectId(moved_by_side_effect)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice)}})
+    return &#34;break&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.moveItemUp"><code class="name flex">
+<span>def <span class="ident">moveItemUp</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Swap the selected treeview item with the one up above it.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>returns "break" to stop the interrupt the event thus preventing cursor to move up</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def moveItemUp(self, _event=None):
+    &#34;&#34;&#34;
+    Swap the selected treeview item with the one up above it.
+    Args:
+        _event: not used but mandatory
+    Returns:
+        returns &#34;break&#34; to stop the interrupt the event thus preventing cursor to move up
+    &#34;&#34;&#34;
+    selected = self.treevw.selection()[0]
+    currentIndice = 0
+    children = self.treevw.get_children()
+    for i, child in enumerate(children):
+        if child == selected:
+            currentIndice = i
+            break
+    if currentIndice != 0:
+        self.treevw.move(selected, &#39;&#39;, currentIndice-1)
+        mongoInstance = MongoCalendar.getInstance()
+        selected = children[currentIndice]
+        moved_by_side_effect = children[currentIndice-1]
+        mongoInstance.update(Defect.coll_name,
+                         {&#34;_id&#34;: ObjectId(selected)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice-1)}})
+        mongoInstance.update(Defect.coll_name,
+                         {&#34;_id&#34;: ObjectId(moved_by_side_effect)}, {&#34;$set&#34;: {&#34;index&#34;:str(currentIndice)}})
+    return &#34;break&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.on_click"><code class="name flex">
+<span>def <span class="ident">on_click</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for selecting word template.
+Open a filedialog window and sets the entry value to the selected file</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_click(self, _event=None):
+    &#34;&#34;&#34;
+    Callback for selecting word template.
+    Open a filedialog window and sets the entry value to the selected file
+    Args:
+        _event: not used but mandatory
+    &#34;&#34;&#34;
+    ftypes = [
+        (&#39;Word files&#39;, &#39;*.docx&#39;),
+        (&#39;All files&#39;, &#39;*&#39;),
+    ]
+    f = tkinter.filedialog.askopenfilename(
+        initialdir=self.dir_path, title=&#34;Select template for report&#34;, defaultextension=&#34;.docx&#34;, filetypes=ftypes)
+    if f is None:  # asksaveasfile return `None` if dialog closed with &#34;cancel&#34;.
+        return
+    filename = str(f)
+    if filename == &#34;()&#34;:
+        return
+    self.val_word.set(filename)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.on_click_pptx"><code class="name flex">
+<span>def <span class="ident">on_click_pptx</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for selecting powerpoint template.
+Open a filedialog window and sets the entry value to the selected file</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_click_pptx(self, _event=None):
+    &#34;&#34;&#34;
+    Callback for selecting powerpoint template.
+    Open a filedialog window and sets the entry value to the selected file
+    Args:
+        _event: not used but mandatory
+    &#34;&#34;&#34;
+    ftypes = [
+        (&#39;Powerpoint files&#39;, &#39;*.pptx&#39;),
+        (&#39;All files&#39;, &#39;*&#39;),
+    ]
+    f = tkinter.filedialog.askopenfilename(
+        initialdir=self.dir_path, title=&#34;Select template for report&#34;, defaultextension=&#34;.pptx&#34;, filetypes=ftypes)
+    if f is None:  # asksaveasfile return `None` if dialog closed with &#34;cancel&#34;.
+        return
+    filename = str(f)
+    if filename == &#34;()&#34;:
+        return
+    self.val_ppt.set(filename)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.refreshUI"><code class="name flex">
+<span>def <span class="ident">refreshUI</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reload informations and reload them into the widgets</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def refreshUI(self):
+    &#34;&#34;&#34;
+    Reload informations and reload them into the widgets
+    &#34;&#34;&#34;
+    self.default_word = os.path.join(self.dir_path, &#34;Modele.docx&#34;)
+    self.settings.reloadSettings()
+    pentest_type = self.settings.getPentestType().lower()
+    models = [f for f in listdir(
+        self.dir_path) if isfile(join(self.dir_path, f)) and f.endswith(&#34;.docx&#34;) and pentest_type in f.lower()]
+    if models:
+        self.default_word = join(self.dir_path, models[0])
+    self.val_word.set(self.default_word)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.removeItem"><code class="name flex">
+<span>def <span class="ident">removeItem</span></span>(<span>self, toDeleteIid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove defect from given iid in defect treeview</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>toDeleteIid</code></strong></dt>
+<dd>database ID of defect to delete</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeItem(self, toDeleteIid):
+    &#34;&#34;&#34;
+    Remove defect from given iid in defect treeview
+    Args:
+        toDeleteIid: database ID of defect to delete
+    &#34;&#34;&#34;
+    item = self.treevw.item(toDeleteIid)
+    dialog = ChildDialogQuestion(self.parent,
+                                 &#34;DELETE WARNING&#34;, &#34;Are you sure you want to delete defect &#34;+str(item[&#34;text&#34;])+&#34; ?&#34;, [&#34;Delete&#34;, &#34;Cancel&#34;])
+    self.parent.wait_window(dialog.app)
+    if dialog.rvalue != &#34;Delete&#34;:
+        return
+    self.treevw.delete(toDeleteIid)
+    defectToDelete = Defect.fetchObject({&#34;title&#34;: item[&#34;text&#34;], &#34;ip&#34;:&#34;&#34;, &#34;port&#34;:&#34;&#34;, &#34;proto&#34;:&#34;&#34;})
+    if defectToDelete is not None:
+        if defectToDelete.index is not None:
+            index = int(defectToDelete.index)
+            children = self.treevw.get_children()
+            for i in range(index+1,len(children),1):
+                d_o = Defect({&#34;_id&#34;:children[i]})
+                d_o.update({&#34;index&#34;:str(i)})
+        defectToDelete.delete()
+        self.resizeDefectTreeview()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>reset defect treeview by deleting every item inside.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset(self):
+    &#34;&#34;&#34;
+    reset defect treeview by deleting every item inside.
+    &#34;&#34;&#34;
+    for item in self.treevw.get_children():
+        self.treevw.delete(item)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.resizeDefectTreeview"><code class="name flex">
+<span>def <span class="ident">resizeDefectTreeview</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resizeDefectTreeview(self):
+    currentHeight = len(self.treevw.get_children())
+    if currentHeight &lt;= 15:
+        self.treevw.config(height=currentHeight)
+        self.paned.paneconfigure(self.frameTw, height=(currentHeight)*self.rowHeight+30)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.selectAll"><code class="name flex">
+<span>def <span class="ident">selectAll</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Select all text in an entry</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>returns "break" to stop the interrupt the event thus preventing the shortcut key to be written</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def selectAll(self, _event):
+    &#34;&#34;&#34;
+    Select all text in an entry
+    Args:
+        _event: not used but mandatory
+    Returns:
+        returns &#34;break&#34; to stop the interrupt the event thus preventing the shortcut key to be written
+    &#34;&#34;&#34;
+    # select text
+    self.entry_word.select_range(0, &#39;end&#39;)
+    # move cursor to the end
+    self.entry_word.icursor(&#39;end&#39;)
+    return &#34;break&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.setMainRedactor"><code class="name flex">
+<span>def <span class="ident">setMainRedactor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sets a main redactor for a pentest. Each not assigned defect will be assigned to him/her</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setMainRedactor(self):
+    &#34;&#34;&#34;Sets a main redactor for a pentest. Each not assigned defect will be assigned to him/her&#34;&#34;&#34;
+    self.settings.reloadSettings()
+    dialog = ChildDialogCombo(self.parent, self.settings.getPentesters()+[&#34;N/A&#34;], &#34;Set main redactor&#34;, &#34;N/A&#34;)
+    newVal = self.parent.wait_window(dialog.app)
+    if newVal is None:
+        return
+    if not newVal or newVal.strip() == &#34;&#34;:
+        return
+    columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+    for it in self.treevw.get_children():
+        oldValues = self.treevw.item(it)[&#34;values&#34;]
+        if oldValues[columnRedactor] == &#34;N/A&#34;:
+            oldValues[columnRedactor] = newVal
+            self.treevw.item(it, values=oldValues)
+            d_o = Defect({&#34;_id&#34;:it})
+            d_o.update({&#34;redactor&#34;:newVal})
+    self.mainRedac = newVal</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Report.Report.updateDefectInTreevw"><code class="name flex">
+<span>def <span class="ident">updateDefectInTreevw</span></span>(<span>self, defect_m, redactor=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Change values of a selected defect in the treeview</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>defect_m</code></strong></dt>
+<dd>a defect model with updated values</dd>
+<dt><strong><code>redactor</code></strong></dt>
+<dd>a redactor name for this defect, can be None (default)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateDefectInTreevw(self, defect_m, redactor=None):
+    &#34;&#34;&#34;
+    Change values of a selected defect in the treeview
+    Args:
+        defect_m: a defect model with updated values
+        redactor: a redactor name for this defect, can be None (default)
+    &#34;&#34;&#34;
+    columnEase = self.treevw[&#39;columns&#39;].index(&#34;ease&#34;)
+    columnImpact = self.treevw[&#39;columns&#39;].index(&#34;impact&#34;)
+    columnRisk = self.treevw[&#39;columns&#39;].index(&#34;risk&#34;)
+    columnType = self.treevw[&#39;columns&#39;].index(&#34;type&#34;)
+    columnRedactor = self.treevw[&#39;columns&#39;].index(&#34;redactor&#34;)
+    oldValues = self.treevw.item(defect_m.getId())[&#34;values&#34;]
+    oldRisk = oldValues[columnRisk]
+    newRisk = defect_m.risk
+    newValues = [&#34;&#34;]*5
+    newValues[columnEase] = defect_m.ease
+    newValues[columnImpact] = defect_m.impact
+    newValues[columnRisk] = defect_m.risk
+    newValues[columnType] = &#34;, &#34;.join(defect_m.mtype)
+    newValues[columnRedactor] = defect_m.redactor
+    self.treevw.item(defect_m.getId(), text=defect_m.title,
+                     tags=(newRisk), values=newValues)
+    if oldRisk != newRisk:
+        self.treevw.move(defect_m.getId(), &#39;&#39;,
+                         self.findInsertIndex(defect_m))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Report.Report" href="#Pollenisator.core.Components.Report.Report">Report</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.Report.Report.OnDoubleClick" href="#Pollenisator.core.Components.Report.Report.OnDoubleClick">OnDoubleClick</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.addDefect" href="#Pollenisator.core.Components.Report.Report.addDefect">addDefect</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.addDefectCallback" href="#Pollenisator.core.Components.Report.Report.addDefectCallback">addDefectCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.deleteSelectedItem" href="#Pollenisator.core.Components.Report.Report.deleteSelectedItem">deleteSelectedItem</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.fillWithDefects" href="#Pollenisator.core.Components.Report.Report.fillWithDefects">fillWithDefects</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.findInsertIndex" href="#Pollenisator.core.Components.Report.Report.findInsertIndex">findInsertIndex</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.generateReportExcel" href="#Pollenisator.core.Components.Report.Report.generateReportExcel">generateReportExcel</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.generateReportPowerpoint" href="#Pollenisator.core.Components.Report.Report.generateReportPowerpoint">generateReportPowerpoint</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.generateReportWord" href="#Pollenisator.core.Components.Report.Report.generateReportWord">generateReportWord</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.getDefectsAsDict" href="#Pollenisator.core.Components.Report.Report.getDefectsAsDict">getDefectsAsDict</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.getEases" href="#Pollenisator.core.Components.Report.Report.getEases">getEases</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.getImpacts" href="#Pollenisator.core.Components.Report.Report.getImpacts">getImpacts</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.getRisks" href="#Pollenisator.core.Components.Report.Report.getRisks">getRisks</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.getTypes" href="#Pollenisator.core.Components.Report.Report.getTypes">getTypes</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.initUI" href="#Pollenisator.core.Components.Report.Report.initUI">initUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.moveItemDown" href="#Pollenisator.core.Components.Report.Report.moveItemDown">moveItemDown</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.moveItemUp" href="#Pollenisator.core.Components.Report.Report.moveItemUp">moveItemUp</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.on_click" href="#Pollenisator.core.Components.Report.Report.on_click">on_click</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.on_click_pptx" href="#Pollenisator.core.Components.Report.Report.on_click_pptx">on_click_pptx</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.refreshUI" href="#Pollenisator.core.Components.Report.Report.refreshUI">refreshUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.removeItem" href="#Pollenisator.core.Components.Report.Report.removeItem">removeItem</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.reset" href="#Pollenisator.core.Components.Report.Report.reset">reset</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.resizeDefectTreeview" href="#Pollenisator.core.Components.Report.Report.resizeDefectTreeview">resizeDefectTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.selectAll" href="#Pollenisator.core.Components.Report.Report.selectAll">selectAll</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.setMainRedactor" href="#Pollenisator.core.Components.Report.Report.setMainRedactor">setMainRedactor</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Report.Report.updateDefectInTreevw" href="#Pollenisator.core.Components.Report.Report.updateDefectInTreevw">updateDefectInTreevw</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

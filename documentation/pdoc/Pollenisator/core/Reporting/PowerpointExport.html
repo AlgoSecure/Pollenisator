@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Reporting.PowerpointExport API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Reporting.PowerpointExport</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from pptx import Presentation
+from pptx.shapes.autoshape import Shape
+from pptx.chart.data import CategoryChartData
+import os
+import core.Components.Utils as Utils
+import copy
+import six
+
+class DummyProgressBar:
+    def update(self):
+        return
+
+def replaceTextInParagraph(paragraph, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in the given paragraph.
+        Args:
+            table: the table we want to replace a text inside
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+        Returns:
+            Return None if nothing was found, the run where the string was replaced otherwise
+    &#34;&#34;&#34;
+    if search in paragraph.text:
+        for run in paragraph.runs:
+            inline = paragraph.runs
+            # Loop added to work with runs (strings with same style)
+            for i in range(len(inline)):
+                if search in inline[i].text:
+                    inline[i].text = inline[i].text.replace(search, replace)  
+                    return run
+        paragraph.text = paragraph.text.replace(search, replace)
+        return paragraph
+    return None
+
+
+def findTextInTable(tbl, search):
+    row_count = len(tbl.rows)
+    col_count = len(tbl.columns)
+    for r in range(0, row_count):
+        for c in range(0, col_count):
+            cell = tbl.cell(r, c)
+            paragraphs = cell.text_frame.paragraphs 
+            for paragraph in paragraphs:
+                if search in paragraph.text:
+                    return paragraph
+    return None
+
+def replaceTextInTable(tbl, search, replace):
+    row_count = len(tbl.rows)
+    col_count = len(tbl.columns)
+    atLeastOneMatch = False
+    for r in range(0, row_count):
+        for c in range(0, col_count):
+            cell = tbl.cell(r, c)
+            paragraphs = cell.text_frame.paragraphs
+            for paragraph in paragraphs:
+                if search in paragraph.text:
+                    res = replaceTextInParagraph(paragraph, search, replace)
+                    if res is not None:
+                        atLeastOneMatch = True
+    return atLeastOneMatch
+
+def replaceTextInChart(_chrt, _search, _replace):
+    #chart_data = chrt.chart_data
+    atLeastOneMatch = False
+    return atLeastOneMatch
+
+def findTextInTextFrame(shapeTextFrame, search):
+    if (shapeTextFrame.text.find(search))!=-1:
+        return shapeTextFrame.text.find(search)
+    return None
+
+def replaceTextInTextFrame(shapeTextFrame, search, replace):
+    atLeastOneMatch = False
+    if(shapeTextFrame.text.find(search))!=-1:
+        text_frame = shapeTextFrame.text_frame
+        paragraphs = text_frame.paragraphs
+        for paragraph in paragraphs:
+            if search in paragraph.text:
+                res = replaceTextInParagraph(paragraph, search, replace)
+                if res is not None:
+                    atLeastOneMatch = True
+    return atLeastOneMatch
+
+def replaceTextInDocument(document, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all the document paragraphs and tables.
+        Args:
+            document: the document object (opened pptx with at lease one paragraph or table inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+    &#34;&#34;&#34;
+    for slide in document.slides:
+        for shape in slide.shapes:
+            if shape.has_table:
+                replaceTextInTable(shape.table, search, replace)
+            elif shape.has_text_frame:
+                replaceTextInTextFrame(shape, search, replace)
+            elif shape.has_chart:
+                replaceTextInChart(shape.chart, search, replace)
+
+def findTextInDocument(document, search):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all the document paragraphs and tables.
+        Args:
+            document: the document object (opened pptx with at lease one paragraph or table inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+        Return:
+            The slide index where the text was found, None otherwise
+    &#34;&#34;&#34;
+    for slide_i, slide in enumerate(document.slides):
+        for shape in slide.shapes:
+            if shape.has_table:
+                if findTextInTable(shape.table, search) is not None:
+                    return slide_i
+            elif shape.has_text_frame:
+                if findTextInTextFrame(shape, search) is not None:
+                    return slide_i
+    return None
+
+def findShapeContaining(document, slide_i, search):
+    for shape in document.slides[slide_i].shapes:
+        if shape.has_text_frame:
+            if(shape.text.find(search))!=-1:
+                return shape
+    return None
+
+
+def duplicate_slide(pres, index):
+    # pylint: disable=protected-access
+    &#34;&#34;&#34;Duplicate the slide with the given index in pres.
+
+    Adds slide to the end of the presentation&#34;&#34;&#34;
+    source = pres.slides[index]
+    # Tip: a nearly blank slide named TO_COPY
+    # Keep placeholders for formatting but put a single white space inside
+    dest = pres.slides.add_slide(SLD_LAYOUT_TO_COPY)
+    for shp in source.shapes:
+        el = shp.element
+        newel = copy.deepcopy(el)
+        dest.shapes._spTree.insert_element_before(newel, &#39;p:extLst&#39;)
+    try:
+        for _, value in six.iteritems(source.rels):
+            # Make sure we don&#39;t copy a notesSlide relation as that won&#39;t exist
+            if not &#34;notesSlide&#34; in value.reltype:
+                dest.rels.add_relationship(value.reltype, value._target, value.rId)
+    except AttributeError:
+        pass
+
+def findSlideTableContaining(document, search):
+    for i, slide in enumerate(document.slides):
+        for shape in slide.shapes:
+            if shape.has_table:
+                if findTextInTable(shape.table, search) is not None:
+                    return shape.table, i
+    return None, None
+
+def findTableInSlide(document, slide_i, search):
+    for shape in document.slides[slide_i].shapes:
+        if shape.has_table:
+            if findTextInTable(shape.table, search) is not None:
+                return shape.table
+
+def copyShape(shape, idx):
+    # pylint: disable=protected-access
+    sp = shape._sp
+    new_sp = None
+    # ---duplicate original freeform---
+    new_sp = copy.deepcopy(sp)
+    new_shape = Shape(new_sp, shape._parent)
+    # ---create a unique id for it---
+    new_sp.nvSpPr.cNvPr.id = 1000 + idx
+    # ---insert it after original---
+    sp.addnext(new_sp)
+    return new_shape
+
+def deleteShape(shape):
+    # pylint: disable=protected-access
+    sp = shape._element
+    sp.getparent().remove(sp)
+
+def write_every_defect_fix(fixes, document, slide_i, count):
+    # print(&#34;write fixes for &#34;+str(count)+ &#34; after &#34;+str(last_defect_paragraph.text))
+    shape_fix = None
+    for fixe_i in range(len(fixes)):
+        id_correctif = &#34;A&#34;+str(count)
+        fixe = fixes[fixe_i]
+        if len(fixes) &gt; 1:
+            id_correctif += &#34;.&#34;+str(fixe_i+1)
+        # Find the original fix to copy and fill
+        shape_fix = findShapeContaining(document, slide_i, &#34;var_c_id&#34;)
+        if shape_fix is None:
+            raise Exception(&#34;Error, fixe form text was deleted too soon. RIP&#34;)
+        # Add notes paragraph after it
+        h = shape_fix.height
+        added_shape = copyShape(shape_fix, 1000+(count*100)+fixe_i)
+        added_shape.top -= (h*(len(fixes)-fixe_i-1))
+        replaceTextInTextFrame(added_shape, &#34;var_c_id&#34;, id_correctif)
+        replaceTextInTextFrame(added_shape, &#34;var_c_title&#34;, fixe[&#34;title&#34;])
+    if shape_fix is not None:
+        deleteShape(shape_fix)
+
+def write_defect_from_input(result, document, table_d, slide_i, o_defect, count):
+    desc = result[0][&#34;description&#34;].replace(&#34;\r&#34;, &#34;&#34;)
+    desc_paras = desc.split(&#34;\n&#34;)
+    desc_paras += o_defect.get(&#34;notes&#34;, &#34;&#34;).strip().split(&#34;\n&#34;)
+    synthesis = result[0].get(&#34;synthesis&#34;, None)
+    if synthesis is not None:
+        desc_paras.insert(0, synthesis.replace(&#34;\r&#34;, &#34;&#34;))
+    desc_paras.insert(1, &#34;ToDo &#34;+str(o_defect[&#34;redactor&#34;]))
+    replaceTextInTable(table_d, &#34;var_d_description&#34;, desc_paras[0].strip())
+    write_every_defect_fix(result[0][&#34;fixes&#34;], document, slide_i, count)
+    return len(result[0][&#34;fixes&#34;])
+
+def write_each_defect(document, defects_dict):
+    &#34;&#34;&#34;
+    for each default
+       Copy a table and a paragraph form the template marked with var_d_id and var_d_separator.
+       replace the markers var_d_id var_d_separator var_d_id var_d_title var_d_ease var_d_impact var_d_description
+    Then for each fixe of this default
+        Copy a table form the template marked with var_c_id.
+        replace the markers var_c_id var_d_separator var_c_title var_c_ease var_c_gain var_c_description
+
+        Args:
+            document: the document to search elements in
+            defects_dict: the dictionary of defect gotten with the dedicated function getDefectDictFromExcel
+
+    &#34;&#34;&#34;
+    levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+    count_defects = 0
+    count_fixes = 0
+    total_len = 0
+    for level in levels:
+        total_len += len(defects_dict[level].values())
+    for level in levels:
+        level_count = 0
+        _, slide_copy_i = findSlideTableContaining(document, &#34;var_d_id&#34;)
+        # COPY SLIDE X TIME, SEPARATED
+        for i in range(1, len(defects_dict[level].values())):
+            duplicate_slide(document, slide_copy_i)
+            new_slide_i = slide_copy_i+i
+            move_slide(document, -1, new_slide_i)
+        # FILL COPIED SLIDES
+        for defect_dict in defects_dict[level].values():
+            new_slide_i = slide_copy_i + level_count
+            level_count += 1
+            count_defects += 1
+            o_defect = defect_dict[&#34;description&#34;]
+            table_d = findTableInSlide(document, new_slide_i, &#34;var_d_id&#34;)
+            replaceTextInTable(table_d, &#34;var_d_id&#34;, &#34;D&#34;+str(count_defects))
+            replaceTextInTable(table_d, &#34;var_d_title&#34;, o_defect[&#34;title&#34;])
+            replaceTextInTable(table_d, &#34;var_d_ease&#34;, o_defect[&#34;ease&#34;])
+            replaceTextInTable(table_d, &#34;var_d_impact&#34;, o_defect[&#34;impact&#34;])
+            
+            result = [
+                    {
+                        &#34;id&#34;:&#34;0&#34;,
+                        &#34;title&#34;: o_defect[&#34;title&#34;],
+                        &#34;ease&#34;: o_defect[&#34;ease&#34;],
+                        &#34;impact&#34;: o_defect[&#34;impact&#34;],
+                        &#34;risk&#34;: o_defect[&#34;risk&#34;],
+                        &#34;type&#34;: o_defect[&#34;type&#34;],
+                        &#34;description&#34;: &#34;Description&#34;,
+                        &#34;notes&#34;: o_defect.get(&#34;notes&#34;, &#34;&#34;),
+                        &#34;fixes&#34;: [
+                            {
+                                &#34;title&#34;: &#34;A def&#34;,
+                                &#34;execution&#34;: &#34;Modérée&#34;,
+                                &#34;gain&#34;: &#34;Moyen&#34;,
+                                &#34;description&#34;: &#34;A definir&#34;
+                            }
+                        ]
+                    }
+                ]
+            print(&#34;Writing defect &#34;+str(count_defects)+&#34;&#34;)
+            count_fixes += write_defect_from_input(result, document, table_d, new_slide_i, o_defect, count_defects)
+            progressbar.update()
+        if level_count == 0:
+            table_d = findTableInSlide(document, slide_copy_i, &#34;var_d_id&#34;)
+            if table_d is not None:
+                replaceTextInTable(table_d, &#34;var_d_id&#34;, &#34;TO_DELETE&#34;)
+    _, slide_copy_i = findSlideTableContaining(document, &#34;TO_DELETE&#34;)
+    while slide_copy_i is not None:
+        delete_slide(document, slide_copy_i)
+        _, slide_copy_i = findSlideTableContaining(document, &#34;TO_DELETE&#34;)
+    return count_defects, count_fixes
+
+
+def move_slide(presentation, old_index, new_index):
+    xml_slides = presentation.slides._sldIdLst  # pylint: disable=W0212
+    slides = list(xml_slides)
+    xml_slides.remove(slides[old_index])
+    xml_slides.insert(new_index, slides[old_index])
+
+def delete_slide(presentation, index):
+    xml_slides = presentation.slides._sldIdLst  # pylint: disable=W0212
+    slides = list(xml_slides)
+    xml_slides.remove(slides[index])
+
+def addSerieToChart(presentation, index_chart, serie_name, serie):
+    count_chart = 0
+    for _slide_i, slide in enumerate(presentation.slides):
+        for shape in slide.shapes:
+            if shape.has_chart:
+                if count_chart == index_chart:
+                    chart_data = CategoryChartData()
+                    chart_data.categories = (&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;)
+                    chart_data.add_series(serie_name, serie)
+                    shape.chart.replace_data(chart_data)
+                    shape.chart.value_axis.maximum_scale = max(serie)+1
+                    return True
+                count_chart += 1
+    return False
+
+def createReport(defects_dict, template, out_name, **kwargs):
+    document = Presentation(template)
+    global progressbar
+    global SLD_LAYOUT_TO_COPY
+    SLD_LAYOUT_TO_COPY = document.slide_layouts.get_by_name(&#34;TO_COPY&#34;)
+    if SLD_LAYOUT_TO_COPY is None:
+        raise Exception(&#34;The pptx template does not contain a TO_COPY layout&#34;)
+    client_name = kwargs.get(&#34;client&#34;, &#34;&#34;).strip()
+    progressbar = kwargs.get(&#34;progressbar&#34;, DummyProgressBar())
+    total_len = 0
+    levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+    for level in levels:
+        total_len += len(defects_dict[level].values())
+    nb_steps = total_len # 1 step by defect
+    nb_steps += 1 # step for general stuff
+    nb_steps += 1 # step for saving
+    progressbar.show(nb_steps)
+    if client_name != &#34;&#34;:
+        replaceTextInDocument(document, &#34;var_client&#34;, client_name)
+    contract_name = kwargs.get(&#34;contract&#34;, &#34;&#34;).strip()
+    if contract_name != &#34;&#34;:
+        if contract_name.lower().startswith(&#34;test &#34;):
+            contract_name = &#34;du t&#34;+contract_name[1:]
+        elif contract_name.lower().startswith(&#34;audit &#34;):
+            contract_name = &#34;de l&#39;a&#34;+contract_name[1:]
+        replaceTextInDocument(document, &#34;var_contract&#34;, contract_name)
+    nb_critical = len(defects_dict[&#34;Critique&#34;].keys())
+    nb_major = len(defects_dict[&#34;Majeur&#34;].keys())
+    nb_important = len(defects_dict[&#34;Important&#34;].keys())
+    nb_minor = len(defects_dict[&#34;Mineur&#34;].keys())
+    replaceTextInDocument(document, &#34;var_nb_d_critical&#34;, str(nb_critical))
+    replaceTextInDocument(document, &#34;var_nb_d_major&#34;, str(nb_major))
+    replaceTextInDocument(document, &#34;var_nb_d_important&#34;, str(nb_important))
+    replaceTextInDocument(document, &#34;var_nb_d_minor&#34;, str(nb_minor))
+    addSerieToChart(document, 0, &#39;Criticity&#39;, (nb_critical,nb_major,nb_important,nb_minor))
+    progressbar.update()
+    print(&#34;Write each defect ...&#34;)
+    count_defect, count_fixes = write_each_defect(document, defects_dict)
+    replaceTextInDocument(document, &#34;var_nb_d_total&#34;, str(count_defect))
+    replaceTextInDocument(document, &#34;var_nb_fix&#34;, str(count_fixes))
+
+    #print(&#34;Write services table ...&#34;)
+    #populate_services_table(document, kwargs.get(&#34;root&#34;, None))
+    #print(&#34;Converting Markdown ...&#34;)
+    #markdownToWordInDocument(document)
+    #print(&#34;Saving ...&#34;)
+    # After that, we add the previously copied table
+    #paragraph._p.addnext(new_tbl)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    out_path = os.path.join(dir_path, &#34;../../exports/&#34;, out_name+&#34;.pptx&#34;)
+    document.save(out_path)
+    progressbar.update()
+    print(&#34;Generated report at &#34;+str(out_path))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.addSerieToChart"><code class="name flex">
+<span>def <span class="ident">addSerieToChart</span></span>(<span>presentation, index_chart, serie_name, serie)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addSerieToChart(presentation, index_chart, serie_name, serie):
+    count_chart = 0
+    for _slide_i, slide in enumerate(presentation.slides):
+        for shape in slide.shapes:
+            if shape.has_chart:
+                if count_chart == index_chart:
+                    chart_data = CategoryChartData()
+                    chart_data.categories = (&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;)
+                    chart_data.add_series(serie_name, serie)
+                    shape.chart.replace_data(chart_data)
+                    shape.chart.value_axis.maximum_scale = max(serie)+1
+                    return True
+                count_chart += 1
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.copyShape"><code class="name flex">
+<span>def <span class="ident">copyShape</span></span>(<span>shape, idx)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def copyShape(shape, idx):
+    # pylint: disable=protected-access
+    sp = shape._sp
+    new_sp = None
+    # ---duplicate original freeform---
+    new_sp = copy.deepcopy(sp)
+    new_shape = Shape(new_sp, shape._parent)
+    # ---create a unique id for it---
+    new_sp.nvSpPr.cNvPr.id = 1000 + idx
+    # ---insert it after original---
+    sp.addnext(new_sp)
+    return new_shape</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.createReport"><code class="name flex">
+<span>def <span class="ident">createReport</span></span>(<span>defects_dict, template, out_name, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createReport(defects_dict, template, out_name, **kwargs):
+    document = Presentation(template)
+    global progressbar
+    global SLD_LAYOUT_TO_COPY
+    SLD_LAYOUT_TO_COPY = document.slide_layouts.get_by_name(&#34;TO_COPY&#34;)
+    if SLD_LAYOUT_TO_COPY is None:
+        raise Exception(&#34;The pptx template does not contain a TO_COPY layout&#34;)
+    client_name = kwargs.get(&#34;client&#34;, &#34;&#34;).strip()
+    progressbar = kwargs.get(&#34;progressbar&#34;, DummyProgressBar())
+    total_len = 0
+    levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+    for level in levels:
+        total_len += len(defects_dict[level].values())
+    nb_steps = total_len # 1 step by defect
+    nb_steps += 1 # step for general stuff
+    nb_steps += 1 # step for saving
+    progressbar.show(nb_steps)
+    if client_name != &#34;&#34;:
+        replaceTextInDocument(document, &#34;var_client&#34;, client_name)
+    contract_name = kwargs.get(&#34;contract&#34;, &#34;&#34;).strip()
+    if contract_name != &#34;&#34;:
+        if contract_name.lower().startswith(&#34;test &#34;):
+            contract_name = &#34;du t&#34;+contract_name[1:]
+        elif contract_name.lower().startswith(&#34;audit &#34;):
+            contract_name = &#34;de l&#39;a&#34;+contract_name[1:]
+        replaceTextInDocument(document, &#34;var_contract&#34;, contract_name)
+    nb_critical = len(defects_dict[&#34;Critique&#34;].keys())
+    nb_major = len(defects_dict[&#34;Majeur&#34;].keys())
+    nb_important = len(defects_dict[&#34;Important&#34;].keys())
+    nb_minor = len(defects_dict[&#34;Mineur&#34;].keys())
+    replaceTextInDocument(document, &#34;var_nb_d_critical&#34;, str(nb_critical))
+    replaceTextInDocument(document, &#34;var_nb_d_major&#34;, str(nb_major))
+    replaceTextInDocument(document, &#34;var_nb_d_important&#34;, str(nb_important))
+    replaceTextInDocument(document, &#34;var_nb_d_minor&#34;, str(nb_minor))
+    addSerieToChart(document, 0, &#39;Criticity&#39;, (nb_critical,nb_major,nb_important,nb_minor))
+    progressbar.update()
+    print(&#34;Write each defect ...&#34;)
+    count_defect, count_fixes = write_each_defect(document, defects_dict)
+    replaceTextInDocument(document, &#34;var_nb_d_total&#34;, str(count_defect))
+    replaceTextInDocument(document, &#34;var_nb_fix&#34;, str(count_fixes))
+
+    #print(&#34;Write services table ...&#34;)
+    #populate_services_table(document, kwargs.get(&#34;root&#34;, None))
+    #print(&#34;Converting Markdown ...&#34;)
+    #markdownToWordInDocument(document)
+    #print(&#34;Saving ...&#34;)
+    # After that, we add the previously copied table
+    #paragraph._p.addnext(new_tbl)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    out_path = os.path.join(dir_path, &#34;../../exports/&#34;, out_name+&#34;.pptx&#34;)
+    document.save(out_path)
+    progressbar.update()
+    print(&#34;Generated report at &#34;+str(out_path))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.deleteShape"><code class="name flex">
+<span>def <span class="ident">deleteShape</span></span>(<span>shape)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteShape(shape):
+    # pylint: disable=protected-access
+    sp = shape._element
+    sp.getparent().remove(sp)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.delete_slide"><code class="name flex">
+<span>def <span class="ident">delete_slide</span></span>(<span>presentation, index)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete_slide(presentation, index):
+    xml_slides = presentation.slides._sldIdLst  # pylint: disable=W0212
+    slides = list(xml_slides)
+    xml_slides.remove(slides[index])</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.duplicate_slide"><code class="name flex">
+<span>def <span class="ident">duplicate_slide</span></span>(<span>pres, index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Duplicate the slide with the given index in pres.</p>
+<p>Adds slide to the end of the presentation</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def duplicate_slide(pres, index):
+    # pylint: disable=protected-access
+    &#34;&#34;&#34;Duplicate the slide with the given index in pres.
+
+    Adds slide to the end of the presentation&#34;&#34;&#34;
+    source = pres.slides[index]
+    # Tip: a nearly blank slide named TO_COPY
+    # Keep placeholders for formatting but put a single white space inside
+    dest = pres.slides.add_slide(SLD_LAYOUT_TO_COPY)
+    for shp in source.shapes:
+        el = shp.element
+        newel = copy.deepcopy(el)
+        dest.shapes._spTree.insert_element_before(newel, &#39;p:extLst&#39;)
+    try:
+        for _, value in six.iteritems(source.rels):
+            # Make sure we don&#39;t copy a notesSlide relation as that won&#39;t exist
+            if not &#34;notesSlide&#34; in value.reltype:
+                dest.rels.add_relationship(value.reltype, value._target, value.rId)
+    except AttributeError:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.findShapeContaining"><code class="name flex">
+<span>def <span class="ident">findShapeContaining</span></span>(<span>document, slide_i, search)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findShapeContaining(document, slide_i, search):
+    for shape in document.slides[slide_i].shapes:
+        if shape.has_text_frame:
+            if(shape.text.find(search))!=-1:
+                return shape
+    return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.findSlideTableContaining"><code class="name flex">
+<span>def <span class="ident">findSlideTableContaining</span></span>(<span>document, search)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findSlideTableContaining(document, search):
+    for i, slide in enumerate(document.slides):
+        for shape in slide.shapes:
+            if shape.has_table:
+                if findTextInTable(shape.table, search) is not None:
+                    return shape.table, i
+    return None, None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.findTableInSlide"><code class="name flex">
+<span>def <span class="ident">findTableInSlide</span></span>(<span>document, slide_i, search)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findTableInSlide(document, slide_i, search):
+    for shape in document.slides[slide_i].shapes:
+        if shape.has_table:
+            if findTextInTable(shape.table, search) is not None:
+                return shape.table</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.findTextInDocument"><code class="name flex">
+<span>def <span class="ident">findTextInDocument</span></span>(<span>document, search)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Replace at a run level a text that will be searched in all the document paragraphs and tables.
+Args:
+document: the document object (opened pptx with at lease one paragraph or table inside)
+search: The string to search for that will be replaced. //!\ The search is done at a run level
+Return:
+The slide index where the text was found, None otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findTextInDocument(document, search):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all the document paragraphs and tables.
+        Args:
+            document: the document object (opened pptx with at lease one paragraph or table inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+        Return:
+            The slide index where the text was found, None otherwise
+    &#34;&#34;&#34;
+    for slide_i, slide in enumerate(document.slides):
+        for shape in slide.shapes:
+            if shape.has_table:
+                if findTextInTable(shape.table, search) is not None:
+                    return slide_i
+            elif shape.has_text_frame:
+                if findTextInTextFrame(shape, search) is not None:
+                    return slide_i
+    return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.findTextInTable"><code class="name flex">
+<span>def <span class="ident">findTextInTable</span></span>(<span>tbl, search)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findTextInTable(tbl, search):
+    row_count = len(tbl.rows)
+    col_count = len(tbl.columns)
+    for r in range(0, row_count):
+        for c in range(0, col_count):
+            cell = tbl.cell(r, c)
+            paragraphs = cell.text_frame.paragraphs 
+            for paragraph in paragraphs:
+                if search in paragraph.text:
+                    return paragraph
+    return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.findTextInTextFrame"><code class="name flex">
+<span>def <span class="ident">findTextInTextFrame</span></span>(<span>shapeTextFrame, search)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findTextInTextFrame(shapeTextFrame, search):
+    if (shapeTextFrame.text.find(search))!=-1:
+        return shapeTextFrame.text.find(search)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.move_slide"><code class="name flex">
+<span>def <span class="ident">move_slide</span></span>(<span>presentation, old_index, new_index)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def move_slide(presentation, old_index, new_index):
+    xml_slides = presentation.slides._sldIdLst  # pylint: disable=W0212
+    slides = list(xml_slides)
+    xml_slides.remove(slides[old_index])
+    xml_slides.insert(new_index, slides[old_index])</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.replaceTextInChart"><code class="name flex">
+<span>def <span class="ident">replaceTextInChart</span></span>(<span>_chrt, _search, _replace)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaceTextInChart(_chrt, _search, _replace):
+    #chart_data = chrt.chart_data
+    atLeastOneMatch = False
+    return atLeastOneMatch</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.replaceTextInDocument"><code class="name flex">
+<span>def <span class="ident">replaceTextInDocument</span></span>(<span>document, search, replace)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Replace at a run level a text that will be searched in all the document paragraphs and tables.
+Args:
+document: the document object (opened pptx with at lease one paragraph or table inside)
+search: The string to search for that will be replaced. //!\ The search is done at a run level
+replace: The string to replace the search by.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaceTextInDocument(document, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in all the document paragraphs and tables.
+        Args:
+            document: the document object (opened pptx with at lease one paragraph or table inside)
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+    &#34;&#34;&#34;
+    for slide in document.slides:
+        for shape in slide.shapes:
+            if shape.has_table:
+                replaceTextInTable(shape.table, search, replace)
+            elif shape.has_text_frame:
+                replaceTextInTextFrame(shape, search, replace)
+            elif shape.has_chart:
+                replaceTextInChart(shape.chart, search, replace)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.replaceTextInParagraph"><code class="name flex">
+<span>def <span class="ident">replaceTextInParagraph</span></span>(<span>paragraph, search, replace)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Replace at a run level a text that will be searched in the given paragraph.
+Args:
+table: the table we want to replace a text inside
+search: The string to search for that will be replaced. //!\ The search is done at a run level
+replace: The string to replace the search by.
+Returns:
+Return None if nothing was found, the run where the string was replaced otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaceTextInParagraph(paragraph, search, replace):
+    &#34;&#34;&#34;
+    Replace at a run level a text that will be searched in the given paragraph.
+        Args:
+            table: the table we want to replace a text inside
+            search: The string to search for that will be replaced. //!\\ The search is done at a run level
+            replace: The string to replace the search by.
+        Returns:
+            Return None if nothing was found, the run where the string was replaced otherwise
+    &#34;&#34;&#34;
+    if search in paragraph.text:
+        for run in paragraph.runs:
+            inline = paragraph.runs
+            # Loop added to work with runs (strings with same style)
+            for i in range(len(inline)):
+                if search in inline[i].text:
+                    inline[i].text = inline[i].text.replace(search, replace)  
+                    return run
+        paragraph.text = paragraph.text.replace(search, replace)
+        return paragraph
+    return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.replaceTextInTable"><code class="name flex">
+<span>def <span class="ident">replaceTextInTable</span></span>(<span>tbl, search, replace)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaceTextInTable(tbl, search, replace):
+    row_count = len(tbl.rows)
+    col_count = len(tbl.columns)
+    atLeastOneMatch = False
+    for r in range(0, row_count):
+        for c in range(0, col_count):
+            cell = tbl.cell(r, c)
+            paragraphs = cell.text_frame.paragraphs
+            for paragraph in paragraphs:
+                if search in paragraph.text:
+                    res = replaceTextInParagraph(paragraph, search, replace)
+                    if res is not None:
+                        atLeastOneMatch = True
+    return atLeastOneMatch</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.replaceTextInTextFrame"><code class="name flex">
+<span>def <span class="ident">replaceTextInTextFrame</span></span>(<span>shapeTextFrame, search, replace)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaceTextInTextFrame(shapeTextFrame, search, replace):
+    atLeastOneMatch = False
+    if(shapeTextFrame.text.find(search))!=-1:
+        text_frame = shapeTextFrame.text_frame
+        paragraphs = text_frame.paragraphs
+        for paragraph in paragraphs:
+            if search in paragraph.text:
+                res = replaceTextInParagraph(paragraph, search, replace)
+                if res is not None:
+                    atLeastOneMatch = True
+    return atLeastOneMatch</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.write_defect_from_input"><code class="name flex">
+<span>def <span class="ident">write_defect_from_input</span></span>(<span>result, document, table_d, slide_i, o_defect, count)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_defect_from_input(result, document, table_d, slide_i, o_defect, count):
+    desc = result[0][&#34;description&#34;].replace(&#34;\r&#34;, &#34;&#34;)
+    desc_paras = desc.split(&#34;\n&#34;)
+    desc_paras += o_defect.get(&#34;notes&#34;, &#34;&#34;).strip().split(&#34;\n&#34;)
+    synthesis = result[0].get(&#34;synthesis&#34;, None)
+    if synthesis is not None:
+        desc_paras.insert(0, synthesis.replace(&#34;\r&#34;, &#34;&#34;))
+    desc_paras.insert(1, &#34;ToDo &#34;+str(o_defect[&#34;redactor&#34;]))
+    replaceTextInTable(table_d, &#34;var_d_description&#34;, desc_paras[0].strip())
+    write_every_defect_fix(result[0][&#34;fixes&#34;], document, slide_i, count)
+    return len(result[0][&#34;fixes&#34;])</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.write_each_defect"><code class="name flex">
+<span>def <span class="ident">write_each_defect</span></span>(<span>document, defects_dict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>for each default
+Copy a table and a paragraph form the template marked with var_d_id and var_d_separator.
+replace the markers var_d_id var_d_separator var_d_id var_d_title var_d_ease var_d_impact var_d_description
+Then for each fixe of this default
+Copy a table form the template marked with var_c_id.
+replace the markers var_c_id var_d_separator var_c_title var_c_ease var_c_gain var_c_description</p>
+<pre><code>Args:
+    document: the document to search elements in
+    defects_dict: the dictionary of defect gotten with the dedicated function getDefectDictFromExcel
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_each_defect(document, defects_dict):
+    &#34;&#34;&#34;
+    for each default
+       Copy a table and a paragraph form the template marked with var_d_id and var_d_separator.
+       replace the markers var_d_id var_d_separator var_d_id var_d_title var_d_ease var_d_impact var_d_description
+    Then for each fixe of this default
+        Copy a table form the template marked with var_c_id.
+        replace the markers var_c_id var_d_separator var_c_title var_c_ease var_c_gain var_c_description
+
+        Args:
+            document: the document to search elements in
+            defects_dict: the dictionary of defect gotten with the dedicated function getDefectDictFromExcel
+
+    &#34;&#34;&#34;
+    levels = [&#34;Critique&#34;, &#34;Majeur&#34;, &#34;Important&#34;, &#34;Mineur&#34;]
+    count_defects = 0
+    count_fixes = 0
+    total_len = 0
+    for level in levels:
+        total_len += len(defects_dict[level].values())
+    for level in levels:
+        level_count = 0
+        _, slide_copy_i = findSlideTableContaining(document, &#34;var_d_id&#34;)
+        # COPY SLIDE X TIME, SEPARATED
+        for i in range(1, len(defects_dict[level].values())):
+            duplicate_slide(document, slide_copy_i)
+            new_slide_i = slide_copy_i+i
+            move_slide(document, -1, new_slide_i)
+        # FILL COPIED SLIDES
+        for defect_dict in defects_dict[level].values():
+            new_slide_i = slide_copy_i + level_count
+            level_count += 1
+            count_defects += 1
+            o_defect = defect_dict[&#34;description&#34;]
+            table_d = findTableInSlide(document, new_slide_i, &#34;var_d_id&#34;)
+            replaceTextInTable(table_d, &#34;var_d_id&#34;, &#34;D&#34;+str(count_defects))
+            replaceTextInTable(table_d, &#34;var_d_title&#34;, o_defect[&#34;title&#34;])
+            replaceTextInTable(table_d, &#34;var_d_ease&#34;, o_defect[&#34;ease&#34;])
+            replaceTextInTable(table_d, &#34;var_d_impact&#34;, o_defect[&#34;impact&#34;])
+            
+            result = [
+                    {
+                        &#34;id&#34;:&#34;0&#34;,
+                        &#34;title&#34;: o_defect[&#34;title&#34;],
+                        &#34;ease&#34;: o_defect[&#34;ease&#34;],
+                        &#34;impact&#34;: o_defect[&#34;impact&#34;],
+                        &#34;risk&#34;: o_defect[&#34;risk&#34;],
+                        &#34;type&#34;: o_defect[&#34;type&#34;],
+                        &#34;description&#34;: &#34;Description&#34;,
+                        &#34;notes&#34;: o_defect.get(&#34;notes&#34;, &#34;&#34;),
+                        &#34;fixes&#34;: [
+                            {
+                                &#34;title&#34;: &#34;A def&#34;,
+                                &#34;execution&#34;: &#34;Modérée&#34;,
+                                &#34;gain&#34;: &#34;Moyen&#34;,
+                                &#34;description&#34;: &#34;A definir&#34;
+                            }
+                        ]
+                    }
+                ]
+            print(&#34;Writing defect &#34;+str(count_defects)+&#34;&#34;)
+            count_fixes += write_defect_from_input(result, document, table_d, new_slide_i, o_defect, count_defects)
+            progressbar.update()
+        if level_count == 0:
+            table_d = findTableInSlide(document, slide_copy_i, &#34;var_d_id&#34;)
+            if table_d is not None:
+                replaceTextInTable(table_d, &#34;var_d_id&#34;, &#34;TO_DELETE&#34;)
+    _, slide_copy_i = findSlideTableContaining(document, &#34;TO_DELETE&#34;)
+    while slide_copy_i is not None:
+        delete_slide(document, slide_copy_i)
+        _, slide_copy_i = findSlideTableContaining(document, &#34;TO_DELETE&#34;)
+    return count_defects, count_fixes</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.write_every_defect_fix"><code class="name flex">
+<span>def <span class="ident">write_every_defect_fix</span></span>(<span>fixes, document, slide_i, count)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_every_defect_fix(fixes, document, slide_i, count):
+    # print(&#34;write fixes for &#34;+str(count)+ &#34; after &#34;+str(last_defect_paragraph.text))
+    shape_fix = None
+    for fixe_i in range(len(fixes)):
+        id_correctif = &#34;A&#34;+str(count)
+        fixe = fixes[fixe_i]
+        if len(fixes) &gt; 1:
+            id_correctif += &#34;.&#34;+str(fixe_i+1)
+        # Find the original fix to copy and fill
+        shape_fix = findShapeContaining(document, slide_i, &#34;var_c_id&#34;)
+        if shape_fix is None:
+            raise Exception(&#34;Error, fixe form text was deleted too soon. RIP&#34;)
+        # Add notes paragraph after it
+        h = shape_fix.height
+        added_shape = copyShape(shape_fix, 1000+(count*100)+fixe_i)
+        added_shape.top -= (h*(len(fixes)-fixe_i-1))
+        replaceTextInTextFrame(added_shape, &#34;var_c_id&#34;, id_correctif)
+        replaceTextInTextFrame(added_shape, &#34;var_c_title&#34;, fixe[&#34;title&#34;])
+    if shape_fix is not None:
+        deleteShape(shape_fix)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.DummyProgressBar"><code class="flex name class">
+<span>class <span class="ident">DummyProgressBar</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DummyProgressBar:
+    def update(self):
+        return</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Reporting.PowerpointExport.DummyProgressBar.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self):
+    return</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Reporting" href="index.html">Pollenisator.core.Reporting</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.addSerieToChart" href="#Pollenisator.core.Reporting.PowerpointExport.addSerieToChart">addSerieToChart</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.copyShape" href="#Pollenisator.core.Reporting.PowerpointExport.copyShape">copyShape</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.createReport" href="#Pollenisator.core.Reporting.PowerpointExport.createReport">createReport</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.deleteShape" href="#Pollenisator.core.Reporting.PowerpointExport.deleteShape">deleteShape</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.delete_slide" href="#Pollenisator.core.Reporting.PowerpointExport.delete_slide">delete_slide</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.duplicate_slide" href="#Pollenisator.core.Reporting.PowerpointExport.duplicate_slide">duplicate_slide</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.findShapeContaining" href="#Pollenisator.core.Reporting.PowerpointExport.findShapeContaining">findShapeContaining</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.findSlideTableContaining" href="#Pollenisator.core.Reporting.PowerpointExport.findSlideTableContaining">findSlideTableContaining</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.findTableInSlide" href="#Pollenisator.core.Reporting.PowerpointExport.findTableInSlide">findTableInSlide</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.findTextInDocument" href="#Pollenisator.core.Reporting.PowerpointExport.findTextInDocument">findTextInDocument</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.findTextInTable" href="#Pollenisator.core.Reporting.PowerpointExport.findTextInTable">findTextInTable</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.findTextInTextFrame" href="#Pollenisator.core.Reporting.PowerpointExport.findTextInTextFrame">findTextInTextFrame</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.move_slide" href="#Pollenisator.core.Reporting.PowerpointExport.move_slide">move_slide</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.replaceTextInChart" href="#Pollenisator.core.Reporting.PowerpointExport.replaceTextInChart">replaceTextInChart</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.replaceTextInDocument" href="#Pollenisator.core.Reporting.PowerpointExport.replaceTextInDocument">replaceTextInDocument</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.replaceTextInParagraph" href="#Pollenisator.core.Reporting.PowerpointExport.replaceTextInParagraph">replaceTextInParagraph</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.replaceTextInTable" href="#Pollenisator.core.Reporting.PowerpointExport.replaceTextInTable">replaceTextInTable</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.replaceTextInTextFrame" href="#Pollenisator.core.Reporting.PowerpointExport.replaceTextInTextFrame">replaceTextInTextFrame</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.write_defect_from_input" href="#Pollenisator.core.Reporting.PowerpointExport.write_defect_from_input">write_defect_from_input</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.write_each_defect" href="#Pollenisator.core.Reporting.PowerpointExport.write_each_defect">write_each_defect</a></code></li>
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.write_every_defect_fix" href="#Pollenisator.core.Reporting.PowerpointExport.write_every_defect_fix">write_every_defect_fix</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Reporting.PowerpointExport.DummyProgressBar" href="#Pollenisator.core.Reporting.PowerpointExport.DummyProgressBar">DummyProgressBar</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Reporting.PowerpointExport.DummyProgressBar.update" href="#Pollenisator.core.Reporting.PowerpointExport.DummyProgressBar.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

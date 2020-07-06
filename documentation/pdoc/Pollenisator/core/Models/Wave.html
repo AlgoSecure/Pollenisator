@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Models.Wave API documentation</title>
+<meta name="description" content="Wave Model. Stores which command should be launched and associates Interval and Scope" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Models.Wave</code></h1>
+</header>
+<section id="section-intro">
+<p>Wave Model. Stores which command should be launched and associates Interval and Scope</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Wave Model. Stores which command should be launched and associates Interval and Scope&#34;&#34;&#34;
+
+from bson.objectid import ObjectId
+from core.Models.Tool import Tool
+from core.Models.Element import Element
+from core.Models.Ip import Ip
+from core.Models.Interval import Interval
+import core.Components.Utils as Utils
+from core.Models.Scope import Scope
+from core.Components.mongo import MongoCalendar
+
+
+class Wave(Element):
+    &#34;&#34;&#34;
+    Represents a Wave object. A wave is a series of tools to execute.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;waves&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id(None), parent(None), tags([]), infos({}),
+                        wave(&#34;&#34;), wave_commands([])
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;wave&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;wave_commands&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, wave=&#34;&#34;, wave_commands=None, infos=None):
+        &#34;&#34;&#34;Set values of scope
+        Args:
+            wave: the wave name, default is &#34;&#34;
+            wave_commands: a list of command name that are to be launched in this wave. Defaut is None (empty list)
+            infos: a dictionnary of additional info. Default is None (empty dict)
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.wave = wave
+        self.wave_commands = wave_commands if wave_commands is not None else []
+        self.infos = infos if infos is not None else {}
+        return self
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Delete the wave represented by this model in database.
+        Also delete the tools, intervals, scopes associated with this wave
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.delete(&#34;tools&#34;, {&#34;wave&#34;: self.wave}, True)
+        mongoInstance.delete(&#34;intervals&#34;, {&#34;wave&#34;: self.wave}, True)
+        mongoInstance.delete(&#34;waves&#34;, {&#34;_id&#34;: self._id})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this wave in database.
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        # Check unicity
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Insertion
+        res = mongoInstance.insert(
+            &#34;waves&#34;, {&#34;wave&#34;: self.wave, &#34;wave_commands&#34;: list(self.wave_commands)})
+        ret = res.inserted_id
+        self._id = ret
+        # Add tools
+        for commName in self.wave_commands:
+            self.addAllTool(commName)
+        return True, ret
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;waves&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;wave_commands&#34;: list(self.wave_commands)}})
+        else:
+            mongoInstance.update(&#34;waves&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: pipeline_set})
+
+    def addAllTool(self, command_name):
+        &#34;&#34;&#34;
+        Kind of recursive operation as it will call the same function in its children ports.
+        Add the appropriate tools (level check and wave&#39;s commands check) for this wave.
+        Also add for all registered scopes the appropriate tools.
+        Args:
+            command_name: The command that we want to create all the tools for.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        command = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;, {
+                                         &#34;name&#34;: command_name}, False)
+        if command[&#34;lvl&#34;] == &#34;wave&#34;:
+            newTool = Tool()
+            newTool.initialize(command_name, self.wave, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;wave&#34;)
+            newTool.addInDb()
+            return
+        scopes = mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: self.wave})
+        for scope in scopes:
+            h = Scope(scope)
+            h.addAllTool(command_name)
+
+    def removeAllTool(self, command_name):
+        &#34;&#34;&#34;
+        Remove from every member of this wave the old tool corresponding to given command name but only if the tool is not done.
+        We preserve history
+
+        Args:
+            command_name: The command that we want to remove all the tools.
+        &#34;&#34;&#34;
+        tools = Tool.fetchObjects({&#34;name&#34;: command_name, &#34;wave&#34;: self.wave})
+        for tool in tools:
+            if &#34;done&#34; not in tool.getStatus():
+                tool.delete()
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a wave.
+
+        Returns:
+            Returns the wave id (name).
+        &#34;&#34;&#34;
+        return self.wave
+
+    def getTools(self):
+        &#34;&#34;&#34;Return scope assigned tools as a list of mongo fetched tools dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        return Tool.fetchObjects({&#34;wave&#34;: self.wave, &#34;lvl&#34;: &#34;wave&#34;})
+
+    def getAllTools(self):
+        &#34;&#34;&#34;Return all tools being part of this wave as a list of mongo fetched tools dict.
+        Differs from getTools as it fetches all tools of the name and not only tools of level wave.
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        return Tool.fetchObjects({&#34;wave&#34;: self.wave})
+
+    def getIntervals(self):
+        &#34;&#34;&#34;Return scope assigned intervals as a list of mongo fetched intervals dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;intervals&#34;,
+                                  {&#34;wave&#34;: self.wave})
+
+    def getScopes(self):
+        &#34;&#34;&#34;Return wave assigned scopes as a list of mongo fetched scopes dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: self.wave})
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (1 key :&#34;wave&#34;)
+        &#34;&#34;&#34;
+        return {&#34;wave&#34;: self.wave}
+
+    def isLaunchableNow(self):
+        &#34;&#34;&#34;Returns True if the tool matches criteria to be launched 
+        (current time matches one of interval object assigned to this wave)
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        intervals = Interval.fetchObjects({&#34;wave&#34;: self.wave})
+        for intervalModel in intervals:
+            if Utils.fitNowTime(intervalModel.dated, intervalModel.datef):
+                return True
+        return False
+
+    @classmethod
+    def searchForAddressCompatibleWithTime(cls):
+        &#34;&#34;&#34;
+        Return a list of wave which have at least one interval fitting the actual time.
+
+        Returns:
+            A set of wave name
+        &#34;&#34;&#34;
+        waves_to_launch = set()
+        intervals = Interval.fetchObjects({})
+        for intervalModel in intervals:
+            if Utils.fitNowTime(intervalModel.dated, intervalModel.datef):
+                waves_to_launch.add(intervalModel.wave)
+        return waves_to_launch
+
+    @classmethod
+    def listWaves(cls):
+        &#34;&#34;&#34;Return all waves names as a list 
+        Returns:
+            list of all wave names
+        &#34;&#34;&#34;
+        ret = []
+        mongoInstance = MongoCalendar.getInstance()
+        waves = mongoInstance.find(&#34;waves&#34;, {})
+        for wave in waves:
+            ret.append(wave[&#34;wave&#34;])
+        return ret
+
+    @classmethod
+    def getNotDoneTools(cls, waveName):
+        &#34;&#34;&#34;Returns a set of tool mongo ID that are not done yet.
+        &#34;&#34;&#34;
+        notDoneTools = set()
+        mongoInstance = MongoCalendar.getInstance()
+        tools = mongoInstance.find(&#34;tools&#34;, {
+                                   &#34;wave&#34;: waveName, &#34;ip&#34;: &#34;&#34;, &#34;scanner_ip&#34;: &#34;None&#34;, &#34;dated&#34;: &#34;None&#34;, &#34;datef&#34;: &#34;None&#34;})
+        for tool in tools:
+            notDoneTools.add(tool[&#34;_id&#34;])
+        scopes = Scope.fetchObjects({&#34;wave&#34;: waveName})
+        for scope in scopes:
+            scopeId = scope.getId()
+            ips = Ip.getIpsInScope(scopeId)
+            for ip in ips:
+                tools = mongoInstance.find(&#34;tools&#34;, {
+                                           &#34;wave&#34;: waveName, &#34;ip&#34;: ip.ip, &#34;scanner_ip&#34;: &#34;None&#34;, &#34;dated&#34;: &#34;None&#34;, &#34;datef&#34;: &#34;None&#34;})
+                for tool in tools:
+                    notDoneTools.add(tool[&#34;_id&#34;])
+        return notDoneTools</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Models.Wave.Wave"><code class="flex name class">
+<span>class <span class="ident">Wave</span></span>
+<span>(</span><span>valuesFromDb=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents a Wave object. A wave is a series of tools to execute.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>coll_name</code></strong></dt>
+<dd>collection name in pollenisator database</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>valueFromDb</code></strong></dt>
+<dd>a dict holding values to load into the object. A mongo fetched interval is optimal.
+possible keys with default values are : _id(None), parent(None), tags([]), infos({}),
+wave(""), wave_commands([])</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wave(Element):
+    &#34;&#34;&#34;
+    Represents a Wave object. A wave is a series of tools to execute.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;waves&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id(None), parent(None), tags([]), infos({}),
+                        wave(&#34;&#34;), wave_commands([])
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;wave&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;wave_commands&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, wave=&#34;&#34;, wave_commands=None, infos=None):
+        &#34;&#34;&#34;Set values of scope
+        Args:
+            wave: the wave name, default is &#34;&#34;
+            wave_commands: a list of command name that are to be launched in this wave. Defaut is None (empty list)
+            infos: a dictionnary of additional info. Default is None (empty dict)
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.wave = wave
+        self.wave_commands = wave_commands if wave_commands is not None else []
+        self.infos = infos if infos is not None else {}
+        return self
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Delete the wave represented by this model in database.
+        Also delete the tools, intervals, scopes associated with this wave
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.delete(&#34;tools&#34;, {&#34;wave&#34;: self.wave}, True)
+        mongoInstance.delete(&#34;intervals&#34;, {&#34;wave&#34;: self.wave}, True)
+        mongoInstance.delete(&#34;waves&#34;, {&#34;_id&#34;: self._id})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this wave in database.
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        # Check unicity
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Insertion
+        res = mongoInstance.insert(
+            &#34;waves&#34;, {&#34;wave&#34;: self.wave, &#34;wave_commands&#34;: list(self.wave_commands)})
+        ret = res.inserted_id
+        self._id = ret
+        # Add tools
+        for commName in self.wave_commands:
+            self.addAllTool(commName)
+        return True, ret
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;waves&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;wave_commands&#34;: list(self.wave_commands)}})
+        else:
+            mongoInstance.update(&#34;waves&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: pipeline_set})
+
+    def addAllTool(self, command_name):
+        &#34;&#34;&#34;
+        Kind of recursive operation as it will call the same function in its children ports.
+        Add the appropriate tools (level check and wave&#39;s commands check) for this wave.
+        Also add for all registered scopes the appropriate tools.
+        Args:
+            command_name: The command that we want to create all the tools for.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        command = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;, {
+                                         &#34;name&#34;: command_name}, False)
+        if command[&#34;lvl&#34;] == &#34;wave&#34;:
+            newTool = Tool()
+            newTool.initialize(command_name, self.wave, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;wave&#34;)
+            newTool.addInDb()
+            return
+        scopes = mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: self.wave})
+        for scope in scopes:
+            h = Scope(scope)
+            h.addAllTool(command_name)
+
+    def removeAllTool(self, command_name):
+        &#34;&#34;&#34;
+        Remove from every member of this wave the old tool corresponding to given command name but only if the tool is not done.
+        We preserve history
+
+        Args:
+            command_name: The command that we want to remove all the tools.
+        &#34;&#34;&#34;
+        tools = Tool.fetchObjects({&#34;name&#34;: command_name, &#34;wave&#34;: self.wave})
+        for tool in tools:
+            if &#34;done&#34; not in tool.getStatus():
+                tool.delete()
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a wave.
+
+        Returns:
+            Returns the wave id (name).
+        &#34;&#34;&#34;
+        return self.wave
+
+    def getTools(self):
+        &#34;&#34;&#34;Return scope assigned tools as a list of mongo fetched tools dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        return Tool.fetchObjects({&#34;wave&#34;: self.wave, &#34;lvl&#34;: &#34;wave&#34;})
+
+    def getAllTools(self):
+        &#34;&#34;&#34;Return all tools being part of this wave as a list of mongo fetched tools dict.
+        Differs from getTools as it fetches all tools of the name and not only tools of level wave.
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        return Tool.fetchObjects({&#34;wave&#34;: self.wave})
+
+    def getIntervals(self):
+        &#34;&#34;&#34;Return scope assigned intervals as a list of mongo fetched intervals dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;intervals&#34;,
+                                  {&#34;wave&#34;: self.wave})
+
+    def getScopes(self):
+        &#34;&#34;&#34;Return wave assigned scopes as a list of mongo fetched scopes dict
+        Returns:
+            list of defect raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: self.wave})
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (1 key :&#34;wave&#34;)
+        &#34;&#34;&#34;
+        return {&#34;wave&#34;: self.wave}
+
+    def isLaunchableNow(self):
+        &#34;&#34;&#34;Returns True if the tool matches criteria to be launched 
+        (current time matches one of interval object assigned to this wave)
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        intervals = Interval.fetchObjects({&#34;wave&#34;: self.wave})
+        for intervalModel in intervals:
+            if Utils.fitNowTime(intervalModel.dated, intervalModel.datef):
+                return True
+        return False
+
+    @classmethod
+    def searchForAddressCompatibleWithTime(cls):
+        &#34;&#34;&#34;
+        Return a list of wave which have at least one interval fitting the actual time.
+
+        Returns:
+            A set of wave name
+        &#34;&#34;&#34;
+        waves_to_launch = set()
+        intervals = Interval.fetchObjects({})
+        for intervalModel in intervals:
+            if Utils.fitNowTime(intervalModel.dated, intervalModel.datef):
+                waves_to_launch.add(intervalModel.wave)
+        return waves_to_launch
+
+    @classmethod
+    def listWaves(cls):
+        &#34;&#34;&#34;Return all waves names as a list 
+        Returns:
+            list of all wave names
+        &#34;&#34;&#34;
+        ret = []
+        mongoInstance = MongoCalendar.getInstance()
+        waves = mongoInstance.find(&#34;waves&#34;, {})
+        for wave in waves:
+            ret.append(wave[&#34;wave&#34;])
+        return ret
+
+    @classmethod
+    def getNotDoneTools(cls, waveName):
+        &#34;&#34;&#34;Returns a set of tool mongo ID that are not done yet.
+        &#34;&#34;&#34;
+        notDoneTools = set()
+        mongoInstance = MongoCalendar.getInstance()
+        tools = mongoInstance.find(&#34;tools&#34;, {
+                                   &#34;wave&#34;: waveName, &#34;ip&#34;: &#34;&#34;, &#34;scanner_ip&#34;: &#34;None&#34;, &#34;dated&#34;: &#34;None&#34;, &#34;datef&#34;: &#34;None&#34;})
+        for tool in tools:
+            notDoneTools.add(tool[&#34;_id&#34;])
+        scopes = Scope.fetchObjects({&#34;wave&#34;: waveName})
+        for scope in scopes:
+            scopeId = scope.getId()
+            ips = Ip.getIpsInScope(scopeId)
+            for ip in ips:
+                tools = mongoInstance.find(&#34;tools&#34;, {
+                                           &#34;wave&#34;: waveName, &#34;ip&#34;: ip.ip, &#34;scanner_ip&#34;: &#34;None&#34;, &#34;dated&#34;: &#34;None&#34;, &#34;datef&#34;: &#34;None&#34;})
+                for tool in tools:
+                    notDoneTools.add(tool[&#34;_id&#34;])
+        return notDoneTools</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Models.Element.Element</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Wave.Wave.coll_name"><code class="name">var <span class="ident">coll_name</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Wave.Wave.getNotDoneTools"><code class="name flex">
+<span>def <span class="ident">getNotDoneTools</span></span>(<span>waveName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a set of tool mongo ID that are not done yet.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getNotDoneTools(cls, waveName):
+    &#34;&#34;&#34;Returns a set of tool mongo ID that are not done yet.
+    &#34;&#34;&#34;
+    notDoneTools = set()
+    mongoInstance = MongoCalendar.getInstance()
+    tools = mongoInstance.find(&#34;tools&#34;, {
+                               &#34;wave&#34;: waveName, &#34;ip&#34;: &#34;&#34;, &#34;scanner_ip&#34;: &#34;None&#34;, &#34;dated&#34;: &#34;None&#34;, &#34;datef&#34;: &#34;None&#34;})
+    for tool in tools:
+        notDoneTools.add(tool[&#34;_id&#34;])
+    scopes = Scope.fetchObjects({&#34;wave&#34;: waveName})
+    for scope in scopes:
+        scopeId = scope.getId()
+        ips = Ip.getIpsInScope(scopeId)
+        for ip in ips:
+            tools = mongoInstance.find(&#34;tools&#34;, {
+                                       &#34;wave&#34;: waveName, &#34;ip&#34;: ip.ip, &#34;scanner_ip&#34;: &#34;None&#34;, &#34;dated&#34;: &#34;None&#34;, &#34;datef&#34;: &#34;None&#34;})
+            for tool in tools:
+                notDoneTools.add(tool[&#34;_id&#34;])
+    return notDoneTools</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.listWaves"><code class="name flex">
+<span>def <span class="ident">listWaves</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return all waves names as a list </p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>all wave names</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def listWaves(cls):
+    &#34;&#34;&#34;Return all waves names as a list 
+    Returns:
+        list of all wave names
+    &#34;&#34;&#34;
+    ret = []
+    mongoInstance = MongoCalendar.getInstance()
+    waves = mongoInstance.find(&#34;waves&#34;, {})
+    for wave in waves:
+        ret.append(wave[&#34;wave&#34;])
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.searchForAddressCompatibleWithTime"><code class="name flex">
+<span>def <span class="ident">searchForAddressCompatibleWithTime</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a list of wave which have at least one interval fitting the actual time.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A set</code> of <code>wave name</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def searchForAddressCompatibleWithTime(cls):
+    &#34;&#34;&#34;
+    Return a list of wave which have at least one interval fitting the actual time.
+
+    Returns:
+        A set of wave name
+    &#34;&#34;&#34;
+    waves_to_launch = set()
+    intervals = Interval.fetchObjects({})
+    for intervalModel in intervals:
+        if Utils.fitNowTime(intervalModel.dated, intervalModel.datef):
+            waves_to_launch.add(intervalModel.wave)
+    return waves_to_launch</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Wave.Wave.addAllTool"><code class="name flex">
+<span>def <span class="ident">addAllTool</span></span>(<span>self, command_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Kind of recursive operation as it will call the same function in its children ports.
+Add the appropriate tools (level check and wave's commands check) for this wave.
+Also add for all registered scopes the appropriate tools.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>command_name</code></strong></dt>
+<dd>The command that we want to create all the tools for.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addAllTool(self, command_name):
+    &#34;&#34;&#34;
+    Kind of recursive operation as it will call the same function in its children ports.
+    Add the appropriate tools (level check and wave&#39;s commands check) for this wave.
+    Also add for all registered scopes the appropriate tools.
+    Args:
+        command_name: The command that we want to create all the tools for.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    command = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;, {
+                                     &#34;name&#34;: command_name}, False)
+    if command[&#34;lvl&#34;] == &#34;wave&#34;:
+        newTool = Tool()
+        newTool.initialize(command_name, self.wave, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;wave&#34;)
+        newTool.addInDb()
+        return
+    scopes = mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: self.wave})
+    for scope in scopes:
+        h = Scope(scope)
+        h.addAllTool(command_name)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.addInDb"><code class="name flex">
+<span>def <span class="ident">addInDb</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this wave in database.
+Returns: a tuple with :
+* bool for success
+* mongo ObjectId : already existing object if duplicate, create object id otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInDb(self):
+    &#34;&#34;&#34;
+    Add this wave in database.
+    Returns: a tuple with :
+            * bool for success
+            * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+    &#34;&#34;&#34;
+    # Check unicity
+    mongoInstance = MongoCalendar.getInstance()
+    existing = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+    if existing is not None:
+        return False, existing[&#34;_id&#34;]
+    # Insertion
+    res = mongoInstance.insert(
+        &#34;waves&#34;, {&#34;wave&#34;: self.wave, &#34;wave_commands&#34;: list(self.wave_commands)})
+    ret = res.inserted_id
+    self._id = ret
+    # Add tools
+    for commName in self.wave_commands:
+        self.addAllTool(commName)
+    return True, ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete the wave represented by this model in database.
+Also delete the tools, intervals, scopes associated with this wave</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self):
+    &#34;&#34;&#34;
+    Delete the wave represented by this model in database.
+    Also delete the tools, intervals, scopes associated with this wave
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.delete(&#34;tools&#34;, {&#34;wave&#34;: self.wave}, True)
+    mongoInstance.delete(&#34;intervals&#34;, {&#34;wave&#34;: self.wave}, True)
+    mongoInstance.delete(&#34;waves&#34;, {&#34;_id&#34;: self._id})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.getAllTools"><code class="name flex">
+<span>def <span class="ident">getAllTools</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return all tools being part of this wave as a list of mongo fetched tools dict.
+Differs from getTools as it fetches all tools of the name and not only tools of level wave.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>defect raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAllTools(self):
+    &#34;&#34;&#34;Return all tools being part of this wave as a list of mongo fetched tools dict.
+    Differs from getTools as it fetches all tools of the name and not only tools of level wave.
+    Returns:
+        list of defect raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    return Tool.fetchObjects({&#34;wave&#34;: self.wave})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.getDbKey"><code class="name flex">
+<span>def <span class="ident">getDbKey</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a dict from model to use as unique composed key.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A dict (1 key :"wave")</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDbKey(self):
+    &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+    Returns:
+        A dict (1 key :&#34;wave&#34;)
+    &#34;&#34;&#34;
+    return {&#34;wave&#34;: self.wave}</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.getIntervals"><code class="name flex">
+<span>def <span class="ident">getIntervals</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return scope assigned intervals as a list of mongo fetched intervals dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>defect raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getIntervals(self):
+    &#34;&#34;&#34;Return scope assigned intervals as a list of mongo fetched intervals dict
+    Returns:
+        list of defect raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    return mongoInstance.find(&#34;intervals&#34;,
+                              {&#34;wave&#34;: self.wave})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.getScopes"><code class="name flex">
+<span>def <span class="ident">getScopes</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return wave assigned scopes as a list of mongo fetched scopes dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>defect raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getScopes(self):
+    &#34;&#34;&#34;Return wave assigned scopes as a list of mongo fetched scopes dict
+    Returns:
+        list of defect raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    return mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: self.wave})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.getTools"><code class="name flex">
+<span>def <span class="ident">getTools</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return scope assigned tools as a list of mongo fetched tools dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>defect raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTools(self):
+    &#34;&#34;&#34;Return scope assigned tools as a list of mongo fetched tools dict
+    Returns:
+        list of defect raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    return Tool.fetchObjects({&#34;wave&#34;: self.wave, &#34;lvl&#34;: &#34;wave&#34;})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.initialize"><code class="name flex">
+<span>def <span class="ident">initialize</span></span>(<span>self, wave='', wave_commands=None, infos=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set values of scope</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>wave</code></strong></dt>
+<dd>the wave name, default is ""</dd>
+<dt><strong><code>wave_commands</code></strong></dt>
+<dd>a list of command name that are to be launched in this wave. Defaut is None (empty list)</dd>
+<dt><strong><code>infos</code></strong></dt>
+<dd>a dictionnary of additional info. Default is None (empty dict)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>this object</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initialize(self, wave=&#34;&#34;, wave_commands=None, infos=None):
+    &#34;&#34;&#34;Set values of scope
+    Args:
+        wave: the wave name, default is &#34;&#34;
+        wave_commands: a list of command name that are to be launched in this wave. Defaut is None (empty list)
+        infos: a dictionnary of additional info. Default is None (empty dict)
+    Returns:
+        this object
+    &#34;&#34;&#34;
+    self.wave = wave
+    self.wave_commands = wave_commands if wave_commands is not None else []
+    self.infos = infos if infos is not None else {}
+    return self</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.isLaunchableNow"><code class="name flex">
+<span>def <span class="ident">isLaunchableNow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if the tool matches criteria to be launched
+(current time matches one of interval object assigned to this wave)</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isLaunchableNow(self):
+    &#34;&#34;&#34;Returns True if the tool matches criteria to be launched 
+    (current time matches one of interval object assigned to this wave)
+    Returns:
+        bool
+    &#34;&#34;&#34;
+    intervals = Interval.fetchObjects({&#34;wave&#34;: self.wave})
+    for intervalModel in intervals:
+        if Utils.fitNowTime(intervalModel.dated, intervalModel.datef):
+            return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.removeAllTool"><code class="name flex">
+<span>def <span class="ident">removeAllTool</span></span>(<span>self, command_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove from every member of this wave the old tool corresponding to given command name but only if the tool is not done.
+We preserve history</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>command_name</code></strong></dt>
+<dd>The command that we want to remove all the tools.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeAllTool(self, command_name):
+    &#34;&#34;&#34;
+    Remove from every member of this wave the old tool corresponding to given command name but only if the tool is not done.
+    We preserve history
+
+    Args:
+        command_name: The command that we want to remove all the tools.
+    &#34;&#34;&#34;
+    tools = Tool.fetchObjects({&#34;name&#34;: command_name, &#34;wave&#34;: self.wave})
+    for tool in tools:
+        if &#34;done&#34; not in tool.getStatus():
+            tool.delete()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Wave.Wave.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, pipeline_set=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update this object in database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pipeline_set</code></strong></dt>
+<dd>(Opt.) A dictionnary with custom values. If None (default) use model attributes.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, pipeline_set=None):
+    &#34;&#34;&#34;Update this object in database.
+    Args:
+        pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    if pipeline_set is None:
+        mongoInstance.update(&#34;waves&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: {&#34;wave_commands&#34;: list(self.wave_commands)}})
+    else:
+        mongoInstance.update(&#34;waves&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: pipeline_set})</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Models" href="index.html">Pollenisator.core.Models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Models.Wave.Wave" href="#Pollenisator.core.Models.Wave.Wave">Wave</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.addAllTool" href="#Pollenisator.core.Models.Wave.Wave.addAllTool">addAllTool</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.addInDb" href="#Pollenisator.core.Models.Wave.Wave.addInDb">addInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.coll_name" href="#Pollenisator.core.Models.Wave.Wave.coll_name">coll_name</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.delete" href="#Pollenisator.core.Models.Wave.Wave.delete">delete</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.getAllTools" href="#Pollenisator.core.Models.Wave.Wave.getAllTools">getAllTools</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.getDbKey" href="#Pollenisator.core.Models.Wave.Wave.getDbKey">getDbKey</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.getIntervals" href="#Pollenisator.core.Models.Wave.Wave.getIntervals">getIntervals</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.getNotDoneTools" href="#Pollenisator.core.Models.Wave.Wave.getNotDoneTools">getNotDoneTools</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.getScopes" href="#Pollenisator.core.Models.Wave.Wave.getScopes">getScopes</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.getTools" href="#Pollenisator.core.Models.Wave.Wave.getTools">getTools</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.initialize" href="#Pollenisator.core.Models.Wave.Wave.initialize">initialize</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.isLaunchableNow" href="#Pollenisator.core.Models.Wave.Wave.isLaunchableNow">isLaunchableNow</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.listWaves" href="#Pollenisator.core.Models.Wave.Wave.listWaves">listWaves</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.removeAllTool" href="#Pollenisator.core.Models.Wave.Wave.removeAllTool">removeAllTool</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.searchForAddressCompatibleWithTime" href="#Pollenisator.core.Models.Wave.Wave.searchForAddressCompatibleWithTime">searchForAddressCompatibleWithTime</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Wave.Wave.update" href="#Pollenisator.core.Models.Wave.Wave.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

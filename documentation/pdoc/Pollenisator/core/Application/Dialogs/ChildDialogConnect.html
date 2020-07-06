@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Application.Dialogs.ChildDialogConnect API documentation</title>
+<meta name="description" content="Defines a sub-swindow window for connecting to the server" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Application.Dialogs.ChildDialogConnect</code></h1>
+</header>
+<section id="section-intro">
+<p>Defines a sub-swindow window for connecting to the server</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Defines a sub-swindow window for connecting to the server&#34;&#34;&#34;
+
+import tkinter as tk
+import tkinter.ttk as ttk
+from PIL import ImageTk, Image
+from paramiko.ssh_exception import SSHException
+from pymongo.errors import ServerSelectionTimeoutError, OperationFailure
+from core.Components.mongo import MongoCalendar
+from core.Components.FileStorage import FileStorage
+from core.Components.Utils import loadClientConfig, saveClientConfig, getValidMarkIconPath, getBadMarkIconPath, getWaitingMarkIconPath
+
+
+class ChildDialogConnect:
+    &#34;&#34;&#34;
+    Open a child dialog of a tkinter application to ask server and login infos
+    &#34;&#34;&#34;
+    cvalid_icon = None
+    cbad_icon = None
+    cwaiting_icon = None
+
+    def validIcon(self):
+        &#34;&#34;&#34;Returns a icon indicating a valid state.
+        Returns:
+            ImageTk PhotoImage&#34;&#34;&#34;
+        if self.__class__.cvalid_icon is None:
+            self.__class__.cvalid_icon = ImageTk.PhotoImage(
+                Image.open(getValidMarkIconPath()))
+        return self.__class__.cvalid_icon
+
+    def badIcon(self):
+        &#34;&#34;&#34;Returns a icon indicating a bad state.
+        Returns:
+            ImageTk PhotoImage&#34;&#34;&#34;
+        if self.__class__.cbad_icon is None:
+            self.__class__.cbad_icon = ImageTk.PhotoImage(
+                Image.open(getBadMarkIconPath()))
+        return self.__class__.cbad_icon
+
+    def waitingIcon(self):
+        &#34;&#34;&#34;Returns a icon indicating a waiting state.
+        Returns:
+            ImageTk PhotoImage&#34;&#34;&#34;
+        if self.__class__.cwaiting_icon is None:
+            self.__class__.cwaiting_icon = ImageTk.PhotoImage(
+                Image.open(getWaitingMarkIconPath()))
+        return self.__class__.cwaiting_icon
+
+    def __init__(self, parent, displayMsg=&#34;Connect to backend:&#34;):
+        &#34;&#34;&#34;
+        Open a child dialog of a tkinter application to connect to a pollenisator server.
+
+        Args:
+            parent: the tkinter parent view to use for this window construction.
+            displayMsg: The message that will explain to the user what the form is.
+        &#34;&#34;&#34;
+        self.parent = parent
+        self.app = tk.Toplevel(parent)
+        self.app.resizable(False, False)
+        appFrame = ttk.Frame(self.app)
+        self.rvalue = None
+        self.parent = parent
+        self.clientCfg = loadClientConfig()
+        lbl = ttk.Label(appFrame, text=displayMsg)
+        lbl.pack()
+        lbl_hostname = ttk.Label(appFrame, text=&#34;Host : &#34;)
+        lbl_hostname.pack(side=tk.TOP)
+        self.ent_hostname = tk.Entry(
+            appFrame, width=&#34;20&#34;, validate=&#34;focusout&#34;, validatecommand=self.validateHost)
+        self.ent_hostname.insert(tk.END, self.clientCfg[&#34;host&#34;])
+        self.ent_hostname.bind(&#39;&lt;Return&gt;&#39;, self.validateHost)
+        self.ent_hostname.bind(&#39;&lt;KP_Enter&gt;&#39;, self.validateHost)
+        self.ent_hostname.pack(side=tk.TOP)
+        lbl_mongo = ttk.LabelFrame(
+            appFrame, text=&#34;Mongo:&#34;)
+        lbl_mongo.pack(padx=10, pady=10, side=tk.TOP,
+                       anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_port = ttk.Label(lbl_mongo, text=&#34;Mongo Port : &#34;)
+        lbl_port.grid(row=1, column=0, sticky=tk.E)
+        self.ent_port = ttk.Entry(
+            lbl_mongo, width=&#34;5&#34;, validate=&#34;focusout&#34;, validatecommand=self.validateHost)
+        self.ent_port.insert(tk.END, self.clientCfg.get(&#34;mongo_port&#34;, 27017), )
+        self.ent_port.bind(&#39;&lt;Return&gt;&#39;, self.validateHost)
+        self.ent_port.bind(&#39;&lt;KP_Enter&gt;&#39;, self.validateHost)
+        self.ent_port.grid(row=1, column=1, sticky=tk.W)
+        self.img_indicator = ttk.Label(lbl_mongo, image=self.waitingIcon())
+        self.img_indicator.grid(row=1, column=2)
+        lbl_ssl = ttk.Label(lbl_mongo, text=&#34;SSL : &#34;)
+        lbl_ssl.grid(row=3, column=0, sticky=tk.E)
+        self.chk_ssl_val = tk.IntVar(
+            value=1 if self.clientCfg.get(&#34;ssl&#34;, &#34;True&#34;) == &#34;True&#34; else 0)
+        chk_ssl = ttk.Checkbutton(
+            lbl_mongo, variable=self.chk_ssl_val, command=self.validateHost)
+        chk_ssl.grid(row=3, column=1, sticky=tk.W)
+        lbl_user = ttk.Label(lbl_mongo, text=&#34;Mongo username : &#34;)
+        lbl_user.grid(row=4, column=0, sticky=tk.E)
+        self.ent_user = ttk.Entry(lbl_mongo, width=&#34;20&#34;)
+        self.ent_user.insert(tk.END, self.clientCfg[&#34;user&#34;])
+        self.ent_user.grid(row=4, column=1, sticky=tk.W)
+        lbl_password = ttk.Label(lbl_mongo, text=&#34;Mongo password : &#34;)
+        lbl_password.grid(row=5, column=0, sticky=tk.E)
+        self.ent_password = ttk.Entry(lbl_mongo, show=&#34;*&#34;, width=&#34;20&#34;)
+        self.ent_password.insert(tk.END, self.clientCfg[&#34;password&#34;])
+        self.ent_password.grid(row=5, column=1, sticky=tk.W)
+
+        lbl_sftp = ttk.LabelFrame(
+            appFrame, text=&#34;SFTP:&#34;)
+        lbl_sftp.pack(padx=10, pady=10, side=tk.TOP,
+                      anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_port_sftp = ttk.Label(lbl_sftp, text=&#34;SFTP Port : &#34;)
+        lbl_port_sftp.grid(row=2, column=0, sticky=tk.E)
+        self.ent_port_sftp = ttk.Entry(
+            lbl_sftp, width=&#34;5&#34;, validate=&#34;focusout&#34;, validatecommand=self.validateHost)
+        self.ent_port_sftp.insert(
+            tk.END, self.clientCfg.get(&#34;sftp_port&#34;, 22))
+        self.ent_port_sftp.grid(row=2, column=1, sticky=tk.W)
+        self.ent_port_sftp.bind(&#39;&lt;Return&gt;&#39;, self.validateHost)
+        self.ent_port_sftp.bind(&#39;&lt;KP_Enter&gt;&#39;, self.validateHost)
+        self.img_indicator_sftp = ttk.Label(
+            lbl_sftp, image=self.waitingIcon())
+        self.img_indicator_sftp.grid(row=2, column=2)
+
+        lbl_user_sftp = ttk.Label(lbl_sftp, text=&#34;SFTP username : &#34;)
+        lbl_user_sftp.grid(row=6, column=0, sticky=tk.E)
+        self.ent_user_sftp = ttk.Entry(lbl_sftp, width=&#34;20&#34;)
+        self.ent_user_sftp.insert(tk.END, self.clientCfg[&#34;sftp_user&#34;])
+        self.ent_user_sftp.grid(row=6, column=1, sticky=tk.W)
+        lbl_password_sftp = ttk.Label(lbl_sftp, text=&#34;SFTP Password : &#34;)
+        lbl_password_sftp.grid(row=7, column=0, sticky=tk.E)
+        self.ent_password_sftp = ttk.Entry(lbl_sftp, show=&#34;*&#34;, width=&#34;20&#34;)
+        self.ent_password_sftp.insert(tk.END, self.clientCfg[&#34;sftp_password&#34;])
+        self.ent_password_sftp.grid(row=7, column=1, sticky=tk.W)
+        self.ok_button = ttk.Button(appFrame, text=&#34;OK&#34;, command=self.onOk)
+        self.ok_button.pack(pady=10)
+        self.validateHost()
+        appFrame.pack(ipadx=10, ipady=10)
+        try:
+            self.app.wait_visibility()
+            self.app.transient(parent)
+            self.app.grab_set()
+        except tk.TclError:
+            pass
+
+    def getForm(self):
+        &#34;&#34;&#34;Return the content of this form
+        Returns:
+            a dict with values: host, mongo_port, sftp_port, ssl (string with value True or False),
+                                user, password, sftp_user, sftp_password&#34;&#34;&#34;
+        config = {}
+        config[&#34;host&#34;] = self.ent_hostname.get()
+        config[&#34;mongo_port&#34;] = self.ent_port.get()
+        config[&#34;sftp_port&#34;] = self.ent_port_sftp.get()
+        config[&#34;ssl&#34;] = str(self.chk_ssl_val.get() == 1)
+        config[&#34;user&#34;] = self.ent_user.get()
+        config[&#34;password&#34;] = self.ent_password.get()
+        config[&#34;sftp_user&#34;] = self.ent_user_sftp.get()
+        config[&#34;sftp_password&#34;] = self.ent_password_sftp.get()
+        return config
+
+    def trySFTP(self, config):
+        &#34;&#34;&#34;Try to connect to the given host on the given sftp port with the given sftp_user/sftp_password
+        Args:
+            - config: A dictionnary with thoses values set : host, sftp_port, sftp_user, sftp_password
+        Returns:
+            - True if connected, False otherwaise
+        Raise:
+            - ValueError : if the host/port is correct but the authentication failed
+            - SSHException : from the paramiko.ssh_exception package if the host/port does not respond to an sftp connection.
+        &#34;&#34;&#34;
+        fs = FileStorage(config)
+        try:
+            fs.open()
+        except SSHException as e:
+            # SSH unreachable
+            raise e
+        except ValueError as e:
+            # password incorrect
+            raise e
+        if fs.isConnected():
+            fs.close()
+            return True
+        return False
+
+    def tryConnection(self, config):
+        &#34;&#34;&#34;Try to connect to the given host with mongo and with sftp.
+        Args:
+            - config: A dictionnary with thoses values set : host, mongo_port, user, password, ssl, sftp_port, sftp_user, sftp_password
+        Returns:
+            - True if the server is reachable on both mongo and sftp services, False otherwise. Does not test authentication.
+        &#34;&#34;&#34;
+        try:
+            mongoInstance = MongoCalendar.getInstance()
+            res = mongoInstance.connect(config, 500)
+        except ServerSelectionTimeoutError:
+            res = False
+        except OperationFailure:
+            res = True  # Authentication failed, so mongo was reached
+        if res:
+            self.img_indicator.config(image=self.validIcon())
+            self.img_indicator.image = self.validIcon()
+        else:
+            self.img_indicator.config(image=self.badIcon())
+            self.img_indicator.image = self.badIcon
+        try:
+            res_sftp = self.trySFTP(config)
+        except SSHException:
+            self.img_indicator_sftp.config(image=self.badIcon())
+            self.img_indicator_sftp.image = self.badIcon()
+            res_sftp = False
+        except ValueError:
+            res_sftp = True  # Authentication failed, so sftp was reached
+        if res_sftp:
+            self.img_indicator_sftp.config(image=self.validIcon())
+            self.img_indicator_sftp.image = self.validIcon()
+        return res and res_sftp
+
+    def validateHost(self, _event=None):
+        &#34;&#34;&#34;Validate host on both mongo and sftp connections. Change icons on the dialog accordingly.
+        Returns:
+            - True if the server is reachable on both mongo and sftp services, False otherwise. Does not test authentication.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.reinitConnection()
+        config = self.getForm()
+        config[&#34;user&#34;] = &#34;&#34;
+        config[&#34;password&#34;] = &#34;&#34;
+        config[&#34;sftp_user&#34;] = &#34;&#34;
+        config[&#34;sftp_password&#34;] = &#34;&#34;
+        self.img_indicator.config(image=self.waitingIcon())
+        self.img_indicator_sftp.config(image=self.waitingIcon())
+        return self.tryConnection(config)
+
+    def onOk(self):
+        &#34;&#34;&#34;
+        Called when the user clicked the validation button.
+        Try a full connection with authentication to the host given.
+        Side effects:
+            - Open dialogs if the connection failed. Does not close this dialog.
+            - If the connections succeeded : write the client.cfg file accordingly.
+        &#34;&#34;&#34;
+        # send the data to the parent
+        config = self.getForm()
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.reinitConnection()
+        res = True
+        try:
+            res = mongoInstance.connect(config, 5000)
+        except OperationFailure:
+            tk.messagebox.showerror(
+                &#34;Mongo authentication failed&#34;, &#34;Mongo user or password is incorrect&#34;, master=self.parent)
+            res = False
+        except ServerSelectionTimeoutError:
+            tk.messagebox.showerror(
+                &#34;Mongo connection failed&#34;, &#34;The mongo database is not reachable&#34;, master=self.parent)
+            res = False
+        try:
+            res = res and self.trySFTP(config)
+        except SSHException:
+            # Unreachable
+            tk.messagebox.showerror(
+                &#34;SFTP connection failed&#34;, &#34;This sftp port is not open on host.&#34;, master=self.parent)
+            res = False
+        except ValueError:
+            # Authentication failed
+            tk.messagebox.showerror(
+                &#34;SFTP authentication failed&#34;, &#34;SFTP user or password is incorrect&#34;, master=self.parent)
+            res = False
+        self.rvalue = False
+        if res:
+            #  pylint: disable=len-as-condition
+            self.rvalue = len(mongoInstance.listCalendars()) &gt; 0
+            for key, value in self.clientCfg.items():
+                if key not in config.keys():
+                    config[key] = value
+            saveClientConfig(config)
+            self.app.destroy()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect"><code class="flex name class">
+<span>class <span class="ident">ChildDialogConnect</span></span>
+<span>(</span><span>parent, displayMsg='Connect to backend:')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Open a child dialog of a tkinter application to ask server and login infos</p>
+<p>Open a child dialog of a tkinter application to connect to a pollenisator server.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>the tkinter parent view to use for this window construction.</dd>
+<dt><strong><code>displayMsg</code></strong></dt>
+<dd>The message that will explain to the user what the form is.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChildDialogConnect:
+    &#34;&#34;&#34;
+    Open a child dialog of a tkinter application to ask server and login infos
+    &#34;&#34;&#34;
+    cvalid_icon = None
+    cbad_icon = None
+    cwaiting_icon = None
+
+    def validIcon(self):
+        &#34;&#34;&#34;Returns a icon indicating a valid state.
+        Returns:
+            ImageTk PhotoImage&#34;&#34;&#34;
+        if self.__class__.cvalid_icon is None:
+            self.__class__.cvalid_icon = ImageTk.PhotoImage(
+                Image.open(getValidMarkIconPath()))
+        return self.__class__.cvalid_icon
+
+    def badIcon(self):
+        &#34;&#34;&#34;Returns a icon indicating a bad state.
+        Returns:
+            ImageTk PhotoImage&#34;&#34;&#34;
+        if self.__class__.cbad_icon is None:
+            self.__class__.cbad_icon = ImageTk.PhotoImage(
+                Image.open(getBadMarkIconPath()))
+        return self.__class__.cbad_icon
+
+    def waitingIcon(self):
+        &#34;&#34;&#34;Returns a icon indicating a waiting state.
+        Returns:
+            ImageTk PhotoImage&#34;&#34;&#34;
+        if self.__class__.cwaiting_icon is None:
+            self.__class__.cwaiting_icon = ImageTk.PhotoImage(
+                Image.open(getWaitingMarkIconPath()))
+        return self.__class__.cwaiting_icon
+
+    def __init__(self, parent, displayMsg=&#34;Connect to backend:&#34;):
+        &#34;&#34;&#34;
+        Open a child dialog of a tkinter application to connect to a pollenisator server.
+
+        Args:
+            parent: the tkinter parent view to use for this window construction.
+            displayMsg: The message that will explain to the user what the form is.
+        &#34;&#34;&#34;
+        self.parent = parent
+        self.app = tk.Toplevel(parent)
+        self.app.resizable(False, False)
+        appFrame = ttk.Frame(self.app)
+        self.rvalue = None
+        self.parent = parent
+        self.clientCfg = loadClientConfig()
+        lbl = ttk.Label(appFrame, text=displayMsg)
+        lbl.pack()
+        lbl_hostname = ttk.Label(appFrame, text=&#34;Host : &#34;)
+        lbl_hostname.pack(side=tk.TOP)
+        self.ent_hostname = tk.Entry(
+            appFrame, width=&#34;20&#34;, validate=&#34;focusout&#34;, validatecommand=self.validateHost)
+        self.ent_hostname.insert(tk.END, self.clientCfg[&#34;host&#34;])
+        self.ent_hostname.bind(&#39;&lt;Return&gt;&#39;, self.validateHost)
+        self.ent_hostname.bind(&#39;&lt;KP_Enter&gt;&#39;, self.validateHost)
+        self.ent_hostname.pack(side=tk.TOP)
+        lbl_mongo = ttk.LabelFrame(
+            appFrame, text=&#34;Mongo:&#34;)
+        lbl_mongo.pack(padx=10, pady=10, side=tk.TOP,
+                       anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_port = ttk.Label(lbl_mongo, text=&#34;Mongo Port : &#34;)
+        lbl_port.grid(row=1, column=0, sticky=tk.E)
+        self.ent_port = ttk.Entry(
+            lbl_mongo, width=&#34;5&#34;, validate=&#34;focusout&#34;, validatecommand=self.validateHost)
+        self.ent_port.insert(tk.END, self.clientCfg.get(&#34;mongo_port&#34;, 27017), )
+        self.ent_port.bind(&#39;&lt;Return&gt;&#39;, self.validateHost)
+        self.ent_port.bind(&#39;&lt;KP_Enter&gt;&#39;, self.validateHost)
+        self.ent_port.grid(row=1, column=1, sticky=tk.W)
+        self.img_indicator = ttk.Label(lbl_mongo, image=self.waitingIcon())
+        self.img_indicator.grid(row=1, column=2)
+        lbl_ssl = ttk.Label(lbl_mongo, text=&#34;SSL : &#34;)
+        lbl_ssl.grid(row=3, column=0, sticky=tk.E)
+        self.chk_ssl_val = tk.IntVar(
+            value=1 if self.clientCfg.get(&#34;ssl&#34;, &#34;True&#34;) == &#34;True&#34; else 0)
+        chk_ssl = ttk.Checkbutton(
+            lbl_mongo, variable=self.chk_ssl_val, command=self.validateHost)
+        chk_ssl.grid(row=3, column=1, sticky=tk.W)
+        lbl_user = ttk.Label(lbl_mongo, text=&#34;Mongo username : &#34;)
+        lbl_user.grid(row=4, column=0, sticky=tk.E)
+        self.ent_user = ttk.Entry(lbl_mongo, width=&#34;20&#34;)
+        self.ent_user.insert(tk.END, self.clientCfg[&#34;user&#34;])
+        self.ent_user.grid(row=4, column=1, sticky=tk.W)
+        lbl_password = ttk.Label(lbl_mongo, text=&#34;Mongo password : &#34;)
+        lbl_password.grid(row=5, column=0, sticky=tk.E)
+        self.ent_password = ttk.Entry(lbl_mongo, show=&#34;*&#34;, width=&#34;20&#34;)
+        self.ent_password.insert(tk.END, self.clientCfg[&#34;password&#34;])
+        self.ent_password.grid(row=5, column=1, sticky=tk.W)
+
+        lbl_sftp = ttk.LabelFrame(
+            appFrame, text=&#34;SFTP:&#34;)
+        lbl_sftp.pack(padx=10, pady=10, side=tk.TOP,
+                      anchor=tk.W, fill=tk.X, expand=tk.YES)
+        lbl_port_sftp = ttk.Label(lbl_sftp, text=&#34;SFTP Port : &#34;)
+        lbl_port_sftp.grid(row=2, column=0, sticky=tk.E)
+        self.ent_port_sftp = ttk.Entry(
+            lbl_sftp, width=&#34;5&#34;, validate=&#34;focusout&#34;, validatecommand=self.validateHost)
+        self.ent_port_sftp.insert(
+            tk.END, self.clientCfg.get(&#34;sftp_port&#34;, 22))
+        self.ent_port_sftp.grid(row=2, column=1, sticky=tk.W)
+        self.ent_port_sftp.bind(&#39;&lt;Return&gt;&#39;, self.validateHost)
+        self.ent_port_sftp.bind(&#39;&lt;KP_Enter&gt;&#39;, self.validateHost)
+        self.img_indicator_sftp = ttk.Label(
+            lbl_sftp, image=self.waitingIcon())
+        self.img_indicator_sftp.grid(row=2, column=2)
+
+        lbl_user_sftp = ttk.Label(lbl_sftp, text=&#34;SFTP username : &#34;)
+        lbl_user_sftp.grid(row=6, column=0, sticky=tk.E)
+        self.ent_user_sftp = ttk.Entry(lbl_sftp, width=&#34;20&#34;)
+        self.ent_user_sftp.insert(tk.END, self.clientCfg[&#34;sftp_user&#34;])
+        self.ent_user_sftp.grid(row=6, column=1, sticky=tk.W)
+        lbl_password_sftp = ttk.Label(lbl_sftp, text=&#34;SFTP Password : &#34;)
+        lbl_password_sftp.grid(row=7, column=0, sticky=tk.E)
+        self.ent_password_sftp = ttk.Entry(lbl_sftp, show=&#34;*&#34;, width=&#34;20&#34;)
+        self.ent_password_sftp.insert(tk.END, self.clientCfg[&#34;sftp_password&#34;])
+        self.ent_password_sftp.grid(row=7, column=1, sticky=tk.W)
+        self.ok_button = ttk.Button(appFrame, text=&#34;OK&#34;, command=self.onOk)
+        self.ok_button.pack(pady=10)
+        self.validateHost()
+        appFrame.pack(ipadx=10, ipady=10)
+        try:
+            self.app.wait_visibility()
+            self.app.transient(parent)
+            self.app.grab_set()
+        except tk.TclError:
+            pass
+
+    def getForm(self):
+        &#34;&#34;&#34;Return the content of this form
+        Returns:
+            a dict with values: host, mongo_port, sftp_port, ssl (string with value True or False),
+                                user, password, sftp_user, sftp_password&#34;&#34;&#34;
+        config = {}
+        config[&#34;host&#34;] = self.ent_hostname.get()
+        config[&#34;mongo_port&#34;] = self.ent_port.get()
+        config[&#34;sftp_port&#34;] = self.ent_port_sftp.get()
+        config[&#34;ssl&#34;] = str(self.chk_ssl_val.get() == 1)
+        config[&#34;user&#34;] = self.ent_user.get()
+        config[&#34;password&#34;] = self.ent_password.get()
+        config[&#34;sftp_user&#34;] = self.ent_user_sftp.get()
+        config[&#34;sftp_password&#34;] = self.ent_password_sftp.get()
+        return config
+
+    def trySFTP(self, config):
+        &#34;&#34;&#34;Try to connect to the given host on the given sftp port with the given sftp_user/sftp_password
+        Args:
+            - config: A dictionnary with thoses values set : host, sftp_port, sftp_user, sftp_password
+        Returns:
+            - True if connected, False otherwaise
+        Raise:
+            - ValueError : if the host/port is correct but the authentication failed
+            - SSHException : from the paramiko.ssh_exception package if the host/port does not respond to an sftp connection.
+        &#34;&#34;&#34;
+        fs = FileStorage(config)
+        try:
+            fs.open()
+        except SSHException as e:
+            # SSH unreachable
+            raise e
+        except ValueError as e:
+            # password incorrect
+            raise e
+        if fs.isConnected():
+            fs.close()
+            return True
+        return False
+
+    def tryConnection(self, config):
+        &#34;&#34;&#34;Try to connect to the given host with mongo and with sftp.
+        Args:
+            - config: A dictionnary with thoses values set : host, mongo_port, user, password, ssl, sftp_port, sftp_user, sftp_password
+        Returns:
+            - True if the server is reachable on both mongo and sftp services, False otherwise. Does not test authentication.
+        &#34;&#34;&#34;
+        try:
+            mongoInstance = MongoCalendar.getInstance()
+            res = mongoInstance.connect(config, 500)
+        except ServerSelectionTimeoutError:
+            res = False
+        except OperationFailure:
+            res = True  # Authentication failed, so mongo was reached
+        if res:
+            self.img_indicator.config(image=self.validIcon())
+            self.img_indicator.image = self.validIcon()
+        else:
+            self.img_indicator.config(image=self.badIcon())
+            self.img_indicator.image = self.badIcon
+        try:
+            res_sftp = self.trySFTP(config)
+        except SSHException:
+            self.img_indicator_sftp.config(image=self.badIcon())
+            self.img_indicator_sftp.image = self.badIcon()
+            res_sftp = False
+        except ValueError:
+            res_sftp = True  # Authentication failed, so sftp was reached
+        if res_sftp:
+            self.img_indicator_sftp.config(image=self.validIcon())
+            self.img_indicator_sftp.image = self.validIcon()
+        return res and res_sftp
+
+    def validateHost(self, _event=None):
+        &#34;&#34;&#34;Validate host on both mongo and sftp connections. Change icons on the dialog accordingly.
+        Returns:
+            - True if the server is reachable on both mongo and sftp services, False otherwise. Does not test authentication.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.reinitConnection()
+        config = self.getForm()
+        config[&#34;user&#34;] = &#34;&#34;
+        config[&#34;password&#34;] = &#34;&#34;
+        config[&#34;sftp_user&#34;] = &#34;&#34;
+        config[&#34;sftp_password&#34;] = &#34;&#34;
+        self.img_indicator.config(image=self.waitingIcon())
+        self.img_indicator_sftp.config(image=self.waitingIcon())
+        return self.tryConnection(config)
+
+    def onOk(self):
+        &#34;&#34;&#34;
+        Called when the user clicked the validation button.
+        Try a full connection with authentication to the host given.
+        Side effects:
+            - Open dialogs if the connection failed. Does not close this dialog.
+            - If the connections succeeded : write the client.cfg file accordingly.
+        &#34;&#34;&#34;
+        # send the data to the parent
+        config = self.getForm()
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.reinitConnection()
+        res = True
+        try:
+            res = mongoInstance.connect(config, 5000)
+        except OperationFailure:
+            tk.messagebox.showerror(
+                &#34;Mongo authentication failed&#34;, &#34;Mongo user or password is incorrect&#34;, master=self.parent)
+            res = False
+        except ServerSelectionTimeoutError:
+            tk.messagebox.showerror(
+                &#34;Mongo connection failed&#34;, &#34;The mongo database is not reachable&#34;, master=self.parent)
+            res = False
+        try:
+            res = res and self.trySFTP(config)
+        except SSHException:
+            # Unreachable
+            tk.messagebox.showerror(
+                &#34;SFTP connection failed&#34;, &#34;This sftp port is not open on host.&#34;, master=self.parent)
+            res = False
+        except ValueError:
+            # Authentication failed
+            tk.messagebox.showerror(
+                &#34;SFTP authentication failed&#34;, &#34;SFTP user or password is incorrect&#34;, master=self.parent)
+            res = False
+        self.rvalue = False
+        if res:
+            #  pylint: disable=len-as-condition
+            self.rvalue = len(mongoInstance.listCalendars()) &gt; 0
+            for key, value in self.clientCfg.items():
+                if key not in config.keys():
+                    config[key] = value
+            saveClientConfig(config)
+            self.app.destroy()</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cbad_icon"><code class="name">var <span class="ident">cbad_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cvalid_icon"><code class="name">var <span class="ident">cvalid_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cwaiting_icon"><code class="name">var <span class="ident">cwaiting_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.badIcon"><code class="name flex">
+<span>def <span class="ident">badIcon</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a icon indicating a bad state.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ImageTk PhotoImage</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def badIcon(self):
+    &#34;&#34;&#34;Returns a icon indicating a bad state.
+    Returns:
+        ImageTk PhotoImage&#34;&#34;&#34;
+    if self.__class__.cbad_icon is None:
+        self.__class__.cbad_icon = ImageTk.PhotoImage(
+            Image.open(getBadMarkIconPath()))
+    return self.__class__.cbad_icon</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.getForm"><code class="name flex">
+<span>def <span class="ident">getForm</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the content of this form</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>a dict with values</code></dt>
+<dd>host, mongo_port, sftp_port, ssl (string with value True or False),
+user, password, sftp_user, sftp_password</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getForm(self):
+    &#34;&#34;&#34;Return the content of this form
+    Returns:
+        a dict with values: host, mongo_port, sftp_port, ssl (string with value True or False),
+                            user, password, sftp_user, sftp_password&#34;&#34;&#34;
+    config = {}
+    config[&#34;host&#34;] = self.ent_hostname.get()
+    config[&#34;mongo_port&#34;] = self.ent_port.get()
+    config[&#34;sftp_port&#34;] = self.ent_port_sftp.get()
+    config[&#34;ssl&#34;] = str(self.chk_ssl_val.get() == 1)
+    config[&#34;user&#34;] = self.ent_user.get()
+    config[&#34;password&#34;] = self.ent_password.get()
+    config[&#34;sftp_user&#34;] = self.ent_user_sftp.get()
+    config[&#34;sftp_password&#34;] = self.ent_password_sftp.get()
+    return config</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.onOk"><code class="name flex">
+<span>def <span class="ident">onOk</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when the user clicked the validation button.
+Try a full connection with authentication to the host given.
+Side effects:
+- Open dialogs if the connection failed. Does not close this dialog.
+- If the connections succeeded : write the client.cfg file accordingly.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def onOk(self):
+    &#34;&#34;&#34;
+    Called when the user clicked the validation button.
+    Try a full connection with authentication to the host given.
+    Side effects:
+        - Open dialogs if the connection failed. Does not close this dialog.
+        - If the connections succeeded : write the client.cfg file accordingly.
+    &#34;&#34;&#34;
+    # send the data to the parent
+    config = self.getForm()
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.reinitConnection()
+    res = True
+    try:
+        res = mongoInstance.connect(config, 5000)
+    except OperationFailure:
+        tk.messagebox.showerror(
+            &#34;Mongo authentication failed&#34;, &#34;Mongo user or password is incorrect&#34;, master=self.parent)
+        res = False
+    except ServerSelectionTimeoutError:
+        tk.messagebox.showerror(
+            &#34;Mongo connection failed&#34;, &#34;The mongo database is not reachable&#34;, master=self.parent)
+        res = False
+    try:
+        res = res and self.trySFTP(config)
+    except SSHException:
+        # Unreachable
+        tk.messagebox.showerror(
+            &#34;SFTP connection failed&#34;, &#34;This sftp port is not open on host.&#34;, master=self.parent)
+        res = False
+    except ValueError:
+        # Authentication failed
+        tk.messagebox.showerror(
+            &#34;SFTP authentication failed&#34;, &#34;SFTP user or password is incorrect&#34;, master=self.parent)
+        res = False
+    self.rvalue = False
+    if res:
+        #  pylint: disable=len-as-condition
+        self.rvalue = len(mongoInstance.listCalendars()) &gt; 0
+        for key, value in self.clientCfg.items():
+            if key not in config.keys():
+                config[key] = value
+        saveClientConfig(config)
+        self.app.destroy()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.tryConnection"><code class="name flex">
+<span>def <span class="ident">tryConnection</span></span>(<span>self, config)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Try to connect to the given host with mongo and with sftp.</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>config: A dictionnary with thoses values set : host, mongo_port, user, password, ssl, sftp_port, sftp_user, sftp_password</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>True if the server is reachable on both mongo and sftp services, False otherwise. Does not test authentication.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tryConnection(self, config):
+    &#34;&#34;&#34;Try to connect to the given host with mongo and with sftp.
+    Args:
+        - config: A dictionnary with thoses values set : host, mongo_port, user, password, ssl, sftp_port, sftp_user, sftp_password
+    Returns:
+        - True if the server is reachable on both mongo and sftp services, False otherwise. Does not test authentication.
+    &#34;&#34;&#34;
+    try:
+        mongoInstance = MongoCalendar.getInstance()
+        res = mongoInstance.connect(config, 500)
+    except ServerSelectionTimeoutError:
+        res = False
+    except OperationFailure:
+        res = True  # Authentication failed, so mongo was reached
+    if res:
+        self.img_indicator.config(image=self.validIcon())
+        self.img_indicator.image = self.validIcon()
+    else:
+        self.img_indicator.config(image=self.badIcon())
+        self.img_indicator.image = self.badIcon
+    try:
+        res_sftp = self.trySFTP(config)
+    except SSHException:
+        self.img_indicator_sftp.config(image=self.badIcon())
+        self.img_indicator_sftp.image = self.badIcon()
+        res_sftp = False
+    except ValueError:
+        res_sftp = True  # Authentication failed, so sftp was reached
+    if res_sftp:
+        self.img_indicator_sftp.config(image=self.validIcon())
+        self.img_indicator_sftp.image = self.validIcon()
+    return res and res_sftp</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.trySFTP"><code class="name flex">
+<span>def <span class="ident">trySFTP</span></span>(<span>self, config)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Try to connect to the given host on the given sftp port with the given sftp_user/sftp_password</p>
+<h2 id="args">Args</h2>
+<ul>
+<li>config: A dictionnary with thoses values set : host, sftp_port, sftp_user, sftp_password</li>
+</ul>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>True if connected, False otherwaise</li>
+</ul>
+<h2 id="raise">Raise</h2>
+<ul>
+<li>ValueError : if the host/port is correct but the authentication failed</li>
+<li>SSHException : from the paramiko.ssh_exception package if the host/port does not respond to an sftp connection.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def trySFTP(self, config):
+    &#34;&#34;&#34;Try to connect to the given host on the given sftp port with the given sftp_user/sftp_password
+    Args:
+        - config: A dictionnary with thoses values set : host, sftp_port, sftp_user, sftp_password
+    Returns:
+        - True if connected, False otherwaise
+    Raise:
+        - ValueError : if the host/port is correct but the authentication failed
+        - SSHException : from the paramiko.ssh_exception package if the host/port does not respond to an sftp connection.
+    &#34;&#34;&#34;
+    fs = FileStorage(config)
+    try:
+        fs.open()
+    except SSHException as e:
+        # SSH unreachable
+        raise e
+    except ValueError as e:
+        # password incorrect
+        raise e
+    if fs.isConnected():
+        fs.close()
+        return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.validIcon"><code class="name flex">
+<span>def <span class="ident">validIcon</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a icon indicating a valid state.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ImageTk PhotoImage</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validIcon(self):
+    &#34;&#34;&#34;Returns a icon indicating a valid state.
+    Returns:
+        ImageTk PhotoImage&#34;&#34;&#34;
+    if self.__class__.cvalid_icon is None:
+        self.__class__.cvalid_icon = ImageTk.PhotoImage(
+            Image.open(getValidMarkIconPath()))
+    return self.__class__.cvalid_icon</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.validateHost"><code class="name flex">
+<span>def <span class="ident">validateHost</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validate host on both mongo and sftp connections. Change icons on the dialog accordingly.</p>
+<h2 id="returns">Returns</h2>
+<ul>
+<li>True if the server is reachable on both mongo and sftp services, False otherwise. Does not test authentication.</li>
+</ul></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validateHost(self, _event=None):
+    &#34;&#34;&#34;Validate host on both mongo and sftp connections. Change icons on the dialog accordingly.
+    Returns:
+        - True if the server is reachable on both mongo and sftp services, False otherwise. Does not test authentication.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.reinitConnection()
+    config = self.getForm()
+    config[&#34;user&#34;] = &#34;&#34;
+    config[&#34;password&#34;] = &#34;&#34;
+    config[&#34;sftp_user&#34;] = &#34;&#34;
+    config[&#34;sftp_password&#34;] = &#34;&#34;
+    self.img_indicator.config(image=self.waitingIcon())
+    self.img_indicator_sftp.config(image=self.waitingIcon())
+    return self.tryConnection(config)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.waitingIcon"><code class="name flex">
+<span>def <span class="ident">waitingIcon</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a icon indicating a waiting state.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ImageTk PhotoImage</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def waitingIcon(self):
+    &#34;&#34;&#34;Returns a icon indicating a waiting state.
+    Returns:
+        ImageTk PhotoImage&#34;&#34;&#34;
+    if self.__class__.cwaiting_icon is None:
+        self.__class__.cwaiting_icon = ImageTk.PhotoImage(
+            Image.open(getWaitingMarkIconPath()))
+    return self.__class__.cwaiting_icon</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Application.Dialogs" href="index.html">Pollenisator.core.Application.Dialogs</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect">ChildDialogConnect</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.badIcon" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.badIcon">badIcon</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cbad_icon" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cbad_icon">cbad_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cvalid_icon" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cvalid_icon">cvalid_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cwaiting_icon" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.cwaiting_icon">cwaiting_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.getForm" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.getForm">getForm</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.onOk" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.onOk">onOk</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.tryConnection" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.tryConnection">tryConnection</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.trySFTP" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.trySFTP">trySFTP</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.validIcon" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.validIcon">validIcon</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.validateHost" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.validateHost">validateHost</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.waitingIcon" href="#Pollenisator.core.Application.Dialogs.ChildDialogConnect.ChildDialogConnect.waitingIcon">waitingIcon</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

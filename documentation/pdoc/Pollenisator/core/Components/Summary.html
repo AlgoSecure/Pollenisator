@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.Summary API documentation</title>
+<meta name="description" content="Controllers for summary view of notebook" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.Summary</code></h1>
+</header>
+<section id="section-intro">
+<p>Controllers for summary view of notebook</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Controllers for summary view of notebook&#34;&#34;&#34;
+import tkinter.ttk as ttk
+import tkinter as tk
+from core.Application.Dialogs.ChildDialogProgress import ChildDialogProgress
+from core.Models.Ip import Ip
+from core.Models.Port import Port
+from core.Components.Settings import Settings
+from core.Components.mongo import MongoCalendar
+
+class ScrollFrame(tk.Frame):
+    &#34;&#34;&#34;A scrollable frame using canvas&#34;&#34;&#34;
+    def __init__(self, parent):
+        &#34;&#34;&#34;Constructor&#34;&#34;&#34;
+        super().__init__(parent)  # create a frame (self)
+
+        # place canvas on self
+        self.canvas = tk.Canvas(self, borderwidth=0, background=&#34;#ffffff&#34;)
+        # place a frame on the canvas, this frame will hold the child widgets
+        self.viewPort = tk.Frame(self.canvas, background=&#34;#ffffff&#34;)
+        # place a scrollbar on self
+        self.vsb = tk.Scrollbar(self, orient=&#34;vertical&#34;,
+                                command=self.canvas.yview)
+        # attach scrollbar action to scroll of canvas
+        self.canvas.configure(yscrollcommand=self.vsb.set)
+        self.canvas.bind(&#34;&lt;MouseWheel&gt;&#34;, self._on_mousewheel)
+        # pack scrollbar to right of self
+        self.vsb.pack(side=&#34;right&#34;, fill=&#34;y&#34;)
+        # pack canvas to left of self and expand to fil
+        self.canvas.pack(side=&#34;left&#34;, fill=&#34;both&#34;, expand=True)
+        self.canvas.create_window((4, 4), window=self.viewPort, anchor=&#34;nw&#34;,  # add view port frame to canvas
+                                  tags=&#34;self.viewPort&#34;)
+
+        # bind an event whenever the size of the viewPort frame changes.
+        self.viewPort.bind(&#34;&lt;Configure&gt;&#34;, self.onFrameConfigure)
+
+    def _on_mousewheel(self, event):
+        self.canvas.yview_scroll((event.delta/120), &#34;units&#34;)
+
+    def onFrameConfigure(self, _event):
+        &#39;&#39;&#39;Reset the scroll region to encompass the inner frame&#39;&#39;&#39;
+        self.canvas.configure(scrollregion=self.canvas.bbox(
+            &#34;all&#34;))  # whenever the size of the frame changes, alter the scroll region respectively.
+
+
+def smart_grid(parent, root, *args, **kwargs):  # *args are the widgets!
+    &#34;&#34;&#34;Grid adapted to each treeview size.
+    Adapted from stackoverflow but cannot find it anymore =/&#34;&#34;&#34;
+    divisions = kwargs.pop(&#39;divisions&#39;, 100)
+    force_f = kwargs.pop(&#39;force&#39;, False)
+    if &#39;sticky&#39; not in kwargs:
+        kwargs.update(sticky=&#39;w&#39;)
+    try:
+        parent.win_width
+    except AttributeError:
+        parent.win_width = -1
+    parent.update_idletasks()
+    root.update_idletasks()
+    winfo_width = root.winfo_reqwidth()
+    if 1 &lt; winfo_width != parent.win_width or force_f:
+        parent.win_width = winfo_width
+        row = col = width = 0
+        argc = len(args)
+
+        for i in range(argc):
+            widget_width = args[i].winfo_reqwidth()
+            columns = max(
+                1, int(widget_width * float(divisions) / winfo_width))
+            width += widget_width
+            if width &gt; winfo_width:
+                width = widget_width
+                row += 1
+                col = 0
+            args[i].grid(row=row, column=col, columnspan=columns, **kwargs)
+            col += columns
+        parent.update_idletasks()  # update() #
+        return row + 1
+
+
+class Summary:
+    &#34;&#34;&#34;
+    Store elements to summarize the ongoing pentest
+    &#34;&#34;&#34;
+    def __init__(self, root):
+        &#34;&#34;&#34;Constructor
+        Args:
+            root: the root widget of tkinter
+        &#34;&#34;&#34;
+        self.linkTw = None
+        self.root = root
+        self.treeviews = {}
+        self.parent = None
+        self.nbk = None
+        self.summaryFrame = None
+        self.scroller = None
+        self.frameTw = None
+
+    def refreshUI(self):
+        &#34;&#34;&#34;Refresh information then reloads the view with them.
+        &#34;&#34;&#34;
+        if self.frameTw is not None:
+            for widget in self.frameTw.winfo_children():
+                widget.destroy()
+        if self.summaryFrame is not None:
+            for widget in self.summaryFrame.winfo_children():
+                widget.destroy()
+        if self.treeviews is not None:
+            for k in list(self.treeviews.keys()):
+                del self.treeviews[k]
+            del self.treeviews
+        self.treeviews = {}
+        self.frameTw = ttk.Frame(self.summaryFrame)
+        self.frameTw.pack(side=tk.LEFT, padx=10, pady=10)
+        self.loadSummary()
+
+    def initUI(self, parent, nbk, linkTw):
+        &#34;&#34;&#34;Initialize widgets of the summary
+        Args:
+            parent: parent tkinter container widget 
+            nbk: a ref to the notebook
+            linkTw: the treeview holding more info in the notebook to be displayed after an interaction
+        &#34;&#34;&#34;
+        self.parent = parent
+        self.nbk = nbk
+        if self.linkTw is not None:  # UI Already built
+            self.linkTw = linkTw
+            self.refreshUI()
+            return
+        self.linkTw = linkTw
+        self.scroller = ScrollFrame(self.parent)
+        self.summaryFrame = ttk.Frame(self.scroller.viewPort)
+        self.summaryFrame.pack(side=tk.TOP, anchor=tk.W,
+                               fill=tk.BOTH, padx=10, pady=10)
+        self.scroller.pack(side=tk.TOP, anchor=tk.W,
+                           fill=tk.BOTH, expand=tk.TRUE, padx=10, pady=10)
+
+    def loadSummary(self):
+        &#34;&#34;&#34;Reload information about IP and Port and reload the view.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        nonEmptyIps = list(mongoInstance.aggregate(&#34;ports&#34;,[{&#34;$group&#34;:{&#34;_id&#34;:&#34;$ip&#34;}}, {&#34;$count&#34;: &#34;total&#34;}]))
+        if not nonEmptyIps:
+            return
+        nonEmptyIps = nonEmptyIps[0]
+        step = 0
+        dialog = ChildDialogProgress(self.parent, &#34;Loading summary &#34;, &#34;Refreshing summary. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+        dialog.show(nonEmptyIps[&#34;total&#34;])
+        nonEmptyIps = mongoInstance.aggregate(&#34;ports&#34;,[{&#34;$group&#34;:{&#34;_id&#34;:&#34;$ip&#34;}}])
+        for ipCIDR in nonEmptyIps:
+            step += 1
+            ip = Ip.fetchObject({&#34;ip&#34;: ipCIDR[&#34;_id&#34;]})
+            if ip.in_scopes:
+                dialog.update(step)
+                self.insertIp(ip.ip)
+        self.frameTw.update_idletasks()
+        self.parent.update_idletasks()
+        smart_grid(self.frameTw, self.root, *list(self.treeviews.values()))
+        dialog.destroy()
+
+
+    def OnDoubleClick(self, event):
+        &#34;&#34;&#34;Callback for treeview double click.
+        If a link treeview is defined, open mainview and focus on the item with same iid clicked.
+        Args:
+            event: used to identified which link was clicked. Auto filled
+        &#34;&#34;&#34;
+        if self.linkTw is not None:
+            self.nbk.select(0)
+            tv = event.widget
+            item = tv.identify(&#34;item&#34;, event.x, event.y)
+            self.linkTw.focus(item)
+            self.linkTw.see(item)
+            self.linkTw.selection_set(item)
+
+    def updatePort(self, port_data):
+        &#34;&#34;&#34;Update a port line according to a new port_data (just change colors now)
+        Args:
+            port_data: a port data dictionnary
+        &#34;&#34;&#34;
+        newTags = port_data.get(&#34;tags&#34;, [])
+        treeviewToUpdate = self.treeviews.get(port_data[&#34;ip&#34;], None)
+        if treeviewToUpdate is not None:
+            if port_data.get(&#34;_id&#34;, None) is not None:
+                treeviewToUpdate.item(str(port_data[&#34;_id&#34;]), tags=newTags)
+
+    def insertPort(self, port_o):
+        &#34;&#34;&#34;Insert a new port in the summary
+        Args:
+            port_o: a port object to be inserted
+        &#34;&#34;&#34;
+        treeviewToUpdate = self.treeviews.get(port_o[&#34;ip&#34;], None)
+        if treeviewToUpdate is None:
+            self.insertIp(port_o[&#34;ip&#34;])
+        treeviewToUpdate = self.treeviews.get(port_o[&#34;ip&#34;], None)
+        port_text = port_o[&#34;port&#34;]
+        if port_o[&#34;proto&#34;] == &#34;udp&#34;:
+            port_text = &#34;udp/&#34;+port_text
+        treeviewToUpdate.config(height=len(treeviewToUpdate.get_children())+1)
+        treeviewToUpdate.insert(&#39;&#39;, &#39;end&#39;, str(
+            port_o[&#34;_id&#34;]), text=port_text, tags=list(port_o[&#34;tags&#34;]))
+
+    def insertIp(self, ip):
+        &#34;&#34;&#34;Insert a new IP in the summary. Also insert its port
+        Args:
+            ip: an IP object to be inserted
+        &#34;&#34;&#34;
+        treevw = ttk.Treeview(self.frameTw)
+        treevw.heading(&#34;#0&#34;, text=ip, anchor=&#39;w&#39;)
+        treevw.column(&#34;#0&#34;, anchor=&#39;w&#39;)
+        tags = Settings.getTags()
+        for tag, color in tags.items():
+            treevw.tag_configure(tag, background=color)
+        treevw.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+        count = 0
+        self.treeviews[ip] = treevw
+        ports = Port.fetchObjects({&#34;ip&#34;: ip})
+        for port in ports:
+            if port.proto.strip() != &#34;&#34; and str(port.port).strip() != &#34;&#34;:
+                port_text = port.port
+                if port.proto == &#34;udp&#34;:
+                    port_text = &#34;udp/&#34;+port_text
+                treevw.insert(&#39;&#39;, &#39;end&#39;, str(port.getId()),
+                              text=port_text, tags=list(port.getTags()))
+                count += 1
+        treevw.configure(height=count)
+        treevw.update_idletasks()
+
+    def deleteIp(self, ip):
+        &#34;&#34;&#34;Remvoe an IP from the summary.
+        Args:
+            ip: an IP object to be removed
+        &#34;&#34;&#34;
+        if self.treeviews.get(ip, None) is not None:
+            del self.treeviews[ip]</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.core.Components.Summary.smart_grid"><code class="name flex">
+<span>def <span class="ident">smart_grid</span></span>(<span>parent, root, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Grid adapted to each treeview size.
+Adapted from stackoverflow but cannot find it anymore =/</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def smart_grid(parent, root, *args, **kwargs):  # *args are the widgets!
+    &#34;&#34;&#34;Grid adapted to each treeview size.
+    Adapted from stackoverflow but cannot find it anymore =/&#34;&#34;&#34;
+    divisions = kwargs.pop(&#39;divisions&#39;, 100)
+    force_f = kwargs.pop(&#39;force&#39;, False)
+    if &#39;sticky&#39; not in kwargs:
+        kwargs.update(sticky=&#39;w&#39;)
+    try:
+        parent.win_width
+    except AttributeError:
+        parent.win_width = -1
+    parent.update_idletasks()
+    root.update_idletasks()
+    winfo_width = root.winfo_reqwidth()
+    if 1 &lt; winfo_width != parent.win_width or force_f:
+        parent.win_width = winfo_width
+        row = col = width = 0
+        argc = len(args)
+
+        for i in range(argc):
+            widget_width = args[i].winfo_reqwidth()
+            columns = max(
+                1, int(widget_width * float(divisions) / winfo_width))
+            width += widget_width
+            if width &gt; winfo_width:
+                width = widget_width
+                row += 1
+                col = 0
+            args[i].grid(row=row, column=col, columnspan=columns, **kwargs)
+            col += columns
+        parent.update_idletasks()  # update() #
+        return row + 1</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.Summary.ScrollFrame"><code class="flex name class">
+<span>class <span class="ident">ScrollFrame</span></span>
+<span>(</span><span>parent)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A scrollable frame using canvas</p>
+<p>Constructor</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ScrollFrame(tk.Frame):
+    &#34;&#34;&#34;A scrollable frame using canvas&#34;&#34;&#34;
+    def __init__(self, parent):
+        &#34;&#34;&#34;Constructor&#34;&#34;&#34;
+        super().__init__(parent)  # create a frame (self)
+
+        # place canvas on self
+        self.canvas = tk.Canvas(self, borderwidth=0, background=&#34;#ffffff&#34;)
+        # place a frame on the canvas, this frame will hold the child widgets
+        self.viewPort = tk.Frame(self.canvas, background=&#34;#ffffff&#34;)
+        # place a scrollbar on self
+        self.vsb = tk.Scrollbar(self, orient=&#34;vertical&#34;,
+                                command=self.canvas.yview)
+        # attach scrollbar action to scroll of canvas
+        self.canvas.configure(yscrollcommand=self.vsb.set)
+        self.canvas.bind(&#34;&lt;MouseWheel&gt;&#34;, self._on_mousewheel)
+        # pack scrollbar to right of self
+        self.vsb.pack(side=&#34;right&#34;, fill=&#34;y&#34;)
+        # pack canvas to left of self and expand to fil
+        self.canvas.pack(side=&#34;left&#34;, fill=&#34;both&#34;, expand=True)
+        self.canvas.create_window((4, 4), window=self.viewPort, anchor=&#34;nw&#34;,  # add view port frame to canvas
+                                  tags=&#34;self.viewPort&#34;)
+
+        # bind an event whenever the size of the viewPort frame changes.
+        self.viewPort.bind(&#34;&lt;Configure&gt;&#34;, self.onFrameConfigure)
+
+    def _on_mousewheel(self, event):
+        self.canvas.yview_scroll((event.delta/120), &#34;units&#34;)
+
+    def onFrameConfigure(self, _event):
+        &#39;&#39;&#39;Reset the scroll region to encompass the inner frame&#39;&#39;&#39;
+        self.canvas.configure(scrollregion=self.canvas.bbox(
+            &#34;all&#34;))  # whenever the size of the frame changes, alter the scroll region respectively.</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>tkinter.Frame</li>
+<li>tkinter.Widget</li>
+<li>tkinter.BaseWidget</li>
+<li>tkinter.Misc</li>
+<li>tkinter.Pack</li>
+<li>tkinter.Place</li>
+<li>tkinter.Grid</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Summary.ScrollFrame.onFrameConfigure"><code class="name flex">
+<span>def <span class="ident">onFrameConfigure</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset the scroll region to encompass the inner frame</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def onFrameConfigure(self, _event):
+    &#39;&#39;&#39;Reset the scroll region to encompass the inner frame&#39;&#39;&#39;
+    self.canvas.configure(scrollregion=self.canvas.bbox(
+        &#34;all&#34;))  # whenever the size of the frame changes, alter the scroll region respectively.</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Pollenisator.core.Components.Summary.Summary"><code class="flex name class">
+<span>class <span class="ident">Summary</span></span>
+<span>(</span><span>root)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Store elements to summarize the ongoing pentest</p>
+<p>Constructor</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>root</code></strong></dt>
+<dd>the root widget of tkinter</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Summary:
+    &#34;&#34;&#34;
+    Store elements to summarize the ongoing pentest
+    &#34;&#34;&#34;
+    def __init__(self, root):
+        &#34;&#34;&#34;Constructor
+        Args:
+            root: the root widget of tkinter
+        &#34;&#34;&#34;
+        self.linkTw = None
+        self.root = root
+        self.treeviews = {}
+        self.parent = None
+        self.nbk = None
+        self.summaryFrame = None
+        self.scroller = None
+        self.frameTw = None
+
+    def refreshUI(self):
+        &#34;&#34;&#34;Refresh information then reloads the view with them.
+        &#34;&#34;&#34;
+        if self.frameTw is not None:
+            for widget in self.frameTw.winfo_children():
+                widget.destroy()
+        if self.summaryFrame is not None:
+            for widget in self.summaryFrame.winfo_children():
+                widget.destroy()
+        if self.treeviews is not None:
+            for k in list(self.treeviews.keys()):
+                del self.treeviews[k]
+            del self.treeviews
+        self.treeviews = {}
+        self.frameTw = ttk.Frame(self.summaryFrame)
+        self.frameTw.pack(side=tk.LEFT, padx=10, pady=10)
+        self.loadSummary()
+
+    def initUI(self, parent, nbk, linkTw):
+        &#34;&#34;&#34;Initialize widgets of the summary
+        Args:
+            parent: parent tkinter container widget 
+            nbk: a ref to the notebook
+            linkTw: the treeview holding more info in the notebook to be displayed after an interaction
+        &#34;&#34;&#34;
+        self.parent = parent
+        self.nbk = nbk
+        if self.linkTw is not None:  # UI Already built
+            self.linkTw = linkTw
+            self.refreshUI()
+            return
+        self.linkTw = linkTw
+        self.scroller = ScrollFrame(self.parent)
+        self.summaryFrame = ttk.Frame(self.scroller.viewPort)
+        self.summaryFrame.pack(side=tk.TOP, anchor=tk.W,
+                               fill=tk.BOTH, padx=10, pady=10)
+        self.scroller.pack(side=tk.TOP, anchor=tk.W,
+                           fill=tk.BOTH, expand=tk.TRUE, padx=10, pady=10)
+
+    def loadSummary(self):
+        &#34;&#34;&#34;Reload information about IP and Port and reload the view.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        nonEmptyIps = list(mongoInstance.aggregate(&#34;ports&#34;,[{&#34;$group&#34;:{&#34;_id&#34;:&#34;$ip&#34;}}, {&#34;$count&#34;: &#34;total&#34;}]))
+        if not nonEmptyIps:
+            return
+        nonEmptyIps = nonEmptyIps[0]
+        step = 0
+        dialog = ChildDialogProgress(self.parent, &#34;Loading summary &#34;, &#34;Refreshing summary. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+        dialog.show(nonEmptyIps[&#34;total&#34;])
+        nonEmptyIps = mongoInstance.aggregate(&#34;ports&#34;,[{&#34;$group&#34;:{&#34;_id&#34;:&#34;$ip&#34;}}])
+        for ipCIDR in nonEmptyIps:
+            step += 1
+            ip = Ip.fetchObject({&#34;ip&#34;: ipCIDR[&#34;_id&#34;]})
+            if ip.in_scopes:
+                dialog.update(step)
+                self.insertIp(ip.ip)
+        self.frameTw.update_idletasks()
+        self.parent.update_idletasks()
+        smart_grid(self.frameTw, self.root, *list(self.treeviews.values()))
+        dialog.destroy()
+
+
+    def OnDoubleClick(self, event):
+        &#34;&#34;&#34;Callback for treeview double click.
+        If a link treeview is defined, open mainview and focus on the item with same iid clicked.
+        Args:
+            event: used to identified which link was clicked. Auto filled
+        &#34;&#34;&#34;
+        if self.linkTw is not None:
+            self.nbk.select(0)
+            tv = event.widget
+            item = tv.identify(&#34;item&#34;, event.x, event.y)
+            self.linkTw.focus(item)
+            self.linkTw.see(item)
+            self.linkTw.selection_set(item)
+
+    def updatePort(self, port_data):
+        &#34;&#34;&#34;Update a port line according to a new port_data (just change colors now)
+        Args:
+            port_data: a port data dictionnary
+        &#34;&#34;&#34;
+        newTags = port_data.get(&#34;tags&#34;, [])
+        treeviewToUpdate = self.treeviews.get(port_data[&#34;ip&#34;], None)
+        if treeviewToUpdate is not None:
+            if port_data.get(&#34;_id&#34;, None) is not None:
+                treeviewToUpdate.item(str(port_data[&#34;_id&#34;]), tags=newTags)
+
+    def insertPort(self, port_o):
+        &#34;&#34;&#34;Insert a new port in the summary
+        Args:
+            port_o: a port object to be inserted
+        &#34;&#34;&#34;
+        treeviewToUpdate = self.treeviews.get(port_o[&#34;ip&#34;], None)
+        if treeviewToUpdate is None:
+            self.insertIp(port_o[&#34;ip&#34;])
+        treeviewToUpdate = self.treeviews.get(port_o[&#34;ip&#34;], None)
+        port_text = port_o[&#34;port&#34;]
+        if port_o[&#34;proto&#34;] == &#34;udp&#34;:
+            port_text = &#34;udp/&#34;+port_text
+        treeviewToUpdate.config(height=len(treeviewToUpdate.get_children())+1)
+        treeviewToUpdate.insert(&#39;&#39;, &#39;end&#39;, str(
+            port_o[&#34;_id&#34;]), text=port_text, tags=list(port_o[&#34;tags&#34;]))
+
+    def insertIp(self, ip):
+        &#34;&#34;&#34;Insert a new IP in the summary. Also insert its port
+        Args:
+            ip: an IP object to be inserted
+        &#34;&#34;&#34;
+        treevw = ttk.Treeview(self.frameTw)
+        treevw.heading(&#34;#0&#34;, text=ip, anchor=&#39;w&#39;)
+        treevw.column(&#34;#0&#34;, anchor=&#39;w&#39;)
+        tags = Settings.getTags()
+        for tag, color in tags.items():
+            treevw.tag_configure(tag, background=color)
+        treevw.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+        count = 0
+        self.treeviews[ip] = treevw
+        ports = Port.fetchObjects({&#34;ip&#34;: ip})
+        for port in ports:
+            if port.proto.strip() != &#34;&#34; and str(port.port).strip() != &#34;&#34;:
+                port_text = port.port
+                if port.proto == &#34;udp&#34;:
+                    port_text = &#34;udp/&#34;+port_text
+                treevw.insert(&#39;&#39;, &#39;end&#39;, str(port.getId()),
+                              text=port_text, tags=list(port.getTags()))
+                count += 1
+        treevw.configure(height=count)
+        treevw.update_idletasks()
+
+    def deleteIp(self, ip):
+        &#34;&#34;&#34;Remvoe an IP from the summary.
+        Args:
+            ip: an IP object to be removed
+        &#34;&#34;&#34;
+        if self.treeviews.get(ip, None) is not None:
+            del self.treeviews[ip]</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.Summary.Summary.OnDoubleClick"><code class="name flex">
+<span>def <span class="ident">OnDoubleClick</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for treeview double click.
+If a link treeview is defined, open mainview and focus on the item with same iid clicked.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>used to identified which link was clicked. Auto filled</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OnDoubleClick(self, event):
+    &#34;&#34;&#34;Callback for treeview double click.
+    If a link treeview is defined, open mainview and focus on the item with same iid clicked.
+    Args:
+        event: used to identified which link was clicked. Auto filled
+    &#34;&#34;&#34;
+    if self.linkTw is not None:
+        self.nbk.select(0)
+        tv = event.widget
+        item = tv.identify(&#34;item&#34;, event.x, event.y)
+        self.linkTw.focus(item)
+        self.linkTw.see(item)
+        self.linkTw.selection_set(item)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Summary.Summary.deleteIp"><code class="name flex">
+<span>def <span class="ident">deleteIp</span></span>(<span>self, ip)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remvoe an IP from the summary.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ip</code></strong></dt>
+<dd>an IP object to be removed</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteIp(self, ip):
+    &#34;&#34;&#34;Remvoe an IP from the summary.
+    Args:
+        ip: an IP object to be removed
+    &#34;&#34;&#34;
+    if self.treeviews.get(ip, None) is not None:
+        del self.treeviews[ip]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Summary.Summary.initUI"><code class="name flex">
+<span>def <span class="ident">initUI</span></span>(<span>self, parent, nbk, linkTw)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize widgets of the summary</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>parent tkinter container widget </dd>
+<dt><strong><code>nbk</code></strong></dt>
+<dd>a ref to the notebook</dd>
+<dt><strong><code>linkTw</code></strong></dt>
+<dd>the treeview holding more info in the notebook to be displayed after an interaction</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initUI(self, parent, nbk, linkTw):
+    &#34;&#34;&#34;Initialize widgets of the summary
+    Args:
+        parent: parent tkinter container widget 
+        nbk: a ref to the notebook
+        linkTw: the treeview holding more info in the notebook to be displayed after an interaction
+    &#34;&#34;&#34;
+    self.parent = parent
+    self.nbk = nbk
+    if self.linkTw is not None:  # UI Already built
+        self.linkTw = linkTw
+        self.refreshUI()
+        return
+    self.linkTw = linkTw
+    self.scroller = ScrollFrame(self.parent)
+    self.summaryFrame = ttk.Frame(self.scroller.viewPort)
+    self.summaryFrame.pack(side=tk.TOP, anchor=tk.W,
+                           fill=tk.BOTH, padx=10, pady=10)
+    self.scroller.pack(side=tk.TOP, anchor=tk.W,
+                       fill=tk.BOTH, expand=tk.TRUE, padx=10, pady=10)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Summary.Summary.insertIp"><code class="name flex">
+<span>def <span class="ident">insertIp</span></span>(<span>self, ip)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Insert a new IP in the summary. Also insert its port</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ip</code></strong></dt>
+<dd>an IP object to be inserted</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertIp(self, ip):
+    &#34;&#34;&#34;Insert a new IP in the summary. Also insert its port
+    Args:
+        ip: an IP object to be inserted
+    &#34;&#34;&#34;
+    treevw = ttk.Treeview(self.frameTw)
+    treevw.heading(&#34;#0&#34;, text=ip, anchor=&#39;w&#39;)
+    treevw.column(&#34;#0&#34;, anchor=&#39;w&#39;)
+    tags = Settings.getTags()
+    for tag, color in tags.items():
+        treevw.tag_configure(tag, background=color)
+    treevw.bind(&#34;&lt;Double-Button-1&gt;&#34;, self.OnDoubleClick)
+    count = 0
+    self.treeviews[ip] = treevw
+    ports = Port.fetchObjects({&#34;ip&#34;: ip})
+    for port in ports:
+        if port.proto.strip() != &#34;&#34; and str(port.port).strip() != &#34;&#34;:
+            port_text = port.port
+            if port.proto == &#34;udp&#34;:
+                port_text = &#34;udp/&#34;+port_text
+            treevw.insert(&#39;&#39;, &#39;end&#39;, str(port.getId()),
+                          text=port_text, tags=list(port.getTags()))
+            count += 1
+    treevw.configure(height=count)
+    treevw.update_idletasks()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Summary.Summary.insertPort"><code class="name flex">
+<span>def <span class="ident">insertPort</span></span>(<span>self, port_o)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Insert a new port in the summary</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>port_o</code></strong></dt>
+<dd>a port object to be inserted</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertPort(self, port_o):
+    &#34;&#34;&#34;Insert a new port in the summary
+    Args:
+        port_o: a port object to be inserted
+    &#34;&#34;&#34;
+    treeviewToUpdate = self.treeviews.get(port_o[&#34;ip&#34;], None)
+    if treeviewToUpdate is None:
+        self.insertIp(port_o[&#34;ip&#34;])
+    treeviewToUpdate = self.treeviews.get(port_o[&#34;ip&#34;], None)
+    port_text = port_o[&#34;port&#34;]
+    if port_o[&#34;proto&#34;] == &#34;udp&#34;:
+        port_text = &#34;udp/&#34;+port_text
+    treeviewToUpdate.config(height=len(treeviewToUpdate.get_children())+1)
+    treeviewToUpdate.insert(&#39;&#39;, &#39;end&#39;, str(
+        port_o[&#34;_id&#34;]), text=port_text, tags=list(port_o[&#34;tags&#34;]))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Summary.Summary.loadSummary"><code class="name flex">
+<span>def <span class="ident">loadSummary</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reload information about IP and Port and reload the view.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadSummary(self):
+    &#34;&#34;&#34;Reload information about IP and Port and reload the view.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    nonEmptyIps = list(mongoInstance.aggregate(&#34;ports&#34;,[{&#34;$group&#34;:{&#34;_id&#34;:&#34;$ip&#34;}}, {&#34;$count&#34;: &#34;total&#34;}]))
+    if not nonEmptyIps:
+        return
+    nonEmptyIps = nonEmptyIps[0]
+    step = 0
+    dialog = ChildDialogProgress(self.parent, &#34;Loading summary &#34;, &#34;Refreshing summary. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+    dialog.show(nonEmptyIps[&#34;total&#34;])
+    nonEmptyIps = mongoInstance.aggregate(&#34;ports&#34;,[{&#34;$group&#34;:{&#34;_id&#34;:&#34;$ip&#34;}}])
+    for ipCIDR in nonEmptyIps:
+        step += 1
+        ip = Ip.fetchObject({&#34;ip&#34;: ipCIDR[&#34;_id&#34;]})
+        if ip.in_scopes:
+            dialog.update(step)
+            self.insertIp(ip.ip)
+    self.frameTw.update_idletasks()
+    self.parent.update_idletasks()
+    smart_grid(self.frameTw, self.root, *list(self.treeviews.values()))
+    dialog.destroy()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Summary.Summary.refreshUI"><code class="name flex">
+<span>def <span class="ident">refreshUI</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Refresh information then reloads the view with them.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def refreshUI(self):
+    &#34;&#34;&#34;Refresh information then reloads the view with them.
+    &#34;&#34;&#34;
+    if self.frameTw is not None:
+        for widget in self.frameTw.winfo_children():
+            widget.destroy()
+    if self.summaryFrame is not None:
+        for widget in self.summaryFrame.winfo_children():
+            widget.destroy()
+    if self.treeviews is not None:
+        for k in list(self.treeviews.keys()):
+            del self.treeviews[k]
+        del self.treeviews
+    self.treeviews = {}
+    self.frameTw = ttk.Frame(self.summaryFrame)
+    self.frameTw.pack(side=tk.LEFT, padx=10, pady=10)
+    self.loadSummary()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Summary.Summary.updatePort"><code class="name flex">
+<span>def <span class="ident">updatePort</span></span>(<span>self, port_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update a port line according to a new port_data (just change colors now)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>port_data</code></strong></dt>
+<dd>a port data dictionnary</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updatePort(self, port_data):
+    &#34;&#34;&#34;Update a port line according to a new port_data (just change colors now)
+    Args:
+        port_data: a port data dictionnary
+    &#34;&#34;&#34;
+    newTags = port_data.get(&#34;tags&#34;, [])
+    treeviewToUpdate = self.treeviews.get(port_data[&#34;ip&#34;], None)
+    if treeviewToUpdate is not None:
+        if port_data.get(&#34;_id&#34;, None) is not None:
+            treeviewToUpdate.item(str(port_data[&#34;_id&#34;]), tags=newTags)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.Summary.smart_grid" href="#Pollenisator.core.Components.Summary.smart_grid">smart_grid</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Summary.ScrollFrame" href="#Pollenisator.core.Components.Summary.ScrollFrame">ScrollFrame</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.Summary.ScrollFrame.onFrameConfigure" href="#Pollenisator.core.Components.Summary.ScrollFrame.onFrameConfigure">onFrameConfigure</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Pollenisator.core.Components.Summary.Summary" href="#Pollenisator.core.Components.Summary.Summary">Summary</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Components.Summary.Summary.OnDoubleClick" href="#Pollenisator.core.Components.Summary.Summary.OnDoubleClick">OnDoubleClick</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Summary.Summary.deleteIp" href="#Pollenisator.core.Components.Summary.Summary.deleteIp">deleteIp</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Summary.Summary.initUI" href="#Pollenisator.core.Components.Summary.Summary.initUI">initUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Summary.Summary.insertIp" href="#Pollenisator.core.Components.Summary.Summary.insertIp">insertIp</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Summary.Summary.insertPort" href="#Pollenisator.core.Components.Summary.Summary.insertPort">insertPort</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Summary.Summary.loadSummary" href="#Pollenisator.core.Components.Summary.Summary.loadSummary">loadSummary</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Summary.Summary.refreshUI" href="#Pollenisator.core.Components.Summary.Summary.refreshUI">refreshUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Summary.Summary.updatePort" href="#Pollenisator.core.Components.Summary.Summary.updatePort">updatePort</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.AutoScanMaster API documentation</title>
+<meta name="description" content="Module for orchestrating an automatic scan. Must be run in a separate thread/process." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.AutoScanMaster</code></h1>
+</header>
+<section id="section-intro">
+<p>Module for orchestrating an automatic scan. Must be run in a separate thread/process.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Module for orchestrating an automatic scan. Must be run in a separate thread/process.&#34;&#34;&#34;
+import argparse
+import re
+import signal
+import sys
+import time
+import ssl
+from bson.objectid import ObjectId
+from celery import Celery
+from bson.objectid import ObjectId
+import os
+import core.Components.Utils as Utils
+from core.Components.mongo import MongoCalendar
+from core.Components.Monitor import Monitor
+from core.Models.Wave import Wave
+from core.Models.Tool import Tool
+
+dir_path = os.path.dirname(os.path.realpath(__file__))  # fullpath to this file
+ssldir = os.path.join(dir_path, &#34;../../ssl/&#34;)  # fullepath to ssl directory
+certs = {
+    &#39;keyfile&#39;: ssldir+&#39;client.pem&#39;,
+    &#39;certfile&#39;: ssldir+&#39;server.pem&#39;,
+    &#39;ca_certs&#39;: ssldir+&#39;ca.pem&#39;,
+    &#39;cert_reqs&#39;: ssl.CERT_REQUIRED
+}
+try:
+    cfg = Utils.loadCfg(os.path.join(dir_path, &#34;../../config/client.cfg&#34;))
+except FileNotFoundError:
+    print(&#34;No client config was found under Pollenisator/config/client.cfg. Create one from the sample provided in this directory.&#34;)
+    sys.exit(0)
+user_string = cfg[&#34;user&#34;]+&#39;:&#39;+cfg[&#34;password&#34;] + \
+    &#39;@&#39; if cfg[&#39;user&#39;].strip() != &#34;&#34; else &#34;&#34;
+if cfg[&#34;ssl&#34;] == &#34;True&#34;:
+    app = Celery(&#39;tasks&#39;, broker=&#39;mongodb://&#39;+user_string+cfg[&#34;host&#34;] + &#39;:&#39; + cfg[&#34;mongo_port&#34;] +
+                 &#39;/broker_pollenisator?authSource=admin&amp;ssl=true&amp;ssl_ca_certs=&#39;+certs[&#34;ca_certs&#34;]+&#39;&amp;ssl_certfile=&#39;+certs[&#34;keyfile&#34;])
+else:
+    app = Celery(&#39;tasks&#39;, broker=&#39;mongodb://&#39; + user_string +
+                 cfg[&#34;host&#34;] + &#39;:&#39;+cfg[&#34;mongo_port&#34;] + &#39;/broker_pollenisator?authSource=admin&#39;)
+
+class Reprinter:
+    &#34;&#34;&#34;
+    A useful class to erase the precedent print before reprinting. Giving the impression of a static print.
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        &#34;&#34;&#34;
+        Constructor
+        &#34;&#34;&#34;
+        self.text = &#39;&#39;
+
+    def _moveup(self, lines):
+        &#34;&#34;&#34;
+        Put the cursor up by X lines
+        Args:
+            lines: the X number of lines
+        &#34;&#34;&#34;
+        for _ in range(lines):
+            sys.stdout.write(&#34;\x1b[A&#34;)
+
+    def reprint(self, text):
+        &#34;&#34;&#34;
+        Erase precedent print and print the new text.
+        Args:
+            text: The new text to print
+        &#34;&#34;&#34;
+        # Clear previous text by overwritig non-spaces with spaces
+        self._moveup(self.text.count(&#34;\n&#34;))
+        sys.stdout.write(re.sub(r&#34;[^\s]&#34;, &#34; &#34;, self.text))
+
+        # Print new text
+        lines = min(self.text.count(&#34;\n&#34;), text.count(&#34;\n&#34;))
+        self._moveup(lines)
+        sys.stdout.write(text)
+        self.text = text
+
+
+class GracefulKiller:
+    &#34;&#34;&#34;
+    Signal handler to shut down properly.
+
+    Attributes:
+        kill_now: a boolean that can checked to know that it&#39;s time to stop.
+    &#34;&#34;&#34;
+    kill_now = False
+
+    def __init__(self):
+        &#34;&#34;&#34;
+        Constructor. Hook the signals SIGINT and SIGTERM to method exitGracefully
+        &#34;&#34;&#34;
+        signal.signal(signal.SIGINT, self.exitGracefully)
+        signal.signal(signal.SIGTERM, self.exitGracefully)
+        #signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+
+    def exitGracefully(self, _signum, _frame):
+        &#34;&#34;&#34;
+        Set the kill_now class attributes to True
+
+        Args:
+            _signum: not used. Sent automatically the caller.
+            _frame: not used. Sent automatically the caller.
+        &#34;&#34;&#34;
+        print(&#39;You pressed Ctrl+C!&#39;)
+        self.kill_now = True
+
+
+def main():
+    &#34;&#34;&#34;May be used to start an automatic scan without having to launch a GUI.
+    &#34;&#34;&#34;
+    #######################################
+    ############## MAIN ###################
+    #######################################
+
+    # Parse arguments
+    parser = argparse.ArgumentParser(
+        description=&#34;Launch commands described in a database stored in a mongodb for each scope also in this file&#34;)
+    parser.add_argument(&#34;database&#34;, metavar=&#34;databaseName&#34;, type=str,
+                        help=&#34;The database&#39;s name to launch in the mongodb&#34;)
+    parser.add_argument(&#34;--backup&#34;, dest=&#34;backup&#34;, metavar=&#34;backupName&#34;, type=str,
+                        help=&#34;The name of the backup database that will be written (overwrite if file name already exists) in the mongodb as the input database is completed&#34;)
+    parser.add_argument(&#34;-y&#34;, dest=&#34;autooverride&#34;,
+                        action=&#34;store_true&#34;, help=&#34;Accept all user input asked&#34;)
+    parser.add_argument(&#34;--endless&#34;, dest=&#34;endless&#34;, action=&#34;store_true&#34;)
+    #parser.add_argument(&#34;-p&#34;, dest=&#34;port&#34; , metavar=&#34;port&#34;, type=int, help=&#34;The port on which to join the slaves&#34;)
+
+    args = parser.parse_args()
+    # Connect to database
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connect()
+    # backup database if the parser caught this argument and agreement has been done
+    if args.backup is not None and args.backup in mongoInstance.listCalendars():
+        if args.backup in mongoInstance.forbiddenNames:
+            print(args.backup+&#34; is a restricted name&#34;)
+            sys.exit(0)
+        if not args.autooverride:
+            print(&#34;You are going to overwrite an existing db (&#34; +
+                  args.backup+&#34;), proceed ? (n/Y)&#34;)
+            res = input()
+        else:
+            res = &#34;Y&#34;
+        if res == &#34;Y&#34;:
+            mongoInstance.client.drop_database(args.backup)
+        else:
+            print(&#34;The autorization to write to the output database was not provided.&#34;)
+            sys.exit(0)
+    else:
+        if mongoInstance.client is None:
+            mongoInstance.connect()
+        mongoInstance.insertInDb(
+            &#34;pollenisator&#34;, &#34;calendars&#34;, {&#34;nom&#34;: args.backup})
+    if args.backup is not None:
+        mongoInstance.client.admin.command(&#39;copydb&#39;,
+                                           fromdb=args.database,
+                                           todb=args.backup)
+    # Start autoscan with settings
+    autoScan(args.database, args.endless, False)
+
+
+def sendStartAutoScan(calendarName):
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    workers = mongoInstance.getWorkers()
+    launchedTasks = []
+    for worker in workers:
+        worker = worker[&#34;name&#34;]
+        if worker != &#34;localhost&#34;:
+            queueName = str(mongoInstance.calendarName)+&#34;&amp;&#34; + \
+                worker
+            app.control.add_consumer(
+                queue=queueName,
+                reply=True,
+                exchange=&#34;celery&#34;,
+                exchange_type=&#34;direct&#34;,
+                routing_key=&#34;transient&#34;,
+                destination=[worker])
+            from AutoScanWorker import startAutoScan
+            result_async = startAutoScan.apply_async(args=[calendarName, worker], queue=queueName, retry=False, serializer=&#34;json&#34;)
+            launchedTasks.append(result_async)
+            # Append to running tasks this celery result and the corresponding tool id
+    return launchedTasks
+
+
+def autoScan(databaseName, endless, useReprinter=False):
+    &#34;&#34;&#34;
+    Search tools to launch within defined conditions and attempts to launch them on celery workers.
+    Gives a visual feedback on stdout
+
+    Args:
+        databaseName: The database to search tools in
+        endless: a boolean that indicates if the autoscan will be endless or if it will stop at the moment it does not found anymore launchable tools.
+        useReprinter: a boolean that indicates if the array outpur will be entirely reprinted or if it will be overwritten.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(databaseName)
+    my_monitor = Monitor(databaseName)
+    Utils.resetUnfinishedTools()
+    time_compatible_waves_id = Wave.searchForAddressCompatibleWithTime()
+    killer = GracefulKiller()
+    if not endless:
+        killer.kill_now = len(time_compatible_waves_id) &lt;= 0
+        print(&#34;No wave compatible&#34;)
+    else:
+        killer.kill_now = False
+    if useReprinter:
+        reprinter = Reprinter()
+    else:
+        reprinter = None
+    max_tabulation = _getMaxColumnLen()
+    while not killer.kill_now:
+        # Extract commands with compatible time and not yet done
+        launchableTools, waiting = findLaunchableTools()
+        # Sort by command priority
+        launchableTools.sort(key=lambda tup: int(tup[&#34;priority&#34;]))
+        dispatchLaunchableTools(my_monitor, launchableTools)
+        printStatus(max_tabulation, waiting, reprinter)
+        time.sleep(3)
+    my_monitor.stop()
+
+
+def printStatus(max_tabulation, waiting, reprinter=None):
+    &#34;&#34;&#34;
+    Print to stdout the ongoing scan information.
+    Args:
+        max_tabulation: The longest column content length
+        waiting: a dictionnary filled with commands that are not launched yet.
+        reprinter: a reprinter object instance. If none, a normal print will be used. Default to None.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    commandsRunning = mongoInstance.aggregate(&#34;tools&#34;, [{&#34;$match&#34;: {&#34;datef&#34;: &#34;None&#34;, &#34;dated&#34;: {
+        &#34;$ne&#34;: &#34;None&#34;}, &#34;scanner_ip&#34;: {&#34;$ne&#34;: &#34;None&#34;}}}, {&#34;$group&#34;: {&#34;_id&#34;: &#34;$name&#34;, &#34;count&#34;: {&#34;$sum&#34;: 1}}}])
+    total = 0
+    treated = []
+    buff = &#34;Commands&#34; + \
+        _getEnoughTabulations(
+            &#34;Commands&#34;, max_tabulation)+&#34;Running\tWaiting\n&#34;
+    buff += &#34;--------&#34; + \
+        _getEnoughTabulations(
+            &#34;--------&#34;, max_tabulation)+&#34;-------\t-------\n&#34;
+    for running in commandsRunning:
+        try:
+            w = waiting[running[&#34;_id&#34;]]
+        except KeyError:
+            w = 0
+        nom = str(running[&#34;_id&#34;])
+        buff += nom + \
+            _getEnoughTabulations(nom, max_tabulation) + \
+            str(running[&#34;count&#34;])+&#34;\t\t&#34;+str(w)+&#34;\t\t&#34;+&#34;\n&#34;
+        treated.append(str(running[&#34;_id&#34;]))
+        total += int(running[&#34;count&#34;])
+    for wi in list(waiting.keys()):
+        if wi not in treated:
+            buff += str(wi)+_getEnoughTabulations(str(wi),
+                                                  max_tabulation)+str(0)+&#34;\t\t&#34;+str(waiting[wi])+&#34;\t\t&#34;+&#34;\n&#34;
+    buff += &#34;--------&#34; + \
+        _getEnoughTabulations(
+            &#34;--------&#34;, max_tabulation)+&#34;-------\t-------\n&#34;
+    buff += &#34;Total Running: &#34;+str(total)+&#34;\n&#34;
+    if reprinter is not None:
+        reprinter.reprint(buff)
+    else:
+        print(buff)
+
+
+def _getEnoughTabulations(name, max_tabulation):
+    &#34;&#34;&#34;
+    Return enough spaces to have a proper indentation for a tool name
+    Args:
+        name: The tool name that will change the number of spaces needed to reach an equal level of space
+        max_tabulation: The number of space for the maximum tool name length.
+
+    Returns:
+        Return a string with enough spaces to align every column.
+    &#34;&#34;&#34;
+    return &#34; &#34;*(max_tabulation-len(name))
+
+
+def _getMaxColumnLen():
+    &#34;&#34;&#34;
+    Returns the maximal tool name length +2
+    Returns:
+        Return the maximal tool name length +2
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    commands = mongoInstance.findInDb(
+        &#34;pollenisator&#34;, &#34;commands&#34;, {&#34;safe&#34;: &#34;True&#34;})
+    maxLen = 0
+    for c in commands:
+        if len(c[&#34;name&#34;]) &gt; maxLen:
+            maxLen = len(c[&#34;name&#34;])
+    mustReach = maxLen+2
+    return mustReach
+
+
+def dispatchLaunchableTools(my_monitor, launchableTools):
+    &#34;&#34;&#34;
+    Try to launch given tools within the monitor
+
+    Args:
+        my_monitor: A Monitor instance which knows what tools are already launched and online workers
+        launchableTools: A list of tools within a Wave that passed the Intervals checking.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    for launchableTool in launchableTools:
+        tool = Tool.fetchObject({&#34;_id&#34;: ObjectId(launchableTool[&#34;_id&#34;])})
+        my_monitor.launchTask(mongoInstance.calendarName, tool)
+
+
+
+
+
+def findLaunchableTools():
+    &#34;&#34;&#34;
+    Try to find tools that matches all criteria.
+
+    Returns:
+        A tuple with two values:
+            * A list of launchable tools as dictionary with values _id, name and priority
+            * A dictionary of waiting tools with tool&#39;s names as keys and integer as value.
+    &#34;&#34;&#34;
+    toolsLaunchable = []
+    waiting = {}
+    time_compatible_waves_id = Wave.searchForAddressCompatibleWithTime()
+    for wave_id in time_compatible_waves_id:
+        commandsLaunchableWave = Wave.getNotDoneTools(wave_id)
+        for tool in commandsLaunchableWave:
+            toolModel = Tool.fetchObject({&#34;_id&#34;: tool})
+            try:
+                waiting[str(toolModel)] += 1
+            except KeyError:
+                waiting[str(toolModel)] = 1
+            command = toolModel.getCommand()
+            if command is None:
+                prio = 0
+            else:
+                prio = int(command.get(&#34;priority&#34;, 0))
+            toolsLaunchable.append(
+                {&#34;_id&#34;: tool, &#34;name&#34;: str(toolModel), &#34;priority&#34;: prio})
+
+    return toolsLaunchable, waiting
+
+
+if __name__ == &#39;__main__&#39;:
+    main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.core.Components.AutoScanMaster.autoScan"><code class="name flex">
+<span>def <span class="ident">autoScan</span></span>(<span>databaseName, endless, useReprinter=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Search tools to launch within defined conditions and attempts to launch them on celery workers.
+Gives a visual feedback on stdout</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>databaseName</code></strong></dt>
+<dd>The database to search tools in</dd>
+<dt><strong><code>endless</code></strong></dt>
+<dd>a boolean that indicates if the autoscan will be endless or if it will stop at the moment it does not found anymore launchable tools.</dd>
+<dt><strong><code>useReprinter</code></strong></dt>
+<dd>a boolean that indicates if the array outpur will be entirely reprinted or if it will be overwritten.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def autoScan(databaseName, endless, useReprinter=False):
+    &#34;&#34;&#34;
+    Search tools to launch within defined conditions and attempts to launch them on celery workers.
+    Gives a visual feedback on stdout
+
+    Args:
+        databaseName: The database to search tools in
+        endless: a boolean that indicates if the autoscan will be endless or if it will stop at the moment it does not found anymore launchable tools.
+        useReprinter: a boolean that indicates if the array outpur will be entirely reprinted or if it will be overwritten.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(databaseName)
+    my_monitor = Monitor(databaseName)
+    Utils.resetUnfinishedTools()
+    time_compatible_waves_id = Wave.searchForAddressCompatibleWithTime()
+    killer = GracefulKiller()
+    if not endless:
+        killer.kill_now = len(time_compatible_waves_id) &lt;= 0
+        print(&#34;No wave compatible&#34;)
+    else:
+        killer.kill_now = False
+    if useReprinter:
+        reprinter = Reprinter()
+    else:
+        reprinter = None
+    max_tabulation = _getMaxColumnLen()
+    while not killer.kill_now:
+        # Extract commands with compatible time and not yet done
+        launchableTools, waiting = findLaunchableTools()
+        # Sort by command priority
+        launchableTools.sort(key=lambda tup: int(tup[&#34;priority&#34;]))
+        dispatchLaunchableTools(my_monitor, launchableTools)
+        printStatus(max_tabulation, waiting, reprinter)
+        time.sleep(3)
+    my_monitor.stop()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.AutoScanMaster.dispatchLaunchableTools"><code class="name flex">
+<span>def <span class="ident">dispatchLaunchableTools</span></span>(<span>my_monitor, launchableTools)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Try to launch given tools within the monitor</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>my_monitor</code></strong></dt>
+<dd>A Monitor instance which knows what tools are already launched and online workers</dd>
+<dt><strong><code>launchableTools</code></strong></dt>
+<dd>A list of tools within a Wave that passed the Intervals checking.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dispatchLaunchableTools(my_monitor, launchableTools):
+    &#34;&#34;&#34;
+    Try to launch given tools within the monitor
+
+    Args:
+        my_monitor: A Monitor instance which knows what tools are already launched and online workers
+        launchableTools: A list of tools within a Wave that passed the Intervals checking.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    for launchableTool in launchableTools:
+        tool = Tool.fetchObject({&#34;_id&#34;: ObjectId(launchableTool[&#34;_id&#34;])})
+        my_monitor.launchTask(mongoInstance.calendarName, tool)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.AutoScanMaster.findLaunchableTools"><code class="name flex">
+<span>def <span class="ident">findLaunchableTools</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Try to find tools that matches all criteria.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A tuple with two values:</code></dt>
+<dd>
+<ul>
+<li>A list of launchable tools as dictionary with values _id, name and priority</li>
+<li>A dictionary of waiting tools with tool's names as keys and integer as value.</li>
+</ul>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findLaunchableTools():
+    &#34;&#34;&#34;
+    Try to find tools that matches all criteria.
+
+    Returns:
+        A tuple with two values:
+            * A list of launchable tools as dictionary with values _id, name and priority
+            * A dictionary of waiting tools with tool&#39;s names as keys and integer as value.
+    &#34;&#34;&#34;
+    toolsLaunchable = []
+    waiting = {}
+    time_compatible_waves_id = Wave.searchForAddressCompatibleWithTime()
+    for wave_id in time_compatible_waves_id:
+        commandsLaunchableWave = Wave.getNotDoneTools(wave_id)
+        for tool in commandsLaunchableWave:
+            toolModel = Tool.fetchObject({&#34;_id&#34;: tool})
+            try:
+                waiting[str(toolModel)] += 1
+            except KeyError:
+                waiting[str(toolModel)] = 1
+            command = toolModel.getCommand()
+            if command is None:
+                prio = 0
+            else:
+                prio = int(command.get(&#34;priority&#34;, 0))
+            toolsLaunchable.append(
+                {&#34;_id&#34;: tool, &#34;name&#34;: str(toolModel), &#34;priority&#34;: prio})
+
+    return toolsLaunchable, waiting</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.AutoScanMaster.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>May be used to start an automatic scan without having to launch a GUI.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main():
+    &#34;&#34;&#34;May be used to start an automatic scan without having to launch a GUI.
+    &#34;&#34;&#34;
+    #######################################
+    ############## MAIN ###################
+    #######################################
+
+    # Parse arguments
+    parser = argparse.ArgumentParser(
+        description=&#34;Launch commands described in a database stored in a mongodb for each scope also in this file&#34;)
+    parser.add_argument(&#34;database&#34;, metavar=&#34;databaseName&#34;, type=str,
+                        help=&#34;The database&#39;s name to launch in the mongodb&#34;)
+    parser.add_argument(&#34;--backup&#34;, dest=&#34;backup&#34;, metavar=&#34;backupName&#34;, type=str,
+                        help=&#34;The name of the backup database that will be written (overwrite if file name already exists) in the mongodb as the input database is completed&#34;)
+    parser.add_argument(&#34;-y&#34;, dest=&#34;autooverride&#34;,
+                        action=&#34;store_true&#34;, help=&#34;Accept all user input asked&#34;)
+    parser.add_argument(&#34;--endless&#34;, dest=&#34;endless&#34;, action=&#34;store_true&#34;)
+    #parser.add_argument(&#34;-p&#34;, dest=&#34;port&#34; , metavar=&#34;port&#34;, type=int, help=&#34;The port on which to join the slaves&#34;)
+
+    args = parser.parse_args()
+    # Connect to database
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connect()
+    # backup database if the parser caught this argument and agreement has been done
+    if args.backup is not None and args.backup in mongoInstance.listCalendars():
+        if args.backup in mongoInstance.forbiddenNames:
+            print(args.backup+&#34; is a restricted name&#34;)
+            sys.exit(0)
+        if not args.autooverride:
+            print(&#34;You are going to overwrite an existing db (&#34; +
+                  args.backup+&#34;), proceed ? (n/Y)&#34;)
+            res = input()
+        else:
+            res = &#34;Y&#34;
+        if res == &#34;Y&#34;:
+            mongoInstance.client.drop_database(args.backup)
+        else:
+            print(&#34;The autorization to write to the output database was not provided.&#34;)
+            sys.exit(0)
+    else:
+        if mongoInstance.client is None:
+            mongoInstance.connect()
+        mongoInstance.insertInDb(
+            &#34;pollenisator&#34;, &#34;calendars&#34;, {&#34;nom&#34;: args.backup})
+    if args.backup is not None:
+        mongoInstance.client.admin.command(&#39;copydb&#39;,
+                                           fromdb=args.database,
+                                           todb=args.backup)
+    # Start autoscan with settings
+    autoScan(args.database, args.endless, False)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.AutoScanMaster.printStatus"><code class="name flex">
+<span>def <span class="ident">printStatus</span></span>(<span>max_tabulation, waiting, reprinter=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print to stdout the ongoing scan information.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>max_tabulation</code></strong></dt>
+<dd>The longest column content length</dd>
+<dt><strong><code>waiting</code></strong></dt>
+<dd>a dictionnary filled with commands that are not launched yet.</dd>
+<dt><strong><code>reprinter</code></strong></dt>
+<dd>a reprinter object instance. If none, a normal print will be used. Default to None.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def printStatus(max_tabulation, waiting, reprinter=None):
+    &#34;&#34;&#34;
+    Print to stdout the ongoing scan information.
+    Args:
+        max_tabulation: The longest column content length
+        waiting: a dictionnary filled with commands that are not launched yet.
+        reprinter: a reprinter object instance. If none, a normal print will be used. Default to None.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    commandsRunning = mongoInstance.aggregate(&#34;tools&#34;, [{&#34;$match&#34;: {&#34;datef&#34;: &#34;None&#34;, &#34;dated&#34;: {
+        &#34;$ne&#34;: &#34;None&#34;}, &#34;scanner_ip&#34;: {&#34;$ne&#34;: &#34;None&#34;}}}, {&#34;$group&#34;: {&#34;_id&#34;: &#34;$name&#34;, &#34;count&#34;: {&#34;$sum&#34;: 1}}}])
+    total = 0
+    treated = []
+    buff = &#34;Commands&#34; + \
+        _getEnoughTabulations(
+            &#34;Commands&#34;, max_tabulation)+&#34;Running\tWaiting\n&#34;
+    buff += &#34;--------&#34; + \
+        _getEnoughTabulations(
+            &#34;--------&#34;, max_tabulation)+&#34;-------\t-------\n&#34;
+    for running in commandsRunning:
+        try:
+            w = waiting[running[&#34;_id&#34;]]
+        except KeyError:
+            w = 0
+        nom = str(running[&#34;_id&#34;])
+        buff += nom + \
+            _getEnoughTabulations(nom, max_tabulation) + \
+            str(running[&#34;count&#34;])+&#34;\t\t&#34;+str(w)+&#34;\t\t&#34;+&#34;\n&#34;
+        treated.append(str(running[&#34;_id&#34;]))
+        total += int(running[&#34;count&#34;])
+    for wi in list(waiting.keys()):
+        if wi not in treated:
+            buff += str(wi)+_getEnoughTabulations(str(wi),
+                                                  max_tabulation)+str(0)+&#34;\t\t&#34;+str(waiting[wi])+&#34;\t\t&#34;+&#34;\n&#34;
+    buff += &#34;--------&#34; + \
+        _getEnoughTabulations(
+            &#34;--------&#34;, max_tabulation)+&#34;-------\t-------\n&#34;
+    buff += &#34;Total Running: &#34;+str(total)+&#34;\n&#34;
+    if reprinter is not None:
+        reprinter.reprint(buff)
+    else:
+        print(buff)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.AutoScanMaster.sendStartAutoScan"><code class="name flex">
+<span>def <span class="ident">sendStartAutoScan</span></span>(<span>calendarName)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sendStartAutoScan(calendarName):
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.connectToDb(calendarName)
+    workers = mongoInstance.getWorkers()
+    launchedTasks = []
+    for worker in workers:
+        worker = worker[&#34;name&#34;]
+        if worker != &#34;localhost&#34;:
+            queueName = str(mongoInstance.calendarName)+&#34;&amp;&#34; + \
+                worker
+            app.control.add_consumer(
+                queue=queueName,
+                reply=True,
+                exchange=&#34;celery&#34;,
+                exchange_type=&#34;direct&#34;,
+                routing_key=&#34;transient&#34;,
+                destination=[worker])
+            from AutoScanWorker import startAutoScan
+            result_async = startAutoScan.apply_async(args=[calendarName, worker], queue=queueName, retry=False, serializer=&#34;json&#34;)
+            launchedTasks.append(result_async)
+            # Append to running tasks this celery result and the corresponding tool id
+    return launchedTasks</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.AutoScanMaster.GracefulKiller"><code class="flex name class">
+<span>class <span class="ident">GracefulKiller</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Signal handler to shut down properly.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>kill_now</code></strong></dt>
+<dd>a boolean that can checked to know that it's time to stop.</dd>
+</dl>
+<p>Constructor. Hook the signals SIGINT and SIGTERM to method exitGracefully</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GracefulKiller:
+    &#34;&#34;&#34;
+    Signal handler to shut down properly.
+
+    Attributes:
+        kill_now: a boolean that can checked to know that it&#39;s time to stop.
+    &#34;&#34;&#34;
+    kill_now = False
+
+    def __init__(self):
+        &#34;&#34;&#34;
+        Constructor. Hook the signals SIGINT and SIGTERM to method exitGracefully
+        &#34;&#34;&#34;
+        signal.signal(signal.SIGINT, self.exitGracefully)
+        signal.signal(signal.SIGTERM, self.exitGracefully)
+        #signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+
+    def exitGracefully(self, _signum, _frame):
+        &#34;&#34;&#34;
+        Set the kill_now class attributes to True
+
+        Args:
+            _signum: not used. Sent automatically the caller.
+            _frame: not used. Sent automatically the caller.
+        &#34;&#34;&#34;
+        print(&#39;You pressed Ctrl+C!&#39;)
+        self.kill_now = True</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Components.AutoScanMaster.GracefulKiller.kill_now"><code class="name">var <span class="ident">kill_now</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.AutoScanMaster.GracefulKiller.exitGracefully"><code class="name flex">
+<span>def <span class="ident">exitGracefully</span></span>(<span>self, _signum, _frame)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the kill_now class attributes to True</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_signum</code></strong></dt>
+<dd>not used. Sent automatically the caller.</dd>
+<dt><strong><code>_frame</code></strong></dt>
+<dd>not used. Sent automatically the caller.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def exitGracefully(self, _signum, _frame):
+    &#34;&#34;&#34;
+    Set the kill_now class attributes to True
+
+    Args:
+        _signum: not used. Sent automatically the caller.
+        _frame: not used. Sent automatically the caller.
+    &#34;&#34;&#34;
+    print(&#39;You pressed Ctrl+C!&#39;)
+    self.kill_now = True</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="Pollenisator.core.Components.AutoScanMaster.Reprinter"><code class="flex name class">
+<span>class <span class="ident">Reprinter</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>A useful class to erase the precedent print before reprinting. Giving the impression of a static print.</p>
+<p>Constructor</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Reprinter:
+    &#34;&#34;&#34;
+    A useful class to erase the precedent print before reprinting. Giving the impression of a static print.
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        &#34;&#34;&#34;
+        Constructor
+        &#34;&#34;&#34;
+        self.text = &#39;&#39;
+
+    def _moveup(self, lines):
+        &#34;&#34;&#34;
+        Put the cursor up by X lines
+        Args:
+            lines: the X number of lines
+        &#34;&#34;&#34;
+        for _ in range(lines):
+            sys.stdout.write(&#34;\x1b[A&#34;)
+
+    def reprint(self, text):
+        &#34;&#34;&#34;
+        Erase precedent print and print the new text.
+        Args:
+            text: The new text to print
+        &#34;&#34;&#34;
+        # Clear previous text by overwritig non-spaces with spaces
+        self._moveup(self.text.count(&#34;\n&#34;))
+        sys.stdout.write(re.sub(r&#34;[^\s]&#34;, &#34; &#34;, self.text))
+
+        # Print new text
+        lines = min(self.text.count(&#34;\n&#34;), text.count(&#34;\n&#34;))
+        self._moveup(lines)
+        sys.stdout.write(text)
+        self.text = text</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.AutoScanMaster.Reprinter.reprint"><code class="name flex">
+<span>def <span class="ident">reprint</span></span>(<span>self, text)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Erase precedent print and print the new text.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>text</code></strong></dt>
+<dd>The new text to print</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reprint(self, text):
+    &#34;&#34;&#34;
+    Erase precedent print and print the new text.
+    Args:
+        text: The new text to print
+    &#34;&#34;&#34;
+    # Clear previous text by overwritig non-spaces with spaces
+    self._moveup(self.text.count(&#34;\n&#34;))
+    sys.stdout.write(re.sub(r&#34;[^\s]&#34;, &#34; &#34;, self.text))
+
+    # Print new text
+    lines = min(self.text.count(&#34;\n&#34;), text.count(&#34;\n&#34;))
+    self._moveup(lines)
+    sys.stdout.write(text)
+    self.text = text</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.autoScan" href="#Pollenisator.core.Components.AutoScanMaster.autoScan">autoScan</a></code></li>
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.dispatchLaunchableTools" href="#Pollenisator.core.Components.AutoScanMaster.dispatchLaunchableTools">dispatchLaunchableTools</a></code></li>
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.findLaunchableTools" href="#Pollenisator.core.Components.AutoScanMaster.findLaunchableTools">findLaunchableTools</a></code></li>
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.main" href="#Pollenisator.core.Components.AutoScanMaster.main">main</a></code></li>
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.printStatus" href="#Pollenisator.core.Components.AutoScanMaster.printStatus">printStatus</a></code></li>
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.sendStartAutoScan" href="#Pollenisator.core.Components.AutoScanMaster.sendStartAutoScan">sendStartAutoScan</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.AutoScanMaster.GracefulKiller" href="#Pollenisator.core.Components.AutoScanMaster.GracefulKiller">GracefulKiller</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.GracefulKiller.exitGracefully" href="#Pollenisator.core.Components.AutoScanMaster.GracefulKiller.exitGracefully">exitGracefully</a></code></li>
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.GracefulKiller.kill_now" href="#Pollenisator.core.Components.AutoScanMaster.GracefulKiller.kill_now">kill_now</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="Pollenisator.core.Components.AutoScanMaster.Reprinter" href="#Pollenisator.core.Components.AutoScanMaster.Reprinter">Reprinter</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.AutoScanMaster.Reprinter.reprint" href="#Pollenisator.core.Components.AutoScanMaster.Reprinter.reprint">reprint</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

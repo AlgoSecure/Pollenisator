@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Views.IpView API documentation</title>
+<meta name="description" content="View for ip object. Handle node in treeview and present forms to user when interacted with." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Views.IpView</code></h1>
+</header>
+<section id="section-intro">
+<p>View for ip object. Handle node in treeview and present forms to user when interacted with.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;View for ip object. Handle node in treeview and present forms to user when interacted with.&#34;&#34;&#34;
+
+from core.Models.Port import Port
+from core.Models.Tool import Tool
+from core.Models.Defect import Defect
+from core.Models.Ip import Ip
+from core.Views.PortView import PortView
+from core.Views.ToolView import ToolView
+from core.Views.DefectView import DefectView
+from core.Controllers.PortController import PortController
+from core.Controllers.DefectController import DefectController
+from core.Controllers.IpController import IpController
+from core.Controllers.ToolController import ToolController
+from core.Views.ViewElement import ViewElement
+from tkinter import TclError
+from bson.objectid import ObjectId
+
+
+class IpView(ViewElement):
+    &#34;&#34;&#34;View for ip object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory.&#34;&#34;&#34;
+    icon = &#39;ip.png&#39;
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Ip
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Ip&#34;)
+        top_panel.addFormStr(
+            &#34;Ip&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, state=&#34;readonly&#34;)
+        notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+        top_panel = self.form.addFormPanel()
+        top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        top_panel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;, height=10)
+        top_panel.addFormLabel(&#34;Infos&#34;, side=&#34;left&#34;)
+        top_panel.addFormTreevw(&#34;Infos&#34;, (&#34;Infos&#34;, &#34;Values&#34;),
+                                modelData[&#34;infos&#34;], side=&#34;left&#34;, fill=&#34;both&#34;, width=300, height=8,
+                                binds={&#34;&lt;Enter&gt;&#34;: self.mainApp.unboundToMousewheelMain, &#34;&lt;Leave&gt;&#34;: self.mainApp.boundToMousewheelMain})
+        buttons_panel = self.form.addFormPanel(grid=True)
+        buttons_panel.addFormButton(&#34;Add a port&#34;, self.addPortCallback)
+        buttons_panel.addFormButton(
+            &#34;Add a security defect&#34;, self.addDefectCallback, column=1)
+        self.completeModifyWindow()
+
+    def addPortCallback(self, _event):
+        &#34;&#34;&#34;
+        Create an empty port model and its attached view. Open this view insert window.
+
+        Args:
+            _event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        modelData = self.controller.getData()
+        pv = PortView(self.appliTw, self.appliViewFrame,
+                      self.mainApp, PortController(Port(modelData)))
+        pv.openInsertWindow()
+
+    def addDefectCallback(self, _event):
+        &#34;&#34;&#34;
+        Create an empty defect model and its attached view. Open this view insert window.
+
+        Args:
+            _event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        modelData = self.controller.getData()
+        dv = DefectView(self.appliTw, self.appliViewFrame, self.mainApp,
+                        DefectController(Defect(modelData)))
+        dv.openInsertWindow(modelData.get(&#34;notes&#34;, &#34;&#34;))
+
+    def _insertChildrenDefects(self):
+        &#34;&#34;&#34;Insert every children defect in database as DefectView under this node&#34;&#34;&#34;
+        defects = self.controller.getDefects()
+        for defect in defects:
+            defect_o = DefectController(Defect(defect))
+            defect_vw = DefectView(
+                self.appliTw, self.appliViewFrame, self.mainApp, defect_o)
+            defect_vw.addInTreeview(str(self.controller.getDbId()))
+
+    def _insertChildrenTools(self):
+        &#34;&#34;&#34;Create a tools list node and insert every children tools in database as ToolView under this node&#34;&#34;&#34;
+        tools = self.controller.getTools()
+        for tool in tools:
+            tool_o = ToolController(Tool(tool))
+            tool_vw = ToolView(
+                self.appliTw, self.appliViewFrame, self.mainApp, tool_o)
+            tool_vw.addInTreeview(str(self.controller.getDbId()))
+
+    def _insertChildrenPorts(self, ip_node):
+        &#34;&#34;&#34;Insert every children port in database as DefectView under this node directly&#34;&#34;&#34;
+        ports = self.controller.getPorts()
+        for port in ports:
+            port_o = PortController(Port(port))
+            port_vw = PortView(
+                self.appliTw, self.appliViewFrame, self.mainApp, port_o)
+            port_vw.addInTreeview(ip_node)
+
+    def addInTreeview(self, parentNode=None, addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            _addChildren: not used here
+        &#34;&#34;&#34;
+        if parentNode is None:
+            parentNode = self.getParent()
+        ip_node = None
+        try:
+            if isinstance(parentNode, ObjectId):
+                ip_parent_o = Ip.fetchObject({&#34;_id&#34;: parentNode})
+                if ip_parent_o is not None:
+                    parent_view = IpView(self.appliTw, self.appliViewFrame,
+                                         self.mainApp, IpController(ip_parent_o))
+                    parent_view.addInTreeview(None, False)
+            ip_node = self.appliTw.insert(parentNode, &#34;end&#34;, str(
+                self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+        except TclError:
+            pass
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        if addChildren and ip_node is not None:
+            self._insertChildrenDefects()
+            self._insertChildrenTools()
+            self._insertChildrenPorts(ip_node)
+        # self.appliTw.sort(parentNode)
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+        modelData = self.controller.getData()
+        if not modelData[&#34;in_scopes&#34;]:
+            self.controller.addTag(&#34;OOS&#34;)
+
+    def split_ip(self):
+        &#34;&#34;&#34;Split a IP address given as string into a 4-tuple of integers.
+        Returns:
+            Tuple of 4 integers values representing the 4 parts of an ipv4 string&#34;&#34;&#34;
+        modelData = self.controller.getData()
+        try:
+            ret = tuple(int(part) for part in modelData[&#34;ip&#34;].split(&#39;.&#39;))
+        except ValueError:
+            ret = tuple([0])+tuple(ord(chrDomain)
+                                   for chrDomain in modelData[&#34;ip&#34;])
+        return ret
+
+    def key(self):
+        &#34;&#34;&#34;Returns a key for sorting this node
+        Returns:
+            Tuple of 4 integers values representing the 4 parts of an ipv4 string, key to sort ips properly
+        &#34;&#34;&#34;
+        return self.split_ip()
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a IP insertion is received by notification.
+        Insert the node in summary.
+        Can also insert in treeview with OOS tags.
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        if modelData.get(&#34;in_scopes&#34;, []):
+            self.mainApp.summary.insertIp(modelData[&#34;ip&#34;])
+        else:
+            self.appliTw.item(str(self.controller.getDbId()), text=str(
+                self.controller.getModelRepr()), image=self.getIcon())
+            self.controller.addTag(&#34;OOS&#34;)
+
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a IP update is received by notification.
+        Update the ip node OOS status tags and add/remove it from summary.
+        &#34;&#34;&#34;
+        if self.controller.model is not None:
+            modelData = self.controller.getData()
+            if not modelData[&#34;in_scopes&#34;]:
+                self.controller.addTag(&#34;OOS&#34;)
+                self.mainApp.summary.deleteIp(modelData[&#34;ip&#34;])
+            else:
+                self.controller.delTag(&#34;OOS&#34;)
+                self.mainApp.summary.insertIp(modelData[&#34;ip&#34;])
+            super().updateReceived()
+
+    def getParent(self):
+        &#34;&#34;&#34;
+        Return the id of the parent node in treeview.
+
+        Returns:
+            return the parent ips_node of application treeview
+        &#34;&#34;&#34;
+        #parent = self.controller.getParent()
+        #if parent is None:
+        parent = self.appliTw.ips_node
+        return parent</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Views.IpView.IpView"><code class="flex name class">
+<span>class <span class="ident">IpView</span></span>
+<span>(</span><span>appTw, appViewFrame, mainApp, controller)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>View for ip object. Handle node in treeview and present forms to user when interacted with.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>icon</code></strong></dt>
+<dd>icon name to show in treeview. Icon filename must be in icon directory.</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appTw</code></strong></dt>
+<dd>a PollenisatorTreeview instance to put this view in</dd>
+<dt><strong><code>appViewFrame</code></strong></dt>
+<dd>an view frame to build the forms in.</dd>
+<dt><strong><code>mainApp</code></strong></dt>
+<dd>the Application instance</dd>
+<dt><strong><code>controller</code></strong></dt>
+<dd>a CommandController for this view.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class IpView(ViewElement):
+    &#34;&#34;&#34;View for ip object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory.&#34;&#34;&#34;
+    icon = &#39;ip.png&#39;
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Ip
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Ip&#34;)
+        top_panel.addFormStr(
+            &#34;Ip&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, state=&#34;readonly&#34;)
+        notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+        top_panel = self.form.addFormPanel()
+        top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        top_panel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;, height=10)
+        top_panel.addFormLabel(&#34;Infos&#34;, side=&#34;left&#34;)
+        top_panel.addFormTreevw(&#34;Infos&#34;, (&#34;Infos&#34;, &#34;Values&#34;),
+                                modelData[&#34;infos&#34;], side=&#34;left&#34;, fill=&#34;both&#34;, width=300, height=8,
+                                binds={&#34;&lt;Enter&gt;&#34;: self.mainApp.unboundToMousewheelMain, &#34;&lt;Leave&gt;&#34;: self.mainApp.boundToMousewheelMain})
+        buttons_panel = self.form.addFormPanel(grid=True)
+        buttons_panel.addFormButton(&#34;Add a port&#34;, self.addPortCallback)
+        buttons_panel.addFormButton(
+            &#34;Add a security defect&#34;, self.addDefectCallback, column=1)
+        self.completeModifyWindow()
+
+    def addPortCallback(self, _event):
+        &#34;&#34;&#34;
+        Create an empty port model and its attached view. Open this view insert window.
+
+        Args:
+            _event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        modelData = self.controller.getData()
+        pv = PortView(self.appliTw, self.appliViewFrame,
+                      self.mainApp, PortController(Port(modelData)))
+        pv.openInsertWindow()
+
+    def addDefectCallback(self, _event):
+        &#34;&#34;&#34;
+        Create an empty defect model and its attached view. Open this view insert window.
+
+        Args:
+            _event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        modelData = self.controller.getData()
+        dv = DefectView(self.appliTw, self.appliViewFrame, self.mainApp,
+                        DefectController(Defect(modelData)))
+        dv.openInsertWindow(modelData.get(&#34;notes&#34;, &#34;&#34;))
+
+    def _insertChildrenDefects(self):
+        &#34;&#34;&#34;Insert every children defect in database as DefectView under this node&#34;&#34;&#34;
+        defects = self.controller.getDefects()
+        for defect in defects:
+            defect_o = DefectController(Defect(defect))
+            defect_vw = DefectView(
+                self.appliTw, self.appliViewFrame, self.mainApp, defect_o)
+            defect_vw.addInTreeview(str(self.controller.getDbId()))
+
+    def _insertChildrenTools(self):
+        &#34;&#34;&#34;Create a tools list node and insert every children tools in database as ToolView under this node&#34;&#34;&#34;
+        tools = self.controller.getTools()
+        for tool in tools:
+            tool_o = ToolController(Tool(tool))
+            tool_vw = ToolView(
+                self.appliTw, self.appliViewFrame, self.mainApp, tool_o)
+            tool_vw.addInTreeview(str(self.controller.getDbId()))
+
+    def _insertChildrenPorts(self, ip_node):
+        &#34;&#34;&#34;Insert every children port in database as DefectView under this node directly&#34;&#34;&#34;
+        ports = self.controller.getPorts()
+        for port in ports:
+            port_o = PortController(Port(port))
+            port_vw = PortView(
+                self.appliTw, self.appliViewFrame, self.mainApp, port_o)
+            port_vw.addInTreeview(ip_node)
+
+    def addInTreeview(self, parentNode=None, addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            _addChildren: not used here
+        &#34;&#34;&#34;
+        if parentNode is None:
+            parentNode = self.getParent()
+        ip_node = None
+        try:
+            if isinstance(parentNode, ObjectId):
+                ip_parent_o = Ip.fetchObject({&#34;_id&#34;: parentNode})
+                if ip_parent_o is not None:
+                    parent_view = IpView(self.appliTw, self.appliViewFrame,
+                                         self.mainApp, IpController(ip_parent_o))
+                    parent_view.addInTreeview(None, False)
+            ip_node = self.appliTw.insert(parentNode, &#34;end&#34;, str(
+                self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+        except TclError:
+            pass
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        if addChildren and ip_node is not None:
+            self._insertChildrenDefects()
+            self._insertChildrenTools()
+            self._insertChildrenPorts(ip_node)
+        # self.appliTw.sort(parentNode)
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+        modelData = self.controller.getData()
+        if not modelData[&#34;in_scopes&#34;]:
+            self.controller.addTag(&#34;OOS&#34;)
+
+    def split_ip(self):
+        &#34;&#34;&#34;Split a IP address given as string into a 4-tuple of integers.
+        Returns:
+            Tuple of 4 integers values representing the 4 parts of an ipv4 string&#34;&#34;&#34;
+        modelData = self.controller.getData()
+        try:
+            ret = tuple(int(part) for part in modelData[&#34;ip&#34;].split(&#39;.&#39;))
+        except ValueError:
+            ret = tuple([0])+tuple(ord(chrDomain)
+                                   for chrDomain in modelData[&#34;ip&#34;])
+        return ret
+
+    def key(self):
+        &#34;&#34;&#34;Returns a key for sorting this node
+        Returns:
+            Tuple of 4 integers values representing the 4 parts of an ipv4 string, key to sort ips properly
+        &#34;&#34;&#34;
+        return self.split_ip()
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a IP insertion is received by notification.
+        Insert the node in summary.
+        Can also insert in treeview with OOS tags.
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        if modelData.get(&#34;in_scopes&#34;, []):
+            self.mainApp.summary.insertIp(modelData[&#34;ip&#34;])
+        else:
+            self.appliTw.item(str(self.controller.getDbId()), text=str(
+                self.controller.getModelRepr()), image=self.getIcon())
+            self.controller.addTag(&#34;OOS&#34;)
+
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a IP update is received by notification.
+        Update the ip node OOS status tags and add/remove it from summary.
+        &#34;&#34;&#34;
+        if self.controller.model is not None:
+            modelData = self.controller.getData()
+            if not modelData[&#34;in_scopes&#34;]:
+                self.controller.addTag(&#34;OOS&#34;)
+                self.mainApp.summary.deleteIp(modelData[&#34;ip&#34;])
+            else:
+                self.controller.delTag(&#34;OOS&#34;)
+                self.mainApp.summary.insertIp(modelData[&#34;ip&#34;])
+            super().updateReceived()
+
+    def getParent(self):
+        &#34;&#34;&#34;
+        Return the id of the parent node in treeview.
+
+        Returns:
+            return the parent ips_node of application treeview
+        &#34;&#34;&#34;
+        #parent = self.controller.getParent()
+        #if parent is None:
+        parent = self.appliTw.ips_node
+        return parent</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Views.ViewElement.ViewElement</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Views.IpView.IpView.icon"><code class="name">var <span class="ident">icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.IpView.IpView.addDefectCallback"><code class="name flex">
+<span>def <span class="ident">addDefectCallback</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create an empty defect model and its attached view. Open this view insert window.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>Automatically generated with a button Callback, not used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addDefectCallback(self, _event):
+    &#34;&#34;&#34;
+    Create an empty defect model and its attached view. Open this view insert window.
+
+    Args:
+        _event: Automatically generated with a button Callback, not used.
+    &#34;&#34;&#34;
+    for widget in self.appliViewFrame.winfo_children():
+        widget.destroy()
+    modelData = self.controller.getData()
+    dv = DefectView(self.appliTw, self.appliViewFrame, self.mainApp,
+                    DefectController(Defect(modelData)))
+    dv.openInsertWindow(modelData.get(&#34;notes&#34;, &#34;&#34;))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IpView.IpView.addInTreeview"><code class="name flex">
+<span>def <span class="ident">addInTreeview</span></span>(<span>self, parentNode=None, addChildren=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this view in treeview. Also stores infos in application treeview.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentNode</code></strong></dt>
+<dd>if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.</dd>
+<dt><strong><code>_addChildren</code></strong></dt>
+<dd>not used here</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInTreeview(self, parentNode=None, addChildren=True):
+    &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+    Args:
+        parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+        _addChildren: not used here
+    &#34;&#34;&#34;
+    if parentNode is None:
+        parentNode = self.getParent()
+    ip_node = None
+    try:
+        if isinstance(parentNode, ObjectId):
+            ip_parent_o = Ip.fetchObject({&#34;_id&#34;: parentNode})
+            if ip_parent_o is not None:
+                parent_view = IpView(self.appliTw, self.appliViewFrame,
+                                     self.mainApp, IpController(ip_parent_o))
+                parent_view.addInTreeview(None, False)
+        ip_node = self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+    except TclError:
+        pass
+    self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+    if addChildren and ip_node is not None:
+        self._insertChildrenDefects()
+        self._insertChildrenTools()
+        self._insertChildrenPorts(ip_node)
+    # self.appliTw.sort(parentNode)
+    if &#34;hidden&#34; in self.controller.getTags():
+        self.hide()
+    modelData = self.controller.getData()
+    if not modelData[&#34;in_scopes&#34;]:
+        self.controller.addTag(&#34;OOS&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IpView.IpView.addPortCallback"><code class="name flex">
+<span>def <span class="ident">addPortCallback</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create an empty port model and its attached view. Open this view insert window.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>Automatically generated with a button Callback, not used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addPortCallback(self, _event):
+    &#34;&#34;&#34;
+    Create an empty port model and its attached view. Open this view insert window.
+
+    Args:
+        _event: Automatically generated with a button Callback, not used.
+    &#34;&#34;&#34;
+    for widget in self.appliViewFrame.winfo_children():
+        widget.destroy()
+    modelData = self.controller.getData()
+    pv = PortView(self.appliTw, self.appliViewFrame,
+                  self.mainApp, PortController(Port(modelData)))
+    pv.openInsertWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IpView.IpView.getParent"><code class="name flex">
+<span>def <span class="ident">getParent</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the id of the parent node in treeview.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>return the parent ips_node</code> of <code>application treeview</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getParent(self):
+    &#34;&#34;&#34;
+    Return the id of the parent node in treeview.
+
+    Returns:
+        return the parent ips_node of application treeview
+    &#34;&#34;&#34;
+    #parent = self.controller.getParent()
+    #if parent is None:
+    parent = self.appliTw.ips_node
+    return parent</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IpView.IpView.insertReceived"><code class="name flex">
+<span>def <span class="ident">insertReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a IP insertion is received by notification.
+Insert the node in summary.
+Can also insert in treeview with OOS tags.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertReceived(self):
+    &#34;&#34;&#34;Called when a IP insertion is received by notification.
+    Insert the node in summary.
+    Can also insert in treeview with OOS tags.
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    if modelData.get(&#34;in_scopes&#34;, []):
+        self.mainApp.summary.insertIp(modelData[&#34;ip&#34;])
+    else:
+        self.appliTw.item(str(self.controller.getDbId()), text=str(
+            self.controller.getModelRepr()), image=self.getIcon())
+        self.controller.addTag(&#34;OOS&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IpView.IpView.key"><code class="name flex">
+<span>def <span class="ident">key</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a key for sorting this node</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple</code> of <code>4 integers values representing the 4 parts</code> of <code>an ipv4 string, key to sort ips properly</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def key(self):
+    &#34;&#34;&#34;Returns a key for sorting this node
+    Returns:
+        Tuple of 4 integers values representing the 4 parts of an ipv4 string, key to sort ips properly
+    &#34;&#34;&#34;
+    return self.split_ip()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IpView.IpView.openModifyWindow"><code class="name flex">
+<span>def <span class="ident">openModifyWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to update or delete an existing Ip</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openModifyWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to update or delete an existing Ip
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormLabel(&#34;Ip&#34;)
+    top_panel.addFormStr(
+        &#34;Ip&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, state=&#34;readonly&#34;)
+    notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+    top_panel = self.form.addFormPanel()
+    top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+    top_panel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;, height=10)
+    top_panel.addFormLabel(&#34;Infos&#34;, side=&#34;left&#34;)
+    top_panel.addFormTreevw(&#34;Infos&#34;, (&#34;Infos&#34;, &#34;Values&#34;),
+                            modelData[&#34;infos&#34;], side=&#34;left&#34;, fill=&#34;both&#34;, width=300, height=8,
+                            binds={&#34;&lt;Enter&gt;&#34;: self.mainApp.unboundToMousewheelMain, &#34;&lt;Leave&gt;&#34;: self.mainApp.boundToMousewheelMain})
+    buttons_panel = self.form.addFormPanel(grid=True)
+    buttons_panel.addFormButton(&#34;Add a port&#34;, self.addPortCallback)
+    buttons_panel.addFormButton(
+        &#34;Add a security defect&#34;, self.addDefectCallback, column=1)
+    self.completeModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IpView.IpView.split_ip"><code class="name flex">
+<span>def <span class="ident">split_ip</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a IP address given as string into a 4-tuple of integers.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple</code> of <code>4 integers values representing the 4 parts</code> of <code>an ipv4 string</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_ip(self):
+    &#34;&#34;&#34;Split a IP address given as string into a 4-tuple of integers.
+    Returns:
+        Tuple of 4 integers values representing the 4 parts of an ipv4 string&#34;&#34;&#34;
+    modelData = self.controller.getData()
+    try:
+        ret = tuple(int(part) for part in modelData[&#34;ip&#34;].split(&#39;.&#39;))
+    except ValueError:
+        ret = tuple([0])+tuple(ord(chrDomain)
+                               for chrDomain in modelData[&#34;ip&#34;])
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IpView.IpView.updateReceived"><code class="name flex">
+<span>def <span class="ident">updateReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a IP update is received by notification.
+Update the ip node OOS status tags and add/remove it from summary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateReceived(self):
+    &#34;&#34;&#34;Called when a IP update is received by notification.
+    Update the ip node OOS status tags and add/remove it from summary.
+    &#34;&#34;&#34;
+    if self.controller.model is not None:
+        modelData = self.controller.getData()
+        if not modelData[&#34;in_scopes&#34;]:
+            self.controller.addTag(&#34;OOS&#34;)
+            self.mainApp.summary.deleteIp(modelData[&#34;ip&#34;])
+        else:
+            self.controller.delTag(&#34;OOS&#34;)
+            self.mainApp.summary.insertIp(modelData[&#34;ip&#34;])
+        super().updateReceived()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Views" href="index.html">Pollenisator.core.Views</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Views.IpView.IpView" href="#Pollenisator.core.Views.IpView.IpView">IpView</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.addDefectCallback" href="#Pollenisator.core.Views.IpView.IpView.addDefectCallback">addDefectCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.addInTreeview" href="#Pollenisator.core.Views.IpView.IpView.addInTreeview">addInTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.addPortCallback" href="#Pollenisator.core.Views.IpView.IpView.addPortCallback">addPortCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.getParent" href="#Pollenisator.core.Views.IpView.IpView.getParent">getParent</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.icon" href="#Pollenisator.core.Views.IpView.IpView.icon">icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.insertReceived" href="#Pollenisator.core.Views.IpView.IpView.insertReceived">insertReceived</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.key" href="#Pollenisator.core.Views.IpView.IpView.key">key</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.openModifyWindow" href="#Pollenisator.core.Views.IpView.IpView.openModifyWindow">openModifyWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.split_ip" href="#Pollenisator.core.Views.IpView.IpView.split_ip">split_ip</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IpView.IpView.updateReceived" href="#Pollenisator.core.Views.IpView.IpView.updateReceived">updateReceived</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

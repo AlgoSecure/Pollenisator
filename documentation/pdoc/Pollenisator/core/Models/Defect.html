@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Models.Defect API documentation</title>
+<meta name="description" content="Defect Model." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Models.Defect</code></h1>
+</header>
+<section id="section-intro">
+<p>Defect Model.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Defect Model.&#34;&#34;&#34;
+
+import os
+from bson.objectid import ObjectId
+from core.Models.Element import Element
+from core.Components.mongo import MongoCalendar
+from core.Components.FileStorage import FileStorage
+
+
+class Defect(Element):
+    &#34;&#34;&#34;
+    Represents a Defect object that defines a security defect. A security defect is a note added by a pentester on a port or ip which describes a security defect.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;defects&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched defect is optimal.
+                        possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+                        ip(&#34;&#34;), port(&#34;&#34;), proto(&#34;&#34;), title(&#34;&#34;), ease(&#34;&#34;), impact(&#34;&#34;), risk(&#34;&#34;),
+                        redactor(&#34;N/A&#34;), type([]), notes(&#34;&#34;), proofs([]), index(None)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        self.proofs = []
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;ip&#34;, &#34;&#34;), valuesFromDb.get(&#34;port&#34;, &#34;&#34;),
+                        valuesFromDb.get(
+                            &#34;proto&#34;, &#34;&#34;), valuesFromDb.get(&#34;title&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;ease&#34;, &#34;&#34;), valuesFromDb.get(
+                            &#34;impact&#34;, &#34;&#34;),
+                        valuesFromDb.get(
+                            &#34;risk&#34;, &#34;&#34;), valuesFromDb.get(&#34;redactor&#34;, &#34;N/A&#34;), list(valuesFromDb.get(&#34;type&#34;, [])),
+                        valuesFromDb.get(&#34;notes&#34;, &#34;&#34;), valuesFromDb.get(&#34;proofs&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}),
+                        valuesFromDb.get(&#34;index&#34;, None))
+
+    def initialize(self, ip, port, proto, title=&#34;&#34;, ease=&#34;&#34;, impact=&#34;&#34;, risk=&#34;&#34;, redactor=&#34;N/A&#34;, mtype=None, notes=&#34;&#34;, proofs=None, infos=None, index=None):
+        &#34;&#34;&#34;Set values of defect
+        Args:
+            ip: defect will be assigned to this IP, can be empty
+            port: defect will be assigned to this port, can be empty but requires an IP.
+            proto: protocol of the assigned port. tcp or udp.
+            title: a title for this defect describing what it is
+            ease: ease of exploitation for this defect described as a string 
+            impact: impact the defect has on system. Described as a string 
+            risk: the combination of impact/ease gives a resulting risk value. Described as a string
+            redactor: A pentester that waill be the redactor for this defect.
+            mtype: types of this security defects (Application, data, etc...). Default is None
+            notes: notes took by pentesters
+            proofs: a list of proof files, default to None.
+            infos: a dictionnary with key values as additional information. Default to None
+            index: the index of this defect in global defect table (only for unassigned defect)
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.title = title
+        self.ease = ease
+        self.impact = impact
+        self.risk = risk
+        self.redactor = redactor
+        self.mtype = mtype if mtype is not None else []
+        self.notes = notes
+        self.ip = ip
+        self.port = port
+        self.proto = proto
+        self.infos = infos if infos is not None else {}
+        self.proofs = proofs if proofs is not None else []
+        self.index = index
+        return self
+
+    @classmethod
+    def getRisk(cls, ease, impact):
+        &#34;&#34;&#34;Dict to find a risk level given an ease and an impact.
+        Args:
+            ease: ease of exploitation of this defect as as tring
+            impact: the defect impact on system security
+        Returns:
+            A dictionnary of dictionnary. First dict keys are eases of exploitation. Second key are impact strings.
+        &#34;&#34;&#34;
+        risk_from_ease = {&#34;Facile&#34;: {&#34;Mineur&#34;: &#34;Majeur&#34;, &#34;Important&#34;: &#34;Majeur&#34;, &#34;Majeur&#34;: &#34;Critique&#34;, &#34;Critique&#34;: &#34;Critique&#34;},
+                          &#34;Modérée&#34;: {&#34;Mineur&#34;: &#34;Important&#34;, &#34;Important&#34;: &#34;Important&#34;, &#34;Majeur&#34;: &#34;Majeur&#34;, &#34;Critique&#34;: &#34;Critique&#34;},
+                          &#34;Difficile&#34;: {&#34;Mineur&#34;: &#34;Mineur&#34;, &#34;Important&#34;: &#34;Important&#34;, &#34;Majeur&#34;: &#34;Majeur&#34;, &#34;Critique&#34;: &#34;Majeur&#34;},
+                          &#34;Très difficile&#34;: {&#34;Mineur&#34;: &#34;Mineur&#34;, &#34;Important&#34;: &#34;Mineur&#34;, &#34;Majeur&#34;: &#34;Important&#34;, &#34;Critique&#34;: &#34;Important&#34;}}
+        return risk_from_ease.get(ease, {}).get(impact, &#34;N/A&#34;)
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Delete the defect represented by this model in database.
+        &#34;&#34;&#34;
+        ret = self._id
+        self.rmProofs()
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.delete(&#34;defects&#34;, {&#34;_id&#34;: ret})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this defect to pollenisator database.
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        base = self.getDbKey()
+        # add to base parameters defined or not depending on the lvl.
+        # Checking unicity
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;defects&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+
+        # Those are added to base after tool&#39;s unicity verification
+        parent = self.getParent()
+
+        base[&#34;parent&#34;] = parent
+        base[&#34;notes&#34;] = self.notes
+        base[&#34;ease&#34;] = self.ease
+        base[&#34;impact&#34;] = self.impact
+        base[&#34;risk&#34;] = self.risk
+        base[&#34;redactor&#34;] = self.redactor
+        base[&#34;type&#34;] = list(self.mtype)
+        base[&#34;proofs&#34;] = self.proofs
+        if self.index is not None:
+            base[&#34;index&#34;] = self.index
+        # Get parent for notifications
+        res = mongoInstance.insert(&#34;defects&#34;, base, parent)
+        self._id = res.inserted_id
+        if self.isAssigned():
+            # Set global defect
+            base[&#34;ip&#34;] = &#34;&#34;
+            base[&#34;port&#34;] = &#34;&#34;
+            base[&#34;proto&#34;] = &#34;&#34;
+            base[&#34;parent&#34;] = &#34;&#34;
+            base[&#34;notes&#34;] = &#34;&#34;
+            glob_defect = Defect(base)
+            glob_defect.addInDb()
+        return True, res.inserted_id
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;defects&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;ip&#34;: self.ip, &#34;title&#34;: self.title, &#34;port&#34;: self.port,
+                         &#34;proto&#34;: self.proto, &#34;notes&#34;: self.notes, &#34;ease&#34;: self.ease, &#34;impact&#34;: self.impact,
+                         &#34;risk&#34;: self.risk, &#34;redactor&#34;: self.redactor, &#34;type&#34;: list(self.mtype), &#34;proofs&#34;: self.proofs, &#34;infos&#34;: self.infos, &#34;index&#34;:self.index}})
+        else:
+            mongoInstance.update(&#34;defects&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: pipeline_set})
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object. For a Defect it is either an ip or a port depending on the Defect&#39;s level.
+
+        Returns:
+            Returns the parent&#39;s ObjectId _id&#34;.
+        &#34;&#34;&#34;
+        try:
+            port = self.port
+        except AttributeError:
+            port = None
+        mongoInstance = MongoCalendar.getInstance()
+        if port is None:
+            port = &#34;&#34;
+        if port == &#34;&#34;:
+            obj = mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;: self.ip}, False)
+        else:
+            obj = mongoInstance.find(
+                &#34;ports&#34;, {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}, False)
+        return obj[&#34;_id&#34;]
+
+    def calcDirPath(self):
+        &#34;&#34;&#34;Returns a directory path constructed for this defect.
+        Returns:
+            path as string
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        path_calc = str(mongoInstance.calendarName)+&#34;/&#34;+str(self.ip)
+        try:
+            port = self.port
+        except AttributeError:
+            port = None
+        if port is not None:
+            path_calc += &#34;/&#34;+str(self.port)+&#34;_&#34;+str(self.proto)
+        path_calc += &#34;/&#34;+str(self._id)
+        return path_calc
+
+    def uploadProof(self, proof_local_path):
+        &#34;&#34;&#34;Upload the given proof file to the server
+        Args:
+            proof_local_path: a path to a local proof file
+        Returns:
+            the basename of the file 
+        &#34;&#34;&#34;
+        fs = FileStorage()
+        fs.open()
+        remote_dirpath = self.calcDirPath()
+        fs.putProof(proof_local_path, remote_dirpath)
+        fs.close()
+        return os.path.basename(proof_local_path)
+
+    def getProof(self, index):
+        &#34;&#34;&#34;Download the proof file at given proof index
+        Args:
+            index: an integer refering to self.proofs list. The proof to be downloaded.
+        Returns:
+            A string giving the local path of the downloaded proof
+        &#34;&#34;&#34;
+        ret = None
+        fs = FileStorage()
+        fs.open()
+        remote_dirpath = self.calcDirPath()
+        ret = fs.getProof(remote_dirpath+&#34;/&#34;+self.proofs[index])
+        fs.close()
+        return ret
+
+    def removeProof(self, index):
+        &#34;&#34;&#34;Removes the proof file at given proof index
+        Args:
+            index: an integer refering to self.proofs list. The proof to be removed.
+        &#34;&#34;&#34;
+        fs = FileStorage()
+        fs.open()
+        remote_dirpath = self.calcDirPath()
+        fs.rmProof(remote_dirpath+&#34;/&#34;+self.proofs[index])
+        fs.close()
+        self.proofs.remove(self.proofs[index])
+        self.update()
+
+    def rmProofs(self):
+        &#34;&#34;&#34;Removes all the proof file in this defect
+        &#34;&#34;&#34;
+        proofs = self.proofs
+        fs = FileStorage()
+        fs.open()
+        remote_dirpath = self.calcDirPath()
+        fs.rmProofs(remote_dirpath)
+        fs.close()
+        del proofs
+        self.proofs = []
+        self.update()
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a defect.
+
+        Returns:
+            Returns the defect +title.
+        &#34;&#34;&#34;
+        return self.title
+
+    def getDetailedString(self):
+        &#34;&#34;&#34;Returns a detailed string describing for this defect.
+        Returns:
+            the defect title. If assigned, it will be prepended with ip and (udp/)port
+        &#34;&#34;&#34;
+        ret = &#34;&#34;
+        if self.ip is not None:
+            ret += str(self.ip)
+        if self.proto is not None and self.port is not None:
+            if self.proto != &#34;tcp&#34;:
+                ret += &#34;:&#34;+self.proto+&#34;/&#34;+self.port
+            else:
+                ret += &#34;:&#34;+self.port
+        ret += &#34; &#34;+self.__str__()
+        return ret
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (4 keys :&#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;title&#34;)
+        &#34;&#34;&#34;
+        return {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto, &#34;title&#34;: self.title}
+
+    def isAssigned(self):
+        &#34;&#34;&#34;Returns a boolean indicating if this defect is assigned to an ip or is global.
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        return self.ip != &#34;&#34;</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Models.Defect.Defect"><code class="flex name class">
+<span>class <span class="ident">Defect</span></span>
+<span>(</span><span>valuesFromDb=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents a Defect object that defines a security defect. A security defect is a note added by a pentester on a port or ip which describes a security defect.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>coll_name</code></strong></dt>
+<dd>collection name in pollenisator database</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>valueFromDb</code></strong></dt>
+<dd>a dict holding values to load into the object. A mongo fetched defect is optimal.
+possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+ip(""), port(""), proto(""), title(""), ease(""), impact(""), risk(""),
+redactor("N/A"), type([]), notes(""), proofs([]), index(None)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Defect(Element):
+    &#34;&#34;&#34;
+    Represents a Defect object that defines a security defect. A security defect is a note added by a pentester on a port or ip which describes a security defect.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;defects&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched defect is optimal.
+                        possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+                        ip(&#34;&#34;), port(&#34;&#34;), proto(&#34;&#34;), title(&#34;&#34;), ease(&#34;&#34;), impact(&#34;&#34;), risk(&#34;&#34;),
+                        redactor(&#34;N/A&#34;), type([]), notes(&#34;&#34;), proofs([]), index(None)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        self.proofs = []
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;ip&#34;, &#34;&#34;), valuesFromDb.get(&#34;port&#34;, &#34;&#34;),
+                        valuesFromDb.get(
+                            &#34;proto&#34;, &#34;&#34;), valuesFromDb.get(&#34;title&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;ease&#34;, &#34;&#34;), valuesFromDb.get(
+                            &#34;impact&#34;, &#34;&#34;),
+                        valuesFromDb.get(
+                            &#34;risk&#34;, &#34;&#34;), valuesFromDb.get(&#34;redactor&#34;, &#34;N/A&#34;), list(valuesFromDb.get(&#34;type&#34;, [])),
+                        valuesFromDb.get(&#34;notes&#34;, &#34;&#34;), valuesFromDb.get(&#34;proofs&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}),
+                        valuesFromDb.get(&#34;index&#34;, None))
+
+    def initialize(self, ip, port, proto, title=&#34;&#34;, ease=&#34;&#34;, impact=&#34;&#34;, risk=&#34;&#34;, redactor=&#34;N/A&#34;, mtype=None, notes=&#34;&#34;, proofs=None, infos=None, index=None):
+        &#34;&#34;&#34;Set values of defect
+        Args:
+            ip: defect will be assigned to this IP, can be empty
+            port: defect will be assigned to this port, can be empty but requires an IP.
+            proto: protocol of the assigned port. tcp or udp.
+            title: a title for this defect describing what it is
+            ease: ease of exploitation for this defect described as a string 
+            impact: impact the defect has on system. Described as a string 
+            risk: the combination of impact/ease gives a resulting risk value. Described as a string
+            redactor: A pentester that waill be the redactor for this defect.
+            mtype: types of this security defects (Application, data, etc...). Default is None
+            notes: notes took by pentesters
+            proofs: a list of proof files, default to None.
+            infos: a dictionnary with key values as additional information. Default to None
+            index: the index of this defect in global defect table (only for unassigned defect)
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.title = title
+        self.ease = ease
+        self.impact = impact
+        self.risk = risk
+        self.redactor = redactor
+        self.mtype = mtype if mtype is not None else []
+        self.notes = notes
+        self.ip = ip
+        self.port = port
+        self.proto = proto
+        self.infos = infos if infos is not None else {}
+        self.proofs = proofs if proofs is not None else []
+        self.index = index
+        return self
+
+    @classmethod
+    def getRisk(cls, ease, impact):
+        &#34;&#34;&#34;Dict to find a risk level given an ease and an impact.
+        Args:
+            ease: ease of exploitation of this defect as as tring
+            impact: the defect impact on system security
+        Returns:
+            A dictionnary of dictionnary. First dict keys are eases of exploitation. Second key are impact strings.
+        &#34;&#34;&#34;
+        risk_from_ease = {&#34;Facile&#34;: {&#34;Mineur&#34;: &#34;Majeur&#34;, &#34;Important&#34;: &#34;Majeur&#34;, &#34;Majeur&#34;: &#34;Critique&#34;, &#34;Critique&#34;: &#34;Critique&#34;},
+                          &#34;Modérée&#34;: {&#34;Mineur&#34;: &#34;Important&#34;, &#34;Important&#34;: &#34;Important&#34;, &#34;Majeur&#34;: &#34;Majeur&#34;, &#34;Critique&#34;: &#34;Critique&#34;},
+                          &#34;Difficile&#34;: {&#34;Mineur&#34;: &#34;Mineur&#34;, &#34;Important&#34;: &#34;Important&#34;, &#34;Majeur&#34;: &#34;Majeur&#34;, &#34;Critique&#34;: &#34;Majeur&#34;},
+                          &#34;Très difficile&#34;: {&#34;Mineur&#34;: &#34;Mineur&#34;, &#34;Important&#34;: &#34;Mineur&#34;, &#34;Majeur&#34;: &#34;Important&#34;, &#34;Critique&#34;: &#34;Important&#34;}}
+        return risk_from_ease.get(ease, {}).get(impact, &#34;N/A&#34;)
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Delete the defect represented by this model in database.
+        &#34;&#34;&#34;
+        ret = self._id
+        self.rmProofs()
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.delete(&#34;defects&#34;, {&#34;_id&#34;: ret})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this defect to pollenisator database.
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        base = self.getDbKey()
+        # add to base parameters defined or not depending on the lvl.
+        # Checking unicity
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;defects&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+
+        # Those are added to base after tool&#39;s unicity verification
+        parent = self.getParent()
+
+        base[&#34;parent&#34;] = parent
+        base[&#34;notes&#34;] = self.notes
+        base[&#34;ease&#34;] = self.ease
+        base[&#34;impact&#34;] = self.impact
+        base[&#34;risk&#34;] = self.risk
+        base[&#34;redactor&#34;] = self.redactor
+        base[&#34;type&#34;] = list(self.mtype)
+        base[&#34;proofs&#34;] = self.proofs
+        if self.index is not None:
+            base[&#34;index&#34;] = self.index
+        # Get parent for notifications
+        res = mongoInstance.insert(&#34;defects&#34;, base, parent)
+        self._id = res.inserted_id
+        if self.isAssigned():
+            # Set global defect
+            base[&#34;ip&#34;] = &#34;&#34;
+            base[&#34;port&#34;] = &#34;&#34;
+            base[&#34;proto&#34;] = &#34;&#34;
+            base[&#34;parent&#34;] = &#34;&#34;
+            base[&#34;notes&#34;] = &#34;&#34;
+            glob_defect = Defect(base)
+            glob_defect.addInDb()
+        return True, res.inserted_id
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;defects&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;ip&#34;: self.ip, &#34;title&#34;: self.title, &#34;port&#34;: self.port,
+                         &#34;proto&#34;: self.proto, &#34;notes&#34;: self.notes, &#34;ease&#34;: self.ease, &#34;impact&#34;: self.impact,
+                         &#34;risk&#34;: self.risk, &#34;redactor&#34;: self.redactor, &#34;type&#34;: list(self.mtype), &#34;proofs&#34;: self.proofs, &#34;infos&#34;: self.infos, &#34;index&#34;:self.index}})
+        else:
+            mongoInstance.update(&#34;defects&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: pipeline_set})
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object. For a Defect it is either an ip or a port depending on the Defect&#39;s level.
+
+        Returns:
+            Returns the parent&#39;s ObjectId _id&#34;.
+        &#34;&#34;&#34;
+        try:
+            port = self.port
+        except AttributeError:
+            port = None
+        mongoInstance = MongoCalendar.getInstance()
+        if port is None:
+            port = &#34;&#34;
+        if port == &#34;&#34;:
+            obj = mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;: self.ip}, False)
+        else:
+            obj = mongoInstance.find(
+                &#34;ports&#34;, {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}, False)
+        return obj[&#34;_id&#34;]
+
+    def calcDirPath(self):
+        &#34;&#34;&#34;Returns a directory path constructed for this defect.
+        Returns:
+            path as string
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        path_calc = str(mongoInstance.calendarName)+&#34;/&#34;+str(self.ip)
+        try:
+            port = self.port
+        except AttributeError:
+            port = None
+        if port is not None:
+            path_calc += &#34;/&#34;+str(self.port)+&#34;_&#34;+str(self.proto)
+        path_calc += &#34;/&#34;+str(self._id)
+        return path_calc
+
+    def uploadProof(self, proof_local_path):
+        &#34;&#34;&#34;Upload the given proof file to the server
+        Args:
+            proof_local_path: a path to a local proof file
+        Returns:
+            the basename of the file 
+        &#34;&#34;&#34;
+        fs = FileStorage()
+        fs.open()
+        remote_dirpath = self.calcDirPath()
+        fs.putProof(proof_local_path, remote_dirpath)
+        fs.close()
+        return os.path.basename(proof_local_path)
+
+    def getProof(self, index):
+        &#34;&#34;&#34;Download the proof file at given proof index
+        Args:
+            index: an integer refering to self.proofs list. The proof to be downloaded.
+        Returns:
+            A string giving the local path of the downloaded proof
+        &#34;&#34;&#34;
+        ret = None
+        fs = FileStorage()
+        fs.open()
+        remote_dirpath = self.calcDirPath()
+        ret = fs.getProof(remote_dirpath+&#34;/&#34;+self.proofs[index])
+        fs.close()
+        return ret
+
+    def removeProof(self, index):
+        &#34;&#34;&#34;Removes the proof file at given proof index
+        Args:
+            index: an integer refering to self.proofs list. The proof to be removed.
+        &#34;&#34;&#34;
+        fs = FileStorage()
+        fs.open()
+        remote_dirpath = self.calcDirPath()
+        fs.rmProof(remote_dirpath+&#34;/&#34;+self.proofs[index])
+        fs.close()
+        self.proofs.remove(self.proofs[index])
+        self.update()
+
+    def rmProofs(self):
+        &#34;&#34;&#34;Removes all the proof file in this defect
+        &#34;&#34;&#34;
+        proofs = self.proofs
+        fs = FileStorage()
+        fs.open()
+        remote_dirpath = self.calcDirPath()
+        fs.rmProofs(remote_dirpath)
+        fs.close()
+        del proofs
+        self.proofs = []
+        self.update()
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a defect.
+
+        Returns:
+            Returns the defect +title.
+        &#34;&#34;&#34;
+        return self.title
+
+    def getDetailedString(self):
+        &#34;&#34;&#34;Returns a detailed string describing for this defect.
+        Returns:
+            the defect title. If assigned, it will be prepended with ip and (udp/)port
+        &#34;&#34;&#34;
+        ret = &#34;&#34;
+        if self.ip is not None:
+            ret += str(self.ip)
+        if self.proto is not None and self.port is not None:
+            if self.proto != &#34;tcp&#34;:
+                ret += &#34;:&#34;+self.proto+&#34;/&#34;+self.port
+            else:
+                ret += &#34;:&#34;+self.port
+        ret += &#34; &#34;+self.__str__()
+        return ret
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (4 keys :&#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;title&#34;)
+        &#34;&#34;&#34;
+        return {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto, &#34;title&#34;: self.title}
+
+    def isAssigned(self):
+        &#34;&#34;&#34;Returns a boolean indicating if this defect is assigned to an ip or is global.
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        return self.ip != &#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Models.Element.Element</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Defect.Defect.coll_name"><code class="name">var <span class="ident">coll_name</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Defect.Defect.getRisk"><code class="name flex">
+<span>def <span class="ident">getRisk</span></span>(<span>ease, impact)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dict to find a risk level given an ease and an impact.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ease</code></strong></dt>
+<dd>ease of exploitation of this defect as as tring</dd>
+<dt><strong><code>impact</code></strong></dt>
+<dd>the defect impact on system security</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dictionnary of dictionnary. First dict keys are eases of exploitation. Second key are impact strings.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def getRisk(cls, ease, impact):
+    &#34;&#34;&#34;Dict to find a risk level given an ease and an impact.
+    Args:
+        ease: ease of exploitation of this defect as as tring
+        impact: the defect impact on system security
+    Returns:
+        A dictionnary of dictionnary. First dict keys are eases of exploitation. Second key are impact strings.
+    &#34;&#34;&#34;
+    risk_from_ease = {&#34;Facile&#34;: {&#34;Mineur&#34;: &#34;Majeur&#34;, &#34;Important&#34;: &#34;Majeur&#34;, &#34;Majeur&#34;: &#34;Critique&#34;, &#34;Critique&#34;: &#34;Critique&#34;},
+                      &#34;Modérée&#34;: {&#34;Mineur&#34;: &#34;Important&#34;, &#34;Important&#34;: &#34;Important&#34;, &#34;Majeur&#34;: &#34;Majeur&#34;, &#34;Critique&#34;: &#34;Critique&#34;},
+                      &#34;Difficile&#34;: {&#34;Mineur&#34;: &#34;Mineur&#34;, &#34;Important&#34;: &#34;Important&#34;, &#34;Majeur&#34;: &#34;Majeur&#34;, &#34;Critique&#34;: &#34;Majeur&#34;},
+                      &#34;Très difficile&#34;: {&#34;Mineur&#34;: &#34;Mineur&#34;, &#34;Important&#34;: &#34;Mineur&#34;, &#34;Majeur&#34;: &#34;Important&#34;, &#34;Critique&#34;: &#34;Important&#34;}}
+    return risk_from_ease.get(ease, {}).get(impact, &#34;N/A&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Defect.Defect.addInDb"><code class="name flex">
+<span>def <span class="ident">addInDb</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this defect to pollenisator database.
+Returns: a tuple with :
+* bool for success
+* mongo ObjectId : already existing object if duplicate, create object id otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInDb(self):
+    &#34;&#34;&#34;
+    Add this defect to pollenisator database.
+    Returns: a tuple with :
+            * bool for success
+            * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+    &#34;&#34;&#34;
+    base = self.getDbKey()
+    # add to base parameters defined or not depending on the lvl.
+    # Checking unicity
+    mongoInstance = MongoCalendar.getInstance()
+    existing = mongoInstance.find(&#34;defects&#34;, base, False)
+    if existing is not None:
+        return False, existing[&#34;_id&#34;]
+
+    # Those are added to base after tool&#39;s unicity verification
+    parent = self.getParent()
+
+    base[&#34;parent&#34;] = parent
+    base[&#34;notes&#34;] = self.notes
+    base[&#34;ease&#34;] = self.ease
+    base[&#34;impact&#34;] = self.impact
+    base[&#34;risk&#34;] = self.risk
+    base[&#34;redactor&#34;] = self.redactor
+    base[&#34;type&#34;] = list(self.mtype)
+    base[&#34;proofs&#34;] = self.proofs
+    if self.index is not None:
+        base[&#34;index&#34;] = self.index
+    # Get parent for notifications
+    res = mongoInstance.insert(&#34;defects&#34;, base, parent)
+    self._id = res.inserted_id
+    if self.isAssigned():
+        # Set global defect
+        base[&#34;ip&#34;] = &#34;&#34;
+        base[&#34;port&#34;] = &#34;&#34;
+        base[&#34;proto&#34;] = &#34;&#34;
+        base[&#34;parent&#34;] = &#34;&#34;
+        base[&#34;notes&#34;] = &#34;&#34;
+        glob_defect = Defect(base)
+        glob_defect.addInDb()
+    return True, res.inserted_id</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.calcDirPath"><code class="name flex">
+<span>def <span class="ident">calcDirPath</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a directory path constructed for this defect.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>path as string</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calcDirPath(self):
+    &#34;&#34;&#34;Returns a directory path constructed for this defect.
+    Returns:
+        path as string
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    path_calc = str(mongoInstance.calendarName)+&#34;/&#34;+str(self.ip)
+    try:
+        port = self.port
+    except AttributeError:
+        port = None
+    if port is not None:
+        path_calc += &#34;/&#34;+str(self.port)+&#34;_&#34;+str(self.proto)
+    path_calc += &#34;/&#34;+str(self._id)
+    return path_calc</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete the defect represented by this model in database.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self):
+    &#34;&#34;&#34;
+    Delete the defect represented by this model in database.
+    &#34;&#34;&#34;
+    ret = self._id
+    self.rmProofs()
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.delete(&#34;defects&#34;, {&#34;_id&#34;: ret})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.getDbKey"><code class="name flex">
+<span>def <span class="ident">getDbKey</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a dict from model to use as unique composed key.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A dict (4 keys :"ip", "port", "proto", "title")</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDbKey(self):
+    &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+    Returns:
+        A dict (4 keys :&#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;title&#34;)
+    &#34;&#34;&#34;
+    return {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto, &#34;title&#34;: self.title}</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.getDetailedString"><code class="name flex">
+<span>def <span class="ident">getDetailedString</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a detailed string describing for this defect.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the defect title. If assigned, it will be prepended with ip and (udp/)port</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDetailedString(self):
+    &#34;&#34;&#34;Returns a detailed string describing for this defect.
+    Returns:
+        the defect title. If assigned, it will be prepended with ip and (udp/)port
+    &#34;&#34;&#34;
+    ret = &#34;&#34;
+    if self.ip is not None:
+        ret += str(self.ip)
+    if self.proto is not None and self.port is not None:
+        if self.proto != &#34;tcp&#34;:
+            ret += &#34;:&#34;+self.proto+&#34;/&#34;+self.port
+        else:
+            ret += &#34;:&#34;+self.port
+    ret += &#34; &#34;+self.__str__()
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.getProof"><code class="name flex">
+<span>def <span class="ident">getProof</span></span>(<span>self, index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Download the proof file at given proof index</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>index</code></strong></dt>
+<dd>an integer refering to self.proofs list. The proof to be downloaded.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A string giving the local path</code> of <code>the downloaded proof</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getProof(self, index):
+    &#34;&#34;&#34;Download the proof file at given proof index
+    Args:
+        index: an integer refering to self.proofs list. The proof to be downloaded.
+    Returns:
+        A string giving the local path of the downloaded proof
+    &#34;&#34;&#34;
+    ret = None
+    fs = FileStorage()
+    fs.open()
+    remote_dirpath = self.calcDirPath()
+    ret = fs.getProof(remote_dirpath+&#34;/&#34;+self.proofs[index])
+    fs.close()
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.initialize"><code class="name flex">
+<span>def <span class="ident">initialize</span></span>(<span>self, ip, port, proto, title='', ease='', impact='', risk='', redactor='N/A', mtype=None, notes='', proofs=None, infos=None, index=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set values of defect</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ip</code></strong></dt>
+<dd>defect will be assigned to this IP, can be empty</dd>
+<dt><strong><code>port</code></strong></dt>
+<dd>defect will be assigned to this port, can be empty but requires an IP.</dd>
+<dt><strong><code>proto</code></strong></dt>
+<dd>protocol of the assigned port. tcp or udp.</dd>
+<dt><strong><code>title</code></strong></dt>
+<dd>a title for this defect describing what it is</dd>
+<dt><strong><code>ease</code></strong></dt>
+<dd>ease of exploitation for this defect described as a string </dd>
+<dt><strong><code>impact</code></strong></dt>
+<dd>impact the defect has on system. Described as a string </dd>
+<dt><strong><code>risk</code></strong></dt>
+<dd>the combination of impact/ease gives a resulting risk value. Described as a string</dd>
+<dt><strong><code>redactor</code></strong></dt>
+<dd>A pentester that waill be the redactor for this defect.</dd>
+<dt><strong><code>mtype</code></strong></dt>
+<dd>types of this security defects (Application, data, etc&hellip;). Default is None</dd>
+<dt><strong><code>notes</code></strong></dt>
+<dd>notes took by pentesters</dd>
+<dt><strong><code>proofs</code></strong></dt>
+<dd>a list of proof files, default to None.</dd>
+<dt><strong><code>infos</code></strong></dt>
+<dd>a dictionnary with key values as additional information. Default to None</dd>
+<dt><strong><code>index</code></strong></dt>
+<dd>the index of this defect in global defect table (only for unassigned defect)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>this object</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initialize(self, ip, port, proto, title=&#34;&#34;, ease=&#34;&#34;, impact=&#34;&#34;, risk=&#34;&#34;, redactor=&#34;N/A&#34;, mtype=None, notes=&#34;&#34;, proofs=None, infos=None, index=None):
+    &#34;&#34;&#34;Set values of defect
+    Args:
+        ip: defect will be assigned to this IP, can be empty
+        port: defect will be assigned to this port, can be empty but requires an IP.
+        proto: protocol of the assigned port. tcp or udp.
+        title: a title for this defect describing what it is
+        ease: ease of exploitation for this defect described as a string 
+        impact: impact the defect has on system. Described as a string 
+        risk: the combination of impact/ease gives a resulting risk value. Described as a string
+        redactor: A pentester that waill be the redactor for this defect.
+        mtype: types of this security defects (Application, data, etc...). Default is None
+        notes: notes took by pentesters
+        proofs: a list of proof files, default to None.
+        infos: a dictionnary with key values as additional information. Default to None
+        index: the index of this defect in global defect table (only for unassigned defect)
+    Returns:
+        this object
+    &#34;&#34;&#34;
+    self.title = title
+    self.ease = ease
+    self.impact = impact
+    self.risk = risk
+    self.redactor = redactor
+    self.mtype = mtype if mtype is not None else []
+    self.notes = notes
+    self.ip = ip
+    self.port = port
+    self.proto = proto
+    self.infos = infos if infos is not None else {}
+    self.proofs = proofs if proofs is not None else []
+    self.index = index
+    return self</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.isAssigned"><code class="name flex">
+<span>def <span class="ident">isAssigned</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a boolean indicating if this defect is assigned to an ip or is global.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isAssigned(self):
+    &#34;&#34;&#34;Returns a boolean indicating if this defect is assigned to an ip or is global.
+    Returns:
+        bool
+    &#34;&#34;&#34;
+    return self.ip != &#34;&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.removeProof"><code class="name flex">
+<span>def <span class="ident">removeProof</span></span>(<span>self, index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Removes the proof file at given proof index</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>index</code></strong></dt>
+<dd>an integer refering to self.proofs list. The proof to be removed.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def removeProof(self, index):
+    &#34;&#34;&#34;Removes the proof file at given proof index
+    Args:
+        index: an integer refering to self.proofs list. The proof to be removed.
+    &#34;&#34;&#34;
+    fs = FileStorage()
+    fs.open()
+    remote_dirpath = self.calcDirPath()
+    fs.rmProof(remote_dirpath+&#34;/&#34;+self.proofs[index])
+    fs.close()
+    self.proofs.remove(self.proofs[index])
+    self.update()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.rmProofs"><code class="name flex">
+<span>def <span class="ident">rmProofs</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Removes all the proof file in this defect</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rmProofs(self):
+    &#34;&#34;&#34;Removes all the proof file in this defect
+    &#34;&#34;&#34;
+    proofs = self.proofs
+    fs = FileStorage()
+    fs.open()
+    remote_dirpath = self.calcDirPath()
+    fs.rmProofs(remote_dirpath)
+    fs.close()
+    del proofs
+    self.proofs = []
+    self.update()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, pipeline_set=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update this object in database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pipeline_set</code></strong></dt>
+<dd>(Opt.) A dictionnary with custom values. If None (default) use model attributes.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, pipeline_set=None):
+    &#34;&#34;&#34;Update this object in database.
+    Args:
+        pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    if pipeline_set is None:
+        mongoInstance.update(&#34;defects&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: {&#34;ip&#34;: self.ip, &#34;title&#34;: self.title, &#34;port&#34;: self.port,
+                     &#34;proto&#34;: self.proto, &#34;notes&#34;: self.notes, &#34;ease&#34;: self.ease, &#34;impact&#34;: self.impact,
+                     &#34;risk&#34;: self.risk, &#34;redactor&#34;: self.redactor, &#34;type&#34;: list(self.mtype), &#34;proofs&#34;: self.proofs, &#34;infos&#34;: self.infos, &#34;index&#34;:self.index}})
+    else:
+        mongoInstance.update(&#34;defects&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: pipeline_set})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Defect.Defect.uploadProof"><code class="name flex">
+<span>def <span class="ident">uploadProof</span></span>(<span>self, proof_local_path)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Upload the given proof file to the server</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>proof_local_path</code></strong></dt>
+<dd>a path to a local proof file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the basename</code> of <code>the file</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def uploadProof(self, proof_local_path):
+    &#34;&#34;&#34;Upload the given proof file to the server
+    Args:
+        proof_local_path: a path to a local proof file
+    Returns:
+        the basename of the file 
+    &#34;&#34;&#34;
+    fs = FileStorage()
+    fs.open()
+    remote_dirpath = self.calcDirPath()
+    fs.putProof(proof_local_path, remote_dirpath)
+    fs.close()
+    return os.path.basename(proof_local_path)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Models" href="index.html">Pollenisator.core.Models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Models.Defect.Defect" href="#Pollenisator.core.Models.Defect.Defect">Defect</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.addInDb" href="#Pollenisator.core.Models.Defect.Defect.addInDb">addInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.calcDirPath" href="#Pollenisator.core.Models.Defect.Defect.calcDirPath">calcDirPath</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.coll_name" href="#Pollenisator.core.Models.Defect.Defect.coll_name">coll_name</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.delete" href="#Pollenisator.core.Models.Defect.Defect.delete">delete</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.getDbKey" href="#Pollenisator.core.Models.Defect.Defect.getDbKey">getDbKey</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.getDetailedString" href="#Pollenisator.core.Models.Defect.Defect.getDetailedString">getDetailedString</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.getProof" href="#Pollenisator.core.Models.Defect.Defect.getProof">getProof</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.getRisk" href="#Pollenisator.core.Models.Defect.Defect.getRisk">getRisk</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.initialize" href="#Pollenisator.core.Models.Defect.Defect.initialize">initialize</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.isAssigned" href="#Pollenisator.core.Models.Defect.Defect.isAssigned">isAssigned</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.removeProof" href="#Pollenisator.core.Models.Defect.Defect.removeProof">removeProof</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.rmProofs" href="#Pollenisator.core.Models.Defect.Defect.rmProofs">rmProofs</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.update" href="#Pollenisator.core.Models.Defect.Defect.update">update</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Defect.Defect.uploadProof" href="#Pollenisator.core.Models.Defect.Defect.uploadProof">uploadProof</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

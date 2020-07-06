@@ -1,0 +1,1563 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Models.Tool API documentation</title>
+<meta name="description" content="Tool Model. A tool is an instanciation of a command against a target" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Models.Tool</code></h1>
+</header>
+<section id="section-intro">
+<p>Tool Model. A tool is an instanciation of a command against a target</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Tool Model. A tool is an instanciation of a command against a target&#34;&#34;&#34;
+
+from core.Models.Element import Element
+from core.Components.mongo import MongoCalendar
+from bson.objectid import ObjectId
+from datetime import datetime
+import core.Components.Utils as Utils
+import re
+
+class Tool(Element):
+    &#34;&#34;&#34;
+    Represents a Tool object that defines a tool. A tool is a command run materialized on a runnable object (wave, scope, ip, or port)
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;tools&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id(None), parent(None), tags([]), infos({}),
+                        name(&#34;&#34;), wave(&#34;&#34;), scope(&#34;&#34;), ip(&#34;&#34;), port(&#34;&#34;), proto(&#34;tcp&#34;), lvl(&#34;&#34;), text(&#34;&#34;), dated(&#34;None&#34;),
+                        datef(&#34;None&#34;), scanner_ip(&#34;None&#34;), status([]), notes(&#34;&#34;), resultfile(&#34;&#34;)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.datef = &#34;None&#34;
+        self.dated = &#34;None&#34;
+        self.scanner_ip = &#34;None&#34;
+        self.resultfile = &#34;&#34;
+        self.status = []
+        self.initialize(valuesFromDb.get(&#34;name&#34;, &#34;&#34;), valuesFromDb.get(&#34;wave&#34;, &#34;&#34;),
+                        valuesFromDb.get(
+                            &#34;scope&#34;, &#34;&#34;), valuesFromDb.get(&#34;ip&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;port&#34;, &#34;&#34;), valuesFromDb.get(
+                            &#34;proto&#34;, &#34;tcp&#34;),
+                        valuesFromDb.get(
+                            &#34;lvl&#34;, &#34;&#34;), valuesFromDb.get(&#34;text&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;dated&#34;, &#34;None&#34;), valuesFromDb.get(
+                            &#34;datef&#34;, &#34;None&#34;),
+                        valuesFromDb.get(
+                            &#34;scanner_ip&#34;, &#34;None&#34;), valuesFromDb.get(&#34;status&#34;, []), valuesFromDb.get(&#34;notes&#34;, &#34;&#34;), valuesFromDb.get(&#34;resultfile&#34;, &#34;&#34;), valuesFromDb.get(&#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, name, wave=&#34;&#34;, scope=&#34;&#34;, ip=&#34;&#34;, port=&#34;&#34;, proto=&#34;tcp&#34;, lvl=&#34;&#34;, text=&#34;&#34;,
+                   dated=&#34;None&#34;, datef=&#34;None&#34;, scanner_ip=&#34;None&#34;, status=None, notes=&#34;&#34;, resultfile=&#34;&#34;, tags=None, infos=None):
+        
+        &#34;&#34;&#34;Set values of tool
+        Args:
+            name: name of the tool (should match a command name)
+            wave: the target wave name of this tool (only if lvl is &#34;wave&#34;). Default  &#34;&#34;
+            scope: the scope string of the target scope of this tool (only if lvl is &#34;network&#34;). Default  &#34;&#34;
+            ip: the target ip &#34;ip&#34; of this tool (only if lvl is &#34;ip&#34; or &#34;port&#34;). Default  &#34;&#34;
+            port: the target port &#34;port number&#34; of this tool (only if lvl is &#34;port&#34;). Default  &#34;&#34;
+            proto: the target port &#34;proto&#34; of this tool (only if lvl is &#34;port&#34;). Default  &#34;tcp&#34;
+            lvl: the tool level of exploitation (wave, network, ip ort port/). Default &#34;&#34;
+            text: the command to be launched. Can be empty if name is matching  a command. Default &#34;&#34;
+            dated: a starting date and tiem for this interval in format : &#39;%d/%m/%Y %H:%M:%S&#39;. or the string &#34;None&#34;
+            datef: an ending date and tiem for this interval in format : &#39;%d/%m/%Y %H:%M:%S&#39;. or the string &#34;None&#34;
+            scanner_ip: the worker name that performed this tool. &#34;None&#34; if not performed yet. Default is &#34;None&#34;
+            status: a list of status string describing this tool state. Default is None. (Accepted values for string in list are done, running, OOT, OOS)
+            notes: notes concerning this tool (opt). Default to &#34;&#34;
+            resultfile: an output file generated by the tool. Default is &#34;&#34;
+            tags: a list of tags
+            infos: a dictionnary of additional info
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.name = name
+        self.wave = wave
+        self.scope = scope
+        self.ip = ip
+        self.port = port
+        self.proto = proto
+        self.lvl = lvl
+        self.text = text
+        self.dated = dated
+        self.datef = datef
+        self.scanner_ip = scanner_ip
+        self.notes = notes
+        self.resultfile = resultfile
+        self.tags = tags if tags is not None else []
+        self.infos = infos if infos is not None else {}
+        if status is None:
+            status = []
+        elif isinstance(status, str):
+            status = [status]
+        self.status = status
+        return self
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Delete the tool represented by this model in database.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.delete(&#34;tools&#34;, {&#34;_id&#34;: self._id})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this tool in database.
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        base = self.getDbKey()
+        mongoInstance = MongoCalendar.getInstance()
+        # Checking unicity
+        existing = mongoInstance.find(&#34;tools&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Those are added to base after tool&#39;s unicity verification
+        parent = self.getParent()
+        base[&#34;scanner_ip&#34;] = self.scanner_ip
+        base[&#34;dated&#34;] = self.dated
+        base[&#34;datef&#34;] = self.datef
+        if isinstance(self.status, str):
+            self.status = [self.status]
+        base[&#34;parent&#34;] = parent
+        base[&#34;status&#34;] = self.status
+        base[&#34;tags&#34;] = self.tags
+        base[&#34;text&#34;] = self.text
+        base[&#34;resultfile&#34;] = self.resultfile
+        base[&#34;notes&#34;] = self.notes
+        res = mongoInstance.insert(&#34;tools&#34;, base, parent)
+        self._id = res.inserted_id
+        return True, res.inserted_id
+
+    def setOutOfTime(self):
+        &#34;&#34;&#34;Set this tool as out of time (not matching any interval in wave)
+        Add &#34;OOT&#34; in status
+        &#34;&#34;&#34;
+        if &#34;OOT&#34; not in self.status:
+            self.status.append(&#34;OOT&#34;)
+            self.update({&#34;status&#34;: self.status})
+
+    def setInTime(self):
+        &#34;&#34;&#34;Set this tool as in time (matching any interval in wave)
+        Remove &#34;OOT&#34; from status
+        &#34;&#34;&#34;
+        if &#34;OOT&#34; in self.status:
+            self.status.remove(&#34;OOT&#34;)
+            self.update({&#34;status&#34;: self.status})
+
+    def setInScope(self):
+        &#34;&#34;&#34;Set this tool as out of scope (not matching any scope in wave)
+        Add &#34;OOS&#34; in status
+        &#34;&#34;&#34;
+        if &#34;OOS&#34; in self.status:
+            self.status.remove(&#34;OOS&#34;)
+            self.update()
+
+    def setOutOfScope(self):
+        &#34;&#34;&#34;Set this tool as in scope (is matching at least one scope in wave)
+        Remove &#34;OOS&#34; from status
+        &#34;&#34;&#34;
+        if not &#34;OOS&#34; in self.status:
+            self.status.append(&#34;OOS&#34;)
+            self.update({&#34;status&#34;: self.status})
+
+    def setStatus(self,status):
+        &#34;&#34;&#34;Set this tool status with given list of status
+        Args:
+            list of string with status inside (accepted values are OOS, OOT, running, done)
+        &#34;&#34;&#34;
+        self.status = status
+        self.update({&#34;status&#34;: self.status})
+
+    def getStatus(self):
+        &#34;&#34;&#34;
+        Get the tool executing status.
+
+        Return:
+            Returns a list of status status are :
+                OOT : Out of time = This tool is in a wave which does not have any interval for now.
+                OOS : Out os scope = This tool is in an IP OOS
+                done : This tool is completed
+                running : This tool is being run.&#34;&#34;&#34;
+        return self.status
+
+    def getCommand(self):
+        &#34;&#34;&#34;
+        Get the tool associated command.
+
+        Return:
+            Returns the Mongo dict command fetched instance associated with this tool&#39;s name.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        commandTemplate = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                                 &#34;commands&#34;, {&#34;name&#34;: self.name}, False)
+        return commandTemplate
+
+    @classmethod
+    def __sanitize(cls, var_to_path):
+        &#34;&#34;&#34;Replace unwanted chars in variable given: &#39;/&#39;, &#39; &#39; and &#39;:&#39; are changed to &#39;_&#39;
+        Args:
+            var_to_path: a string to sanitize to use a path folder
+        Returns:
+            modified arg as string
+        &#34;&#34;&#34;
+        var_to_path = var_to_path.replace(&#34;/&#34;, &#34;_&#34;)
+        var_to_path = var_to_path.replace(&#34; &#34;, &#34;_&#34;)
+        var_to_path = var_to_path.replace(&#34;:&#34;, &#34;_&#34;)
+        return var_to_path
+
+    def getOutputDir(self, calendarName):
+        &#34;&#34;&#34;
+        Get the tool required output directory path.
+        Args:
+            calendarName: the pentest database name
+        Return:
+            Returns the output directory of this tool instance.
+        &#34;&#34;&#34;
+        # get command needed directory
+        output_dir = Tool.__sanitize(
+            calendarName)+&#34;/&#34;+Tool.__sanitize(self.name)+&#34;/&#34;
+        if self.wave != &#34;&#34; and self.wave is not None:
+            output_dir += Tool.__sanitize(self.wave)+&#34;/&#34;
+        if self.scope != &#34;&#34; and self.scope is not None:
+            output_dir += Tool.__sanitize(self.scope)+&#34;/&#34;
+        if self.ip != &#34;&#34; and self.ip is not None:
+            output_dir += Tool.__sanitize(self.ip)+&#34;/&#34;
+        if self.port != &#34;&#34; and self.port is not None:
+            port_dir = str(self.port) if str(self.proto) == &#34;tcp&#34; else str(
+                self.proto)+&#34;/&#34;+str(self.port)
+            output_dir += Tool.__sanitize(port_dir)+&#34;/&#34;
+        return output_dir
+
+    def getCommandToExecute(self, outputDirectory):
+        &#34;&#34;&#34;
+        Get the tool bash command to execute.
+        Replace the command&#39;s text&#39;s variables with tool&#39;s informations.
+        Args:
+            outputDirectory: the output directory for this tool (see getOutputDir)
+        Return:
+            Returns the bash command of this tool instance.
+        &#34;&#34;&#34;
+        toolHasCommand = self.text
+        if toolHasCommand is not None and toolHasCommand.strip() != &#34;&#34;:
+            command = self.text
+            lvl = self.lvl
+        else:
+            comm = self.getCommand()
+            command = comm[&#34;text&#34;]
+            lvl = comm[&#34;lvl&#34;]
+        mongoInstance = MongoCalendar.getInstance()
+        command = command.replace(&#34;|outputDir|&#34;, outputDirectory)
+        command = command.replace(&#34;|wave|&#34;, self.wave)
+        if lvl == &#34;network&#34; or lvl == &#34;domain&#34;:
+            command = command.replace(&#34;|scope|&#34;, self.scope)
+            if Utils.isNetworkIp(self.scope) == False:
+                depths = self.scope.split(&#34;.&#34;)
+                if len(depths) &gt; 2:
+                    topdomain = &#34;.&#34;.join(depths[1:])
+                else:
+                    topdomain = &#34;.&#34;.join(depths)
+                command = command.replace(&#34;|parent_domain|&#34;, topdomain)
+        if lvl == &#34;ip&#34;:
+            command = command.replace(&#34;|ip|&#34;, self.ip)
+            ip_db = mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;:self.ip}, False)
+            ip_infos = ip_db.get(&#34;infos&#34;, {})
+            for info in ip_infos:
+                command = command.replace(&#34;|ip.infos.&#34;+str(info)+&#34;|&#34;, command)
+        if lvl == &#34;port&#34;:
+            command = command.replace(&#34;|ip|&#34;, self.ip)
+            command = command.replace(&#34;|port|&#34;, self.port)
+            command = command.replace(&#34;|port.proto|&#34;, self.proto)
+            port_db = mongoInstance.find(&#34;ports&#34;, {&#34;port&#34;:self.port, &#34;proto&#34;:self.proto, &#34;ip&#34;:self.ip}, False)
+            command = command.replace(&#34;|port.service|&#34;, port_db[&#34;service&#34;])
+            command = command.replace(&#34;|port.product|&#34;, port_db[&#34;product&#34;])
+            port_infos = port_db.get(&#34;infos&#34;, {})
+            for info in port_infos:
+                print(&#34;replacing &#34;+&#34;|port.infos.&#34;+str(info)+&#34;|&#34;+ &#34;by &#34;+str(info))
+                command = command.replace(&#34;|port.infos.&#34;+str(info)+&#34;|&#34;, str(port_infos[info]))
+        return command
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;tools&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;scanner_ip&#34;: str(self.scanner_ip), &#34;dated&#34;: str(self.dated), &#34;status&#34;: self.status,
+                         &#34;datef&#34;:  str(self.datef), &#34;notes&#34;:  self.notes, &#34;resultfile&#34;: self.resultfile, &#34;tags&#34;: self.tags}})
+        else:
+            mongoInstance.update(
+                &#34;tools&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: pipeline_set})
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object. For a Tool it is either a scope, an ip or a port depending on the tool&#39;s level.
+
+        Returns:
+            Returns the parent&#39;s ObjectId _id&#34;. or None if a type error occurs
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        try:
+            if self.lvl == &#34;wave&#34;:
+                wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+                return wave[&#34;_id&#34;]
+            elif self.lvl == &#34;network&#34; or self.lvl == &#34;domain&#34;:
+                return mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: self.wave, &#34;scope&#34;: self.scope}, False)[&#34;_id&#34;]
+            elif self.lvl == &#34;ip&#34;:
+                return mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;: self.ip}, False)[&#34;_id&#34;]
+            else:
+                return mongoInstance.find(&#34;ports&#34;, {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}, False)[&#34;_id&#34;]
+        except TypeError:
+            # None type returned:
+            return None
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a tool.
+
+        Returns:
+            Returns the tool name. The wave name is prepended if tool lvl is &#34;port&#34; or &#34;ip&#34;
+        &#34;&#34;&#34;
+        ret = self.name
+        if self.lvl == &#34;ip&#34; or self.lvl == &#34;port&#34;:
+            ret = self.wave+&#34;-&#34;+ret
+        return ret
+
+    def getDetailedString(self):
+        &#34;&#34;&#34;
+        Get a more detailed string representation of a tool.
+
+        Returns:
+            string
+        &#34;&#34;&#34;
+        if self.lvl == &#34;network&#34; or self.lvl == &#34;domain&#34;:
+            return str(self.scope)+&#34; &#34;+str(self)
+        elif self.lvl == &#34;ip&#34;:
+            return str(self.ip)+&#34; &#34;+str(self)
+        else:
+            return str(self.ip)+&#34;:&#34;+str(self.proto+&#34;/&#34;+self.port)+&#34; &#34;+str(self)
+
+    def getResultFile(self):
+        &#34;&#34;&#34;Returns the result file of this tool
+        Returns:
+            strings
+        &#34;&#34;&#34;
+        return self.resultfile
+
+    def markAsDone(self, file_name=None):
+        &#34;&#34;&#34;Set this tool status as done but keeps OOT or OOS.
+        Args:
+            file_name: the resulting file of thsi tool execution. Default is None
+        &#34;&#34;&#34;
+        self.datef = datetime.now().strftime(&#39;%d/%m/%Y %H:%M:%S&#39;)
+        newStatus = [&#34;done&#34;]
+        if &#34;OOS&#34; in self.status:
+            newStatus.append(&#34;OOS&#34;)
+        if &#34;OOT&#34; in self.status:
+            newStatus.append(&#34;OOT&#34;)
+        self.status = newStatus
+        self.resultfile = file_name
+        self.update()
+
+    def markAsRunning(self, workerName):
+        &#34;&#34;&#34;Set this tool status as running but keeps OOT or OOS.
+        Sets the starting date to current time and ending date to &#34;None&#34;
+        Args:
+            workerName: the worker name that is running this tool
+        &#34;&#34;&#34;
+        self.dated = datetime.now().strftime(&#39;%d/%m/%Y %H:%M:%S&#39;)
+        self.datef = &#34;None&#34;
+        newStatus = [&#34;running&#34;]
+        if &#34;OOS&#34; in self.status:
+            newStatus.append(&#34;OOS&#34;)
+        if &#34;OOT&#34; in self.status:
+            newStatus.append(&#34;OOT&#34;)
+        self.status = newStatus
+        self.scanner_ip = workerName
+        self.update()
+
+    def markAsNotDone(self):
+        &#34;&#34;&#34;Set this tool status as not done by removing &#34;done&#34; or &#34;running&#34; status.
+        Also resets starting and ending date as well as worker name
+        &#34;&#34;&#34;
+        self.dated = &#34;None&#34;
+        self.datef = &#34;None&#34;
+        self.scanner_ip = &#34;None&#34;
+        if &#34;done&#34; in self.status:
+            self.status.remove(&#34;done&#34;)
+        if &#34;running&#34; in self.status:
+            self.status.remove(&#34;running&#34;)
+        self.update()
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (7 keys :&#34;wave&#34;, &#34;scope&#34;, &#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;name&#34;, &#34;lvl&#34;)
+        &#34;&#34;&#34;
+        base = {&#34;wave&#34;: self.wave, &#34;scope&#34;: &#34;&#34;, &#34;ip&#34;: &#34;&#34;, &#34;port&#34;: &#34;&#34;,
+                &#34;proto&#34;: &#34;&#34;, &#34;name&#34;: self.name, &#34;lvl&#34;: self.lvl}
+        if self.lvl == &#34;wave&#34;:
+            return base
+        if self.lvl in (&#34;domain&#34;, &#34;network&#34;):
+            base[&#34;scope&#34;] = self.scope
+            return base
+        base[&#34;ip&#34;] = self.ip
+        if self.lvl == &#34;ip&#34;:
+            return base
+        base[&#34;port&#34;] = self.port
+        base[&#34;proto&#34;] = self.proto
+        return base</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Models.Tool.Tool"><code class="flex name class">
+<span>class <span class="ident">Tool</span></span>
+<span>(</span><span>valuesFromDb=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents a Tool object that defines a tool. A tool is a command run materialized on a runnable object (wave, scope, ip, or port)</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>coll_name</code></strong></dt>
+<dd>collection name in pollenisator database</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>valueFromDb</code></strong></dt>
+<dd>a dict holding values to load into the object. A mongo fetched interval is optimal.
+possible keys with default values are : _id(None), parent(None), tags([]), infos({}),
+name(""), wave(""), scope(""), ip(""), port(""), proto("tcp"), lvl(""), text(""), dated("None"),
+datef("None"), scanner_ip("None"), status([]), notes(""), resultfile("")</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Tool(Element):
+    &#34;&#34;&#34;
+    Represents a Tool object that defines a tool. A tool is a command run materialized on a runnable object (wave, scope, ip, or port)
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+    coll_name = &#34;tools&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id(None), parent(None), tags([]), infos({}),
+                        name(&#34;&#34;), wave(&#34;&#34;), scope(&#34;&#34;), ip(&#34;&#34;), port(&#34;&#34;), proto(&#34;tcp&#34;), lvl(&#34;&#34;), text(&#34;&#34;), dated(&#34;None&#34;),
+                        datef(&#34;None&#34;), scanner_ip(&#34;None&#34;), status([]), notes(&#34;&#34;), resultfile(&#34;&#34;)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.datef = &#34;None&#34;
+        self.dated = &#34;None&#34;
+        self.scanner_ip = &#34;None&#34;
+        self.resultfile = &#34;&#34;
+        self.status = []
+        self.initialize(valuesFromDb.get(&#34;name&#34;, &#34;&#34;), valuesFromDb.get(&#34;wave&#34;, &#34;&#34;),
+                        valuesFromDb.get(
+                            &#34;scope&#34;, &#34;&#34;), valuesFromDb.get(&#34;ip&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;port&#34;, &#34;&#34;), valuesFromDb.get(
+                            &#34;proto&#34;, &#34;tcp&#34;),
+                        valuesFromDb.get(
+                            &#34;lvl&#34;, &#34;&#34;), valuesFromDb.get(&#34;text&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;dated&#34;, &#34;None&#34;), valuesFromDb.get(
+                            &#34;datef&#34;, &#34;None&#34;),
+                        valuesFromDb.get(
+                            &#34;scanner_ip&#34;, &#34;None&#34;), valuesFromDb.get(&#34;status&#34;, []), valuesFromDb.get(&#34;notes&#34;, &#34;&#34;), valuesFromDb.get(&#34;resultfile&#34;, &#34;&#34;), valuesFromDb.get(&#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, name, wave=&#34;&#34;, scope=&#34;&#34;, ip=&#34;&#34;, port=&#34;&#34;, proto=&#34;tcp&#34;, lvl=&#34;&#34;, text=&#34;&#34;,
+                   dated=&#34;None&#34;, datef=&#34;None&#34;, scanner_ip=&#34;None&#34;, status=None, notes=&#34;&#34;, resultfile=&#34;&#34;, tags=None, infos=None):
+        
+        &#34;&#34;&#34;Set values of tool
+        Args:
+            name: name of the tool (should match a command name)
+            wave: the target wave name of this tool (only if lvl is &#34;wave&#34;). Default  &#34;&#34;
+            scope: the scope string of the target scope of this tool (only if lvl is &#34;network&#34;). Default  &#34;&#34;
+            ip: the target ip &#34;ip&#34; of this tool (only if lvl is &#34;ip&#34; or &#34;port&#34;). Default  &#34;&#34;
+            port: the target port &#34;port number&#34; of this tool (only if lvl is &#34;port&#34;). Default  &#34;&#34;
+            proto: the target port &#34;proto&#34; of this tool (only if lvl is &#34;port&#34;). Default  &#34;tcp&#34;
+            lvl: the tool level of exploitation (wave, network, ip ort port/). Default &#34;&#34;
+            text: the command to be launched. Can be empty if name is matching  a command. Default &#34;&#34;
+            dated: a starting date and tiem for this interval in format : &#39;%d/%m/%Y %H:%M:%S&#39;. or the string &#34;None&#34;
+            datef: an ending date and tiem for this interval in format : &#39;%d/%m/%Y %H:%M:%S&#39;. or the string &#34;None&#34;
+            scanner_ip: the worker name that performed this tool. &#34;None&#34; if not performed yet. Default is &#34;None&#34;
+            status: a list of status string describing this tool state. Default is None. (Accepted values for string in list are done, running, OOT, OOS)
+            notes: notes concerning this tool (opt). Default to &#34;&#34;
+            resultfile: an output file generated by the tool. Default is &#34;&#34;
+            tags: a list of tags
+            infos: a dictionnary of additional info
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.name = name
+        self.wave = wave
+        self.scope = scope
+        self.ip = ip
+        self.port = port
+        self.proto = proto
+        self.lvl = lvl
+        self.text = text
+        self.dated = dated
+        self.datef = datef
+        self.scanner_ip = scanner_ip
+        self.notes = notes
+        self.resultfile = resultfile
+        self.tags = tags if tags is not None else []
+        self.infos = infos if infos is not None else {}
+        if status is None:
+            status = []
+        elif isinstance(status, str):
+            status = [status]
+        self.status = status
+        return self
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Delete the tool represented by this model in database.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.delete(&#34;tools&#34;, {&#34;_id&#34;: self._id})
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this tool in database.
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        base = self.getDbKey()
+        mongoInstance = MongoCalendar.getInstance()
+        # Checking unicity
+        existing = mongoInstance.find(&#34;tools&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Those are added to base after tool&#39;s unicity verification
+        parent = self.getParent()
+        base[&#34;scanner_ip&#34;] = self.scanner_ip
+        base[&#34;dated&#34;] = self.dated
+        base[&#34;datef&#34;] = self.datef
+        if isinstance(self.status, str):
+            self.status = [self.status]
+        base[&#34;parent&#34;] = parent
+        base[&#34;status&#34;] = self.status
+        base[&#34;tags&#34;] = self.tags
+        base[&#34;text&#34;] = self.text
+        base[&#34;resultfile&#34;] = self.resultfile
+        base[&#34;notes&#34;] = self.notes
+        res = mongoInstance.insert(&#34;tools&#34;, base, parent)
+        self._id = res.inserted_id
+        return True, res.inserted_id
+
+    def setOutOfTime(self):
+        &#34;&#34;&#34;Set this tool as out of time (not matching any interval in wave)
+        Add &#34;OOT&#34; in status
+        &#34;&#34;&#34;
+        if &#34;OOT&#34; not in self.status:
+            self.status.append(&#34;OOT&#34;)
+            self.update({&#34;status&#34;: self.status})
+
+    def setInTime(self):
+        &#34;&#34;&#34;Set this tool as in time (matching any interval in wave)
+        Remove &#34;OOT&#34; from status
+        &#34;&#34;&#34;
+        if &#34;OOT&#34; in self.status:
+            self.status.remove(&#34;OOT&#34;)
+            self.update({&#34;status&#34;: self.status})
+
+    def setInScope(self):
+        &#34;&#34;&#34;Set this tool as out of scope (not matching any scope in wave)
+        Add &#34;OOS&#34; in status
+        &#34;&#34;&#34;
+        if &#34;OOS&#34; in self.status:
+            self.status.remove(&#34;OOS&#34;)
+            self.update()
+
+    def setOutOfScope(self):
+        &#34;&#34;&#34;Set this tool as in scope (is matching at least one scope in wave)
+        Remove &#34;OOS&#34; from status
+        &#34;&#34;&#34;
+        if not &#34;OOS&#34; in self.status:
+            self.status.append(&#34;OOS&#34;)
+            self.update({&#34;status&#34;: self.status})
+
+    def setStatus(self,status):
+        &#34;&#34;&#34;Set this tool status with given list of status
+        Args:
+            list of string with status inside (accepted values are OOS, OOT, running, done)
+        &#34;&#34;&#34;
+        self.status = status
+        self.update({&#34;status&#34;: self.status})
+
+    def getStatus(self):
+        &#34;&#34;&#34;
+        Get the tool executing status.
+
+        Return:
+            Returns a list of status status are :
+                OOT : Out of time = This tool is in a wave which does not have any interval for now.
+                OOS : Out os scope = This tool is in an IP OOS
+                done : This tool is completed
+                running : This tool is being run.&#34;&#34;&#34;
+        return self.status
+
+    def getCommand(self):
+        &#34;&#34;&#34;
+        Get the tool associated command.
+
+        Return:
+            Returns the Mongo dict command fetched instance associated with this tool&#39;s name.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        commandTemplate = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                                 &#34;commands&#34;, {&#34;name&#34;: self.name}, False)
+        return commandTemplate
+
+    @classmethod
+    def __sanitize(cls, var_to_path):
+        &#34;&#34;&#34;Replace unwanted chars in variable given: &#39;/&#39;, &#39; &#39; and &#39;:&#39; are changed to &#39;_&#39;
+        Args:
+            var_to_path: a string to sanitize to use a path folder
+        Returns:
+            modified arg as string
+        &#34;&#34;&#34;
+        var_to_path = var_to_path.replace(&#34;/&#34;, &#34;_&#34;)
+        var_to_path = var_to_path.replace(&#34; &#34;, &#34;_&#34;)
+        var_to_path = var_to_path.replace(&#34;:&#34;, &#34;_&#34;)
+        return var_to_path
+
+    def getOutputDir(self, calendarName):
+        &#34;&#34;&#34;
+        Get the tool required output directory path.
+        Args:
+            calendarName: the pentest database name
+        Return:
+            Returns the output directory of this tool instance.
+        &#34;&#34;&#34;
+        # get command needed directory
+        output_dir = Tool.__sanitize(
+            calendarName)+&#34;/&#34;+Tool.__sanitize(self.name)+&#34;/&#34;
+        if self.wave != &#34;&#34; and self.wave is not None:
+            output_dir += Tool.__sanitize(self.wave)+&#34;/&#34;
+        if self.scope != &#34;&#34; and self.scope is not None:
+            output_dir += Tool.__sanitize(self.scope)+&#34;/&#34;
+        if self.ip != &#34;&#34; and self.ip is not None:
+            output_dir += Tool.__sanitize(self.ip)+&#34;/&#34;
+        if self.port != &#34;&#34; and self.port is not None:
+            port_dir = str(self.port) if str(self.proto) == &#34;tcp&#34; else str(
+                self.proto)+&#34;/&#34;+str(self.port)
+            output_dir += Tool.__sanitize(port_dir)+&#34;/&#34;
+        return output_dir
+
+    def getCommandToExecute(self, outputDirectory):
+        &#34;&#34;&#34;
+        Get the tool bash command to execute.
+        Replace the command&#39;s text&#39;s variables with tool&#39;s informations.
+        Args:
+            outputDirectory: the output directory for this tool (see getOutputDir)
+        Return:
+            Returns the bash command of this tool instance.
+        &#34;&#34;&#34;
+        toolHasCommand = self.text
+        if toolHasCommand is not None and toolHasCommand.strip() != &#34;&#34;:
+            command = self.text
+            lvl = self.lvl
+        else:
+            comm = self.getCommand()
+            command = comm[&#34;text&#34;]
+            lvl = comm[&#34;lvl&#34;]
+        mongoInstance = MongoCalendar.getInstance()
+        command = command.replace(&#34;|outputDir|&#34;, outputDirectory)
+        command = command.replace(&#34;|wave|&#34;, self.wave)
+        if lvl == &#34;network&#34; or lvl == &#34;domain&#34;:
+            command = command.replace(&#34;|scope|&#34;, self.scope)
+            if Utils.isNetworkIp(self.scope) == False:
+                depths = self.scope.split(&#34;.&#34;)
+                if len(depths) &gt; 2:
+                    topdomain = &#34;.&#34;.join(depths[1:])
+                else:
+                    topdomain = &#34;.&#34;.join(depths)
+                command = command.replace(&#34;|parent_domain|&#34;, topdomain)
+        if lvl == &#34;ip&#34;:
+            command = command.replace(&#34;|ip|&#34;, self.ip)
+            ip_db = mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;:self.ip}, False)
+            ip_infos = ip_db.get(&#34;infos&#34;, {})
+            for info in ip_infos:
+                command = command.replace(&#34;|ip.infos.&#34;+str(info)+&#34;|&#34;, command)
+        if lvl == &#34;port&#34;:
+            command = command.replace(&#34;|ip|&#34;, self.ip)
+            command = command.replace(&#34;|port|&#34;, self.port)
+            command = command.replace(&#34;|port.proto|&#34;, self.proto)
+            port_db = mongoInstance.find(&#34;ports&#34;, {&#34;port&#34;:self.port, &#34;proto&#34;:self.proto, &#34;ip&#34;:self.ip}, False)
+            command = command.replace(&#34;|port.service|&#34;, port_db[&#34;service&#34;])
+            command = command.replace(&#34;|port.product|&#34;, port_db[&#34;product&#34;])
+            port_infos = port_db.get(&#34;infos&#34;, {})
+            for info in port_infos:
+                print(&#34;replacing &#34;+&#34;|port.infos.&#34;+str(info)+&#34;|&#34;+ &#34;by &#34;+str(info))
+                command = command.replace(&#34;|port.infos.&#34;+str(info)+&#34;|&#34;, str(port_infos[info]))
+        return command
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;tools&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;scanner_ip&#34;: str(self.scanner_ip), &#34;dated&#34;: str(self.dated), &#34;status&#34;: self.status,
+                         &#34;datef&#34;:  str(self.datef), &#34;notes&#34;:  self.notes, &#34;resultfile&#34;: self.resultfile, &#34;tags&#34;: self.tags}})
+        else:
+            mongoInstance.update(
+                &#34;tools&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: pipeline_set})
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object. For a Tool it is either a scope, an ip or a port depending on the tool&#39;s level.
+
+        Returns:
+            Returns the parent&#39;s ObjectId _id&#34;. or None if a type error occurs
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        try:
+            if self.lvl == &#34;wave&#34;:
+                wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+                return wave[&#34;_id&#34;]
+            elif self.lvl == &#34;network&#34; or self.lvl == &#34;domain&#34;:
+                return mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: self.wave, &#34;scope&#34;: self.scope}, False)[&#34;_id&#34;]
+            elif self.lvl == &#34;ip&#34;:
+                return mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;: self.ip}, False)[&#34;_id&#34;]
+            else:
+                return mongoInstance.find(&#34;ports&#34;, {&#34;ip&#34;: self.ip, &#34;port&#34;: self.port, &#34;proto&#34;: self.proto}, False)[&#34;_id&#34;]
+        except TypeError:
+            # None type returned:
+            return None
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a tool.
+
+        Returns:
+            Returns the tool name. The wave name is prepended if tool lvl is &#34;port&#34; or &#34;ip&#34;
+        &#34;&#34;&#34;
+        ret = self.name
+        if self.lvl == &#34;ip&#34; or self.lvl == &#34;port&#34;:
+            ret = self.wave+&#34;-&#34;+ret
+        return ret
+
+    def getDetailedString(self):
+        &#34;&#34;&#34;
+        Get a more detailed string representation of a tool.
+
+        Returns:
+            string
+        &#34;&#34;&#34;
+        if self.lvl == &#34;network&#34; or self.lvl == &#34;domain&#34;:
+            return str(self.scope)+&#34; &#34;+str(self)
+        elif self.lvl == &#34;ip&#34;:
+            return str(self.ip)+&#34; &#34;+str(self)
+        else:
+            return str(self.ip)+&#34;:&#34;+str(self.proto+&#34;/&#34;+self.port)+&#34; &#34;+str(self)
+
+    def getResultFile(self):
+        &#34;&#34;&#34;Returns the result file of this tool
+        Returns:
+            strings
+        &#34;&#34;&#34;
+        return self.resultfile
+
+    def markAsDone(self, file_name=None):
+        &#34;&#34;&#34;Set this tool status as done but keeps OOT or OOS.
+        Args:
+            file_name: the resulting file of thsi tool execution. Default is None
+        &#34;&#34;&#34;
+        self.datef = datetime.now().strftime(&#39;%d/%m/%Y %H:%M:%S&#39;)
+        newStatus = [&#34;done&#34;]
+        if &#34;OOS&#34; in self.status:
+            newStatus.append(&#34;OOS&#34;)
+        if &#34;OOT&#34; in self.status:
+            newStatus.append(&#34;OOT&#34;)
+        self.status = newStatus
+        self.resultfile = file_name
+        self.update()
+
+    def markAsRunning(self, workerName):
+        &#34;&#34;&#34;Set this tool status as running but keeps OOT or OOS.
+        Sets the starting date to current time and ending date to &#34;None&#34;
+        Args:
+            workerName: the worker name that is running this tool
+        &#34;&#34;&#34;
+        self.dated = datetime.now().strftime(&#39;%d/%m/%Y %H:%M:%S&#39;)
+        self.datef = &#34;None&#34;
+        newStatus = [&#34;running&#34;]
+        if &#34;OOS&#34; in self.status:
+            newStatus.append(&#34;OOS&#34;)
+        if &#34;OOT&#34; in self.status:
+            newStatus.append(&#34;OOT&#34;)
+        self.status = newStatus
+        self.scanner_ip = workerName
+        self.update()
+
+    def markAsNotDone(self):
+        &#34;&#34;&#34;Set this tool status as not done by removing &#34;done&#34; or &#34;running&#34; status.
+        Also resets starting and ending date as well as worker name
+        &#34;&#34;&#34;
+        self.dated = &#34;None&#34;
+        self.datef = &#34;None&#34;
+        self.scanner_ip = &#34;None&#34;
+        if &#34;done&#34; in self.status:
+            self.status.remove(&#34;done&#34;)
+        if &#34;running&#34; in self.status:
+            self.status.remove(&#34;running&#34;)
+        self.update()
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (7 keys :&#34;wave&#34;, &#34;scope&#34;, &#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;name&#34;, &#34;lvl&#34;)
+        &#34;&#34;&#34;
+        base = {&#34;wave&#34;: self.wave, &#34;scope&#34;: &#34;&#34;, &#34;ip&#34;: &#34;&#34;, &#34;port&#34;: &#34;&#34;,
+                &#34;proto&#34;: &#34;&#34;, &#34;name&#34;: self.name, &#34;lvl&#34;: self.lvl}
+        if self.lvl == &#34;wave&#34;:
+            return base
+        if self.lvl in (&#34;domain&#34;, &#34;network&#34;):
+            base[&#34;scope&#34;] = self.scope
+            return base
+        base[&#34;ip&#34;] = self.ip
+        if self.lvl == &#34;ip&#34;:
+            return base
+        base[&#34;port&#34;] = self.port
+        base[&#34;proto&#34;] = self.proto
+        return base</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Models.Element.Element</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Tool.Tool.coll_name"><code class="name">var <span class="ident">coll_name</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Tool.Tool.addInDb"><code class="name flex">
+<span>def <span class="ident">addInDb</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this tool in database.</p>
+<p>Returns: a tuple with :
+* bool for success
+* mongo ObjectId : already existing object if duplicate, create object id otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInDb(self):
+    &#34;&#34;&#34;
+    Add this tool in database.
+
+    Returns: a tuple with :
+            * bool for success
+            * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+    &#34;&#34;&#34;
+    base = self.getDbKey()
+    mongoInstance = MongoCalendar.getInstance()
+    # Checking unicity
+    existing = mongoInstance.find(&#34;tools&#34;, base, False)
+    if existing is not None:
+        return False, existing[&#34;_id&#34;]
+    # Those are added to base after tool&#39;s unicity verification
+    parent = self.getParent()
+    base[&#34;scanner_ip&#34;] = self.scanner_ip
+    base[&#34;dated&#34;] = self.dated
+    base[&#34;datef&#34;] = self.datef
+    if isinstance(self.status, str):
+        self.status = [self.status]
+    base[&#34;parent&#34;] = parent
+    base[&#34;status&#34;] = self.status
+    base[&#34;tags&#34;] = self.tags
+    base[&#34;text&#34;] = self.text
+    base[&#34;resultfile&#34;] = self.resultfile
+    base[&#34;notes&#34;] = self.notes
+    res = mongoInstance.insert(&#34;tools&#34;, base, parent)
+    self._id = res.inserted_id
+    return True, res.inserted_id</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete the tool represented by this model in database.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self):
+    &#34;&#34;&#34;
+    Delete the tool represented by this model in database.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.delete(&#34;tools&#34;, {&#34;_id&#34;: self._id})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.getCommand"><code class="name flex">
+<span>def <span class="ident">getCommand</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the tool associated command.</p>
+<h2 id="return">Return</h2>
+<p>Returns the Mongo dict command fetched instance associated with this tool's name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getCommand(self):
+    &#34;&#34;&#34;
+    Get the tool associated command.
+
+    Return:
+        Returns the Mongo dict command fetched instance associated with this tool&#39;s name.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    commandTemplate = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                             &#34;commands&#34;, {&#34;name&#34;: self.name}, False)
+    return commandTemplate</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.getCommandToExecute"><code class="name flex">
+<span>def <span class="ident">getCommandToExecute</span></span>(<span>self, outputDirectory)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the tool bash command to execute.
+Replace the command's text's variables with tool's informations.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>outputDirectory</code></strong></dt>
+<dd>the output directory for this tool (see getOutputDir)</dd>
+</dl>
+<h2 id="return">Return</h2>
+<p>Returns the bash command of this tool instance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getCommandToExecute(self, outputDirectory):
+    &#34;&#34;&#34;
+    Get the tool bash command to execute.
+    Replace the command&#39;s text&#39;s variables with tool&#39;s informations.
+    Args:
+        outputDirectory: the output directory for this tool (see getOutputDir)
+    Return:
+        Returns the bash command of this tool instance.
+    &#34;&#34;&#34;
+    toolHasCommand = self.text
+    if toolHasCommand is not None and toolHasCommand.strip() != &#34;&#34;:
+        command = self.text
+        lvl = self.lvl
+    else:
+        comm = self.getCommand()
+        command = comm[&#34;text&#34;]
+        lvl = comm[&#34;lvl&#34;]
+    mongoInstance = MongoCalendar.getInstance()
+    command = command.replace(&#34;|outputDir|&#34;, outputDirectory)
+    command = command.replace(&#34;|wave|&#34;, self.wave)
+    if lvl == &#34;network&#34; or lvl == &#34;domain&#34;:
+        command = command.replace(&#34;|scope|&#34;, self.scope)
+        if Utils.isNetworkIp(self.scope) == False:
+            depths = self.scope.split(&#34;.&#34;)
+            if len(depths) &gt; 2:
+                topdomain = &#34;.&#34;.join(depths[1:])
+            else:
+                topdomain = &#34;.&#34;.join(depths)
+            command = command.replace(&#34;|parent_domain|&#34;, topdomain)
+    if lvl == &#34;ip&#34;:
+        command = command.replace(&#34;|ip|&#34;, self.ip)
+        ip_db = mongoInstance.find(&#34;ips&#34;, {&#34;ip&#34;:self.ip}, False)
+        ip_infos = ip_db.get(&#34;infos&#34;, {})
+        for info in ip_infos:
+            command = command.replace(&#34;|ip.infos.&#34;+str(info)+&#34;|&#34;, command)
+    if lvl == &#34;port&#34;:
+        command = command.replace(&#34;|ip|&#34;, self.ip)
+        command = command.replace(&#34;|port|&#34;, self.port)
+        command = command.replace(&#34;|port.proto|&#34;, self.proto)
+        port_db = mongoInstance.find(&#34;ports&#34;, {&#34;port&#34;:self.port, &#34;proto&#34;:self.proto, &#34;ip&#34;:self.ip}, False)
+        command = command.replace(&#34;|port.service|&#34;, port_db[&#34;service&#34;])
+        command = command.replace(&#34;|port.product|&#34;, port_db[&#34;product&#34;])
+        port_infos = port_db.get(&#34;infos&#34;, {})
+        for info in port_infos:
+            print(&#34;replacing &#34;+&#34;|port.infos.&#34;+str(info)+&#34;|&#34;+ &#34;by &#34;+str(info))
+            command = command.replace(&#34;|port.infos.&#34;+str(info)+&#34;|&#34;, str(port_infos[info]))
+    return command</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.getDbKey"><code class="name flex">
+<span>def <span class="ident">getDbKey</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a dict from model to use as unique composed key.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A dict (7 keys :"wave", "scope", "ip", "port", "proto", "name", "lvl")</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDbKey(self):
+    &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+    Returns:
+        A dict (7 keys :&#34;wave&#34;, &#34;scope&#34;, &#34;ip&#34;, &#34;port&#34;, &#34;proto&#34;, &#34;name&#34;, &#34;lvl&#34;)
+    &#34;&#34;&#34;
+    base = {&#34;wave&#34;: self.wave, &#34;scope&#34;: &#34;&#34;, &#34;ip&#34;: &#34;&#34;, &#34;port&#34;: &#34;&#34;,
+            &#34;proto&#34;: &#34;&#34;, &#34;name&#34;: self.name, &#34;lvl&#34;: self.lvl}
+    if self.lvl == &#34;wave&#34;:
+        return base
+    if self.lvl in (&#34;domain&#34;, &#34;network&#34;):
+        base[&#34;scope&#34;] = self.scope
+        return base
+    base[&#34;ip&#34;] = self.ip
+    if self.lvl == &#34;ip&#34;:
+        return base
+    base[&#34;port&#34;] = self.port
+    base[&#34;proto&#34;] = self.proto
+    return base</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.getDetailedString"><code class="name flex">
+<span>def <span class="ident">getDetailedString</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a more detailed string representation of a tool.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>string</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDetailedString(self):
+    &#34;&#34;&#34;
+    Get a more detailed string representation of a tool.
+
+    Returns:
+        string
+    &#34;&#34;&#34;
+    if self.lvl == &#34;network&#34; or self.lvl == &#34;domain&#34;:
+        return str(self.scope)+&#34; &#34;+str(self)
+    elif self.lvl == &#34;ip&#34;:
+        return str(self.ip)+&#34; &#34;+str(self)
+    else:
+        return str(self.ip)+&#34;:&#34;+str(self.proto+&#34;/&#34;+self.port)+&#34; &#34;+str(self)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.getOutputDir"><code class="name flex">
+<span>def <span class="ident">getOutputDir</span></span>(<span>self, calendarName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the tool required output directory path.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>calendarName</code></strong></dt>
+<dd>the pentest database name</dd>
+</dl>
+<h2 id="return">Return</h2>
+<p>Returns the output directory of this tool instance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getOutputDir(self, calendarName):
+    &#34;&#34;&#34;
+    Get the tool required output directory path.
+    Args:
+        calendarName: the pentest database name
+    Return:
+        Returns the output directory of this tool instance.
+    &#34;&#34;&#34;
+    # get command needed directory
+    output_dir = Tool.__sanitize(
+        calendarName)+&#34;/&#34;+Tool.__sanitize(self.name)+&#34;/&#34;
+    if self.wave != &#34;&#34; and self.wave is not None:
+        output_dir += Tool.__sanitize(self.wave)+&#34;/&#34;
+    if self.scope != &#34;&#34; and self.scope is not None:
+        output_dir += Tool.__sanitize(self.scope)+&#34;/&#34;
+    if self.ip != &#34;&#34; and self.ip is not None:
+        output_dir += Tool.__sanitize(self.ip)+&#34;/&#34;
+    if self.port != &#34;&#34; and self.port is not None:
+        port_dir = str(self.port) if str(self.proto) == &#34;tcp&#34; else str(
+            self.proto)+&#34;/&#34;+str(self.port)
+        output_dir += Tool.__sanitize(port_dir)+&#34;/&#34;
+    return output_dir</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.getResultFile"><code class="name flex">
+<span>def <span class="ident">getResultFile</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the result file of this tool</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>strings</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getResultFile(self):
+    &#34;&#34;&#34;Returns the result file of this tool
+    Returns:
+        strings
+    &#34;&#34;&#34;
+    return self.resultfile</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.getStatus"><code class="name flex">
+<span>def <span class="ident">getStatus</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the tool executing status.</p>
+<h2 id="return">Return</h2>
+<p>Returns a list of status status are :
+OOT : Out of time = This tool is in a wave which does not have any interval for now.
+OOS : Out os scope = This tool is in an IP OOS
+done : This tool is completed
+running : This tool is being run.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getStatus(self):
+    &#34;&#34;&#34;
+    Get the tool executing status.
+
+    Return:
+        Returns a list of status status are :
+            OOT : Out of time = This tool is in a wave which does not have any interval for now.
+            OOS : Out os scope = This tool is in an IP OOS
+            done : This tool is completed
+            running : This tool is being run.&#34;&#34;&#34;
+    return self.status</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.initialize"><code class="name flex">
+<span>def <span class="ident">initialize</span></span>(<span>self, name, wave='', scope='', ip='', port='', proto='tcp', lvl='', text='', dated='None', datef='None', scanner_ip='None', status=None, notes='', resultfile='', tags=None, infos=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set values of tool</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>name of the tool (should match a command name)</dd>
+<dt><strong><code>wave</code></strong></dt>
+<dd>the target wave name of this tool (only if lvl is "wave"). Default
+""</dd>
+<dt><strong><code>scope</code></strong></dt>
+<dd>the scope string of the target scope of this tool (only if lvl is "network"). Default
+""</dd>
+<dt><strong><code>ip</code></strong></dt>
+<dd>the target ip "ip" of this tool (only if lvl is "ip" or "port"). Default
+""</dd>
+<dt><strong><code>port</code></strong></dt>
+<dd>the target port "port number" of this tool (only if lvl is "port"). Default
+""</dd>
+<dt><strong><code>proto</code></strong></dt>
+<dd>the target port "proto" of this tool (only if lvl is "port"). Default
+"tcp"</dd>
+<dt><strong><code>lvl</code></strong></dt>
+<dd>the tool level of exploitation (wave, network, ip ort port/). Default ""</dd>
+<dt><strong><code>text</code></strong></dt>
+<dd>the command to be launched. Can be empty if name is matching
+a command. Default ""</dd>
+<dt><strong><code>dated</code></strong></dt>
+<dd>a starting date and tiem for this interval in format : '%d/%m/%Y %H:%M:%S'. or the string "None"</dd>
+<dt><strong><code>datef</code></strong></dt>
+<dd>an ending date and tiem for this interval in format : '%d/%m/%Y %H:%M:%S'. or the string "None"</dd>
+<dt><strong><code>scanner_ip</code></strong></dt>
+<dd>the worker name that performed this tool. "None" if not performed yet. Default is "None"</dd>
+<dt><strong><code>status</code></strong></dt>
+<dd>a list of status string describing this tool state. Default is None. (Accepted values for string in list are done, running, OOT, OOS)</dd>
+<dt><strong><code>notes</code></strong></dt>
+<dd>notes concerning this tool (opt). Default to ""</dd>
+<dt><strong><code>resultfile</code></strong></dt>
+<dd>an output file generated by the tool. Default is ""</dd>
+<dt><strong><code>tags</code></strong></dt>
+<dd>a list of tags</dd>
+<dt><strong><code>infos</code></strong></dt>
+<dd>a dictionnary of additional info</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>this object</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initialize(self, name, wave=&#34;&#34;, scope=&#34;&#34;, ip=&#34;&#34;, port=&#34;&#34;, proto=&#34;tcp&#34;, lvl=&#34;&#34;, text=&#34;&#34;,
+               dated=&#34;None&#34;, datef=&#34;None&#34;, scanner_ip=&#34;None&#34;, status=None, notes=&#34;&#34;, resultfile=&#34;&#34;, tags=None, infos=None):
+    
+    &#34;&#34;&#34;Set values of tool
+    Args:
+        name: name of the tool (should match a command name)
+        wave: the target wave name of this tool (only if lvl is &#34;wave&#34;). Default  &#34;&#34;
+        scope: the scope string of the target scope of this tool (only if lvl is &#34;network&#34;). Default  &#34;&#34;
+        ip: the target ip &#34;ip&#34; of this tool (only if lvl is &#34;ip&#34; or &#34;port&#34;). Default  &#34;&#34;
+        port: the target port &#34;port number&#34; of this tool (only if lvl is &#34;port&#34;). Default  &#34;&#34;
+        proto: the target port &#34;proto&#34; of this tool (only if lvl is &#34;port&#34;). Default  &#34;tcp&#34;
+        lvl: the tool level of exploitation (wave, network, ip ort port/). Default &#34;&#34;
+        text: the command to be launched. Can be empty if name is matching  a command. Default &#34;&#34;
+        dated: a starting date and tiem for this interval in format : &#39;%d/%m/%Y %H:%M:%S&#39;. or the string &#34;None&#34;
+        datef: an ending date and tiem for this interval in format : &#39;%d/%m/%Y %H:%M:%S&#39;. or the string &#34;None&#34;
+        scanner_ip: the worker name that performed this tool. &#34;None&#34; if not performed yet. Default is &#34;None&#34;
+        status: a list of status string describing this tool state. Default is None. (Accepted values for string in list are done, running, OOT, OOS)
+        notes: notes concerning this tool (opt). Default to &#34;&#34;
+        resultfile: an output file generated by the tool. Default is &#34;&#34;
+        tags: a list of tags
+        infos: a dictionnary of additional info
+    Returns:
+        this object
+    &#34;&#34;&#34;
+    self.name = name
+    self.wave = wave
+    self.scope = scope
+    self.ip = ip
+    self.port = port
+    self.proto = proto
+    self.lvl = lvl
+    self.text = text
+    self.dated = dated
+    self.datef = datef
+    self.scanner_ip = scanner_ip
+    self.notes = notes
+    self.resultfile = resultfile
+    self.tags = tags if tags is not None else []
+    self.infos = infos if infos is not None else {}
+    if status is None:
+        status = []
+    elif isinstance(status, str):
+        status = [status]
+    self.status = status
+    return self</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.markAsDone"><code class="name flex">
+<span>def <span class="ident">markAsDone</span></span>(<span>self, file_name=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set this tool status as done but keeps OOT or OOS.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file_name</code></strong></dt>
+<dd>the resulting file of thsi tool execution. Default is None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markAsDone(self, file_name=None):
+    &#34;&#34;&#34;Set this tool status as done but keeps OOT or OOS.
+    Args:
+        file_name: the resulting file of thsi tool execution. Default is None
+    &#34;&#34;&#34;
+    self.datef = datetime.now().strftime(&#39;%d/%m/%Y %H:%M:%S&#39;)
+    newStatus = [&#34;done&#34;]
+    if &#34;OOS&#34; in self.status:
+        newStatus.append(&#34;OOS&#34;)
+    if &#34;OOT&#34; in self.status:
+        newStatus.append(&#34;OOT&#34;)
+    self.status = newStatus
+    self.resultfile = file_name
+    self.update()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.markAsNotDone"><code class="name flex">
+<span>def <span class="ident">markAsNotDone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set this tool status as not done by removing "done" or "running" status.
+Also resets starting and ending date as well as worker name</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markAsNotDone(self):
+    &#34;&#34;&#34;Set this tool status as not done by removing &#34;done&#34; or &#34;running&#34; status.
+    Also resets starting and ending date as well as worker name
+    &#34;&#34;&#34;
+    self.dated = &#34;None&#34;
+    self.datef = &#34;None&#34;
+    self.scanner_ip = &#34;None&#34;
+    if &#34;done&#34; in self.status:
+        self.status.remove(&#34;done&#34;)
+    if &#34;running&#34; in self.status:
+        self.status.remove(&#34;running&#34;)
+    self.update()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.markAsRunning"><code class="name flex">
+<span>def <span class="ident">markAsRunning</span></span>(<span>self, workerName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set this tool status as running but keeps OOT or OOS.
+Sets the starting date to current time and ending date to "None"</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>workerName</code></strong></dt>
+<dd>the worker name that is running this tool</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def markAsRunning(self, workerName):
+    &#34;&#34;&#34;Set this tool status as running but keeps OOT or OOS.
+    Sets the starting date to current time and ending date to &#34;None&#34;
+    Args:
+        workerName: the worker name that is running this tool
+    &#34;&#34;&#34;
+    self.dated = datetime.now().strftime(&#39;%d/%m/%Y %H:%M:%S&#39;)
+    self.datef = &#34;None&#34;
+    newStatus = [&#34;running&#34;]
+    if &#34;OOS&#34; in self.status:
+        newStatus.append(&#34;OOS&#34;)
+    if &#34;OOT&#34; in self.status:
+        newStatus.append(&#34;OOT&#34;)
+    self.status = newStatus
+    self.scanner_ip = workerName
+    self.update()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.setInScope"><code class="name flex">
+<span>def <span class="ident">setInScope</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set this tool as out of scope (not matching any scope in wave)
+Add "OOS" in status</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setInScope(self):
+    &#34;&#34;&#34;Set this tool as out of scope (not matching any scope in wave)
+    Add &#34;OOS&#34; in status
+    &#34;&#34;&#34;
+    if &#34;OOS&#34; in self.status:
+        self.status.remove(&#34;OOS&#34;)
+        self.update()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.setInTime"><code class="name flex">
+<span>def <span class="ident">setInTime</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set this tool as in time (matching any interval in wave)
+Remove "OOT" from status</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setInTime(self):
+    &#34;&#34;&#34;Set this tool as in time (matching any interval in wave)
+    Remove &#34;OOT&#34; from status
+    &#34;&#34;&#34;
+    if &#34;OOT&#34; in self.status:
+        self.status.remove(&#34;OOT&#34;)
+        self.update({&#34;status&#34;: self.status})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.setOutOfScope"><code class="name flex">
+<span>def <span class="ident">setOutOfScope</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set this tool as in scope (is matching at least one scope in wave)
+Remove "OOS" from status</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setOutOfScope(self):
+    &#34;&#34;&#34;Set this tool as in scope (is matching at least one scope in wave)
+    Remove &#34;OOS&#34; from status
+    &#34;&#34;&#34;
+    if not &#34;OOS&#34; in self.status:
+        self.status.append(&#34;OOS&#34;)
+        self.update({&#34;status&#34;: self.status})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.setOutOfTime"><code class="name flex">
+<span>def <span class="ident">setOutOfTime</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set this tool as out of time (not matching any interval in wave)
+Add "OOT" in status</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setOutOfTime(self):
+    &#34;&#34;&#34;Set this tool as out of time (not matching any interval in wave)
+    Add &#34;OOT&#34; in status
+    &#34;&#34;&#34;
+    if &#34;OOT&#34; not in self.status:
+        self.status.append(&#34;OOT&#34;)
+        self.update({&#34;status&#34;: self.status})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.setStatus"><code class="name flex">
+<span>def <span class="ident">setStatus</span></span>(<span>self, status)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set this tool status with given list of status</p>
+<h2 id="args">Args</h2>
+<p>list of string with status inside (accepted values are OOS, OOT, running, done)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setStatus(self,status):
+    &#34;&#34;&#34;Set this tool status with given list of status
+    Args:
+        list of string with status inside (accepted values are OOS, OOT, running, done)
+    &#34;&#34;&#34;
+    self.status = status
+    self.update({&#34;status&#34;: self.status})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Tool.Tool.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, pipeline_set=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update this object in database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pipeline_set</code></strong></dt>
+<dd>(Opt.) A dictionnary with custom values. If None (default) use model attributes.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, pipeline_set=None):
+    &#34;&#34;&#34;Update this object in database.
+    Args:
+        pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    if pipeline_set is None:
+        mongoInstance.update(&#34;tools&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: {&#34;scanner_ip&#34;: str(self.scanner_ip), &#34;dated&#34;: str(self.dated), &#34;status&#34;: self.status,
+                     &#34;datef&#34;:  str(self.datef), &#34;notes&#34;:  self.notes, &#34;resultfile&#34;: self.resultfile, &#34;tags&#34;: self.tags}})
+    else:
+        mongoInstance.update(
+            &#34;tools&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {&#34;$set&#34;: pipeline_set})</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Models" href="index.html">Pollenisator.core.Models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Models.Tool.Tool" href="#Pollenisator.core.Models.Tool.Tool">Tool</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.addInDb" href="#Pollenisator.core.Models.Tool.Tool.addInDb">addInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.coll_name" href="#Pollenisator.core.Models.Tool.Tool.coll_name">coll_name</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.delete" href="#Pollenisator.core.Models.Tool.Tool.delete">delete</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.getCommand" href="#Pollenisator.core.Models.Tool.Tool.getCommand">getCommand</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.getCommandToExecute" href="#Pollenisator.core.Models.Tool.Tool.getCommandToExecute">getCommandToExecute</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.getDbKey" href="#Pollenisator.core.Models.Tool.Tool.getDbKey">getDbKey</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.getDetailedString" href="#Pollenisator.core.Models.Tool.Tool.getDetailedString">getDetailedString</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.getOutputDir" href="#Pollenisator.core.Models.Tool.Tool.getOutputDir">getOutputDir</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.getResultFile" href="#Pollenisator.core.Models.Tool.Tool.getResultFile">getResultFile</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.getStatus" href="#Pollenisator.core.Models.Tool.Tool.getStatus">getStatus</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.initialize" href="#Pollenisator.core.Models.Tool.Tool.initialize">initialize</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.markAsDone" href="#Pollenisator.core.Models.Tool.Tool.markAsDone">markAsDone</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.markAsNotDone" href="#Pollenisator.core.Models.Tool.Tool.markAsNotDone">markAsNotDone</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.markAsRunning" href="#Pollenisator.core.Models.Tool.Tool.markAsRunning">markAsRunning</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.setInScope" href="#Pollenisator.core.Models.Tool.Tool.setInScope">setInScope</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.setInTime" href="#Pollenisator.core.Models.Tool.Tool.setInTime">setInTime</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.setOutOfScope" href="#Pollenisator.core.Models.Tool.Tool.setOutOfScope">setOutOfScope</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.setOutOfTime" href="#Pollenisator.core.Models.Tool.Tool.setOutOfTime">setOutOfTime</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.setStatus" href="#Pollenisator.core.Models.Tool.Tool.setStatus">setStatus</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Tool.Tool.update" href="#Pollenisator.core.Models.Tool.Tool.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

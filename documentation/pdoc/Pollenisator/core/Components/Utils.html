@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.Utils API documentation</title>
+<meta name="description" content="Provide useful functions" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.Utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Provide useful functions</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Provide useful functions&#34;&#34;&#34;
+import sys
+import os
+import socket
+import subprocess
+import time
+from datetime import datetime
+from threading import Timer
+import json
+import requests
+from netaddr import IPNetwork
+from netaddr.core import AddrFormatError
+
+def loadPluginByBin(binName):
+    &#34;&#34;&#34;
+    Load a the plugin python corresponding to the given binary name.
+    Args:
+        binName: the binary name to load a plugin for
+    Returns:
+        return the module plugin loaded or default plugin if bin name was not found in conf file
+    &#34;&#34;&#34;
+    toolsCfg = loadToolsConfig()
+    for conf in toolsCfg.values():
+        if binName == os.path.splitext(conf[&#34;bin&#34;])[0]:
+            return loadPlugin(conf[&#34;plugin&#34;])
+    return loadPlugin(&#34;Default&#34;)
+
+def loadPlugin(pluginName):
+    &#34;&#34;&#34;
+    Load a the plugin python corresponding to the given command name.
+    The plugin must start with the command name and be located in plugins folder.
+    Args:
+        pluginName: the command name to load a plugin for
+
+    Returns:
+        return the module plugin loaded or default plugin if not found.
+    &#34;&#34;&#34;
+    from core.plugins.plugin import REGISTRY
+    # Load plugins
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(dir_path, &#34;../plugins/&#34;)
+    # Load plugins
+    sys.path.insert(0, path)
+    try:
+        # Dynamic import, raises ValueError if not found
+        if not pluginName.endswith(&#34;.py&#34;):
+            pluginName += &#34;.py&#34;
+        # trigger exception if plugin does not exist
+        __import__(pluginName[:-3])
+        return REGISTRY[pluginName[:-3]]  # removes the .py
+    except ValueError:
+        __import__(&#34;Default&#34;)
+        return REGISTRY[&#34;Default&#34;]
+    except FileNotFoundError:
+        __import__(&#34;Default&#34;)
+        return REGISTRY[&#34;Default&#34;]
+
+def listPlugin():
+    &#34;&#34;&#34;
+    List the plugins.
+    Returns:
+        return the list of plugins file names.
+    &#34;&#34;&#34;
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(dir_path, &#34;../plugins/&#34;)
+    # Load plugins
+    sys.path.insert(0, path)
+    plugin_list = os.listdir(path)
+    plugin_list = [x for x in plugin_list if x.endswith(
+        &#34;.py&#34;) and x != &#34;__pycache__&#34; and x != &#34;__init__.py&#34; and x != &#34;plugin.py&#34;]
+    return plugin_list
+
+
+def isIp(domain_or_networks):
+    &#34;&#34;&#34;
+    Check if the given scope string is a network ip or a domain.
+    Args:
+        domain_or_networks: the domain string or the network ipv4 range string
+    Returns:
+        Returns True if it is a network ipv4 range, False if it is a domain (any other possible case).
+    &#34;&#34;&#34;
+    import re
+    regex_network_ip = r&#34;((?:[0-9]{1,3}\.){3}[0-9]{1,3})$&#34;
+    ipSearch = re.match(regex_network_ip, domain_or_networks)
+    return ipSearch is not None
+
+
+def isNetworkIp(domain_or_networks):
+    &#34;&#34;&#34;
+    Check if the given scope string is a network ip or a domain.
+    Args:
+        domain_or_networks: the domain string or the network ipv4 range string
+    Returns:
+        Returns True if it is a network ipv4 range, False if it is a domain (any other possible case).
+    &#34;&#34;&#34;
+    try:
+        IPNetwork(domain_or_networks)
+    except AddrFormatError:
+        return False
+    return True
+
+
+def splitRange(rangeIp):
+    &#34;&#34;&#34;
+    Check if the given range string is bigger than a /24, if it is, splits it in many /24.
+    Args:
+        rangeIp: network ipv4 range string
+    Returns:
+        Returns a list of IpNetwork objects corresponding to the range given as /24s.
+        If the entry range is smaller than a /24 (like /25 ... /32) the list will be empty.
+    &#34;&#34;&#34;
+    ip = IPNetwork(rangeIp)
+    subnets = list(ip.subnet(24))
+    return subnets
+
+
+def resetUnfinishedTools():
+    &#34;&#34;&#34;
+    Reset all tools running to a ready state. This is useful if a command was running on a worker and the auto scanning was interrupted.
+    &#34;&#34;&#34;
+    # test all the cases if datef is defined or not.
+    # Normally, only the first one is necessary
+    from core.Models.Tool import Tool
+    tools = Tool.fetchObjects({&#34;datef&#34;: &#34;None&#34;, &#34;scanner_ip&#34;: {&#34;$ne&#34;: &#34;None&#34;}})
+    for tool in tools:
+        tool.markAsNotDone()
+    tools = Tool.fetchObjects({&#34;datef&#34;: &#34;None&#34;, &#34;dated&#34;: {&#34;$ne&#34;: &#34;None&#34;}})
+    for tool in tools:
+        tool.markAsNotDone()
+    tools = Tool.fetchObjects(
+        {&#34;datef&#34;: {&#34;$exists&#34;: False}, &#34;dated&#34;: {&#34;$ne&#34;: &#34;None&#34;}})
+    for tool in tools:
+        tool.markAsNotDone()
+    tools = Tool.fetchObjects(
+        {&#34;datef&#34;: {&#34;$exists&#34;: False}, &#34;scanner_ip&#34;: {&#34;$ne&#34;: &#34;None&#34;}})
+    for tool in tools:
+        tool.markAsNotDone()
+
+
+def stringToDate(datestring):
+    &#34;&#34;&#34;Converts a string with format &#39;%d/%m/%Y %H:%M:%S&#39; to a python date object.
+    Args:
+        datestring: Returns the date python object if the given string is successfully converted, None otherwise&#34;&#34;&#34;
+    ret = None
+    if isinstance(datestring, str):
+        if datestring != &#34;None&#34;:
+            ret = datetime.strptime(
+                datestring, &#39;%d/%m/%Y %H:%M:%S&#39;)
+    return ret
+
+
+def fitNowTime(dated, datef):
+    &#34;&#34;&#34;Check the current time on the machine is between the given start and end date.
+    Args:
+        dated: the starting date for the interval
+        datef: the ending date for the interval
+    Returns:
+        True if the current time is between the given interval. False otherwise.
+        If one of the args is None, returns False.&#34;&#34;&#34;
+    today = datetime.now()
+    date_start = stringToDate(dated)
+    date_end = stringToDate(datef)
+    if date_start is None or date_end is None:
+        return False
+    return today &gt; date_start and date_end &gt; today
+
+
+def execute(command, timeout=None, printStdout=True):
+    &#34;&#34;&#34;
+    Execute a bash command and print output
+
+    Args:
+        command: A bash command
+        timeout: a date in the futur when the command will be stopped if still running or None to not use this option, default as None.
+        printStdout: A boolean indicating if the stdout should be printed. Default to True.
+
+    Returns:
+        Return the return code of this command
+
+    Raises:
+        Raise a KeyboardInterrupt if the command was interrupted by a KeyboardInterrupt (Ctrl+c)
+    &#34;&#34;&#34;
+
+    try:
+        proc = subprocess.Popen(
+            command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        time.sleep(1) #HACK Break if not there when launching fast custom tools on local host
+        try:
+            if timeout is not None:
+                if isinstance(timeout, float):
+                    timeout = (timeout-datetime.now()).total_seconds()
+                    timer = Timer(timeout, proc.kill)
+                    timer.start()
+                else:
+                    if timeout.year &lt; datetime.now().year+1:
+                        timeout = (timeout-datetime.now()).total_seconds()
+                        timer = Timer(timeout, proc.kill)
+                        timer.start()
+            stdout, stderr = proc.communicate()
+            if printStdout:
+                stdout = stdout.decode(&#39;utf-8&#39;)
+                stderr = stderr.decode(&#39;utf-8&#39;)
+                if str(stdout) != &#34;&#34;:
+                    print(str(stdout))
+                if str(stderr) != &#34;&#34;:
+                    print(str(stderr))
+        except Exception as e:
+            print(str(e))
+        finally:
+            if timeout is not None:
+                if isinstance(timeout, float):
+                    timer.cancel()
+                else:
+                    if timeout.year &lt; datetime.now().year+1:
+                        timer.cancel()
+        return proc.returncode
+    except KeyboardInterrupt as e:
+        raise e
+
+
+def performLookUp(domain):
+    &#34;&#34;&#34;
+    Uses the socket module to get an ip from a domain.
+
+    Args:
+        domain: the domain to look for in dns
+
+    Returns:
+        Return the ip found from dns records, None if failed.
+    &#34;&#34;&#34;
+    try:
+        return socket.gethostbyname(domain)
+    except socket.gaierror:
+        return None
+
+
+def loadCfg(cfgfile):
+    &#34;&#34;&#34;
+    Load a json config file.
+    Args:
+        cfgfile: the path to a json config file
+    Raises:
+        FileNotFoundError if the given file does not exist
+    Returns:
+        Return the json converted values of the config file.
+    &#34;&#34;&#34;
+    default_tools_infos = dict()
+    try:
+        with open(cfgfile, &#34;r&#34;) as f:
+            default_tools_infos = json.loads(f.read())
+    except FileNotFoundError as e:
+        raise e
+
+    return default_tools_infos
+
+
+def loadToolsConfig():
+    &#34;&#34;&#34;
+    Load tools config file in the config/tools.d/ folder starting with
+    config/tools.d/tools.json as default values
+    Args:
+        cfgfile: the path to a json config file
+    Returns:
+        Return the json converted values of the config file.
+    &#34;&#34;&#34;
+    tool_config_folder = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../config/tools.d/&#34;)
+    default_tools_config = os.path.join(tool_config_folder, &#34;tools.json&#34;)
+    default_tools_infos = None
+    try:
+        with open(default_tools_config) as f:
+            default_tools_infos = json.loads(f.read())
+    except Exception as e:
+        raise Exception(&#34;Error when loading tools to register : &#34;+str(e))
+    for _r, _d, f in os.walk(tool_config_folder):
+        for fil in f:
+            if fil != &#34;tools.json&#34;:
+                try:
+                    with open(default_tools_config) as f:
+                        tools_infos = json.loads(f.read())
+                        for key, value in tools_infos.items():
+                            default_tools_infos[key] = value
+                except json.JSONDecodeError:
+                    print(&#34;Invalid json file : &#34;+str(fil))
+    return default_tools_infos
+
+
+def loadClientConfig():
+    &#34;&#34;&#34;Return data converted from json inside config/client.cfg
+    Returns:
+        Json converted data inside config/client.cfg
+    &#34;&#34;&#34;
+    config = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../config/client.cfg&#34;)
+    return loadCfg(config)
+
+
+def saveClientConfig(configDict):
+    &#34;&#34;&#34;Saves data in configDict to config/client.cfg as json
+    Args:
+        configDict: data to be stored in config/client.cfg
+    &#34;&#34;&#34;
+    configFile = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../config/client.cfg&#34;)
+    with open(configFile, &#34;w&#34;) as f:
+        f.write(json.dumps(configDict))
+
+
+def getValidMarkIconPath():
+    &#34;&#34;&#34;Returns:
+         a validation mark icon path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/done_tool.png&#34;)
+    return p
+
+
+def getBadMarkIconPath():
+    &#34;&#34;&#34;Returns:
+         a bad mark icon path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/cross.png&#34;)
+    return p
+
+
+def getWaitingMarkIconPath():
+    &#34;&#34;&#34;Returns:
+         a waiting icon path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/waiting.png&#34;)
+    return p
+
+
+def getHelpIconPath():
+    &#34;&#34;&#34;Returns:
+         a help icon path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/help.png&#34;)
+    return p
+
+
+def getIconDir():
+    &#34;&#34;&#34;Returns:
+        the icon directory path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/&#34;)
+    return p
+
+
+def getMainDir():
+    &#34;&#34;&#34;Returns:
+        the pollenisator main folder
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../&#34;)
+    return p</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.core.Components.Utils.execute"><code class="name flex">
+<span>def <span class="ident">execute</span></span>(<span>command, timeout=None, printStdout=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute a bash command and print output</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>command</code></strong></dt>
+<dd>A bash command</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>a date in the futur when the command will be stopped if still running or None to not use this option, default as None.</dd>
+<dt><strong><code>printStdout</code></strong></dt>
+<dd>A boolean indicating if the stdout should be printed. Default to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Return the return code</code> of <code>this command</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>Raise a KeyboardInterrupt if the command was interrupted by a KeyboardInterrupt (Ctrl+c)</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def execute(command, timeout=None, printStdout=True):
+    &#34;&#34;&#34;
+    Execute a bash command and print output
+
+    Args:
+        command: A bash command
+        timeout: a date in the futur when the command will be stopped if still running or None to not use this option, default as None.
+        printStdout: A boolean indicating if the stdout should be printed. Default to True.
+
+    Returns:
+        Return the return code of this command
+
+    Raises:
+        Raise a KeyboardInterrupt if the command was interrupted by a KeyboardInterrupt (Ctrl+c)
+    &#34;&#34;&#34;
+
+    try:
+        proc = subprocess.Popen(
+            command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        time.sleep(1) #HACK Break if not there when launching fast custom tools on local host
+        try:
+            if timeout is not None:
+                if isinstance(timeout, float):
+                    timeout = (timeout-datetime.now()).total_seconds()
+                    timer = Timer(timeout, proc.kill)
+                    timer.start()
+                else:
+                    if timeout.year &lt; datetime.now().year+1:
+                        timeout = (timeout-datetime.now()).total_seconds()
+                        timer = Timer(timeout, proc.kill)
+                        timer.start()
+            stdout, stderr = proc.communicate()
+            if printStdout:
+                stdout = stdout.decode(&#39;utf-8&#39;)
+                stderr = stderr.decode(&#39;utf-8&#39;)
+                if str(stdout) != &#34;&#34;:
+                    print(str(stdout))
+                if str(stderr) != &#34;&#34;:
+                    print(str(stderr))
+        except Exception as e:
+            print(str(e))
+        finally:
+            if timeout is not None:
+                if isinstance(timeout, float):
+                    timer.cancel()
+                else:
+                    if timeout.year &lt; datetime.now().year+1:
+                        timer.cancel()
+        return proc.returncode
+    except KeyboardInterrupt as e:
+        raise e</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.fitNowTime"><code class="name flex">
+<span>def <span class="ident">fitNowTime</span></span>(<span>dated, datef)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check the current time on the machine is between the given start and end date.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dated</code></strong></dt>
+<dd>the starting date for the interval</dd>
+<dt><strong><code>datef</code></strong></dt>
+<dd>the ending date for the interval</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>True if the current time is between the given interval. False otherwise.
+If one of the args is None, returns False.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fitNowTime(dated, datef):
+    &#34;&#34;&#34;Check the current time on the machine is between the given start and end date.
+    Args:
+        dated: the starting date for the interval
+        datef: the ending date for the interval
+    Returns:
+        True if the current time is between the given interval. False otherwise.
+        If one of the args is None, returns False.&#34;&#34;&#34;
+    today = datetime.now()
+    date_start = stringToDate(dated)
+    date_end = stringToDate(datef)
+    if date_start is None or date_end is None:
+        return False
+    return today &gt; date_start and date_end &gt; today</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.getBadMarkIconPath"><code class="name flex">
+<span>def <span class="ident">getBadMarkIconPath</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+a bad mark icon path</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getBadMarkIconPath():
+    &#34;&#34;&#34;Returns:
+         a bad mark icon path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/cross.png&#34;)
+    return p</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.getHelpIconPath"><code class="name flex">
+<span>def <span class="ident">getHelpIconPath</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+a help icon path</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHelpIconPath():
+    &#34;&#34;&#34;Returns:
+         a help icon path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/help.png&#34;)
+    return p</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.getIconDir"><code class="name flex">
+<span>def <span class="ident">getIconDir</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+the icon directory path</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getIconDir():
+    &#34;&#34;&#34;Returns:
+        the icon directory path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/&#34;)
+    return p</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.getMainDir"><code class="name flex">
+<span>def <span class="ident">getMainDir</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+the pollenisator main folder</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMainDir():
+    &#34;&#34;&#34;Returns:
+        the pollenisator main folder
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../&#34;)
+    return p</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.getValidMarkIconPath"><code class="name flex">
+<span>def <span class="ident">getValidMarkIconPath</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+a validation mark icon path</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getValidMarkIconPath():
+    &#34;&#34;&#34;Returns:
+         a validation mark icon path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/done_tool.png&#34;)
+    return p</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.getWaitingMarkIconPath"><code class="name flex">
+<span>def <span class="ident">getWaitingMarkIconPath</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns:
+a waiting icon path</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getWaitingMarkIconPath():
+    &#34;&#34;&#34;Returns:
+         a waiting icon path
+    &#34;&#34;&#34;
+    p = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../icon/waiting.png&#34;)
+    return p</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.isIp"><code class="name flex">
+<span>def <span class="ident">isIp</span></span>(<span>domain_or_networks)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the given scope string is a network ip or a domain.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>domain_or_networks</code></strong></dt>
+<dd>the domain string or the network ipv4 range string</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Returns True if it is a network ipv4 range, False if it is a domain (any other possible case).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isIp(domain_or_networks):
+    &#34;&#34;&#34;
+    Check if the given scope string is a network ip or a domain.
+    Args:
+        domain_or_networks: the domain string or the network ipv4 range string
+    Returns:
+        Returns True if it is a network ipv4 range, False if it is a domain (any other possible case).
+    &#34;&#34;&#34;
+    import re
+    regex_network_ip = r&#34;((?:[0-9]{1,3}\.){3}[0-9]{1,3})$&#34;
+    ipSearch = re.match(regex_network_ip, domain_or_networks)
+    return ipSearch is not None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.isNetworkIp"><code class="name flex">
+<span>def <span class="ident">isNetworkIp</span></span>(<span>domain_or_networks)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the given scope string is a network ip or a domain.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>domain_or_networks</code></strong></dt>
+<dd>the domain string or the network ipv4 range string</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Returns True if it is a network ipv4 range, False if it is a domain (any other possible case).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isNetworkIp(domain_or_networks):
+    &#34;&#34;&#34;
+    Check if the given scope string is a network ip or a domain.
+    Args:
+        domain_or_networks: the domain string or the network ipv4 range string
+    Returns:
+        Returns True if it is a network ipv4 range, False if it is a domain (any other possible case).
+    &#34;&#34;&#34;
+    try:
+        IPNetwork(domain_or_networks)
+    except AddrFormatError:
+        return False
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.listPlugin"><code class="name flex">
+<span>def <span class="ident">listPlugin</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>List the plugins.</p>
+<h2 id="returns">Returns</h2>
+<p>return the list of plugins file names.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def listPlugin():
+    &#34;&#34;&#34;
+    List the plugins.
+    Returns:
+        return the list of plugins file names.
+    &#34;&#34;&#34;
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(dir_path, &#34;../plugins/&#34;)
+    # Load plugins
+    sys.path.insert(0, path)
+    plugin_list = os.listdir(path)
+    plugin_list = [x for x in plugin_list if x.endswith(
+        &#34;.py&#34;) and x != &#34;__pycache__&#34; and x != &#34;__init__.py&#34; and x != &#34;plugin.py&#34;]
+    return plugin_list</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.loadCfg"><code class="name flex">
+<span>def <span class="ident">loadCfg</span></span>(<span>cfgfile)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load a json config file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>cfgfile</code></strong></dt>
+<dd>the path to a json config file</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>FileNotFoundError if the given file does not exist</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the json converted values of the config file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadCfg(cfgfile):
+    &#34;&#34;&#34;
+    Load a json config file.
+    Args:
+        cfgfile: the path to a json config file
+    Raises:
+        FileNotFoundError if the given file does not exist
+    Returns:
+        Return the json converted values of the config file.
+    &#34;&#34;&#34;
+    default_tools_infos = dict()
+    try:
+        with open(cfgfile, &#34;r&#34;) as f:
+            default_tools_infos = json.loads(f.read())
+    except FileNotFoundError as e:
+        raise e
+
+    return default_tools_infos</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.loadClientConfig"><code class="name flex">
+<span>def <span class="ident">loadClientConfig</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return data converted from json inside config/client.cfg</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Json converted data inside config/client.cfg</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadClientConfig():
+    &#34;&#34;&#34;Return data converted from json inside config/client.cfg
+    Returns:
+        Json converted data inside config/client.cfg
+    &#34;&#34;&#34;
+    config = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../config/client.cfg&#34;)
+    return loadCfg(config)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.loadPlugin"><code class="name flex">
+<span>def <span class="ident">loadPlugin</span></span>(<span>pluginName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load a the plugin python corresponding to the given command name.
+The plugin must start with the command name and be located in plugins folder.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pluginName</code></strong></dt>
+<dd>the command name to load a plugin for</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>return the module plugin loaded or default plugin if not found.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadPlugin(pluginName):
+    &#34;&#34;&#34;
+    Load a the plugin python corresponding to the given command name.
+    The plugin must start with the command name and be located in plugins folder.
+    Args:
+        pluginName: the command name to load a plugin for
+
+    Returns:
+        return the module plugin loaded or default plugin if not found.
+    &#34;&#34;&#34;
+    from core.plugins.plugin import REGISTRY
+    # Load plugins
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(dir_path, &#34;../plugins/&#34;)
+    # Load plugins
+    sys.path.insert(0, path)
+    try:
+        # Dynamic import, raises ValueError if not found
+        if not pluginName.endswith(&#34;.py&#34;):
+            pluginName += &#34;.py&#34;
+        # trigger exception if plugin does not exist
+        __import__(pluginName[:-3])
+        return REGISTRY[pluginName[:-3]]  # removes the .py
+    except ValueError:
+        __import__(&#34;Default&#34;)
+        return REGISTRY[&#34;Default&#34;]
+    except FileNotFoundError:
+        __import__(&#34;Default&#34;)
+        return REGISTRY[&#34;Default&#34;]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.loadPluginByBin"><code class="name flex">
+<span>def <span class="ident">loadPluginByBin</span></span>(<span>binName)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load a the plugin python corresponding to the given binary name.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>binName</code></strong></dt>
+<dd>the binary name to load a plugin for</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>return the module plugin loaded</code> or <code>default plugin if bin name was not found in conf file</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadPluginByBin(binName):
+    &#34;&#34;&#34;
+    Load a the plugin python corresponding to the given binary name.
+    Args:
+        binName: the binary name to load a plugin for
+    Returns:
+        return the module plugin loaded or default plugin if bin name was not found in conf file
+    &#34;&#34;&#34;
+    toolsCfg = loadToolsConfig()
+    for conf in toolsCfg.values():
+        if binName == os.path.splitext(conf[&#34;bin&#34;])[0]:
+            return loadPlugin(conf[&#34;plugin&#34;])
+    return loadPlugin(&#34;Default&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.loadToolsConfig"><code class="name flex">
+<span>def <span class="ident">loadToolsConfig</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load tools config file in the config/tools.d/ folder starting with
+config/tools.d/tools.json as default values</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>cfgfile</code></strong></dt>
+<dd>the path to a json config file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the json converted values of the config file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadToolsConfig():
+    &#34;&#34;&#34;
+    Load tools config file in the config/tools.d/ folder starting with
+    config/tools.d/tools.json as default values
+    Args:
+        cfgfile: the path to a json config file
+    Returns:
+        Return the json converted values of the config file.
+    &#34;&#34;&#34;
+    tool_config_folder = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../config/tools.d/&#34;)
+    default_tools_config = os.path.join(tool_config_folder, &#34;tools.json&#34;)
+    default_tools_infos = None
+    try:
+        with open(default_tools_config) as f:
+            default_tools_infos = json.loads(f.read())
+    except Exception as e:
+        raise Exception(&#34;Error when loading tools to register : &#34;+str(e))
+    for _r, _d, f in os.walk(tool_config_folder):
+        for fil in f:
+            if fil != &#34;tools.json&#34;:
+                try:
+                    with open(default_tools_config) as f:
+                        tools_infos = json.loads(f.read())
+                        for key, value in tools_infos.items():
+                            default_tools_infos[key] = value
+                except json.JSONDecodeError:
+                    print(&#34;Invalid json file : &#34;+str(fil))
+    return default_tools_infos</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.performLookUp"><code class="name flex">
+<span>def <span class="ident">performLookUp</span></span>(<span>domain)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Uses the socket module to get an ip from a domain.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>domain</code></strong></dt>
+<dd>the domain to look for in dns</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the ip found from dns records, None if failed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def performLookUp(domain):
+    &#34;&#34;&#34;
+    Uses the socket module to get an ip from a domain.
+
+    Args:
+        domain: the domain to look for in dns
+
+    Returns:
+        Return the ip found from dns records, None if failed.
+    &#34;&#34;&#34;
+    try:
+        return socket.gethostbyname(domain)
+    except socket.gaierror:
+        return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.resetUnfinishedTools"><code class="name flex">
+<span>def <span class="ident">resetUnfinishedTools</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset all tools running to a ready state. This is useful if a command was running on a worker and the auto scanning was interrupted.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resetUnfinishedTools():
+    &#34;&#34;&#34;
+    Reset all tools running to a ready state. This is useful if a command was running on a worker and the auto scanning was interrupted.
+    &#34;&#34;&#34;
+    # test all the cases if datef is defined or not.
+    # Normally, only the first one is necessary
+    from core.Models.Tool import Tool
+    tools = Tool.fetchObjects({&#34;datef&#34;: &#34;None&#34;, &#34;scanner_ip&#34;: {&#34;$ne&#34;: &#34;None&#34;}})
+    for tool in tools:
+        tool.markAsNotDone()
+    tools = Tool.fetchObjects({&#34;datef&#34;: &#34;None&#34;, &#34;dated&#34;: {&#34;$ne&#34;: &#34;None&#34;}})
+    for tool in tools:
+        tool.markAsNotDone()
+    tools = Tool.fetchObjects(
+        {&#34;datef&#34;: {&#34;$exists&#34;: False}, &#34;dated&#34;: {&#34;$ne&#34;: &#34;None&#34;}})
+    for tool in tools:
+        tool.markAsNotDone()
+    tools = Tool.fetchObjects(
+        {&#34;datef&#34;: {&#34;$exists&#34;: False}, &#34;scanner_ip&#34;: {&#34;$ne&#34;: &#34;None&#34;}})
+    for tool in tools:
+        tool.markAsNotDone()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.saveClientConfig"><code class="name flex">
+<span>def <span class="ident">saveClientConfig</span></span>(<span>configDict)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Saves data in configDict to config/client.cfg as json</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>configDict</code></strong></dt>
+<dd>data to be stored in config/client.cfg</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def saveClientConfig(configDict):
+    &#34;&#34;&#34;Saves data in configDict to config/client.cfg as json
+    Args:
+        configDict: data to be stored in config/client.cfg
+    &#34;&#34;&#34;
+    configFile = os.path.join(os.path.dirname(
+        os.path.realpath(__file__)), &#34;../../config/client.cfg&#34;)
+    with open(configFile, &#34;w&#34;) as f:
+        f.write(json.dumps(configDict))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.splitRange"><code class="name flex">
+<span>def <span class="ident">splitRange</span></span>(<span>rangeIp)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if the given range string is bigger than a /24, if it is, splits it in many /24.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>rangeIp</code></strong></dt>
+<dd>network ipv4 range string</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Returns a list of IpNetwork objects corresponding to the range given as /24s.
+If the entry range is smaller than a /24 (like /25 &hellip; /32) the list will be empty.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def splitRange(rangeIp):
+    &#34;&#34;&#34;
+    Check if the given range string is bigger than a /24, if it is, splits it in many /24.
+    Args:
+        rangeIp: network ipv4 range string
+    Returns:
+        Returns a list of IpNetwork objects corresponding to the range given as /24s.
+        If the entry range is smaller than a /24 (like /25 ... /32) the list will be empty.
+    &#34;&#34;&#34;
+    ip = IPNetwork(rangeIp)
+    subnets = list(ip.subnet(24))
+    return subnets</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.Utils.stringToDate"><code class="name flex">
+<span>def <span class="ident">stringToDate</span></span>(<span>datestring)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts a string with format '%d/%m/%Y %H:%M:%S' to a python date object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>datestring</code></strong></dt>
+<dd>Returns the date python object if the given string is successfully converted, None otherwise</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stringToDate(datestring):
+    &#34;&#34;&#34;Converts a string with format &#39;%d/%m/%Y %H:%M:%S&#39; to a python date object.
+    Args:
+        datestring: Returns the date python object if the given string is successfully converted, None otherwise&#34;&#34;&#34;
+    ret = None
+    if isinstance(datestring, str):
+        if datestring != &#34;None&#34;:
+            ret = datetime.strptime(
+                datestring, &#39;%d/%m/%Y %H:%M:%S&#39;)
+    return ret</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.Utils.execute" href="#Pollenisator.core.Components.Utils.execute">execute</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.fitNowTime" href="#Pollenisator.core.Components.Utils.fitNowTime">fitNowTime</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.getBadMarkIconPath" href="#Pollenisator.core.Components.Utils.getBadMarkIconPath">getBadMarkIconPath</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.getHelpIconPath" href="#Pollenisator.core.Components.Utils.getHelpIconPath">getHelpIconPath</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.getIconDir" href="#Pollenisator.core.Components.Utils.getIconDir">getIconDir</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.getMainDir" href="#Pollenisator.core.Components.Utils.getMainDir">getMainDir</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.getValidMarkIconPath" href="#Pollenisator.core.Components.Utils.getValidMarkIconPath">getValidMarkIconPath</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.getWaitingMarkIconPath" href="#Pollenisator.core.Components.Utils.getWaitingMarkIconPath">getWaitingMarkIconPath</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.isIp" href="#Pollenisator.core.Components.Utils.isIp">isIp</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.isNetworkIp" href="#Pollenisator.core.Components.Utils.isNetworkIp">isNetworkIp</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.listPlugin" href="#Pollenisator.core.Components.Utils.listPlugin">listPlugin</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.loadCfg" href="#Pollenisator.core.Components.Utils.loadCfg">loadCfg</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.loadClientConfig" href="#Pollenisator.core.Components.Utils.loadClientConfig">loadClientConfig</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.loadPlugin" href="#Pollenisator.core.Components.Utils.loadPlugin">loadPlugin</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.loadPluginByBin" href="#Pollenisator.core.Components.Utils.loadPluginByBin">loadPluginByBin</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.loadToolsConfig" href="#Pollenisator.core.Components.Utils.loadToolsConfig">loadToolsConfig</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.performLookUp" href="#Pollenisator.core.Components.Utils.performLookUp">performLookUp</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.resetUnfinishedTools" href="#Pollenisator.core.Components.Utils.resetUnfinishedTools">resetUnfinishedTools</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.saveClientConfig" href="#Pollenisator.core.Components.Utils.saveClientConfig">saveClientConfig</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.splitRange" href="#Pollenisator.core.Components.Utils.splitRange">splitRange</a></code></li>
+<li><code><a title="Pollenisator.core.Components.Utils.stringToDate" href="#Pollenisator.core.Components.Utils.stringToDate">stringToDate</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

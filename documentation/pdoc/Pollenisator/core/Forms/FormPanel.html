@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Forms.FormPanel API documentation</title>
+<meta name="description" content="A special form that contains all other forms" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Forms.FormPanel</code></h1>
+</header>
+<section id="section-intro">
+<p>A special form that contains all other forms</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;A special form that contains all other forms&#34;&#34;&#34;
+
+import tkinter.ttk as ttk
+from core.Forms.FormCombo import FormCombo
+from core.Forms.FormChecklist import FormChecklist
+from core.Forms.FormStr import FormStr
+from core.Forms.FormText import FormText
+from core.Forms.FormButton import FormButton
+from core.Forms.FormDate import FormDate
+from core.Forms.FormLabel import FormLabel
+from core.Forms.FormFile import FormFile
+from core.Forms.FormHidden import FormHidden
+from core.Forms.FormTreevw import FormTreevw
+from core.Forms.FormCheckbox import FormCheckbox
+from core.Forms.FormHelper import FormHelper
+from core.Forms.FormSearchBar import FormSearchBar
+from core.Forms.Form import Form
+
+
+class FormPanel(Form):
+    &#34;&#34;&#34;
+    Form field representing a panel. It is composed of other forms.
+    Additional kwargs values:
+        grid: set the layout to grid, default to False
+    Default setted values:
+        width=500
+        if pack : padx = 10, pady = 5, side = top, fill = x
+        if grid: row = column = 0 sticky = &#34;East&#34;
+    &#34;&#34;&#34;
+
+    def __init__(self, **kwargs):
+        &#34;&#34;&#34;
+        Constructor for a panel.
+        &#34;&#34;&#34;
+        super().__init__(&#34;panel&#34;)
+        self.subforms = []
+        self.kwargs = kwargs
+        self.gridLayout = self.getKw(&#34;grid&#34;, False)
+        self.panel = None
+
+    def constructView(self, parent):
+        &#34;&#34;&#34;
+        Create the panel view by constructing all subforms views inside a tkinter panel the parent view given.
+        Args:
+            parent: parent view or parent FormPanel.
+        &#34;&#34;&#34;
+        if isinstance(parent, FormPanel):  # Panel is a subpanel
+            self.panel = ttk.Frame(parent.panel)
+        else:
+            self.panel = ttk.Frame(parent)
+        for form in self.subforms:
+            form.constructView(self)
+        if isinstance(parent, FormPanel):  # Panel is a subpanel
+            if parent.gridLayout:
+                self.panel.grid(column=self.getKw(
+                    &#34;column&#34;, 0), row=self.getKw(&#34;row&#34;, 0), **self.kwargs)
+            else:
+                self.panel.pack(fill=self.getKw(&#34;fill&#34;, &#34;x&#34;), side=self.getKw(
+                    &#34;side&#34;, &#34;top&#34;), pady=self.getKw(&#34;pady&#34;, 5), padx=self.getKw(&#34;padx&#34;, 10), **self.kwargs)
+        else:  # Master panel, packing
+            self.panel.pack(fill=&#34;both&#34;, side=&#34;top&#34;, pady=&#34;5&#34;, padx=&#34;30&#34;)
+
+    def checkForm(self):
+        &#34;&#34;&#34;
+        Check if this form is correctly filled. A panel is correctly filled if all subforms composing it are correctly filled.
+
+        Returns:
+            {
+                &#34;correct&#34;: True if the form is correctly filled, False otherwise.
+                &#34;msg&#34;: A message indicating what is not correctly filled.
+            }
+        &#34;&#34;&#34;
+        for form in self.subforms:
+            res, msg = form.checkForm()
+            if res == False:
+                return False, msg
+        return True, &#34;&#34;
+
+    def setFocusOn(self, name):
+        &#34;&#34;&#34;Set focus on the given form name
+        Args:
+            name: the form name to set the focus on
+        &#34;&#34;&#34;
+        for form in self.subforms:
+            if name == form.name:
+                form.setFocus()
+
+    def getValue(self):
+        &#34;&#34;&#34;
+        Return the form value. Required for a form.
+        Returns:
+            returns a list of tuple with subform&#39;s name and values.
+        &#34;&#34;&#34;
+        res = []
+        for form in self.subforms:
+            val = form.getValue()
+            if val is not None:
+                if type(val) is list:
+                    res += val
+                else:
+                    res.append((form.name, val))
+        return res
+
+    def addFormTreevw(self, name, headers,
+                      default_values=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form table to this panel.
+        Args:
+            name: the table desired name
+            headers: a list of 2 strings for the table headers
+            default_values: a dictionnary with key = column 0 and value = column 1
+            kwargs: Keywords for FormTreevw
+        &#34;&#34;&#34;
+        ret = FormTreevw(name, headers, default_values, **kwargs)
+        self.subforms.append(ret)
+        return ret
+
+    def addFormCombo(self, name, choicesList, default=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form combo to this panel.
+        Args:
+            name: the combobox desired name
+            choicesList: a list of options as strings
+            default: a string within the choicesList that will be selected by default. optional.
+            kwargs: keywords for FormCombo
+        &#34;&#34;&#34;
+        formCombo = FormCombo(name, choicesList, default, **kwargs)
+        self.subforms.append(formCombo)
+        return formCombo
+
+    def addFormChecklist(self, name, choicesList, default=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form checklist to this panel.
+        Args:
+            name: the checklist desired name
+            choicesList: a list of options as strings
+            default: a list of string within the choicesList that will be selected by default
+            kwargs: keywords for FormCheckList
+        &#34;&#34;&#34;
+        if default is None:
+            default = []
+        f = FormChecklist(
+            name, choicesList, default, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormCheckbox(self, name, text, default, **kwargs):
+        &#34;&#34;&#34;
+        Add a form checkbox to this panel.
+
+        Args:
+            name: the checkbox desired name
+            text: a label that will be in front of the checkbox
+            default: a boolean indicating if the checkbox should be check by default
+            kwargs: keywords for FormCheckbox
+        &#34;&#34;&#34;
+        f = FormCheckbox(name, text, default, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormStr(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, contextualMenu=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form String to this panel.
+
+        Args:
+            name: the string var desired name
+            regexvalidation: a regex to validate this input
+            default: a default value for this input
+            width: the width size of the input
+            kwargs: keywords for FormStr
+        &#34;&#34;&#34;
+        f = FormStr(name, regexvalidation, default, contextualMenu, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormSearchBar(self, name, searchCallback, list_of_forms_to_fill, default=&#34;&#34;, **kwargs):
+        &#34;&#34;&#34;
+        Add a form String to this panel.
+
+        Args:
+            name: the string var desired name
+            searchCallback: a callback
+            list_of_forms_to_fill: a list of form that this searchbar callback should be able to fill
+            default: a default value for this input
+            kwargs: keywords for FormSearchbar
+        &#34;&#34;&#34;
+        f = FormSearchBar(
+            name, searchCallback, self, list_of_forms_to_fill, default, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormFile(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, **kwargs):
+        &#34;&#34;&#34;
+        Add a form String to this panel.
+
+        Args:
+            name: the string var desired name
+            regexvalidation: a regex validating the form
+            default: a default value for this input
+            kwargs: keywords for FormFile
+        &#34;&#34;&#34;
+        f = FormFile(name, regexvalidation, default, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormText(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, contextualMenu=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Text to this panel.
+
+        Args:
+            name: the text var desired name
+            regexvalidation: a regex to validate this input
+            default: a default value for this input
+            kwargs: keywords for FormText
+        &#34;&#34;&#34;
+        f = FormText(name, regexvalidation, default, contextualMenu, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormDate(self, name, root, default=&#34;&#34;, dateformat=&#39;%d/%m/%Y %H:%M:%S&#39;, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Date to this panel.
+
+        Args:
+            name: the text var desired name
+            default: a default value for this input
+            dateformat: a date format to validate this input. Default to dd/mm/YYYY hh:mm:ss.
+            kwargs: keywords for FormDate
+        &#34;&#34;&#34;
+        f = FormDate(name, root, default, dateformat, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormLabel(self, name, text=&#34;&#34;, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Label to this panel.
+
+        Args:
+            name: the label desired name
+            text: the text printed by the label
+            kwargs: keywords for FormLabel
+        &#34;&#34;&#34;
+        f = FormLabel(name, text, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormHelper(self, helper, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Label to this panel.
+
+        Args:
+            helper: the text printed by the helper
+            kwargs: keywords for FormHelper
+        &#34;&#34;&#34;
+        f = FormHelper(&#34;&#34;, helper, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormButton(self, name, callback, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Button to this panel.
+
+        Args:
+            name: the button desired name and text
+            callback: a function that will be called when the button is pressed.
+            kwargs: keywords for FormButton
+        &#34;&#34;&#34;
+        f = FormButton(name, callback, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormHidden(self, name, default=&#34;&#34;):
+        &#34;&#34;&#34;
+        Add a form Hidden to this panel.
+
+        Args:
+            name: the hidden value desired name and text
+            default: the value to be hidden
+        &#34;&#34;&#34;
+        f = FormHidden(name, default)
+        self.subforms.append(f)
+        return f
+
+    def addFormPanel(self, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Pannel to this panel.
+
+        Args:
+            kwargs: can indicate grid=True if a grid layout must be set for subelements.
+        Returns:
+            Return the new panel to add other forms in.
+        &#34;&#34;&#34;
+        pan = FormPanel(**kwargs)
+        self.subforms.append(pan)
+        return pan
+
+    def clear(self):
+        &#34;&#34;&#34;
+        Empties the panel&#39;s subforms.
+        &#34;&#34;&#34;
+        del self.subforms
+        self.subforms = []</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel"><code class="flex name class">
+<span>class <span class="ident">FormPanel</span></span>
+<span>(</span><span>**kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Form field representing a panel. It is composed of other forms.
+Additional kwargs values:
+grid: set the layout to grid, default to False
+Default setted values:
+width=500
+if pack : padx = 10, pady = 5, side = top, fill = x
+if grid: row = column = 0 sticky = "East"</p>
+<p>Constructor for a panel.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FormPanel(Form):
+    &#34;&#34;&#34;
+    Form field representing a panel. It is composed of other forms.
+    Additional kwargs values:
+        grid: set the layout to grid, default to False
+    Default setted values:
+        width=500
+        if pack : padx = 10, pady = 5, side = top, fill = x
+        if grid: row = column = 0 sticky = &#34;East&#34;
+    &#34;&#34;&#34;
+
+    def __init__(self, **kwargs):
+        &#34;&#34;&#34;
+        Constructor for a panel.
+        &#34;&#34;&#34;
+        super().__init__(&#34;panel&#34;)
+        self.subforms = []
+        self.kwargs = kwargs
+        self.gridLayout = self.getKw(&#34;grid&#34;, False)
+        self.panel = None
+
+    def constructView(self, parent):
+        &#34;&#34;&#34;
+        Create the panel view by constructing all subforms views inside a tkinter panel the parent view given.
+        Args:
+            parent: parent view or parent FormPanel.
+        &#34;&#34;&#34;
+        if isinstance(parent, FormPanel):  # Panel is a subpanel
+            self.panel = ttk.Frame(parent.panel)
+        else:
+            self.panel = ttk.Frame(parent)
+        for form in self.subforms:
+            form.constructView(self)
+        if isinstance(parent, FormPanel):  # Panel is a subpanel
+            if parent.gridLayout:
+                self.panel.grid(column=self.getKw(
+                    &#34;column&#34;, 0), row=self.getKw(&#34;row&#34;, 0), **self.kwargs)
+            else:
+                self.panel.pack(fill=self.getKw(&#34;fill&#34;, &#34;x&#34;), side=self.getKw(
+                    &#34;side&#34;, &#34;top&#34;), pady=self.getKw(&#34;pady&#34;, 5), padx=self.getKw(&#34;padx&#34;, 10), **self.kwargs)
+        else:  # Master panel, packing
+            self.panel.pack(fill=&#34;both&#34;, side=&#34;top&#34;, pady=&#34;5&#34;, padx=&#34;30&#34;)
+
+    def checkForm(self):
+        &#34;&#34;&#34;
+        Check if this form is correctly filled. A panel is correctly filled if all subforms composing it are correctly filled.
+
+        Returns:
+            {
+                &#34;correct&#34;: True if the form is correctly filled, False otherwise.
+                &#34;msg&#34;: A message indicating what is not correctly filled.
+            }
+        &#34;&#34;&#34;
+        for form in self.subforms:
+            res, msg = form.checkForm()
+            if res == False:
+                return False, msg
+        return True, &#34;&#34;
+
+    def setFocusOn(self, name):
+        &#34;&#34;&#34;Set focus on the given form name
+        Args:
+            name: the form name to set the focus on
+        &#34;&#34;&#34;
+        for form in self.subforms:
+            if name == form.name:
+                form.setFocus()
+
+    def getValue(self):
+        &#34;&#34;&#34;
+        Return the form value. Required for a form.
+        Returns:
+            returns a list of tuple with subform&#39;s name and values.
+        &#34;&#34;&#34;
+        res = []
+        for form in self.subforms:
+            val = form.getValue()
+            if val is not None:
+                if type(val) is list:
+                    res += val
+                else:
+                    res.append((form.name, val))
+        return res
+
+    def addFormTreevw(self, name, headers,
+                      default_values=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form table to this panel.
+        Args:
+            name: the table desired name
+            headers: a list of 2 strings for the table headers
+            default_values: a dictionnary with key = column 0 and value = column 1
+            kwargs: Keywords for FormTreevw
+        &#34;&#34;&#34;
+        ret = FormTreevw(name, headers, default_values, **kwargs)
+        self.subforms.append(ret)
+        return ret
+
+    def addFormCombo(self, name, choicesList, default=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form combo to this panel.
+        Args:
+            name: the combobox desired name
+            choicesList: a list of options as strings
+            default: a string within the choicesList that will be selected by default. optional.
+            kwargs: keywords for FormCombo
+        &#34;&#34;&#34;
+        formCombo = FormCombo(name, choicesList, default, **kwargs)
+        self.subforms.append(formCombo)
+        return formCombo
+
+    def addFormChecklist(self, name, choicesList, default=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form checklist to this panel.
+        Args:
+            name: the checklist desired name
+            choicesList: a list of options as strings
+            default: a list of string within the choicesList that will be selected by default
+            kwargs: keywords for FormCheckList
+        &#34;&#34;&#34;
+        if default is None:
+            default = []
+        f = FormChecklist(
+            name, choicesList, default, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormCheckbox(self, name, text, default, **kwargs):
+        &#34;&#34;&#34;
+        Add a form checkbox to this panel.
+
+        Args:
+            name: the checkbox desired name
+            text: a label that will be in front of the checkbox
+            default: a boolean indicating if the checkbox should be check by default
+            kwargs: keywords for FormCheckbox
+        &#34;&#34;&#34;
+        f = FormCheckbox(name, text, default, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormStr(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, contextualMenu=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form String to this panel.
+
+        Args:
+            name: the string var desired name
+            regexvalidation: a regex to validate this input
+            default: a default value for this input
+            width: the width size of the input
+            kwargs: keywords for FormStr
+        &#34;&#34;&#34;
+        f = FormStr(name, regexvalidation, default, contextualMenu, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormSearchBar(self, name, searchCallback, list_of_forms_to_fill, default=&#34;&#34;, **kwargs):
+        &#34;&#34;&#34;
+        Add a form String to this panel.
+
+        Args:
+            name: the string var desired name
+            searchCallback: a callback
+            list_of_forms_to_fill: a list of form that this searchbar callback should be able to fill
+            default: a default value for this input
+            kwargs: keywords for FormSearchbar
+        &#34;&#34;&#34;
+        f = FormSearchBar(
+            name, searchCallback, self, list_of_forms_to_fill, default, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormFile(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, **kwargs):
+        &#34;&#34;&#34;
+        Add a form String to this panel.
+
+        Args:
+            name: the string var desired name
+            regexvalidation: a regex validating the form
+            default: a default value for this input
+            kwargs: keywords for FormFile
+        &#34;&#34;&#34;
+        f = FormFile(name, regexvalidation, default, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormText(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, contextualMenu=None, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Text to this panel.
+
+        Args:
+            name: the text var desired name
+            regexvalidation: a regex to validate this input
+            default: a default value for this input
+            kwargs: keywords for FormText
+        &#34;&#34;&#34;
+        f = FormText(name, regexvalidation, default, contextualMenu, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormDate(self, name, root, default=&#34;&#34;, dateformat=&#39;%d/%m/%Y %H:%M:%S&#39;, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Date to this panel.
+
+        Args:
+            name: the text var desired name
+            default: a default value for this input
+            dateformat: a date format to validate this input. Default to dd/mm/YYYY hh:mm:ss.
+            kwargs: keywords for FormDate
+        &#34;&#34;&#34;
+        f = FormDate(name, root, default, dateformat, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormLabel(self, name, text=&#34;&#34;, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Label to this panel.
+
+        Args:
+            name: the label desired name
+            text: the text printed by the label
+            kwargs: keywords for FormLabel
+        &#34;&#34;&#34;
+        f = FormLabel(name, text, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormHelper(self, helper, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Label to this panel.
+
+        Args:
+            helper: the text printed by the helper
+            kwargs: keywords for FormHelper
+        &#34;&#34;&#34;
+        f = FormHelper(&#34;&#34;, helper, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormButton(self, name, callback, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Button to this panel.
+
+        Args:
+            name: the button desired name and text
+            callback: a function that will be called when the button is pressed.
+            kwargs: keywords for FormButton
+        &#34;&#34;&#34;
+        f = FormButton(name, callback, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormHidden(self, name, default=&#34;&#34;):
+        &#34;&#34;&#34;
+        Add a form Hidden to this panel.
+
+        Args:
+            name: the hidden value desired name and text
+            default: the value to be hidden
+        &#34;&#34;&#34;
+        f = FormHidden(name, default)
+        self.subforms.append(f)
+        return f
+
+    def addFormPanel(self, **kwargs):
+        &#34;&#34;&#34;
+        Add a form Pannel to this panel.
+
+        Args:
+            kwargs: can indicate grid=True if a grid layout must be set for subelements.
+        Returns:
+            Return the new panel to add other forms in.
+        &#34;&#34;&#34;
+        pan = FormPanel(**kwargs)
+        self.subforms.append(pan)
+        return pan
+
+    def clear(self):
+        &#34;&#34;&#34;
+        Empties the panel&#39;s subforms.
+        &#34;&#34;&#34;
+        del self.subforms
+        self.subforms = []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Forms.Form.Form</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormButton"><code class="name flex">
+<span>def <span class="ident">addFormButton</span></span>(<span>self, name, callback, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form Button to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the button desired name and text</dd>
+<dt><strong><code>callback</code></strong></dt>
+<dd>a function that will be called when the button is pressed.</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormButton</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormButton(self, name, callback, **kwargs):
+    &#34;&#34;&#34;
+    Add a form Button to this panel.
+
+    Args:
+        name: the button desired name and text
+        callback: a function that will be called when the button is pressed.
+        kwargs: keywords for FormButton
+    &#34;&#34;&#34;
+    f = FormButton(name, callback, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormCheckbox"><code class="name flex">
+<span>def <span class="ident">addFormCheckbox</span></span>(<span>self, name, text, default, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form checkbox to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the checkbox desired name</dd>
+<dt><strong><code>text</code></strong></dt>
+<dd>a label that will be in front of the checkbox</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>a boolean indicating if the checkbox should be check by default</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormCheckbox</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormCheckbox(self, name, text, default, **kwargs):
+    &#34;&#34;&#34;
+    Add a form checkbox to this panel.
+
+    Args:
+        name: the checkbox desired name
+        text: a label that will be in front of the checkbox
+        default: a boolean indicating if the checkbox should be check by default
+        kwargs: keywords for FormCheckbox
+    &#34;&#34;&#34;
+    f = FormCheckbox(name, text, default, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormChecklist"><code class="name flex">
+<span>def <span class="ident">addFormChecklist</span></span>(<span>self, name, choicesList, default=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form checklist to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the checklist desired name</dd>
+<dt><strong><code>choicesList</code></strong></dt>
+<dd>a list of options as strings</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>a list of string within the choicesList that will be selected by default</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormCheckList</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormChecklist(self, name, choicesList, default=None, **kwargs):
+    &#34;&#34;&#34;
+    Add a form checklist to this panel.
+    Args:
+        name: the checklist desired name
+        choicesList: a list of options as strings
+        default: a list of string within the choicesList that will be selected by default
+        kwargs: keywords for FormCheckList
+    &#34;&#34;&#34;
+    if default is None:
+        default = []
+    f = FormChecklist(
+        name, choicesList, default, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormCombo"><code class="name flex">
+<span>def <span class="ident">addFormCombo</span></span>(<span>self, name, choicesList, default=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form combo to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the combobox desired name</dd>
+<dt><strong><code>choicesList</code></strong></dt>
+<dd>a list of options as strings</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>a string within the choicesList that will be selected by default. optional.</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormCombo</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormCombo(self, name, choicesList, default=None, **kwargs):
+    &#34;&#34;&#34;
+    Add a form combo to this panel.
+    Args:
+        name: the combobox desired name
+        choicesList: a list of options as strings
+        default: a string within the choicesList that will be selected by default. optional.
+        kwargs: keywords for FormCombo
+    &#34;&#34;&#34;
+    formCombo = FormCombo(name, choicesList, default, **kwargs)
+    self.subforms.append(formCombo)
+    return formCombo</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormDate"><code class="name flex">
+<span>def <span class="ident">addFormDate</span></span>(<span>self, name, root, default='', dateformat='%d/%m/%Y %H:%M:%S', **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form Date to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the text var desired name</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>a default value for this input</dd>
+<dt><strong><code>dateformat</code></strong></dt>
+<dd>a date format to validate this input. Default to dd/mm/YYYY hh:mm:ss.</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormDate</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormDate(self, name, root, default=&#34;&#34;, dateformat=&#39;%d/%m/%Y %H:%M:%S&#39;, **kwargs):
+    &#34;&#34;&#34;
+    Add a form Date to this panel.
+
+    Args:
+        name: the text var desired name
+        default: a default value for this input
+        dateformat: a date format to validate this input. Default to dd/mm/YYYY hh:mm:ss.
+        kwargs: keywords for FormDate
+    &#34;&#34;&#34;
+    f = FormDate(name, root, default, dateformat, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormFile"><code class="name flex">
+<span>def <span class="ident">addFormFile</span></span>(<span>self, name, regexvalidation='', default='', **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form String to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the string var desired name</dd>
+<dt><strong><code>regexvalidation</code></strong></dt>
+<dd>a regex validating the form</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>a default value for this input</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormFile</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormFile(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, **kwargs):
+    &#34;&#34;&#34;
+    Add a form String to this panel.
+
+    Args:
+        name: the string var desired name
+        regexvalidation: a regex validating the form
+        default: a default value for this input
+        kwargs: keywords for FormFile
+    &#34;&#34;&#34;
+    f = FormFile(name, regexvalidation, default, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormHelper"><code class="name flex">
+<span>def <span class="ident">addFormHelper</span></span>(<span>self, helper, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form Label to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>helper</code></strong></dt>
+<dd>the text printed by the helper</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormHelper</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormHelper(self, helper, **kwargs):
+    &#34;&#34;&#34;
+    Add a form Label to this panel.
+
+    Args:
+        helper: the text printed by the helper
+        kwargs: keywords for FormHelper
+    &#34;&#34;&#34;
+    f = FormHelper(&#34;&#34;, helper, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormHidden"><code class="name flex">
+<span>def <span class="ident">addFormHidden</span></span>(<span>self, name, default='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form Hidden to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the hidden value desired name and text</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>the value to be hidden</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormHidden(self, name, default=&#34;&#34;):
+    &#34;&#34;&#34;
+    Add a form Hidden to this panel.
+
+    Args:
+        name: the hidden value desired name and text
+        default: the value to be hidden
+    &#34;&#34;&#34;
+    f = FormHidden(name, default)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormLabel"><code class="name flex">
+<span>def <span class="ident">addFormLabel</span></span>(<span>self, name, text='', **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form Label to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the label desired name</dd>
+<dt><strong><code>text</code></strong></dt>
+<dd>the text printed by the label</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormLabel</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormLabel(self, name, text=&#34;&#34;, **kwargs):
+    &#34;&#34;&#34;
+    Add a form Label to this panel.
+
+    Args:
+        name: the label desired name
+        text: the text printed by the label
+        kwargs: keywords for FormLabel
+    &#34;&#34;&#34;
+    f = FormLabel(name, text, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormPanel"><code class="name flex">
+<span>def <span class="ident">addFormPanel</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form Pannel to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>can indicate grid=True if a grid layout must be set for subelements.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Return the new panel to add other forms in.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormPanel(self, **kwargs):
+    &#34;&#34;&#34;
+    Add a form Pannel to this panel.
+
+    Args:
+        kwargs: can indicate grid=True if a grid layout must be set for subelements.
+    Returns:
+        Return the new panel to add other forms in.
+    &#34;&#34;&#34;
+    pan = FormPanel(**kwargs)
+    self.subforms.append(pan)
+    return pan</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormSearchBar"><code class="name flex">
+<span>def <span class="ident">addFormSearchBar</span></span>(<span>self, name, searchCallback, list_of_forms_to_fill, default='', **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form String to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the string var desired name</dd>
+<dt><strong><code>searchCallback</code></strong></dt>
+<dd>a callback</dd>
+<dt><strong><code>list_of_forms_to_fill</code></strong></dt>
+<dd>a list of form that this searchbar callback should be able to fill</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>a default value for this input</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormSearchbar</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormSearchBar(self, name, searchCallback, list_of_forms_to_fill, default=&#34;&#34;, **kwargs):
+    &#34;&#34;&#34;
+    Add a form String to this panel.
+
+    Args:
+        name: the string var desired name
+        searchCallback: a callback
+        list_of_forms_to_fill: a list of form that this searchbar callback should be able to fill
+        default: a default value for this input
+        kwargs: keywords for FormSearchbar
+    &#34;&#34;&#34;
+    f = FormSearchBar(
+        name, searchCallback, self, list_of_forms_to_fill, default, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormStr"><code class="name flex">
+<span>def <span class="ident">addFormStr</span></span>(<span>self, name, regexvalidation='', default='', contextualMenu=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form String to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the string var desired name</dd>
+<dt><strong><code>regexvalidation</code></strong></dt>
+<dd>a regex to validate this input</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>a default value for this input</dd>
+<dt><strong><code>width</code></strong></dt>
+<dd>the width size of the input</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormStr</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormStr(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, contextualMenu=None, **kwargs):
+    &#34;&#34;&#34;
+    Add a form String to this panel.
+
+    Args:
+        name: the string var desired name
+        regexvalidation: a regex to validate this input
+        default: a default value for this input
+        width: the width size of the input
+        kwargs: keywords for FormStr
+    &#34;&#34;&#34;
+    f = FormStr(name, regexvalidation, default, contextualMenu, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormText"><code class="name flex">
+<span>def <span class="ident">addFormText</span></span>(<span>self, name, regexvalidation='', default='', contextualMenu=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form Text to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the text var desired name</dd>
+<dt><strong><code>regexvalidation</code></strong></dt>
+<dd>a regex to validate this input</dd>
+<dt><strong><code>default</code></strong></dt>
+<dd>a default value for this input</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keywords for FormText</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormText(self, name, regexvalidation=&#34;&#34;, default=&#34;&#34;, contextualMenu=None, **kwargs):
+    &#34;&#34;&#34;
+    Add a form Text to this panel.
+
+    Args:
+        name: the text var desired name
+        regexvalidation: a regex to validate this input
+        default: a default value for this input
+        kwargs: keywords for FormText
+    &#34;&#34;&#34;
+    f = FormText(name, regexvalidation, default, contextualMenu, **kwargs)
+    self.subforms.append(f)
+    return f</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.addFormTreevw"><code class="name flex">
+<span>def <span class="ident">addFormTreevw</span></span>(<span>self, name, headers, default_values=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add a form table to this panel.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the table desired name</dd>
+<dt><strong><code>headers</code></strong></dt>
+<dd>a list of 2 strings for the table headers</dd>
+<dt><strong><code>default_values</code></strong></dt>
+<dd>a dictionnary with key = column 0 and value = column 1</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>Keywords for FormTreevw</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addFormTreevw(self, name, headers,
+                  default_values=None, **kwargs):
+    &#34;&#34;&#34;
+    Add a form table to this panel.
+    Args:
+        name: the table desired name
+        headers: a list of 2 strings for the table headers
+        default_values: a dictionnary with key = column 0 and value = column 1
+        kwargs: Keywords for FormTreevw
+    &#34;&#34;&#34;
+    ret = FormTreevw(name, headers, default_values, **kwargs)
+    self.subforms.append(ret)
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.checkForm"><code class="name flex">
+<span>def <span class="ident">checkForm</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if this form is correctly filled. A panel is correctly filled if all subforms composing it are correctly filled.</p>
+<h2 id="returns">Returns</h2>
+<p>{
+"correct": True if the form is correctly filled, False otherwise.
+"msg": A message indicating what is not correctly filled.
+}</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def checkForm(self):
+    &#34;&#34;&#34;
+    Check if this form is correctly filled. A panel is correctly filled if all subforms composing it are correctly filled.
+
+    Returns:
+        {
+            &#34;correct&#34;: True if the form is correctly filled, False otherwise.
+            &#34;msg&#34;: A message indicating what is not correctly filled.
+        }
+    &#34;&#34;&#34;
+    for form in self.subforms:
+        res, msg = form.checkForm()
+        if res == False:
+            return False, msg
+    return True, &#34;&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.clear"><code class="name flex">
+<span>def <span class="ident">clear</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Empties the panel's subforms.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear(self):
+    &#34;&#34;&#34;
+    Empties the panel&#39;s subforms.
+    &#34;&#34;&#34;
+    del self.subforms
+    self.subforms = []</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.constructView"><code class="name flex">
+<span>def <span class="ident">constructView</span></span>(<span>self, parent)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create the panel view by constructing all subforms views inside a tkinter panel the parent view given.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>parent view or parent FormPanel.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def constructView(self, parent):
+    &#34;&#34;&#34;
+    Create the panel view by constructing all subforms views inside a tkinter panel the parent view given.
+    Args:
+        parent: parent view or parent FormPanel.
+    &#34;&#34;&#34;
+    if isinstance(parent, FormPanel):  # Panel is a subpanel
+        self.panel = ttk.Frame(parent.panel)
+    else:
+        self.panel = ttk.Frame(parent)
+    for form in self.subforms:
+        form.constructView(self)
+    if isinstance(parent, FormPanel):  # Panel is a subpanel
+        if parent.gridLayout:
+            self.panel.grid(column=self.getKw(
+                &#34;column&#34;, 0), row=self.getKw(&#34;row&#34;, 0), **self.kwargs)
+        else:
+            self.panel.pack(fill=self.getKw(&#34;fill&#34;, &#34;x&#34;), side=self.getKw(
+                &#34;side&#34;, &#34;top&#34;), pady=self.getKw(&#34;pady&#34;, 5), padx=self.getKw(&#34;padx&#34;, 10), **self.kwargs)
+    else:  # Master panel, packing
+        self.panel.pack(fill=&#34;both&#34;, side=&#34;top&#34;, pady=&#34;5&#34;, padx=&#34;30&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.getValue"><code class="name flex">
+<span>def <span class="ident">getValue</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the form value. Required for a form.</p>
+<h2 id="returns">Returns</h2>
+<p>returns a list of tuple with subform's name and values.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getValue(self):
+    &#34;&#34;&#34;
+    Return the form value. Required for a form.
+    Returns:
+        returns a list of tuple with subform&#39;s name and values.
+    &#34;&#34;&#34;
+    res = []
+    for form in self.subforms:
+        val = form.getValue()
+        if val is not None:
+            if type(val) is list:
+                res += val
+            else:
+                res.append((form.name, val))
+    return res</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Forms.FormPanel.FormPanel.setFocusOn"><code class="name flex">
+<span>def <span class="ident">setFocusOn</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set focus on the given form name</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the form name to set the focus on</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setFocusOn(self, name):
+    &#34;&#34;&#34;Set focus on the given form name
+    Args:
+        name: the form name to set the focus on
+    &#34;&#34;&#34;
+    for form in self.subforms:
+        if name == form.name:
+            form.setFocus()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Forms" href="index.html">Pollenisator.core.Forms</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel" href="#Pollenisator.core.Forms.FormPanel.FormPanel">FormPanel</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormButton" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormButton">addFormButton</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormCheckbox" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormCheckbox">addFormCheckbox</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormChecklist" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormChecklist">addFormChecklist</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormCombo" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormCombo">addFormCombo</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormDate" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormDate">addFormDate</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormFile" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormFile">addFormFile</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormHelper" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormHelper">addFormHelper</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormHidden" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormHidden">addFormHidden</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormLabel" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormLabel">addFormLabel</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormPanel" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormPanel">addFormPanel</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormSearchBar" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormSearchBar">addFormSearchBar</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormStr" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormStr">addFormStr</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormText" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormText">addFormText</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.addFormTreevw" href="#Pollenisator.core.Forms.FormPanel.FormPanel.addFormTreevw">addFormTreevw</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.checkForm" href="#Pollenisator.core.Forms.FormPanel.FormPanel.checkForm">checkForm</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.clear" href="#Pollenisator.core.Forms.FormPanel.FormPanel.clear">clear</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.constructView" href="#Pollenisator.core.Forms.FormPanel.FormPanel.constructView">constructView</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.getValue" href="#Pollenisator.core.Forms.FormPanel.FormPanel.getValue">getValue</a></code></li>
+<li><code><a title="Pollenisator.core.Forms.FormPanel.FormPanel.setFocusOn" href="#Pollenisator.core.Forms.FormPanel.FormPanel.setFocusOn">setFocusOn</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

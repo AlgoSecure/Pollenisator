@@ -1,0 +1,1533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Application.Treeviews.PollenisatorTreeview API documentation</title>
+<meta name="description" content="PollenisatorTreeview abstract class
+Ttk treeview abstract class to be inherited added functions." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Application.Treeviews.PollenisatorTreeview</code></h1>
+</header>
+<section id="section-intro">
+<p>PollenisatorTreeview abstract class
+Ttk treeview abstract class to be inherited added functions.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+PollenisatorTreeview abstract class
+Ttk treeview abstract class to be inherited added functions.
+&#34;&#34;&#34;
+import json
+import os
+import tkinter as tk
+import tkinter.ttk as ttk
+
+from bson.objectid import ObjectId
+from bson.errors import InvalidId
+from core.Components.Settings import Settings
+
+from core.Components.Filter import Filter, ParseError
+from core.Application.Dialogs.ChildDialogQuestion import ChildDialogQuestion
+
+
+class PollenisatorTreeview(ttk.Treeview):
+    &#34;&#34;&#34;PollenisatorTreeview class
+    Defines common treeview features not implemented by ttk.
+    Deletion, expand, collapse, contextualMenu, selection.
+    Object stored in a tree view must have a unique iid.
+    To make it easier, treeview iid used are their mongo database ID.
+    For lists it is given by the view DbToTreeview method.
+    &#34;&#34;&#34;
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+
+    def __init__(self, appli, parentFrame):
+        &#34;&#34;&#34;
+        Args:
+            appli: a reference to the main Application object.
+            parentFrame: the parent tkinter window object.
+        &#34;&#34;&#34;
+        ttk.Treeview.__init__(self, parentFrame)
+        self.appli = appli
+        self.parentFrame = parentFrame
+        self._detached = []  # Temporary detached objects (filtered objects)
+        self._moved = []  # Objects that were moved to be repositioned later
+        self._hidden = []  #  Hidden objects reference
+        self.views = {}  # Dict of views stored in this treeview.
+        self.contextualMenu = None
+        self.tag_configure(&#39;OOS&#39;, background=&#34;grey&#34;)
+        tags = Settings.getTags()
+        for tag, color in tags.items():
+            self.tag_configure(tag, background=color)
+
+    def resetTags(self, dbId):
+        &#34;&#34;&#34;
+        Remove all tags of the node with given id.
+        Args:
+            dbId: The databaseID of the object to remove tags of
+        &#34;&#34;&#34;
+        try:
+            # removes all tags, including todo
+            self.item(str(dbId), tags=())
+        except tk.TclError:
+            pass
+
+    def _initContextualsMenus(self):
+        &#34;&#34;&#34;
+        Create the contextual menu of variables
+        &#34;&#34;&#34;
+        self.contextualMenu = tk.Menu(self.parentFrame, tearoff=0, background=&#39;#A8CF4D&#39;,
+                                      foreground=&#39;white&#39;, activebackground=&#39;#A8CF4D&#39;, activeforeground=&#39;white&#39;)
+        self.contextualMenu.selection = None
+        self.contextualMenu.add_command(
+            label=&#34;Sort children&#34;, command=self.sort)
+        self.contextualMenu.add_command(
+            label=&#34;Expand&#34;, command=self.expand)
+        self.contextualMenu.add_command(
+            label=&#34;Collapse&#34;, command=self.collapse)
+        self.contextualMenu.add_command(
+            label=&#34;Close&#34;, command=self.closeMenu)
+
+    def closeMenu(self, _event=None):
+        &#34;&#34;&#34;Does nothing. Used to close the contextual menu.&#34;&#34;&#34;
+        return  # Do nothing.
+
+    def sort(self, node=None):
+        &#34;&#34;&#34;
+        Sort the children node of a treeview node. The sorting key is the node&#39;s text.
+        Args:
+            node: the parent node to sort children of. 
+                If none is given, will sort last right clicked node.
+                Default is None.
+        &#34;&#34;&#34;
+        if node is None:
+            nodeToSort = str(self.contextualMenu.selection)
+        else:
+            nodeToSort = node
+        l = []
+        for k in self.get_children(nodeToSort):
+            text_k = self.item(k)[&#34;text&#34;]
+            view_o = self.getViewFromId(str(k))
+            if view_o is not None:
+                l.append((k, text_k, view_o))
+        if l:
+            l.sort(key=lambda t: t[2].key() if t[2] is not None else None)
+            for index, (iid, _, _) in enumerate(l):
+                self.move(iid, nodeToSort, index)
+
+    def getViewFromId(self, dbId):
+        &#34;&#34;&#34;
+        Craft a specific Molde from the Models classes with just a valid Mongo Object Id.
+
+        Args:
+            dbId: the database Mongo Id to return a view of.
+        &#34;&#34;&#34;
+        try:
+            return self.views[dbId][&#34;view&#34;]
+        except KeyError:
+            return None
+
+    def switchExpandCollapse(self, openAction=True):
+        &#34;&#34;&#34;
+        Expand or collapse all children recursivly of a treeview node.
+        Args:
+            openAction: Expand if True, Collapse if False.
+        &#34;&#34;&#34;
+        nodeToExpand = str(self.contextualMenu.selection)
+        self.item(nodeToExpand, open=openAction)
+        children = list(self.get_children(nodeToExpand))
+        while len(children) &gt; 0:
+            child = children[0]
+            children = children + list(self.get_children(child))
+            self.item(child, open=openAction)
+            del children[0]
+
+    def _getTreeItemState(self, node, toFill):
+        &#34;&#34;&#34;
+        Recursive function to get a list of children opened node.
+        Args:
+            node: the node will want to recursively list opened node of.
+            toFill: a list to fill with opened nodes.
+        &#34;&#34;&#34;
+        if self.item(node)[&#34;open&#34;]:
+            toFill.append(str(node))
+        children = self.get_children(node)
+        for child in children:
+            self._getTreeItemState(child, toFill)
+        return toFill
+
+    def saveState(self, name):
+        &#34;&#34;&#34;
+        Save opened nodes list state to a file.
+        file name is given in arguments and stored as an hidden file in Pollenisator/local/states/ folder.
+        Args:
+            name: the name of this treeview to save.
+                  A Dot (&#34;.&#34;) will be prepended to the name to make the resulting file hidden on linux.
+        &#34;&#34;&#34;
+        toFill = []
+        ret = self._getTreeItemState(&#39;&#39;, toFill)
+        directory = os.path.join(
+            PollenisatorTreeview.dir_path, &#34;../../../local/states/&#34;)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        path = os.path.join(directory, &#34;.&#34;+name)
+        with open(path, &#34;w&#34;) as f:
+            f.write(json.dumps(ret))
+
+    def loadState(self, name):
+        &#34;&#34;&#34;
+        Load opened nodes list state from a file.
+        Restore the state if its exists.
+        file name is given in arguments and it must be stored as an hidden file in Pollenisator/local/states/ folder.
+        Args:
+            name: the name of this treeview to save.
+                  The full path to local/states folder and a Dot (&#34;.&#34;) will be prepended to the name.
+        &#34;&#34;&#34;
+        directory = os.path.join(
+            PollenisatorTreeview.dir_path, &#34;../../../local/states/&#34;)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        path = os.path.join(directory, &#34;.&#34;+name)
+        state = None
+        try:
+            with open(path, &#34;r&#34;) as f:
+                state = json.loads(f.read())
+        except FileNotFoundError:
+            state = None
+        if state is not None:
+            self.restoreTreeItemState(state)
+
+    def deleteState(self, name):
+        &#34;&#34;&#34;
+        Delete the given name state file
+        file name is given in arguments and it must be stored as an hidden file in Pollenisator/local/states/ folder.
+        Args:
+            name: the name of this treeview to delete.
+                  The full path to local/states folder and a Dot (&#34;.&#34;) will be prepended to the name.
+        &#34;&#34;&#34;
+        try:
+            path = os.path.join(PollenisatorTreeview.dir_path,
+                                &#34;../../../local/states/.&#34;+name)
+            os.remove(path)
+        except FileNotFoundError:
+            pass
+
+    def restoreTreeItemState(self, state):
+        &#34;&#34;&#34;
+        Restore the given state.
+        Args:
+            state: a list of iid to open in the treeview.
+        &#34;&#34;&#34;
+        for k in state:
+            try:
+                self.item(k, open=True)
+            except tk.TclError:
+                pass
+
+    def expand(self):
+        &#34;&#34;&#34;
+        Expand all children recursivly of a treeview node.
+        &#34;&#34;&#34;
+        self.switchExpandCollapse(True)
+
+    def collapse(self):
+        &#34;&#34;&#34;
+        Collapse all children recursivly of a treeview node.
+        &#34;&#34;&#34;
+        self.switchExpandCollapse(False)
+
+    def doPopup(self, event):
+        &#34;&#34;&#34;
+        Open the popup contextual menu of the treeview.
+
+        Args:
+            event: a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+        &#34;&#34;&#34;
+        # display the popup menu
+        try:
+            self.contextualMenu.post(event.x_root, event.y_root)
+        finally:
+            # make sure to release the grab (Tk 8.0a1 only)
+            self.contextualMenu.grab_release()
+        self.contextualMenu.focus_set()
+        self.contextualMenu.bind(&#39;&lt;FocusOut&gt;&#39;, self.popupFocusOut)
+
+    def popupFocusOut(self, _event=None):
+        &#34;&#34;&#34;Called when the contextual menu loses focus. Closes it.
+        Args:
+            _event: default to None
+        &#34;&#34;&#34;
+        self.contextualMenu.unpost()
+
+    def deleteSelected(self, _event):
+        &#34;&#34;&#34;
+        Interface to delete a database object from an event.
+        Prompt the user a confirmation window.
+        Args:
+            _event: not used, a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+        &#34;&#34;&#34;
+        n = len(self.selection())
+        dialog = ChildDialogQuestion(self.parentFrame,
+                                     &#34;DELETE WARNING&#34;, &#34;Becareful for you are about to delete &#34;+str(n) + &#34; entries and there is no turning back.&#34;, [&#34;Delete&#34;, &#34;Cancel&#34;])
+        self.wait_window(dialog.app)
+        if dialog.rvalue != &#34;Delete&#34;:
+            return
+        for selected in self.selection():
+            view = self.getViewFromId(selected)
+            if view is not None:
+                view.delete(None, False)
+
+    def load(self, _event=None):
+        &#34;&#34;&#34;To be overriden
+        Args:
+            _event: not used, a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+        &#34;&#34;&#34;
+        return
+
+    def onTreeviewSelect(self, _event=None):
+        &#34;&#34;&#34;
+        Return ObjectId of selection if it is a valid bson objectid.
+        Else return the string of teeview iid.
+        Make the viewframe empty.
+        Args:
+            _event: the treeview node clicked. Not used
+        Returns:
+            If selection is empty, returns None
+            Return ObjectId of selection if it is a valid bson objectid.
+            Else return the string of teeview iid.
+        &#34;&#34;&#34;
+        selec = self.selection()
+        if len(selec) == 0:
+            return None
+        item = selec[0]
+            # the treeview node can either be an object view or a parent node used to store its children and to insert new nodes.
+        ret = str(item)
+        try:
+            # This will raise an exception if the treeview item selected was not a database id.
+            # This should only be the case for list of objects ids.
+            # An object double click open the list item&#39;s type modifying form.
+            ret = ObjectId(item)
+        except InvalidId:
+            pass # str
+        if len(self.selection()) == 1:
+            for widget in self.appli.viewframe.winfo_children():
+                widget.destroy()
+        return ret
+
+    def filterTreeview(self, query, settings=None):
+        &#34;&#34;&#34;
+        Deattach objects in the treeview that does not match the query and search settings.
+        Args:
+            query: filter query string
+            settings: a dict of options:
+                * &#34;search_exact_match&#34;: for exact matching, default to False
+                *  &#34;search_show_hidden&#34; : to enable showing hidden objects, default to False
+             Default is None.
+        Returns:
+            True if the filter is done, else if an error occured. Most probably if the query is bad.
+        &#34;&#34;&#34;
+        # Reload local settings and prepare search object.
+        searcher = None
+        if query.strip() != &#34;&#34;:
+            try:
+                if settings is None:
+                    searcher = Filter(query, True)
+                else:
+                    searcher = Filter(
+                        query, settings.local_settings.get(&#34;search_exact_match&#34;, False))
+            except ParseError as e:
+                tk.messagebox.showerror(&#34;Search error&#34;, str(e))
+                return False
+        # Filter treeview according to the settings
+        if settings is None:
+            self._filterTreeview(searcher, False)
+        else:
+            self._filterTreeview(
+                searcher, settings.local_settings.get(&#34;search_show_hidden&#34;, False))
+        return True
+
+    def unfilter(self):
+        &#34;&#34;&#34;Reattach all detached objects and reposition them.
+        &#34;&#34;&#34;
+        detached = sorted(self._detached, key=lambda x: len(x[0]))
+        for detached in self._detached:
+            itemId = detached[0]
+            parentId = &#39;&#39; if detached[1] is None else detached[1]
+            try:
+                self.reattach(itemId, parentId, 0)
+            except tk.TclError:
+                pass
+        for moved in self._moved:
+            itemId = moved[0]
+            parentId = &#39;&#39; if moved[1] is None else moved[1]
+            try:
+                self.move(itemId, parentId, 0)
+            except tk.TclError:
+                pass
+            view_o = self.getViewFromId(itemId)
+            try:
+                self.item(itemId, text=str(view_o.controller.getModelRepr()))
+            except tk.TclError:
+                pass
+        for hidden in self._hidden:
+            try:
+                self.detach(str(hidden[0]))
+            except tk.TclError:
+                pass
+        self._detached = []
+        self._moved = []
+
+    def unhideTemp(self):
+        &#34;&#34;&#34;Reattach all hidden objects but keep in memory that they are hidden.
+        &#34;&#34;&#34;
+        hiddens = sorted(self._hidden, key=lambda x: len(x[0]))
+        for hidden in hiddens:
+            itemId = hidden[0]
+            parentId = &#39;&#39; if hidden[1] is None else hidden[1]
+            try:
+                self.reattach(itemId, parentId, 0)
+            except tk.TclError:
+                continue
+
+    def _filterTreeview(self, query, show_hidden=True):
+        &#34;&#34;&#34;Apply the query on the treeview.
+        Args:
+            query: the core.Components.Search object that hold the informations
+            show_hidden: will filter the hidden object as well and show them if they match the filter. Default to True.
+        &#34;&#34;&#34;
+        # reattach every one
+        self.unfilter()
+        if query is not None:
+            results_iid = query.getIds(self)
+            if len(results_iid) != 0:
+                if show_hidden:
+                    self.unhideTemp()
+                self._brutSearcher(results_iid)
+            else:
+                tk.messagebox.showerror(&#34;No results&#34;, &#34;No results found&#34;)
+
+    def _brutSearcher(self, results_iid, parentItem=&#39;&#39;):
+        &#34;&#34;&#34;
+        Check all children of the item given to see if their iid is in the resukts_iid.
+        If they are in it : Move them to the root (keep track of that in the self._moved list) and replace teir text with the detailed one.
+        If they are not it it: detach them (keep track of that in the self._detached list)
+        Args:
+            results_iid: a list to complete with matching results iid
+            parentItem: an parent treeview node to start from recurisve search
+        &#34;&#34;&#34;
+        children = list(self.get_children(parentItem))
+        for item_id in children:
+            self._brutSearcher(results_iid, item_id)
+            if item_id not in results_iid:
+                self._detached.append([item_id, parentItem])
+                self.detach(item_id)
+            else:
+                self._moved.append([item_id, parentItem])
+                view_o = self.getViewFromId(item_id)
+                self.move(item_id, &#39;&#39;, &#39;end&#39;)
+                self.item(item_id, text=view_o.controller.getDetailedString())</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview"><code class="flex name class">
+<span>class <span class="ident">PollenisatorTreeview</span></span>
+<span>(</span><span>appli, parentFrame)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>PollenisatorTreeview class
+Defines common treeview features not implemented by ttk.
+Deletion, expand, collapse, contextualMenu, selection.
+Object stored in a tree view must have a unique iid.
+To make it easier, treeview iid used are their mongo database ID.
+For lists it is given by the view DbToTreeview method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appli</code></strong></dt>
+<dd>a reference to the main Application object.</dd>
+<dt><strong><code>parentFrame</code></strong></dt>
+<dd>the parent tkinter window object.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PollenisatorTreeview(ttk.Treeview):
+    &#34;&#34;&#34;PollenisatorTreeview class
+    Defines common treeview features not implemented by ttk.
+    Deletion, expand, collapse, contextualMenu, selection.
+    Object stored in a tree view must have a unique iid.
+    To make it easier, treeview iid used are their mongo database ID.
+    For lists it is given by the view DbToTreeview method.
+    &#34;&#34;&#34;
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+
+    def __init__(self, appli, parentFrame):
+        &#34;&#34;&#34;
+        Args:
+            appli: a reference to the main Application object.
+            parentFrame: the parent tkinter window object.
+        &#34;&#34;&#34;
+        ttk.Treeview.__init__(self, parentFrame)
+        self.appli = appli
+        self.parentFrame = parentFrame
+        self._detached = []  # Temporary detached objects (filtered objects)
+        self._moved = []  # Objects that were moved to be repositioned later
+        self._hidden = []  #  Hidden objects reference
+        self.views = {}  # Dict of views stored in this treeview.
+        self.contextualMenu = None
+        self.tag_configure(&#39;OOS&#39;, background=&#34;grey&#34;)
+        tags = Settings.getTags()
+        for tag, color in tags.items():
+            self.tag_configure(tag, background=color)
+
+    def resetTags(self, dbId):
+        &#34;&#34;&#34;
+        Remove all tags of the node with given id.
+        Args:
+            dbId: The databaseID of the object to remove tags of
+        &#34;&#34;&#34;
+        try:
+            # removes all tags, including todo
+            self.item(str(dbId), tags=())
+        except tk.TclError:
+            pass
+
+    def _initContextualsMenus(self):
+        &#34;&#34;&#34;
+        Create the contextual menu of variables
+        &#34;&#34;&#34;
+        self.contextualMenu = tk.Menu(self.parentFrame, tearoff=0, background=&#39;#A8CF4D&#39;,
+                                      foreground=&#39;white&#39;, activebackground=&#39;#A8CF4D&#39;, activeforeground=&#39;white&#39;)
+        self.contextualMenu.selection = None
+        self.contextualMenu.add_command(
+            label=&#34;Sort children&#34;, command=self.sort)
+        self.contextualMenu.add_command(
+            label=&#34;Expand&#34;, command=self.expand)
+        self.contextualMenu.add_command(
+            label=&#34;Collapse&#34;, command=self.collapse)
+        self.contextualMenu.add_command(
+            label=&#34;Close&#34;, command=self.closeMenu)
+
+    def closeMenu(self, _event=None):
+        &#34;&#34;&#34;Does nothing. Used to close the contextual menu.&#34;&#34;&#34;
+        return  # Do nothing.
+
+    def sort(self, node=None):
+        &#34;&#34;&#34;
+        Sort the children node of a treeview node. The sorting key is the node&#39;s text.
+        Args:
+            node: the parent node to sort children of. 
+                If none is given, will sort last right clicked node.
+                Default is None.
+        &#34;&#34;&#34;
+        if node is None:
+            nodeToSort = str(self.contextualMenu.selection)
+        else:
+            nodeToSort = node
+        l = []
+        for k in self.get_children(nodeToSort):
+            text_k = self.item(k)[&#34;text&#34;]
+            view_o = self.getViewFromId(str(k))
+            if view_o is not None:
+                l.append((k, text_k, view_o))
+        if l:
+            l.sort(key=lambda t: t[2].key() if t[2] is not None else None)
+            for index, (iid, _, _) in enumerate(l):
+                self.move(iid, nodeToSort, index)
+
+    def getViewFromId(self, dbId):
+        &#34;&#34;&#34;
+        Craft a specific Molde from the Models classes with just a valid Mongo Object Id.
+
+        Args:
+            dbId: the database Mongo Id to return a view of.
+        &#34;&#34;&#34;
+        try:
+            return self.views[dbId][&#34;view&#34;]
+        except KeyError:
+            return None
+
+    def switchExpandCollapse(self, openAction=True):
+        &#34;&#34;&#34;
+        Expand or collapse all children recursivly of a treeview node.
+        Args:
+            openAction: Expand if True, Collapse if False.
+        &#34;&#34;&#34;
+        nodeToExpand = str(self.contextualMenu.selection)
+        self.item(nodeToExpand, open=openAction)
+        children = list(self.get_children(nodeToExpand))
+        while len(children) &gt; 0:
+            child = children[0]
+            children = children + list(self.get_children(child))
+            self.item(child, open=openAction)
+            del children[0]
+
+    def _getTreeItemState(self, node, toFill):
+        &#34;&#34;&#34;
+        Recursive function to get a list of children opened node.
+        Args:
+            node: the node will want to recursively list opened node of.
+            toFill: a list to fill with opened nodes.
+        &#34;&#34;&#34;
+        if self.item(node)[&#34;open&#34;]:
+            toFill.append(str(node))
+        children = self.get_children(node)
+        for child in children:
+            self._getTreeItemState(child, toFill)
+        return toFill
+
+    def saveState(self, name):
+        &#34;&#34;&#34;
+        Save opened nodes list state to a file.
+        file name is given in arguments and stored as an hidden file in Pollenisator/local/states/ folder.
+        Args:
+            name: the name of this treeview to save.
+                  A Dot (&#34;.&#34;) will be prepended to the name to make the resulting file hidden on linux.
+        &#34;&#34;&#34;
+        toFill = []
+        ret = self._getTreeItemState(&#39;&#39;, toFill)
+        directory = os.path.join(
+            PollenisatorTreeview.dir_path, &#34;../../../local/states/&#34;)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        path = os.path.join(directory, &#34;.&#34;+name)
+        with open(path, &#34;w&#34;) as f:
+            f.write(json.dumps(ret))
+
+    def loadState(self, name):
+        &#34;&#34;&#34;
+        Load opened nodes list state from a file.
+        Restore the state if its exists.
+        file name is given in arguments and it must be stored as an hidden file in Pollenisator/local/states/ folder.
+        Args:
+            name: the name of this treeview to save.
+                  The full path to local/states folder and a Dot (&#34;.&#34;) will be prepended to the name.
+        &#34;&#34;&#34;
+        directory = os.path.join(
+            PollenisatorTreeview.dir_path, &#34;../../../local/states/&#34;)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        path = os.path.join(directory, &#34;.&#34;+name)
+        state = None
+        try:
+            with open(path, &#34;r&#34;) as f:
+                state = json.loads(f.read())
+        except FileNotFoundError:
+            state = None
+        if state is not None:
+            self.restoreTreeItemState(state)
+
+    def deleteState(self, name):
+        &#34;&#34;&#34;
+        Delete the given name state file
+        file name is given in arguments and it must be stored as an hidden file in Pollenisator/local/states/ folder.
+        Args:
+            name: the name of this treeview to delete.
+                  The full path to local/states folder and a Dot (&#34;.&#34;) will be prepended to the name.
+        &#34;&#34;&#34;
+        try:
+            path = os.path.join(PollenisatorTreeview.dir_path,
+                                &#34;../../../local/states/.&#34;+name)
+            os.remove(path)
+        except FileNotFoundError:
+            pass
+
+    def restoreTreeItemState(self, state):
+        &#34;&#34;&#34;
+        Restore the given state.
+        Args:
+            state: a list of iid to open in the treeview.
+        &#34;&#34;&#34;
+        for k in state:
+            try:
+                self.item(k, open=True)
+            except tk.TclError:
+                pass
+
+    def expand(self):
+        &#34;&#34;&#34;
+        Expand all children recursivly of a treeview node.
+        &#34;&#34;&#34;
+        self.switchExpandCollapse(True)
+
+    def collapse(self):
+        &#34;&#34;&#34;
+        Collapse all children recursivly of a treeview node.
+        &#34;&#34;&#34;
+        self.switchExpandCollapse(False)
+
+    def doPopup(self, event):
+        &#34;&#34;&#34;
+        Open the popup contextual menu of the treeview.
+
+        Args:
+            event: a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+        &#34;&#34;&#34;
+        # display the popup menu
+        try:
+            self.contextualMenu.post(event.x_root, event.y_root)
+        finally:
+            # make sure to release the grab (Tk 8.0a1 only)
+            self.contextualMenu.grab_release()
+        self.contextualMenu.focus_set()
+        self.contextualMenu.bind(&#39;&lt;FocusOut&gt;&#39;, self.popupFocusOut)
+
+    def popupFocusOut(self, _event=None):
+        &#34;&#34;&#34;Called when the contextual menu loses focus. Closes it.
+        Args:
+            _event: default to None
+        &#34;&#34;&#34;
+        self.contextualMenu.unpost()
+
+    def deleteSelected(self, _event):
+        &#34;&#34;&#34;
+        Interface to delete a database object from an event.
+        Prompt the user a confirmation window.
+        Args:
+            _event: not used, a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+        &#34;&#34;&#34;
+        n = len(self.selection())
+        dialog = ChildDialogQuestion(self.parentFrame,
+                                     &#34;DELETE WARNING&#34;, &#34;Becareful for you are about to delete &#34;+str(n) + &#34; entries and there is no turning back.&#34;, [&#34;Delete&#34;, &#34;Cancel&#34;])
+        self.wait_window(dialog.app)
+        if dialog.rvalue != &#34;Delete&#34;:
+            return
+        for selected in self.selection():
+            view = self.getViewFromId(selected)
+            if view is not None:
+                view.delete(None, False)
+
+    def load(self, _event=None):
+        &#34;&#34;&#34;To be overriden
+        Args:
+            _event: not used, a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+        &#34;&#34;&#34;
+        return
+
+    def onTreeviewSelect(self, _event=None):
+        &#34;&#34;&#34;
+        Return ObjectId of selection if it is a valid bson objectid.
+        Else return the string of teeview iid.
+        Make the viewframe empty.
+        Args:
+            _event: the treeview node clicked. Not used
+        Returns:
+            If selection is empty, returns None
+            Return ObjectId of selection if it is a valid bson objectid.
+            Else return the string of teeview iid.
+        &#34;&#34;&#34;
+        selec = self.selection()
+        if len(selec) == 0:
+            return None
+        item = selec[0]
+            # the treeview node can either be an object view or a parent node used to store its children and to insert new nodes.
+        ret = str(item)
+        try:
+            # This will raise an exception if the treeview item selected was not a database id.
+            # This should only be the case for list of objects ids.
+            # An object double click open the list item&#39;s type modifying form.
+            ret = ObjectId(item)
+        except InvalidId:
+            pass # str
+        if len(self.selection()) == 1:
+            for widget in self.appli.viewframe.winfo_children():
+                widget.destroy()
+        return ret
+
+    def filterTreeview(self, query, settings=None):
+        &#34;&#34;&#34;
+        Deattach objects in the treeview that does not match the query and search settings.
+        Args:
+            query: filter query string
+            settings: a dict of options:
+                * &#34;search_exact_match&#34;: for exact matching, default to False
+                *  &#34;search_show_hidden&#34; : to enable showing hidden objects, default to False
+             Default is None.
+        Returns:
+            True if the filter is done, else if an error occured. Most probably if the query is bad.
+        &#34;&#34;&#34;
+        # Reload local settings and prepare search object.
+        searcher = None
+        if query.strip() != &#34;&#34;:
+            try:
+                if settings is None:
+                    searcher = Filter(query, True)
+                else:
+                    searcher = Filter(
+                        query, settings.local_settings.get(&#34;search_exact_match&#34;, False))
+            except ParseError as e:
+                tk.messagebox.showerror(&#34;Search error&#34;, str(e))
+                return False
+        # Filter treeview according to the settings
+        if settings is None:
+            self._filterTreeview(searcher, False)
+        else:
+            self._filterTreeview(
+                searcher, settings.local_settings.get(&#34;search_show_hidden&#34;, False))
+        return True
+
+    def unfilter(self):
+        &#34;&#34;&#34;Reattach all detached objects and reposition them.
+        &#34;&#34;&#34;
+        detached = sorted(self._detached, key=lambda x: len(x[0]))
+        for detached in self._detached:
+            itemId = detached[0]
+            parentId = &#39;&#39; if detached[1] is None else detached[1]
+            try:
+                self.reattach(itemId, parentId, 0)
+            except tk.TclError:
+                pass
+        for moved in self._moved:
+            itemId = moved[0]
+            parentId = &#39;&#39; if moved[1] is None else moved[1]
+            try:
+                self.move(itemId, parentId, 0)
+            except tk.TclError:
+                pass
+            view_o = self.getViewFromId(itemId)
+            try:
+                self.item(itemId, text=str(view_o.controller.getModelRepr()))
+            except tk.TclError:
+                pass
+        for hidden in self._hidden:
+            try:
+                self.detach(str(hidden[0]))
+            except tk.TclError:
+                pass
+        self._detached = []
+        self._moved = []
+
+    def unhideTemp(self):
+        &#34;&#34;&#34;Reattach all hidden objects but keep in memory that they are hidden.
+        &#34;&#34;&#34;
+        hiddens = sorted(self._hidden, key=lambda x: len(x[0]))
+        for hidden in hiddens:
+            itemId = hidden[0]
+            parentId = &#39;&#39; if hidden[1] is None else hidden[1]
+            try:
+                self.reattach(itemId, parentId, 0)
+            except tk.TclError:
+                continue
+
+    def _filterTreeview(self, query, show_hidden=True):
+        &#34;&#34;&#34;Apply the query on the treeview.
+        Args:
+            query: the core.Components.Search object that hold the informations
+            show_hidden: will filter the hidden object as well and show them if they match the filter. Default to True.
+        &#34;&#34;&#34;
+        # reattach every one
+        self.unfilter()
+        if query is not None:
+            results_iid = query.getIds(self)
+            if len(results_iid) != 0:
+                if show_hidden:
+                    self.unhideTemp()
+                self._brutSearcher(results_iid)
+            else:
+                tk.messagebox.showerror(&#34;No results&#34;, &#34;No results found&#34;)
+
+    def _brutSearcher(self, results_iid, parentItem=&#39;&#39;):
+        &#34;&#34;&#34;
+        Check all children of the item given to see if their iid is in the resukts_iid.
+        If they are in it : Move them to the root (keep track of that in the self._moved list) and replace teir text with the detailed one.
+        If they are not it it: detach them (keep track of that in the self._detached list)
+        Args:
+            results_iid: a list to complete with matching results iid
+            parentItem: an parent treeview node to start from recurisve search
+        &#34;&#34;&#34;
+        children = list(self.get_children(parentItem))
+        for item_id in children:
+            self._brutSearcher(results_iid, item_id)
+            if item_id not in results_iid:
+                self._detached.append([item_id, parentItem])
+                self.detach(item_id)
+            else:
+                self._moved.append([item_id, parentItem])
+                view_o = self.getViewFromId(item_id)
+                self.move(item_id, &#39;&#39;, &#39;end&#39;)
+                self.item(item_id, text=view_o.controller.getDetailedString())</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>tkinter.ttk.Treeview</li>
+<li>tkinter.ttk.Widget</li>
+<li>tkinter.Widget</li>
+<li>tkinter.BaseWidget</li>
+<li>tkinter.Misc</li>
+<li>tkinter.Pack</li>
+<li>tkinter.Place</li>
+<li>tkinter.Grid</li>
+<li>tkinter.XView</li>
+<li>tkinter.YView</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.dir_path"><code class="name">var <span class="ident">dir_path</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.closeMenu"><code class="name flex">
+<span>def <span class="ident">closeMenu</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Does nothing. Used to close the contextual menu.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def closeMenu(self, _event=None):
+    &#34;&#34;&#34;Does nothing. Used to close the contextual menu.&#34;&#34;&#34;
+    return  # Do nothing.</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.collapse"><code class="name flex">
+<span>def <span class="ident">collapse</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Collapse all children recursivly of a treeview node.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def collapse(self):
+    &#34;&#34;&#34;
+    Collapse all children recursivly of a treeview node.
+    &#34;&#34;&#34;
+    self.switchExpandCollapse(False)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.deleteSelected"><code class="name flex">
+<span>def <span class="ident">deleteSelected</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Interface to delete a database object from an event.
+Prompt the user a confirmation window.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used, a ttk Treeview event autofilled. Contains information on what treeview node was clicked.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteSelected(self, _event):
+    &#34;&#34;&#34;
+    Interface to delete a database object from an event.
+    Prompt the user a confirmation window.
+    Args:
+        _event: not used, a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+    &#34;&#34;&#34;
+    n = len(self.selection())
+    dialog = ChildDialogQuestion(self.parentFrame,
+                                 &#34;DELETE WARNING&#34;, &#34;Becareful for you are about to delete &#34;+str(n) + &#34; entries and there is no turning back.&#34;, [&#34;Delete&#34;, &#34;Cancel&#34;])
+    self.wait_window(dialog.app)
+    if dialog.rvalue != &#34;Delete&#34;:
+        return
+    for selected in self.selection():
+        view = self.getViewFromId(selected)
+        if view is not None:
+            view.delete(None, False)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.deleteState"><code class="name flex">
+<span>def <span class="ident">deleteState</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete the given name state file
+file name is given in arguments and it must be stored as an hidden file in Pollenisator/local/states/ folder.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the name of this treeview to delete.
+The full path to local/states folder and a Dot (".") will be prepended to the name.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deleteState(self, name):
+    &#34;&#34;&#34;
+    Delete the given name state file
+    file name is given in arguments and it must be stored as an hidden file in Pollenisator/local/states/ folder.
+    Args:
+        name: the name of this treeview to delete.
+              The full path to local/states folder and a Dot (&#34;.&#34;) will be prepended to the name.
+    &#34;&#34;&#34;
+    try:
+        path = os.path.join(PollenisatorTreeview.dir_path,
+                            &#34;../../../local/states/.&#34;+name)
+        os.remove(path)
+    except FileNotFoundError:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.doPopup"><code class="name flex">
+<span>def <span class="ident">doPopup</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Open the popup contextual menu of the treeview.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>a ttk Treeview event autofilled. Contains information on what treeview node was clicked.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def doPopup(self, event):
+    &#34;&#34;&#34;
+    Open the popup contextual menu of the treeview.
+
+    Args:
+        event: a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+    &#34;&#34;&#34;
+    # display the popup menu
+    try:
+        self.contextualMenu.post(event.x_root, event.y_root)
+    finally:
+        # make sure to release the grab (Tk 8.0a1 only)
+        self.contextualMenu.grab_release()
+    self.contextualMenu.focus_set()
+    self.contextualMenu.bind(&#39;&lt;FocusOut&gt;&#39;, self.popupFocusOut)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.expand"><code class="name flex">
+<span>def <span class="ident">expand</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Expand all children recursivly of a treeview node.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def expand(self):
+    &#34;&#34;&#34;
+    Expand all children recursivly of a treeview node.
+    &#34;&#34;&#34;
+    self.switchExpandCollapse(True)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.filterTreeview"><code class="name flex">
+<span>def <span class="ident">filterTreeview</span></span>(<span>self, query, settings=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Deattach objects in the treeview that does not match the query and search settings.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>query</code></strong></dt>
+<dd>filter query string</dd>
+<dt><strong><code>settings</code></strong></dt>
+<dd>a dict of options:
+* "search_exact_match": for exact matching, default to False
+*
+"search_show_hidden" : to enable showing hidden objects, default to False</dd>
+</dl>
+<p>Default is None.</p>
+<h2 id="returns">Returns</h2>
+<p>True if the filter is done, else if an error occured. Most probably if the query is bad.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filterTreeview(self, query, settings=None):
+    &#34;&#34;&#34;
+    Deattach objects in the treeview that does not match the query and search settings.
+    Args:
+        query: filter query string
+        settings: a dict of options:
+            * &#34;search_exact_match&#34;: for exact matching, default to False
+            *  &#34;search_show_hidden&#34; : to enable showing hidden objects, default to False
+         Default is None.
+    Returns:
+        True if the filter is done, else if an error occured. Most probably if the query is bad.
+    &#34;&#34;&#34;
+    # Reload local settings and prepare search object.
+    searcher = None
+    if query.strip() != &#34;&#34;:
+        try:
+            if settings is None:
+                searcher = Filter(query, True)
+            else:
+                searcher = Filter(
+                    query, settings.local_settings.get(&#34;search_exact_match&#34;, False))
+        except ParseError as e:
+            tk.messagebox.showerror(&#34;Search error&#34;, str(e))
+            return False
+    # Filter treeview according to the settings
+    if settings is None:
+        self._filterTreeview(searcher, False)
+    else:
+        self._filterTreeview(
+            searcher, settings.local_settings.get(&#34;search_show_hidden&#34;, False))
+    return True</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.getViewFromId"><code class="name flex">
+<span>def <span class="ident">getViewFromId</span></span>(<span>self, dbId)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Craft a specific Molde from the Models classes with just a valid Mongo Object Id.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dbId</code></strong></dt>
+<dd>the database Mongo Id to return a view of.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getViewFromId(self, dbId):
+    &#34;&#34;&#34;
+    Craft a specific Molde from the Models classes with just a valid Mongo Object Id.
+
+    Args:
+        dbId: the database Mongo Id to return a view of.
+    &#34;&#34;&#34;
+    try:
+        return self.views[dbId][&#34;view&#34;]
+    except KeyError:
+        return None</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.load"><code class="name flex">
+<span>def <span class="ident">load</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>To be overriden</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used, a ttk Treeview event autofilled. Contains information on what treeview node was clicked.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load(self, _event=None):
+    &#34;&#34;&#34;To be overriden
+    Args:
+        _event: not used, a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+    &#34;&#34;&#34;
+    return</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.loadState"><code class="name flex">
+<span>def <span class="ident">loadState</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load opened nodes list state from a file.
+Restore the state if its exists.
+file name is given in arguments and it must be stored as an hidden file in Pollenisator/local/states/ folder.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the name of this treeview to save.
+The full path to local/states folder and a Dot (".") will be prepended to the name.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadState(self, name):
+    &#34;&#34;&#34;
+    Load opened nodes list state from a file.
+    Restore the state if its exists.
+    file name is given in arguments and it must be stored as an hidden file in Pollenisator/local/states/ folder.
+    Args:
+        name: the name of this treeview to save.
+              The full path to local/states folder and a Dot (&#34;.&#34;) will be prepended to the name.
+    &#34;&#34;&#34;
+    directory = os.path.join(
+        PollenisatorTreeview.dir_path, &#34;../../../local/states/&#34;)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    path = os.path.join(directory, &#34;.&#34;+name)
+    state = None
+    try:
+        with open(path, &#34;r&#34;) as f:
+            state = json.loads(f.read())
+    except FileNotFoundError:
+        state = None
+    if state is not None:
+        self.restoreTreeItemState(state)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.onTreeviewSelect"><code class="name flex">
+<span>def <span class="ident">onTreeviewSelect</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return ObjectId of selection if it is a valid bson objectid.
+Else return the string of teeview iid.
+Make the viewframe empty.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>the treeview node clicked. Not used</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>If selection is empty, returns None</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>Return ObjectId of selection if it is a valid bson objectid.
+Else return the string of teeview iid.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def onTreeviewSelect(self, _event=None):
+    &#34;&#34;&#34;
+    Return ObjectId of selection if it is a valid bson objectid.
+    Else return the string of teeview iid.
+    Make the viewframe empty.
+    Args:
+        _event: the treeview node clicked. Not used
+    Returns:
+        If selection is empty, returns None
+        Return ObjectId of selection if it is a valid bson objectid.
+        Else return the string of teeview iid.
+    &#34;&#34;&#34;
+    selec = self.selection()
+    if len(selec) == 0:
+        return None
+    item = selec[0]
+        # the treeview node can either be an object view or a parent node used to store its children and to insert new nodes.
+    ret = str(item)
+    try:
+        # This will raise an exception if the treeview item selected was not a database id.
+        # This should only be the case for list of objects ids.
+        # An object double click open the list item&#39;s type modifying form.
+        ret = ObjectId(item)
+    except InvalidId:
+        pass # str
+    if len(self.selection()) == 1:
+        for widget in self.appli.viewframe.winfo_children():
+            widget.destroy()
+    return ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.popupFocusOut"><code class="name flex">
+<span>def <span class="ident">popupFocusOut</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when the contextual menu loses focus. Closes it.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>default to None</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def popupFocusOut(self, _event=None):
+    &#34;&#34;&#34;Called when the contextual menu loses focus. Closes it.
+    Args:
+        _event: default to None
+    &#34;&#34;&#34;
+    self.contextualMenu.unpost()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.resetTags"><code class="name flex">
+<span>def <span class="ident">resetTags</span></span>(<span>self, dbId)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Remove all tags of the node with given id.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dbId</code></strong></dt>
+<dd>The databaseID of the object to remove tags of</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resetTags(self, dbId):
+    &#34;&#34;&#34;
+    Remove all tags of the node with given id.
+    Args:
+        dbId: The databaseID of the object to remove tags of
+    &#34;&#34;&#34;
+    try:
+        # removes all tags, including todo
+        self.item(str(dbId), tags=())
+    except tk.TclError:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.restoreTreeItemState"><code class="name flex">
+<span>def <span class="ident">restoreTreeItemState</span></span>(<span>self, state)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Restore the given state.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>state</code></strong></dt>
+<dd>a list of iid to open in the treeview.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def restoreTreeItemState(self, state):
+    &#34;&#34;&#34;
+    Restore the given state.
+    Args:
+        state: a list of iid to open in the treeview.
+    &#34;&#34;&#34;
+    for k in state:
+        try:
+            self.item(k, open=True)
+        except tk.TclError:
+            pass</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.saveState"><code class="name flex">
+<span>def <span class="ident">saveState</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save opened nodes list state to a file.
+file name is given in arguments and stored as an hidden file in Pollenisator/local/states/ folder.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong></dt>
+<dd>the name of this treeview to save.
+A Dot (".") will be prepended to the name to make the resulting file hidden on linux.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def saveState(self, name):
+    &#34;&#34;&#34;
+    Save opened nodes list state to a file.
+    file name is given in arguments and stored as an hidden file in Pollenisator/local/states/ folder.
+    Args:
+        name: the name of this treeview to save.
+              A Dot (&#34;.&#34;) will be prepended to the name to make the resulting file hidden on linux.
+    &#34;&#34;&#34;
+    toFill = []
+    ret = self._getTreeItemState(&#39;&#39;, toFill)
+    directory = os.path.join(
+        PollenisatorTreeview.dir_path, &#34;../../../local/states/&#34;)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    path = os.path.join(directory, &#34;.&#34;+name)
+    with open(path, &#34;w&#34;) as f:
+        f.write(json.dumps(ret))</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.sort"><code class="name flex">
+<span>def <span class="ident">sort</span></span>(<span>self, node=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sort the children node of a treeview node. The sorting key is the node's text.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>node</code></strong></dt>
+<dd>the parent node to sort children of.
+If none is given, will sort last right clicked node.
+Default is None.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sort(self, node=None):
+    &#34;&#34;&#34;
+    Sort the children node of a treeview node. The sorting key is the node&#39;s text.
+    Args:
+        node: the parent node to sort children of. 
+            If none is given, will sort last right clicked node.
+            Default is None.
+    &#34;&#34;&#34;
+    if node is None:
+        nodeToSort = str(self.contextualMenu.selection)
+    else:
+        nodeToSort = node
+    l = []
+    for k in self.get_children(nodeToSort):
+        text_k = self.item(k)[&#34;text&#34;]
+        view_o = self.getViewFromId(str(k))
+        if view_o is not None:
+            l.append((k, text_k, view_o))
+    if l:
+        l.sort(key=lambda t: t[2].key() if t[2] is not None else None)
+        for index, (iid, _, _) in enumerate(l):
+            self.move(iid, nodeToSort, index)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.switchExpandCollapse"><code class="name flex">
+<span>def <span class="ident">switchExpandCollapse</span></span>(<span>self, openAction=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Expand or collapse all children recursivly of a treeview node.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>openAction</code></strong></dt>
+<dd>Expand if True, Collapse if False.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def switchExpandCollapse(self, openAction=True):
+    &#34;&#34;&#34;
+    Expand or collapse all children recursivly of a treeview node.
+    Args:
+        openAction: Expand if True, Collapse if False.
+    &#34;&#34;&#34;
+    nodeToExpand = str(self.contextualMenu.selection)
+    self.item(nodeToExpand, open=openAction)
+    children = list(self.get_children(nodeToExpand))
+    while len(children) &gt; 0:
+        child = children[0]
+        children = children + list(self.get_children(child))
+        self.item(child, open=openAction)
+        del children[0]</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.unfilter"><code class="name flex">
+<span>def <span class="ident">unfilter</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reattach all detached objects and reposition them.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unfilter(self):
+    &#34;&#34;&#34;Reattach all detached objects and reposition them.
+    &#34;&#34;&#34;
+    detached = sorted(self._detached, key=lambda x: len(x[0]))
+    for detached in self._detached:
+        itemId = detached[0]
+        parentId = &#39;&#39; if detached[1] is None else detached[1]
+        try:
+            self.reattach(itemId, parentId, 0)
+        except tk.TclError:
+            pass
+    for moved in self._moved:
+        itemId = moved[0]
+        parentId = &#39;&#39; if moved[1] is None else moved[1]
+        try:
+            self.move(itemId, parentId, 0)
+        except tk.TclError:
+            pass
+        view_o = self.getViewFromId(itemId)
+        try:
+            self.item(itemId, text=str(view_o.controller.getModelRepr()))
+        except tk.TclError:
+            pass
+    for hidden in self._hidden:
+        try:
+            self.detach(str(hidden[0]))
+        except tk.TclError:
+            pass
+    self._detached = []
+    self._moved = []</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.unhideTemp"><code class="name flex">
+<span>def <span class="ident">unhideTemp</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reattach all hidden objects but keep in memory that they are hidden.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unhideTemp(self):
+    &#34;&#34;&#34;Reattach all hidden objects but keep in memory that they are hidden.
+    &#34;&#34;&#34;
+    hiddens = sorted(self._hidden, key=lambda x: len(x[0]))
+    for hidden in hiddens:
+        itemId = hidden[0]
+        parentId = &#39;&#39; if hidden[1] is None else hidden[1]
+        try:
+            self.reattach(itemId, parentId, 0)
+        except tk.TclError:
+            continue</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Application.Treeviews" href="index.html">Pollenisator.core.Application.Treeviews</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview">PollenisatorTreeview</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.closeMenu" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.closeMenu">closeMenu</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.collapse" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.collapse">collapse</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.deleteSelected" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.deleteSelected">deleteSelected</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.deleteState" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.deleteState">deleteState</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.dir_path" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.dir_path">dir_path</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.doPopup" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.doPopup">doPopup</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.expand" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.expand">expand</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.filterTreeview" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.filterTreeview">filterTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.getViewFromId" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.getViewFromId">getViewFromId</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.load" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.load">load</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.loadState" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.loadState">loadState</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.onTreeviewSelect" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.onTreeviewSelect">onTreeviewSelect</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.popupFocusOut" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.popupFocusOut">popupFocusOut</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.resetTags" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.resetTags">resetTags</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.restoreTreeItemState" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.restoreTreeItemState">restoreTreeItemState</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.saveState" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.saveState">saveState</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.sort" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.sort">sort</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.switchExpandCollapse" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.switchExpandCollapse">switchExpandCollapse</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.unfilter" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.unfilter">unfilter</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.unhideTemp" href="#Pollenisator.core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview.unhideTemp">unhideTemp</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

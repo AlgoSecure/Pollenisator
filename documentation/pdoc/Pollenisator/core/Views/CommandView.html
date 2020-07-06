@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Views.CommandView API documentation</title>
+<meta name="description" content="View for command object. Handle node in treeview and present forms to user when interacted with." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Views.CommandView</code></h1>
+</header>
+<section id="section-intro">
+<p>View for command object. Handle node in treeview and present forms to user when interacted with.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;View for command object. Handle node in treeview and present forms to user when interacted with.&#34;&#34;&#34;
+
+from core.Views.ViewElement import ViewElement
+from core.Components.Settings import Settings
+import tkinter as tk
+
+
+class CommandView(ViewElement):
+    &#34;&#34;&#34;
+    View for command object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory.
+    &#34;&#34;&#34;
+    icon = &#39;command.png&#39;
+
+    def __init__(self, appTw, appViewFrame, mainApp, controller):
+        &#34;&#34;&#34;Constructor
+        Args:
+            appTw: a PollenisatorTreeview instance to put this view in
+            appViewFrame: an view frame to build the forms in.
+            mainApp: the Application instance
+            controller: a CommandController for this view.
+        &#34;&#34;&#34;
+        self.menuContextuel = None
+        self.widgetMenuOpen = None
+        super().__init__(appTw, appViewFrame, mainApp, controller)
+
+    def _commonWindowForms(self, default={}):
+        &#34;&#34;&#34;Construct form parts identical between Modify and Insert forms
+        Args:
+            default: a dict of default values for inputs (sleep_between, priority, max_thread). Default to empty respectively &#34;0&#34;, &#34;0&#34;, &#34;1&#34;
+        &#34;&#34;&#34;
+        panel_bottom = self.form.addFormPanel(grid=True)
+        panel_bottom.addFormLabel(&#34;Delay&#34;)
+        panel_bottom.addFormStr(&#34;Delay&#34;, r&#34;\d+&#34;, default.get(&#34;sleep_between&#34;, &#34;0&#34;), width=5, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Delay in-between two launch of this command (in seconds)&#34;, column=2)
+        panel_bottom.addFormLabel(&#34;Priority&#34;, row=1)
+        panel_bottom.addFormStr(&#34;Priority&#34;, r&#34;\d+&#34;, default.get(&#34;priority&#34;, &#34;0&#34;),
+                                width=2, row=1, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Priority in queue (0 is HIGHEST)&#34;, row=1, column=2)
+        panel_bottom.addFormLabel(&#34;Threads&#34;, row=2)
+        panel_bottom.addFormStr(&#34;Threads&#34;, r&#34;\d+&#34;, default.get(&#34;max_thread&#34;, &#34;1&#34;),
+                                width=2, row=2, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Number of authorized parallel running of this command on one worker.&#34;, row=2, column=2)
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Command
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        self._initContextualMenu()
+        settings = self.mainApp.settings
+        settings.reloadSettings()
+        panel_top = self.form.addFormPanel(grid=True)
+        panel_top.addFormLabel(&#34;Name&#34;, modelData[&#34;name&#34;], sticky=tk.NW)
+        panel_top.addFormLabel(&#34;Level&#34;, modelData[&#34;lvl&#34;], row=1, sticky=tk.NW)
+        panel_top_bis = self.form.addFormPanel(grid=True)
+        panel_top_bis.addFormChecklist(
+            &#34;Types&#34;, Settings.getPentestTypes().keys(), modelData[&#34;types&#34;], column=1)
+        panel_safe = self.form.addFormPanel(grid=True)
+        panel_safe.addFormLabel(&#34;Safe&#34;)
+        panel_safe.addFormCheckbox(
+            &#34;Safe&#34;, &#34;Safe&#34;, modelData[&#34;safe&#34;] == &#34;True&#34;, column=1)
+        panel_safe.addFormHelper(
+            &#34;If checked, this command can be run by an auto scan.&#34;, column=2)
+        panel_text = self.form.addFormPanel()
+        panel_text.addFormLabel(&#34;Command line options&#34;, side=&#34;top&#34;)
+        panel_text.addFormHelper(
+            &#34;&#34;&#34;Do not include binary name/path\nDo not include Output file option\nUse variables |wave|, |scope|, |ip|, |port|, |parent_domain|, |outputDir|, |port.service|, |port.product|, |ip.infos.*| |port.infos.*|&#34;&#34;&#34;, side=&#34;right&#34;)
+        panel_text.addFormText(&#34;Command line options&#34;, r&#34;&#34;,
+                               modelData[&#34;text&#34;], self.menuContextuel, side=&#34;top&#34;, height=5)
+        panel_bottom = self.form.addFormPanel(grid=True)
+        if modelData[&#34;lvl&#34;] == &#34;port&#34;:
+            panel_bottom.addFormLabel(&#34;Ports/Services&#34;, column=0)
+            panel_bottom.addFormStr(
+                &#34;Ports/Services&#34;, r&#34;^(\d{1,5}|[^\,]+)(?:,(\d{1,5}|[^\,]+))*$&#34;, modelData[&#34;ports&#34;], self.popup, width=50, column=1)
+            panel_bottom.addFormHelper(
+                &#34;Services, ports or port ranges.\nthis list must be separated by a comma, if no protocol is specified, tcp/ will be used.\n Example: ssl/http,https,http/ssl,0-65535,443...&#34;,column=2)
+        self._commonWindowForms(modelData)
+        self.completeModifyWindow()
+
+    def openInsertWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to insert a new Command
+        &#34;&#34;&#34;
+        self._initContextualMenu()
+        panel_top = self.form.addFormPanel(grid=True)
+        panel_top.addFormLabel(&#34;Name&#34;)
+        panel_top.addFormStr(&#34;Name&#34;, r&#34;\S+&#34;, &#34;&#34;, None, column=1)
+        panel_top.addFormLabel(&#34;Level&#34;, row=1)
+        panel_top.addFormCombo(
+            &#34;Level&#34;, [&#34;network&#34;, &#34;domain&#34;, &#34;ip&#34;, &#34;port&#34;, &#34;wave&#34;], &#34;network&#34;, row=1, column=1)
+        panel_top.addFormHelper(
+            &#34;lvl wave: will run on each wave once\nlvl network: will run on each NetworkIP once\nlvl domain: will run on each scope domain once\nlvl ip: will run on each ip/hostname once\nlvl port: will run on each port once&#34;, row=1, column=2)
+        panel_types = self.form.addFormPanel(grid=True)
+        panel_types.addFormChecklist(
+            &#34;Types&#34;, Settings.getPentestTypes(), [], row=2, column=1)
+        panel_types.addFormHelper(
+            &#34;This command will be added by default on pentest having a type checked in this list.\nThis list can be modified on settings.&#34;, column=2)
+        panel_safe = self.form.addFormPanel(grid=True)
+        panel_safe.addFormLabel(&#34;Safe&#34;)
+        panel_safe.addFormCheckbox(
+            &#34;Safe&#34;, &#34;Safe&#34;, &#34;False&#34;, column=1)
+        panel_safe.addFormHelper(
+            &#34;If checked, this command can be run by an auto scan.&#34;, column=2)
+        panel_text = self.form.addFormPanel()
+        panel_text.addFormLabel(&#34;Command line options&#34;, side=&#34;top&#34;)
+        panel_text.addFormHelper(
+            &#34;&#34;&#34;Do not include binary name/path\nDo not include Output file option\nUse variables |wave|, |scope|, |ip|, |port|, |parent_domain|, |outputDir|, |port.service|, |port.product|, |ip.infos.*| |port.infos.*|&#34;&#34;&#34;, side=&#34;right&#34;)
+        panel_text.addFormText(&#34;Command line options&#34;,
+                               r&#34;&#34;, &#34;&#34;, self.menuContextuel, side=&#34;top&#34;, height=5)
+        panel_bottom = self.form.addFormPanel(grid=True)
+        panel_bottom.addFormLabel(&#34;Ports/Services&#34;)
+        panel_bottom.addFormStr(
+            &#34;Ports/Services&#34;, r&#34;^((.{0})|(\d{1,5}|[^\, ]+)(?:, (\d{1,5}|[^\, ]+))*)$&#34;, &#34;&#34;, width=50, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Services, ports or port ranges.\nthis list must be separated by a comma, if no protocol is specified, tcp/ will be used.\n Example: ssl/http,https,http/ssl,0-65535,443...&#34;, column=2)
+
+        self._commonWindowForms()
+        self.completeInsertWindow()
+
+    def addInTreeview(self, parentNode=None):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+        &#34;&#34;&#34;
+        if parentNode is None:
+            parentNode = self.getParent()
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    def getParent(self):
+        &#34;&#34;&#34;
+        Return the id of the parent node in treeview.
+
+        Returns:
+            return the saved command_node node inside the Appli class.
+        &#34;&#34;&#34;
+        return self.appliTw.commands_node
+
+    def _initContextualMenu(self):
+        &#34;&#34;&#34;Initiate contextual menu with variables&#34;&#34;&#34;
+        self.menuContextuel = tk.Menu(self.appliViewFrame, tearoff=0, background=&#39;#A8CF4D&#39;,
+                                      foreground=&#39;white&#39;, activebackground=&#39;#A8CF4D&#39;, activeforeground=&#39;white&#39;)
+        self.menuContextuel.add_command(
+            label=&#34;Wave id&#34;, command=self.addWaveVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Network address without slash nor dots&#34;, command=self.addIpReseauDirVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Network address&#34;, command=self.addIpReseauVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Parent domain&#34;, command=self.addParentDomainVariable)
+        self.menuContextuel.add_command(label=&#34;Ip&#34;, command=self.addIpVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Ip without dots&#34;, command=self.addIpDirVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Port&#34;, command=self.addPortVariable)
+
+    def popup(self, event):
+        &#34;&#34;&#34;
+        Fill the self.widgetMenuOpen and reraise the event in the editing window contextual menu
+
+        Args:
+            event: a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen = event.widget
+        self.menuContextuel.post(event.x_root, event.y_root)
+        self.menuContextuel.focus_set()
+        self.menuContextuel.bind(&#39;&lt;FocusOut&gt;&#39;, self.popupFocusOut)
+
+    def popupFocusOut(self, _event=None):
+        &#34;&#34;&#34;
+        Called when the contextual menu is unfocused
+        Args:
+            _event: a ttk event autofilled. not used but mandatory.
+        &#34;&#34;&#34;
+        self.menuContextuel.unpost()
+
+    def addWaveVariable(self):
+        &#34;&#34;&#34;
+        insert the wave variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|wave|&#34;)
+
+    def addIpReseauDirVariable(self):
+        &#34;&#34;&#34;
+        insert the scope_dir variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|scope_dir|&#34;)
+
+    def addIpReseauVariable(self):
+        &#34;&#34;&#34;
+        insert the scope variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|scope|&#34;)
+
+    def addParentDomainVariable(self):
+        &#34;&#34;&#34;
+        insert the scope variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|parent_domain|&#34;)
+
+    def addIpVariable(self):
+        &#34;&#34;&#34;
+        insert the ip variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|ip|&#34;)
+
+    def addIpDirVariable(self):
+        &#34;&#34;&#34;
+        insert the ip_dir variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|ip_dir|&#34;)
+
+    def addPortVariable(self):
+        &#34;&#34;&#34;
+        insert the port variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|port|&#34;)
+
+    def key(self):
+        &#34;&#34;&#34;Returns a key for sorting this node
+        Returns:
+            string, key to sort
+        &#34;&#34;&#34;
+        return str(self.controller.getModelRepr()).lower()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Views.CommandView.CommandView"><code class="flex name class">
+<span>class <span class="ident">CommandView</span></span>
+<span>(</span><span>appTw, appViewFrame, mainApp, controller)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>View for command object. Handle node in treeview and present forms to user when interacted with.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>icon</code></strong></dt>
+<dd>icon name to show in treeview. Icon filename must be in icon directory.</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appTw</code></strong></dt>
+<dd>a PollenisatorTreeview instance to put this view in</dd>
+<dt><strong><code>appViewFrame</code></strong></dt>
+<dd>an view frame to build the forms in.</dd>
+<dt><strong><code>mainApp</code></strong></dt>
+<dd>the Application instance</dd>
+<dt><strong><code>controller</code></strong></dt>
+<dd>a CommandController for this view.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CommandView(ViewElement):
+    &#34;&#34;&#34;
+    View for command object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory.
+    &#34;&#34;&#34;
+    icon = &#39;command.png&#39;
+
+    def __init__(self, appTw, appViewFrame, mainApp, controller):
+        &#34;&#34;&#34;Constructor
+        Args:
+            appTw: a PollenisatorTreeview instance to put this view in
+            appViewFrame: an view frame to build the forms in.
+            mainApp: the Application instance
+            controller: a CommandController for this view.
+        &#34;&#34;&#34;
+        self.menuContextuel = None
+        self.widgetMenuOpen = None
+        super().__init__(appTw, appViewFrame, mainApp, controller)
+
+    def _commonWindowForms(self, default={}):
+        &#34;&#34;&#34;Construct form parts identical between Modify and Insert forms
+        Args:
+            default: a dict of default values for inputs (sleep_between, priority, max_thread). Default to empty respectively &#34;0&#34;, &#34;0&#34;, &#34;1&#34;
+        &#34;&#34;&#34;
+        panel_bottom = self.form.addFormPanel(grid=True)
+        panel_bottom.addFormLabel(&#34;Delay&#34;)
+        panel_bottom.addFormStr(&#34;Delay&#34;, r&#34;\d+&#34;, default.get(&#34;sleep_between&#34;, &#34;0&#34;), width=5, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Delay in-between two launch of this command (in seconds)&#34;, column=2)
+        panel_bottom.addFormLabel(&#34;Priority&#34;, row=1)
+        panel_bottom.addFormStr(&#34;Priority&#34;, r&#34;\d+&#34;, default.get(&#34;priority&#34;, &#34;0&#34;),
+                                width=2, row=1, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Priority in queue (0 is HIGHEST)&#34;, row=1, column=2)
+        panel_bottom.addFormLabel(&#34;Threads&#34;, row=2)
+        panel_bottom.addFormStr(&#34;Threads&#34;, r&#34;\d+&#34;, default.get(&#34;max_thread&#34;, &#34;1&#34;),
+                                width=2, row=2, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Number of authorized parallel running of this command on one worker.&#34;, row=2, column=2)
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Command
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        self._initContextualMenu()
+        settings = self.mainApp.settings
+        settings.reloadSettings()
+        panel_top = self.form.addFormPanel(grid=True)
+        panel_top.addFormLabel(&#34;Name&#34;, modelData[&#34;name&#34;], sticky=tk.NW)
+        panel_top.addFormLabel(&#34;Level&#34;, modelData[&#34;lvl&#34;], row=1, sticky=tk.NW)
+        panel_top_bis = self.form.addFormPanel(grid=True)
+        panel_top_bis.addFormChecklist(
+            &#34;Types&#34;, Settings.getPentestTypes().keys(), modelData[&#34;types&#34;], column=1)
+        panel_safe = self.form.addFormPanel(grid=True)
+        panel_safe.addFormLabel(&#34;Safe&#34;)
+        panel_safe.addFormCheckbox(
+            &#34;Safe&#34;, &#34;Safe&#34;, modelData[&#34;safe&#34;] == &#34;True&#34;, column=1)
+        panel_safe.addFormHelper(
+            &#34;If checked, this command can be run by an auto scan.&#34;, column=2)
+        panel_text = self.form.addFormPanel()
+        panel_text.addFormLabel(&#34;Command line options&#34;, side=&#34;top&#34;)
+        panel_text.addFormHelper(
+            &#34;&#34;&#34;Do not include binary name/path\nDo not include Output file option\nUse variables |wave|, |scope|, |ip|, |port|, |parent_domain|, |outputDir|, |port.service|, |port.product|, |ip.infos.*| |port.infos.*|&#34;&#34;&#34;, side=&#34;right&#34;)
+        panel_text.addFormText(&#34;Command line options&#34;, r&#34;&#34;,
+                               modelData[&#34;text&#34;], self.menuContextuel, side=&#34;top&#34;, height=5)
+        panel_bottom = self.form.addFormPanel(grid=True)
+        if modelData[&#34;lvl&#34;] == &#34;port&#34;:
+            panel_bottom.addFormLabel(&#34;Ports/Services&#34;, column=0)
+            panel_bottom.addFormStr(
+                &#34;Ports/Services&#34;, r&#34;^(\d{1,5}|[^\,]+)(?:,(\d{1,5}|[^\,]+))*$&#34;, modelData[&#34;ports&#34;], self.popup, width=50, column=1)
+            panel_bottom.addFormHelper(
+                &#34;Services, ports or port ranges.\nthis list must be separated by a comma, if no protocol is specified, tcp/ will be used.\n Example: ssl/http,https,http/ssl,0-65535,443...&#34;,column=2)
+        self._commonWindowForms(modelData)
+        self.completeModifyWindow()
+
+    def openInsertWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to insert a new Command
+        &#34;&#34;&#34;
+        self._initContextualMenu()
+        panel_top = self.form.addFormPanel(grid=True)
+        panel_top.addFormLabel(&#34;Name&#34;)
+        panel_top.addFormStr(&#34;Name&#34;, r&#34;\S+&#34;, &#34;&#34;, None, column=1)
+        panel_top.addFormLabel(&#34;Level&#34;, row=1)
+        panel_top.addFormCombo(
+            &#34;Level&#34;, [&#34;network&#34;, &#34;domain&#34;, &#34;ip&#34;, &#34;port&#34;, &#34;wave&#34;], &#34;network&#34;, row=1, column=1)
+        panel_top.addFormHelper(
+            &#34;lvl wave: will run on each wave once\nlvl network: will run on each NetworkIP once\nlvl domain: will run on each scope domain once\nlvl ip: will run on each ip/hostname once\nlvl port: will run on each port once&#34;, row=1, column=2)
+        panel_types = self.form.addFormPanel(grid=True)
+        panel_types.addFormChecklist(
+            &#34;Types&#34;, Settings.getPentestTypes(), [], row=2, column=1)
+        panel_types.addFormHelper(
+            &#34;This command will be added by default on pentest having a type checked in this list.\nThis list can be modified on settings.&#34;, column=2)
+        panel_safe = self.form.addFormPanel(grid=True)
+        panel_safe.addFormLabel(&#34;Safe&#34;)
+        panel_safe.addFormCheckbox(
+            &#34;Safe&#34;, &#34;Safe&#34;, &#34;False&#34;, column=1)
+        panel_safe.addFormHelper(
+            &#34;If checked, this command can be run by an auto scan.&#34;, column=2)
+        panel_text = self.form.addFormPanel()
+        panel_text.addFormLabel(&#34;Command line options&#34;, side=&#34;top&#34;)
+        panel_text.addFormHelper(
+            &#34;&#34;&#34;Do not include binary name/path\nDo not include Output file option\nUse variables |wave|, |scope|, |ip|, |port|, |parent_domain|, |outputDir|, |port.service|, |port.product|, |ip.infos.*| |port.infos.*|&#34;&#34;&#34;, side=&#34;right&#34;)
+        panel_text.addFormText(&#34;Command line options&#34;,
+                               r&#34;&#34;, &#34;&#34;, self.menuContextuel, side=&#34;top&#34;, height=5)
+        panel_bottom = self.form.addFormPanel(grid=True)
+        panel_bottom.addFormLabel(&#34;Ports/Services&#34;)
+        panel_bottom.addFormStr(
+            &#34;Ports/Services&#34;, r&#34;^((.{0})|(\d{1,5}|[^\, ]+)(?:, (\d{1,5}|[^\, ]+))*)$&#34;, &#34;&#34;, width=50, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Services, ports or port ranges.\nthis list must be separated by a comma, if no protocol is specified, tcp/ will be used.\n Example: ssl/http,https,http/ssl,0-65535,443...&#34;, column=2)
+
+        self._commonWindowForms()
+        self.completeInsertWindow()
+
+    def addInTreeview(self, parentNode=None):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+        &#34;&#34;&#34;
+        if parentNode is None:
+            parentNode = self.getParent()
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    def getParent(self):
+        &#34;&#34;&#34;
+        Return the id of the parent node in treeview.
+
+        Returns:
+            return the saved command_node node inside the Appli class.
+        &#34;&#34;&#34;
+        return self.appliTw.commands_node
+
+    def _initContextualMenu(self):
+        &#34;&#34;&#34;Initiate contextual menu with variables&#34;&#34;&#34;
+        self.menuContextuel = tk.Menu(self.appliViewFrame, tearoff=0, background=&#39;#A8CF4D&#39;,
+                                      foreground=&#39;white&#39;, activebackground=&#39;#A8CF4D&#39;, activeforeground=&#39;white&#39;)
+        self.menuContextuel.add_command(
+            label=&#34;Wave id&#34;, command=self.addWaveVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Network address without slash nor dots&#34;, command=self.addIpReseauDirVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Network address&#34;, command=self.addIpReseauVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Parent domain&#34;, command=self.addParentDomainVariable)
+        self.menuContextuel.add_command(label=&#34;Ip&#34;, command=self.addIpVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Ip without dots&#34;, command=self.addIpDirVariable)
+        self.menuContextuel.add_command(
+            label=&#34;Port&#34;, command=self.addPortVariable)
+
+    def popup(self, event):
+        &#34;&#34;&#34;
+        Fill the self.widgetMenuOpen and reraise the event in the editing window contextual menu
+
+        Args:
+            event: a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen = event.widget
+        self.menuContextuel.post(event.x_root, event.y_root)
+        self.menuContextuel.focus_set()
+        self.menuContextuel.bind(&#39;&lt;FocusOut&gt;&#39;, self.popupFocusOut)
+
+    def popupFocusOut(self, _event=None):
+        &#34;&#34;&#34;
+        Called when the contextual menu is unfocused
+        Args:
+            _event: a ttk event autofilled. not used but mandatory.
+        &#34;&#34;&#34;
+        self.menuContextuel.unpost()
+
+    def addWaveVariable(self):
+        &#34;&#34;&#34;
+        insert the wave variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|wave|&#34;)
+
+    def addIpReseauDirVariable(self):
+        &#34;&#34;&#34;
+        insert the scope_dir variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|scope_dir|&#34;)
+
+    def addIpReseauVariable(self):
+        &#34;&#34;&#34;
+        insert the scope variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|scope|&#34;)
+
+    def addParentDomainVariable(self):
+        &#34;&#34;&#34;
+        insert the scope variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|parent_domain|&#34;)
+
+    def addIpVariable(self):
+        &#34;&#34;&#34;
+        insert the ip variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|ip|&#34;)
+
+    def addIpDirVariable(self):
+        &#34;&#34;&#34;
+        insert the ip_dir variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|ip_dir|&#34;)
+
+    def addPortVariable(self):
+        &#34;&#34;&#34;
+        insert the port variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+        &#34;&#34;&#34;
+        self.widgetMenuOpen.insert(tk.INSERT, &#34;|port|&#34;)
+
+    def key(self):
+        &#34;&#34;&#34;Returns a key for sorting this node
+        Returns:
+            string, key to sort
+        &#34;&#34;&#34;
+        return str(self.controller.getModelRepr()).lower()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Views.ViewElement.ViewElement</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.icon"><code class="name">var <span class="ident">icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.addInTreeview"><code class="name flex">
+<span>def <span class="ident">addInTreeview</span></span>(<span>self, parentNode=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this view in treeview. Also stores infos in application treeview.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentNode</code></strong></dt>
+<dd>if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInTreeview(self, parentNode=None):
+    &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+    Args:
+        parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+    &#34;&#34;&#34;
+    if parentNode is None:
+        parentNode = self.getParent()
+    self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+    self.appliTw.insert(parentNode, &#34;end&#34;, str(
+        self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+    if &#34;hidden&#34; in self.controller.getTags():
+        self.hide()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.addIpDirVariable"><code class="name flex">
+<span>def <span class="ident">addIpDirVariable</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>insert the ip_dir variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addIpDirVariable(self):
+    &#34;&#34;&#34;
+    insert the ip_dir variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+    &#34;&#34;&#34;
+    self.widgetMenuOpen.insert(tk.INSERT, &#34;|ip_dir|&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.addIpReseauDirVariable"><code class="name flex">
+<span>def <span class="ident">addIpReseauDirVariable</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>insert the scope_dir variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addIpReseauDirVariable(self):
+    &#34;&#34;&#34;
+    insert the scope_dir variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+    &#34;&#34;&#34;
+    self.widgetMenuOpen.insert(tk.INSERT, &#34;|scope_dir|&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.addIpReseauVariable"><code class="name flex">
+<span>def <span class="ident">addIpReseauVariable</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>insert the scope variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addIpReseauVariable(self):
+    &#34;&#34;&#34;
+    insert the scope variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+    &#34;&#34;&#34;
+    self.widgetMenuOpen.insert(tk.INSERT, &#34;|scope|&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.addIpVariable"><code class="name flex">
+<span>def <span class="ident">addIpVariable</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>insert the ip variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addIpVariable(self):
+    &#34;&#34;&#34;
+    insert the ip variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+    &#34;&#34;&#34;
+    self.widgetMenuOpen.insert(tk.INSERT, &#34;|ip|&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.addParentDomainVariable"><code class="name flex">
+<span>def <span class="ident">addParentDomainVariable</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>insert the scope variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addParentDomainVariable(self):
+    &#34;&#34;&#34;
+    insert the scope variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+    &#34;&#34;&#34;
+    self.widgetMenuOpen.insert(tk.INSERT, &#34;|parent_domain|&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.addPortVariable"><code class="name flex">
+<span>def <span class="ident">addPortVariable</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>insert the port variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addPortVariable(self):
+    &#34;&#34;&#34;
+    insert the port variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+    &#34;&#34;&#34;
+    self.widgetMenuOpen.insert(tk.INSERT, &#34;|port|&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.addWaveVariable"><code class="name flex">
+<span>def <span class="ident">addWaveVariable</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>insert the wave variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addWaveVariable(self):
+    &#34;&#34;&#34;
+    insert the wave variable inside the a tkinter widget stored in appli widgetMenuOpen attribute.
+    &#34;&#34;&#34;
+    self.widgetMenuOpen.insert(tk.INSERT, &#34;|wave|&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.getParent"><code class="name flex">
+<span>def <span class="ident">getParent</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the id of the parent node in treeview.</p>
+<h2 id="returns">Returns</h2>
+<p>return the saved command_node node inside the Appli class.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getParent(self):
+    &#34;&#34;&#34;
+    Return the id of the parent node in treeview.
+
+    Returns:
+        return the saved command_node node inside the Appli class.
+    &#34;&#34;&#34;
+    return self.appliTw.commands_node</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.key"><code class="name flex">
+<span>def <span class="ident">key</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a key for sorting this node</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>string, key to sort</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def key(self):
+    &#34;&#34;&#34;Returns a key for sorting this node
+    Returns:
+        string, key to sort
+    &#34;&#34;&#34;
+    return str(self.controller.getModelRepr()).lower()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.openInsertWindow"><code class="name flex">
+<span>def <span class="ident">openInsertWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to insert a new Command</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openInsertWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to insert a new Command
+    &#34;&#34;&#34;
+    self._initContextualMenu()
+    panel_top = self.form.addFormPanel(grid=True)
+    panel_top.addFormLabel(&#34;Name&#34;)
+    panel_top.addFormStr(&#34;Name&#34;, r&#34;\S+&#34;, &#34;&#34;, None, column=1)
+    panel_top.addFormLabel(&#34;Level&#34;, row=1)
+    panel_top.addFormCombo(
+        &#34;Level&#34;, [&#34;network&#34;, &#34;domain&#34;, &#34;ip&#34;, &#34;port&#34;, &#34;wave&#34;], &#34;network&#34;, row=1, column=1)
+    panel_top.addFormHelper(
+        &#34;lvl wave: will run on each wave once\nlvl network: will run on each NetworkIP once\nlvl domain: will run on each scope domain once\nlvl ip: will run on each ip/hostname once\nlvl port: will run on each port once&#34;, row=1, column=2)
+    panel_types = self.form.addFormPanel(grid=True)
+    panel_types.addFormChecklist(
+        &#34;Types&#34;, Settings.getPentestTypes(), [], row=2, column=1)
+    panel_types.addFormHelper(
+        &#34;This command will be added by default on pentest having a type checked in this list.\nThis list can be modified on settings.&#34;, column=2)
+    panel_safe = self.form.addFormPanel(grid=True)
+    panel_safe.addFormLabel(&#34;Safe&#34;)
+    panel_safe.addFormCheckbox(
+        &#34;Safe&#34;, &#34;Safe&#34;, &#34;False&#34;, column=1)
+    panel_safe.addFormHelper(
+        &#34;If checked, this command can be run by an auto scan.&#34;, column=2)
+    panel_text = self.form.addFormPanel()
+    panel_text.addFormLabel(&#34;Command line options&#34;, side=&#34;top&#34;)
+    panel_text.addFormHelper(
+        &#34;&#34;&#34;Do not include binary name/path\nDo not include Output file option\nUse variables |wave|, |scope|, |ip|, |port|, |parent_domain|, |outputDir|, |port.service|, |port.product|, |ip.infos.*| |port.infos.*|&#34;&#34;&#34;, side=&#34;right&#34;)
+    panel_text.addFormText(&#34;Command line options&#34;,
+                           r&#34;&#34;, &#34;&#34;, self.menuContextuel, side=&#34;top&#34;, height=5)
+    panel_bottom = self.form.addFormPanel(grid=True)
+    panel_bottom.addFormLabel(&#34;Ports/Services&#34;)
+    panel_bottom.addFormStr(
+        &#34;Ports/Services&#34;, r&#34;^((.{0})|(\d{1,5}|[^\, ]+)(?:, (\d{1,5}|[^\, ]+))*)$&#34;, &#34;&#34;, width=50, column=1)
+    panel_bottom.addFormHelper(
+        &#34;Services, ports or port ranges.\nthis list must be separated by a comma, if no protocol is specified, tcp/ will be used.\n Example: ssl/http,https,http/ssl,0-65535,443...&#34;, column=2)
+
+    self._commonWindowForms()
+    self.completeInsertWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.openModifyWindow"><code class="name flex">
+<span>def <span class="ident">openModifyWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to update or delete an existing Command</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openModifyWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to update or delete an existing Command
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    self._initContextualMenu()
+    settings = self.mainApp.settings
+    settings.reloadSettings()
+    panel_top = self.form.addFormPanel(grid=True)
+    panel_top.addFormLabel(&#34;Name&#34;, modelData[&#34;name&#34;], sticky=tk.NW)
+    panel_top.addFormLabel(&#34;Level&#34;, modelData[&#34;lvl&#34;], row=1, sticky=tk.NW)
+    panel_top_bis = self.form.addFormPanel(grid=True)
+    panel_top_bis.addFormChecklist(
+        &#34;Types&#34;, Settings.getPentestTypes().keys(), modelData[&#34;types&#34;], column=1)
+    panel_safe = self.form.addFormPanel(grid=True)
+    panel_safe.addFormLabel(&#34;Safe&#34;)
+    panel_safe.addFormCheckbox(
+        &#34;Safe&#34;, &#34;Safe&#34;, modelData[&#34;safe&#34;] == &#34;True&#34;, column=1)
+    panel_safe.addFormHelper(
+        &#34;If checked, this command can be run by an auto scan.&#34;, column=2)
+    panel_text = self.form.addFormPanel()
+    panel_text.addFormLabel(&#34;Command line options&#34;, side=&#34;top&#34;)
+    panel_text.addFormHelper(
+        &#34;&#34;&#34;Do not include binary name/path\nDo not include Output file option\nUse variables |wave|, |scope|, |ip|, |port|, |parent_domain|, |outputDir|, |port.service|, |port.product|, |ip.infos.*| |port.infos.*|&#34;&#34;&#34;, side=&#34;right&#34;)
+    panel_text.addFormText(&#34;Command line options&#34;, r&#34;&#34;,
+                           modelData[&#34;text&#34;], self.menuContextuel, side=&#34;top&#34;, height=5)
+    panel_bottom = self.form.addFormPanel(grid=True)
+    if modelData[&#34;lvl&#34;] == &#34;port&#34;:
+        panel_bottom.addFormLabel(&#34;Ports/Services&#34;, column=0)
+        panel_bottom.addFormStr(
+            &#34;Ports/Services&#34;, r&#34;^(\d{1,5}|[^\,]+)(?:,(\d{1,5}|[^\,]+))*$&#34;, modelData[&#34;ports&#34;], self.popup, width=50, column=1)
+        panel_bottom.addFormHelper(
+            &#34;Services, ports or port ranges.\nthis list must be separated by a comma, if no protocol is specified, tcp/ will be used.\n Example: ssl/http,https,http/ssl,0-65535,443...&#34;,column=2)
+    self._commonWindowForms(modelData)
+    self.completeModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.popup"><code class="name flex">
+<span>def <span class="ident">popup</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fill the self.widgetMenuOpen and reraise the event in the editing window contextual menu</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>a ttk Treeview event autofilled. Contains information on what treeview node was clicked.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def popup(self, event):
+    &#34;&#34;&#34;
+    Fill the self.widgetMenuOpen and reraise the event in the editing window contextual menu
+
+    Args:
+        event: a ttk Treeview event autofilled. Contains information on what treeview node was clicked.
+    &#34;&#34;&#34;
+    self.widgetMenuOpen = event.widget
+    self.menuContextuel.post(event.x_root, event.y_root)
+    self.menuContextuel.focus_set()
+    self.menuContextuel.bind(&#39;&lt;FocusOut&gt;&#39;, self.popupFocusOut)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.CommandView.CommandView.popupFocusOut"><code class="name flex">
+<span>def <span class="ident">popupFocusOut</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when the contextual menu is unfocused</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>a ttk event autofilled. not used but mandatory.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def popupFocusOut(self, _event=None):
+    &#34;&#34;&#34;
+    Called when the contextual menu is unfocused
+    Args:
+        _event: a ttk event autofilled. not used but mandatory.
+    &#34;&#34;&#34;
+    self.menuContextuel.unpost()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Views" href="index.html">Pollenisator.core.Views</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Views.CommandView.CommandView" href="#Pollenisator.core.Views.CommandView.CommandView">CommandView</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.addInTreeview" href="#Pollenisator.core.Views.CommandView.CommandView.addInTreeview">addInTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.addIpDirVariable" href="#Pollenisator.core.Views.CommandView.CommandView.addIpDirVariable">addIpDirVariable</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.addIpReseauDirVariable" href="#Pollenisator.core.Views.CommandView.CommandView.addIpReseauDirVariable">addIpReseauDirVariable</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.addIpReseauVariable" href="#Pollenisator.core.Views.CommandView.CommandView.addIpReseauVariable">addIpReseauVariable</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.addIpVariable" href="#Pollenisator.core.Views.CommandView.CommandView.addIpVariable">addIpVariable</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.addParentDomainVariable" href="#Pollenisator.core.Views.CommandView.CommandView.addParentDomainVariable">addParentDomainVariable</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.addPortVariable" href="#Pollenisator.core.Views.CommandView.CommandView.addPortVariable">addPortVariable</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.addWaveVariable" href="#Pollenisator.core.Views.CommandView.CommandView.addWaveVariable">addWaveVariable</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.getParent" href="#Pollenisator.core.Views.CommandView.CommandView.getParent">getParent</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.icon" href="#Pollenisator.core.Views.CommandView.CommandView.icon">icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.key" href="#Pollenisator.core.Views.CommandView.CommandView.key">key</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.openInsertWindow" href="#Pollenisator.core.Views.CommandView.CommandView.openInsertWindow">openInsertWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.openModifyWindow" href="#Pollenisator.core.Views.CommandView.CommandView.openModifyWindow">openModifyWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.popup" href="#Pollenisator.core.Views.CommandView.CommandView.popup">popup</a></code></li>
+<li><code><a title="Pollenisator.core.Views.CommandView.CommandView.popupFocusOut" href="#Pollenisator.core.Views.CommandView.CommandView.popupFocusOut">popupFocusOut</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

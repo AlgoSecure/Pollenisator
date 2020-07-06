@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Application.Dialogs.ChildDialogNewCalendar API documentation</title>
+<meta name="description" content="Help the user to create a new pentest database." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Application.Dialogs.ChildDialogNewCalendar</code></h1>
+</header>
+<section id="section-intro">
+<p>Help the user to create a new pentest database.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Help the user to create a new pentest database.
+&#34;&#34;&#34;
+import tkinter as tk
+import tkinter.ttk as ttk
+from datetime import datetime
+from core.Forms.FormPanel import FormPanel
+from core.Views.ViewElement import ViewElement
+from core.Components.Settings import Settings
+
+
+class ChildDialogNewCalendar:
+    &#34;&#34;&#34;
+    Open a child dialog of a tkinter application to ask details about
+    a new pentest database to create.
+    &#34;&#34;&#34;
+
+    def __init__(self, parent, default):
+        &#34;&#34;&#34;
+        Open a child dialog of a tkinter application to ask details about
+        the new pentest.
+
+        Args:
+            parent: the tkinter parent view to use for this window construction.
+        &#34;&#34;&#34;
+        self.app = tk.Toplevel(parent)
+        self.app.resizable(False, False)
+        self.rvalue = None
+        self.parent = parent
+        mainFrame = ttk.Frame(self.app)
+        self.form = FormPanel()
+        form1 = self.form.addFormPanel(grid=True, side=tk.TOP, fill=tk.X)
+        form1.addFormLabel(&#34;Database name&#34;)
+        form1.addFormStr(&#34;Database name&#34;, r&#34;^\S+$&#34;, default=default.get(&#34;name&#34;, &#34;&#34;), width=50, column=1)
+        types = list(Settings.getPentestTypes().keys())
+        if types:
+            form1.addFormLabel(&#34;Pentest type&#34;, row=1)
+            form1.addFormCombo(
+                &#34;Pentest type&#34;, types, default=default.get(&#34;type&#34;, types[0]), row=1, column=1)
+        form1.addFormLabel(&#34;Starting&#34;, row=2)
+        form1.addFormDate(&#34;startd&#34;, parent, default.get(&#34;start&#34;, datetime.strftime(datetime.now(), &#34;%d/%m/%Y %H:%M:%S&#34;)), &#34;%d/%m/%Y %H:%M:%S&#34;, row=2, column=1)
+        form1.addFormLabel(&#34;Ending&#34;, row=3)
+        form1.addFormDate(&#34;endd&#34;, parent, default.get(&#34;end&#34;, &#34;31/12/2099 00:00:00&#34;),
+                          &#34;%d/%m/%Y %H:%M:%S&#34;, row=3, column=1)
+        form2 = self.form.addFormPanel(grid=True, side=tk.TOP, fill=tk.X, pady=5)
+        form2.addFormLabel(&#34;Scope&#34;, pady=5)
+        form2.addFormText(
+            &#34;Scope&#34;, &#34;&#34;, default.get(&#34;scope&#34;, &#34;&#34;), height=5, column=1, sticky=tk.E, pady=5)
+        form2.addFormHelper(
+            &#34;You can declare network ip as IP/MASKSIZE, ips or domains&#34;, column=2, sticky=tk.W)
+        form2.addFormLabel(&#34;Pentester names&#34;, row=1, sticky=tk.E)
+        form2.addFormText(
+            &#34;Pentester names&#34;, &#34;&#34;, default.get(&#34;pentesters&#34;, &#34;&#34;),  row=1, column=1, sticky=tk.W, height=3, pady=5)
+        form3 = self.form.addFormPanel(side=tk.TOP, fill=tk.X, pady=5)
+        default_settings = []
+        for key, val in default.get(&#34;settings&#34;, {}).items():
+            if val == 1:
+                default_settings.append(key)
+        form3.addFormChecklist(&#34;Settings&#34;, [&#34;Add domains whose IP are in scope&#34;,
+                                            &#34;Add domains who have a parent domain in scope&#34;, &#34;Add all domains found&#34;], default_settings, side=tk.TOP, fill=tk.X, pady=5)
+        form3.addFormButton(&#34;Create&#34;, self.onOk, side=tk.BOTTOM)
+        self.form.constructView(mainFrame)
+        self.form.setFocusOn(&#34;Database name&#34;)
+        mainFrame.pack(fill=tk.BOTH, ipadx=10, ipady=10)
+        self.app.transient(parent)
+        self.app.wait_visibility()
+        self.app.grab_set()
+
+    def onOk(self, _event):
+        &#34;&#34;&#34;
+        Called when the user clicked the validation button. Set the rvalue attributes to the value selected and close the window.
+        
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        # send the data to the parent
+        res, msg = self.form.checkForm()
+        if res:
+            form_values = self.form.getValue()
+            form_values_as_dicts = ViewElement.list_tuple_to_dict(form_values)
+            self.rvalue = {&#34;name&#34;: form_values_as_dicts[&#34;Database name&#34;],
+                           &#34;type&#34;: form_values_as_dicts.get(&#34;Pentest type&#34;, &#34;&#34;),
+                           &#34;start&#34;: form_values_as_dicts[&#34;startd&#34;],
+                           &#34;end&#34;: form_values_as_dicts[&#34;endd&#34;],
+                           &#34;settings&#34;: form_values_as_dicts[&#34;Settings&#34;],
+                           &#34;scope&#34;: form_values_as_dicts[&#34;Scope&#34;],
+                           &#34;pentesters&#34;: form_values_as_dicts[&#34;Pentester names&#34;]}
+            self.app.destroy()
+        else:
+            tk.messagebox.showwarning(
+                &#34;Form not validated&#34;, msg, parent=self.app)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogNewCalendar.ChildDialogNewCalendar"><code class="flex name class">
+<span>class <span class="ident">ChildDialogNewCalendar</span></span>
+<span>(</span><span>parent, default)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Open a child dialog of a tkinter application to ask details about
+a new pentest database to create.</p>
+<p>Open a child dialog of a tkinter application to ask details about
+the new pentest.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>the tkinter parent view to use for this window construction.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChildDialogNewCalendar:
+    &#34;&#34;&#34;
+    Open a child dialog of a tkinter application to ask details about
+    a new pentest database to create.
+    &#34;&#34;&#34;
+
+    def __init__(self, parent, default):
+        &#34;&#34;&#34;
+        Open a child dialog of a tkinter application to ask details about
+        the new pentest.
+
+        Args:
+            parent: the tkinter parent view to use for this window construction.
+        &#34;&#34;&#34;
+        self.app = tk.Toplevel(parent)
+        self.app.resizable(False, False)
+        self.rvalue = None
+        self.parent = parent
+        mainFrame = ttk.Frame(self.app)
+        self.form = FormPanel()
+        form1 = self.form.addFormPanel(grid=True, side=tk.TOP, fill=tk.X)
+        form1.addFormLabel(&#34;Database name&#34;)
+        form1.addFormStr(&#34;Database name&#34;, r&#34;^\S+$&#34;, default=default.get(&#34;name&#34;, &#34;&#34;), width=50, column=1)
+        types = list(Settings.getPentestTypes().keys())
+        if types:
+            form1.addFormLabel(&#34;Pentest type&#34;, row=1)
+            form1.addFormCombo(
+                &#34;Pentest type&#34;, types, default=default.get(&#34;type&#34;, types[0]), row=1, column=1)
+        form1.addFormLabel(&#34;Starting&#34;, row=2)
+        form1.addFormDate(&#34;startd&#34;, parent, default.get(&#34;start&#34;, datetime.strftime(datetime.now(), &#34;%d/%m/%Y %H:%M:%S&#34;)), &#34;%d/%m/%Y %H:%M:%S&#34;, row=2, column=1)
+        form1.addFormLabel(&#34;Ending&#34;, row=3)
+        form1.addFormDate(&#34;endd&#34;, parent, default.get(&#34;end&#34;, &#34;31/12/2099 00:00:00&#34;),
+                          &#34;%d/%m/%Y %H:%M:%S&#34;, row=3, column=1)
+        form2 = self.form.addFormPanel(grid=True, side=tk.TOP, fill=tk.X, pady=5)
+        form2.addFormLabel(&#34;Scope&#34;, pady=5)
+        form2.addFormText(
+            &#34;Scope&#34;, &#34;&#34;, default.get(&#34;scope&#34;, &#34;&#34;), height=5, column=1, sticky=tk.E, pady=5)
+        form2.addFormHelper(
+            &#34;You can declare network ip as IP/MASKSIZE, ips or domains&#34;, column=2, sticky=tk.W)
+        form2.addFormLabel(&#34;Pentester names&#34;, row=1, sticky=tk.E)
+        form2.addFormText(
+            &#34;Pentester names&#34;, &#34;&#34;, default.get(&#34;pentesters&#34;, &#34;&#34;),  row=1, column=1, sticky=tk.W, height=3, pady=5)
+        form3 = self.form.addFormPanel(side=tk.TOP, fill=tk.X, pady=5)
+        default_settings = []
+        for key, val in default.get(&#34;settings&#34;, {}).items():
+            if val == 1:
+                default_settings.append(key)
+        form3.addFormChecklist(&#34;Settings&#34;, [&#34;Add domains whose IP are in scope&#34;,
+                                            &#34;Add domains who have a parent domain in scope&#34;, &#34;Add all domains found&#34;], default_settings, side=tk.TOP, fill=tk.X, pady=5)
+        form3.addFormButton(&#34;Create&#34;, self.onOk, side=tk.BOTTOM)
+        self.form.constructView(mainFrame)
+        self.form.setFocusOn(&#34;Database name&#34;)
+        mainFrame.pack(fill=tk.BOTH, ipadx=10, ipady=10)
+        self.app.transient(parent)
+        self.app.wait_visibility()
+        self.app.grab_set()
+
+    def onOk(self, _event):
+        &#34;&#34;&#34;
+        Called when the user clicked the validation button. Set the rvalue attributes to the value selected and close the window.
+        
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        # send the data to the parent
+        res, msg = self.form.checkForm()
+        if res:
+            form_values = self.form.getValue()
+            form_values_as_dicts = ViewElement.list_tuple_to_dict(form_values)
+            self.rvalue = {&#34;name&#34;: form_values_as_dicts[&#34;Database name&#34;],
+                           &#34;type&#34;: form_values_as_dicts.get(&#34;Pentest type&#34;, &#34;&#34;),
+                           &#34;start&#34;: form_values_as_dicts[&#34;startd&#34;],
+                           &#34;end&#34;: form_values_as_dicts[&#34;endd&#34;],
+                           &#34;settings&#34;: form_values_as_dicts[&#34;Settings&#34;],
+                           &#34;scope&#34;: form_values_as_dicts[&#34;Scope&#34;],
+                           &#34;pentesters&#34;: form_values_as_dicts[&#34;Pentester names&#34;]}
+            self.app.destroy()
+        else:
+            tk.messagebox.showwarning(
+                &#34;Form not validated&#34;, msg, parent=self.app)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogNewCalendar.ChildDialogNewCalendar.onOk"><code class="name flex">
+<span>def <span class="ident">onOk</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when the user clicked the validation button. Set the rvalue attributes to the value selected and close the window.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def onOk(self, _event):
+    &#34;&#34;&#34;
+    Called when the user clicked the validation button. Set the rvalue attributes to the value selected and close the window.
+    
+    Args:
+        _event: not used but mandatory
+    &#34;&#34;&#34;
+    # send the data to the parent
+    res, msg = self.form.checkForm()
+    if res:
+        form_values = self.form.getValue()
+        form_values_as_dicts = ViewElement.list_tuple_to_dict(form_values)
+        self.rvalue = {&#34;name&#34;: form_values_as_dicts[&#34;Database name&#34;],
+                       &#34;type&#34;: form_values_as_dicts.get(&#34;Pentest type&#34;, &#34;&#34;),
+                       &#34;start&#34;: form_values_as_dicts[&#34;startd&#34;],
+                       &#34;end&#34;: form_values_as_dicts[&#34;endd&#34;],
+                       &#34;settings&#34;: form_values_as_dicts[&#34;Settings&#34;],
+                       &#34;scope&#34;: form_values_as_dicts[&#34;Scope&#34;],
+                       &#34;pentesters&#34;: form_values_as_dicts[&#34;Pentester names&#34;]}
+        self.app.destroy()
+    else:
+        tk.messagebox.showwarning(
+            &#34;Form not validated&#34;, msg, parent=self.app)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Application.Dialogs" href="index.html">Pollenisator.core.Application.Dialogs</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogNewCalendar.ChildDialogNewCalendar" href="#Pollenisator.core.Application.Dialogs.ChildDialogNewCalendar.ChildDialogNewCalendar">ChildDialogNewCalendar</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogNewCalendar.ChildDialogNewCalendar.onOk" href="#Pollenisator.core.Application.Dialogs.ChildDialogNewCalendar.ChildDialogNewCalendar.onOk">onOk</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

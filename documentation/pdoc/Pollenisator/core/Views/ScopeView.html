@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Views.ScopeView API documentation</title>
+<meta name="description" content="View for scope object. Handle node in treeview and present forms to user when interacted with." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Views.ScopeView</code></h1>
+</header>
+<section id="section-intro">
+<p>View for scope object. Handle node in treeview and present forms to user when interacted with.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;View for scope object. Handle node in treeview and present forms to user when interacted with.&#34;&#34;&#34;
+
+from core.Controllers.ToolController import ToolController
+from core.Models.Tool import Tool
+from core.Views.IpView import IpView
+from core.Views.ToolView import ToolView
+from core.Views.ViewElement import ViewElement
+from tkinter import TclError
+
+class ScopeView(ViewElement):
+    &#34;&#34;&#34;View for port object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory&#34;&#34;&#34;
+
+    icon = &#39;scope.png&#39;
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Scope
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Scope&#34;, column=0)
+        top_panel.addFormStr(&#34;Scope&#34;, &#39;&#39;, modelData[&#34;scope&#34;], None, column=1, state=&#34;readonly&#34;)
+        notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Notes&#34;)
+        self.form.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;)
+        self.completeModifyWindow()
+
+    def addChildrenBaseNodes(self, newNode):
+        &#34;&#34;&#34;
+        Add to the given node from a treeview the mandatory childrens.
+        For a Scope it is the tools parent node and the ips parent node
+
+        Args:
+            newNode: the newly created node we want to add children to.
+        &#34;&#34;&#34;
+
+        return self.appliTw.insert(newNode, &#34;end&#34;, IpView.DbToTreeviewListId(newNode), text=&#34;IPs&#34;, image=IpView.getClassIcon())
+
+    def addInTreeview(self, parentNode=None, addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            addChildren: If False, skip the tool insert. Useful when displaying search results
+        &#34;&#34;&#34;
+        parentDbId = parentNode
+        if parentNode is None:
+            parentNode = self.getParent()
+        elif &#39;scopes&#39; not in parentNode:
+            parentNode = ScopeView.DbToTreeviewListId(parentDbId)
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;:self}
+        try:
+            parentNode = self.appliTw.insert(
+                self.controller.getParent(), 0, parentNode, text=&#34;Scopes&#34;, image=self.getClassIcon())
+        except TclError:  #  trigger if tools list node already exist
+            pass
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+        if addChildren:
+            tools = self.controller.getTools()
+            for tool in tools:
+                tool_o = ToolController(Tool(tool))
+                tool_vw = ToolView(self.appliTw, self.appliViewFrame, self.mainApp, tool_o)
+                tool_vw.addInTreeview(str(
+                   self.controller.getDbId()))
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    @classmethod
+    def treeviewListIdToDb(cls, treeview_id):
+        &#34;&#34;&#34;Extract from the unique string identifying a list of scopes the parent db ID
+        Args:
+            treeview_id: the treeview node id of a list of scopes node
+        Returns:
+            the parent object mongo id as string
+        &#34;&#34;&#34;
+        return str(treeview_id).split(&#34;|&#34;)[1]
+
+    @classmethod
+    def DbToTreeviewListId(cls, parent_db_id):
+        &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of scopes given its parent
+        Args:
+            parent_db_id: the parent node mongo ID
+        Returns:
+            A string that should be unique to describe the parent list of scope node
+        &#34;&#34;&#34;
+        return &#34;scopes|&#34;+str(parent_db_id)
+
+    def split_ip(self):
+        &#34;&#34;&#34;Split a IP address given as string into a 5-tuple of integers.
+        Returns:
+            If network IP Tuple of 5 integers values representing the 4 parts of an ipv4 string + the /mask integer
+            Otherwise returns self&#34;&#34;&#34;
+        try:
+            modelData = self.controller.getData()
+            ret = tuple(int(part) for part in modelData[&#34;scope&#34;].split(&#39;.&#39;))
+            ret = ret + tuple(int(modelData[&#34;scope&#34;].split(&#39;/&#39;)[1]))
+        except ValueError:
+            ret = self
+        return ret
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a scope insertion is received by notification.
+        Tells the parent wave to update itself
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        parentId = self.controller.getParent()
+        parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+        parentView.updateReceived()
+        super().insertReceived()
+
+    def key(self):
+        &#34;&#34;&#34;Returns a key for sorting this node
+        Returns:
+            Tuple of 5 integer valus representing the scope perimeter if network ip or self directly
+        &#34;&#34;&#34;
+        return self.split_ip()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView"><code class="flex name class">
+<span>class <span class="ident">ScopeView</span></span>
+<span>(</span><span>appTw, appViewFrame, mainApp, controller)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>View for port object. Handle node in treeview and present forms to user when interacted with.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>icon</code></strong></dt>
+<dd>icon name to show in treeview. Icon filename must be in icon directory</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appTw</code></strong></dt>
+<dd>a PollenisatorTreeview instance to put this view in</dd>
+<dt><strong><code>appViewFrame</code></strong></dt>
+<dd>an view frame to build the forms in.</dd>
+<dt><strong><code>mainApp</code></strong></dt>
+<dd>the Application instance</dd>
+<dt><strong><code>controller</code></strong></dt>
+<dd>a CommandController for this view.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ScopeView(ViewElement):
+    &#34;&#34;&#34;View for port object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory&#34;&#34;&#34;
+
+    icon = &#39;scope.png&#39;
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Scope
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Scope&#34;, column=0)
+        top_panel.addFormStr(&#34;Scope&#34;, &#39;&#39;, modelData[&#34;scope&#34;], None, column=1, state=&#34;readonly&#34;)
+        notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Notes&#34;)
+        self.form.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;)
+        self.completeModifyWindow()
+
+    def addChildrenBaseNodes(self, newNode):
+        &#34;&#34;&#34;
+        Add to the given node from a treeview the mandatory childrens.
+        For a Scope it is the tools parent node and the ips parent node
+
+        Args:
+            newNode: the newly created node we want to add children to.
+        &#34;&#34;&#34;
+
+        return self.appliTw.insert(newNode, &#34;end&#34;, IpView.DbToTreeviewListId(newNode), text=&#34;IPs&#34;, image=IpView.getClassIcon())
+
+    def addInTreeview(self, parentNode=None, addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            addChildren: If False, skip the tool insert. Useful when displaying search results
+        &#34;&#34;&#34;
+        parentDbId = parentNode
+        if parentNode is None:
+            parentNode = self.getParent()
+        elif &#39;scopes&#39; not in parentNode:
+            parentNode = ScopeView.DbToTreeviewListId(parentDbId)
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;:self}
+        try:
+            parentNode = self.appliTw.insert(
+                self.controller.getParent(), 0, parentNode, text=&#34;Scopes&#34;, image=self.getClassIcon())
+        except TclError:  #  trigger if tools list node already exist
+            pass
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+        if addChildren:
+            tools = self.controller.getTools()
+            for tool in tools:
+                tool_o = ToolController(Tool(tool))
+                tool_vw = ToolView(self.appliTw, self.appliViewFrame, self.mainApp, tool_o)
+                tool_vw.addInTreeview(str(
+                   self.controller.getDbId()))
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    @classmethod
+    def treeviewListIdToDb(cls, treeview_id):
+        &#34;&#34;&#34;Extract from the unique string identifying a list of scopes the parent db ID
+        Args:
+            treeview_id: the treeview node id of a list of scopes node
+        Returns:
+            the parent object mongo id as string
+        &#34;&#34;&#34;
+        return str(treeview_id).split(&#34;|&#34;)[1]
+
+    @classmethod
+    def DbToTreeviewListId(cls, parent_db_id):
+        &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of scopes given its parent
+        Args:
+            parent_db_id: the parent node mongo ID
+        Returns:
+            A string that should be unique to describe the parent list of scope node
+        &#34;&#34;&#34;
+        return &#34;scopes|&#34;+str(parent_db_id)
+
+    def split_ip(self):
+        &#34;&#34;&#34;Split a IP address given as string into a 5-tuple of integers.
+        Returns:
+            If network IP Tuple of 5 integers values representing the 4 parts of an ipv4 string + the /mask integer
+            Otherwise returns self&#34;&#34;&#34;
+        try:
+            modelData = self.controller.getData()
+            ret = tuple(int(part) for part in modelData[&#34;scope&#34;].split(&#39;.&#39;))
+            ret = ret + tuple(int(modelData[&#34;scope&#34;].split(&#39;/&#39;)[1]))
+        except ValueError:
+            ret = self
+        return ret
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a scope insertion is received by notification.
+        Tells the parent wave to update itself
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        parentId = self.controller.getParent()
+        parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+        parentView.updateReceived()
+        super().insertReceived()
+
+    def key(self):
+        &#34;&#34;&#34;Returns a key for sorting this node
+        Returns:
+            Tuple of 5 integer valus representing the scope perimeter if network ip or self directly
+        &#34;&#34;&#34;
+        return self.split_ip()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Views.ViewElement.ViewElement</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.icon"><code class="name">var <span class="ident">icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.DbToTreeviewListId"><code class="name flex">
+<span>def <span class="ident">DbToTreeviewListId</span></span>(<span>parent_db_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts a mongo Id to a unique string identifying a list of scopes given its parent</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent_db_id</code></strong></dt>
+<dd>the parent node mongo ID</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A string that should be unique to describe the parent list</code> of <code>scope node</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def DbToTreeviewListId(cls, parent_db_id):
+    &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of scopes given its parent
+    Args:
+        parent_db_id: the parent node mongo ID
+    Returns:
+        A string that should be unique to describe the parent list of scope node
+    &#34;&#34;&#34;
+    return &#34;scopes|&#34;+str(parent_db_id)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.treeviewListIdToDb"><code class="name flex">
+<span>def <span class="ident">treeviewListIdToDb</span></span>(<span>treeview_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract from the unique string identifying a list of scopes the parent db ID</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>treeview_id</code></strong></dt>
+<dd>the treeview node id of a list of scopes node</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the parent object mongo id as string</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def treeviewListIdToDb(cls, treeview_id):
+    &#34;&#34;&#34;Extract from the unique string identifying a list of scopes the parent db ID
+    Args:
+        treeview_id: the treeview node id of a list of scopes node
+    Returns:
+        the parent object mongo id as string
+    &#34;&#34;&#34;
+    return str(treeview_id).split(&#34;|&#34;)[1]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.addChildrenBaseNodes"><code class="name flex">
+<span>def <span class="ident">addChildrenBaseNodes</span></span>(<span>self, newNode)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add to the given node from a treeview the mandatory childrens.
+For a Scope it is the tools parent node and the ips parent node</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>newNode</code></strong></dt>
+<dd>the newly created node we want to add children to.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addChildrenBaseNodes(self, newNode):
+    &#34;&#34;&#34;
+    Add to the given node from a treeview the mandatory childrens.
+    For a Scope it is the tools parent node and the ips parent node
+
+    Args:
+        newNode: the newly created node we want to add children to.
+    &#34;&#34;&#34;
+
+    return self.appliTw.insert(newNode, &#34;end&#34;, IpView.DbToTreeviewListId(newNode), text=&#34;IPs&#34;, image=IpView.getClassIcon())</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.addInTreeview"><code class="name flex">
+<span>def <span class="ident">addInTreeview</span></span>(<span>self, parentNode=None, addChildren=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this view in treeview. Also stores infos in application treeview.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentNode</code></strong></dt>
+<dd>if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.</dd>
+<dt><strong><code>addChildren</code></strong></dt>
+<dd>If False, skip the tool insert. Useful when displaying search results</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInTreeview(self, parentNode=None, addChildren=True):
+    &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+    Args:
+        parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+        addChildren: If False, skip the tool insert. Useful when displaying search results
+    &#34;&#34;&#34;
+    parentDbId = parentNode
+    if parentNode is None:
+        parentNode = self.getParent()
+    elif &#39;scopes&#39; not in parentNode:
+        parentNode = ScopeView.DbToTreeviewListId(parentDbId)
+    self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;:self}
+    try:
+        parentNode = self.appliTw.insert(
+            self.controller.getParent(), 0, parentNode, text=&#34;Scopes&#34;, image=self.getClassIcon())
+    except TclError:  #  trigger if tools list node already exist
+        pass
+    self.appliTw.insert(parentNode, &#34;end&#34;, str(
+        self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+    if addChildren:
+        tools = self.controller.getTools()
+        for tool in tools:
+            tool_o = ToolController(Tool(tool))
+            tool_vw = ToolView(self.appliTw, self.appliViewFrame, self.mainApp, tool_o)
+            tool_vw.addInTreeview(str(
+               self.controller.getDbId()))
+    if &#34;hidden&#34; in self.controller.getTags():
+        self.hide()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.insertReceived"><code class="name flex">
+<span>def <span class="ident">insertReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a scope insertion is received by notification.
+Tells the parent wave to update itself</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertReceived(self):
+    &#34;&#34;&#34;Called when a scope insertion is received by notification.
+    Tells the parent wave to update itself
+    &#34;&#34;&#34;
+    if self.controller.model is None:
+        return
+    parentId = self.controller.getParent()
+    parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+    parentView.updateReceived()
+    super().insertReceived()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.key"><code class="name flex">
+<span>def <span class="ident">key</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a key for sorting this node</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple</code> of <code>5 integer valus representing the scope perimeter if network ip</code> or <code>self directly</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def key(self):
+    &#34;&#34;&#34;Returns a key for sorting this node
+    Returns:
+        Tuple of 5 integer valus representing the scope perimeter if network ip or self directly
+    &#34;&#34;&#34;
+    return self.split_ip()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.openModifyWindow"><code class="name flex">
+<span>def <span class="ident">openModifyWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to update or delete an existing Scope</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openModifyWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to update or delete an existing Scope
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormLabel(&#34;Scope&#34;, column=0)
+    top_panel.addFormStr(&#34;Scope&#34;, &#39;&#39;, modelData[&#34;scope&#34;], None, column=1, state=&#34;readonly&#34;)
+    notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormLabel(&#34;Notes&#34;)
+    self.form.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;)
+    self.completeModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ScopeView.ScopeView.split_ip"><code class="name flex">
+<span>def <span class="ident">split_ip</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Split a IP address given as string into a 5-tuple of integers.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>If network IP Tuple</code> of <code>5 integers values representing the 4 parts</code> of <code>an ipv4 string + the /mask integer</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>Otherwise returns self</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_ip(self):
+    &#34;&#34;&#34;Split a IP address given as string into a 5-tuple of integers.
+    Returns:
+        If network IP Tuple of 5 integers values representing the 4 parts of an ipv4 string + the /mask integer
+        Otherwise returns self&#34;&#34;&#34;
+    try:
+        modelData = self.controller.getData()
+        ret = tuple(int(part) for part in modelData[&#34;scope&#34;].split(&#39;.&#39;))
+        ret = ret + tuple(int(modelData[&#34;scope&#34;].split(&#39;/&#39;)[1]))
+    except ValueError:
+        ret = self
+    return ret</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Views" href="index.html">Pollenisator.core.Views</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Views.ScopeView.ScopeView" href="#Pollenisator.core.Views.ScopeView.ScopeView">ScopeView</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.DbToTreeviewListId" href="#Pollenisator.core.Views.ScopeView.ScopeView.DbToTreeviewListId">DbToTreeviewListId</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.addChildrenBaseNodes" href="#Pollenisator.core.Views.ScopeView.ScopeView.addChildrenBaseNodes">addChildrenBaseNodes</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.addInTreeview" href="#Pollenisator.core.Views.ScopeView.ScopeView.addInTreeview">addInTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.icon" href="#Pollenisator.core.Views.ScopeView.ScopeView.icon">icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.insertReceived" href="#Pollenisator.core.Views.ScopeView.ScopeView.insertReceived">insertReceived</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.key" href="#Pollenisator.core.Views.ScopeView.ScopeView.key">key</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.openModifyWindow" href="#Pollenisator.core.Views.ScopeView.ScopeView.openModifyWindow">openModifyWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.split_ip" href="#Pollenisator.core.Views.ScopeView.ScopeView.split_ip">split_ip</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ScopeView.ScopeView.treeviewListIdToDb" href="#Pollenisator.core.Views.ScopeView.ScopeView.treeviewListIdToDb">treeviewListIdToDb</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

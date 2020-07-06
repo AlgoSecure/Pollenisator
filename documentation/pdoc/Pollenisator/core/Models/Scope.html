@@ -1,0 +1,1264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Models.Scope API documentation</title>
+<meta name="description" content="Scope Model" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Models.Scope</code></h1>
+</header>
+<section id="section-intro">
+<p>Scope Model</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Scope Model&#34;&#34;&#34;
+
+from core.Models.Element import Element
+from core.Models.Ip import Ip
+from bson.objectid import ObjectId
+from core.Components.mongo import MongoCalendar
+from core.Models.Tool import Tool
+import core.Components.Utils as Utils
+from core.Components.Settings import Settings
+
+
+class Scope(Element):
+    &#34;&#34;&#34;
+    Represents a Scope object that defines a scope that will be targeted by network or domain tools.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+
+    coll_name = &#34;scopes&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+                        wave(&#34;&#34;), scope(&#34;&#34;), notes(&#34;&#34;)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;wave&#34;, &#34;&#34;), valuesFromDb.get(&#34;scope&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;notes&#34;, &#34;&#34;), valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, wave, scope=&#34;&#34;, notes=&#34;&#34;, infos=None):
+        &#34;&#34;&#34;Set values of scope
+        Args:
+            wave: the wave parent of this scope
+            scope: a string describing the perimeter of this scope (domain, IP, NetworkIP as IP/Mask)
+            notes: notes concerning this IP (opt). Default to &#34;&#34;
+            infos: a dictionnary of additional info
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.wave = wave
+        self.scope = scope
+        self.notes = notes
+        self.infos = infos if infos is not None else {}
+        return self
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;scopes&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;notes&#34;: self.notes, &#34;tags&#34;: self.tags}})
+        else:
+            mongoInstance.update(&#34;scopes&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: pipeline_set})
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Delete the Scope represented by this model in database.
+        Also delete the tools associated with this scope
+        Also remove this scope from ips in_scopes attributes
+        &#34;&#34;&#34;
+        # deleting tool with scope lvl
+        tools = Tool.fetchObjects({&#34;scope&#34;: self.scope, &#34;wave&#34;: self.wave, &#34;$or&#34;: [
+                                  {&#34;lvl&#34;: &#34;network&#34;}, {&#34;lvl&#34;: &#34;domain&#34;}]})
+        for tool in tools:
+            tool.delete()
+        # Deleting this scope against every ips
+        ips = Ip.getIpsInScope(self._id)
+        for ip in ips:
+            ip.removeScopeFitting(self._id)
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.delete(&#34;scopes&#34;, {&#34;_id&#34;: self._id})
+        parent_wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+        if parent_wave is None:
+            return
+        mongoInstance.notify(mongoInstance.calendarName,
+                             &#34;waves&#34;, parent_wave[&#34;_id&#34;], &#34;update&#34;, &#34;&#34;)
+        # Finally delete the selected element
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this scope in database.
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        base = self.getDbKey()
+        # Checking unicity
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;scopes&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Inserting scope
+        parent = self.getParent()
+        res_insert = mongoInstance.insert(&#34;scopes&#34;, base, parent)
+        ret = res_insert.inserted_id
+        self._id = ret
+        # adding the appropriate tools for this scope.
+        wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+        commands = wave[&#34;wave_commands&#34;]
+        for commName in commands:
+            if commName.strip() != &#34;&#34;:
+                self.addAllTool(commName)
+        # Testing this scope against every ips
+        ips = Ip.fetchObjects({})
+        for ip in ips:
+            if self._id not in ip.in_scopes:
+                if ip.fitInScope(self.scope):
+                    ip.addScopeFitting(self.getId())
+        return True, ret
+
+    def addDomainInDb(self, checkDomain=True):
+        &#34;&#34;&#34;
+        Add this scope domain in database.
+
+        Args:
+            checkDomain: boolean. If true (Default), checks that the domain IP is in scope
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        # Checking unicity
+        base = self.getDbKey()
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;scopes&#34;, base, False)
+        if existing is not None:
+            return 0, None
+        # Check if domain&#39;s ip fit in one of the Scope of the wave
+        if checkDomain:
+            if not Scope.checkDomainFit(self.wave, self.scope):
+                return -1, None
+        # insert the domains in the scopes
+        parent = self.getParent()
+        res_insert = mongoInstance.insert(&#34;scopes&#34;, base, parent)
+        ret = res_insert.inserted_id
+        self._id = ret
+        # Adding appropriate tools for this scopes
+        wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+        commands = wave[&#34;wave_commands&#34;]
+        for commName in commands:
+            comm = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                          &#34;commands&#34;, {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;network&#34;}, False)
+            if comm is not None:
+                newTool = Tool()
+                newTool.initialize(
+                    comm[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;network&#34;)
+                newTool.addInDb()
+            else:
+                comm = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                              &#34;commands&#34;, {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;domain&#34;}, False)
+                if comm is not None:
+                    newTool = Tool()
+                    newTool.initialize(
+                        comm[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;domain&#34;)
+                    newTool.addInDb()
+        # Testing this scope against every ips
+        ips = Ip.fetchObjects({})
+        for ip in ips:
+            if self._id not in ip.in_scopes:
+                if ip.fitInScope(self.scope):
+                    ip.addScopeFitting(self.getId())
+        ipToInsert = Ip()
+        ipToInsert.initialize(self.scope)
+        ipToInsert.addInDb()
+        return 1, ret
+
+    @classmethod
+    def checkDomainFit(cls, waveName, domain):
+        &#34;&#34;&#34;
+        Check if a found domain belongs to one of the scope of the given wave.
+
+        Args:
+            waveName: The wave id (name) you want to search for a validating scope
+            domain: The found domain.
+
+        Returns:
+            boolean
+        &#34;&#34;&#34;
+        # Checking settings for domain check.
+        settings = Settings()
+        # get the domain ip so we can search for it in ipv4 range scopes.
+        domainIp = Utils.performLookUp(domain)
+        mongoInstance = MongoCalendar.getInstance()
+        scopesOfWave = mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: waveName})
+        for scopeOfWave in scopesOfWave:
+            scopeIsANetworkIp = Utils.isNetworkIp(scopeOfWave[&#34;scope&#34;])
+            if scopeIsANetworkIp:
+                if settings.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False):
+                    if Ip.checkIpScope(scopeOfWave[&#34;scope&#34;], domainIp):
+                        return True
+            else:  # If scope is domain
+                # check if we include subdomains
+                if settings.db_settings.get(&#34;include_all_domains&#34;, False):
+                    return True
+                else:
+                    splitted_domain = domain.split(&#34;.&#34;)
+                    # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+                    topDomainExists = len(splitted_domain) &gt; 2
+                    if topDomainExists:
+                        if settings.db_settings.get(&#34;include_domains_with_topdomain_in_scope&#34;, False):
+                            if splitted_domain[1:] == scopeOfWave[&#34;scope&#34;].split(&#34;.&#34;):
+                                return True
+                    if settings.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False):
+                        inRangeDomainIp = Utils.performLookUp(
+                            scopeOfWave[&#34;scope&#34;])
+                        if str(inRangeDomainIp) == str(domainIp):
+                            return True
+        return False
+
+    def addAllTool(self, command_name):
+        &#34;&#34;&#34;
+        Add the appropriate tools (level check and wave&#39;s commands check) for this scope.
+        Args:
+            command_name: The command that we want to create all the tools for.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        command = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;, {
+                                         &#34;name&#34;: command_name}, False)
+        if command[&#34;lvl&#34;] == &#34;network&#34;:
+            newTool = Tool()
+            newTool.initialize(
+                command[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;network&#34;)
+            newTool.addInDb()
+            return
+        if command[&#34;lvl&#34;] == &#34;domain&#34;:
+            if not Utils.isNetworkIp(self.scope):
+                newTool = Tool()
+                newTool.initialize(
+                    command[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;domain&#34;)
+                newTool.addInDb()
+            return
+        ips = self.getIpsFitting()
+        for ip in ips:
+            i = Ip(ip)
+            i.addAllTool(command_name, self.wave, self.scope)
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object. For a scope it is the wave.
+
+        Returns:
+            Returns the parent wave&#39;s ObjectId _id&#34;.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)[&#34;_id&#34;]
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a scope.
+
+        Returns:
+            Returns the scope string (network ipv4 range or domain).
+        &#34;&#34;&#34;
+        return self.scope
+
+    def getTools(self):
+        &#34;&#34;&#34;Return port assigned tools as a list of mongo fetched defects dict
+        Returns:
+            list of tool raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;tools&#34;, {&#34;wave&#34;: self.wave, &#34;$or&#34;: [{&#34;lvl&#34;: &#34;network&#34;}, {&#34;lvl&#34;: &#34;domain&#34;}], &#34;scope&#34;: self.scope})
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (2 keys :&#34;wave&#34;, &#34;scope&#34;)
+        &#34;&#34;&#34;
+        return {&#34;wave&#34;: self.wave, &#34;scope&#34;: self.scope}
+
+    def getIpsFitting(self):
+        &#34;&#34;&#34;Returns a list of ip mongo dict fitting this scope
+        Returns:
+            A list ip IP dictionnary from mongo db
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        ips = mongoInstance.find(&#34;ips&#34;, )
+        ips_fitting = []
+        isdomain = self.isDomain()
+        for ip in ips:
+            if isdomain:
+                my_ip = Utils.performLookUp(self.scope)
+                my_domain = self.scope
+                ip_isdomain = not Utils.isIp(ip[&#34;ip&#34;])
+                if ip_isdomain:
+                    if my_domain == ip[&#34;ip&#34;]:
+                        ips_fitting.append(ip)
+                    if Scope.isSubDomain(my_domain, ip[&#34;ip&#34;]):
+                        ips_fitting.append(ip)
+                else:
+                    if my_ip == ip[&#34;ip&#34;]:
+                        ips_fitting.append(ip)
+            else:
+                if Ip.checkIpScope(self.scope, ip[&#34;ip&#34;]):
+                    ips_fitting.append(ip)
+        return ips_fitting
+
+    def isDomain(self):
+        &#34;&#34;&#34;Returns True if this scope is not a valid NetworkIP
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        return not Utils.isNetworkIp(self.scope)
+
+    @classmethod
+    def isSubDomain(cls, parentDomain, subDomainTest):
+        &#34;&#34;&#34;Returns True if this scope is a valid subdomain of the given domain
+        Args:
+            parentDomain: a domain that could be the parent domain of the second arg
+            subDomainTest: a domain to be tested as a subdomain of first arg
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        splitted_domain = subDomainTest.split(&#34;.&#34;)
+        # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+        topDomainExists = len(splitted_domain) &gt; 2
+        if topDomainExists:
+            if &#34;.&#34;.join(splitted_domain[1:]) == parentDomain:
+                return True
+        return False</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Models.Scope.Scope"><code class="flex name class">
+<span>class <span class="ident">Scope</span></span>
+<span>(</span><span>valuesFromDb=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents a Scope object that defines a scope that will be targeted by network or domain tools.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>coll_name</code></strong></dt>
+<dd>collection name in pollenisator database</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>valueFromDb</code></strong></dt>
+<dd>a dict holding values to load into the object. A mongo fetched interval is optimal.
+possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+wave(""), scope(""), notes("")</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Scope(Element):
+    &#34;&#34;&#34;
+    Represents a Scope object that defines a scope that will be targeted by network or domain tools.
+
+    Attributes:
+        coll_name: collection name in pollenisator database
+    &#34;&#34;&#34;
+
+    coll_name = &#34;scopes&#34;
+
+    def __init__(self, valuesFromDb=None):
+        &#34;&#34;&#34;Constructor
+        Args:
+            valueFromDb: a dict holding values to load into the object. A mongo fetched interval is optimal.
+                        possible keys with default values are : _id (None), parent (None), tags([]), infos({}),
+                        wave(&#34;&#34;), scope(&#34;&#34;), notes(&#34;&#34;)
+        &#34;&#34;&#34;
+        if valuesFromDb is None:
+            valuesFromDb = {}
+        super().__init__(valuesFromDb.get(&#34;_id&#34;, None), valuesFromDb.get(&#34;parent&#34;, None), valuesFromDb.get(
+            &#34;tags&#34;, []), valuesFromDb.get(&#34;infos&#34;, {}))
+        self.initialize(valuesFromDb.get(&#34;wave&#34;, &#34;&#34;), valuesFromDb.get(&#34;scope&#34;, &#34;&#34;),
+                        valuesFromDb.get(&#34;notes&#34;, &#34;&#34;), valuesFromDb.get(&#34;infos&#34;, {}))
+
+    def initialize(self, wave, scope=&#34;&#34;, notes=&#34;&#34;, infos=None):
+        &#34;&#34;&#34;Set values of scope
+        Args:
+            wave: the wave parent of this scope
+            scope: a string describing the perimeter of this scope (domain, IP, NetworkIP as IP/Mask)
+            notes: notes concerning this IP (opt). Default to &#34;&#34;
+            infos: a dictionnary of additional info
+        Returns:
+            this object
+        &#34;&#34;&#34;
+        self.wave = wave
+        self.scope = scope
+        self.notes = notes
+        self.infos = infos if infos is not None else {}
+        return self
+
+    def update(self, pipeline_set=None):
+        &#34;&#34;&#34;Update this object in database.
+        Args:
+            pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        if pipeline_set is None:
+            mongoInstance.update(&#34;scopes&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: {&#34;notes&#34;: self.notes, &#34;tags&#34;: self.tags}})
+        else:
+            mongoInstance.update(&#34;scopes&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+                &#34;$set&#34;: pipeline_set})
+
+    def delete(self):
+        &#34;&#34;&#34;
+        Delete the Scope represented by this model in database.
+        Also delete the tools associated with this scope
+        Also remove this scope from ips in_scopes attributes
+        &#34;&#34;&#34;
+        # deleting tool with scope lvl
+        tools = Tool.fetchObjects({&#34;scope&#34;: self.scope, &#34;wave&#34;: self.wave, &#34;$or&#34;: [
+                                  {&#34;lvl&#34;: &#34;network&#34;}, {&#34;lvl&#34;: &#34;domain&#34;}]})
+        for tool in tools:
+            tool.delete()
+        # Deleting this scope against every ips
+        ips = Ip.getIpsInScope(self._id)
+        for ip in ips:
+            ip.removeScopeFitting(self._id)
+        mongoInstance = MongoCalendar.getInstance()
+        mongoInstance.delete(&#34;scopes&#34;, {&#34;_id&#34;: self._id})
+        parent_wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+        if parent_wave is None:
+            return
+        mongoInstance.notify(mongoInstance.calendarName,
+                             &#34;waves&#34;, parent_wave[&#34;_id&#34;], &#34;update&#34;, &#34;&#34;)
+        # Finally delete the selected element
+
+    def addInDb(self):
+        &#34;&#34;&#34;
+        Add this scope in database.
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        base = self.getDbKey()
+        # Checking unicity
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;scopes&#34;, base, False)
+        if existing is not None:
+            return False, existing[&#34;_id&#34;]
+        # Inserting scope
+        parent = self.getParent()
+        res_insert = mongoInstance.insert(&#34;scopes&#34;, base, parent)
+        ret = res_insert.inserted_id
+        self._id = ret
+        # adding the appropriate tools for this scope.
+        wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+        commands = wave[&#34;wave_commands&#34;]
+        for commName in commands:
+            if commName.strip() != &#34;&#34;:
+                self.addAllTool(commName)
+        # Testing this scope against every ips
+        ips = Ip.fetchObjects({})
+        for ip in ips:
+            if self._id not in ip.in_scopes:
+                if ip.fitInScope(self.scope):
+                    ip.addScopeFitting(self.getId())
+        return True, ret
+
+    def addDomainInDb(self, checkDomain=True):
+        &#34;&#34;&#34;
+        Add this scope domain in database.
+
+        Args:
+            checkDomain: boolean. If true (Default), checks that the domain IP is in scope
+
+        Returns: a tuple with :
+                * bool for success
+                * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+        &#34;&#34;&#34;
+        # Checking unicity
+        base = self.getDbKey()
+        mongoInstance = MongoCalendar.getInstance()
+        existing = mongoInstance.find(&#34;scopes&#34;, base, False)
+        if existing is not None:
+            return 0, None
+        # Check if domain&#39;s ip fit in one of the Scope of the wave
+        if checkDomain:
+            if not Scope.checkDomainFit(self.wave, self.scope):
+                return -1, None
+        # insert the domains in the scopes
+        parent = self.getParent()
+        res_insert = mongoInstance.insert(&#34;scopes&#34;, base, parent)
+        ret = res_insert.inserted_id
+        self._id = ret
+        # Adding appropriate tools for this scopes
+        wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+        commands = wave[&#34;wave_commands&#34;]
+        for commName in commands:
+            comm = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                          &#34;commands&#34;, {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;network&#34;}, False)
+            if comm is not None:
+                newTool = Tool()
+                newTool.initialize(
+                    comm[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;network&#34;)
+                newTool.addInDb()
+            else:
+                comm = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                              &#34;commands&#34;, {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;domain&#34;}, False)
+                if comm is not None:
+                    newTool = Tool()
+                    newTool.initialize(
+                        comm[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;domain&#34;)
+                    newTool.addInDb()
+        # Testing this scope against every ips
+        ips = Ip.fetchObjects({})
+        for ip in ips:
+            if self._id not in ip.in_scopes:
+                if ip.fitInScope(self.scope):
+                    ip.addScopeFitting(self.getId())
+        ipToInsert = Ip()
+        ipToInsert.initialize(self.scope)
+        ipToInsert.addInDb()
+        return 1, ret
+
+    @classmethod
+    def checkDomainFit(cls, waveName, domain):
+        &#34;&#34;&#34;
+        Check if a found domain belongs to one of the scope of the given wave.
+
+        Args:
+            waveName: The wave id (name) you want to search for a validating scope
+            domain: The found domain.
+
+        Returns:
+            boolean
+        &#34;&#34;&#34;
+        # Checking settings for domain check.
+        settings = Settings()
+        # get the domain ip so we can search for it in ipv4 range scopes.
+        domainIp = Utils.performLookUp(domain)
+        mongoInstance = MongoCalendar.getInstance()
+        scopesOfWave = mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: waveName})
+        for scopeOfWave in scopesOfWave:
+            scopeIsANetworkIp = Utils.isNetworkIp(scopeOfWave[&#34;scope&#34;])
+            if scopeIsANetworkIp:
+                if settings.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False):
+                    if Ip.checkIpScope(scopeOfWave[&#34;scope&#34;], domainIp):
+                        return True
+            else:  # If scope is domain
+                # check if we include subdomains
+                if settings.db_settings.get(&#34;include_all_domains&#34;, False):
+                    return True
+                else:
+                    splitted_domain = domain.split(&#34;.&#34;)
+                    # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+                    topDomainExists = len(splitted_domain) &gt; 2
+                    if topDomainExists:
+                        if settings.db_settings.get(&#34;include_domains_with_topdomain_in_scope&#34;, False):
+                            if splitted_domain[1:] == scopeOfWave[&#34;scope&#34;].split(&#34;.&#34;):
+                                return True
+                    if settings.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False):
+                        inRangeDomainIp = Utils.performLookUp(
+                            scopeOfWave[&#34;scope&#34;])
+                        if str(inRangeDomainIp) == str(domainIp):
+                            return True
+        return False
+
+    def addAllTool(self, command_name):
+        &#34;&#34;&#34;
+        Add the appropriate tools (level check and wave&#39;s commands check) for this scope.
+        Args:
+            command_name: The command that we want to create all the tools for.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        command = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;, {
+                                         &#34;name&#34;: command_name}, False)
+        if command[&#34;lvl&#34;] == &#34;network&#34;:
+            newTool = Tool()
+            newTool.initialize(
+                command[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;network&#34;)
+            newTool.addInDb()
+            return
+        if command[&#34;lvl&#34;] == &#34;domain&#34;:
+            if not Utils.isNetworkIp(self.scope):
+                newTool = Tool()
+                newTool.initialize(
+                    command[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;domain&#34;)
+                newTool.addInDb()
+            return
+        ips = self.getIpsFitting()
+        for ip in ips:
+            i = Ip(ip)
+            i.addAllTool(command_name, self.wave, self.scope)
+
+    def _getParent(self):
+        &#34;&#34;&#34;
+        Return the mongo ObjectId _id of the first parent of this object. For a scope it is the wave.
+
+        Returns:
+            Returns the parent wave&#39;s ObjectId _id&#34;.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)[&#34;_id&#34;]
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Get a string representation of a scope.
+
+        Returns:
+            Returns the scope string (network ipv4 range or domain).
+        &#34;&#34;&#34;
+        return self.scope
+
+    def getTools(self):
+        &#34;&#34;&#34;Return port assigned tools as a list of mongo fetched defects dict
+        Returns:
+            list of tool raw mongo data dictionnaries
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        return mongoInstance.find(&#34;tools&#34;, {&#34;wave&#34;: self.wave, &#34;$or&#34;: [{&#34;lvl&#34;: &#34;network&#34;}, {&#34;lvl&#34;: &#34;domain&#34;}], &#34;scope&#34;: self.scope})
+
+    def getDbKey(self):
+        &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+        Returns:
+            A dict (2 keys :&#34;wave&#34;, &#34;scope&#34;)
+        &#34;&#34;&#34;
+        return {&#34;wave&#34;: self.wave, &#34;scope&#34;: self.scope}
+
+    def getIpsFitting(self):
+        &#34;&#34;&#34;Returns a list of ip mongo dict fitting this scope
+        Returns:
+            A list ip IP dictionnary from mongo db
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        ips = mongoInstance.find(&#34;ips&#34;, )
+        ips_fitting = []
+        isdomain = self.isDomain()
+        for ip in ips:
+            if isdomain:
+                my_ip = Utils.performLookUp(self.scope)
+                my_domain = self.scope
+                ip_isdomain = not Utils.isIp(ip[&#34;ip&#34;])
+                if ip_isdomain:
+                    if my_domain == ip[&#34;ip&#34;]:
+                        ips_fitting.append(ip)
+                    if Scope.isSubDomain(my_domain, ip[&#34;ip&#34;]):
+                        ips_fitting.append(ip)
+                else:
+                    if my_ip == ip[&#34;ip&#34;]:
+                        ips_fitting.append(ip)
+            else:
+                if Ip.checkIpScope(self.scope, ip[&#34;ip&#34;]):
+                    ips_fitting.append(ip)
+        return ips_fitting
+
+    def isDomain(self):
+        &#34;&#34;&#34;Returns True if this scope is not a valid NetworkIP
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        return not Utils.isNetworkIp(self.scope)
+
+    @classmethod
+    def isSubDomain(cls, parentDomain, subDomainTest):
+        &#34;&#34;&#34;Returns True if this scope is a valid subdomain of the given domain
+        Args:
+            parentDomain: a domain that could be the parent domain of the second arg
+            subDomainTest: a domain to be tested as a subdomain of first arg
+        Returns:
+            bool
+        &#34;&#34;&#34;
+        splitted_domain = subDomainTest.split(&#34;.&#34;)
+        # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+        topDomainExists = len(splitted_domain) &gt; 2
+        if topDomainExists:
+            if &#34;.&#34;.join(splitted_domain[1:]) == parentDomain:
+                return True
+        return False</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Models.Element.Element</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Scope.Scope.coll_name"><code class="name">var <span class="ident">coll_name</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Scope.Scope.checkDomainFit"><code class="name flex">
+<span>def <span class="ident">checkDomainFit</span></span>(<span>waveName, domain)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if a found domain belongs to one of the scope of the given wave.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>waveName</code></strong></dt>
+<dd>The wave id (name) you want to search for a validating scope</dd>
+<dt><strong><code>domain</code></strong></dt>
+<dd>The found domain.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>boolean</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def checkDomainFit(cls, waveName, domain):
+    &#34;&#34;&#34;
+    Check if a found domain belongs to one of the scope of the given wave.
+
+    Args:
+        waveName: The wave id (name) you want to search for a validating scope
+        domain: The found domain.
+
+    Returns:
+        boolean
+    &#34;&#34;&#34;
+    # Checking settings for domain check.
+    settings = Settings()
+    # get the domain ip so we can search for it in ipv4 range scopes.
+    domainIp = Utils.performLookUp(domain)
+    mongoInstance = MongoCalendar.getInstance()
+    scopesOfWave = mongoInstance.find(&#34;scopes&#34;, {&#34;wave&#34;: waveName})
+    for scopeOfWave in scopesOfWave:
+        scopeIsANetworkIp = Utils.isNetworkIp(scopeOfWave[&#34;scope&#34;])
+        if scopeIsANetworkIp:
+            if settings.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False):
+                if Ip.checkIpScope(scopeOfWave[&#34;scope&#34;], domainIp):
+                    return True
+        else:  # If scope is domain
+            # check if we include subdomains
+            if settings.db_settings.get(&#34;include_all_domains&#34;, False):
+                return True
+            else:
+                splitted_domain = domain.split(&#34;.&#34;)
+                # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+                topDomainExists = len(splitted_domain) &gt; 2
+                if topDomainExists:
+                    if settings.db_settings.get(&#34;include_domains_with_topdomain_in_scope&#34;, False):
+                        if splitted_domain[1:] == scopeOfWave[&#34;scope&#34;].split(&#34;.&#34;):
+                            return True
+                if settings.db_settings.get(&#34;include_domains_with_ip_in_scope&#34;, False):
+                    inRangeDomainIp = Utils.performLookUp(
+                        scopeOfWave[&#34;scope&#34;])
+                    if str(inRangeDomainIp) == str(domainIp):
+                        return True
+    return False</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.isSubDomain"><code class="name flex">
+<span>def <span class="ident">isSubDomain</span></span>(<span>parentDomain, subDomainTest)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if this scope is a valid subdomain of the given domain</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentDomain</code></strong></dt>
+<dd>a domain that could be the parent domain of the second arg</dd>
+<dt><strong><code>subDomainTest</code></strong></dt>
+<dd>a domain to be tested as a subdomain of first arg</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def isSubDomain(cls, parentDomain, subDomainTest):
+    &#34;&#34;&#34;Returns True if this scope is a valid subdomain of the given domain
+    Args:
+        parentDomain: a domain that could be the parent domain of the second arg
+        subDomainTest: a domain to be tested as a subdomain of first arg
+    Returns:
+        bool
+    &#34;&#34;&#34;
+    splitted_domain = subDomainTest.split(&#34;.&#34;)
+    # Assuring to check only if there is a domain before the tld (.com, .fr ... )
+    topDomainExists = len(splitted_domain) &gt; 2
+    if topDomainExists:
+        if &#34;.&#34;.join(splitted_domain[1:]) == parentDomain:
+            return True
+    return False</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Models.Scope.Scope.addAllTool"><code class="name flex">
+<span>def <span class="ident">addAllTool</span></span>(<span>self, command_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add the appropriate tools (level check and wave's commands check) for this scope.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>command_name</code></strong></dt>
+<dd>The command that we want to create all the tools for.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addAllTool(self, command_name):
+    &#34;&#34;&#34;
+    Add the appropriate tools (level check and wave&#39;s commands check) for this scope.
+    Args:
+        command_name: The command that we want to create all the tools for.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    command = mongoInstance.findInDb(&#34;pollenisator&#34;, &#34;commands&#34;, {
+                                     &#34;name&#34;: command_name}, False)
+    if command[&#34;lvl&#34;] == &#34;network&#34;:
+        newTool = Tool()
+        newTool.initialize(
+            command[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;network&#34;)
+        newTool.addInDb()
+        return
+    if command[&#34;lvl&#34;] == &#34;domain&#34;:
+        if not Utils.isNetworkIp(self.scope):
+            newTool = Tool()
+            newTool.initialize(
+                command[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;domain&#34;)
+            newTool.addInDb()
+        return
+    ips = self.getIpsFitting()
+    for ip in ips:
+        i = Ip(ip)
+        i.addAllTool(command_name, self.wave, self.scope)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.addDomainInDb"><code class="name flex">
+<span>def <span class="ident">addDomainInDb</span></span>(<span>self, checkDomain=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this scope domain in database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>checkDomain</code></strong></dt>
+<dd>boolean. If true (Default), checks that the domain IP is in scope</dd>
+<dt><strong><code>Returns</code></strong> :&ensp;<code>a tuple with :</code></dt>
+<dd>
+<ul>
+<li>bool for success<ul>
+<li>mongo ObjectId : already existing object if duplicate, create object id otherwise</li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addDomainInDb(self, checkDomain=True):
+    &#34;&#34;&#34;
+    Add this scope domain in database.
+
+    Args:
+        checkDomain: boolean. If true (Default), checks that the domain IP is in scope
+
+    Returns: a tuple with :
+            * bool for success
+            * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+    &#34;&#34;&#34;
+    # Checking unicity
+    base = self.getDbKey()
+    mongoInstance = MongoCalendar.getInstance()
+    existing = mongoInstance.find(&#34;scopes&#34;, base, False)
+    if existing is not None:
+        return 0, None
+    # Check if domain&#39;s ip fit in one of the Scope of the wave
+    if checkDomain:
+        if not Scope.checkDomainFit(self.wave, self.scope):
+            return -1, None
+    # insert the domains in the scopes
+    parent = self.getParent()
+    res_insert = mongoInstance.insert(&#34;scopes&#34;, base, parent)
+    ret = res_insert.inserted_id
+    self._id = ret
+    # Adding appropriate tools for this scopes
+    wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+    commands = wave[&#34;wave_commands&#34;]
+    for commName in commands:
+        comm = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                      &#34;commands&#34;, {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;network&#34;}, False)
+        if comm is not None:
+            newTool = Tool()
+            newTool.initialize(
+                comm[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;network&#34;)
+            newTool.addInDb()
+        else:
+            comm = mongoInstance.findInDb(&#34;pollenisator&#34;,
+                                          &#34;commands&#34;, {&#34;name&#34;: commName, &#34;lvl&#34;: &#34;domain&#34;}, False)
+            if comm is not None:
+                newTool = Tool()
+                newTool.initialize(
+                    comm[&#34;name&#34;], self.wave, self.scope, &#34;&#34;, &#34;&#34;, &#34;&#34;, &#34;domain&#34;)
+                newTool.addInDb()
+    # Testing this scope against every ips
+    ips = Ip.fetchObjects({})
+    for ip in ips:
+        if self._id not in ip.in_scopes:
+            if ip.fitInScope(self.scope):
+                ip.addScopeFitting(self.getId())
+    ipToInsert = Ip()
+    ipToInsert.initialize(self.scope)
+    ipToInsert.addInDb()
+    return 1, ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.addInDb"><code class="name flex">
+<span>def <span class="ident">addInDb</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this scope in database.</p>
+<p>Returns: a tuple with :
+* bool for success
+* mongo ObjectId : already existing object if duplicate, create object id otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInDb(self):
+    &#34;&#34;&#34;
+    Add this scope in database.
+
+    Returns: a tuple with :
+            * bool for success
+            * mongo ObjectId : already existing object if duplicate, create object id otherwise 
+    &#34;&#34;&#34;
+    base = self.getDbKey()
+    # Checking unicity
+    mongoInstance = MongoCalendar.getInstance()
+    existing = mongoInstance.find(&#34;scopes&#34;, base, False)
+    if existing is not None:
+        return False, existing[&#34;_id&#34;]
+    # Inserting scope
+    parent = self.getParent()
+    res_insert = mongoInstance.insert(&#34;scopes&#34;, base, parent)
+    ret = res_insert.inserted_id
+    self._id = ret
+    # adding the appropriate tools for this scope.
+    wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+    commands = wave[&#34;wave_commands&#34;]
+    for commName in commands:
+        if commName.strip() != &#34;&#34;:
+            self.addAllTool(commName)
+    # Testing this scope against every ips
+    ips = Ip.fetchObjects({})
+    for ip in ips:
+        if self._id not in ip.in_scopes:
+            if ip.fitInScope(self.scope):
+                ip.addScopeFitting(self.getId())
+    return True, ret</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete the Scope represented by this model in database.
+Also delete the tools associated with this scope
+Also remove this scope from ips in_scopes attributes</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self):
+    &#34;&#34;&#34;
+    Delete the Scope represented by this model in database.
+    Also delete the tools associated with this scope
+    Also remove this scope from ips in_scopes attributes
+    &#34;&#34;&#34;
+    # deleting tool with scope lvl
+    tools = Tool.fetchObjects({&#34;scope&#34;: self.scope, &#34;wave&#34;: self.wave, &#34;$or&#34;: [
+                              {&#34;lvl&#34;: &#34;network&#34;}, {&#34;lvl&#34;: &#34;domain&#34;}]})
+    for tool in tools:
+        tool.delete()
+    # Deleting this scope against every ips
+    ips = Ip.getIpsInScope(self._id)
+    for ip in ips:
+        ip.removeScopeFitting(self._id)
+    mongoInstance = MongoCalendar.getInstance()
+    mongoInstance.delete(&#34;scopes&#34;, {&#34;_id&#34;: self._id})
+    parent_wave = mongoInstance.find(&#34;waves&#34;, {&#34;wave&#34;: self.wave}, False)
+    if parent_wave is None:
+        return
+    mongoInstance.notify(mongoInstance.calendarName,
+                         &#34;waves&#34;, parent_wave[&#34;_id&#34;], &#34;update&#34;, &#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.getDbKey"><code class="name flex">
+<span>def <span class="ident">getDbKey</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a dict from model to use as unique composed key.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A dict (2 keys :"wave", "scope")</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDbKey(self):
+    &#34;&#34;&#34;Return a dict from model to use as unique composed key.
+    Returns:
+        A dict (2 keys :&#34;wave&#34;, &#34;scope&#34;)
+    &#34;&#34;&#34;
+    return {&#34;wave&#34;: self.wave, &#34;scope&#34;: self.scope}</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.getIpsFitting"><code class="name flex">
+<span>def <span class="ident">getIpsFitting</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of ip mongo dict fitting this scope</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A list ip IP dictionnary from mongo db</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getIpsFitting(self):
+    &#34;&#34;&#34;Returns a list of ip mongo dict fitting this scope
+    Returns:
+        A list ip IP dictionnary from mongo db
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    ips = mongoInstance.find(&#34;ips&#34;, )
+    ips_fitting = []
+    isdomain = self.isDomain()
+    for ip in ips:
+        if isdomain:
+            my_ip = Utils.performLookUp(self.scope)
+            my_domain = self.scope
+            ip_isdomain = not Utils.isIp(ip[&#34;ip&#34;])
+            if ip_isdomain:
+                if my_domain == ip[&#34;ip&#34;]:
+                    ips_fitting.append(ip)
+                if Scope.isSubDomain(my_domain, ip[&#34;ip&#34;]):
+                    ips_fitting.append(ip)
+            else:
+                if my_ip == ip[&#34;ip&#34;]:
+                    ips_fitting.append(ip)
+        else:
+            if Ip.checkIpScope(self.scope, ip[&#34;ip&#34;]):
+                ips_fitting.append(ip)
+    return ips_fitting</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.getTools"><code class="name flex">
+<span>def <span class="ident">getTools</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return port assigned tools as a list of mongo fetched defects dict</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code> of <code>tool raw mongo data dictionnaries</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTools(self):
+    &#34;&#34;&#34;Return port assigned tools as a list of mongo fetched defects dict
+    Returns:
+        list of tool raw mongo data dictionnaries
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    return mongoInstance.find(&#34;tools&#34;, {&#34;wave&#34;: self.wave, &#34;$or&#34;: [{&#34;lvl&#34;: &#34;network&#34;}, {&#34;lvl&#34;: &#34;domain&#34;}], &#34;scope&#34;: self.scope})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.initialize"><code class="name flex">
+<span>def <span class="ident">initialize</span></span>(<span>self, wave, scope='', notes='', infos=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set values of scope</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>wave</code></strong></dt>
+<dd>the wave parent of this scope</dd>
+<dt><strong><code>scope</code></strong></dt>
+<dd>a string describing the perimeter of this scope (domain, IP, NetworkIP as IP/Mask)</dd>
+<dt><strong><code>notes</code></strong></dt>
+<dd>notes concerning this IP (opt). Default to ""</dd>
+<dt><strong><code>infos</code></strong></dt>
+<dd>a dictionnary of additional info</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>this object</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initialize(self, wave, scope=&#34;&#34;, notes=&#34;&#34;, infos=None):
+    &#34;&#34;&#34;Set values of scope
+    Args:
+        wave: the wave parent of this scope
+        scope: a string describing the perimeter of this scope (domain, IP, NetworkIP as IP/Mask)
+        notes: notes concerning this IP (opt). Default to &#34;&#34;
+        infos: a dictionnary of additional info
+    Returns:
+        this object
+    &#34;&#34;&#34;
+    self.wave = wave
+    self.scope = scope
+    self.notes = notes
+    self.infos = infos if infos is not None else {}
+    return self</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.isDomain"><code class="name flex">
+<span>def <span class="ident">isDomain</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns True if this scope is not a valid NetworkIP</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isDomain(self):
+    &#34;&#34;&#34;Returns True if this scope is not a valid NetworkIP
+    Returns:
+        bool
+    &#34;&#34;&#34;
+    return not Utils.isNetworkIp(self.scope)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Models.Scope.Scope.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, pipeline_set=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Update this object in database.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pipeline_set</code></strong></dt>
+<dd>(Opt.) A dictionnary with custom values. If None (default) use model attributes.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, pipeline_set=None):
+    &#34;&#34;&#34;Update this object in database.
+    Args:
+        pipeline_set: (Opt.) A dictionnary with custom values. If None (default) use model attributes.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    if pipeline_set is None:
+        mongoInstance.update(&#34;scopes&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: {&#34;notes&#34;: self.notes, &#34;tags&#34;: self.tags}})
+    else:
+        mongoInstance.update(&#34;scopes&#34;, {&#34;_id&#34;: ObjectId(self._id)}, {
+            &#34;$set&#34;: pipeline_set})</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Models" href="index.html">Pollenisator.core.Models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Models.Scope.Scope" href="#Pollenisator.core.Models.Scope.Scope">Scope</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.addAllTool" href="#Pollenisator.core.Models.Scope.Scope.addAllTool">addAllTool</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.addDomainInDb" href="#Pollenisator.core.Models.Scope.Scope.addDomainInDb">addDomainInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.addInDb" href="#Pollenisator.core.Models.Scope.Scope.addInDb">addInDb</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.checkDomainFit" href="#Pollenisator.core.Models.Scope.Scope.checkDomainFit">checkDomainFit</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.coll_name" href="#Pollenisator.core.Models.Scope.Scope.coll_name">coll_name</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.delete" href="#Pollenisator.core.Models.Scope.Scope.delete">delete</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.getDbKey" href="#Pollenisator.core.Models.Scope.Scope.getDbKey">getDbKey</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.getIpsFitting" href="#Pollenisator.core.Models.Scope.Scope.getIpsFitting">getIpsFitting</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.getTools" href="#Pollenisator.core.Models.Scope.Scope.getTools">getTools</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.initialize" href="#Pollenisator.core.Models.Scope.Scope.initialize">initialize</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.isDomain" href="#Pollenisator.core.Models.Scope.Scope.isDomain">isDomain</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.isSubDomain" href="#Pollenisator.core.Models.Scope.Scope.isSubDomain">isSubDomain</a></code></li>
+<li><code><a title="Pollenisator.core.Models.Scope.Scope.update" href="#Pollenisator.core.Models.Scope.Scope.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

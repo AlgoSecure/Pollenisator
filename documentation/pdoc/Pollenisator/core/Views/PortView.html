@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Views.PortView API documentation</title>
+<meta name="description" content="View for port object. Handle node in treeview and present forms to user when interacted with." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Views.PortView</code></h1>
+</header>
+<section id="section-intro">
+<p>View for port object. Handle node in treeview and present forms to user when interacted with.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;View for port object. Handle node in treeview and present forms to user when interacted with.&#34;&#34;&#34;
+
+import webbrowser
+from core.Models.Tool import Tool
+from core.Models.Defect import Defect
+from core.Models.Command import Command
+from core.Views.ToolView import ToolView
+from core.Views.ViewElement import ViewElement
+from core.Views.DefectView import DefectView
+from core.Controllers.DefectController import DefectController
+from core.Controllers.ToolController import ToolController
+from tkinter import TclError
+
+
+class PortView(ViewElement):
+    &#34;&#34;&#34;View for port object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory&#34;&#34;&#34;
+
+    icon = &#39;port.png&#39;
+
+    def __init__(self, appTw, appViewFrame, mainApp, controller):
+        &#34;&#34;&#34;Constructor
+        Args:
+            appTw: a PollenisatorTreeview instance to put this view in
+            appViewFrame: an view frame to build the forms in.
+            mainApp: the Application instance
+            controller: a CommandController for this view.
+        &#34;&#34;&#34;
+        super().__init__(appTw, appViewFrame, mainApp, controller)
+        self.tool_panel = None
+
+    def openInsertWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to insert a new Port
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Number&#34;)
+        top_panel.addFormStr(&#34;Number&#34;, r&#34;\d+&#34;, &#34;&#34;, column=1)
+        top_panel.addFormLabel(&#34;Proto&#34;, row=1)
+        top_panel.addFormCombo(&#34;Proto&#34;, [&#34;tcp&#34;, &#34;udp&#34;], &#34;tcp&#34;, row=1, column=1)
+        top_panel.addFormLabel(&#34;Service&#34;, row=2)
+        top_panel.addFormStr(&#34;Service&#34;, r&#34;&#34;, &#34;&#34;, row=2, column=1)
+        top_panel.addFormLabel(&#34;Product&#34;, row=3)
+        top_panel.addFormStr(&#34;Product&#34;, r&#34;&#34;, &#34;&#34;, row=3, column=1)
+        self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+        self.completeInsertWindow()
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Port
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;IP&#34;, row=0, column=0)
+        top_panel.addFormStr(
+            &#34;IP&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, row=0, state=&#34;readonly&#34;)
+        top_panel.addFormLabel(&#34;Number&#34;, column=0, row=1)
+        top_panel.addFormStr(
+            &#34;Number&#34;, &#39;&#39;, modelData[&#34;port&#34;], None, column=1, row=1, state=&#34;readonly&#34;)
+        top_panel.addFormLabel(&#34;Proto&#34;, row=2, column=0)
+        top_panel.addFormStr(
+            &#34;Proto&#34;, &#39;&#39;, modelData[&#34;proto&#34;], None, column=1, row=2, state=&#34;readonly&#34;)
+        top_panel.addFormLabel(&#34;Service&#34;, row=3)
+        top_panel.addFormStr(
+            &#34;Service&#34;, r&#34;&#34;, modelData[&#34;service&#34;], column=1, row=3)
+        if &#34;http&#34; in modelData[&#34;service&#34;]:
+            top_panel.addFormButton(
+                &#34;Open in browser&#34;, self.openInBrowser, column=2, row=3)
+        top_panel.addFormLabel(&#34;Product&#34;, row=4)
+        top_panel.addFormStr(&#34;Product&#34;, r&#34;&#34;, modelData[&#34;product&#34;], width=40, row=4, column=1)
+        top_panel = self.form.addFormPanel()
+        top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        top_panel.addFormText(
+            &#34;Notes&#34;, r&#34;&#34;, modelData[&#34;notes&#34;], None, side=&#34;top&#34;, height=10)
+        top_panel.addFormLabel(&#34;Infos&#34;, side=&#34;left&#34;)
+        top_panel.addFormTreevw(&#34;Infos&#34;, (&#34;Infos&#34;, &#34;Values&#34;),
+                                modelData[&#34;infos&#34;], side=&#34;left&#34;, width=300, fill=&#34;both&#34;, height=8, binds={&#34;&lt;Enter&gt;&#34;: self.mainApp.unboundToMousewheelMain, &#34;&lt;Leave&gt;&#34;: self.mainApp.boundToMousewheelMain})
+        command_list = Command.fetchObjects({&#34;lvl&#34;: &#34;port&#34;})
+        command_names = [&#34;None&#34;]
+        for command_doc in command_list:
+            command_names.append(command_doc.name)
+        self.tool_panel = self.form.addFormPanel(grid=True)
+        self.tool_panel.addFormLabel(&#34;Tool to add&#34;)
+        self.tool_panel.addFormCombo(
+            &#34;Tool to add&#34;, command_names, &#34;None&#34;, column=1)
+        self.tool_panel.addFormButton(&#34;Add tool&#34;, self._addTool, column=2)
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormButton(&#34;Add a security defect&#34;,
+                                self.addDefectCallback)
+        self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+        self.completeModifyWindow()
+
+    def openInBrowser(self, _event):
+        &#34;&#34;&#34;Callback for action open in browser
+        Args:
+            _event: nut used but mandatory
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        if modelData[&#34;service&#34;] == &#34;http&#34;:
+            webbrowser.open_new_tab(
+                &#34;http://&#34;+modelData[&#34;ip&#34;]+&#34;:&#34;+modelData[&#34;port&#34;])
+        else:
+            webbrowser.open_new_tab(
+                &#34;https://&#34;+modelData[&#34;ip&#34;]+&#34;:&#34;+modelData[&#34;port&#34;])
+
+    def addDefectCallback(self, _event):
+        &#34;&#34;&#34;
+        Create an empty defect model and its attached view. Open this view insert window.
+
+        Args:
+            event: Automatically generated with a button Callback, not used but mandatory.
+        &#34;&#34;&#34;
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        modelData = self.controller.getData()
+        dv = DefectView(self.appliTw, self.appliViewFrame,
+                        self.mainApp, DefectController(Defect(modelData)))
+        dv.openInsertWindow()
+
+    def _addTool(self, _event=None):
+        &#34;&#34;&#34;Callback for add tool action
+        Add a tool without any check to port.
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        toolname_values = self.tool_panel.getValue()
+        toolname = ViewElement.list_tuple_to_dict(toolname_values)[
+            &#34;Tool to add&#34;]
+        self.controller.addAllTool(toolname, &#39;Custom tools&#39;, &#39;&#39;, False)
+
+    def addInTreeview(self, parentNode=None, addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            addChildren: If False, skip the tool and defects insert. Useful when displaying search results
+        &#34;&#34;&#34;
+        if parentNode is None:
+            parentNode = self.getParent()
+            nodeText = str(self.controller.getModelRepr())
+        elif parentNode == &#39;&#39;:
+            nodeText = self.controller.getDetailedString()
+        else:
+            nodeText = str(self.controller.getModelRepr())
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        try:
+            self.appliTw.insert(parentNode, &#34;end&#34;, str(
+                self.controller.getDbId()), text=nodeText, tags=self.controller.getTags(), image=self.getClassIcon())
+        except TclError:
+            pass
+        if addChildren:
+            defects = self.controller.getDefects()
+            for defect in defects:
+                defect_o = DefectController(Defect(defect))
+                defect_vw = DefectView(
+                    self.appliTw, self.appliViewFrame, self.mainApp, defect_o)
+                defect_vw.addInTreeview(str(self.controller.getDbId()))
+
+            tools = self.controller.getTools()
+            for tool in tools:
+                tool_o = ToolController(Tool(tool))
+                tool_vw = ToolView(
+                    self.appliTw, self.appliViewFrame, self.mainApp, tool_o)
+                tool_vw.addInTreeview(str(self.controller.getDbId()))
+        tools = self.controller.getTools()
+        atleastone = False
+        for tool in tools:  # SALE
+            atleastone = True
+            break
+        if not atleastone:
+            if len(self.controller.getTags()) == 0:
+                self.controller.addTag(&#34;todo&#34;)
+        self.appliTw.sort(parentNode)
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    def key(self):
+        &#34;&#34;&#34;Returns a key for sorting this node
+        Returns:
+            Tuple of 1 integer valus representing the prot number
+        &#34;&#34;&#34;
+        return tuple([int(self.controller.getData()[&#34;port&#34;])])
+
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a port update is received by notification.
+        Update the port node in summary
+        &#34;&#34;&#34;
+        self.mainApp.summary.updatePort(self.controller.getData())
+        super().updateReceived()
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a port insertion is received by notification.
+        Insert the node in summary.
+        &#34;&#34;&#34;
+        self.mainApp.summary.insertPort(self.controller.getData())</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Views.PortView.PortView"><code class="flex name class">
+<span>class <span class="ident">PortView</span></span>
+<span>(</span><span>appTw, appViewFrame, mainApp, controller)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>View for port object. Handle node in treeview and present forms to user when interacted with.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>icon</code></strong></dt>
+<dd>icon name to show in treeview. Icon filename must be in icon directory</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appTw</code></strong></dt>
+<dd>a PollenisatorTreeview instance to put this view in</dd>
+<dt><strong><code>appViewFrame</code></strong></dt>
+<dd>an view frame to build the forms in.</dd>
+<dt><strong><code>mainApp</code></strong></dt>
+<dd>the Application instance</dd>
+<dt><strong><code>controller</code></strong></dt>
+<dd>a CommandController for this view.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PortView(ViewElement):
+    &#34;&#34;&#34;View for port object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory&#34;&#34;&#34;
+
+    icon = &#39;port.png&#39;
+
+    def __init__(self, appTw, appViewFrame, mainApp, controller):
+        &#34;&#34;&#34;Constructor
+        Args:
+            appTw: a PollenisatorTreeview instance to put this view in
+            appViewFrame: an view frame to build the forms in.
+            mainApp: the Application instance
+            controller: a CommandController for this view.
+        &#34;&#34;&#34;
+        super().__init__(appTw, appViewFrame, mainApp, controller)
+        self.tool_panel = None
+
+    def openInsertWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to insert a new Port
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Number&#34;)
+        top_panel.addFormStr(&#34;Number&#34;, r&#34;\d+&#34;, &#34;&#34;, column=1)
+        top_panel.addFormLabel(&#34;Proto&#34;, row=1)
+        top_panel.addFormCombo(&#34;Proto&#34;, [&#34;tcp&#34;, &#34;udp&#34;], &#34;tcp&#34;, row=1, column=1)
+        top_panel.addFormLabel(&#34;Service&#34;, row=2)
+        top_panel.addFormStr(&#34;Service&#34;, r&#34;&#34;, &#34;&#34;, row=2, column=1)
+        top_panel.addFormLabel(&#34;Product&#34;, row=3)
+        top_panel.addFormStr(&#34;Product&#34;, r&#34;&#34;, &#34;&#34;, row=3, column=1)
+        self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+        self.completeInsertWindow()
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Port
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;IP&#34;, row=0, column=0)
+        top_panel.addFormStr(
+            &#34;IP&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, row=0, state=&#34;readonly&#34;)
+        top_panel.addFormLabel(&#34;Number&#34;, column=0, row=1)
+        top_panel.addFormStr(
+            &#34;Number&#34;, &#39;&#39;, modelData[&#34;port&#34;], None, column=1, row=1, state=&#34;readonly&#34;)
+        top_panel.addFormLabel(&#34;Proto&#34;, row=2, column=0)
+        top_panel.addFormStr(
+            &#34;Proto&#34;, &#39;&#39;, modelData[&#34;proto&#34;], None, column=1, row=2, state=&#34;readonly&#34;)
+        top_panel.addFormLabel(&#34;Service&#34;, row=3)
+        top_panel.addFormStr(
+            &#34;Service&#34;, r&#34;&#34;, modelData[&#34;service&#34;], column=1, row=3)
+        if &#34;http&#34; in modelData[&#34;service&#34;]:
+            top_panel.addFormButton(
+                &#34;Open in browser&#34;, self.openInBrowser, column=2, row=3)
+        top_panel.addFormLabel(&#34;Product&#34;, row=4)
+        top_panel.addFormStr(&#34;Product&#34;, r&#34;&#34;, modelData[&#34;product&#34;], width=40, row=4, column=1)
+        top_panel = self.form.addFormPanel()
+        top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        top_panel.addFormText(
+            &#34;Notes&#34;, r&#34;&#34;, modelData[&#34;notes&#34;], None, side=&#34;top&#34;, height=10)
+        top_panel.addFormLabel(&#34;Infos&#34;, side=&#34;left&#34;)
+        top_panel.addFormTreevw(&#34;Infos&#34;, (&#34;Infos&#34;, &#34;Values&#34;),
+                                modelData[&#34;infos&#34;], side=&#34;left&#34;, width=300, fill=&#34;both&#34;, height=8, binds={&#34;&lt;Enter&gt;&#34;: self.mainApp.unboundToMousewheelMain, &#34;&lt;Leave&gt;&#34;: self.mainApp.boundToMousewheelMain})
+        command_list = Command.fetchObjects({&#34;lvl&#34;: &#34;port&#34;})
+        command_names = [&#34;None&#34;]
+        for command_doc in command_list:
+            command_names.append(command_doc.name)
+        self.tool_panel = self.form.addFormPanel(grid=True)
+        self.tool_panel.addFormLabel(&#34;Tool to add&#34;)
+        self.tool_panel.addFormCombo(
+            &#34;Tool to add&#34;, command_names, &#34;None&#34;, column=1)
+        self.tool_panel.addFormButton(&#34;Add tool&#34;, self._addTool, column=2)
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormButton(&#34;Add a security defect&#34;,
+                                self.addDefectCallback)
+        self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+        self.completeModifyWindow()
+
+    def openInBrowser(self, _event):
+        &#34;&#34;&#34;Callback for action open in browser
+        Args:
+            _event: nut used but mandatory
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        if modelData[&#34;service&#34;] == &#34;http&#34;:
+            webbrowser.open_new_tab(
+                &#34;http://&#34;+modelData[&#34;ip&#34;]+&#34;:&#34;+modelData[&#34;port&#34;])
+        else:
+            webbrowser.open_new_tab(
+                &#34;https://&#34;+modelData[&#34;ip&#34;]+&#34;:&#34;+modelData[&#34;port&#34;])
+
+    def addDefectCallback(self, _event):
+        &#34;&#34;&#34;
+        Create an empty defect model and its attached view. Open this view insert window.
+
+        Args:
+            event: Automatically generated with a button Callback, not used but mandatory.
+        &#34;&#34;&#34;
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        modelData = self.controller.getData()
+        dv = DefectView(self.appliTw, self.appliViewFrame,
+                        self.mainApp, DefectController(Defect(modelData)))
+        dv.openInsertWindow()
+
+    def _addTool(self, _event=None):
+        &#34;&#34;&#34;Callback for add tool action
+        Add a tool without any check to port.
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        toolname_values = self.tool_panel.getValue()
+        toolname = ViewElement.list_tuple_to_dict(toolname_values)[
+            &#34;Tool to add&#34;]
+        self.controller.addAllTool(toolname, &#39;Custom tools&#39;, &#39;&#39;, False)
+
+    def addInTreeview(self, parentNode=None, addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            addChildren: If False, skip the tool and defects insert. Useful when displaying search results
+        &#34;&#34;&#34;
+        if parentNode is None:
+            parentNode = self.getParent()
+            nodeText = str(self.controller.getModelRepr())
+        elif parentNode == &#39;&#39;:
+            nodeText = self.controller.getDetailedString()
+        else:
+            nodeText = str(self.controller.getModelRepr())
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        try:
+            self.appliTw.insert(parentNode, &#34;end&#34;, str(
+                self.controller.getDbId()), text=nodeText, tags=self.controller.getTags(), image=self.getClassIcon())
+        except TclError:
+            pass
+        if addChildren:
+            defects = self.controller.getDefects()
+            for defect in defects:
+                defect_o = DefectController(Defect(defect))
+                defect_vw = DefectView(
+                    self.appliTw, self.appliViewFrame, self.mainApp, defect_o)
+                defect_vw.addInTreeview(str(self.controller.getDbId()))
+
+            tools = self.controller.getTools()
+            for tool in tools:
+                tool_o = ToolController(Tool(tool))
+                tool_vw = ToolView(
+                    self.appliTw, self.appliViewFrame, self.mainApp, tool_o)
+                tool_vw.addInTreeview(str(self.controller.getDbId()))
+        tools = self.controller.getTools()
+        atleastone = False
+        for tool in tools:  # SALE
+            atleastone = True
+            break
+        if not atleastone:
+            if len(self.controller.getTags()) == 0:
+                self.controller.addTag(&#34;todo&#34;)
+        self.appliTw.sort(parentNode)
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    def key(self):
+        &#34;&#34;&#34;Returns a key for sorting this node
+        Returns:
+            Tuple of 1 integer valus representing the prot number
+        &#34;&#34;&#34;
+        return tuple([int(self.controller.getData()[&#34;port&#34;])])
+
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a port update is received by notification.
+        Update the port node in summary
+        &#34;&#34;&#34;
+        self.mainApp.summary.updatePort(self.controller.getData())
+        super().updateReceived()
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a port insertion is received by notification.
+        Insert the node in summary.
+        &#34;&#34;&#34;
+        self.mainApp.summary.insertPort(self.controller.getData())</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Views.ViewElement.ViewElement</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Views.PortView.PortView.icon"><code class="name">var <span class="ident">icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.PortView.PortView.addDefectCallback"><code class="name flex">
+<span>def <span class="ident">addDefectCallback</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create an empty defect model and its attached view. Open this view insert window.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>Automatically generated with a button Callback, not used but mandatory.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addDefectCallback(self, _event):
+    &#34;&#34;&#34;
+    Create an empty defect model and its attached view. Open this view insert window.
+
+    Args:
+        event: Automatically generated with a button Callback, not used but mandatory.
+    &#34;&#34;&#34;
+    for widget in self.appliViewFrame.winfo_children():
+        widget.destroy()
+    modelData = self.controller.getData()
+    dv = DefectView(self.appliTw, self.appliViewFrame,
+                    self.mainApp, DefectController(Defect(modelData)))
+    dv.openInsertWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.PortView.PortView.addInTreeview"><code class="name flex">
+<span>def <span class="ident">addInTreeview</span></span>(<span>self, parentNode=None, addChildren=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this view in treeview. Also stores infos in application treeview.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentNode</code></strong></dt>
+<dd>if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.</dd>
+<dt><strong><code>addChildren</code></strong></dt>
+<dd>If False, skip the tool and defects insert. Useful when displaying search results</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInTreeview(self, parentNode=None, addChildren=True):
+    &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+    Args:
+        parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+        addChildren: If False, skip the tool and defects insert. Useful when displaying search results
+    &#34;&#34;&#34;
+    if parentNode is None:
+        parentNode = self.getParent()
+        nodeText = str(self.controller.getModelRepr())
+    elif parentNode == &#39;&#39;:
+        nodeText = self.controller.getDetailedString()
+    else:
+        nodeText = str(self.controller.getModelRepr())
+    self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+    try:
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=nodeText, tags=self.controller.getTags(), image=self.getClassIcon())
+    except TclError:
+        pass
+    if addChildren:
+        defects = self.controller.getDefects()
+        for defect in defects:
+            defect_o = DefectController(Defect(defect))
+            defect_vw = DefectView(
+                self.appliTw, self.appliViewFrame, self.mainApp, defect_o)
+            defect_vw.addInTreeview(str(self.controller.getDbId()))
+
+        tools = self.controller.getTools()
+        for tool in tools:
+            tool_o = ToolController(Tool(tool))
+            tool_vw = ToolView(
+                self.appliTw, self.appliViewFrame, self.mainApp, tool_o)
+            tool_vw.addInTreeview(str(self.controller.getDbId()))
+    tools = self.controller.getTools()
+    atleastone = False
+    for tool in tools:  # SALE
+        atleastone = True
+        break
+    if not atleastone:
+        if len(self.controller.getTags()) == 0:
+            self.controller.addTag(&#34;todo&#34;)
+    self.appliTw.sort(parentNode)
+    if &#34;hidden&#34; in self.controller.getTags():
+        self.hide()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.PortView.PortView.insertReceived"><code class="name flex">
+<span>def <span class="ident">insertReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a port insertion is received by notification.
+Insert the node in summary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertReceived(self):
+    &#34;&#34;&#34;Called when a port insertion is received by notification.
+    Insert the node in summary.
+    &#34;&#34;&#34;
+    self.mainApp.summary.insertPort(self.controller.getData())</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.PortView.PortView.key"><code class="name flex">
+<span>def <span class="ident">key</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a key for sorting this node</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple</code> of <code>1 integer valus representing the prot number</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def key(self):
+    &#34;&#34;&#34;Returns a key for sorting this node
+    Returns:
+        Tuple of 1 integer valus representing the prot number
+    &#34;&#34;&#34;
+    return tuple([int(self.controller.getData()[&#34;port&#34;])])</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.PortView.PortView.openInBrowser"><code class="name flex">
+<span>def <span class="ident">openInBrowser</span></span>(<span>self, _event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for action open in browser</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>nut used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openInBrowser(self, _event):
+    &#34;&#34;&#34;Callback for action open in browser
+    Args:
+        _event: nut used but mandatory
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    if modelData[&#34;service&#34;] == &#34;http&#34;:
+        webbrowser.open_new_tab(
+            &#34;http://&#34;+modelData[&#34;ip&#34;]+&#34;:&#34;+modelData[&#34;port&#34;])
+    else:
+        webbrowser.open_new_tab(
+            &#34;https://&#34;+modelData[&#34;ip&#34;]+&#34;:&#34;+modelData[&#34;port&#34;])</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.PortView.PortView.openInsertWindow"><code class="name flex">
+<span>def <span class="ident">openInsertWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to insert a new Port</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openInsertWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to insert a new Port
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormLabel(&#34;Number&#34;)
+    top_panel.addFormStr(&#34;Number&#34;, r&#34;\d+&#34;, &#34;&#34;, column=1)
+    top_panel.addFormLabel(&#34;Proto&#34;, row=1)
+    top_panel.addFormCombo(&#34;Proto&#34;, [&#34;tcp&#34;, &#34;udp&#34;], &#34;tcp&#34;, row=1, column=1)
+    top_panel.addFormLabel(&#34;Service&#34;, row=2)
+    top_panel.addFormStr(&#34;Service&#34;, r&#34;&#34;, &#34;&#34;, row=2, column=1)
+    top_panel.addFormLabel(&#34;Product&#34;, row=3)
+    top_panel.addFormStr(&#34;Product&#34;, r&#34;&#34;, &#34;&#34;, row=3, column=1)
+    self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+    self.completeInsertWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.PortView.PortView.openModifyWindow"><code class="name flex">
+<span>def <span class="ident">openModifyWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to update or delete an existing Port</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openModifyWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to update or delete an existing Port
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormLabel(&#34;IP&#34;, row=0, column=0)
+    top_panel.addFormStr(
+        &#34;IP&#34;, &#39;&#39;, modelData[&#34;ip&#34;], None, column=1, row=0, state=&#34;readonly&#34;)
+    top_panel.addFormLabel(&#34;Number&#34;, column=0, row=1)
+    top_panel.addFormStr(
+        &#34;Number&#34;, &#39;&#39;, modelData[&#34;port&#34;], None, column=1, row=1, state=&#34;readonly&#34;)
+    top_panel.addFormLabel(&#34;Proto&#34;, row=2, column=0)
+    top_panel.addFormStr(
+        &#34;Proto&#34;, &#39;&#39;, modelData[&#34;proto&#34;], None, column=1, row=2, state=&#34;readonly&#34;)
+    top_panel.addFormLabel(&#34;Service&#34;, row=3)
+    top_panel.addFormStr(
+        &#34;Service&#34;, r&#34;&#34;, modelData[&#34;service&#34;], column=1, row=3)
+    if &#34;http&#34; in modelData[&#34;service&#34;]:
+        top_panel.addFormButton(
+            &#34;Open in browser&#34;, self.openInBrowser, column=2, row=3)
+    top_panel.addFormLabel(&#34;Product&#34;, row=4)
+    top_panel.addFormStr(&#34;Product&#34;, r&#34;&#34;, modelData[&#34;product&#34;], width=40, row=4, column=1)
+    top_panel = self.form.addFormPanel()
+    top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+    top_panel.addFormText(
+        &#34;Notes&#34;, r&#34;&#34;, modelData[&#34;notes&#34;], None, side=&#34;top&#34;, height=10)
+    top_panel.addFormLabel(&#34;Infos&#34;, side=&#34;left&#34;)
+    top_panel.addFormTreevw(&#34;Infos&#34;, (&#34;Infos&#34;, &#34;Values&#34;),
+                            modelData[&#34;infos&#34;], side=&#34;left&#34;, width=300, fill=&#34;both&#34;, height=8, binds={&#34;&lt;Enter&gt;&#34;: self.mainApp.unboundToMousewheelMain, &#34;&lt;Leave&gt;&#34;: self.mainApp.boundToMousewheelMain})
+    command_list = Command.fetchObjects({&#34;lvl&#34;: &#34;port&#34;})
+    command_names = [&#34;None&#34;]
+    for command_doc in command_list:
+        command_names.append(command_doc.name)
+    self.tool_panel = self.form.addFormPanel(grid=True)
+    self.tool_panel.addFormLabel(&#34;Tool to add&#34;)
+    self.tool_panel.addFormCombo(
+        &#34;Tool to add&#34;, command_names, &#34;None&#34;, column=1)
+    self.tool_panel.addFormButton(&#34;Add tool&#34;, self._addTool, column=2)
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormButton(&#34;Add a security defect&#34;,
+                            self.addDefectCallback)
+    self.form.addFormHidden(&#34;ip&#34;, modelData[&#34;ip&#34;])
+    self.completeModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.PortView.PortView.updateReceived"><code class="name flex">
+<span>def <span class="ident">updateReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a port update is received by notification.
+Update the port node in summary</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateReceived(self):
+    &#34;&#34;&#34;Called when a port update is received by notification.
+    Update the port node in summary
+    &#34;&#34;&#34;
+    self.mainApp.summary.updatePort(self.controller.getData())
+    super().updateReceived()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Views" href="index.html">Pollenisator.core.Views</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Views.PortView.PortView" href="#Pollenisator.core.Views.PortView.PortView">PortView</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.addDefectCallback" href="#Pollenisator.core.Views.PortView.PortView.addDefectCallback">addDefectCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.addInTreeview" href="#Pollenisator.core.Views.PortView.PortView.addInTreeview">addInTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.icon" href="#Pollenisator.core.Views.PortView.PortView.icon">icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.insertReceived" href="#Pollenisator.core.Views.PortView.PortView.insertReceived">insertReceived</a></code></li>
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.key" href="#Pollenisator.core.Views.PortView.PortView.key">key</a></code></li>
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.openInBrowser" href="#Pollenisator.core.Views.PortView.PortView.openInBrowser">openInBrowser</a></code></li>
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.openInsertWindow" href="#Pollenisator.core.Views.PortView.PortView.openInsertWindow">openInsertWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.openModifyWindow" href="#Pollenisator.core.Views.PortView.PortView.openModifyWindow">openModifyWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.PortView.PortView.updateReceived" href="#Pollenisator.core.Views.PortView.PortView.updateReceived">updateReceived</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

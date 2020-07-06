@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Views.IntervalView API documentation</title>
+<meta name="description" content="View for interval object. Handle node in treeview and present forms to user when interacted with." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Views.IntervalView</code></h1>
+</header>
+<section id="section-intro">
+<p>View for interval object. Handle node in treeview and present forms to user when interacted with.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;View for interval object. Handle node in treeview and present forms to user when interacted with.&#34;&#34;&#34;
+
+from core.Views.ViewElement import ViewElement
+from tkinter import TclError
+
+
+class IntervalView(ViewElement):
+    &#34;&#34;&#34;View for interval object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory.
+    &#34;&#34;&#34;
+
+    icon = &#39;date.png&#39;
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Interval
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Start date&#34;)
+        top_panel.addFormDate(
+            &#34;Start date&#34;, self.mainApp, modelData[&#34;dated&#34;], column=1)
+        top_panel.addFormLabel(&#34;End date&#34;, row=1)
+        top_panel.addFormDate(&#34;End date&#34;, self.mainApp, modelData[&#34;datef&#34;], row=1, column=1)
+        top_panel.addFormHelper(
+            &#34;Auto scan will only launch if current time fits this interval&#34;, row=1, column=2)
+        # added in getEmptyModel
+        self.form.addFormHidden(&#34;waveName&#34;, modelData[&#34;wave&#34;])
+        self.completeModifyWindow()
+
+    def openInsertWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to insert a new Interval
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Start date&#34;)
+        top_panel.addFormDate(&#34;Start date&#34;, self.mainApp, &#34;01/01/2000 00:00:00&#34;, column=1)
+        top_panel.addFormLabel(&#34;End date&#34;, row=1)
+        top_panel.addFormDate(
+            &#34;End date&#34;, self.mainApp, &#34;31/12/2099 00:00:00&#34;, row=1, column=1)
+        top_panel.addFormHelper(
+            &#34;Auto scan will only launch if current time fits this interval&#34;, row=1, column=2)
+        # added in getEmptyModel
+        self.form.addFormHidden(&#34;waveName&#34;, modelData[&#34;wave&#34;])
+
+        self.completeInsertWindow()
+
+    def addInTreeview(self, parentNode=None, _addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            _addChildren: not used here
+        &#34;&#34;&#34;
+        parentDbId = parentNode
+        if parentNode is None:
+            parentNode = self.getParent()
+        elif &#34;intervals&#34; not in parentNode:
+            parentNode = IntervalView.DbToTreeviewListId(parentDbId)
+        try:
+            parentNode = self.appliTw.insert(
+                self.controller.getParent(), 0, parentNode, text=&#34;Intervals&#34;, image=self.getClassIcon())
+        except TclError:  #  trigger if tools list node already exist
+            pass
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a interval update is received by notification.
+        Update the interval node and tells to the parent wave to update (its tools).
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        parentId = self.controller.getParent()
+        parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+        parentView.updateReceived()
+        super().updateReceived()
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a interval insertion is received by notification.
+        Insert the node in treeview.
+        Also tells to the parent wave to update (its tools)
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        parentId = self.controller.getParent()
+        parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+        parentView.updateReceived()
+        super().insertReceived()
+
+    @classmethod
+    def treeviewListIdToDb(cls, treeview_id):
+        &#34;&#34;&#34;Extract from the unique string identifying a list of intervals the parent db ID
+        Args:
+            treeviewId: the treeview node id of a list of intervals node
+        Returns:
+            the parent object mongo id as string
+        &#34;&#34;&#34;
+        return str(treeview_id).split(&#34;|&#34;)[1]
+
+    @classmethod
+    def DbToTreeviewListId(cls, parent_db_id):
+        &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of intervals given its parent
+        Args:
+            parent_db_id: the parent node mongo ID
+        Returns:
+            A string that should be unique to describe the parent list of interval node
+        &#34;&#34;&#34;
+        return &#34;intervals|&#34;+str(parent_db_id)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView"><code class="flex name class">
+<span>class <span class="ident">IntervalView</span></span>
+<span>(</span><span>appTw, appViewFrame, mainApp, controller)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>View for interval object. Handle node in treeview and present forms to user when interacted with.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>icon</code></strong></dt>
+<dd>icon name to show in treeview. Icon filename must be in icon directory.</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appTw</code></strong></dt>
+<dd>a PollenisatorTreeview instance to put this view in</dd>
+<dt><strong><code>appViewFrame</code></strong></dt>
+<dd>an view frame to build the forms in.</dd>
+<dt><strong><code>mainApp</code></strong></dt>
+<dd>the Application instance</dd>
+<dt><strong><code>controller</code></strong></dt>
+<dd>a CommandController for this view.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class IntervalView(ViewElement):
+    &#34;&#34;&#34;View for interval object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory.
+    &#34;&#34;&#34;
+
+    icon = &#39;date.png&#39;
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Interval
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Start date&#34;)
+        top_panel.addFormDate(
+            &#34;Start date&#34;, self.mainApp, modelData[&#34;dated&#34;], column=1)
+        top_panel.addFormLabel(&#34;End date&#34;, row=1)
+        top_panel.addFormDate(&#34;End date&#34;, self.mainApp, modelData[&#34;datef&#34;], row=1, column=1)
+        top_panel.addFormHelper(
+            &#34;Auto scan will only launch if current time fits this interval&#34;, row=1, column=2)
+        # added in getEmptyModel
+        self.form.addFormHidden(&#34;waveName&#34;, modelData[&#34;wave&#34;])
+        self.completeModifyWindow()
+
+    def openInsertWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to insert a new Interval
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Start date&#34;)
+        top_panel.addFormDate(&#34;Start date&#34;, self.mainApp, &#34;01/01/2000 00:00:00&#34;, column=1)
+        top_panel.addFormLabel(&#34;End date&#34;, row=1)
+        top_panel.addFormDate(
+            &#34;End date&#34;, self.mainApp, &#34;31/12/2099 00:00:00&#34;, row=1, column=1)
+        top_panel.addFormHelper(
+            &#34;Auto scan will only launch if current time fits this interval&#34;, row=1, column=2)
+        # added in getEmptyModel
+        self.form.addFormHidden(&#34;waveName&#34;, modelData[&#34;wave&#34;])
+
+        self.completeInsertWindow()
+
+    def addInTreeview(self, parentNode=None, _addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            _addChildren: not used here
+        &#34;&#34;&#34;
+        parentDbId = parentNode
+        if parentNode is None:
+            parentNode = self.getParent()
+        elif &#34;intervals&#34; not in parentNode:
+            parentNode = IntervalView.DbToTreeviewListId(parentDbId)
+        try:
+            parentNode = self.appliTw.insert(
+                self.controller.getParent(), 0, parentNode, text=&#34;Intervals&#34;, image=self.getClassIcon())
+        except TclError:  #  trigger if tools list node already exist
+            pass
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a interval update is received by notification.
+        Update the interval node and tells to the parent wave to update (its tools).
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        parentId = self.controller.getParent()
+        parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+        parentView.updateReceived()
+        super().updateReceived()
+
+    def insertReceived(self):
+        &#34;&#34;&#34;Called when a interval insertion is received by notification.
+        Insert the node in treeview.
+        Also tells to the parent wave to update (its tools)
+        &#34;&#34;&#34;
+        if self.controller.model is None:
+            return
+        parentId = self.controller.getParent()
+        parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+        parentView.updateReceived()
+        super().insertReceived()
+
+    @classmethod
+    def treeviewListIdToDb(cls, treeview_id):
+        &#34;&#34;&#34;Extract from the unique string identifying a list of intervals the parent db ID
+        Args:
+            treeviewId: the treeview node id of a list of intervals node
+        Returns:
+            the parent object mongo id as string
+        &#34;&#34;&#34;
+        return str(treeview_id).split(&#34;|&#34;)[1]
+
+    @classmethod
+    def DbToTreeviewListId(cls, parent_db_id):
+        &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of intervals given its parent
+        Args:
+            parent_db_id: the parent node mongo ID
+        Returns:
+            A string that should be unique to describe the parent list of interval node
+        &#34;&#34;&#34;
+        return &#34;intervals|&#34;+str(parent_db_id)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Views.ViewElement.ViewElement</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView.icon"><code class="name">var <span class="ident">icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView.DbToTreeviewListId"><code class="name flex">
+<span>def <span class="ident">DbToTreeviewListId</span></span>(<span>parent_db_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts a mongo Id to a unique string identifying a list of intervals given its parent</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent_db_id</code></strong></dt>
+<dd>the parent node mongo ID</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A string that should be unique to describe the parent list</code> of <code>interval node</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def DbToTreeviewListId(cls, parent_db_id):
+    &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of intervals given its parent
+    Args:
+        parent_db_id: the parent node mongo ID
+    Returns:
+        A string that should be unique to describe the parent list of interval node
+    &#34;&#34;&#34;
+    return &#34;intervals|&#34;+str(parent_db_id)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView.treeviewListIdToDb"><code class="name flex">
+<span>def <span class="ident">treeviewListIdToDb</span></span>(<span>treeview_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract from the unique string identifying a list of intervals the parent db ID</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>treeviewId</code></strong></dt>
+<dd>the treeview node id of a list of intervals node</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the parent object mongo id as string</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def treeviewListIdToDb(cls, treeview_id):
+    &#34;&#34;&#34;Extract from the unique string identifying a list of intervals the parent db ID
+    Args:
+        treeviewId: the treeview node id of a list of intervals node
+    Returns:
+        the parent object mongo id as string
+    &#34;&#34;&#34;
+    return str(treeview_id).split(&#34;|&#34;)[1]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView.addInTreeview"><code class="name flex">
+<span>def <span class="ident">addInTreeview</span></span>(<span>self, parentNode=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this view in treeview. Also stores infos in application treeview.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentNode</code></strong></dt>
+<dd>if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.</dd>
+<dt><strong><code>_addChildren</code></strong></dt>
+<dd>not used here</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInTreeview(self, parentNode=None, _addChildren=True):
+    &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+    Args:
+        parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+        _addChildren: not used here
+    &#34;&#34;&#34;
+    parentDbId = parentNode
+    if parentNode is None:
+        parentNode = self.getParent()
+    elif &#34;intervals&#34; not in parentNode:
+        parentNode = IntervalView.DbToTreeviewListId(parentDbId)
+    try:
+        parentNode = self.appliTw.insert(
+            self.controller.getParent(), 0, parentNode, text=&#34;Intervals&#34;, image=self.getClassIcon())
+    except TclError:  #  trigger if tools list node already exist
+        pass
+    self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+    self.appliTw.insert(parentNode, &#34;end&#34;, str(
+        self.controller.getDbId()), text=str(self.controller.getModelRepr()), tags=self.controller.getTags(), image=self.getClassIcon())
+    if &#34;hidden&#34; in self.controller.getTags():
+        self.hide()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView.insertReceived"><code class="name flex">
+<span>def <span class="ident">insertReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a interval insertion is received by notification.
+Insert the node in treeview.
+Also tells to the parent wave to update (its tools)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertReceived(self):
+    &#34;&#34;&#34;Called when a interval insertion is received by notification.
+    Insert the node in treeview.
+    Also tells to the parent wave to update (its tools)
+    &#34;&#34;&#34;
+    if self.controller.model is None:
+        return
+    parentId = self.controller.getParent()
+    parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+    parentView.updateReceived()
+    super().insertReceived()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView.openInsertWindow"><code class="name flex">
+<span>def <span class="ident">openInsertWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to insert a new Interval</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openInsertWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to insert a new Interval
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormLabel(&#34;Start date&#34;)
+    top_panel.addFormDate(&#34;Start date&#34;, self.mainApp, &#34;01/01/2000 00:00:00&#34;, column=1)
+    top_panel.addFormLabel(&#34;End date&#34;, row=1)
+    top_panel.addFormDate(
+        &#34;End date&#34;, self.mainApp, &#34;31/12/2099 00:00:00&#34;, row=1, column=1)
+    top_panel.addFormHelper(
+        &#34;Auto scan will only launch if current time fits this interval&#34;, row=1, column=2)
+    # added in getEmptyModel
+    self.form.addFormHidden(&#34;waveName&#34;, modelData[&#34;wave&#34;])
+
+    self.completeInsertWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView.openModifyWindow"><code class="name flex">
+<span>def <span class="ident">openModifyWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to update or delete an existing Interval</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openModifyWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to update or delete an existing Interval
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormLabel(&#34;Start date&#34;)
+    top_panel.addFormDate(
+        &#34;Start date&#34;, self.mainApp, modelData[&#34;dated&#34;], column=1)
+    top_panel.addFormLabel(&#34;End date&#34;, row=1)
+    top_panel.addFormDate(&#34;End date&#34;, self.mainApp, modelData[&#34;datef&#34;], row=1, column=1)
+    top_panel.addFormHelper(
+        &#34;Auto scan will only launch if current time fits this interval&#34;, row=1, column=2)
+    # added in getEmptyModel
+    self.form.addFormHidden(&#34;waveName&#34;, modelData[&#34;wave&#34;])
+    self.completeModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.IntervalView.IntervalView.updateReceived"><code class="name flex">
+<span>def <span class="ident">updateReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a interval update is received by notification.
+Update the interval node and tells to the parent wave to update (its tools).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateReceived(self):
+    &#34;&#34;&#34;Called when a interval update is received by notification.
+    Update the interval node and tells to the parent wave to update (its tools).
+    &#34;&#34;&#34;
+    if self.controller.model is None:
+        return
+    parentId = self.controller.getParent()
+    parentView = self.appliTw.views[str(parentId)][&#34;view&#34;]
+    parentView.updateReceived()
+    super().updateReceived()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Views" href="index.html">Pollenisator.core.Views</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Views.IntervalView.IntervalView" href="#Pollenisator.core.Views.IntervalView.IntervalView">IntervalView</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Views.IntervalView.IntervalView.DbToTreeviewListId" href="#Pollenisator.core.Views.IntervalView.IntervalView.DbToTreeviewListId">DbToTreeviewListId</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IntervalView.IntervalView.addInTreeview" href="#Pollenisator.core.Views.IntervalView.IntervalView.addInTreeview">addInTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IntervalView.IntervalView.icon" href="#Pollenisator.core.Views.IntervalView.IntervalView.icon">icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IntervalView.IntervalView.insertReceived" href="#Pollenisator.core.Views.IntervalView.IntervalView.insertReceived">insertReceived</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IntervalView.IntervalView.openInsertWindow" href="#Pollenisator.core.Views.IntervalView.IntervalView.openInsertWindow">openInsertWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IntervalView.IntervalView.openModifyWindow" href="#Pollenisator.core.Views.IntervalView.IntervalView.openModifyWindow">openModifyWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IntervalView.IntervalView.treeviewListIdToDb" href="#Pollenisator.core.Views.IntervalView.IntervalView.treeviewListIdToDb">treeviewListIdToDb</a></code></li>
+<li><code><a title="Pollenisator.core.Views.IntervalView.IntervalView.updateReceived" href="#Pollenisator.core.Views.IntervalView.IntervalView.updateReceived">updateReceived</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

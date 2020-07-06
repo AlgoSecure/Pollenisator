@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Components.DashBoard API documentation</title>
+<meta name="description" content="Dashboard module to display pentest info" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Components.DashBoard</code></h1>
+</header>
+<section id="section-intro">
+<p>Dashboard module to display pentest info</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Dashboard module to display pentest info&#34;&#34;&#34;
+import os
+import tkinter as tk
+import tkinter.messagebox
+import tkinter.ttk as ttk
+from datetime import datetime
+from os import listdir
+from os.path import isfile, join
+
+from bson.objectid import ObjectId
+from PIL import Image, ImageTk
+
+import core.Reporting.ExcelExport as ExcelExport
+import core.Reporting.PowerpointExport as PowerpointExport
+import core.Reporting.WordExport as WordExport
+from core.Application.Dialogs.ChildDialogCombo import ChildDialogCombo
+from core.Application.Dialogs.ChildDialogDefectView import ChildDialogDefectView
+from core.Application.Dialogs.ChildDialogProgress import ChildDialogProgress
+from core.Application.Dialogs.ChildDialogQuestion import ChildDialogQuestion
+from core.Components.mongo import MongoCalendar
+from core.Models.Ip import Ip
+from core.Models.Port import Port
+from core.Models.Tool import Tool
+
+
+class DashBoard:
+    &#34;&#34;&#34;
+    Shows information about ongoing pentest. 
+    &#34;&#34;&#34;
+    def __init__(self):
+        &#34;&#34;&#34;
+        Constructor
+        &#34;&#34;&#34;
+        self.dashboardFrame = None
+        self.parent = None
+        self.treevw = None
+        self.style = None
+        self.ips = None
+        self.ports = None
+        self.tools = None
+
+        abs_path = os.path.dirname(os.path.abspath(__file__))
+        iconPath = os.path.join(abs_path, &#34;../../icon/&#34;)
+        self.icons = {}
+        self.icons[&#34;tool&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;tool.png&#34;))
+        self.icons[&#34;cross&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;cross.png&#34;))
+        self.icons[&#34;running&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;running.png&#34;))
+        self.icons[&#34;done&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;done_tool.png&#34;))
+        self.icons[&#34;ready&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;waiting.png&#34;))
+        self.icons[&#34;Not ready&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;cross.png&#34;))
+
+    def refreshUI(self):
+        &#34;&#34;&#34;
+        Reload data and display them
+        &#34;&#34;&#34;
+        self.loadData()
+        self.displayData()
+
+    def loadData(self):
+        &#34;&#34;&#34;
+        Fetch data from database
+        &#34;&#34;&#34;
+        self.ports = Port.fetchObjects({})
+        self.ips = Ip.fetchObjects({})
+        self.tools = Tool.fetchObjects({})
+
+    def displayData(self):
+        &#34;&#34;&#34;
+        Display loaded data in treeviews
+        &#34;&#34;&#34;
+        dialog = ChildDialogProgress(self.parent, &#34;Loading dashboard &#34;,
+                                     &#34;Refreshing dashboard. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+        dialog.show(10)
+
+        # Reset Ip treeview
+        for children in self.treevw.get_children():
+            self.treevw.delete(children)
+        dialog.update(1)
+        listOfip = []
+        for ip in self.ips:
+            servicesCount = len([x for x in Port.fetchObjects({&#34;ip&#34;: ip.ip})])
+            listOfip.append((ip.ip, servicesCount))
+        dialog.update(2)
+        listOfip.sort(key=lambda tup: tup[1], reverse=True)
+        for i in range(len(listOfip)):
+            self.treevw.insert(
+                &#39;&#39;, &#39;end&#39;, i, text=listOfip[i][0], values=(listOfip[i][1]))
+        dialog.update(3)
+        # Reset Port treeview
+        for children in self.treevwport.get_children():
+            self.treevwport.delete(children)
+        dialog.update(4)
+        portCounts = {}
+        for port in self.ports:
+            if port.port not in portCounts.keys():
+                portCounts[port.port] = 1
+            else:
+                portCounts[port.port] += 1
+        dialog.update(5)
+
+        port_id = 0
+        # Ordering dictionnary
+        portCounts = {k: v for k, v in sorted(
+            portCounts.items(), key=lambda item: item[1], reverse=True)}
+        for portCount in portCounts:
+            self.treevwport.insert(&#39;&#39;, &#39;end&#39;, port_id, text=str(
+                portCount), values=(portCounts[portCount]))
+            port_id += 1
+        dialog.update(6)
+        # Tool part
+        # Reset Tools treeview
+        for children in self.treevwtools.get_children():
+            self.treevwtools.delete(children)
+        dialog.update(7)
+        listOfTools = [_ for _ in self.tools]
+        listOfTools.sort(key=lambda x: x.status, reverse=True)
+
+        result = MongoCalendar.getInstance().aggregate(&#34;tools&#34;,
+                                                       [
+                                                           {
+                                                               &#34;$group&#34;:
+                                                               {
+                                                                   &#34;_id&#34;: {&#34;name&#34;: &#34;$name&#34;, &#34;status&#34;: &#34;$status&#34;, &#34;wave&#34;: &#34;$wave&#34;}, &#34;count&#34;: {&#34;$sum&#34;: 1}
+                                                               }
+                                                           }
+                                                       ]
+                                                       )
+
+        result = [_ for _ in result]
+        result.sort(key=lambda x: x[&#34;_id&#34;][&#34;name&#34;])
+        dialog.update(8)
+        for tool in result:
+            toolName = tool[&#34;_id&#34;][&#34;name&#34;]
+            toolWave = tool[&#34;_id&#34;][&#34;wave&#34;]
+            toolStatus = &#34;Not ready&#34; if len(
+                tool[&#34;_id&#34;][&#34;status&#34;]) == 0 else tool[&#34;_id&#34;][&#34;status&#34;][0]
+            toolCount = tool[&#34;count&#34;]
+            if toolStatus == &#34;OOS&#34; or toolStatus == &#34;OOT&#34;:
+                icon = self.icons[&#34;Not ready&#34;]
+            else:
+                icon = self.icons[toolStatus]
+            self.treevwtools.insert(&#39;&#39;, &#39;end&#39;, None, text=str(
+                toolName), values=(toolWave, toolStatus, toolCount), image=icon)
+        dialog.update(9)
+        # Defect Part
+        # reset defect TW
+        for children in self.treevwDefaults.get_children():
+            self.treevwDefaults.delete(children)
+
+        result = MongoCalendar.getInstance().aggregate(&#34;defects&#34;,
+                                                       [
+                                                           {
+                                                               &#34;$group&#34;:
+                                                               {
+                                                                   &#34;_id&#34;: {&#34;risk&#34;: &#34;$risk&#34;, &#34;type&#34;: &#34;$type&#34;}, &#34;count&#34;: {&#34;$sum&#34;: 1}
+                                                               }
+                                                           }
+                                                       ]
+                                                       )
+        dialog.update(10)
+        result = [_ for _ in result]
+        result.sort(key=lambda x: x[&#34;count&#34;], reverse=True)
+        for defect in result:
+            defectRisk = defect[&#34;_id&#34;][&#34;risk&#34;]
+            defectType = &#34; &#34;.join(defect[&#34;_id&#34;][&#34;type&#34;])
+            defectCount = defect[&#34;count&#34;]
+            self.treevwDefaults.insert(&#39;&#39;, &#39;end&#39;, None, text=str(
+                defectRisk), values=(defectType, defectCount))
+        dialog.destroy()
+
+    def initUI(self, parent):
+        &#34;&#34;&#34;
+        Initialize Dashboard widgets
+        Args:
+            parent: its parent widget
+        &#34;&#34;&#34;
+        if self.parent is not None:  # Already initialized
+            return
+        self.parent = parent
+        self.dashboardFrame = ttk.Frame(parent)
+
+        self.rowHeight = 20
+        self.style = ttk.Style()
+        self.style.configure(&#39;DashBoard.Treeview&#39;, rowheight=self.rowHeight)
+
+        frameTwHosts = ttk.Frame(self.dashboardFrame)
+        self.treevw = ttk.Treeview(
+            frameTwHosts, style=&#39;DashBoard.Treeview&#39;, height=5)
+        self.treevw[&#39;columns&#39;] = (&#39;services&#39;)
+        self.treevw.heading(&#34;#0&#34;, text=&#39;Hostname&#39;, anchor=tk.W)
+        self.treevw.column(&#34;#0&#34;, anchor=tk.W, width=150)
+        self.treevw.heading(&#39;services&#39;, text=&#39;Services&#39;)
+        self.treevw.column(&#39;services&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevw.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(frameTwHosts,
+                                orient=tk.VERTICAL,
+                                command=self.treevw.yview)
+        self.treevw.configure(yscrollcommand=scbVSel.set)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        #frameTwHosts.pack(side=tk.TOP, fill=tk.X, padx=100, pady=10)
+        frameTwHosts.columnconfigure(0, weight=1)
+        frameTwHosts.rowconfigure(0, weight=1)
+        frameTwHosts.grid(row=0, column=0, sticky=tk.NSEW, padx=5, pady=10)
+
+        frameTwPports = ttk.Frame(self.dashboardFrame)
+        self.treevwport = ttk.Treeview(
+            frameTwPports, style=&#39;DashBoard.Treeview&#39;, height=5)
+        self.treevwport[&#39;columns&#39;] = (&#39;amount&#39;)
+        self.treevwport.heading(&#34;#0&#34;, text=&#39;Port&#39;, anchor=tk.W)
+        self.treevwport.column(&#34;#0&#34;, anchor=tk.W, width=70)
+        self.treevwport.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+        self.treevwport.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwport.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(frameTwPports,
+                                orient=tk.VERTICAL,
+                                command=self.treevwport.yview)
+        self.treevwport.configure(yscrollcommand=scbVSel.set)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        frameTwPports.columnconfigure(0, weight=1)
+        frameTwPports.rowconfigure(0, weight=1)
+        frameTwPports.grid(row=0, column=1, sticky=tk.NSEW, padx=5, pady=10)
+
+        frameTools = ttk.Frame(self.dashboardFrame)
+        self.treevwtools = ttk.Treeview(
+            frameTools, style=&#39;DashBoard.Treeview&#39;, height=10)
+        self.treevwtools[&#39;columns&#39;] = (&#39;wave&#39;, &#39;status&#39;, &#39;amount&#39;)
+        self.treevwtools.heading(&#34;#0&#34;, text=&#39;Tool name&#39;, anchor=tk.W)
+        self.treevwtools.column(&#34;#0&#34;, anchor=tk.W, width=150)
+        self.treevwtools.heading(&#39;wave&#39;, text=&#39;Wave&#39;)
+        self.treevwtools.column(&#39;wave&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwtools.heading(&#39;status&#39;, text=&#39;Status&#39;)
+        self.treevwtools.column(&#39;status&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwtools.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+        self.treevwtools.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwtools.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(frameTools,
+                                orient=tk.VERTICAL,
+                                command=self.treevwtools.yview)
+        self.treevwtools.configure(yscrollcommand=scbVSel.set)
+        self.treevwtools.bind(&#34;&lt;Motion&gt;&#34;, self.mycallback)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        frameTools.columnconfigure(0, weight=1)
+        frameTools.rowconfigure(0, weight=1)
+        frameTools.grid(row=1, sticky=tk.NSEW, padx=5, pady=5, columnspan=2)
+
+        frameDefaults = ttk.Frame(self.dashboardFrame)
+        self.treevwDefaults = ttk.Treeview(
+            frameDefaults, style=&#39;DashBoard.Treeview&#39;, height=15)
+        self.treevwDefaults[&#34;columns&#34;] = (&#39;type&#39;, &#39;amount&#39;)
+        self.treevwDefaults.heading(&#34;#0&#34;, text=&#39;Risk&#39;, anchor=tk.W)
+        self.treevwDefaults.column(&#34;#0&#34;, anchor=tk.W, width=50)
+        self.treevwDefaults.heading(&#39;type&#39;, text=&#39;Type&#39;)
+        self.treevwDefaults.column(&#39;type&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwDefaults.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+        self.treevwDefaults.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwDefaults.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(frameDefaults,
+                                orient=tk.VERTICAL,
+                                command=self.treevwDefaults.yview)
+        self.treevwDefaults.configure(yscrollcommand=scbVSel.set)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        frameDefaults.columnconfigure(0, weight=1)
+        frameDefaults.rowconfigure(0, weight=1)
+        frameDefaults.grid(row=2, sticky=tk.NSEW, padx=5, columnspan=2, pady=5)
+
+        self.dashboardFrame.columnconfigure(0, weight=1)
+        self.dashboardFrame.columnconfigure(1, weight=1)
+        self.dashboardFrame.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+        # self.refreshUI()
+
+    def mycallback(self, event):
+        _iid = self.treevwtools.identify_row(event.y)
+        self.treevwtools.item(_iid)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Components.DashBoard.DashBoard"><code class="flex name class">
+<span>class <span class="ident">DashBoard</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Shows information about ongoing pentest. </p>
+<p>Constructor</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DashBoard:
+    &#34;&#34;&#34;
+    Shows information about ongoing pentest. 
+    &#34;&#34;&#34;
+    def __init__(self):
+        &#34;&#34;&#34;
+        Constructor
+        &#34;&#34;&#34;
+        self.dashboardFrame = None
+        self.parent = None
+        self.treevw = None
+        self.style = None
+        self.ips = None
+        self.ports = None
+        self.tools = None
+
+        abs_path = os.path.dirname(os.path.abspath(__file__))
+        iconPath = os.path.join(abs_path, &#34;../../icon/&#34;)
+        self.icons = {}
+        self.icons[&#34;tool&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;tool.png&#34;))
+        self.icons[&#34;cross&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;cross.png&#34;))
+        self.icons[&#34;running&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;running.png&#34;))
+        self.icons[&#34;done&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;done_tool.png&#34;))
+        self.icons[&#34;ready&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;waiting.png&#34;))
+        self.icons[&#34;Not ready&#34;] = ImageTk.PhotoImage(
+            Image.open(iconPath+&#34;cross.png&#34;))
+
+    def refreshUI(self):
+        &#34;&#34;&#34;
+        Reload data and display them
+        &#34;&#34;&#34;
+        self.loadData()
+        self.displayData()
+
+    def loadData(self):
+        &#34;&#34;&#34;
+        Fetch data from database
+        &#34;&#34;&#34;
+        self.ports = Port.fetchObjects({})
+        self.ips = Ip.fetchObjects({})
+        self.tools = Tool.fetchObjects({})
+
+    def displayData(self):
+        &#34;&#34;&#34;
+        Display loaded data in treeviews
+        &#34;&#34;&#34;
+        dialog = ChildDialogProgress(self.parent, &#34;Loading dashboard &#34;,
+                                     &#34;Refreshing dashboard. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+        dialog.show(10)
+
+        # Reset Ip treeview
+        for children in self.treevw.get_children():
+            self.treevw.delete(children)
+        dialog.update(1)
+        listOfip = []
+        for ip in self.ips:
+            servicesCount = len([x for x in Port.fetchObjects({&#34;ip&#34;: ip.ip})])
+            listOfip.append((ip.ip, servicesCount))
+        dialog.update(2)
+        listOfip.sort(key=lambda tup: tup[1], reverse=True)
+        for i in range(len(listOfip)):
+            self.treevw.insert(
+                &#39;&#39;, &#39;end&#39;, i, text=listOfip[i][0], values=(listOfip[i][1]))
+        dialog.update(3)
+        # Reset Port treeview
+        for children in self.treevwport.get_children():
+            self.treevwport.delete(children)
+        dialog.update(4)
+        portCounts = {}
+        for port in self.ports:
+            if port.port not in portCounts.keys():
+                portCounts[port.port] = 1
+            else:
+                portCounts[port.port] += 1
+        dialog.update(5)
+
+        port_id = 0
+        # Ordering dictionnary
+        portCounts = {k: v for k, v in sorted(
+            portCounts.items(), key=lambda item: item[1], reverse=True)}
+        for portCount in portCounts:
+            self.treevwport.insert(&#39;&#39;, &#39;end&#39;, port_id, text=str(
+                portCount), values=(portCounts[portCount]))
+            port_id += 1
+        dialog.update(6)
+        # Tool part
+        # Reset Tools treeview
+        for children in self.treevwtools.get_children():
+            self.treevwtools.delete(children)
+        dialog.update(7)
+        listOfTools = [_ for _ in self.tools]
+        listOfTools.sort(key=lambda x: x.status, reverse=True)
+
+        result = MongoCalendar.getInstance().aggregate(&#34;tools&#34;,
+                                                       [
+                                                           {
+                                                               &#34;$group&#34;:
+                                                               {
+                                                                   &#34;_id&#34;: {&#34;name&#34;: &#34;$name&#34;, &#34;status&#34;: &#34;$status&#34;, &#34;wave&#34;: &#34;$wave&#34;}, &#34;count&#34;: {&#34;$sum&#34;: 1}
+                                                               }
+                                                           }
+                                                       ]
+                                                       )
+
+        result = [_ for _ in result]
+        result.sort(key=lambda x: x[&#34;_id&#34;][&#34;name&#34;])
+        dialog.update(8)
+        for tool in result:
+            toolName = tool[&#34;_id&#34;][&#34;name&#34;]
+            toolWave = tool[&#34;_id&#34;][&#34;wave&#34;]
+            toolStatus = &#34;Not ready&#34; if len(
+                tool[&#34;_id&#34;][&#34;status&#34;]) == 0 else tool[&#34;_id&#34;][&#34;status&#34;][0]
+            toolCount = tool[&#34;count&#34;]
+            if toolStatus == &#34;OOS&#34; or toolStatus == &#34;OOT&#34;:
+                icon = self.icons[&#34;Not ready&#34;]
+            else:
+                icon = self.icons[toolStatus]
+            self.treevwtools.insert(&#39;&#39;, &#39;end&#39;, None, text=str(
+                toolName), values=(toolWave, toolStatus, toolCount), image=icon)
+        dialog.update(9)
+        # Defect Part
+        # reset defect TW
+        for children in self.treevwDefaults.get_children():
+            self.treevwDefaults.delete(children)
+
+        result = MongoCalendar.getInstance().aggregate(&#34;defects&#34;,
+                                                       [
+                                                           {
+                                                               &#34;$group&#34;:
+                                                               {
+                                                                   &#34;_id&#34;: {&#34;risk&#34;: &#34;$risk&#34;, &#34;type&#34;: &#34;$type&#34;}, &#34;count&#34;: {&#34;$sum&#34;: 1}
+                                                               }
+                                                           }
+                                                       ]
+                                                       )
+        dialog.update(10)
+        result = [_ for _ in result]
+        result.sort(key=lambda x: x[&#34;count&#34;], reverse=True)
+        for defect in result:
+            defectRisk = defect[&#34;_id&#34;][&#34;risk&#34;]
+            defectType = &#34; &#34;.join(defect[&#34;_id&#34;][&#34;type&#34;])
+            defectCount = defect[&#34;count&#34;]
+            self.treevwDefaults.insert(&#39;&#39;, &#39;end&#39;, None, text=str(
+                defectRisk), values=(defectType, defectCount))
+        dialog.destroy()
+
+    def initUI(self, parent):
+        &#34;&#34;&#34;
+        Initialize Dashboard widgets
+        Args:
+            parent: its parent widget
+        &#34;&#34;&#34;
+        if self.parent is not None:  # Already initialized
+            return
+        self.parent = parent
+        self.dashboardFrame = ttk.Frame(parent)
+
+        self.rowHeight = 20
+        self.style = ttk.Style()
+        self.style.configure(&#39;DashBoard.Treeview&#39;, rowheight=self.rowHeight)
+
+        frameTwHosts = ttk.Frame(self.dashboardFrame)
+        self.treevw = ttk.Treeview(
+            frameTwHosts, style=&#39;DashBoard.Treeview&#39;, height=5)
+        self.treevw[&#39;columns&#39;] = (&#39;services&#39;)
+        self.treevw.heading(&#34;#0&#34;, text=&#39;Hostname&#39;, anchor=tk.W)
+        self.treevw.column(&#34;#0&#34;, anchor=tk.W, width=150)
+        self.treevw.heading(&#39;services&#39;, text=&#39;Services&#39;)
+        self.treevw.column(&#39;services&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevw.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(frameTwHosts,
+                                orient=tk.VERTICAL,
+                                command=self.treevw.yview)
+        self.treevw.configure(yscrollcommand=scbVSel.set)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        #frameTwHosts.pack(side=tk.TOP, fill=tk.X, padx=100, pady=10)
+        frameTwHosts.columnconfigure(0, weight=1)
+        frameTwHosts.rowconfigure(0, weight=1)
+        frameTwHosts.grid(row=0, column=0, sticky=tk.NSEW, padx=5, pady=10)
+
+        frameTwPports = ttk.Frame(self.dashboardFrame)
+        self.treevwport = ttk.Treeview(
+            frameTwPports, style=&#39;DashBoard.Treeview&#39;, height=5)
+        self.treevwport[&#39;columns&#39;] = (&#39;amount&#39;)
+        self.treevwport.heading(&#34;#0&#34;, text=&#39;Port&#39;, anchor=tk.W)
+        self.treevwport.column(&#34;#0&#34;, anchor=tk.W, width=70)
+        self.treevwport.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+        self.treevwport.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwport.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(frameTwPports,
+                                orient=tk.VERTICAL,
+                                command=self.treevwport.yview)
+        self.treevwport.configure(yscrollcommand=scbVSel.set)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        frameTwPports.columnconfigure(0, weight=1)
+        frameTwPports.rowconfigure(0, weight=1)
+        frameTwPports.grid(row=0, column=1, sticky=tk.NSEW, padx=5, pady=10)
+
+        frameTools = ttk.Frame(self.dashboardFrame)
+        self.treevwtools = ttk.Treeview(
+            frameTools, style=&#39;DashBoard.Treeview&#39;, height=10)
+        self.treevwtools[&#39;columns&#39;] = (&#39;wave&#39;, &#39;status&#39;, &#39;amount&#39;)
+        self.treevwtools.heading(&#34;#0&#34;, text=&#39;Tool name&#39;, anchor=tk.W)
+        self.treevwtools.column(&#34;#0&#34;, anchor=tk.W, width=150)
+        self.treevwtools.heading(&#39;wave&#39;, text=&#39;Wave&#39;)
+        self.treevwtools.column(&#39;wave&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwtools.heading(&#39;status&#39;, text=&#39;Status&#39;)
+        self.treevwtools.column(&#39;status&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwtools.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+        self.treevwtools.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwtools.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(frameTools,
+                                orient=tk.VERTICAL,
+                                command=self.treevwtools.yview)
+        self.treevwtools.configure(yscrollcommand=scbVSel.set)
+        self.treevwtools.bind(&#34;&lt;Motion&gt;&#34;, self.mycallback)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        frameTools.columnconfigure(0, weight=1)
+        frameTools.rowconfigure(0, weight=1)
+        frameTools.grid(row=1, sticky=tk.NSEW, padx=5, pady=5, columnspan=2)
+
+        frameDefaults = ttk.Frame(self.dashboardFrame)
+        self.treevwDefaults = ttk.Treeview(
+            frameDefaults, style=&#39;DashBoard.Treeview&#39;, height=15)
+        self.treevwDefaults[&#34;columns&#34;] = (&#39;type&#39;, &#39;amount&#39;)
+        self.treevwDefaults.heading(&#34;#0&#34;, text=&#39;Risk&#39;, anchor=tk.W)
+        self.treevwDefaults.column(&#34;#0&#34;, anchor=tk.W, width=50)
+        self.treevwDefaults.heading(&#39;type&#39;, text=&#39;Type&#39;)
+        self.treevwDefaults.column(&#39;type&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwDefaults.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+        self.treevwDefaults.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+        self.treevwDefaults.grid(row=0, column=0, sticky=tk.NSEW)
+        scbVSel = ttk.Scrollbar(frameDefaults,
+                                orient=tk.VERTICAL,
+                                command=self.treevwDefaults.yview)
+        self.treevwDefaults.configure(yscrollcommand=scbVSel.set)
+        scbVSel.grid(row=0, column=1, sticky=tk.NS)
+        frameDefaults.columnconfigure(0, weight=1)
+        frameDefaults.rowconfigure(0, weight=1)
+        frameDefaults.grid(row=2, sticky=tk.NSEW, padx=5, columnspan=2, pady=5)
+
+        self.dashboardFrame.columnconfigure(0, weight=1)
+        self.dashboardFrame.columnconfigure(1, weight=1)
+        self.dashboardFrame.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+        # self.refreshUI()
+
+    def mycallback(self, event):
+        _iid = self.treevwtools.identify_row(event.y)
+        self.treevwtools.item(_iid)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Components.DashBoard.DashBoard.displayData"><code class="name flex">
+<span>def <span class="ident">displayData</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Display loaded data in treeviews</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def displayData(self):
+    &#34;&#34;&#34;
+    Display loaded data in treeviews
+    &#34;&#34;&#34;
+    dialog = ChildDialogProgress(self.parent, &#34;Loading dashboard &#34;,
+                                 &#34;Refreshing dashboard. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+    dialog.show(10)
+
+    # Reset Ip treeview
+    for children in self.treevw.get_children():
+        self.treevw.delete(children)
+    dialog.update(1)
+    listOfip = []
+    for ip in self.ips:
+        servicesCount = len([x for x in Port.fetchObjects({&#34;ip&#34;: ip.ip})])
+        listOfip.append((ip.ip, servicesCount))
+    dialog.update(2)
+    listOfip.sort(key=lambda tup: tup[1], reverse=True)
+    for i in range(len(listOfip)):
+        self.treevw.insert(
+            &#39;&#39;, &#39;end&#39;, i, text=listOfip[i][0], values=(listOfip[i][1]))
+    dialog.update(3)
+    # Reset Port treeview
+    for children in self.treevwport.get_children():
+        self.treevwport.delete(children)
+    dialog.update(4)
+    portCounts = {}
+    for port in self.ports:
+        if port.port not in portCounts.keys():
+            portCounts[port.port] = 1
+        else:
+            portCounts[port.port] += 1
+    dialog.update(5)
+
+    port_id = 0
+    # Ordering dictionnary
+    portCounts = {k: v for k, v in sorted(
+        portCounts.items(), key=lambda item: item[1], reverse=True)}
+    for portCount in portCounts:
+        self.treevwport.insert(&#39;&#39;, &#39;end&#39;, port_id, text=str(
+            portCount), values=(portCounts[portCount]))
+        port_id += 1
+    dialog.update(6)
+    # Tool part
+    # Reset Tools treeview
+    for children in self.treevwtools.get_children():
+        self.treevwtools.delete(children)
+    dialog.update(7)
+    listOfTools = [_ for _ in self.tools]
+    listOfTools.sort(key=lambda x: x.status, reverse=True)
+
+    result = MongoCalendar.getInstance().aggregate(&#34;tools&#34;,
+                                                   [
+                                                       {
+                                                           &#34;$group&#34;:
+                                                           {
+                                                               &#34;_id&#34;: {&#34;name&#34;: &#34;$name&#34;, &#34;status&#34;: &#34;$status&#34;, &#34;wave&#34;: &#34;$wave&#34;}, &#34;count&#34;: {&#34;$sum&#34;: 1}
+                                                           }
+                                                       }
+                                                   ]
+                                                   )
+
+    result = [_ for _ in result]
+    result.sort(key=lambda x: x[&#34;_id&#34;][&#34;name&#34;])
+    dialog.update(8)
+    for tool in result:
+        toolName = tool[&#34;_id&#34;][&#34;name&#34;]
+        toolWave = tool[&#34;_id&#34;][&#34;wave&#34;]
+        toolStatus = &#34;Not ready&#34; if len(
+            tool[&#34;_id&#34;][&#34;status&#34;]) == 0 else tool[&#34;_id&#34;][&#34;status&#34;][0]
+        toolCount = tool[&#34;count&#34;]
+        if toolStatus == &#34;OOS&#34; or toolStatus == &#34;OOT&#34;:
+            icon = self.icons[&#34;Not ready&#34;]
+        else:
+            icon = self.icons[toolStatus]
+        self.treevwtools.insert(&#39;&#39;, &#39;end&#39;, None, text=str(
+            toolName), values=(toolWave, toolStatus, toolCount), image=icon)
+    dialog.update(9)
+    # Defect Part
+    # reset defect TW
+    for children in self.treevwDefaults.get_children():
+        self.treevwDefaults.delete(children)
+
+    result = MongoCalendar.getInstance().aggregate(&#34;defects&#34;,
+                                                   [
+                                                       {
+                                                           &#34;$group&#34;:
+                                                           {
+                                                               &#34;_id&#34;: {&#34;risk&#34;: &#34;$risk&#34;, &#34;type&#34;: &#34;$type&#34;}, &#34;count&#34;: {&#34;$sum&#34;: 1}
+                                                           }
+                                                       }
+                                                   ]
+                                                   )
+    dialog.update(10)
+    result = [_ for _ in result]
+    result.sort(key=lambda x: x[&#34;count&#34;], reverse=True)
+    for defect in result:
+        defectRisk = defect[&#34;_id&#34;][&#34;risk&#34;]
+        defectType = &#34; &#34;.join(defect[&#34;_id&#34;][&#34;type&#34;])
+        defectCount = defect[&#34;count&#34;]
+        self.treevwDefaults.insert(&#39;&#39;, &#39;end&#39;, None, text=str(
+            defectRisk), values=(defectType, defectCount))
+    dialog.destroy()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.DashBoard.DashBoard.initUI"><code class="name flex">
+<span>def <span class="ident">initUI</span></span>(<span>self, parent)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize Dashboard widgets</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>its parent widget</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initUI(self, parent):
+    &#34;&#34;&#34;
+    Initialize Dashboard widgets
+    Args:
+        parent: its parent widget
+    &#34;&#34;&#34;
+    if self.parent is not None:  # Already initialized
+        return
+    self.parent = parent
+    self.dashboardFrame = ttk.Frame(parent)
+
+    self.rowHeight = 20
+    self.style = ttk.Style()
+    self.style.configure(&#39;DashBoard.Treeview&#39;, rowheight=self.rowHeight)
+
+    frameTwHosts = ttk.Frame(self.dashboardFrame)
+    self.treevw = ttk.Treeview(
+        frameTwHosts, style=&#39;DashBoard.Treeview&#39;, height=5)
+    self.treevw[&#39;columns&#39;] = (&#39;services&#39;)
+    self.treevw.heading(&#34;#0&#34;, text=&#39;Hostname&#39;, anchor=tk.W)
+    self.treevw.column(&#34;#0&#34;, anchor=tk.W, width=150)
+    self.treevw.heading(&#39;services&#39;, text=&#39;Services&#39;)
+    self.treevw.column(&#39;services&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevw.grid(row=0, column=0, sticky=tk.NSEW)
+    scbVSel = ttk.Scrollbar(frameTwHosts,
+                            orient=tk.VERTICAL,
+                            command=self.treevw.yview)
+    self.treevw.configure(yscrollcommand=scbVSel.set)
+    scbVSel.grid(row=0, column=1, sticky=tk.NS)
+    #frameTwHosts.pack(side=tk.TOP, fill=tk.X, padx=100, pady=10)
+    frameTwHosts.columnconfigure(0, weight=1)
+    frameTwHosts.rowconfigure(0, weight=1)
+    frameTwHosts.grid(row=0, column=0, sticky=tk.NSEW, padx=5, pady=10)
+
+    frameTwPports = ttk.Frame(self.dashboardFrame)
+    self.treevwport = ttk.Treeview(
+        frameTwPports, style=&#39;DashBoard.Treeview&#39;, height=5)
+    self.treevwport[&#39;columns&#39;] = (&#39;amount&#39;)
+    self.treevwport.heading(&#34;#0&#34;, text=&#39;Port&#39;, anchor=tk.W)
+    self.treevwport.column(&#34;#0&#34;, anchor=tk.W, width=70)
+    self.treevwport.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+    self.treevwport.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevwport.grid(row=0, column=0, sticky=tk.NSEW)
+    scbVSel = ttk.Scrollbar(frameTwPports,
+                            orient=tk.VERTICAL,
+                            command=self.treevwport.yview)
+    self.treevwport.configure(yscrollcommand=scbVSel.set)
+    scbVSel.grid(row=0, column=1, sticky=tk.NS)
+    frameTwPports.columnconfigure(0, weight=1)
+    frameTwPports.rowconfigure(0, weight=1)
+    frameTwPports.grid(row=0, column=1, sticky=tk.NSEW, padx=5, pady=10)
+
+    frameTools = ttk.Frame(self.dashboardFrame)
+    self.treevwtools = ttk.Treeview(
+        frameTools, style=&#39;DashBoard.Treeview&#39;, height=10)
+    self.treevwtools[&#39;columns&#39;] = (&#39;wave&#39;, &#39;status&#39;, &#39;amount&#39;)
+    self.treevwtools.heading(&#34;#0&#34;, text=&#39;Tool name&#39;, anchor=tk.W)
+    self.treevwtools.column(&#34;#0&#34;, anchor=tk.W, width=150)
+    self.treevwtools.heading(&#39;wave&#39;, text=&#39;Wave&#39;)
+    self.treevwtools.column(&#39;wave&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevwtools.heading(&#39;status&#39;, text=&#39;Status&#39;)
+    self.treevwtools.column(&#39;status&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevwtools.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+    self.treevwtools.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevwtools.grid(row=0, column=0, sticky=tk.NSEW)
+    scbVSel = ttk.Scrollbar(frameTools,
+                            orient=tk.VERTICAL,
+                            command=self.treevwtools.yview)
+    self.treevwtools.configure(yscrollcommand=scbVSel.set)
+    self.treevwtools.bind(&#34;&lt;Motion&gt;&#34;, self.mycallback)
+    scbVSel.grid(row=0, column=1, sticky=tk.NS)
+    frameTools.columnconfigure(0, weight=1)
+    frameTools.rowconfigure(0, weight=1)
+    frameTools.grid(row=1, sticky=tk.NSEW, padx=5, pady=5, columnspan=2)
+
+    frameDefaults = ttk.Frame(self.dashboardFrame)
+    self.treevwDefaults = ttk.Treeview(
+        frameDefaults, style=&#39;DashBoard.Treeview&#39;, height=15)
+    self.treevwDefaults[&#34;columns&#34;] = (&#39;type&#39;, &#39;amount&#39;)
+    self.treevwDefaults.heading(&#34;#0&#34;, text=&#39;Risk&#39;, anchor=tk.W)
+    self.treevwDefaults.column(&#34;#0&#34;, anchor=tk.W, width=50)
+    self.treevwDefaults.heading(&#39;type&#39;, text=&#39;Type&#39;)
+    self.treevwDefaults.column(&#39;type&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevwDefaults.heading(&#39;amount&#39;, text=&#39;Amount&#39;)
+    self.treevwDefaults.column(&#39;amount&#39;, anchor=&#39;center&#39;, width=40)
+    self.treevwDefaults.grid(row=0, column=0, sticky=tk.NSEW)
+    scbVSel = ttk.Scrollbar(frameDefaults,
+                            orient=tk.VERTICAL,
+                            command=self.treevwDefaults.yview)
+    self.treevwDefaults.configure(yscrollcommand=scbVSel.set)
+    scbVSel.grid(row=0, column=1, sticky=tk.NS)
+    frameDefaults.columnconfigure(0, weight=1)
+    frameDefaults.rowconfigure(0, weight=1)
+    frameDefaults.grid(row=2, sticky=tk.NSEW, padx=5, columnspan=2, pady=5)
+
+    self.dashboardFrame.columnconfigure(0, weight=1)
+    self.dashboardFrame.columnconfigure(1, weight=1)
+    self.dashboardFrame.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.DashBoard.DashBoard.loadData"><code class="name flex">
+<span>def <span class="ident">loadData</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fetch data from database</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loadData(self):
+    &#34;&#34;&#34;
+    Fetch data from database
+    &#34;&#34;&#34;
+    self.ports = Port.fetchObjects({})
+    self.ips = Ip.fetchObjects({})
+    self.tools = Tool.fetchObjects({})</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.DashBoard.DashBoard.mycallback"><code class="name flex">
+<span>def <span class="ident">mycallback</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mycallback(self, event):
+    _iid = self.treevwtools.identify_row(event.y)
+    self.treevwtools.item(_iid)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Components.DashBoard.DashBoard.refreshUI"><code class="name flex">
+<span>def <span class="ident">refreshUI</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reload data and display them</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def refreshUI(self):
+    &#34;&#34;&#34;
+    Reload data and display them
+    &#34;&#34;&#34;
+    self.loadData()
+    self.displayData()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Components" href="index.html">Pollenisator.core.Components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Components.DashBoard.DashBoard" href="#Pollenisator.core.Components.DashBoard.DashBoard">DashBoard</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Components.DashBoard.DashBoard.displayData" href="#Pollenisator.core.Components.DashBoard.DashBoard.displayData">displayData</a></code></li>
+<li><code><a title="Pollenisator.core.Components.DashBoard.DashBoard.initUI" href="#Pollenisator.core.Components.DashBoard.DashBoard.initUI">initUI</a></code></li>
+<li><code><a title="Pollenisator.core.Components.DashBoard.DashBoard.loadData" href="#Pollenisator.core.Components.DashBoard.DashBoard.loadData">loadData</a></code></li>
+<li><code><a title="Pollenisator.core.Components.DashBoard.DashBoard.mycallback" href="#Pollenisator.core.Components.DashBoard.DashBoard.mycallback">mycallback</a></code></li>
+<li><code><a title="Pollenisator.core.Components.DashBoard.DashBoard.refreshUI" href="#Pollenisator.core.Components.DashBoard.DashBoard.refreshUI">refreshUI</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

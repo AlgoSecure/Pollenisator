@@ -1,0 +1,1421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Views.ToolView API documentation</title>
+<meta name="description" content="View for tool object. Handle node in treeview and present forms to user when interacted with." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Views.ToolView</code></h1>
+</header>
+<section id="section-intro">
+<p>View for tool object. Handle node in treeview and present forms to user when interacted with.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;View for tool object. Handle node in treeview and present forms to user when interacted with.&#34;&#34;&#34;
+
+from core.Views.ViewElement import ViewElement
+from core.Components.mongo import MongoCalendar
+import tkinter.messagebox
+import tkinter as tk
+from tkinter import TclError
+from core.Views.DefectView import DefectView
+from core.Components.FileStorage import FileStorage
+from core.Models.Defect import Defect
+from core.Controllers.DefectController import DefectController
+from core.Application.Dialogs.ChildDialogQuestion import ChildDialogQuestion
+from core.Application.Dialogs.ChildDialogInfo import ChildDialogInfo
+import core.Components.Utils as Utils
+import os
+
+
+class ToolView(ViewElement):
+    &#34;&#34;&#34;View for tool object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory
+        done_icon: icon filename for done tools
+        ready_icon: icon filename for ready tools
+        running_icon: icon filename for running tools
+        not_ready_icon: icon filename for not ready tools
+        cached_icon: a cached loaded PIL image icon of ToolView.icon. Starts as None.
+        cached_done_icon: a cached loaded PIL image icon of ToolView.done_icon. Starts as None.
+        cached_ready_icon: a cached loaded PIL image icon of ToolView.ready_icon. Starts as None.
+        cached_running_icon: a cached loaded PIL image icon of ToolView.running_icon. Starts as None.
+        cached_not_ready_icon: a cached loaded PIL image icon of ToolView.not_ready_icon. Starts as None.
+        &#34;&#34;&#34;
+
+    done_icon = &#39;done_tool.png&#39;
+    ready_icon = &#39;waiting.png&#39;
+    running_icon = &#39;running.png&#39;
+    not_ready_icon = &#39;cross.png&#39;
+    icon = &#39;tool.png&#39;
+
+    cached_icon = None
+    cached_done_icon = None
+    cached_ready_icon = None
+    cached_running_icon = None
+    cached_not_ready_icon = None
+
+    def getIcon(self):
+        &#34;&#34;&#34;
+        Load the object icon in cache if it is not yet done, and returns it
+
+        Return:
+            Returns the icon representing this object.
+        &#34;&#34;&#34;
+        status = self.controller.getStatus()
+        iconStatus = &#34;not_ready&#34;
+        if &#34;done&#34; in status:
+            cache = self.__class__.cached_done_icon
+            ui = self.__class__.done_icon
+            iconStatus = &#34;done&#34;
+        elif &#34;running&#34; in status:
+            ui = self.__class__.running_icon
+            cache = self.__class__.cached_running_icon
+            iconStatus = &#34;running&#34;
+        elif &#34;OOS&#34; not in status and &#34;OOT&#34; not in status:
+            ui = self.__class__.ready_icon
+            cache = self.__class__.cached_ready_icon
+            iconStatus = &#34;ready&#34;
+        else:
+            ui = self.__class__.not_ready_icon
+            cache = self.__class__.cached_not_ready_icon
+        if status == [] or iconStatus not in status :
+            self.controller.setStatus([iconStatus])
+
+        if cache is None:
+            from PIL import Image, ImageTk
+            abs_path = os.path.dirname(os.path.abspath(__file__))
+
+            path = os.path.join(abs_path, &#34;../../icon/&#34;+ui)
+            if iconStatus == &#34;done&#34;:
+                self.__class__.cached_done_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_done_icon
+            elif iconStatus == &#34;running&#34;:
+                self.__class__.cached_running_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_running_icon
+            elif iconStatus == &#34;ready&#34;:
+                self.__class__.cached_ready_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_ready_icon
+            else:
+                self.__class__.cached_not_ready_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_not_ready_icon
+        return cache
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Tool
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Name&#34;, modelData[&#34;name&#34;])
+        dates_panel = self.form.addFormPanel(grid=True)
+        dates_panel.addFormLabel(&#34;Start date&#34;)
+        dates_panel.addFormDate(
+            &#34;Start date&#34;, self.mainApp, modelData[&#34;dated&#34;], column=1)
+        dates_panel.addFormLabel(&#34;End date&#34;, row=1)
+        dates_panel.addFormDate(
+            &#34;End date&#34;, self.mainApp, modelData[&#34;datef&#34;], row=1, column=1)
+        dates_panel.addFormLabel(&#34;Scanner&#34;, row=2)
+        dates_panel.addFormStr(
+            &#34;Scanner&#34;, r&#34;&#34;, modelData[&#34;scanner_ip&#34;], row=2, column=1)
+        dates_panel.addFormLabel(&#34;Command executed&#34;, row=3)
+        dates_panel.addFormStr(&#34;Command executed&#34;, &#34;&#34;, modelData[&#34;text&#34;], row=3, column=1, state=&#34;disabled&#34;)
+        notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+        top_panel = self.form.addFormPanel()
+        top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        top_panel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;, height=15)
+
+        actions_panel = self.form.addFormPanel()
+        #Ready is legacy, OOS and/or OOT should be used
+        if &#34;ready&#34; in self.controller.getStatus():
+            actions_panel.addFormButton(
+                &#34;Local launch&#34;, self.localLaunchCallback, side=&#34;right&#34;)
+            if self.mainApp.scanManager.monitor.hasWorkers():
+                actions_panel.addFormButton(
+                    &#34;Run on worker&#34;, self.launchCallback, side=&#34;right&#34;)
+            else:
+                actions_panel.addFormLabel(
+                    &#34;Info&#34;, &#34;Tool is ready but no celery worker found&#34;, side=&#34;right&#34;)
+        elif &#34;OOS&#34; in self.controller.getStatus() or &#34;OOT&#34; in self.controller.getStatus():
+            actions_panel.addFormButton(
+                &#34;Local launch&#34;, self.localLaunchCallback, side=&#34;right&#34;)
+            if self.mainApp.scanManager.monitor.hasWorkers():
+                actions_panel.addFormButton(
+                    &#34;Run on worker&#34;, self.launchCallback, side=&#34;right&#34;)
+            else:
+                actions_panel.addFormLabel(
+                    &#34;Info&#34;, &#34;Tool is ready but no celery worker found&#34;, side=&#34;right&#34;)
+        elif &#34;running&#34; in self.controller.getStatus():
+            actions_panel.addFormButton(
+                &#34;Stop&#34;, self.stopCallback, side=&#34;right&#34;)
+        elif &#34;done&#34; in self.controller.getStatus():
+            actions_panel.addFormButton(
+                &#34;Download result file&#34;, self.downloadResultFile, side=&#34;right&#34;)
+            tools_infos = Utils.loadToolsConfig()
+            try:
+                mod = Utils.loadPlugin(
+                    tools_infos[self.controller.getName()][&#34;plugin&#34;])
+                pluginActions = mod.getActions(self.controller.model)
+            except KeyError:  # Happens when parsed an existing file.:
+                pluginActions = None
+            if pluginActions is not None:
+                for pluginAction in pluginActions:
+                    actions_panel.addFormButton(
+                        pluginAction, pluginActions[pluginAction], side=&#34;right&#34;)
+                actions_panel.addFormButton(
+                    &#34;Reset&#34;, self.resetCallback, side=&#34;right&#34;)
+        defect_panel = self.form.addFormPanel(grid=True)
+        defect_panel.addFormButton(&#34;Create defect&#34;, self.createDefectCallback)
+        self.completeModifyWindow()
+
+    def addInTreeview(self, parentNode=None, _addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            _addChildren: not used for tools
+        &#34;&#34;&#34;
+        if parentNode is None:
+            parentNode = ToolView.DbToTreeviewListId(
+                self.controller.getParent())
+            nodeText = str(self.controller.getModelRepr())
+        elif parentNode == &#39;&#39;:
+            # For a filter all node are added to the root which is &#39;&#39; in tkinter
+            nodeText = self.controller.getDetailedString()
+        else:
+            # if a parent node is given it is the model parent, the treeview parent can be retrivied with ToolView.DbToTreeviewListId
+            parentNode = ToolView.DbToTreeviewListId(parentNode)
+            nodeText = str(self.controller.getModelRepr())
+        try:
+            parentNode = self.appliTw.insert(
+                self.controller.getParent(), 0, parentNode, text=&#34;Tools&#34;, image=self.getClassIcon())
+        except TclError:  #  trigger if tools list node already exist
+            pass
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        try:
+            self.appliTw.insert(parentNode, &#34;end&#34;, str(
+                self.controller.getDbId()), text=nodeText, tags=self.controller.getTags(), image=self.getIcon())
+        except tk.TclError:
+            pass
+        self.appliTw.sort(parentNode)
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    def downloadResultFile(self, _event=None):
+        &#34;&#34;&#34;Callback for tool click #TODO move to ToolController
+        Download the tool result file and asks the user if he or she wants to open it. 
+        If OK, tries to open it using xdg-open or os.startsfile
+        Args:
+            _event: not used 
+        &#34;&#34;&#34;
+        fs = FileStorage()
+        fs.open()
+        path = None
+        if fs.sftp_connection is not None:
+            dialog = ChildDialogInfo(
+                self.appliViewFrame, &#34;Download Started&#34;, &#34;Downloading...&#34;)
+            resultFile = self.controller.getResultFile()
+            dialog.show()
+            if resultFile != &#34;&#34; and resultFile is not None:
+                path = fs.getToolResult(resultFile)
+            else:
+                tkinter.messagebox.showerror(
+                    &#34;Download failed&#34;, &#34;The result file does not exist.&#34;)
+            dialog.destroy()
+        else:
+            tkinter.messagebox.showerror(
+                &#34;Download failed&#34;, &#34;The sftp connection failed.&#34;)
+            return
+        fs.close()
+        if path is not None:
+            if os.path.isfile(path):
+                dialog = ChildDialogQuestion(self.appliViewFrame, &#34;Download completed&#34;,
+                                             &#34;The file has been downloaded.\n Would you like to open it?&#34;, answers=[&#34;Open&#34;, &#34;Cancel&#34;])
+                self.appliViewFrame.wait_window(dialog.app)
+                if dialog.rvalue == &#34;Open&#34;:
+                    Utils.execute(&#34;xdg-open &#34;+path)
+                    return
+                else:
+                    return
+            path = None
+        if path is None:
+            tkinter.messagebox.showerror(
+                &#34;Download failed&#34;, &#34;the file does not exist on sftp server&#34;)
+
+    def createDefectCallback(self, _event=None):
+        &#34;&#34;&#34;Callback for tool click #TODO move to ToolController
+        Creates an empty defect view and open it&#39;s insert window with notes = tools notes.
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        toExport = modelData[&#34;notes&#34;]
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        dv = DefectView(self.appliTw, self.appliViewFrame,
+                        self.mainApp, DefectController(Defect(modelData)))
+        dv.openInsertWindow(toExport)
+
+    def localLaunchCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the launch tool button. Will launch it on localhost pseudo &#39;worker&#39;.  #TODO move to ToolController
+
+        Args:
+            event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        self.mainApp.scanManager.monitor.launchTask(
+            mongoInstance.calendarName, self.controller.model, &#34;&#34;, False, &#34;localhost&#34;)
+        self.controller.update()
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()
+
+    def safeLaunchCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the launch tool button. Will queue this tool to a celery worker. #TODO move to ToolController
+        Args:
+            event: Automatically generated with a button Callback, not used.
+        Returns:
+            None if failed. 
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        result = self.mainApp.scanManager.monitor.launchTask(
+            mongoInstance.calendarName, self.controller.model)
+        return result
+
+    def launchCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the launch tool button. Will queue this tool to a celery worker. #TODO move to ToolController
+        Will try to launch respecting limits first. If it does not work, it will asks the user to force launch.
+
+        Args:
+            _event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        res = self.safeLaunchCallback()
+        if not res:
+            dialog = ChildDialogQuestion(self.appliViewFrame,
+                                         &#34;Safe queue failed&#34;, &#34;This tool cannot be launched because no worker add space for its thread.\nDo you want to launch it anyway?&#34;)
+            self.appliViewFrame.wait_window(dialog.app)
+            answer = dialog.rvalue
+            if answer == &#34;Yes&#34;:
+                mongoInstance = MongoCalendar.getInstance()
+                res = self.mainApp.scanManager.monitor.launchTask(
+                    mongoInstance.calendarName, self.controller.model, &#34;&#34;, False)
+        if res:
+            self.controller.update()
+            self.form.clear()
+            for widget in self.appliViewFrame.winfo_children():
+                widget.destroy()
+            self.openModifyWindow()
+
+    def stopCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the launch tool stop button. Will stop this celery task. #TODO move to ToolController
+
+        Args:
+            _event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        success = self.mainApp.scanManager.monitor.stopTask(
+            self.controller.getData())
+        delete_anyway = False
+        if success == False:
+            delete_anyway = tkinter.messagebox.askyesno(
+                &#34;Stop failed&#34;, &#34;&#34;&#34;This tool cannot be stopped because its trace has been lost (The application has been restarted and the tool is still not finished).\n
+                    Reset tool anyway?&#34;&#34;&#34;)
+        if delete_anyway or success:
+            self.controller.markAsNotDone()
+            self.controller.update()
+            self.form.clear()
+            for widget in self.appliViewFrame.winfo_children():
+                widget.destroy()
+            self.openModifyWindow()
+
+    def resetCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the reset tool stop button. Will reset the tool to a ready state. #TODO move to ToolController
+
+        Args:
+            event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        self.controller.markAsNotDone()
+        self.controller.update()
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()
+
+    @classmethod
+    def DbToTreeviewListId(cls, parent_db_id):
+        &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of tools given its parent
+        Args:
+            parent_db_id: the parent node mongo ID
+        Returns:
+            A string that should be unique to describe the parent list of tool node
+        &#34;&#34;&#34;
+        return str(parent_db_id)+&#34;|Tools&#34;
+
+    @classmethod
+    def treeviewListIdToDb(cls, treeview_id):
+        &#34;&#34;&#34;Extract from the unique string identifying a list of tools the parent db ID
+        Args:
+            treeview_id: the treeview node id of a list of tools node
+        Returns:
+            the parent object mongo id as string
+        &#34;&#34;&#34;
+        return str(treeview_id).split(&#34;|&#34;)[0]
+
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a tool update is received by notification.
+        Update the tool treeview item (resulting in icon reloading)
+        &#34;&#34;&#34;
+        self.appliTw.item(str(self.controller.getDbId()), text=str(
+            self.controller.getModelRepr()), image=self.getIcon())
+        super().updateReceived()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Views.ToolView.ToolView"><code class="flex name class">
+<span>class <span class="ident">ToolView</span></span>
+<span>(</span><span>appTw, appViewFrame, mainApp, controller)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>View for tool object. Handle node in treeview and present forms to user when interacted with.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>icon</code></strong></dt>
+<dd>icon name to show in treeview. Icon filename must be in icon directory</dd>
+<dt><strong><code>done_icon</code></strong></dt>
+<dd>icon filename for done tools</dd>
+<dt><strong><code>ready_icon</code></strong></dt>
+<dd>icon filename for ready tools</dd>
+<dt><strong><code>running_icon</code></strong></dt>
+<dd>icon filename for running tools</dd>
+<dt><strong><code>not_ready_icon</code></strong></dt>
+<dd>icon filename for not ready tools</dd>
+<dt><strong><code>cached_icon</code></strong></dt>
+<dd>a cached loaded PIL image icon of ToolView.icon. Starts as None.</dd>
+<dt><strong><code>cached_done_icon</code></strong></dt>
+<dd>a cached loaded PIL image icon of ToolView.done_icon. Starts as None.</dd>
+<dt><strong><code>cached_ready_icon</code></strong></dt>
+<dd>a cached loaded PIL image icon of ToolView.ready_icon. Starts as None.</dd>
+<dt><strong><code>cached_running_icon</code></strong></dt>
+<dd>a cached loaded PIL image icon of ToolView.running_icon. Starts as None.</dd>
+<dt><strong><code>cached_not_ready_icon</code></strong></dt>
+<dd>a cached loaded PIL image icon of ToolView.not_ready_icon. Starts as None.</dd>
+<dt><strong><code>Constructor</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appTw</code></strong></dt>
+<dd>a PollenisatorTreeview instance to put this view in</dd>
+<dt><strong><code>appViewFrame</code></strong></dt>
+<dd>an view frame to build the forms in.</dd>
+<dt><strong><code>mainApp</code></strong></dt>
+<dd>the Application instance</dd>
+<dt><strong><code>controller</code></strong></dt>
+<dd>a CommandController for this view.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ToolView(ViewElement):
+    &#34;&#34;&#34;View for tool object. Handle node in treeview and present forms to user when interacted with.
+    Attributes:
+        icon: icon name to show in treeview. Icon filename must be in icon directory
+        done_icon: icon filename for done tools
+        ready_icon: icon filename for ready tools
+        running_icon: icon filename for running tools
+        not_ready_icon: icon filename for not ready tools
+        cached_icon: a cached loaded PIL image icon of ToolView.icon. Starts as None.
+        cached_done_icon: a cached loaded PIL image icon of ToolView.done_icon. Starts as None.
+        cached_ready_icon: a cached loaded PIL image icon of ToolView.ready_icon. Starts as None.
+        cached_running_icon: a cached loaded PIL image icon of ToolView.running_icon. Starts as None.
+        cached_not_ready_icon: a cached loaded PIL image icon of ToolView.not_ready_icon. Starts as None.
+        &#34;&#34;&#34;
+
+    done_icon = &#39;done_tool.png&#39;
+    ready_icon = &#39;waiting.png&#39;
+    running_icon = &#39;running.png&#39;
+    not_ready_icon = &#39;cross.png&#39;
+    icon = &#39;tool.png&#39;
+
+    cached_icon = None
+    cached_done_icon = None
+    cached_ready_icon = None
+    cached_running_icon = None
+    cached_not_ready_icon = None
+
+    def getIcon(self):
+        &#34;&#34;&#34;
+        Load the object icon in cache if it is not yet done, and returns it
+
+        Return:
+            Returns the icon representing this object.
+        &#34;&#34;&#34;
+        status = self.controller.getStatus()
+        iconStatus = &#34;not_ready&#34;
+        if &#34;done&#34; in status:
+            cache = self.__class__.cached_done_icon
+            ui = self.__class__.done_icon
+            iconStatus = &#34;done&#34;
+        elif &#34;running&#34; in status:
+            ui = self.__class__.running_icon
+            cache = self.__class__.cached_running_icon
+            iconStatus = &#34;running&#34;
+        elif &#34;OOS&#34; not in status and &#34;OOT&#34; not in status:
+            ui = self.__class__.ready_icon
+            cache = self.__class__.cached_ready_icon
+            iconStatus = &#34;ready&#34;
+        else:
+            ui = self.__class__.not_ready_icon
+            cache = self.__class__.cached_not_ready_icon
+        if status == [] or iconStatus not in status :
+            self.controller.setStatus([iconStatus])
+
+        if cache is None:
+            from PIL import Image, ImageTk
+            abs_path = os.path.dirname(os.path.abspath(__file__))
+
+            path = os.path.join(abs_path, &#34;../../icon/&#34;+ui)
+            if iconStatus == &#34;done&#34;:
+                self.__class__.cached_done_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_done_icon
+            elif iconStatus == &#34;running&#34;:
+                self.__class__.cached_running_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_running_icon
+            elif iconStatus == &#34;ready&#34;:
+                self.__class__.cached_ready_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_ready_icon
+            else:
+                self.__class__.cached_not_ready_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_not_ready_icon
+        return cache
+
+    def openModifyWindow(self):
+        &#34;&#34;&#34;
+        Creates a tkinter form using Forms classes. This form aims to update or delete an existing Tool
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        top_panel = self.form.addFormPanel(grid=True)
+        top_panel.addFormLabel(&#34;Name&#34;, modelData[&#34;name&#34;])
+        dates_panel = self.form.addFormPanel(grid=True)
+        dates_panel.addFormLabel(&#34;Start date&#34;)
+        dates_panel.addFormDate(
+            &#34;Start date&#34;, self.mainApp, modelData[&#34;dated&#34;], column=1)
+        dates_panel.addFormLabel(&#34;End date&#34;, row=1)
+        dates_panel.addFormDate(
+            &#34;End date&#34;, self.mainApp, modelData[&#34;datef&#34;], row=1, column=1)
+        dates_panel.addFormLabel(&#34;Scanner&#34;, row=2)
+        dates_panel.addFormStr(
+            &#34;Scanner&#34;, r&#34;&#34;, modelData[&#34;scanner_ip&#34;], row=2, column=1)
+        dates_panel.addFormLabel(&#34;Command executed&#34;, row=3)
+        dates_panel.addFormStr(&#34;Command executed&#34;, &#34;&#34;, modelData[&#34;text&#34;], row=3, column=1, state=&#34;disabled&#34;)
+        notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+        top_panel = self.form.addFormPanel()
+        top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+        top_panel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;, height=15)
+
+        actions_panel = self.form.addFormPanel()
+        #Ready is legacy, OOS and/or OOT should be used
+        if &#34;ready&#34; in self.controller.getStatus():
+            actions_panel.addFormButton(
+                &#34;Local launch&#34;, self.localLaunchCallback, side=&#34;right&#34;)
+            if self.mainApp.scanManager.monitor.hasWorkers():
+                actions_panel.addFormButton(
+                    &#34;Run on worker&#34;, self.launchCallback, side=&#34;right&#34;)
+            else:
+                actions_panel.addFormLabel(
+                    &#34;Info&#34;, &#34;Tool is ready but no celery worker found&#34;, side=&#34;right&#34;)
+        elif &#34;OOS&#34; in self.controller.getStatus() or &#34;OOT&#34; in self.controller.getStatus():
+            actions_panel.addFormButton(
+                &#34;Local launch&#34;, self.localLaunchCallback, side=&#34;right&#34;)
+            if self.mainApp.scanManager.monitor.hasWorkers():
+                actions_panel.addFormButton(
+                    &#34;Run on worker&#34;, self.launchCallback, side=&#34;right&#34;)
+            else:
+                actions_panel.addFormLabel(
+                    &#34;Info&#34;, &#34;Tool is ready but no celery worker found&#34;, side=&#34;right&#34;)
+        elif &#34;running&#34; in self.controller.getStatus():
+            actions_panel.addFormButton(
+                &#34;Stop&#34;, self.stopCallback, side=&#34;right&#34;)
+        elif &#34;done&#34; in self.controller.getStatus():
+            actions_panel.addFormButton(
+                &#34;Download result file&#34;, self.downloadResultFile, side=&#34;right&#34;)
+            tools_infos = Utils.loadToolsConfig()
+            try:
+                mod = Utils.loadPlugin(
+                    tools_infos[self.controller.getName()][&#34;plugin&#34;])
+                pluginActions = mod.getActions(self.controller.model)
+            except KeyError:  # Happens when parsed an existing file.:
+                pluginActions = None
+            if pluginActions is not None:
+                for pluginAction in pluginActions:
+                    actions_panel.addFormButton(
+                        pluginAction, pluginActions[pluginAction], side=&#34;right&#34;)
+                actions_panel.addFormButton(
+                    &#34;Reset&#34;, self.resetCallback, side=&#34;right&#34;)
+        defect_panel = self.form.addFormPanel(grid=True)
+        defect_panel.addFormButton(&#34;Create defect&#34;, self.createDefectCallback)
+        self.completeModifyWindow()
+
+    def addInTreeview(self, parentNode=None, _addChildren=True):
+        &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+        Args:
+            parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+            _addChildren: not used for tools
+        &#34;&#34;&#34;
+        if parentNode is None:
+            parentNode = ToolView.DbToTreeviewListId(
+                self.controller.getParent())
+            nodeText = str(self.controller.getModelRepr())
+        elif parentNode == &#39;&#39;:
+            # For a filter all node are added to the root which is &#39;&#39; in tkinter
+            nodeText = self.controller.getDetailedString()
+        else:
+            # if a parent node is given it is the model parent, the treeview parent can be retrivied with ToolView.DbToTreeviewListId
+            parentNode = ToolView.DbToTreeviewListId(parentNode)
+            nodeText = str(self.controller.getModelRepr())
+        try:
+            parentNode = self.appliTw.insert(
+                self.controller.getParent(), 0, parentNode, text=&#34;Tools&#34;, image=self.getClassIcon())
+        except TclError:  #  trigger if tools list node already exist
+            pass
+        self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+        try:
+            self.appliTw.insert(parentNode, &#34;end&#34;, str(
+                self.controller.getDbId()), text=nodeText, tags=self.controller.getTags(), image=self.getIcon())
+        except tk.TclError:
+            pass
+        self.appliTw.sort(parentNode)
+        if &#34;hidden&#34; in self.controller.getTags():
+            self.hide()
+
+    def downloadResultFile(self, _event=None):
+        &#34;&#34;&#34;Callback for tool click #TODO move to ToolController
+        Download the tool result file and asks the user if he or she wants to open it. 
+        If OK, tries to open it using xdg-open or os.startsfile
+        Args:
+            _event: not used 
+        &#34;&#34;&#34;
+        fs = FileStorage()
+        fs.open()
+        path = None
+        if fs.sftp_connection is not None:
+            dialog = ChildDialogInfo(
+                self.appliViewFrame, &#34;Download Started&#34;, &#34;Downloading...&#34;)
+            resultFile = self.controller.getResultFile()
+            dialog.show()
+            if resultFile != &#34;&#34; and resultFile is not None:
+                path = fs.getToolResult(resultFile)
+            else:
+                tkinter.messagebox.showerror(
+                    &#34;Download failed&#34;, &#34;The result file does not exist.&#34;)
+            dialog.destroy()
+        else:
+            tkinter.messagebox.showerror(
+                &#34;Download failed&#34;, &#34;The sftp connection failed.&#34;)
+            return
+        fs.close()
+        if path is not None:
+            if os.path.isfile(path):
+                dialog = ChildDialogQuestion(self.appliViewFrame, &#34;Download completed&#34;,
+                                             &#34;The file has been downloaded.\n Would you like to open it?&#34;, answers=[&#34;Open&#34;, &#34;Cancel&#34;])
+                self.appliViewFrame.wait_window(dialog.app)
+                if dialog.rvalue == &#34;Open&#34;:
+                    Utils.execute(&#34;xdg-open &#34;+path)
+                    return
+                else:
+                    return
+            path = None
+        if path is None:
+            tkinter.messagebox.showerror(
+                &#34;Download failed&#34;, &#34;the file does not exist on sftp server&#34;)
+
+    def createDefectCallback(self, _event=None):
+        &#34;&#34;&#34;Callback for tool click #TODO move to ToolController
+        Creates an empty defect view and open it&#39;s insert window with notes = tools notes.
+        &#34;&#34;&#34;
+        modelData = self.controller.getData()
+        toExport = modelData[&#34;notes&#34;]
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        dv = DefectView(self.appliTw, self.appliViewFrame,
+                        self.mainApp, DefectController(Defect(modelData)))
+        dv.openInsertWindow(toExport)
+
+    def localLaunchCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the launch tool button. Will launch it on localhost pseudo &#39;worker&#39;.  #TODO move to ToolController
+
+        Args:
+            event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        self.mainApp.scanManager.monitor.launchTask(
+            mongoInstance.calendarName, self.controller.model, &#34;&#34;, False, &#34;localhost&#34;)
+        self.controller.update()
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()
+
+    def safeLaunchCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the launch tool button. Will queue this tool to a celery worker. #TODO move to ToolController
+        Args:
+            event: Automatically generated with a button Callback, not used.
+        Returns:
+            None if failed. 
+        &#34;&#34;&#34;
+        mongoInstance = MongoCalendar.getInstance()
+        result = self.mainApp.scanManager.monitor.launchTask(
+            mongoInstance.calendarName, self.controller.model)
+        return result
+
+    def launchCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the launch tool button. Will queue this tool to a celery worker. #TODO move to ToolController
+        Will try to launch respecting limits first. If it does not work, it will asks the user to force launch.
+
+        Args:
+            _event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        res = self.safeLaunchCallback()
+        if not res:
+            dialog = ChildDialogQuestion(self.appliViewFrame,
+                                         &#34;Safe queue failed&#34;, &#34;This tool cannot be launched because no worker add space for its thread.\nDo you want to launch it anyway?&#34;)
+            self.appliViewFrame.wait_window(dialog.app)
+            answer = dialog.rvalue
+            if answer == &#34;Yes&#34;:
+                mongoInstance = MongoCalendar.getInstance()
+                res = self.mainApp.scanManager.monitor.launchTask(
+                    mongoInstance.calendarName, self.controller.model, &#34;&#34;, False)
+        if res:
+            self.controller.update()
+            self.form.clear()
+            for widget in self.appliViewFrame.winfo_children():
+                widget.destroy()
+            self.openModifyWindow()
+
+    def stopCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the launch tool stop button. Will stop this celery task. #TODO move to ToolController
+
+        Args:
+            _event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        success = self.mainApp.scanManager.monitor.stopTask(
+            self.controller.getData())
+        delete_anyway = False
+        if success == False:
+            delete_anyway = tkinter.messagebox.askyesno(
+                &#34;Stop failed&#34;, &#34;&#34;&#34;This tool cannot be stopped because its trace has been lost (The application has been restarted and the tool is still not finished).\n
+                    Reset tool anyway?&#34;&#34;&#34;)
+        if delete_anyway or success:
+            self.controller.markAsNotDone()
+            self.controller.update()
+            self.form.clear()
+            for widget in self.appliViewFrame.winfo_children():
+                widget.destroy()
+            self.openModifyWindow()
+
+    def resetCallback(self, _event=None):
+        &#34;&#34;&#34;
+        Callback for the reset tool stop button. Will reset the tool to a ready state. #TODO move to ToolController
+
+        Args:
+            event: Automatically generated with a button Callback, not used.
+        &#34;&#34;&#34;
+        self.controller.markAsNotDone()
+        self.controller.update()
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()
+
+    @classmethod
+    def DbToTreeviewListId(cls, parent_db_id):
+        &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of tools given its parent
+        Args:
+            parent_db_id: the parent node mongo ID
+        Returns:
+            A string that should be unique to describe the parent list of tool node
+        &#34;&#34;&#34;
+        return str(parent_db_id)+&#34;|Tools&#34;
+
+    @classmethod
+    def treeviewListIdToDb(cls, treeview_id):
+        &#34;&#34;&#34;Extract from the unique string identifying a list of tools the parent db ID
+        Args:
+            treeview_id: the treeview node id of a list of tools node
+        Returns:
+            the parent object mongo id as string
+        &#34;&#34;&#34;
+        return str(treeview_id).split(&#34;|&#34;)[0]
+
+    def updateReceived(self):
+        &#34;&#34;&#34;Called when a tool update is received by notification.
+        Update the tool treeview item (resulting in icon reloading)
+        &#34;&#34;&#34;
+        self.appliTw.item(str(self.controller.getDbId()), text=str(
+            self.controller.getModelRepr()), image=self.getIcon())
+        super().updateReceived()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Views.ViewElement.ViewElement</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.cached_done_icon"><code class="name">var <span class="ident">cached_done_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.cached_icon"><code class="name">var <span class="ident">cached_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.cached_not_ready_icon"><code class="name">var <span class="ident">cached_not_ready_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.cached_ready_icon"><code class="name">var <span class="ident">cached_ready_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.cached_running_icon"><code class="name">var <span class="ident">cached_running_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.done_icon"><code class="name">var <span class="ident">done_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.icon"><code class="name">var <span class="ident">icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.not_ready_icon"><code class="name">var <span class="ident">not_ready_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.ready_icon"><code class="name">var <span class="ident">ready_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.running_icon"><code class="name">var <span class="ident">running_icon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.DbToTreeviewListId"><code class="name flex">
+<span>def <span class="ident">DbToTreeviewListId</span></span>(<span>parent_db_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts a mongo Id to a unique string identifying a list of tools given its parent</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent_db_id</code></strong></dt>
+<dd>the parent node mongo ID</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A string that should be unique to describe the parent list</code> of <code>tool node</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def DbToTreeviewListId(cls, parent_db_id):
+    &#34;&#34;&#34;Converts a mongo Id to a unique string identifying a list of tools given its parent
+    Args:
+        parent_db_id: the parent node mongo ID
+    Returns:
+        A string that should be unique to describe the parent list of tool node
+    &#34;&#34;&#34;
+    return str(parent_db_id)+&#34;|Tools&#34;</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.treeviewListIdToDb"><code class="name flex">
+<span>def <span class="ident">treeviewListIdToDb</span></span>(<span>treeview_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract from the unique string identifying a list of tools the parent db ID</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>treeview_id</code></strong></dt>
+<dd>the treeview node id of a list of tools node</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>the parent object mongo id as string</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def treeviewListIdToDb(cls, treeview_id):
+    &#34;&#34;&#34;Extract from the unique string identifying a list of tools the parent db ID
+    Args:
+        treeview_id: the treeview node id of a list of tools node
+    Returns:
+        the parent object mongo id as string
+    &#34;&#34;&#34;
+    return str(treeview_id).split(&#34;|&#34;)[0]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.addInTreeview"><code class="name flex">
+<span>def <span class="ident">addInTreeview</span></span>(<span>self, parentNode=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add this view in treeview. Also stores infos in application treeview.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parentNode</code></strong></dt>
+<dd>if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.</dd>
+<dt><strong><code>_addChildren</code></strong></dt>
+<dd>not used for tools</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addInTreeview(self, parentNode=None, _addChildren=True):
+    &#34;&#34;&#34;Add this view in treeview. Also stores infos in application treeview.
+    Args:
+        parentNode: if None, will calculate the parent. If setted, forces the node to be inserted inside given parentNode.
+        _addChildren: not used for tools
+    &#34;&#34;&#34;
+    if parentNode is None:
+        parentNode = ToolView.DbToTreeviewListId(
+            self.controller.getParent())
+        nodeText = str(self.controller.getModelRepr())
+    elif parentNode == &#39;&#39;:
+        # For a filter all node are added to the root which is &#39;&#39; in tkinter
+        nodeText = self.controller.getDetailedString()
+    else:
+        # if a parent node is given it is the model parent, the treeview parent can be retrivied with ToolView.DbToTreeviewListId
+        parentNode = ToolView.DbToTreeviewListId(parentNode)
+        nodeText = str(self.controller.getModelRepr())
+    try:
+        parentNode = self.appliTw.insert(
+            self.controller.getParent(), 0, parentNode, text=&#34;Tools&#34;, image=self.getClassIcon())
+    except TclError:  #  trigger if tools list node already exist
+        pass
+    self.appliTw.views[str(self.controller.getDbId())] = {&#34;view&#34;: self}
+    try:
+        self.appliTw.insert(parentNode, &#34;end&#34;, str(
+            self.controller.getDbId()), text=nodeText, tags=self.controller.getTags(), image=self.getIcon())
+    except tk.TclError:
+        pass
+    self.appliTw.sort(parentNode)
+    if &#34;hidden&#34; in self.controller.getTags():
+        self.hide()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.createDefectCallback"><code class="name flex">
+<span>def <span class="ident">createDefectCallback</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for tool click #TODO move to ToolController
+Creates an empty defect view and open it's insert window with notes = tools notes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createDefectCallback(self, _event=None):
+    &#34;&#34;&#34;Callback for tool click #TODO move to ToolController
+    Creates an empty defect view and open it&#39;s insert window with notes = tools notes.
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    toExport = modelData[&#34;notes&#34;]
+    for widget in self.appliViewFrame.winfo_children():
+        widget.destroy()
+    dv = DefectView(self.appliTw, self.appliViewFrame,
+                    self.mainApp, DefectController(Defect(modelData)))
+    dv.openInsertWindow(toExport)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.downloadResultFile"><code class="name flex">
+<span>def <span class="ident">downloadResultFile</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for tool click #TODO move to ToolController
+Download the tool result file and asks the user if he or she wants to open it.
+If OK, tries to open it using xdg-open or os.startsfile</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def downloadResultFile(self, _event=None):
+    &#34;&#34;&#34;Callback for tool click #TODO move to ToolController
+    Download the tool result file and asks the user if he or she wants to open it. 
+    If OK, tries to open it using xdg-open or os.startsfile
+    Args:
+        _event: not used 
+    &#34;&#34;&#34;
+    fs = FileStorage()
+    fs.open()
+    path = None
+    if fs.sftp_connection is not None:
+        dialog = ChildDialogInfo(
+            self.appliViewFrame, &#34;Download Started&#34;, &#34;Downloading...&#34;)
+        resultFile = self.controller.getResultFile()
+        dialog.show()
+        if resultFile != &#34;&#34; and resultFile is not None:
+            path = fs.getToolResult(resultFile)
+        else:
+            tkinter.messagebox.showerror(
+                &#34;Download failed&#34;, &#34;The result file does not exist.&#34;)
+        dialog.destroy()
+    else:
+        tkinter.messagebox.showerror(
+            &#34;Download failed&#34;, &#34;The sftp connection failed.&#34;)
+        return
+    fs.close()
+    if path is not None:
+        if os.path.isfile(path):
+            dialog = ChildDialogQuestion(self.appliViewFrame, &#34;Download completed&#34;,
+                                         &#34;The file has been downloaded.\n Would you like to open it?&#34;, answers=[&#34;Open&#34;, &#34;Cancel&#34;])
+            self.appliViewFrame.wait_window(dialog.app)
+            if dialog.rvalue == &#34;Open&#34;:
+                Utils.execute(&#34;xdg-open &#34;+path)
+                return
+            else:
+                return
+        path = None
+    if path is None:
+        tkinter.messagebox.showerror(
+            &#34;Download failed&#34;, &#34;the file does not exist on sftp server&#34;)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.getIcon"><code class="name flex">
+<span>def <span class="ident">getIcon</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load the object icon in cache if it is not yet done, and returns it</p>
+<h2 id="return">Return</h2>
+<p>Returns the icon representing this object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getIcon(self):
+    &#34;&#34;&#34;
+    Load the object icon in cache if it is not yet done, and returns it
+
+    Return:
+        Returns the icon representing this object.
+    &#34;&#34;&#34;
+    status = self.controller.getStatus()
+    iconStatus = &#34;not_ready&#34;
+    if &#34;done&#34; in status:
+        cache = self.__class__.cached_done_icon
+        ui = self.__class__.done_icon
+        iconStatus = &#34;done&#34;
+    elif &#34;running&#34; in status:
+        ui = self.__class__.running_icon
+        cache = self.__class__.cached_running_icon
+        iconStatus = &#34;running&#34;
+    elif &#34;OOS&#34; not in status and &#34;OOT&#34; not in status:
+        ui = self.__class__.ready_icon
+        cache = self.__class__.cached_ready_icon
+        iconStatus = &#34;ready&#34;
+    else:
+        ui = self.__class__.not_ready_icon
+        cache = self.__class__.cached_not_ready_icon
+    if status == [] or iconStatus not in status :
+        self.controller.setStatus([iconStatus])
+
+    if cache is None:
+        from PIL import Image, ImageTk
+        abs_path = os.path.dirname(os.path.abspath(__file__))
+
+        path = os.path.join(abs_path, &#34;../../icon/&#34;+ui)
+        if iconStatus == &#34;done&#34;:
+            self.__class__.cached_done_icon = ImageTk.PhotoImage(
+                Image.open(path))
+            return self.__class__.cached_done_icon
+        elif iconStatus == &#34;running&#34;:
+            self.__class__.cached_running_icon = ImageTk.PhotoImage(
+                Image.open(path))
+            return self.__class__.cached_running_icon
+        elif iconStatus == &#34;ready&#34;:
+            self.__class__.cached_ready_icon = ImageTk.PhotoImage(
+                Image.open(path))
+            return self.__class__.cached_ready_icon
+        else:
+            self.__class__.cached_not_ready_icon = ImageTk.PhotoImage(
+                Image.open(path))
+            return self.__class__.cached_not_ready_icon
+    return cache</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.launchCallback"><code class="name flex">
+<span>def <span class="ident">launchCallback</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for the launch tool button. Will queue this tool to a celery worker. #TODO move to ToolController
+Will try to launch respecting limits first. If it does not work, it will asks the user to force launch.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>Automatically generated with a button Callback, not used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def launchCallback(self, _event=None):
+    &#34;&#34;&#34;
+    Callback for the launch tool button. Will queue this tool to a celery worker. #TODO move to ToolController
+    Will try to launch respecting limits first. If it does not work, it will asks the user to force launch.
+
+    Args:
+        _event: Automatically generated with a button Callback, not used.
+    &#34;&#34;&#34;
+    res = self.safeLaunchCallback()
+    if not res:
+        dialog = ChildDialogQuestion(self.appliViewFrame,
+                                     &#34;Safe queue failed&#34;, &#34;This tool cannot be launched because no worker add space for its thread.\nDo you want to launch it anyway?&#34;)
+        self.appliViewFrame.wait_window(dialog.app)
+        answer = dialog.rvalue
+        if answer == &#34;Yes&#34;:
+            mongoInstance = MongoCalendar.getInstance()
+            res = self.mainApp.scanManager.monitor.launchTask(
+                mongoInstance.calendarName, self.controller.model, &#34;&#34;, False)
+    if res:
+        self.controller.update()
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.localLaunchCallback"><code class="name flex">
+<span>def <span class="ident">localLaunchCallback</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for the launch tool button. Will launch it on localhost pseudo 'worker'.
+#TODO move to ToolController</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>Automatically generated with a button Callback, not used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def localLaunchCallback(self, _event=None):
+    &#34;&#34;&#34;
+    Callback for the launch tool button. Will launch it on localhost pseudo &#39;worker&#39;.  #TODO move to ToolController
+
+    Args:
+        event: Automatically generated with a button Callback, not used.
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    self.mainApp.scanManager.monitor.launchTask(
+        mongoInstance.calendarName, self.controller.model, &#34;&#34;, False, &#34;localhost&#34;)
+    self.controller.update()
+    self.form.clear()
+    for widget in self.appliViewFrame.winfo_children():
+        widget.destroy()
+    self.openModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.openModifyWindow"><code class="name flex">
+<span>def <span class="ident">openModifyWindow</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a tkinter form using Forms classes. This form aims to update or delete an existing Tool</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openModifyWindow(self):
+    &#34;&#34;&#34;
+    Creates a tkinter form using Forms classes. This form aims to update or delete an existing Tool
+    &#34;&#34;&#34;
+    modelData = self.controller.getData()
+    top_panel = self.form.addFormPanel(grid=True)
+    top_panel.addFormLabel(&#34;Name&#34;, modelData[&#34;name&#34;])
+    dates_panel = self.form.addFormPanel(grid=True)
+    dates_panel.addFormLabel(&#34;Start date&#34;)
+    dates_panel.addFormDate(
+        &#34;Start date&#34;, self.mainApp, modelData[&#34;dated&#34;], column=1)
+    dates_panel.addFormLabel(&#34;End date&#34;, row=1)
+    dates_panel.addFormDate(
+        &#34;End date&#34;, self.mainApp, modelData[&#34;datef&#34;], row=1, column=1)
+    dates_panel.addFormLabel(&#34;Scanner&#34;, row=2)
+    dates_panel.addFormStr(
+        &#34;Scanner&#34;, r&#34;&#34;, modelData[&#34;scanner_ip&#34;], row=2, column=1)
+    dates_panel.addFormLabel(&#34;Command executed&#34;, row=3)
+    dates_panel.addFormStr(&#34;Command executed&#34;, &#34;&#34;, modelData[&#34;text&#34;], row=3, column=1, state=&#34;disabled&#34;)
+    notes = modelData.get(&#34;notes&#34;, &#34;&#34;)
+    top_panel = self.form.addFormPanel()
+    top_panel.addFormLabel(&#34;Notes&#34;, side=&#34;top&#34;)
+    top_panel.addFormText(&#34;Notes&#34;, r&#34;&#34;, notes, None, side=&#34;top&#34;, height=15)
+
+    actions_panel = self.form.addFormPanel()
+    #Ready is legacy, OOS and/or OOT should be used
+    if &#34;ready&#34; in self.controller.getStatus():
+        actions_panel.addFormButton(
+            &#34;Local launch&#34;, self.localLaunchCallback, side=&#34;right&#34;)
+        if self.mainApp.scanManager.monitor.hasWorkers():
+            actions_panel.addFormButton(
+                &#34;Run on worker&#34;, self.launchCallback, side=&#34;right&#34;)
+        else:
+            actions_panel.addFormLabel(
+                &#34;Info&#34;, &#34;Tool is ready but no celery worker found&#34;, side=&#34;right&#34;)
+    elif &#34;OOS&#34; in self.controller.getStatus() or &#34;OOT&#34; in self.controller.getStatus():
+        actions_panel.addFormButton(
+            &#34;Local launch&#34;, self.localLaunchCallback, side=&#34;right&#34;)
+        if self.mainApp.scanManager.monitor.hasWorkers():
+            actions_panel.addFormButton(
+                &#34;Run on worker&#34;, self.launchCallback, side=&#34;right&#34;)
+        else:
+            actions_panel.addFormLabel(
+                &#34;Info&#34;, &#34;Tool is ready but no celery worker found&#34;, side=&#34;right&#34;)
+    elif &#34;running&#34; in self.controller.getStatus():
+        actions_panel.addFormButton(
+            &#34;Stop&#34;, self.stopCallback, side=&#34;right&#34;)
+    elif &#34;done&#34; in self.controller.getStatus():
+        actions_panel.addFormButton(
+            &#34;Download result file&#34;, self.downloadResultFile, side=&#34;right&#34;)
+        tools_infos = Utils.loadToolsConfig()
+        try:
+            mod = Utils.loadPlugin(
+                tools_infos[self.controller.getName()][&#34;plugin&#34;])
+            pluginActions = mod.getActions(self.controller.model)
+        except KeyError:  # Happens when parsed an existing file.:
+            pluginActions = None
+        if pluginActions is not None:
+            for pluginAction in pluginActions:
+                actions_panel.addFormButton(
+                    pluginAction, pluginActions[pluginAction], side=&#34;right&#34;)
+            actions_panel.addFormButton(
+                &#34;Reset&#34;, self.resetCallback, side=&#34;right&#34;)
+    defect_panel = self.form.addFormPanel(grid=True)
+    defect_panel.addFormButton(&#34;Create defect&#34;, self.createDefectCallback)
+    self.completeModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.resetCallback"><code class="name flex">
+<span>def <span class="ident">resetCallback</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for the reset tool stop button. Will reset the tool to a ready state. #TODO move to ToolController</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>Automatically generated with a button Callback, not used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resetCallback(self, _event=None):
+    &#34;&#34;&#34;
+    Callback for the reset tool stop button. Will reset the tool to a ready state. #TODO move to ToolController
+
+    Args:
+        event: Automatically generated with a button Callback, not used.
+    &#34;&#34;&#34;
+    self.controller.markAsNotDone()
+    self.controller.update()
+    self.form.clear()
+    for widget in self.appliViewFrame.winfo_children():
+        widget.destroy()
+    self.openModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.safeLaunchCallback"><code class="name flex">
+<span>def <span class="ident">safeLaunchCallback</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for the launch tool button. Will queue this tool to a celery worker. #TODO move to ToolController</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>Automatically generated with a button Callback, not used.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None if failed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def safeLaunchCallback(self, _event=None):
+    &#34;&#34;&#34;
+    Callback for the launch tool button. Will queue this tool to a celery worker. #TODO move to ToolController
+    Args:
+        event: Automatically generated with a button Callback, not used.
+    Returns:
+        None if failed. 
+    &#34;&#34;&#34;
+    mongoInstance = MongoCalendar.getInstance()
+    result = self.mainApp.scanManager.monitor.launchTask(
+        mongoInstance.calendarName, self.controller.model)
+    return result</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.stopCallback"><code class="name flex">
+<span>def <span class="ident">stopCallback</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for the launch tool stop button. Will stop this celery task. #TODO move to ToolController</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>Automatically generated with a button Callback, not used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stopCallback(self, _event=None):
+    &#34;&#34;&#34;
+    Callback for the launch tool stop button. Will stop this celery task. #TODO move to ToolController
+
+    Args:
+        _event: Automatically generated with a button Callback, not used.
+    &#34;&#34;&#34;
+    success = self.mainApp.scanManager.monitor.stopTask(
+        self.controller.getData())
+    delete_anyway = False
+    if success == False:
+        delete_anyway = tkinter.messagebox.askyesno(
+            &#34;Stop failed&#34;, &#34;&#34;&#34;This tool cannot be stopped because its trace has been lost (The application has been restarted and the tool is still not finished).\n
+                Reset tool anyway?&#34;&#34;&#34;)
+    if delete_anyway or success:
+        self.controller.markAsNotDone()
+        self.controller.update()
+        self.form.clear()
+        for widget in self.appliViewFrame.winfo_children():
+            widget.destroy()
+        self.openModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Views.ToolView.ToolView.updateReceived"><code class="name flex">
+<span>def <span class="ident">updateReceived</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a tool update is received by notification.
+Update the tool treeview item (resulting in icon reloading)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateReceived(self):
+    &#34;&#34;&#34;Called when a tool update is received by notification.
+    Update the tool treeview item (resulting in icon reloading)
+    &#34;&#34;&#34;
+    self.appliTw.item(str(self.controller.getDbId()), text=str(
+        self.controller.getModelRepr()), image=self.getIcon())
+    super().updateReceived()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Views" href="index.html">Pollenisator.core.Views</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Views.ToolView.ToolView" href="#Pollenisator.core.Views.ToolView.ToolView">ToolView</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.DbToTreeviewListId" href="#Pollenisator.core.Views.ToolView.ToolView.DbToTreeviewListId">DbToTreeviewListId</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.addInTreeview" href="#Pollenisator.core.Views.ToolView.ToolView.addInTreeview">addInTreeview</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.cached_done_icon" href="#Pollenisator.core.Views.ToolView.ToolView.cached_done_icon">cached_done_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.cached_icon" href="#Pollenisator.core.Views.ToolView.ToolView.cached_icon">cached_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.cached_not_ready_icon" href="#Pollenisator.core.Views.ToolView.ToolView.cached_not_ready_icon">cached_not_ready_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.cached_ready_icon" href="#Pollenisator.core.Views.ToolView.ToolView.cached_ready_icon">cached_ready_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.cached_running_icon" href="#Pollenisator.core.Views.ToolView.ToolView.cached_running_icon">cached_running_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.createDefectCallback" href="#Pollenisator.core.Views.ToolView.ToolView.createDefectCallback">createDefectCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.done_icon" href="#Pollenisator.core.Views.ToolView.ToolView.done_icon">done_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.downloadResultFile" href="#Pollenisator.core.Views.ToolView.ToolView.downloadResultFile">downloadResultFile</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.getIcon" href="#Pollenisator.core.Views.ToolView.ToolView.getIcon">getIcon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.icon" href="#Pollenisator.core.Views.ToolView.ToolView.icon">icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.launchCallback" href="#Pollenisator.core.Views.ToolView.ToolView.launchCallback">launchCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.localLaunchCallback" href="#Pollenisator.core.Views.ToolView.ToolView.localLaunchCallback">localLaunchCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.not_ready_icon" href="#Pollenisator.core.Views.ToolView.ToolView.not_ready_icon">not_ready_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.openModifyWindow" href="#Pollenisator.core.Views.ToolView.ToolView.openModifyWindow">openModifyWindow</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.ready_icon" href="#Pollenisator.core.Views.ToolView.ToolView.ready_icon">ready_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.resetCallback" href="#Pollenisator.core.Views.ToolView.ToolView.resetCallback">resetCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.running_icon" href="#Pollenisator.core.Views.ToolView.ToolView.running_icon">running_icon</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.safeLaunchCallback" href="#Pollenisator.core.Views.ToolView.ToolView.safeLaunchCallback">safeLaunchCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.stopCallback" href="#Pollenisator.core.Views.ToolView.ToolView.stopCallback">stopCallback</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.treeviewListIdToDb" href="#Pollenisator.core.Views.ToolView.ToolView.treeviewListIdToDb">treeviewListIdToDb</a></code></li>
+<li><code><a title="Pollenisator.core.Views.ToolView.ToolView.updateReceived" href="#Pollenisator.core.Views.ToolView.ToolView.updateReceived">updateReceived</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

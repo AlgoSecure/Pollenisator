@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Application.Treeviews.CommandsTreeview API documentation</title>
+<meta name="description" content="Ttk treeview class with added functions." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Application.Treeviews.CommandsTreeview</code></h1>
+</header>
+<section id="section-intro">
+<p>Ttk treeview class with added functions.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Ttk treeview class with added functions.
+&#34;&#34;&#34;
+import tkinter as tk
+from bson.objectid import ObjectId
+from core.Models.Command import Command
+from core.Models.CommandGroup import CommandGroup
+from core.Views.CommandGroupView import CommandGroupView
+from core.Views.CommandView import CommandView
+from core.Controllers.CommandGroupController import CommandGroupController
+from core.Controllers.CommandController import CommandController
+from core.Application.Treeviews.PollenisatorTreeview import PollenisatorTreeview
+from core.Components.mongo import MongoCalendar
+
+
+class CommandsTreeview(PollenisatorTreeview):
+    &#34;&#34;&#34;CommandsTreeview class
+    Inherit PollenisatorTreeview.
+    Ttk treeview class with added functions to handle the command objects.
+    &#34;&#34;&#34;
+
+    def __init__(self, appli, parentFrame):
+        &#34;&#34;&#34;
+        Args:
+            appli: a reference to the main Application object.
+            parentFrame: the parent tkinter window object.
+        &#34;&#34;&#34;
+        super().__init__(appli, parentFrame)
+        self.commands_node = None  # parent of all commands nodes
+        self.group_command_node = None  # parent of all group commands nodes
+        self.openedViewFrameId = None  # if of the currently opened object in the view frame
+
+    def initUI(self, _event=None):
+        &#34;&#34;&#34;Initialize the user interface widgets and binds them.
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        if self.commands_node is not None:
+            return
+        self._initContextualsMenus()
+        self.heading(&#39;#0&#39;, text=&#39;Commands&#39;, anchor=tk.W)
+        self.column(&#39;#0&#39;, stretch=tk.YES, minwidth=300, width=300)
+        self.bind(&#34;&lt;Button-3&gt;&#34;, self.doPopup)
+        self.bind(&#34;&lt;&lt;TreeviewSelect&gt;&gt;&#34;, self.onTreeviewSelect)
+        #self.bind(&#34;&lt;Return&gt;&#34;, self.onTreeviewSelect)
+        #self.bind(&#34;&lt;Button-1&gt;&#34;, self.onTreeviewSelect)
+        self.bind(&#39;&lt;Delete&gt;&#39;, self.deleteSelected)
+        self.load()
+
+    def onTreeviewSelect(self, event=None):
+        &#34;&#34;&#34;Called when a line is selected on the treeview
+        Open the selected object view on the view frame.
+        IF it&#39;s a parent commands or command_groups node, opens Insert
+        ELSE open a modify window
+        Args:
+            event: filled with the callback, contains data about line clicked
+        &#34;&#34;&#34;
+        item = super().onTreeviewSelect(event)
+        if isinstance(item, str):
+            if str(item) == &#34;commands&#34;:
+                objView = CommandView(
+                    self, self.appli.commandsViewFrame, self.appli, CommandController(Command()))
+                objView.openInsertWindow()
+            elif str(item) == &#34;command_groups&#34;:
+                objView = CommandGroupView(
+                    self, self.appli.commandsViewFrame, self.appli, CommandGroupController(CommandGroup()))
+                objView.openInsertWindow()
+        else:
+            self.openModifyWindowOf(item)
+
+    def doPopup(self, event):
+        &#34;&#34;&#34;Open the popup 
+        Args:
+            event: filled with the callback, contains data about line clicked
+        &#34;&#34;&#34;
+        self.contextualMenu.selection = self.identify(
+            &#34;item&#34;, event.x, event.y)
+        super().doPopup(event)
+
+    def openModifyWindowOf(self, dbId):
+        &#34;&#34;&#34;
+        Retrieve the View of the database id given and open the modifying form for its model and open it.
+
+        Args:
+            dbId: the database Mongo Id to modify.
+        &#34;&#34;&#34;
+        objView = self.getViewFromId(str(dbId))
+        if objView is not None:
+            for widget in self.appli.commandsViewFrame.winfo_children():
+                widget.destroy()
+            objView.form.clear()
+            self.openedViewFrameId = str(dbId)
+            objView.openModifyWindow()
+
+    def load(self, _searchModel=None):
+        &#34;&#34;&#34;
+        Load the treeview with database information
+
+        Args:
+            _searchModel: (Deprecated) inherited not used. 
+        &#34;&#34;&#34;
+        for widget in self.appli.commandsViewFrame.winfo_children():
+            widget.destroy()
+        self.delete(*self.get_children())
+
+        self._load()
+
+    def _load(self):
+        &#34;&#34;&#34;
+        Load the treeview with database information
+        &#34;&#34;&#34;
+        self.commands_node = self.insert(
+            &#34;&#34;, &#34;end&#34;, &#34;commands&#34;, text=&#34;Commands&#34;, image=CommandView.getClassIcon())
+        commands = Command.fetchObjects({})
+        for command in commands:
+            command_vw = CommandView(
+                self, self.appli.commandsViewFrame, self.appli, CommandController(command))
+            command_vw.addInTreeview()
+        self.group_command_node = self.insert(&#34;&#34;, &#34;end&#34;, str(
+            &#34;command_groups&#34;), text=&#34;Command Groups&#34;, image=CommandGroupView.getClassIcon())
+        command_groups = CommandGroup.fetchObjects({})
+        for command_group in command_groups:
+            command_group_vw = CommandGroupView(
+                self, self.appli.commandsViewFrame, self.appli, CommandGroupController(command_group))
+            command_group_vw.addInTreeview()
+
+    def refresh(self):
+        &#34;&#34;&#34;Alias to self.load method&#34;&#34;&#34;
+        self.load()
+
+    def notify(self, db, collection, iid, action, parent):
+        &#34;&#34;&#34;
+        Callback for the observer pattern implemented in mongo.py.
+
+        Args:
+            collection: the collection that has been modified
+            iid: the mongo ObjectId _id that was modified/inserted/deleted
+            action: update/insert/delete. It was the action performed on the iid
+            parent: the mongo ObjectId of the parent. Only if action in an insert.
+        &#34;&#34;&#34;
+        if db != &#34;pollenisator&#34;:
+            return
+        # Delete
+        mongoInstance = MongoCalendar.getInstance()
+        if action == &#34;delete&#34;:
+            try:
+                self.delete(ObjectId(iid))
+            except tk.TclError:
+                pass  # item was not inserted in the treeview
+
+        # Insert
+        if action == &#34;insert&#34;:
+            res = mongoInstance.findInDb(
+                db, collection, {&#34;_id&#34;: ObjectId(iid)}, False)
+            if collection == &#34;commands&#34;:
+                view = CommandView(self, self.appli.commandsViewFrame,
+                                   self.appli, CommandController(Command(res)))
+                parent = None
+            elif collection == &#34;group_commands&#34;:
+                view = CommandGroupView(self, self.appli.commandsViewFrame,
+                                        self.appli, CommandGroupController(CommandGroup(res)))
+                parent = None
+            try:
+                view.addInTreeview(parent)
+                if view is not None:
+                    view.insertReceived()
+            except tk.TclError:
+                pass
+
+        if action == &#34;update&#34;:
+            try:
+                view = self.getViewFromId(str(iid))
+                if view is not None:
+                    self.item(str(iid), text=str(
+                        view.controller.getModelRepr()), image=view.getIcon())
+            except tk.TclError:
+                if view is not None:
+                    view.addInTreeview()
+            if str(self.appli.openedViewFrameId) == str(iid):
+                for widget in self.appli.viewframe.winfo_children():
+                    widget.destroy()
+                view.openModifyWindow()
+            if view is not None:
+                view.controller.actualize()
+                view.updateReceived()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview"><code class="flex name class">
+<span>class <span class="ident">CommandsTreeview</span></span>
+<span>(</span><span>appli, parentFrame)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>CommandsTreeview class
+Inherit PollenisatorTreeview.
+Ttk treeview class with added functions to handle the command objects.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>appli</code></strong></dt>
+<dd>a reference to the main Application object.</dd>
+<dt><strong><code>parentFrame</code></strong></dt>
+<dd>the parent tkinter window object.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CommandsTreeview(PollenisatorTreeview):
+    &#34;&#34;&#34;CommandsTreeview class
+    Inherit PollenisatorTreeview.
+    Ttk treeview class with added functions to handle the command objects.
+    &#34;&#34;&#34;
+
+    def __init__(self, appli, parentFrame):
+        &#34;&#34;&#34;
+        Args:
+            appli: a reference to the main Application object.
+            parentFrame: the parent tkinter window object.
+        &#34;&#34;&#34;
+        super().__init__(appli, parentFrame)
+        self.commands_node = None  # parent of all commands nodes
+        self.group_command_node = None  # parent of all group commands nodes
+        self.openedViewFrameId = None  # if of the currently opened object in the view frame
+
+    def initUI(self, _event=None):
+        &#34;&#34;&#34;Initialize the user interface widgets and binds them.
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        if self.commands_node is not None:
+            return
+        self._initContextualsMenus()
+        self.heading(&#39;#0&#39;, text=&#39;Commands&#39;, anchor=tk.W)
+        self.column(&#39;#0&#39;, stretch=tk.YES, minwidth=300, width=300)
+        self.bind(&#34;&lt;Button-3&gt;&#34;, self.doPopup)
+        self.bind(&#34;&lt;&lt;TreeviewSelect&gt;&gt;&#34;, self.onTreeviewSelect)
+        #self.bind(&#34;&lt;Return&gt;&#34;, self.onTreeviewSelect)
+        #self.bind(&#34;&lt;Button-1&gt;&#34;, self.onTreeviewSelect)
+        self.bind(&#39;&lt;Delete&gt;&#39;, self.deleteSelected)
+        self.load()
+
+    def onTreeviewSelect(self, event=None):
+        &#34;&#34;&#34;Called when a line is selected on the treeview
+        Open the selected object view on the view frame.
+        IF it&#39;s a parent commands or command_groups node, opens Insert
+        ELSE open a modify window
+        Args:
+            event: filled with the callback, contains data about line clicked
+        &#34;&#34;&#34;
+        item = super().onTreeviewSelect(event)
+        if isinstance(item, str):
+            if str(item) == &#34;commands&#34;:
+                objView = CommandView(
+                    self, self.appli.commandsViewFrame, self.appli, CommandController(Command()))
+                objView.openInsertWindow()
+            elif str(item) == &#34;command_groups&#34;:
+                objView = CommandGroupView(
+                    self, self.appli.commandsViewFrame, self.appli, CommandGroupController(CommandGroup()))
+                objView.openInsertWindow()
+        else:
+            self.openModifyWindowOf(item)
+
+    def doPopup(self, event):
+        &#34;&#34;&#34;Open the popup 
+        Args:
+            event: filled with the callback, contains data about line clicked
+        &#34;&#34;&#34;
+        self.contextualMenu.selection = self.identify(
+            &#34;item&#34;, event.x, event.y)
+        super().doPopup(event)
+
+    def openModifyWindowOf(self, dbId):
+        &#34;&#34;&#34;
+        Retrieve the View of the database id given and open the modifying form for its model and open it.
+
+        Args:
+            dbId: the database Mongo Id to modify.
+        &#34;&#34;&#34;
+        objView = self.getViewFromId(str(dbId))
+        if objView is not None:
+            for widget in self.appli.commandsViewFrame.winfo_children():
+                widget.destroy()
+            objView.form.clear()
+            self.openedViewFrameId = str(dbId)
+            objView.openModifyWindow()
+
+    def load(self, _searchModel=None):
+        &#34;&#34;&#34;
+        Load the treeview with database information
+
+        Args:
+            _searchModel: (Deprecated) inherited not used. 
+        &#34;&#34;&#34;
+        for widget in self.appli.commandsViewFrame.winfo_children():
+            widget.destroy()
+        self.delete(*self.get_children())
+
+        self._load()
+
+    def _load(self):
+        &#34;&#34;&#34;
+        Load the treeview with database information
+        &#34;&#34;&#34;
+        self.commands_node = self.insert(
+            &#34;&#34;, &#34;end&#34;, &#34;commands&#34;, text=&#34;Commands&#34;, image=CommandView.getClassIcon())
+        commands = Command.fetchObjects({})
+        for command in commands:
+            command_vw = CommandView(
+                self, self.appli.commandsViewFrame, self.appli, CommandController(command))
+            command_vw.addInTreeview()
+        self.group_command_node = self.insert(&#34;&#34;, &#34;end&#34;, str(
+            &#34;command_groups&#34;), text=&#34;Command Groups&#34;, image=CommandGroupView.getClassIcon())
+        command_groups = CommandGroup.fetchObjects({})
+        for command_group in command_groups:
+            command_group_vw = CommandGroupView(
+                self, self.appli.commandsViewFrame, self.appli, CommandGroupController(command_group))
+            command_group_vw.addInTreeview()
+
+    def refresh(self):
+        &#34;&#34;&#34;Alias to self.load method&#34;&#34;&#34;
+        self.load()
+
+    def notify(self, db, collection, iid, action, parent):
+        &#34;&#34;&#34;
+        Callback for the observer pattern implemented in mongo.py.
+
+        Args:
+            collection: the collection that has been modified
+            iid: the mongo ObjectId _id that was modified/inserted/deleted
+            action: update/insert/delete. It was the action performed on the iid
+            parent: the mongo ObjectId of the parent. Only if action in an insert.
+        &#34;&#34;&#34;
+        if db != &#34;pollenisator&#34;:
+            return
+        # Delete
+        mongoInstance = MongoCalendar.getInstance()
+        if action == &#34;delete&#34;:
+            try:
+                self.delete(ObjectId(iid))
+            except tk.TclError:
+                pass  # item was not inserted in the treeview
+
+        # Insert
+        if action == &#34;insert&#34;:
+            res = mongoInstance.findInDb(
+                db, collection, {&#34;_id&#34;: ObjectId(iid)}, False)
+            if collection == &#34;commands&#34;:
+                view = CommandView(self, self.appli.commandsViewFrame,
+                                   self.appli, CommandController(Command(res)))
+                parent = None
+            elif collection == &#34;group_commands&#34;:
+                view = CommandGroupView(self, self.appli.commandsViewFrame,
+                                        self.appli, CommandGroupController(CommandGroup(res)))
+                parent = None
+            try:
+                view.addInTreeview(parent)
+                if view is not None:
+                    view.insertReceived()
+            except tk.TclError:
+                pass
+
+        if action == &#34;update&#34;:
+            try:
+                view = self.getViewFromId(str(iid))
+                if view is not None:
+                    self.item(str(iid), text=str(
+                        view.controller.getModelRepr()), image=view.getIcon())
+            except tk.TclError:
+                if view is not None:
+                    view.addInTreeview()
+            if str(self.appli.openedViewFrameId) == str(iid):
+                for widget in self.appli.viewframe.winfo_children():
+                    widget.destroy()
+                view.openModifyWindow()
+            if view is not None:
+                view.controller.actualize()
+                view.updateReceived()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>core.Application.Treeviews.PollenisatorTreeview.PollenisatorTreeview</li>
+<li>tkinter.ttk.Treeview</li>
+<li>tkinter.ttk.Widget</li>
+<li>tkinter.Widget</li>
+<li>tkinter.BaseWidget</li>
+<li>tkinter.Misc</li>
+<li>tkinter.Pack</li>
+<li>tkinter.Place</li>
+<li>tkinter.Grid</li>
+<li>tkinter.XView</li>
+<li>tkinter.YView</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.doPopup"><code class="name flex">
+<span>def <span class="ident">doPopup</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Open the popup </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>filled with the callback, contains data about line clicked</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def doPopup(self, event):
+    &#34;&#34;&#34;Open the popup 
+    Args:
+        event: filled with the callback, contains data about line clicked
+    &#34;&#34;&#34;
+    self.contextualMenu.selection = self.identify(
+        &#34;item&#34;, event.x, event.y)
+    super().doPopup(event)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.initUI"><code class="name flex">
+<span>def <span class="ident">initUI</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initialize the user interface widgets and binds them.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initUI(self, _event=None):
+    &#34;&#34;&#34;Initialize the user interface widgets and binds them.
+    Args:
+        _event: not used but mandatory
+    &#34;&#34;&#34;
+    if self.commands_node is not None:
+        return
+    self._initContextualsMenus()
+    self.heading(&#39;#0&#39;, text=&#39;Commands&#39;, anchor=tk.W)
+    self.column(&#39;#0&#39;, stretch=tk.YES, minwidth=300, width=300)
+    self.bind(&#34;&lt;Button-3&gt;&#34;, self.doPopup)
+    self.bind(&#34;&lt;&lt;TreeviewSelect&gt;&gt;&#34;, self.onTreeviewSelect)
+    #self.bind(&#34;&lt;Return&gt;&#34;, self.onTreeviewSelect)
+    #self.bind(&#34;&lt;Button-1&gt;&#34;, self.onTreeviewSelect)
+    self.bind(&#39;&lt;Delete&gt;&#39;, self.deleteSelected)
+    self.load()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.load"><code class="name flex">
+<span>def <span class="ident">load</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load the treeview with database information</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_searchModel</code></strong></dt>
+<dd>(Deprecated) inherited not used.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load(self, _searchModel=None):
+    &#34;&#34;&#34;
+    Load the treeview with database information
+
+    Args:
+        _searchModel: (Deprecated) inherited not used. 
+    &#34;&#34;&#34;
+    for widget in self.appli.commandsViewFrame.winfo_children():
+        widget.destroy()
+    self.delete(*self.get_children())
+
+    self._load()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.notify"><code class="name flex">
+<span>def <span class="ident">notify</span></span>(<span>self, db, collection, iid, action, parent)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Callback for the observer pattern implemented in mongo.py.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>collection</code></strong></dt>
+<dd>the collection that has been modified</dd>
+<dt><strong><code>iid</code></strong></dt>
+<dd>the mongo ObjectId _id that was modified/inserted/deleted</dd>
+<dt><strong><code>action</code></strong></dt>
+<dd>update/insert/delete. It was the action performed on the iid</dd>
+<dt><strong><code>parent</code></strong></dt>
+<dd>the mongo ObjectId of the parent. Only if action in an insert.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def notify(self, db, collection, iid, action, parent):
+    &#34;&#34;&#34;
+    Callback for the observer pattern implemented in mongo.py.
+
+    Args:
+        collection: the collection that has been modified
+        iid: the mongo ObjectId _id that was modified/inserted/deleted
+        action: update/insert/delete. It was the action performed on the iid
+        parent: the mongo ObjectId of the parent. Only if action in an insert.
+    &#34;&#34;&#34;
+    if db != &#34;pollenisator&#34;:
+        return
+    # Delete
+    mongoInstance = MongoCalendar.getInstance()
+    if action == &#34;delete&#34;:
+        try:
+            self.delete(ObjectId(iid))
+        except tk.TclError:
+            pass  # item was not inserted in the treeview
+
+    # Insert
+    if action == &#34;insert&#34;:
+        res = mongoInstance.findInDb(
+            db, collection, {&#34;_id&#34;: ObjectId(iid)}, False)
+        if collection == &#34;commands&#34;:
+            view = CommandView(self, self.appli.commandsViewFrame,
+                               self.appli, CommandController(Command(res)))
+            parent = None
+        elif collection == &#34;group_commands&#34;:
+            view = CommandGroupView(self, self.appli.commandsViewFrame,
+                                    self.appli, CommandGroupController(CommandGroup(res)))
+            parent = None
+        try:
+            view.addInTreeview(parent)
+            if view is not None:
+                view.insertReceived()
+        except tk.TclError:
+            pass
+
+    if action == &#34;update&#34;:
+        try:
+            view = self.getViewFromId(str(iid))
+            if view is not None:
+                self.item(str(iid), text=str(
+                    view.controller.getModelRepr()), image=view.getIcon())
+        except tk.TclError:
+            if view is not None:
+                view.addInTreeview()
+        if str(self.appli.openedViewFrameId) == str(iid):
+            for widget in self.appli.viewframe.winfo_children():
+                widget.destroy()
+            view.openModifyWindow()
+        if view is not None:
+            view.controller.actualize()
+            view.updateReceived()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.onTreeviewSelect"><code class="name flex">
+<span>def <span class="ident">onTreeviewSelect</span></span>(<span>self, event=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when a line is selected on the treeview
+Open the selected object view on the view frame.
+IF it's a parent commands or command_groups node, opens Insert
+ELSE open a modify window</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>filled with the callback, contains data about line clicked</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def onTreeviewSelect(self, event=None):
+    &#34;&#34;&#34;Called when a line is selected on the treeview
+    Open the selected object view on the view frame.
+    IF it&#39;s a parent commands or command_groups node, opens Insert
+    ELSE open a modify window
+    Args:
+        event: filled with the callback, contains data about line clicked
+    &#34;&#34;&#34;
+    item = super().onTreeviewSelect(event)
+    if isinstance(item, str):
+        if str(item) == &#34;commands&#34;:
+            objView = CommandView(
+                self, self.appli.commandsViewFrame, self.appli, CommandController(Command()))
+            objView.openInsertWindow()
+        elif str(item) == &#34;command_groups&#34;:
+            objView = CommandGroupView(
+                self, self.appli.commandsViewFrame, self.appli, CommandGroupController(CommandGroup()))
+            objView.openInsertWindow()
+    else:
+        self.openModifyWindowOf(item)</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.openModifyWindowOf"><code class="name flex">
+<span>def <span class="ident">openModifyWindowOf</span></span>(<span>self, dbId)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retrieve the View of the database id given and open the modifying form for its model and open it.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dbId</code></strong></dt>
+<dd>the database Mongo Id to modify.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def openModifyWindowOf(self, dbId):
+    &#34;&#34;&#34;
+    Retrieve the View of the database id given and open the modifying form for its model and open it.
+
+    Args:
+        dbId: the database Mongo Id to modify.
+    &#34;&#34;&#34;
+    objView = self.getViewFromId(str(dbId))
+    if objView is not None:
+        for widget in self.appli.commandsViewFrame.winfo_children():
+            widget.destroy()
+        objView.form.clear()
+        self.openedViewFrameId = str(dbId)
+        objView.openModifyWindow()</code></pre>
+</details>
+</dd>
+<dt id="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.refresh"><code class="name flex">
+<span>def <span class="ident">refresh</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Alias to self.load method</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def refresh(self):
+    &#34;&#34;&#34;Alias to self.load method&#34;&#34;&#34;
+    self.load()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Application.Treeviews" href="index.html">Pollenisator.core.Application.Treeviews</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview" href="#Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview">CommandsTreeview</a></code></h4>
+<ul class="two-column">
+<li><code><a title="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.doPopup" href="#Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.doPopup">doPopup</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.initUI" href="#Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.initUI">initUI</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.load" href="#Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.load">load</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.notify" href="#Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.notify">notify</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.onTreeviewSelect" href="#Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.onTreeviewSelect">onTreeviewSelect</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.openModifyWindowOf" href="#Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.openModifyWindowOf">openModifyWindowOf</a></code></li>
+<li><code><a title="Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.refresh" href="#Pollenisator.core.Application.Treeviews.CommandsTreeview.CommandsTreeview.refresh">refresh</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

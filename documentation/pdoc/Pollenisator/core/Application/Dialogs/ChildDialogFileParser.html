@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>Pollenisator.core.Application.Dialogs.ChildDialogFileParser API documentation</title>
+<meta name="description" content="Ask the user to select a file or directory and then parse it with the selected parser" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>Pollenisator.core.Application.Dialogs.ChildDialogFileParser</code></h1>
+</header>
+<section id="section-intro">
+<p>Ask the user to select a file or directory and then parse it with the selected parser</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Ask the user to select a file or directory and then parse it with the selected parser&#34;&#34;&#34;
+import tkinter as tk
+import tkinter.ttk as ttk
+from datetime import datetime
+import io
+import os
+import hashlib
+from core.Components.Utils import listPlugin, loadPlugin
+from core.Components.mongo import MongoCalendar
+from core.Forms.FormPanel import FormPanel
+from core.Views.ViewElement import ViewElement
+from core.Models.Wave import Wave
+from core.Models.Tool import Tool
+from core.Application.Dialogs.ChildDialogProgress import ChildDialogProgress
+
+
+def md5(fname):
+    &#34;&#34;&#34;Compute md5 hash of the given file name.
+    Args:
+        fname: path to the file you want to compute the md5 of.
+    Return:
+        The digested hash of the file in an hexadecimal string format.
+    &#34;&#34;&#34;
+    hash_md5 = hashlib.md5()
+    with open(fname, &#34;rb&#34;) as f:
+        for chunk in iter(lambda: f.read(4096), b&#34;&#34;):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
+
+class ChildDialogFileParser:
+    &#34;&#34;&#34;
+    Open a child dialog of a tkinter application to ask details about
+    existing files parsing.
+    &#34;&#34;&#34;
+
+    def __init__(self, parent):
+        &#34;&#34;&#34;
+        Open a child dialog of a tkinter application to ask details about
+        existing files parsing.
+
+        Args:
+            parent: the tkinter parent view to use for this window construction.
+        &#34;&#34;&#34;
+        self.app = tk.Toplevel(parent)
+        self.app.title(&#34;Upload result file&#34;)
+        self.rvalue = None
+        self.parent = parent
+        appFrame = ttk.Frame(self.app)
+        self.form = FormPanel()
+        self.form.addFormLabel(
+            &#34;Import one file or choose a directory&#34;, &#34;&#34;, side=tk.TOP)
+        self.form.addFormFile(&#34;File&#34;, &#34;.+&#34;, width=50,
+                              side=tk.TOP, mode=&#34;file|directory&#34;)
+        self.form.addFormLabel(&#34;Plugins&#34;, side=tk.TOP)
+        self.form.addFormCombo(
+            &#34;Plugin&#34;, [&#34;auto-detect&#34;]+listPlugin(), &#34;auto-detect&#34;, side=tk.TOP)
+        self.form.addFormLabel(&#34;Wave name&#34;, side=tk.TOP)
+        wave_list = Wave.listWaves()
+        if &#34;Imported files&#34; not in wave_list:
+            wave_list.append(&#34;Imported files&#34;)
+        self.form.addFormCombo(
+            &#34;Wave&#34;, wave_list, &#34;Imported files&#34;, side=tk.TOP)
+        self.form.addFormButton(&#34;Parse&#34;, self.onOk, side=tk.TOP)
+
+        self.form.constructView(appFrame)
+        appFrame.pack(ipadx=10, ipady=10)
+
+        self.app.transient(parent)
+        self.app.grab_set()
+
+    def onOk(self, _event=None):
+        &#34;&#34;&#34;
+        Called when the user clicked the validation button.
+        launch parsing with selected parser on selected file/directory.
+        Close the window.
+
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        res, msg = self.form.checkForm()
+        if not res:
+            tk.messagebox.showwarning(
+                &#34;Form not validated&#34;, msg, parent=self.app)
+            return
+        notes = None
+        tags = None
+        form_values = self.form.getValue()
+        form_values_as_dicts = ViewElement.list_tuple_to_dict(form_values)
+        file_path = form_values_as_dicts[&#34;File&#34;]
+        plugin = form_values_as_dicts[&#34;Plugin&#34;]
+        wave = form_values_as_dicts[&#34;Wave&#34;]
+        files = []
+        if os.path.isdir(file_path):
+            # r=root, d=directories, f = files
+            for r, _d, f in os.walk(file_path):
+                for fil in f:
+                    files.append(os.path.join(r, fil))
+        else:
+            files.append(file_path)
+        results = {}
+        dialog = ChildDialogProgress(self.parent, &#34;Importing files&#34;, &#34;Importing &#34;+str(
+            len(files)) + &#34; files. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+        dialog.show(len(files))
+        # LOOP ON FOLDER FILES
+        for f_i, file_path in enumerate(files):
+            md5File = md5(file_path)
+            toolName = os.path.splitext(os.path.basename(file_path))[
+                0] + md5File[:6]
+            dialog.update(f_i)
+            if plugin == &#34;auto-detect&#34;:
+                # AUTO DETECT
+                foundPlugin = &#34;Ignored&#34;
+                for pluginName in listPlugin():
+                    if foundPlugin != &#34;Ignored&#34;:
+                        break
+                    mod = loadPlugin(pluginName)
+                    if mod.autoDetectEnabled():
+                        with io.open(file_path, &#39;r&#39;, encoding=&#34;utf-8&#34;) as f:
+                            notes, tags, lvl, targets = mod.Parse(f)
+                            if notes is not None and tags is not None:
+                                foundPlugin = pluginName
+                results[foundPlugin] = results.get(
+                    foundPlugin, []) + [file_path]
+            else:
+                # SET PLUGIN 
+                mod = loadPlugin(plugin)
+                with io.open(file_path, &#39;r&#39;, encoding=&#34;utf-8&#34;) as f:
+                    notes, tags, lvl, targets = mod.Parse(f)
+                    results[plugin] = results.get(
+                        plugin, []) + [file_path]
+            # IF PLUGIN FOUND SOMETHING
+            if notes is not None and tags is not None:
+                # ADD THE RESULTING TOOL TO AFFECTED
+                for target in targets.values():
+                    date = datetime.fromtimestamp(os.path.getmtime(
+                        file_path)).strftime(&#34;%d/%m/%Y %H:%M:%S&#34;)
+                    if target is None:
+                        scope = None
+                        ip = None
+                        port = None
+                        proto = None
+                    else:
+                        scope = target.get(&#34;scope&#34;, None)
+                        ip = target.get(&#34;ip&#34;, None)
+                        port = target.get(&#34;port&#34;, None)
+                        proto = target.get(&#34;proto&#34;, None)
+                    Wave().initialize(wave, []).addInDb()
+                    tool_m = Tool().initialize(toolName, wave, scope=scope, ip=ip, port=port, proto=proto, lvl=lvl, text=&#34;&#34;,
+                                                dated=date, datef=date, scanner_ip=&#34;Imported file&#34;, status=&#34;done&#34;, notes=notes, tags=tags)
+                    tool_m.addInDb()
+                    mongoInstance = MongoCalendar.getInstance()
+                    outputRelDir = tool_m.getOutputDir(
+                        mongoInstance.calendarName)
+                    abs_path = os.path.dirname(os.path.abspath(__file__))
+                    outputDir = os.path.join(
+                        abs_path, &#34;../../../results&#34;, outputRelDir)
+                    mod.centralizeFile(file_path, outputDir)
+                    tool_m.update({&#34;resultfile&#34;: os.path.join(
+                        outputRelDir, os.path.basename(file_path))})
+        
+        dialog.destroy()
+        # DISPLAY RESULTS
+        presResults = &#34;&#34;
+        filesIgnored = 0
+        for key, value in results.items():
+            presResults += str(len(value)) + &#34; &#34; + str(key)+&#34;.\n&#34;
+            if key == &#34;Ignored&#34;:
+                filesIgnored += 1
+        if plugin == &#34;auto-detect&#34;:
+            if filesIgnored &gt; 0:
+                tk.messagebox.showwarning(
+                    &#34;Auto-detect ended&#34;, presResults, parent=self.app)
+            else:
+                tk.messagebox.showinfo(&#34;Auto-detect ended&#34;, presResults, parent=self.app)
+        else:
+            if filesIgnored &gt; 0:
+                tk.messagebox.showwarning(
+                    &#34;Parsing ended&#34;, presResults, parent=self.app)
+            else:
+                tk.messagebox.showinfo(&#34;Parsing ended&#34;, presResults, parent=self.app)
+
+        self.rvalue = None
+        self.app.destroy()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogFileParser.md5"><code class="name flex">
+<span>def <span class="ident">md5</span></span>(<span>fname)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute md5 hash of the given file name.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>fname</code></strong></dt>
+<dd>path to the file you want to compute the md5 of.</dd>
+</dl>
+<h2 id="return">Return</h2>
+<p>The digested hash of the file in an hexadecimal string format.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def md5(fname):
+    &#34;&#34;&#34;Compute md5 hash of the given file name.
+    Args:
+        fname: path to the file you want to compute the md5 of.
+    Return:
+        The digested hash of the file in an hexadecimal string format.
+    &#34;&#34;&#34;
+    hash_md5 = hashlib.md5()
+    with open(fname, &#34;rb&#34;) as f:
+        for chunk in iter(lambda: f.read(4096), b&#34;&#34;):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogFileParser.ChildDialogFileParser"><code class="flex name class">
+<span>class <span class="ident">ChildDialogFileParser</span></span>
+<span>(</span><span>parent)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Open a child dialog of a tkinter application to ask details about
+existing files parsing.</p>
+<p>Open a child dialog of a tkinter application to ask details about
+existing files parsing.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent</code></strong></dt>
+<dd>the tkinter parent view to use for this window construction.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChildDialogFileParser:
+    &#34;&#34;&#34;
+    Open a child dialog of a tkinter application to ask details about
+    existing files parsing.
+    &#34;&#34;&#34;
+
+    def __init__(self, parent):
+        &#34;&#34;&#34;
+        Open a child dialog of a tkinter application to ask details about
+        existing files parsing.
+
+        Args:
+            parent: the tkinter parent view to use for this window construction.
+        &#34;&#34;&#34;
+        self.app = tk.Toplevel(parent)
+        self.app.title(&#34;Upload result file&#34;)
+        self.rvalue = None
+        self.parent = parent
+        appFrame = ttk.Frame(self.app)
+        self.form = FormPanel()
+        self.form.addFormLabel(
+            &#34;Import one file or choose a directory&#34;, &#34;&#34;, side=tk.TOP)
+        self.form.addFormFile(&#34;File&#34;, &#34;.+&#34;, width=50,
+                              side=tk.TOP, mode=&#34;file|directory&#34;)
+        self.form.addFormLabel(&#34;Plugins&#34;, side=tk.TOP)
+        self.form.addFormCombo(
+            &#34;Plugin&#34;, [&#34;auto-detect&#34;]+listPlugin(), &#34;auto-detect&#34;, side=tk.TOP)
+        self.form.addFormLabel(&#34;Wave name&#34;, side=tk.TOP)
+        wave_list = Wave.listWaves()
+        if &#34;Imported files&#34; not in wave_list:
+            wave_list.append(&#34;Imported files&#34;)
+        self.form.addFormCombo(
+            &#34;Wave&#34;, wave_list, &#34;Imported files&#34;, side=tk.TOP)
+        self.form.addFormButton(&#34;Parse&#34;, self.onOk, side=tk.TOP)
+
+        self.form.constructView(appFrame)
+        appFrame.pack(ipadx=10, ipady=10)
+
+        self.app.transient(parent)
+        self.app.grab_set()
+
+    def onOk(self, _event=None):
+        &#34;&#34;&#34;
+        Called when the user clicked the validation button.
+        launch parsing with selected parser on selected file/directory.
+        Close the window.
+
+        Args:
+            _event: not used but mandatory
+        &#34;&#34;&#34;
+        res, msg = self.form.checkForm()
+        if not res:
+            tk.messagebox.showwarning(
+                &#34;Form not validated&#34;, msg, parent=self.app)
+            return
+        notes = None
+        tags = None
+        form_values = self.form.getValue()
+        form_values_as_dicts = ViewElement.list_tuple_to_dict(form_values)
+        file_path = form_values_as_dicts[&#34;File&#34;]
+        plugin = form_values_as_dicts[&#34;Plugin&#34;]
+        wave = form_values_as_dicts[&#34;Wave&#34;]
+        files = []
+        if os.path.isdir(file_path):
+            # r=root, d=directories, f = files
+            for r, _d, f in os.walk(file_path):
+                for fil in f:
+                    files.append(os.path.join(r, fil))
+        else:
+            files.append(file_path)
+        results = {}
+        dialog = ChildDialogProgress(self.parent, &#34;Importing files&#34;, &#34;Importing &#34;+str(
+            len(files)) + &#34; files. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+        dialog.show(len(files))
+        # LOOP ON FOLDER FILES
+        for f_i, file_path in enumerate(files):
+            md5File = md5(file_path)
+            toolName = os.path.splitext(os.path.basename(file_path))[
+                0] + md5File[:6]
+            dialog.update(f_i)
+            if plugin == &#34;auto-detect&#34;:
+                # AUTO DETECT
+                foundPlugin = &#34;Ignored&#34;
+                for pluginName in listPlugin():
+                    if foundPlugin != &#34;Ignored&#34;:
+                        break
+                    mod = loadPlugin(pluginName)
+                    if mod.autoDetectEnabled():
+                        with io.open(file_path, &#39;r&#39;, encoding=&#34;utf-8&#34;) as f:
+                            notes, tags, lvl, targets = mod.Parse(f)
+                            if notes is not None and tags is not None:
+                                foundPlugin = pluginName
+                results[foundPlugin] = results.get(
+                    foundPlugin, []) + [file_path]
+            else:
+                # SET PLUGIN 
+                mod = loadPlugin(plugin)
+                with io.open(file_path, &#39;r&#39;, encoding=&#34;utf-8&#34;) as f:
+                    notes, tags, lvl, targets = mod.Parse(f)
+                    results[plugin] = results.get(
+                        plugin, []) + [file_path]
+            # IF PLUGIN FOUND SOMETHING
+            if notes is not None and tags is not None:
+                # ADD THE RESULTING TOOL TO AFFECTED
+                for target in targets.values():
+                    date = datetime.fromtimestamp(os.path.getmtime(
+                        file_path)).strftime(&#34;%d/%m/%Y %H:%M:%S&#34;)
+                    if target is None:
+                        scope = None
+                        ip = None
+                        port = None
+                        proto = None
+                    else:
+                        scope = target.get(&#34;scope&#34;, None)
+                        ip = target.get(&#34;ip&#34;, None)
+                        port = target.get(&#34;port&#34;, None)
+                        proto = target.get(&#34;proto&#34;, None)
+                    Wave().initialize(wave, []).addInDb()
+                    tool_m = Tool().initialize(toolName, wave, scope=scope, ip=ip, port=port, proto=proto, lvl=lvl, text=&#34;&#34;,
+                                                dated=date, datef=date, scanner_ip=&#34;Imported file&#34;, status=&#34;done&#34;, notes=notes, tags=tags)
+                    tool_m.addInDb()
+                    mongoInstance = MongoCalendar.getInstance()
+                    outputRelDir = tool_m.getOutputDir(
+                        mongoInstance.calendarName)
+                    abs_path = os.path.dirname(os.path.abspath(__file__))
+                    outputDir = os.path.join(
+                        abs_path, &#34;../../../results&#34;, outputRelDir)
+                    mod.centralizeFile(file_path, outputDir)
+                    tool_m.update({&#34;resultfile&#34;: os.path.join(
+                        outputRelDir, os.path.basename(file_path))})
+        
+        dialog.destroy()
+        # DISPLAY RESULTS
+        presResults = &#34;&#34;
+        filesIgnored = 0
+        for key, value in results.items():
+            presResults += str(len(value)) + &#34; &#34; + str(key)+&#34;.\n&#34;
+            if key == &#34;Ignored&#34;:
+                filesIgnored += 1
+        if plugin == &#34;auto-detect&#34;:
+            if filesIgnored &gt; 0:
+                tk.messagebox.showwarning(
+                    &#34;Auto-detect ended&#34;, presResults, parent=self.app)
+            else:
+                tk.messagebox.showinfo(&#34;Auto-detect ended&#34;, presResults, parent=self.app)
+        else:
+            if filesIgnored &gt; 0:
+                tk.messagebox.showwarning(
+                    &#34;Parsing ended&#34;, presResults, parent=self.app)
+            else:
+                tk.messagebox.showinfo(&#34;Parsing ended&#34;, presResults, parent=self.app)
+
+        self.rvalue = None
+        self.app.destroy()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="Pollenisator.core.Application.Dialogs.ChildDialogFileParser.ChildDialogFileParser.onOk"><code class="name flex">
+<span>def <span class="ident">onOk</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Called when the user clicked the validation button.
+launch parsing with selected parser on selected file/directory.
+Close the window.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>_event</code></strong></dt>
+<dd>not used but mandatory</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def onOk(self, _event=None):
+    &#34;&#34;&#34;
+    Called when the user clicked the validation button.
+    launch parsing with selected parser on selected file/directory.
+    Close the window.
+
+    Args:
+        _event: not used but mandatory
+    &#34;&#34;&#34;
+    res, msg = self.form.checkForm()
+    if not res:
+        tk.messagebox.showwarning(
+            &#34;Form not validated&#34;, msg, parent=self.app)
+        return
+    notes = None
+    tags = None
+    form_values = self.form.getValue()
+    form_values_as_dicts = ViewElement.list_tuple_to_dict(form_values)
+    file_path = form_values_as_dicts[&#34;File&#34;]
+    plugin = form_values_as_dicts[&#34;Plugin&#34;]
+    wave = form_values_as_dicts[&#34;Wave&#34;]
+    files = []
+    if os.path.isdir(file_path):
+        # r=root, d=directories, f = files
+        for r, _d, f in os.walk(file_path):
+            for fil in f:
+                files.append(os.path.join(r, fil))
+    else:
+        files.append(file_path)
+    results = {}
+    dialog = ChildDialogProgress(self.parent, &#34;Importing files&#34;, &#34;Importing &#34;+str(
+        len(files)) + &#34; files. Please wait for a few seconds.&#34;, 200, &#34;determinate&#34;)
+    dialog.show(len(files))
+    # LOOP ON FOLDER FILES
+    for f_i, file_path in enumerate(files):
+        md5File = md5(file_path)
+        toolName = os.path.splitext(os.path.basename(file_path))[
+            0] + md5File[:6]
+        dialog.update(f_i)
+        if plugin == &#34;auto-detect&#34;:
+            # AUTO DETECT
+            foundPlugin = &#34;Ignored&#34;
+            for pluginName in listPlugin():
+                if foundPlugin != &#34;Ignored&#34;:
+                    break
+                mod = loadPlugin(pluginName)
+                if mod.autoDetectEnabled():
+                    with io.open(file_path, &#39;r&#39;, encoding=&#34;utf-8&#34;) as f:
+                        notes, tags, lvl, targets = mod.Parse(f)
+                        if notes is not None and tags is not None:
+                            foundPlugin = pluginName
+            results[foundPlugin] = results.get(
+                foundPlugin, []) + [file_path]
+        else:
+            # SET PLUGIN 
+            mod = loadPlugin(plugin)
+            with io.open(file_path, &#39;r&#39;, encoding=&#34;utf-8&#34;) as f:
+                notes, tags, lvl, targets = mod.Parse(f)
+                results[plugin] = results.get(
+                    plugin, []) + [file_path]
+        # IF PLUGIN FOUND SOMETHING
+        if notes is not None and tags is not None:
+            # ADD THE RESULTING TOOL TO AFFECTED
+            for target in targets.values():
+                date = datetime.fromtimestamp(os.path.getmtime(
+                    file_path)).strftime(&#34;%d/%m/%Y %H:%M:%S&#34;)
+                if target is None:
+                    scope = None
+                    ip = None
+                    port = None
+                    proto = None
+                else:
+                    scope = target.get(&#34;scope&#34;, None)
+                    ip = target.get(&#34;ip&#34;, None)
+                    port = target.get(&#34;port&#34;, None)
+                    proto = target.get(&#34;proto&#34;, None)
+                Wave().initialize(wave, []).addInDb()
+                tool_m = Tool().initialize(toolName, wave, scope=scope, ip=ip, port=port, proto=proto, lvl=lvl, text=&#34;&#34;,
+                                            dated=date, datef=date, scanner_ip=&#34;Imported file&#34;, status=&#34;done&#34;, notes=notes, tags=tags)
+                tool_m.addInDb()
+                mongoInstance = MongoCalendar.getInstance()
+                outputRelDir = tool_m.getOutputDir(
+                    mongoInstance.calendarName)
+                abs_path = os.path.dirname(os.path.abspath(__file__))
+                outputDir = os.path.join(
+                    abs_path, &#34;../../../results&#34;, outputRelDir)
+                mod.centralizeFile(file_path, outputDir)
+                tool_m.update({&#34;resultfile&#34;: os.path.join(
+                    outputRelDir, os.path.basename(file_path))})
+    
+    dialog.destroy()
+    # DISPLAY RESULTS
+    presResults = &#34;&#34;
+    filesIgnored = 0
+    for key, value in results.items():
+        presResults += str(len(value)) + &#34; &#34; + str(key)+&#34;.\n&#34;
+        if key == &#34;Ignored&#34;:
+            filesIgnored += 1
+    if plugin == &#34;auto-detect&#34;:
+        if filesIgnored &gt; 0:
+            tk.messagebox.showwarning(
+                &#34;Auto-detect ended&#34;, presResults, parent=self.app)
+        else:
+            tk.messagebox.showinfo(&#34;Auto-detect ended&#34;, presResults, parent=self.app)
+    else:
+        if filesIgnored &gt; 0:
+            tk.messagebox.showwarning(
+                &#34;Parsing ended&#34;, presResults, parent=self.app)
+        else:
+            tk.messagebox.showinfo(&#34;Parsing ended&#34;, presResults, parent=self.app)
+
+    self.rvalue = None
+    self.app.destroy()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="Pollenisator.core.Application.Dialogs" href="index.html">Pollenisator.core.Application.Dialogs</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogFileParser.md5" href="#Pollenisator.core.Application.Dialogs.ChildDialogFileParser.md5">md5</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogFileParser.ChildDialogFileParser" href="#Pollenisator.core.Application.Dialogs.ChildDialogFileParser.ChildDialogFileParser">ChildDialogFileParser</a></code></h4>
+<ul class="">
+<li><code><a title="Pollenisator.core.Application.Dialogs.ChildDialogFileParser.ChildDialogFileParser.onOk" href="#Pollenisator.core.Application.Dialogs.ChildDialogFileParser.ChildDialogFileParser.onOk">onOk</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
