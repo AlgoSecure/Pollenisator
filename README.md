@@ -1,4 +1,4 @@
-![pollenisator_flat](https://github.com/AlgoSecure/Pollenisator/wikis/uploads/1e17b6e558bec07767eb12506ed6b2bf/pollenisator_flat.png)
+![pollenisator_flat](https://github.com/AlgoSecure/Pollenisator/wiki/uploads/1e17b6e558bec07767eb12506ed6b2bf/pollenisator_flat.png)
 
 **Pollenisator** is a tool aiming to assist pentesters and auditor automating the use of some tools/scripts and keep track of them.
   * Written in python 3
@@ -13,7 +13,7 @@
   
 ## Documentation ##
 
-Everything is the ![wiki](https://github.com/AlgoSecure/Pollenisator/wikis/_Sidebar), including ![installation](https://github.com/AlgoSecure/Pollenisator/wikis/How-to-setup/Overview)
+Everything is the ![wiki](https://github.com/AlgoSecure/Pollenisator/wiki/_Sidebar), including ![installation](https://github.com/AlgoSecure/Pollenisator/wiki/How-to-setup/Overview)
 
 ## Features ##
   * Register your own tools
