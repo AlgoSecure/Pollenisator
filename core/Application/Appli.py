@@ -837,14 +837,12 @@ class Appli(ttk.Frame):
             activeTw = self.commandsTreevw
         elif nbkOpenedTab == "Scan":
             self.scanManager.initUI(self.scanViewFrame)
-        elif nbkOpenedTab == "Summary":
-            self.summary.refreshUI()
         elif nbkOpenedTab == "Settings":
             self.settings.reloadUI()
-        elif nbkOpenedTab == "Report":
-            self.report.refreshUI()
-        elif nbkOpenedTab == "Dashboard":
-            self.dashboard.refreshUI()
+        else:
+            for module in self.modules:
+                if nbkOpenedTab.strip().lower() == module["name"].strip().lower():
+                    module["object"].open()
         if activeTw is not None:
             if len(activeTw.selection()) == 1:
                 setViewOn = activeTw.selection()[0]
