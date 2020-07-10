@@ -10,9 +10,6 @@ from os.path import isfile, join
 from bson.objectid import ObjectId
 from PIL import Image, ImageTk
 
-import core.Reporting.ExcelExport as ExcelExport
-import core.Reporting.PowerpointExport as PowerpointExport
-import core.Reporting.WordExport as WordExport
 from core.Application.Dialogs.ChildDialogCombo import ChildDialogCombo
 from core.Application.Dialogs.ChildDialogDefectView import ChildDialogDefectView
 from core.Application.Dialogs.ChildDialogProgress import ChildDialogProgress

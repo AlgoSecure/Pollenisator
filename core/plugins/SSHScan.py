@@ -63,6 +63,8 @@ class SSHScan(Plugin):
                 ips = [scan["hostname"], scan["ip"]]
                 port = str(scan["port"])
                 for ip in ips:
+                    if ip.strip() == "":
+                        continue
                     Ip().initialize(ip).addInDb()
                     port_o = Port().initialize(ip, port, "tcp", "ssh")
                     res, iid = port_o.addInDb()

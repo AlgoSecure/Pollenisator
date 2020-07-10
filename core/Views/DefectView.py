@@ -233,7 +233,9 @@ class DefectView(ViewElement):
             if self.controller is not None:
                 iid = self.controller.getDbId()
         if iid is not None:
-            self.mainApp.report.removeItem(iid)
+            for module in self.mainApp.modules:
+                if callable(getattr(module["object"], "removeItem", None)):
+                    module["object"].removeItem(iid)
 
     def addInTreeview(self, parentNode=None, _addChildren=True):
         """Add this view in treeview. Also stores infos in application treeview.
@@ -299,7 +301,9 @@ class DefectView(ViewElement):
         if self.controller.isAssigned():
             super().insertReceived()
         else:
-            self.mainApp.report.addDefect(self.controller.model)
+            for module in self.mainApp.modules:
+                if callable(getattr(module["object"], "addDefect", None)):
+                    module["object"].addDefect(self.controller.model)
     
     def updateReceived(self):
         """Called when a defect update is received by notification.
@@ -308,5 +312,7 @@ class DefectView(ViewElement):
         if self.controller.model is None:
             return
         if not self.controller.isAssigned():
-            self.mainApp.report.updateDefectInTreeview(self.controller.model)
+            for module in self.mainApp.modules:
+                if callable(getattr(module["object"], "updateDefectInTreeview", None)):
+                    module["object"].updateDefectInTreeview(self.controller.model)
         super().updateReceived()

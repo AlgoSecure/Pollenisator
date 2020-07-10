@@ -158,7 +158,9 @@ class IpView(ViewElement):
         """
         modelData = self.controller.getData()
         if modelData.get("in_scopes", []):
-            self.mainApp.summary.insertIp(modelData["ip"])
+            for module in self.mainApp.modules:
+                if callable(getattr(module["object"], "insertIP", None)):
+                    module["object"].insertIp(modelData["ip"])
         else:
             self.appliTw.item(str(self.controller.getDbId()), text=str(
                 self.controller.getModelRepr()), image=self.getIcon())
@@ -172,10 +174,14 @@ class IpView(ViewElement):
             modelData = self.controller.getData()
             if not modelData["in_scopes"]:
                 self.controller.addTag("OOS")
-                self.mainApp.summary.deleteIp(modelData["ip"])
+                for module in self.mainApp.modules:
+                    if callable(getattr(module["object"], "deleteIp", None)):
+                        module["object"].deleteIp(modelData["ip"])
             else:
                 self.controller.delTag("OOS")
-                self.mainApp.summary.insertIp(modelData["ip"])
+                for module in self.mainApp.modules:
+                    if callable(getattr(module["object"], "insertIp", None)):
+                        module["object"].insertIp(modelData["ip"])
             super().updateReceived()
 
     def getParent(self):

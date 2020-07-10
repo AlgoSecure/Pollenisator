@@ -186,11 +186,15 @@ class PortView(ViewElement):
         """Called when a port update is received by notification.
         Update the port node in summary
         """
-        self.mainApp.summary.updatePort(self.controller.getData())
+        for module in self.mainApp.modules:
+            if callable(getattr(module["object"], "updatePort", None)):
+                module["object"].updatePort(self.controller.getData())
         super().updateReceived()
 
     def insertReceived(self):
         """Called when a port insertion is received by notification.
         Insert the node in summary.
         """
-        self.mainApp.summary.insertPort(self.controller.getData())
+        for module in self.mainApp.modules:
+            if callable(getattr(module["object"], "insertPort", None)):
+                module["object"].insertPort(self.controller.getData())
