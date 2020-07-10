@@ -191,9 +191,9 @@ class ChildDialogConnect:
             mongoInstance = MongoCalendar.getInstance()
             res = mongoInstance.connect(config, 500)
         except ServerSelectionTimeoutError:
-            res = False
+            return False, False
         except OperationFailure:
-            res = True  # Authentication failed, so mongo was reached
+            return True, False  # Authentication failed, so mongo was reached
         if res:
             self.img_indicator.config(image=self.validIcon())
             self.img_indicator.image = self.validIcon()
@@ -205,13 +205,13 @@ class ChildDialogConnect:
         except SSHException:
             self.img_indicator_sftp.config(image=self.badIcon())
             self.img_indicator_sftp.image = self.badIcon()
-            res_sftp = False
+            return True, False
         except ValueError:
             res_sftp = True  # Authentication failed, so sftp was reached
         if res_sftp:
             self.img_indicator_sftp.config(image=self.validIcon())
             self.img_indicator_sftp.image = self.validIcon()
-        return res and res_sftp
+        return True and True
 
     def validateHost(self, _event=None):
         """Validate host on both mongo and sftp connections. Change icons on the dialog accordingly.
