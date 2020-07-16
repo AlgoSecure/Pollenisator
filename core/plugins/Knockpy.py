@@ -101,6 +101,4 @@ class Knockpy(Plugin):
                     ip_m.updateInfos({"alias": ip})
         if notes.strip() == "":
             return None, None, None, None
-        elif countFound == 0:
-            tags.append("hidden")
         return notes, tags, "wave", {"wave": None}

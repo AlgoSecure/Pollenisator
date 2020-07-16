@@ -91,5 +91,4 @@ class DigReverseLookup(Plugin):
             ip_m.update()
         if notes == "":
             notes = "No domain found\n"
-        tags.append("hidden")
         return notes, tags, "ip", targets

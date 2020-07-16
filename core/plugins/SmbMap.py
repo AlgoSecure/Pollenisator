@@ -131,12 +131,9 @@ class SmbMap(Plugin):
         if not notes.startswith("[+] Finding open SMB ports...."):
             return None, None, None, None
         if "[!] Authentication error occured" in notes:
-            tags.append("hidden")
             targets = {}
         else:
             full_notes, interesting_files, targets = smbmap_format(notes)
-            if full_notes.strip() == "" and not interesting_files:
-                tags = ["hidden"]
             for target in targets:
                 port_m = Port.fetchObject(
                     {"ip": targets[target]["ip"], "port": targets[target]["port"], "proto": "tcp"})

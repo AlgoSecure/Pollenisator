@@ -118,11 +118,8 @@ class HttpMethods(Plugin):
             Defect().initialize(host, port, proto, "Méthode TRACE activée", "Difficile", "Important", "Important",
                                  "N/A", ["Socle"], notes="TRACE detected", proofs=[]).addInDb()
             risky_methods.remove("TRACE")
-            tags.append("hidden")
         if len(risky_methods) > 0:
             notes = "RISKY HTTP METHODS ALLOWED : " + " ".join(risky_methods)
             tags = []
             tags.append("Interesting")
-        else:
-            tags.append("hidden")
         return notes, tags, "port", targets

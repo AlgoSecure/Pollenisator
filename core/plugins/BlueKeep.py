@@ -91,6 +91,4 @@ class BlueKeep(Plugin):
                     ip_o.addTag("P0wned!")
             elif "UNKNOWN" in line:
                 tags = ["todo"]
-            else:
-                tags.append("hidden")
         return notes, tags, "port", targets

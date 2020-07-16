@@ -87,7 +87,4 @@ class EternalBlue(Plugin):
             tags=["P0wned!"]
             if res_insert is not None:
                 p_o.addTag("P0wned!")
-        else:
-            tags=["hidden"]
-            print("Not vulnerable, hiding...")
         return notes, tags, "port", targets

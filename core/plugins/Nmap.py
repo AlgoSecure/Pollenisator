@@ -140,5 +140,4 @@ class Nmap(Plugin):
         notes = getIpPortsNmap(file_opened)
         if notes is None:
             return None, None, None, None
-        tags.append("hidden")
         return notes, tags, "scope", {}

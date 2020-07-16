@@ -131,7 +131,6 @@ class TestSSL(Plugin):
                 2. lvl: the level of the command executed to assign to given targets
                 3. targets: a list of composed keys allowing retrieve/insert from/into database targerted objects.
         """
-        tags = ["hidden"]
         notes, targets = parseWarnings(file_opened)
         if notes is None:
             return None, None, None, None

@@ -95,8 +95,6 @@ class Crtsh(Plugin):
                     notes += domain+" inserted.\n"
         if notes.strip() == "":
             return None, None, None, None
-        elif countInserted == 0:
-            tags.append("hidden")
-        else:
+        elif countInserted != 0:
             tags.append("todo")
         return notes, tags, "wave", {"wave": None}

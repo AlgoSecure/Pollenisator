@@ -84,5 +84,4 @@ class PythonReverseLookup(Plugin):
         notes += "Domain found :"+domain+"\n"
         if notes == "":
             notes = "No domain found\n"
-        tags.append("hidden")
         return notes, tags, "ip", targets
