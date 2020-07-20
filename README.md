@@ -13,9 +13,10 @@
   
 ## Documentation ##
 
-Everything is the ![wiki](https://github.com/AlgoSecure/Pollenisator/wiki/_Sidebar), including ![installation](https://github.com/AlgoSecure/Pollenisator/wiki/How-to-setup/Overview)
+Everything is the [wiki](https://github.com/AlgoSecure/Pollenisator/wiki/_Sidebar), including [installation](https://github.com/Algosecure/Pollenisator/wiki/Overview)
 
 ## Features ##
+
   * Register your own tools
     * Add command line options in your database.
     * Create your own light plugin to parse your tool output.
