@@ -83,7 +83,7 @@ class DigReverseLookup(Plugin):
             res, iid = ip_m.addInDb()
             if not res:
                 ip_m = Ip.fetchObject({"_id": iid})
-            hostnames = list(set(ip_m.infos.get("hostname", []) + [domain]))
+            hostnames = list(set(list(ip_m.infos.get("hostname", [])) + [domain]))
             ip_m.updateInfos({"hostname": hostnames})
             ip_m.notes = "reversed dig give this domain : "+domain+"\n"+ip_m.notes
             notes += "Domain found :"+domain+"\n"
