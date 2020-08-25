@@ -93,12 +93,12 @@ class ScopeView(ViewElement):
         Returns:
             If network IP Tuple of 5 integers values representing the 4 parts of an ipv4 string + the /mask integer
             Otherwise returns self"""
+        modelData = self.controller.getData()
         try:
-            modelData = self.controller.getData()
             ret = tuple(int(part) for part in modelData["scope"].split('.'))
             ret = ret + tuple(int(modelData["scope"].split('/')[1]))
         except ValueError:
-            ret = self
+            ret = tuple(str(part) for part in modelData["scope"].split('.'))
         return ret
 
     def insertReceived(self):
