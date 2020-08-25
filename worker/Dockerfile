@@ -6,8 +6,9 @@ RUN apt-get install -y apt-transport-https wget
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
 RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
 # Dependencies
-# whatweb as whateb
+# whatweb as whatweb
 # nikto as nikto
+# dnsrecon as dnsrecon
 RUN apt-get update && \
 	apt-get install -y python3-pip && \
 	apt-get install -y python3 && \
@@ -80,7 +81,7 @@ RUN ./configure && make && make install
 
 # Smbmap as smbmap.py
 RUN git clone https://github.com/ShawnDEvans/smbmap /home/smbmap && \
-	python2 -m pip install -r /home/smbmap/requirements.txt && \
+	python3 -m pip install -r /home/smbmap/requirements.txt && \
 	chmod +x /home/smbmap/smbmap.py && \
 	ln -s /home/smbmap/smbmap.py /usr/bin/smbmap.py
 # enum4linux as enum4linux.pl
