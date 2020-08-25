@@ -20,6 +20,7 @@ RUN apt-get update && \
 	apt-get install -y git && \
 	apt-get install -y dnsutils && \
 	apt-get install -y nikto && \
+	apt-get install -y dnsrecon && \
 	apt-get install -y python3-dev && \
 	apt-get install -y libssl-dev && \
 	apt-get install -y libffi-dev && \
@@ -106,9 +107,6 @@ RUN wget https://svn.nmap.org/nmap/scripts/smb-vuln-ms17-010.nse -O /usr/share/n
 RUN git clone https://github.com/offensive-security/exploitdb.git /opt/exploitdb
 RUN sed 's|path_array+=(.*)|path_array+=("/opt/exploitdb")|g' /opt/exploitdb/.searchsploit_rc > ~/.searchsploit_rc
 RUN ln -sf /opt/exploitdb/searchsploit /usr/local/bin/searchsploit
-# dnsrecon
-RUN git clone git://github.com/darkoperator/dnsrecon.git /home/dnsrecon
-RUN ln -s /home/dnsrecon/dnsrecon.py /usr/bin/dnsrecon
 #OPenrelay
 COPY smtp-open-relay.nse /usr/share/nmap/scripts/smtp-open-relay.nse
 
