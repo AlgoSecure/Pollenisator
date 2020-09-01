@@ -73,8 +73,8 @@ def getIpPortsNmap(nmapFile):
                         res, iid = ipDom_m.addInDb()
                         if not res:
                             ipDom_m = Ip.fetchObject({"_id": iid})
-                        ipDom_m.updateInfos({"hostname": list(set(ipDom_m.infos.get(
-                            "hostname", [])+[str(ipCIDR_m.ip)]))})
+                        ipDom_m.updateInfos({"hostname": list(set(list(ipDom_m.infos.get(
+                            "hostname", []))+[str(ipCIDR_m.ip)]))})
                         validIps.append(ipDom_m.ip)
                 for ipFound in validIps:
                     if ip == "":
