@@ -138,21 +138,15 @@ class DashBoard:
                                                        )
 
         result = [_ for _ in result]
-        result.sort(key=lambda x: x["_id"]["name"])
-        dialog.update(8)
         tools_dashboard = {}
-        for tool in result:
-            toolName = tool["_id"]["name"]
-            toolWave = tool["_id"]["wave"]
-            tools_dashboard[toolWave] = tools_dashboard.get(toolWave, {})
-            tools_dashboard[toolWave][toolName] = tools_dashboard[toolWave].get(toolName, {})
-            toolStatus = "Not ready" if len(
-                tool["_id"]["status"]) == 0 else tool["_id"]["status"][0]
-            tools_dashboard[toolWave][toolName][toolStatus] = tools_dashboard[toolWave][toolName].get(toolStatus, 0) + 1
-        for wave in tools_dashboard.keys():
-            for toolName in tools_dashboard[wave].keys():
-                self.treevwtools.insert('', 'end', None, text=str(
-                    toolName), values=(wave, tools_dashboard[wave][toolName].get("ready", 0), tools_dashboard[wave][toolName].get("running", 0), tools_dashboard[wave][toolName].get("done", 0)))
+        for tool_result in result:
+            tool_id = tool_result["_id"]["wave"]+"::"+tool_result["_id"]["name"]
+            tools_dashboard[tool_id] = tools_dashboard.get(tool_id, {})
+            tools_dashboard[tool_id][tool_result["_id"]["status"][0]] = tool_result["count"]
+        dialog.update(8)
+        for tool_id in sorted(list(tools_dashboard.keys())):
+            self.treevwtools.insert('', 'end', None, text=str(
+                tool_id), values=(tools_dashboard[tool_id].get("ready", 0), tools_dashboard[tool_id].get("running", 0), tools_dashboard[tool_id].get("done", 0)))
         dialog.update(9)
         # Defect Part
         # reset defect TW
@@ -235,17 +229,15 @@ class DashBoard:
         frameTools = ttk.Frame(self.dashboardFrame)
         self.treevwtools = ttk.Treeview(
             frameTools, style='DashBoard.Treeview', height=10)
-        self.treevwtools['columns'] = ('wave', 'ready', 'running', 'done')
-        self.treevwtools.heading("#0", text='Tool name', anchor=tk.W)
+        self.treevwtools['columns'] = ('ready', 'running', 'done')
+        self.treevwtools.heading("#0", text='Tool', anchor=tk.W)
         self.treevwtools.column("#0", anchor=tk.W, width=150)
-        self.treevwtools.heading('#1', text='Wave')
+        self.treevwtools.heading('#1', text='Ready')
         self.treevwtools.column('#1', anchor='center', width=10)
-        self.treevwtools.heading('#2', text='Ready')
+        self.treevwtools.heading('#2', text='Running')
         self.treevwtools.column('#2', anchor='center', width=10)
-        self.treevwtools.heading('#3', text='Running')
+        self.treevwtools.heading('#3', text='Done')
         self.treevwtools.column('#3', anchor='center', width=10)
-        self.treevwtools.heading('#4', text='Done')
-        self.treevwtools.column('#4', anchor='center', width=10)
         self.treevwtools.grid(row=0, column=0, sticky=tk.NSEW)
         scbVSel = ttk.Scrollbar(frameTools,
                                 orient=tk.VERTICAL,
