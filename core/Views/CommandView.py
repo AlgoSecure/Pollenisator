@@ -2,6 +2,7 @@
 
 from core.Views.ViewElement import ViewElement
 from core.Components.Settings import Settings
+import core.Components.Utils as Utils
 import tkinter as tk
 
 

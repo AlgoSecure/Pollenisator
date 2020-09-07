@@ -8,6 +8,7 @@ from core.Forms.FormText import FormText
 from core.Forms.FormButton import FormButton
 from core.Forms.FormDate import FormDate
 from core.Forms.FormLabel import FormLabel
+from core.Forms.FormImage import FormImage
 from core.Forms.FormFile import FormFile
 from core.Forms.FormHidden import FormHidden
 from core.Forms.FormTreevw import FormTreevw
@@ -243,6 +244,18 @@ class FormPanel(Form):
             kwargs: keywords for FormLabel
         """
         f = FormLabel(name, text, **kwargs)
+        self.subforms.append(f)
+        return f
+
+    def addFormImage(self, path, **kwargs):
+        """
+        Add a form Label to this panel.
+
+        Args:
+            path: the image path
+            kwargs: keywords for FormImage (same as tk label)
+        """
+        f = FormImage(path, **kwargs)
         self.subforms.append(f)
         return f
 

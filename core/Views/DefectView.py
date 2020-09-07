@@ -313,6 +313,6 @@ class DefectView(ViewElement):
             return
         if not self.controller.isAssigned():
             for module in self.mainApp.modules:
-                if callable(getattr(module["object"], "updateDefectInTreeview", None)):
-                    module["object"].updateDefectInTreeview(self.controller.model)
+                if callable(getattr(module["object"], "updateDefectInTreevw", None)):
+                    module["object"].updateDefectInTreevw(self.controller.model)
         super().updateReceived()
