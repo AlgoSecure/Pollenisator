@@ -35,7 +35,7 @@ class FormButton(Form):
         Args:
             parent: parent form panel.
         """
-        self.btn = ttk.Button(parent.panel, text=self.name)
+        self.btn = ttk.Button(parent.panel, text=self.name, image=self.getKw("image", None))
         if parent.gridLayout:
             self.btn.grid(row=self.getKw("row", 0), column=self.getKw("column", 0), sticky=self.getKw("sticky", tk.W), **self.kwargs)
         else:

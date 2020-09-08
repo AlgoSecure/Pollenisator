@@ -227,6 +227,11 @@ class FormTreevw(Form):
         for item in self.treevw.get_children():
             self.treevw.delete(item)
 
+    def resetOddTags(self):
+        for i, child in enumerate(self.treevw.get_children()):
+            tags = ("odd") if i%2 != 0 else ()
+            self.treevw.item(child, tags=tags)
+
     def deleteItem(self, _event=None):
         """Callback for <Del> event
         Remove the selected item in the treeview
@@ -236,6 +241,11 @@ class FormTreevw(Form):
         item = self.treevw.item(selected)
         if item["text"].strip() != "":
             self.treevw.delete(selected)
+        self.resetOddTags()
+
+    def addItem(self, parent, insertPos, iid, **kwargs):
+        self.treevw.insert(parent, insertPos, iid, **kwargs)
+        self.resetOddTags()
 
     def OnDoubleClick(self, event):
         """Callback for double click event
@@ -277,6 +287,12 @@ class FormTreevw(Form):
             currentHeight = len(self.treevw.get_children())
             if currentHeight < self.getKw("max_height", 5):
                 self.treevw.config(height=currentHeight)
+
+    def selection(self):
+        return self.treevw.selection()
+    
+    def item(self, iid):
+        return self.treevw.item(iid)
 
 
     def getValue(self):
