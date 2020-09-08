@@ -166,7 +166,7 @@ class FormTreevw(Form):
         for h_i, header in enumerate(self.headings):
             self.treevw.heading("#"+str(h_i), text=header, anchor="w")
             self.treevw.column("#"+str(h_i), anchor='w',
-                               stretch=tk.YES, minwidth=columnsLen[h_i], width=0)
+                               stretch=tk.YES, minwidth=columnsLen[h_i], width=columnsLen[h_i])
         binds = self.getKw("binds", {})
         for key, val in binds.items():
             self.treevw.bind(key, val)
