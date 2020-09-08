@@ -170,7 +170,7 @@ class PortView(ViewElement):
             break
         if not atleastone:
             if len(self.controller.getTags()) == 0:
-                self.controller.addTag("todo")
+                self.controller.addTag("unscanned")
         self.appliTw.sort(parentNode)
         if "hidden" in self.controller.getTags():
             self.hide()

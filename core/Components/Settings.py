@@ -50,7 +50,7 @@ class Settings:
         """
         Returns tags defined in settings.
         Returns:
-            If none are defined returns {"todo":"orange", "P0wned!":"red", "Interesting":"dark green", "Uninteresting":"sky blue", "Neutral":"white"}
+            If none are defined returns {"todo":"orange", "unscanned":"yellow", "P0wned!":"red", "Interesting":"dark green", "Uninteresting":"sky blue", "Neutral":"white"}
             otherwise returns a dict with defined key values
         """
         mongoInstance = MongoCalendar.getInstance()
@@ -59,7 +59,7 @@ class Settings:
         if tags is not None:
             if isinstance(tags["value"], dict):
                 return tags["value"]
-        return  {"todo":"orange", "P0wned!":"red", "Interesting":"dark green", "Uninteresting":"sky blue", "Neutral":"white"}
+        return  {"todo":"orange", "unscanned":"yellow", "P0wned!":"red", "Interesting":"dark green", "Uninteresting":"sky blue", "Neutral":"white"}
 
     @classmethod
     def getPentestTypes(cls):
