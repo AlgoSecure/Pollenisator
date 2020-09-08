@@ -164,7 +164,8 @@ class FormTreevw(Form):
         self.f = tk.font.Font(root, "Sans", bold=True, size=10)
         columnsLen = self.recurse_insert(self.default_values)
         for h_i, header in enumerate(self.headings):
-            self.treevw.heading("#"+str(h_i), text=header, anchor="w")
+            self.treevw.heading("#"+str(h_i), text=header, anchor="w", command=lambda: \
+                     self.sort_column(self.treevw, "#"+str(h_i), False))
             self.treevw.column("#"+str(h_i), anchor='w',
                                stretch=tk.YES, minwidth=columnsLen[h_i], width=columnsLen[h_i])
         binds = self.getKw("binds", {})
@@ -177,14 +178,15 @@ class FormTreevw(Form):
             if item["text"] == "":
                 emptyRowFound = True
                 break
-        if not emptyRowFound:
-            tags = ("odd") if len(children) % 2 == 1 else ()
-            self.treevw.insert('', tk.END, None, text="",
-                               values=[""], tags=tags)
-        self.treevw.bind("<Double-Button-1>", self.OnDoubleClick)
-        self.treevw.bind("<Delete>", self.deleteItem)
-        self.treevw.bind("<Control-c>", self.copy)
-        self._initContextualMenu(self.treevw)
+        if self.getKw("status", "none") != "readonly":
+            if not emptyRowFound:
+                tags = ("odd") if len(children) % 2 == 1 else ()
+                self.treevw.insert('', tk.END, None, text="",
+                                values=[""], tags=tags)
+            self.treevw.bind("<Double-Button-1>", self.OnDoubleClick)
+            self.treevw.bind("<Delete>", self.deleteItem)
+            self.treevw.bind("<Control-c>", self.copy)
+            self._initContextualMenu(self.treevw)
         if parent.gridLayout:
             self.tvFrame.grid(row=self.getKw("row", 0), column=self.getKw(
                 "column", 0), sticky=self.getKw("sticky", tk.NSEW))
@@ -194,6 +196,23 @@ class FormTreevw(Form):
                 "padx", 10), pady=self.getKw("pady", 5), fill=self.getKw("fill", "none"), expand=self.getKw("expand", True))
         self.tvFrame.rowconfigure(0, weight=1)
         self.tvFrame.columnconfigure(0, weight=1)
+
+    def sort_column(self, tv, col, reverse):
+        l = [(tv.set(k, col), k) for k in tv.get_children('')]
+        l.sort(reverse=reverse)
+
+        # rearrange items in sorted positions
+        for index, (val, k) in enumerate(l):
+            tv.move(k, '', index)
+            if index % 2 != 0:
+                tv.item(k, tags=("odd"))
+            else:
+                tv.item(k, tags=())
+           
+
+        # reverse sort next time
+        tv.heading(col, command=lambda: \
+                self.sort_column(tv, col, not reverse))
 
     def reset(self):
         """Reset the treeview values (delete all lines)"""
