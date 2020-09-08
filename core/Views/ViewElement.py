@@ -167,7 +167,7 @@ class ViewElement(object):
         pan = self.form.addFormPanel()
         pan.addFormButton("Submit", self.update)
         pan.addFormButton("Delete", self.delete)
-        panTags = self.form.addFormPanel(grid=True)
+        
         registeredTags = Settings.getTags()
         keys = list(registeredTags.keys())
         column = 0
@@ -175,12 +175,16 @@ class ViewElement(object):
         for registeredTag, color in registeredTags.items():
             if not hasattr(self.mainApp, "parent"):
                 break
+            if column == 0:
+                panTags = self.form.addFormPanel(pady=0)
             s = ttk.Style(self.mainApp.parent)
             s.configure(""+color+".TButton", background=color, foreground="black")
             s.map(""+color+".TButton", foreground=[('active', "dark gray")], background=[('active', color)])
-            btn_tag = panTags.addFormButton(registeredTag, listOfLambdas[column], column=column)
+            btn_tag = panTags.addFormButton(registeredTag, listOfLambdas[column], side="left", padx=0, pady=0)
             btn_tag.configure(style=""+color+".TButton")
             column += 1
+            if column == 4:
+                column = 0
         self.showForm()
 
     def showForm(self):
