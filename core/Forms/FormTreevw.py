@@ -163,9 +163,9 @@ class FormTreevw(Form):
         root = tk.Label()
         self.f = tk.font.Font(root, "Sans", bold=True, size=10)
         columnsLen = self.recurse_insert(self.default_values)
+        listOfLambdas = [self.column_clicked("#"+str(i), False) for i in range(len(self.headings))]
         for h_i, header in enumerate(self.headings):
-            self.treevw.heading("#"+str(h_i), text=header, anchor="w", command=lambda: \
-                     self.sort_column(self.treevw, "#"+str(h_i), False))
+            self.treevw.heading("#"+str(h_i), text=header, anchor="w", command=listOfLambdas[h_i])
             self.treevw.column("#"+str(h_i), anchor='w',
                                stretch=tk.YES, minwidth=columnsLen[h_i], width=columnsLen[h_i])
         binds = self.getKw("binds", {})
@@ -197,10 +197,19 @@ class FormTreevw(Form):
         self.tvFrame.rowconfigure(0, weight=1)
         self.tvFrame.columnconfigure(0, weight=1)
 
-    def sort_column(self, tv, col, reverse):
-        l = [(tv.set(k, col), k) for k in tv.get_children('')]
-        l.sort(reverse=reverse)
+    def column_clicked(self, col, reverse):
+        """A lambda to call the statusbarController.statusbarClicked with the tag name clicked
+        Args:
+            name: the tag name clicked
+        """
+        return lambda : self.sort_column(self.treevw, col, reverse)
 
+    def sort_column(self, tv, col, reverse):
+        if col != "#0":
+            l = [(tv.set(k, col), k) for k in tv.get_children('')]
+        else:
+            l = [(k, k)for k in tv.get_children('')]
+        l.sort(reverse=reverse)
         # rearrange items in sorted positions
         for index, (val, k) in enumerate(l):
             tv.move(k, '', index)
@@ -211,8 +220,7 @@ class FormTreevw(Form):
            
 
         # reverse sort next time
-        tv.heading(col, command=lambda: \
-                self.sort_column(tv, col, not reverse))
+        tv.heading(col, command=self.column_clicked(col, not reverse))
 
     def reset(self):
         """Reset the treeview values (delete all lines)"""
