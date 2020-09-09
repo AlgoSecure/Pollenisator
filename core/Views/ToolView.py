@@ -177,9 +177,6 @@ class ToolView(ViewElement):
             parentNode = ToolView.DbToTreeviewListId(parentNode)
             nodeText = str(self.controller.getModelRepr())
         try:
-            data= self.controller.getData()
-            if data["ip"] == "10.0.0.235":
-                print("Found tool for ip 10.0.0.235")
             parentNode = self.appliTw.insert(
                 self.controller.getParent(), 0, parentNode, text="Tools", image=self.getClassIcon())
         except TclError:  #  trigger if tools list node already exist
