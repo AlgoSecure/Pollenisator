@@ -284,6 +284,16 @@ def loadToolsConfig():
                     print("Invalid json file : "+str(fil))
     return default_tools_infos
 
+def saveToolsConfig(dic):
+    """
+    Save tools config file in the config/tools.d/ in tools.json 
+    Args:
+        dic: a dictionnary to write values
+    """
+    tool_config_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../../config/tools.d/")
+    default_tools_config = os.path.join(tool_config_folder, "tools.json")
+    with open(default_tools_config) as f:
+        f.write(json.dumps(dic))
 
 def loadClientConfig():
     """Return data converted from json inside config/client.cfg

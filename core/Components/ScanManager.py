@@ -7,6 +7,7 @@ import multiprocessing
 from core.Models.Command import Command
 from core.Models.Tool import Tool
 from core.Application.Dialogs.ChildDialogFileParser import ChildDialogFileParser
+from core.Application.Dialogs.ChildDialogEditCommandSettings import ChildDialogEditCommandSettings
 from core.Components.AutoScanMaster import autoScan
 from PIL import Image, ImageTk
 import os
@@ -68,7 +69,6 @@ class ScanManager:
 
     def refreshUI(self):
         """Reload informations and renew widgets"""
-        registeredCommands = set()
         mongoInstance = MongoCalendar.getInstance()
         workernames = self.monitor.getWorkerList()
         running_scans = Tool.fetchObjects({"status":"running"})
@@ -79,6 +79,7 @@ class ScanManager:
         for children in self.workerTv.get_children():
             self.workerTv.delete(children)
         for workername in workernames:
+            registeredCommands = set()
             try:
                 worker_node = self.workerTv.insert(
                     '', 'end', workername, text=workername, image=self.ok_icon)
@@ -93,24 +94,19 @@ class ScanManager:
                 except tk.TclError:
                     pass
                 registeredCommands.add(str(command))
-        allCommands = Command.getList()
-        for command in allCommands:
-            if command not in registeredCommands:
-                try:
-                    self.workerTv.insert(
-                        '', 'end', 'notRegistered', text='Laking commands', image=self.nok_icon)
-                except tk.TclError:
-                    pass
-                try:
-                    self.workerTv.insert(
-                        'notRegistered', 'end', 'notRegistered|'+command, text=command, image=self.nok_icon)
-                except tk.TclError:
-                    pass
-            else:
-                try:
-                    self.workerTv.delete('notRegistered|'+command)
-                except tk.TclError:
-                    pass
+            allCommands = Command.getList()
+            for command in allCommands:
+                if command not in registeredCommands:
+                    try:
+                        self.workerTv.insert(
+                            worker_node, '0', 'notRegistered|'+command, text=command, image=self.nok_icon)
+                    except tk.TclError:
+                        pass
+                else:
+                    try:
+                        self.workerTv.delete('notRegistered|'+command)
+                    except tk.TclError:
+                        pass
         if len(registeredCommands) > 0 and self.btn_autoscan is None:
             if self.running_auto_scans:
                 self.btn_autoscan = ttk.Button(
@@ -138,9 +134,11 @@ class ScanManager:
         self.workerTv.heading("#0", text='Workers', anchor=tk.W)
         self.workerTv.column("#0", anchor=tk.W)
         self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
-        registeredCommands = set()
+        self.workerTv.bind("<Double-Button-1>", self.OnDoubleClick)
         workernames = self.monitor.getWorkerList()
         for workername in workernames:
+            registeredCommands = set()
+
             worker_node = self.workerTv.insert(
                 '', 'end', workername, text=workername, image=self.ok_icon)
             commands_registered = mongoInstance.getRegisteredCommands(
@@ -149,19 +147,14 @@ class ScanManager:
                 self.workerTv.insert(worker_node, 'end', None,
                                    text=command, image=self.ok_icon)
                 registeredCommands.add(str(command))
-        allCommands = Command.getList()
-        for command in allCommands:
-            if command not in registeredCommands:
-                try:
-                    self.workerTv.insert(
-                        '', 'end', 'notRegistered', text='Laking commands', image=self.nok_icon)
-                except tk.TclError:
-                    self.workerTv.item('notRegistered')
-                try:
-                    self.workerTv.insert('notRegistered', 'end', 'notRegistered|' +
-                                       str(command), text=str(command), image=self.nok_icon)
-                except tk.TclError:
-                    pass
+            allCommands = Command.getList()
+            for command in allCommands:
+                if command not in registeredCommands:
+                    try:
+                        self.workerTv.insert(worker_node, '0', 'notRegistered|' +
+                                        str(command), text=str(command), image=self.nok_icon)
+                    except tk.TclError:
+                        pass
         #### TREEVIEW SCANS : overview of ongoing auto scan####
         lblscan = ttk.Label(self.parent, text="Scan overview:")
         lblscan.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
@@ -229,3 +222,35 @@ class ScanManager:
         """
         if self.workerTv is not None:
             self.refreshUI()
+
+    def sendEditToolConfig(self, worker, command_name, remote_bin, plugin):
+        mongoInstance = MongoCalendar.getInstance()
+        queueName = str(mongoInstance.calendarName)+"&" + \
+            worker
+        self.monitor.app.control.add_consumer(
+            queue=queueName,
+            reply=True,
+            exchange="celery",
+            exchange_type="direct",
+            routing_key="transient",
+            destination=[worker])
+        from AutoScanWorker import editToolConfig
+        result_async = editToolConfig.apply_async(args=[command_name, remote_bin, plugin], queue=queueName, retry=False, serializer="json")
+        if self.monitor is not None:
+            self.monitor.workerRegisterCommands(worker)
+    def OnDoubleClick(self, event):
+        """Callback for treeview double click.
+        If a link treeview is defined, open mainview and focus on the item with same iid clicked.
+        Args:
+            event: used to identified which link was clicked. Auto filled
+        """
+        if self.workerTv is not None:
+            tv = event.widget
+            item = tv.identify("item", event.x, event.y)
+            if item.startswith("notRegistered|"):
+                worker = self.workerTv.parent(item)
+                command_name = item.split("|")[1]
+                dialog = ChildDialogEditCommandSettings(self.parent, "Edit worker tools config")
+                self.parent.wait_window(dialog.app)
+                if isinstance(dialog.rvalue, tuple):
+                    tasks = self.sendEditToolConfig(worker, command_name, dialog.rvalue[0], dialog.rvalue[1])
