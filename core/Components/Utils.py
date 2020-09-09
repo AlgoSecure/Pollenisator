@@ -292,7 +292,7 @@ def saveToolsConfig(dic):
     """
     tool_config_folder = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../../config/tools.d/")
     default_tools_config = os.path.join(tool_config_folder, "tools.json")
-    with open(default_tools_config) as f:
+    with open(default_tools_config, "w") as f:
         f.write(json.dumps(dic))
 
 def loadClientConfig():
