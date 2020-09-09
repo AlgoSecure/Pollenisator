@@ -43,7 +43,7 @@ RUN git clone --depth 1 https://github.com/drwetter/testssl.sh.git /home/testssl
 
 RUN python3 -m pip install --upgrade setuptools
 # Pollenisator
-RUN git clone https://github.com/fbarre96/Pollenisator-1.git /home/Pollenisator && \
+RUN git clone https://github.com/AlgoSecure/Pollenisator.git /home/Pollenisator && \
 	python3 -m pip install -r /home/Pollenisator/requirements.txt
 # Dirsearch as dirsearch.py
 RUN git clone https://github.com/maurosoria/dirsearch.git /home/dirsearch/ && \
