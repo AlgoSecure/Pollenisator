@@ -36,7 +36,7 @@ class Tool(Element):
         self.initialize(valuesFromDb.get("name", ""), valuesFromDb.get("wave", ""),
                         valuesFromDb.get(
                             "scope", ""), valuesFromDb.get("ip", ""),
-                        valuesFromDb.get("port", ""), valuesFromDb.get(
+                        str(valuesFromDb.get("port", "")), valuesFromDb.get(
                             "proto", "tcp"),
                         valuesFromDb.get(
                             "lvl", ""), valuesFromDb.get("text", ""),
@@ -73,7 +73,7 @@ class Tool(Element):
         self.wave = wave
         self.scope = scope
         self.ip = ip
-        self.port = port
+        self.port = str(port)
         self.proto = proto
         self.lvl = lvl
         self.text = text
