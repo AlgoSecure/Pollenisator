@@ -4,79 +4,27 @@ from core.plugins.plugin import Plugin
 from core.Models.Ip import Ip
 from core.Models.Port import Port
 import re
+import csv
 
-
-def smbmap_format(smbmap_output):
-    """Parse raw smbmap file
+def smbmap_format(row):
+    """Parse row of smbmap csv file
     Args:
-        smbmap_output: raw smbmap file content
+        row: row of smbmap csv file content parsed as a list
     Returns:
         A tuple with values:
-            0. a string formated where each line are : fullpath  permissions  date
-            1. a list of interesting name file found
-            2. targets as described in Parse
+            0. if the filename matched a pattern, the pattern. None otherwise
+            1. the targeted host
     """
-    targets = {}
-    regex_only_match_serv = re.compile(
-        r"^\[\+\] IP: ([^:\s]+)(?::\d+)?\sName: \S+\s+$")
-    # group 1 = SHARE NAME group 2 = PERMISSIONS
-    regex_only_match_share_header = re.compile(r"^\t(\S+)\s+([A-Z , ]+)$")
-    # group 1 = directory full path
-    regex_only_match_dir = re.compile(r"^\t(\S+)$")
-    # group 1 = d ou -, group 2 = permissions, group 3 = date, group 4 = filename
-    regex_only_match_files = re.compile(
-        r"^\s+([d-])([xrw-]{9})\s+([^\t]+)\t(.+)$")
-    ret = ""
-    interesting_files = {}
     interesting_name_list = ["passwd", "password", "pwd", "mot_de_passe", "motdepasse", "auth",
                              "creds", "confidentiel", "confidential", "backup", ".xml", ".conf", ".cfg", "unattended"]
-    current_serv = ""
-    current_share = ""
-    current_dir = ""
-    ip_states = []
-    lines = smbmap_output.split("\n")
-    for line in lines:
-        result = regex_only_match_serv.match(line)
-        if result is not None:
-            ip = str(result.group(1))
-            current_serv = ip
-            if ip not in ip_states:
-                ip_o = Ip().initialize(ip)
-                ip_o.addInDb()
-                Port().initialize(ip, "445", "tcp", "samba").addInDb()
-                targets[str(ip_o.getId())] = {
-                    "ip": ip, "port": "445", "proto": "tcp"}
-
-                ip_states.append(ip)
-            continue
-        result = regex_only_match_share_header.match(line)
-        if result is not None:
-            share_name = str(result.group(1))
-            permissions = str(result.group(2))
-            current_share = share_name
-            continue
-        result = regex_only_match_dir.match(line)
-        if result is not None:
-            dir_path = str(result.group(1))
-            current_dir = dir_path
-            continue
-        result = regex_only_match_files.match(line)
-        if result is not None:
-            # isDirectory = (str(result.group(1)) == "d")
-            permissions = str(result.group(2))
-            date = str(result.group(3))
-            file_name = str(result.group(4))
-            fullpath = "\\\\"+current_serv+"\\" + \
-                current_share+current_dir[1:]+file_name
-            for interesting_names in interesting_name_list:
-                if interesting_names.lower() in file_name.lower():
-                    interesting_files["Shared "+interesting_names] = interesting_files.get(
-                        "Shared " + interesting_names, [])
-                    interesting_files["Shared "+interesting_names].append(
-                        fullpath+"\t"+permissions+"\t"+date)
-            ret += fullpath+"\t"+permissions+"\t"+date+"\n"
-            continue
-    return ret, interesting_files, targets
+    interesting_type = None
+    if row[3] == "f": # isDir
+        for interesting_name in interesting_name_list:
+            if interesting_name in row[4].lower():
+                interesting_type = interesting_name
+                break
+    return interesting_type, row[0]
+   
 
 
 class SmbMap(Plugin):
@@ -85,14 +33,14 @@ class SmbMap(Plugin):
         Returns:
             string
         """
-        return " > "
+        return " --csv "
 
     def getFileOutputExt(self):
         """Returns the expected file extension for this command result file
         Returns:
             string
         """
-        return ".log.txt"
+        return ".csv"
 
     def getFileOutputPath(self, commandExecuted):
         """Returns the output file path given in the executed command using getFileOutputArg
@@ -127,22 +75,30 @@ class SmbMap(Plugin):
         """
         notes = ""
         tags = ["todo"]
-        notes = file_opened.read()
-        if not notes.startswith("[+] Finding open SMB ports...."):
-            return None, None, None, None
-        if "[!] Authentication error occured" in notes:
-            targets = {}
-        else:
-            full_notes, interesting_files, targets = smbmap_format(notes)
-            for target in targets:
-                port_m = Port.fetchObject(
-                    {"ip": targets[target]["ip"], "port": targets[target]["port"], "proto": "tcp"})
-                port_m.updateInfos(interesting_files)
-            if interesting_files:
+        content = csv.reader(file_opened, delimiter=',', quotechar='"')
+        targets = {}
+        interesting_files = {}
+        less_interesting_notes = ""
+        first_row = True
+        for row in content:
+            if first_row and not ','.join(row).startswith("Host,Share,Privs,isDir,Path,fileSize,Date"):
+                return None, None, None, None
+            else:
+                first_row = False
+                continue
+            interesting_file_type, target = smbmap_format(row)
+            targets[target] = {"ip": target, "port": 445, "proto": "tcp"}
+            if interesting_file_type is not None:
+                interesting_files[interesting_file_type] = interesting_files.get(interesting_file_type, [])
+                interesting_files[interesting_file_type].append(', '.join(row))
                 tags=["Interesting"]
-            notes = "=====================Interesting files:=====================\n"
-            for type_shared in interesting_files:
-                notes = "\n"+type_shared+":\n"
-                notes += ("\n".join(interesting_files[type_shared]))+"\n"
-            notes += "=====================Other files:=====================\n"+full_notes
+            else:
+                less_interesting_notes += ", ".join(row)+"\n"
+        for interesting_file_type in interesting_files.keys():
+            notes += "\n=====================Interesting files:=====================\n"
+            notes += str(interesting_file_type)+":\n"
+            for elem in interesting_files[interesting_file_type]:
+                 notes += "\t"+str(elem)+"\n"
+        notes += "\n=====================Other files:=====================\n"+less_interesting_notes
+        
         return notes, tags, "port", targets

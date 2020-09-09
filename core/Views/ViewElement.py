@@ -171,6 +171,7 @@ class ViewElement(object):
         registeredTags = Settings.getTags()
         keys = list(registeredTags.keys())
         column = 0
+        item_no = 0
         listOfLambdas = [self.tagClicked(keys[i]) for i in range(len(keys))]
         for registeredTag, color in registeredTags.items():
             if not hasattr(self.mainApp, "parent"):
@@ -180,9 +181,10 @@ class ViewElement(object):
             s = ttk.Style(self.mainApp.parent)
             s.configure(""+color+".TButton", background=color, foreground="black")
             s.map(""+color+".TButton", foreground=[('active', "dark gray")], background=[('active', color)])
-            btn_tag = panTags.addFormButton(registeredTag, listOfLambdas[column], side="left", padx=0, pady=0)
+            btn_tag = panTags.addFormButton(registeredTag, listOfLambdas[item_no], side="left", padx=0, pady=0)
             btn_tag.configure(style=""+color+".TButton")
             column += 1
+            item_no += 1
             if column == 4:
                 column = 0
         self.showForm()

@@ -88,16 +88,20 @@ class PollenisatorTreeview(ttk.Treeview):
             nodeToSort = str(self.contextualMenu.selection)
         else:
             nodeToSort = node
+            
         l = []
-        for k in self.get_children(nodeToSort):
-            text_k = self.item(k)["text"]
-            view_o = self.getViewFromId(str(k))
-            if view_o is not None:
-                l.append((k, text_k, view_o))
-        if l:
-            l.sort(key=lambda t: t[2].key() if t[2] is not None else None)
-            for index, (iid, _, _) in enumerate(l):
-                self.move(iid, nodeToSort, index)
+        try:
+            for k in self.get_children(nodeToSort):
+                text_k = self.item(k)["text"]
+                view_o = self.getViewFromId(str(k))
+                if view_o is not None:
+                    l.append((k, text_k, view_o))
+            if l:
+                l.sort(key=lambda t: t[2].key() if t[2] is not None else None)
+                for index, (iid, _, _) in enumerate(l):
+                    self.move(iid, nodeToSort, index)
+        except tk.TclError: # node given not found
+            pass
 
     def getViewFromId(self, dbId):
         """
