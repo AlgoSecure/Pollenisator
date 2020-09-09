@@ -83,7 +83,7 @@ class SmbMap(Plugin):
         for row in content:
             if first_row and not ','.join(row).startswith("Host,Share,Privs,isDir,Path,fileSize,Date"):
                 return None, None, None, None
-            else:
+            elif first_row:
                 first_row = False
                 continue
             interesting_file_type, target = smbmap_format(row)
