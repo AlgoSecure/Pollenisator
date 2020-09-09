@@ -107,6 +107,10 @@
         "bin": "smbmap.py",
         "plugin": "SmbMap"
     },
+    "smbmap_anon": {
+        "bin": "smbmap.py",
+        "plugin": "SmbMap"
+    },
     "smbmap_greybox": {
         "bin": "smbmap.py",
         "plugin": "SmbMap"
