@@ -166,6 +166,11 @@ def startAutoScan(calendarName, workerName):
     autoScanv2(calendarName, workerName)
     return
 
+@app.task
+def editToolConfig(command_name, remote_bin, plugin):
+    tools_to_register = Utils.loadToolsConfig()
+    tools_to_register[command_name] = {"bin":remote_bin, "plugin":plugin}
+    Utils.saveToolsConfig(tools_to_register)
 
 def autoScanv2(databaseName, workerName):
     """
