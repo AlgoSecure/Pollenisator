@@ -48,7 +48,7 @@ class Worker:
             return False
         return (launchableTool.name in list_registered_command)
 
-    def hasSpaceFor(self, launchableTool):
+    def hasSpaceFor(self, launchableTool, calendarName):
         """
         Check if this worker has space for the given tool. (this checks the command and every group of commands max_thred settings)
 
@@ -60,13 +60,14 @@ class Worker:
         """
 
         # 1. Find command with command id
-        command = Command.fetchObject({"name": launchableTool.name})
+        command = Command.fetchObject({"name": launchableTool.name}, calendarName)
         if command.safe == "False":
             return False
         # 2. Calculate individual command limit for the server
         nb = self.getNbOfLaunchedCommand(command.name) + 1
+       
         if nb > int(command.max_thread):
-            # print "Can't launch "+command["name"]+" on worker cause command max_trhad "+str(nb)+" > "+str(int(command["max_thread"]))
+            #print("Can't launch "+command.name+" on worker cause command max_trhad "+str(nb)+" > "+str(int(command.max_thread)))
             return False
         # 3. Get groups of command incorporation command id
         command_groups = CommandGroup.fetchObjects(
@@ -77,6 +78,6 @@ class Worker:
             for commandName in group.commands:
                 tots += self.getNbOfLaunchedCommand(commandName)
             if tots + 1 > int(group.max_thread):
-                # print "Can't launch "+command["name"]+" on worker cause group_max_thread "+str(tots + 1)+" > "+str(int(group["max_thread"]))
+                #print("Can't launch "+command.name+" on worker cause group_max_thread "+str(tots + 1)+" > "+str(int(group.max_thread)))
                 return False
         return True

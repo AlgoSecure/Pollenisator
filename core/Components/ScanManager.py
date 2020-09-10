@@ -94,7 +94,7 @@ class ScanManager:
                 except tk.TclError:
                     pass
                 registeredCommands.add(str(command))
-            allCommands = Command.getList()
+            allCommands = Command.getList(None, mongoInstance.calendarName)
             for command in allCommands:
                 if command not in registeredCommands:
                     try:
@@ -136,6 +136,7 @@ class ScanManager:
         self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
         self.workerTv.bind("<Double-Button-1>", self.OnDoubleClick)
         workernames = self.monitor.getWorkerList()
+        total_registered_commands = 0
         for workername in workernames:
             registeredCommands = set()
 
@@ -147,7 +148,7 @@ class ScanManager:
                 self.workerTv.insert(worker_node, 'end', None,
                                    text=command, image=self.ok_icon)
                 registeredCommands.add(str(command))
-            allCommands = Command.getList()
+            allCommands = Command.getList(None, mongoInstance.calendarName)
             for command in allCommands:
                 if command not in registeredCommands:
                     try:
@@ -155,6 +156,7 @@ class ScanManager:
                                         str(command), text=str(command), image=self.nok_icon)
                     except tk.TclError:
                         pass
+            total_registered_commands += len(registeredCommands)
         #### TREEVIEW SCANS : overview of ongoing auto scan####
         lblscan = ttk.Label(self.parent, text="Scan overview:")
         lblscan.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
@@ -168,7 +170,7 @@ class ScanManager:
         for running_scan in running_scans:
             self.scanTv.insert('','end', running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
         #### BUTTONS FOR AUTO SCANNING ####
-        if len(registeredCommands) > 0:
+        if total_registered_commands > 0:
             if self.running_auto_scans:
                 self.btn_autoscan = ttk.Button(
                     self.parent, text="Stop Scanning", command=self.stopAutoscan)

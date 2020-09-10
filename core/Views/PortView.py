@@ -9,6 +9,7 @@ from core.Views.ViewElement import ViewElement
 from core.Views.DefectView import DefectView
 from core.Controllers.DefectController import DefectController
 from core.Controllers.ToolController import ToolController
+from core.Components.mongo import MongoCalendar
 from tkinter import TclError
 
 
@@ -77,7 +78,7 @@ class PortView(ViewElement):
         top_panel.addFormLabel("Infos", side="left")
         top_panel.addFormTreevw("Infos", ("Infos", "Values"),
                                 modelData["infos"], side="left", width=300, fill="both", height=8, binds={"<Enter>": self.mainApp.unboundToMousewheelMain, "<Leave>": self.mainApp.boundToMousewheelMain})
-        command_list = Command.fetchObjects({"lvl": "port"})
+        command_list = Command.fetchObjects({"lvl": "port"}, MongoCalendar.getInstance().calendarName)
         command_names = ["None"]
         for command_doc in command_list:
             command_names.append(command_doc.name)

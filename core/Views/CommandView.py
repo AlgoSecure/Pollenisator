@@ -55,6 +55,7 @@ class CommandView(ViewElement):
         self._initContextualMenu()
         settings = self.mainApp.settings
         settings.reloadSettings()
+        self.form.addFormHidden("indb", self.controller.getData()["indb"])
         panel_top = self.form.addFormPanel(grid=True)
         panel_top.addFormLabel("Name", modelData["name"], sticky=tk.NW)
         panel_top.addFormLabel("Level", modelData["lvl"], row=1, sticky=tk.NW)
@@ -88,6 +89,7 @@ class CommandView(ViewElement):
         Creates a tkinter form using Forms classes. This form aims to insert a new Command
         """
         self._initContextualMenu()
+        self.form.addFormHidden("indb", self.controller.getData().get("indb", "pollenisator"))
         panel_top = self.form.addFormPanel(grid=True)
         panel_top.addFormLabel("Name")
         panel_top.addFormStr("Name", r"\S+", "", None, column=1)

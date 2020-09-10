@@ -189,7 +189,7 @@ class Tool(Element):
             Returns the Mongo dict command fetched instance associated with this tool's name.
         """
         mongoInstance = MongoCalendar.getInstance()
-        commandTemplate = mongoInstance.findInDb("pollenisator",
+        commandTemplate = mongoInstance.findInDb(mongoInstance.calendarName,
                                                  "commands", {"name": self.name}, False)
         return commandTemplate
 
