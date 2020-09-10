@@ -10,6 +10,8 @@ from core.Views.ToolView import ToolView
 from core.Controllers.IntervalController import IntervalController
 from core.Controllers.ScopeController import ScopeController
 from core.Controllers.ToolController import ToolController
+from core.Components.mongo import MongoCalendar
+
 
 
 class WaveView(ViewElement):
@@ -29,7 +31,7 @@ class WaveView(ViewElement):
         self.form.addFormHelper(
             "If you select a previously unselected command,\n it will be added to every object of its level.\nIf you unselect a previously selected command,\n it will remove only tools that are not already done.")
         self.form.addFormChecklist(
-            "Commands", Command.getList(), modelData["wave_commands"])
+            "Commands", Command.getList(None, MongoCalendar.getInstance().calendarName), modelData["wave_commands"])
         self.completeModifyWindow()
 
     def openInsertWindow(self):
@@ -40,7 +42,7 @@ class WaveView(ViewElement):
         top_panel.addFormLabel("Wave")
         top_panel.addFormStr("Wave", r".+", "", column=1)
         self.form.addFormHelper("Only selected commands will be launchable.")
-        self.form.addFormChecklist("Commands", Command.getList(), [])
+        self.form.addFormChecklist("Commands", Command.getList(None, MongoCalendar.getInstance().calendarName), [])
         self.completeInsertWindow()
 
     def addChildrenBaseNodes(self, newNode):

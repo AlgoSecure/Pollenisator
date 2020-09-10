@@ -97,7 +97,7 @@ def dispatchLaunchableToolsv2(launchableTools, worker):
     mongoInstance = MongoCalendar.getInstance()
     for launchableTool in launchableTools:
         tool = Tool.fetchObject({"_id": ObjectId(launchableTool["_id"])})
-        if worker.hasSpaceFor(tool):
+        if worker.hasSpaceFor(tool, mongoInstance.calendarName):
             launchTask(mongoInstance.calendarName, worker, tool)
 
 def findLaunchableToolsOnWorker(worker, calendarName):
@@ -221,7 +221,7 @@ def executeCommand(calendarName, toolId, parser=""):
     toolModel = Tool.fetchObject({"_id": ObjectId(toolId)})
     if toolModel is None:
         raise Exception("Tool does not exist : "+str(toolId))
-    command = Command.fetchObject({"name": toolModel.name})
+    command = Command.fetchObject({"name": toolModel.name}, calendarName)
     # Get time limit and output directory
     timeLimit = getWaveTimeLimit(toolModel.wave)
     outputRelDir = toolModel.getOutputDir(calendarName)

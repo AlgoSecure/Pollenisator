@@ -12,6 +12,7 @@ from core.Models.Scope import Scope
 from core.Models.Tool import Tool
 from core.Models.Wave import Wave
 from core.Models.Defect import Defect
+from core.Models.Command import Command
 from core.Views.IntervalView import IntervalView
 from core.Views.IpView import IpView
 from core.Views.MultipleIpView import MultipleIpView
@@ -22,6 +23,7 @@ from core.Views.ScopeView import ScopeView
 from core.Views.ToolView import ToolView
 from core.Views.WaveView import WaveView
 from core.Views.DefectView import DefectView
+from core.Views.CommandView import CommandView
 from core.Controllers.WaveController import WaveController
 from core.Controllers.PortController import PortController
 from core.Controllers.ScopeController import ScopeController
@@ -29,6 +31,7 @@ from core.Controllers.ToolController import ToolController
 from core.Controllers.DefectController import DefectController
 from core.Controllers.IpController import IpController
 from core.Controllers.IntervalController import IntervalController
+from core.Controllers.CommandController import CommandController
 from core.Application.Dialogs.ChildDialogProgress import ChildDialogProgress
 from core.Application.Dialogs.ChildDialogInfo import ChildDialogInfo
 from core.Application.Dialogs.ChildDialogCustomCommand import ChildDialogCustomCommand
@@ -55,6 +58,7 @@ class CalendarTreeview(PollenisatorTreeview):
         self.waves_node = None  # the wave parent node on the treeview
         self.ips_node = None  # the IPs parent node on the treeview
         self.openedViewFrameId = None  # id of opened object in the view frame.
+        self.commands_node = None  # parent of all commands nodes
 
     def initUI(self):
         """Initialize the user interface widgets and binds them."""
@@ -297,6 +301,9 @@ class CalendarTreeview(PollenisatorTreeview):
             elif collection == "defects":
                 view = DefectView(self, self.appli.viewframe,
                                 self.appli, DefectController(Defect(res)))
+            elif collection == "commands":
+                view = CommandView(self, self.appli.viewframe,
+                                self.appli, CommandController(Command(res)))
             try:
                 if view is not None:
                     view.addInTreeview()
@@ -423,6 +430,10 @@ class CalendarTreeview(PollenisatorTreeview):
                     objView = WaveView(self, self.appli.viewframe,
                                     self.appli, WaveController(Wave()))
                     objView.openInsertWindow()
+                elif str(item) == "commands":
+                    objView = CommandView(
+                        self, self.appli.viewframe, self.appli, CommandController(Command({"indb":mongoInstance.calendarName})))
+                    objView.openInsertWindow()
                 elif str(item) == "ips":
                     objView = MultipleIpView(
                         self, self.appli.viewframe, self.appli, IpController(Ip()))
@@ -500,6 +511,7 @@ class CalendarTreeview(PollenisatorTreeview):
         nbObjects += mongoInstance.find("ips").count()
         nbObjects += mongoInstance.find("ports").count()
         nbObjects += mongoInstance.find("tools").count()
+        nbObjects += mongoInstance.find("commands").count()
         onePercentNbObject = nbObjects//100 if nbObjects > 100 else 1
         nbObjectTreated = 0
         for child in self.get_children():
@@ -511,6 +523,15 @@ class CalendarTreeview(PollenisatorTreeview):
         # Loading every category separatly is faster than recursivly.
         # This is due to cursor.next function calls in pymongo
         # Adding wave objects
+
+        self.commands_node = self.insert(
+            "", "end", "commands", text="Commands", image=CommandView.getClassIcon())
+        commands = Command.fetchObjects({}, mongoInstance.calendarName)
+        for command in commands:
+            command_vw = CommandView(
+                self, self.appli.viewframe, self.appli, CommandController(command))
+            command_vw.addInTreeview()
+
         waves = Wave.fetchObjects({})
         for wave in waves:
             wave_o = WaveController(wave)

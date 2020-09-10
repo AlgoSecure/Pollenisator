@@ -57,9 +57,10 @@ class CommandController(ControllerElement):
         priority = values["Priority"]
         safe = str(values["Safe"])
         types = values["Types"]
+        indb = values["indb"]
         types = [k for k, v in types.items() if v == 1]
         self.model.initialize(name, sleep_between, priority, max_thread,
-                              text, lvl, ports, safe, list(types))
+                              text, lvl, ports, safe, list(types), indb)
         # Insert in database
         ret, _ = self.model.addInDb()
         if not ret:
@@ -76,7 +77,7 @@ class CommandController(ControllerElement):
         """
         return {"name": self.model.name, "lvl": self.model.lvl, "safe": self.model.safe, "text": self.model.text,
                 "ports": self.model.ports, "sleep_between": self.model.sleep_between,
-                "max_thread": self.model.max_thread, "priority": self.model.priority, "types": self.model.types, "_id": self.model.getId(), "tags": self.model.tags, "infos": self.model.infos}
+                "max_thread": self.model.max_thread, "priority": self.model.priority, "types": self.model.types, "indb":self.model.indb, "_id": self.model.getId(), "tags": self.model.tags, "infos": self.model.infos}
 
     def getType(self):
         """Return a string describing the type of object
