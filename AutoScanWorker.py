@@ -223,7 +223,10 @@ def executeCommand(calendarName, toolId, parser=""):
         raise Exception("Tool does not exist : "+str(toolId))
     command = Command.fetchObject({"name": toolModel.name}, calendarName)
     # Get time limit and output directory
-    timeLimit = getWaveTimeLimit(toolModel.wave)
+    if toolModel.wave == "Custom commands":
+        timeLimit = None
+    else:
+        timeLimit = getWaveTimeLimit(toolModel.wave)
     outputRelDir = toolModel.getOutputDir(calendarName)
     abs_path = os.path.dirname(os.path.abspath(__file__))
     outputDir = os.path.join(abs_path, "./results", outputRelDir)
