@@ -1,5 +1,6 @@
 """Controller for command object. Mostly handles conversion between mongo data and python objects"""
 from core.Controllers.ControllerElement import ControllerElement
+import bson
 
 class CommandController(ControllerElement):
     """Inherits ControllerElement
@@ -25,6 +26,7 @@ class CommandController(ControllerElement):
             self.model.ports = ""
         self.model.priority = values.get("Priority", self.model.priority)
         self.model.safe = str(values.get("Safe", self.model.safe))
+        self.model.timeout = str(values.get("Timeout", self.model.timeout))
         types = values.get("Types", {})
         types = [k for k, v in types.items() if v == 1]
         self.model.types = list(types)
@@ -58,9 +60,10 @@ class CommandController(ControllerElement):
         safe = str(values["Safe"])
         types = values["Types"]
         indb = values["indb"]
+        timeout = values["Timeout"]
         types = [k for k, v in types.items() if v == 1]
         self.model.initialize(name, sleep_between, priority, max_thread,
-                              text, lvl, ports, safe, list(types), indb)
+                              text, lvl, ports, safe, list(types), indb, timeout)
         # Insert in database
         ret, _ = self.model.addInDb()
         if not ret:
@@ -76,7 +79,7 @@ class CommandController(ControllerElement):
             dict with keys name, lvl, safe, text, ports, sleep_between, max_thread, priority, types, _id, tags and infos
         """
         return {"name": self.model.name, "lvl": self.model.lvl, "safe": self.model.safe, "text": self.model.text,
-                "ports": self.model.ports, "sleep_between": self.model.sleep_between,
+                "ports": self.model.ports, "sleep_between": self.model.sleep_between, "timeout": self.model.timeout,
                 "max_thread": self.model.max_thread, "priority": self.model.priority, "types": self.model.types, "indb":self.model.indb, "_id": self.model.getId(), "tags": self.model.tags, "infos": self.model.infos}
 
     def getType(self):
@@ -84,3 +87,10 @@ class CommandController(ControllerElement):
         Returns:
             "command" """
         return "command"
+
+    def actualize(self):
+        """Ask the model to reload its data from database
+        """
+        if self.model is not None:
+            self.model = self.model.__class__.fetchObject(
+                {"_id": bson.ObjectId(self.model.getId())}, self.model.indb)

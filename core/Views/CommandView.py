@@ -32,20 +32,24 @@ class CommandView(ViewElement):
             default: a dict of default values for inputs (sleep_between, priority, max_thread). Default to empty respectively "0", "0", "1"
         """
         panel_bottom = self.form.addFormPanel(grid=True)
-        panel_bottom.addFormLabel("Delay")
-        panel_bottom.addFormStr("Delay", r"\d+", default.get("sleep_between", "0"), width=5, column=1)
+        panel_bottom.addFormLabel("Timeout (in secondes)")
+        panel_bottom.addFormStr("Timeout", r"\d+", default.get("timeout", "300"), width=10, column=1)
         panel_bottom.addFormHelper(
-            "Delay in-between two launch of this command (in seconds)", column=2)
-        panel_bottom.addFormLabel("Priority", row=1)
+            "The tool will cancel itself when this duration in second is reached to be run again later.", column=2)
+        panel_bottom.addFormLabel("Delay", row=1)
+        panel_bottom.addFormStr("Delay", r"\d+", default.get("sleep_between", "0"), width=5, column=1, row=1)
+        panel_bottom.addFormHelper(
+            "Delay in-between two launch of this command (in seconds)", column=2, row=1)
+        panel_bottom.addFormLabel("Priority", row=2)
         panel_bottom.addFormStr("Priority", r"\d+", default.get("priority", "0"),
-                                width=2, row=1, column=1)
-        panel_bottom.addFormHelper(
-            "Priority in queue (0 is HIGHEST)", row=1, column=2)
-        panel_bottom.addFormLabel("Threads", row=2)
-        panel_bottom.addFormStr("Threads", r"\d+", default.get("max_thread", "1"),
                                 width=2, row=2, column=1)
         panel_bottom.addFormHelper(
-            "Number of authorized parallel running of this command on one worker.", row=2, column=2)
+            "Priority in queue (0 is HIGHEST)", row=2, column=2)
+        panel_bottom.addFormLabel("Threads", row=3)
+        panel_bottom.addFormStr("Threads", r"\d+", default.get("max_thread", "1"),
+                                width=2, row=3, column=1)
+        panel_bottom.addFormHelper(
+            "Number of authorized parallel running of this command on one worker.", row=3, column=2)
 
     def openModifyWindow(self):
         """
