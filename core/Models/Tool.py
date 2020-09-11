@@ -273,7 +273,7 @@ class Tool(Element):
             command = command.replace("|port.product|", port_db["product"])
             port_infos = port_db.get("infos", {})
             for info in port_infos:
-                print("replacing "+"|port.infos."+str(info)+"|"+ "by "+str(info))
+                # print("replacing "+"|port.infos."+str(info)+"|"+ "by "+str(info))
                 command = command.replace("|port.infos."+str(info)+"|", str(port_infos[info]))
         return command
 

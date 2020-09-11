@@ -191,6 +191,7 @@ def autoScanv2(databaseName, workerName):
         launchableTools, waiting = findLaunchableToolsOnWorker(worker, databaseName)
         # Sort by command priority
         launchableTools.sort(key=lambda tup: (tup["errored"], int(tup["priority"])))
+        # print(str(launchableTools))
         dispatchLaunchableToolsv2(launchableTools, worker)
         
         time.sleep(3)
