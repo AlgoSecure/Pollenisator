@@ -391,6 +391,20 @@ class Tool(Element):
             self.status.remove("running")
         self.update()
 
+    def markAsError(self):
+        """Set this tool status as not done by removing "done" or "running" and adding an error status.
+        Also resets starting and ending date as well as worker name
+        """
+        self.dated = "None"
+        self.datef = "None"
+        self.scanner_ip = "None"
+        if "done" in self.status:
+            self.status.remove("done")
+        if "running" in self.status:
+            self.status.remove("running")
+        self.status.append("error")
+        self.update()
+
     def getDbKey(self):
         """Return a dict from model to use as unique composed key.
         Returns:

@@ -31,16 +31,19 @@ class ToolView(ViewElement):
         """
 
     done_icon = 'done_tool.png'
+    error_icon = 'error_tool.png'
     ready_icon = 'waiting.png'
     running_icon = 'running.png'
     not_ready_icon = 'cross.png'
     icon = 'tool.png'
+
 
     cached_icon = None
     cached_done_icon = None
     cached_ready_icon = None
     cached_running_icon = None
     cached_not_ready_icon = None
+    cached_error_icon = None
 
     def getIcon(self):
         """
@@ -55,6 +58,10 @@ class ToolView(ViewElement):
             cache = self.__class__.cached_done_icon
             ui = self.__class__.done_icon
             iconStatus = "done"
+        elif "error" in status:
+            cache = self.__class__.cached_error_icon
+            ui = self.__class__.error_icon
+            iconStatus = "error"
         elif "running" in status:
             ui = self.__class__.running_icon
             cache = self.__class__.cached_running_icon
@@ -78,6 +85,10 @@ class ToolView(ViewElement):
                 self.__class__.cached_done_icon = ImageTk.PhotoImage(
                     Image.open(path))
                 return self.__class__.cached_done_icon
+            elif iconStatus == "error":
+                self.__class__.cached_error_icon = ImageTk.PhotoImage(
+                    Image.open(path))
+                return self.__class__.cached_error_icon
             elif iconStatus == "running":
                 self.__class__.cached_running_icon = ImageTk.PhotoImage(
                     Image.open(path))
