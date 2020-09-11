@@ -235,7 +235,7 @@ class Ip(Element):
             commands = wave["wave_commands"]
             for commName in commands:
                 # 2. finding the command only if lvl is port
-                comm = mongoInstance.findInDb("pollenisator", "commands",
+                comm = mongoInstance.findInDb(mongoInstance.calendarName, "commands",
                                               {"name": commName, "lvl": "ip"}, False)
                 if comm is not None:
                     # 3. checking if the added port fit into the command's allowed service
@@ -260,7 +260,7 @@ class Ip(Element):
         """
         # retrieve the command level
         mongoInstance = MongoCalendar.getInstance()
-        command = mongoInstance.findInDb("pollenisator",
+        command = mongoInstance.findInDb(mongoInstance.calendarName,
                                          "commands", {"name": command_name}, False)
         if command["lvl"] == "ip":
             # finally add tool

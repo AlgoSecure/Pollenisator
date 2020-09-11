@@ -18,7 +18,7 @@ class Command(Element):
         Args:
             valueFromDb: a dict holding values to load into the object. A mongo fetched command is optimal.
                         possible keys with default values are : _id (None), parent (None), tags([]), infos({}), name(""), sleep_between("0"), priority("0),
-                        max_thread("1"), text(""), lvl("network"), ports(""), safe("True"), types([]), indb="pollenisator"
+                        max_thread("1"), text(""), lvl("network"), ports(""), safe("True"), types([]), indb="pollenisator", timeout="300"
         """
         if valuesFromDb is None:
             valuesFromDb = dict()
@@ -30,9 +30,9 @@ class Command(Element):
                         valuesFromDb.get("text", ""), valuesFromDb.get(
                             "lvl", "network"),
                         valuesFromDb.get("ports", ""),
-                        valuesFromDb.get("safe", "True"), valuesFromDb.get("types", []), valuesFromDb.get("indb", "pollenisator"), valuesFromDb.get("infos", {}))
+                        valuesFromDb.get("safe", "True"), valuesFromDb.get("types", []), valuesFromDb.get("indb", "pollenisator"), valuesFromDb.get("timeout", "300"), valuesFromDb.get("infos", {}))
 
-    def initialize(self, name, sleep_between="0", priority="0", max_thread="1", text="", lvl="network", ports="", safe="True", types=None, indb=False, infos=None):
+    def initialize(self, name, sleep_between="0", priority="0", max_thread="1", text="", lvl="network", ports="", safe="True", types=None, indb=False, timeout="300", infos=None):
         """Set values of command
         Args:
             name: the command name
@@ -45,6 +45,7 @@ class Command(Element):
             safe: "True" or "False" with "True" as default. Indicates if autoscan is authorized to launch this command.
             types: type for the command. Lsit of string. Default to None.
             indb: db name : global (pollenisator database) or  local pentest database
+            timeout: a timeout to kill stuck tools and retry them later
             infos: a dictionnary with key values as additional information. Default to None
         Returns:
             this object
@@ -59,6 +60,7 @@ class Command(Element):
         self.safe = safe
         self.infos = infos if infos is not None else {}
         self.indb = indb
+        self.timeout = timeout
         self.types = types if types is not None else []
         return self
 
@@ -106,7 +108,7 @@ class Command(Element):
             return False, existing["_id"]
         ins_result = mongoInstance.insertInDb(self.indb, "commands", {"name": self.name, "lvl": self.lvl, "priority": self.priority,
                                                                            "sleep_between": self.sleep_between, "max_thread": self.max_thread, "text": self.text,
-                                                                           "ports": self.ports, "safe": self.safe, "types": self.types, "indb": self.indb}, '', True)
+                                                                           "ports": self.ports, "safe": self.safe, "types": self.types, "indb": self.indb, "timeout": self.timeout}, '', True)
         self._id = ins_result.inserted_id
         return True, self._id
 
@@ -118,7 +120,7 @@ class Command(Element):
         mongoInstance = MongoCalendar.getInstance()
         if pipeline_set is None:
             mongoInstance.updateInDb(self.indb, "commands", {"_id": ObjectId(self._id)}, {
-                "$set": {"priority": self.priority, "sleep_between": self.sleep_between, "max_thread": self.max_thread,
+                "$set": {"priority": self.priority, "sleep_between": self.sleep_between, "max_thread": self.max_thread, "timeout": self.timeout,
                          "text": self.text, "ports": self.ports, "safe": self.safe, "types": self.types}}, False, True)
         else:
             mongoInstance.updateInDb(self.indb, "commands", {"_id": ObjectId(self._id)}, {

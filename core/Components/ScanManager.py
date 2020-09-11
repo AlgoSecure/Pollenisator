@@ -134,7 +134,7 @@ class ScanManager:
         self.workerTv.heading("#0", text='Workers', anchor=tk.W)
         self.workerTv.column("#0", anchor=tk.W)
         self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
-        self.workerTv.bind("<Double-Button-1>", self.OnDoubleClick)
+        self.workerTv.bind("<Double-Button-1>", self.OnWorkerDoubleClick)
         workernames = self.monitor.getWorkerList()
         total_registered_commands = 0
         for workername in workernames:
@@ -240,7 +240,7 @@ class ScanManager:
         result_async = editToolConfig.apply_async(args=[command_name, remote_bin, plugin], queue=queueName, retry=False, serializer="json")
         if self.monitor is not None:
             self.monitor.workerRegisterCommands(worker)
-    def OnDoubleClick(self, event):
+    def OnWorkerDoubleClick(self, event):
         """Callback for treeview double click.
         If a link treeview is defined, open mainview and focus on the item with same iid clicked.
         Args:

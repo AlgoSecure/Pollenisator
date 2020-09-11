@@ -6,7 +6,7 @@ import os
 import ssl
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import io
 from bson.objectid import ObjectId
 from celery import Celery
@@ -137,7 +137,7 @@ def findLaunchableToolsOnWorker(worker, calendarName):
                 else:
                     prio = int(command.get("priority", 0))
                 toolsLaunchable.append(
-                    {"_id": tool, "name": str(toolModel), "priority": prio})
+                    {"_id": tool, "name": str(toolModel), "priority": prio, "errored": "error" in toolModel.status})
 
     return toolsLaunchable, waiting
 
@@ -190,7 +190,8 @@ def autoScanv2(databaseName, workerName):
         # Extract commands with compatible time and not yet done
         launchableTools, waiting = findLaunchableToolsOnWorker(worker, databaseName)
         # Sort by command priority
-        launchableTools.sort(key=lambda tup: int(tup["priority"]))
+        launchableTools.sort(key=lambda tup: (tup["errored"], int(tup["priority"])))
+        # print(str(launchableTools))
         dispatchLaunchableToolsv2(launchableTools, worker)
         
         time.sleep(3)
@@ -227,6 +228,7 @@ def executeCommand(calendarName, toolId, parser=""):
         timeLimit = None
     else:
         timeLimit = getWaveTimeLimit(toolModel.wave)
+    timeLimit = min(datetime.now()+timedelta(0, int(command.timeout)), timeLimit)
     outputRelDir = toolModel.getOutputDir(calendarName)
     abs_path = os.path.dirname(os.path.abspath(__file__))
     outputDir = os.path.join(abs_path, "./results", outputRelDir)
@@ -306,7 +308,7 @@ def executeCommand(calendarName, toolId, parser=""):
                         msg = "TASK FAILED (says the mod) : "+toolModel.name
                         msg += "The return code was not the expected one. ("+str(
                             returncode)+")."
-                        toolModel.markAsNotDone()
+                        toolModel.markAsError()
                         raise Exception(msg)
             except IOError as e:
                 toolModel.tags = ["todo"]

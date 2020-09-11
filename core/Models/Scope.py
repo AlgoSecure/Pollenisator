@@ -149,7 +149,7 @@ class Scope(Element):
         wave = mongoInstance.find("waves", {"wave": self.wave}, False)
         commands = wave["wave_commands"]
         for commName in commands:
-            comm = mongoInstance.findInDb("pollenisator",
+            comm = mongoInstance.findInDb(mongoInstance.calendarName,
                                           "commands", {"name": commName, "lvl": "network"}, False)
             if comm is not None:
                 newTool = Tool()
@@ -157,7 +157,7 @@ class Scope(Element):
                     comm["name"], self.wave, self.scope, "", "", "", "network")
                 newTool.addInDb()
             else:
-                comm = mongoInstance.findInDb("pollenisator",
+                comm = mongoInstance.findInDb(mongoInstance.calendarName,
                                               "commands", {"name": commName, "lvl": "domain"}, False)
                 if comm is not None:
                     newTool = Tool()
@@ -225,7 +225,7 @@ class Scope(Element):
             command_name: The command that we want to create all the tools for.
         """
         mongoInstance = MongoCalendar.getInstance()
-        command = mongoInstance.findInDb("pollenisator", "commands", {
+        command = mongoInstance.findInDb(mongoInstance.calendarName, "commands", {
                                          "name": command_name}, False)
         if command["lvl"] == "network":
             newTool = Tool()

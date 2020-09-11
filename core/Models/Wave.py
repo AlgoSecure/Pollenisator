@@ -101,7 +101,7 @@ class Wave(Element):
             command_name: The command that we want to create all the tools for.
         """
         mongoInstance = MongoCalendar.getInstance()
-        command = mongoInstance.findInDb("pollenisator", "commands", {
+        command = mongoInstance.findInDb(mongoInstance.calendarName, "commands", {
                                          "name": command_name}, False)
         if command["lvl"] == "wave":
             newTool = Tool()

@@ -196,7 +196,7 @@ def execute(command, timeout=None, printStdout=True):
                         timeout = (timeout-datetime.now()).total_seconds()
                         timer = Timer(timeout, proc.kill)
                         timer.start()
-            stdout, stderr = proc.communicate()
+            stdout, stderr = proc.communicate(None, timeout)
             if printStdout:
                 stdout = stdout.decode('utf-8')
                 stderr = stderr.decode('utf-8')
