@@ -189,7 +189,7 @@ class Tool(Element):
             Returns the Mongo dict command fetched instance associated with this tool's name.
         """
         mongoInstance = MongoCalendar.getInstance()
-        commandTemplate = mongoInstance.findInDb("pollenisator",
+        commandTemplate = mongoInstance.findInDb(mongoInstance.calendarName,
                                                  "commands", {"name": self.name}, False)
         return commandTemplate
 
@@ -273,7 +273,7 @@ class Tool(Element):
             command = command.replace("|port.product|", port_db["product"])
             port_infos = port_db.get("infos", {})
             for info in port_infos:
-                print("replacing "+"|port.infos."+str(info)+"|"+ "by "+str(info))
+                # print("replacing "+"|port.infos."+str(info)+"|"+ "by "+str(info))
                 command = command.replace("|port.infos."+str(info)+"|", str(port_infos[info]))
         return command
 
@@ -389,6 +389,20 @@ class Tool(Element):
             self.status.remove("done")
         if "running" in self.status:
             self.status.remove("running")
+        self.update()
+
+    def markAsError(self):
+        """Set this tool status as not done by removing "done" or "running" and adding an error status.
+        Also resets starting and ending date as well as worker name
+        """
+        self.dated = "None"
+        self.datef = "None"
+        self.scanner_ip = "None"
+        if "done" in self.status:
+            self.status.remove("done")
+        if "running" in self.status:
+            self.status.remove("running")
+        self.status.append("error")
         self.update()
 
     def getDbKey(self):

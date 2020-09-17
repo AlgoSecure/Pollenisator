@@ -129,7 +129,7 @@ class Monitor:
                     else:
                         if launchableTool is None:
                             continue
-                        if worker.hasSpaceFor(launchableTool):
+                        if worker.hasSpaceFor(launchableTool, mongoInstance.calendarName):
                             workerName = worker.name
                             break
         # If no workers are availiable, stop there

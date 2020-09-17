@@ -49,6 +49,8 @@ class DashBoard:
             Image.open(iconPath+"running.png"))
         self.icons["done"] = ImageTk.PhotoImage(
             Image.open(iconPath+"done_tool.png"))
+        self.icons["error"] = ImageTk.PhotoImage(
+            Image.open(iconPath+"error_tool.png"))
         self.icons["ready"] = ImageTk.PhotoImage(
             Image.open(iconPath+"waiting.png"))
         self.icons["Not ready"] = ImageTk.PhotoImage(
@@ -146,7 +148,7 @@ class DashBoard:
         dialog.update(8)
         for tool_id in sorted(list(tools_dashboard.keys())):
             self.treevwtools.insert('', 'end', None, text=str(
-                tool_id), values=(tools_dashboard[tool_id].get("ready", 0), tools_dashboard[tool_id].get("running", 0), tools_dashboard[tool_id].get("done", 0)))
+                tool_id), values=(tools_dashboard[tool_id].get("ready", 0), tools_dashboard[tool_id].get("running", 0), tools_dashboard[tool_id].get("done", 0), tools_dashboard[tool_id].get("error", 0)))
         dialog.update(9)
         # Defect Part
         # reset defect TW
@@ -229,7 +231,7 @@ class DashBoard:
         frameTools = ttk.Frame(self.dashboardFrame)
         self.treevwtools = ttk.Treeview(
             frameTools, style='DashBoard.Treeview', height=10)
-        self.treevwtools['columns'] = ('ready', 'running', 'done')
+        self.treevwtools['columns'] = ('ready', 'running', 'done', "error")
         self.treevwtools.heading("#0", text='Tool', anchor=tk.W)
         self.treevwtools.column("#0", anchor=tk.W, width=150)
         self.treevwtools.heading('#1', text='Ready')
@@ -238,6 +240,8 @@ class DashBoard:
         self.treevwtools.column('#2', anchor='center', width=10)
         self.treevwtools.heading('#3', text='Done')
         self.treevwtools.column('#3', anchor='center', width=10)
+        self.treevwtools.heading('#4', text='Error')
+        self.treevwtools.column('#4', anchor='center', width=10)
         self.treevwtools.grid(row=0, column=0, sticky=tk.NSEW)
         scbVSel = ttk.Scrollbar(frameTools,
                                 orient=tk.VERTICAL,

@@ -1061,6 +1061,11 @@ class Appli(ttk.Frame):
                 if res:
                     default = os.path.join(Utils.getMainDir(), "exports/pollenisator_group_commands.gzip")
                     res = self.importCommands(default)
+        #Duplicate commands in local database
+        allcommands = Command.fetchObjects({})
+        for command in allcommands:
+            command.indb = MongoCalendar.getInstance().calendarName
+            command.addInDb()
         Wave().initialize(dbName, commands).addInDb()
         Interval().initialize(dbName, start_date, end_date).addInDb()
         values = {"wave":dbName, "Scopes":scope, "Settings":False}

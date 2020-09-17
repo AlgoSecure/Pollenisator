@@ -134,4 +134,4 @@ class TestSSL(Plugin):
         notes, targets = parseWarnings(file_opened)
         if notes is None:
             return None, None, None, None
-        return notes, tags, "port", targets
+        return notes, [], "port", targets

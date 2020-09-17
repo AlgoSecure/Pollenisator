@@ -94,7 +94,7 @@ class ScanManager:
                 except tk.TclError:
                     pass
                 registeredCommands.add(str(command))
-            allCommands = Command.getList()
+            allCommands = Command.getList(None, mongoInstance.calendarName)
             for command in allCommands:
                 if command not in registeredCommands:
                     try:
@@ -134,9 +134,9 @@ class ScanManager:
         self.workerTv.heading("#0", text='Workers', anchor=tk.W)
         self.workerTv.column("#0", anchor=tk.W)
         self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
-        self.workerTv.bind("<Double-Button-1>", self.OnDoubleClick)
+        self.workerTv.bind("<Double-Button-1>", self.OnWorkerDoubleClick)
         workernames = self.monitor.getWorkerList()
-        registeredCommands = set()
+        total_registered_commands = 0
         for workername in workernames:
 
             worker_node = self.workerTv.insert(
@@ -147,7 +147,7 @@ class ScanManager:
                 self.workerTv.insert(worker_node, 'end', None,
                                    text=command, image=self.ok_icon)
                 registeredCommands.add(str(command))
-            allCommands = Command.getList()
+            allCommands = Command.getList(None, mongoInstance.calendarName)
             for command in allCommands:
                 if command not in registeredCommands:
                     try:
@@ -155,6 +155,7 @@ class ScanManager:
                                         str(command), text=str(command), image=self.nok_icon)
                     except tk.TclError:
                         pass
+            total_registered_commands += len(registeredCommands)
         #### TREEVIEW SCANS : overview of ongoing auto scan####
         lblscan = ttk.Label(self.parent, text="Scan overview:")
         lblscan.pack(side=tk.TOP, padx=10, pady=5, fill=tk.X)
@@ -168,7 +169,7 @@ class ScanManager:
         for running_scan in running_scans:
             self.scanTv.insert('','end', running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
         #### BUTTONS FOR AUTO SCANNING ####
-        if len(registeredCommands) > 0:
+        if total_registered_commands > 0:
             if self.running_auto_scans:
                 self.btn_autoscan = ttk.Button(
                     self.parent, text="Stop Scanning", command=self.stopAutoscan)
@@ -238,7 +239,7 @@ class ScanManager:
         result_async = editToolConfig.apply_async(args=[command_name, remote_bin, plugin], queue=queueName, retry=False, serializer="json")
         if self.monitor is not None:
             self.monitor.workerRegisterCommands(worker)
-    def OnDoubleClick(self, event):
+    def OnWorkerDoubleClick(self, event):
         """Callback for treeview double click.
         If a link treeview is defined, open mainview and focus on the item with same iid clicked.
         Args:

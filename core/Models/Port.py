@@ -141,7 +141,7 @@ class Port(Element):
             commands = wave["wave_commands"]
             for commName in commands:
                 # 2. finding the command only if lvl is port
-                comm = mongoInstance.findInDb("pollenisator", "commands",
+                comm = mongoInstance.findInDb(mongoInstance.calendarName, "commands",
                                               {"name": commName, "lvl": "port"}, False)
                 if comm is not None:
                     # 3. checking if the added port fit into the command's allowed service
@@ -195,7 +195,7 @@ class Port(Element):
         try:
             index = commands.index(command_name)
             # retrieve the command level
-            command = mongoInstance.findInDb("pollenisator",
+            command = mongoInstance.findInDb(mongoInstance.calendarName,
                                              "commands", {"name": commands[index]}, False)
             if command["lvl"] == "port":
                 # 3. checking if the added port fit into the command's allowed service

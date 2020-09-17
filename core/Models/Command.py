@@ -8,7 +8,7 @@ class Command(Element):
     """Represents a command object to be run on designated scopes/ips/ports.
 
     Attributes:
-        coll_name: collection name in pollenisator database
+        coll_name: collection name in pollenisator or pentest database
     """
 
     coll_name = "commands"
@@ -18,7 +18,7 @@ class Command(Element):
         Args:
             valueFromDb: a dict holding values to load into the object. A mongo fetched command is optimal.
                         possible keys with default values are : _id (None), parent (None), tags([]), infos({}), name(""), sleep_between("0"), priority("0),
-                        max_thread("1"), text(""), lvl("network"), ports(""), safe("True"), types([])
+                        max_thread("1"), text(""), lvl("network"), ports(""), safe("True"), types([]), indb="pollenisator", timeout="300"
         """
         if valuesFromDb is None:
             valuesFromDb = dict()
@@ -30,9 +30,9 @@ class Command(Element):
                         valuesFromDb.get("text", ""), valuesFromDb.get(
                             "lvl", "network"),
                         valuesFromDb.get("ports", ""),
-                        valuesFromDb.get("safe", "True"), valuesFromDb.get("types", []), valuesFromDb.get("infos", {}))
+                        valuesFromDb.get("safe", "True"), valuesFromDb.get("types", []), valuesFromDb.get("indb", "pollenisator"), valuesFromDb.get("timeout", "300"), valuesFromDb.get("infos", {}))
 
-    def initialize(self, name, sleep_between="0", priority="0", max_thread="1", text="", lvl="network", ports="", safe="True", types=None, infos=None):
+    def initialize(self, name, sleep_between="0", priority="0", max_thread="1", text="", lvl="network", ports="", safe="True", types=None, indb=False, timeout="300", infos=None):
         """Set values of command
         Args:
             name: the command name
@@ -44,6 +44,8 @@ class Command(Element):
             ports: allowed proto/port, proto/service or port-range for this command
             safe: "True" or "False" with "True" as default. Indicates if autoscan is authorized to launch this command.
             types: type for the command. Lsit of string. Default to None.
+            indb: db name : global (pollenisator database) or  local pentest database
+            timeout: a timeout to kill stuck tools and retry them later
             infos: a dictionnary with key values as additional information. Default to None
         Returns:
             this object
@@ -57,6 +59,8 @@ class Command(Element):
         self.ports = ports
         self.safe = safe
         self.infos = infos if infos is not None else {}
+        self.indb = indb
+        self.timeout = timeout
         self.types = types if types is not None else []
         return self
 
@@ -70,10 +74,13 @@ class Command(Element):
         ret = self._id
         mongoInstance = MongoCalendar.getInstance()
         # Remove from all group of commands this command name if they have it.
-        mongoInstance.updateInDb("pollenisator", "group_commands", {}, {
+        mongoInstance.updateInDb(self.indb, "group_commands", {}, {
             "$pull": {"commands": self.name}}, True, True)
         # Remove from all waves this command.
-        calendars = mongoInstance.listCalendars()
+        if self.indb == "pollenisator":
+            calendars = mongoInstance.listCalendars()
+        else:
+            calendars = [self.indb]
         for calendar in calendars:
             waves = mongoInstance.findInDb(calendar, "waves")
             for wave in waves:
@@ -84,8 +91,8 @@ class Command(Element):
                         "$set": {"wave_commands": toBeUpdated}}, False)
             # Remove all tools refering to this command's name.
             mongoInstance.deleteFromDb(calendar,
-                                       "tools", {"name": self.name}, True, True)
-        mongoInstance.deleteFromDb("pollenisator", "commands", {
+                                    "tools", {"name": self.name}, True, True)
+        mongoInstance.deleteFromDb(self.indb, "commands", {
                                    "_id": ret}, False, True)
 
     def addInDb(self):
@@ -96,12 +103,12 @@ class Command(Element):
         """
         mongoInstance = MongoCalendar.getInstance()
         existing = mongoInstance.findInDb(
-            "pollenisator", "commands", {"name": self.name}, False)
+            self.indb, "commands", {"name": self.name}, False)
         if existing is not None:
             return False, existing["_id"]
-        ins_result = mongoInstance.insertInDb("pollenisator", "commands", {"name": self.name, "lvl": self.lvl, "priority": self.priority,
+        ins_result = mongoInstance.insertInDb(self.indb, "commands", {"name": self.name, "lvl": self.lvl, "priority": self.priority,
                                                                            "sleep_between": self.sleep_between, "max_thread": self.max_thread, "text": self.text,
-                                                                           "ports": self.ports, "safe": self.safe, "types": self.types}, '', True)
+                                                                           "ports": self.ports, "safe": self.safe, "types": self.types, "indb": self.indb, "timeout": self.timeout}, '', True)
         self._id = ins_result.inserted_id
         return True, self._id
 
@@ -112,15 +119,15 @@ class Command(Element):
         """
         mongoInstance = MongoCalendar.getInstance()
         if pipeline_set is None:
-            mongoInstance.updateInDb("pollenisator", "commands", {"_id": ObjectId(self._id)}, {
-                "$set": {"priority": self.priority, "sleep_between": self.sleep_between, "max_thread": self.max_thread,
+            mongoInstance.updateInDb(self.indb, "commands", {"_id": ObjectId(self._id)}, {
+                "$set": {"priority": self.priority, "sleep_between": self.sleep_between, "max_thread": self.max_thread, "timeout": self.timeout,
                          "text": self.text, "ports": self.ports, "safe": self.safe, "types": self.types}}, False, True)
         else:
-            mongoInstance.updateInDb("pollenisator", "commands", {"_id": ObjectId(self._id)}, {
+            mongoInstance.updateInDb(self.indb, "commands", {"_id": ObjectId(self._id)}, {
                 "$set": pipeline_set}, False, True)
 
     @classmethod
-    def getList(cls, pipeline=None):
+    def getList(cls, pipeline=None, targetdb="pollenisator"):
         """
         Get all command's name registered on database
         Args:
@@ -130,10 +137,10 @@ class Command(Element):
         """
         if pipeline is None:
             pipeline = {}
-        return [command.name for command in Command.fetchObjects(pipeline)]
+        return [command.name for command in Command.fetchObjects(pipeline, targetdb)]
 
     @classmethod
-    def fetchObject(cls, pipeline):
+    def fetchObject(cls, pipeline, targetdb="pollenisator"):
         """Fetch one command from database and return the Command object 
         Args:
             pipeline: a Mongo search pipeline (dict)
@@ -141,13 +148,13 @@ class Command(Element):
             Returns a Command or None if nothing matches the pipeline.
         """
         mongoInstance = MongoCalendar.getInstance()
-        d = mongoInstance.findInDb("pollenisator", "commands", pipeline, False)
+        d = mongoInstance.findInDb(targetdb, "commands", pipeline, False)
         if d is None:
             return None
         return Command(d)
 
     @classmethod
-    def fetchObjects(cls, pipeline):
+    def fetchObjects(cls, pipeline, targetdb="pollenisator"):
         """Fetch many commands from database and return a Cursor to iterate over Command objects
         Args:
             pipeline: a Mongo search pipeline (dict)
@@ -155,7 +162,7 @@ class Command(Element):
             Returns a cursor to iterate on Command objects
         """
         mongoInstance = MongoCalendar.getInstance()
-        ds = mongoInstance.findInDb("pollenisator", "commands", pipeline, True)
+        ds = mongoInstance.findInDb(targetdb, "commands", pipeline, True)
         for d in ds:
             yield Command(d)
 
