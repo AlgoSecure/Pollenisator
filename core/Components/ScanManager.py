@@ -138,7 +138,6 @@ class ScanManager:
         workernames = self.monitor.getWorkerList()
         total_registered_commands = 0
         for workername in workernames:
-            registeredCommands = set()
 
             worker_node = self.workerTv.insert(
                 '', 'end', workername, text=workername, image=self.ok_icon)

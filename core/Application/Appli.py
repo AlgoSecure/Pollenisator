@@ -412,7 +412,6 @@ class Appli(ttk.Frame):
                         if callable(getattr(module["object"], "notify", None)):
                             module["object"].notify(notification["db"], notification["collection"],
                                     notification["iid"], notification["action"], notification.get("parent", ""))
-
         except Exception as e:
             print(str(e))
         self.notifications_timers = threading.Timer(
