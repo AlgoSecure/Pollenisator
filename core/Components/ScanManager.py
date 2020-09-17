@@ -136,8 +136,8 @@ class ScanManager:
         self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
         self.workerTv.bind("<Double-Button-1>", self.OnDoubleClick)
         workernames = self.monitor.getWorkerList()
+        registeredCommands = set()
         for workername in workernames:
-            registeredCommands = set()
 
             worker_node = self.workerTv.insert(
                 '', 'end', workername, text=workername, image=self.ok_icon)
