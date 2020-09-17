@@ -408,6 +408,10 @@ class Appli(ttk.Frame):
                 else:
                     self.treevw.notify(notification["db"], notification["collection"],
                                     notification["iid"], notification["action"], notification.get("parent", ""))
+                    for module in self.modules:
+                        if callable(getattr(module["object"], "notify", None)):
+                            module["object"].notify(notification["db"], notification["collection"],
+                                    notification["iid"], notification["action"], notification.get("parent", ""))
         except Exception as e:
             print(str(e))
         self.notifications_timers = threading.Timer(
