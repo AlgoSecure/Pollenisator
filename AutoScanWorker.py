@@ -228,7 +228,8 @@ def executeCommand(calendarName, toolId, parser=""):
         timeLimit = None
     else:
         timeLimit = getWaveTimeLimit(toolModel.wave)
-    timeLimit = min(datetime.now()+timedelta(0, int(command.timeout)), timeLimit)
+    if command is not None:
+        timeLimit = min(datetime.now()+timedelta(0, int(command.timeout)), timeLimit)
     outputRelDir = toolModel.getOutputDir(calendarName)
     abs_path = os.path.dirname(os.path.abspath(__file__))
     outputDir = os.path.join(abs_path, "./results", outputRelDir)
