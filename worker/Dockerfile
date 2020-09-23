@@ -29,11 +29,12 @@ RUN apt-get update && \
 	apt-get install -y bsdmainutils && \
 	apt-get install -y smbclient && \
 	apt-get install -y python-dev && \
+	apt-get install -y python3-pip && \
 	apt-get install -y nano && \
 	apt-get install -y build-essential
 RUN wget https://github.com/pypa/get-pip/raw/fa7dc83944936bf09a0e4cb5d5ec852c0d256599/get-pip.py
-RUN python3.7 get-pip.py
-RUN rm get-pip.py
+RUN python3 get-pip.py
+
 RUN apt-get install -y autoconf
 # Test SSL as testssl.sh
 RUN git clone --depth 1 https://github.com/drwetter/testssl.sh.git /home/testssl.sh && \
@@ -44,7 +45,7 @@ RUN git clone --depth 1 https://github.com/drwetter/testssl.sh.git /home/testssl
 RUN pip3 install --upgrade setuptools
 # Pollenisator
 RUN git clone https://github.com/AlgoSecure/Pollenisator.git /home/Pollenisator && \
-	pip3 install -r /home/Pollenisator/requirements.txt
+	python3 -m pip install -r /home/Pollenisator/requirements.txt
 # Dirsearch as dirsearch.py
 RUN git clone https://github.com/maurosoria/dirsearch.git /home/dirsearch/ && \
 	chmod +x /home/dirsearch/dirsearch.py && \
@@ -116,6 +117,8 @@ COPY smtp-open-relay.nse /usr/share/nmap/scripts/smtp-open-relay.nse
 ENV TZ Europe/Paris
 
 #CME
+RUN python3.7 /get-pip.py
+RUN rm /get-pip.py
 RUN git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec /home/cme/
 WORKDIR /home/cme/
 RUN python3.7 -m pip install --upgrade pynacl

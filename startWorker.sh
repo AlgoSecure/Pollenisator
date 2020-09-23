@@ -1,2 +1,2 @@
 export C_FORCE_ROOT="true"
-celery -A 'AutoScanWorker' worker --events
+python3 -m celery -A 'AutoScanWorker' worker --events
