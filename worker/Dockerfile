@@ -10,11 +10,9 @@ RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-
 # nikto as nikto
 # dnsrecon as dnsrecon
 RUN apt-get update && \
-	apt-get install -y python3-pip && \
 	apt-get install -y python3 && \
 	apt-get install -y python3.7 python3.7-dev && \
 	apt-get install -y python3-tk && \
-	apt-get install -y python-pip && \
 	apt-get install -y wget && \
 	apt-get install -y curl && \
 	apt-get install -y nmap && \
@@ -33,7 +31,9 @@ RUN apt-get update && \
 	apt-get install -y python-dev && \
 	apt-get install -y nano && \
 	apt-get install -y build-essential
-
+RUN wget https://github.com/pypa/get-pip/raw/fa7dc83944936bf09a0e4cb5d5ec852c0d256599/get-pip.py
+RUN python3.7 get-pip.py
+RUN rm get-pip.py
 RUN apt-get install -y autoconf
 # Test SSL as testssl.sh
 RUN git clone --depth 1 https://github.com/drwetter/testssl.sh.git /home/testssl.sh && \
@@ -41,16 +41,17 @@ RUN git clone --depth 1 https://github.com/drwetter/testssl.sh.git /home/testssl
 	ln -s /home/testssl.sh/testssl.sh /usr/bin/testssl.sh
 
 
-RUN python3 -m pip install --upgrade setuptools
+RUN pip3 install --upgrade setuptools
 # Pollenisator
 RUN git clone https://github.com/AlgoSecure/Pollenisator.git /home/Pollenisator && \
-	python3 -m pip install -r /home/Pollenisator/requirements.txt
+	pip3 install -r /home/Pollenisator/requirements.txt
 # Dirsearch as dirsearch.py
 RUN git clone https://github.com/maurosoria/dirsearch.git /home/dirsearch/ && \
 	chmod +x /home/dirsearch/dirsearch.py && \
 	ln -s /home/dirsearch/dirsearch.py /usr/bin/dirsearch.py
 # Knockpy as knockpy.py
-RUN apt-get install -y python-dnspython
+RUN apt-get install -y python-dnspython python-pip
+RUN python2 -m pip install setuptools
 RUN git clone https://github.com/guelfoweb/knock.git /home/knock && \
 	cd /home/knock && \
 	chmod +x /home/knock/knockpy/knockpy.py && \
@@ -60,7 +61,7 @@ RUN git clone https://github.com/guelfoweb/knock.git /home/knock && \
 
 # Sublist3r as sublist3r.py
 RUN git clone https://github.com/aboul3la/Sublist3r.git /home/sublist3r/ && \
-	python3 -m pip install -r /home/sublist3r/requirements.txt && \
+	pip3 install -r /home/sublist3r/requirements.txt && \
 	chmod +x /home/sublist3r/sublist3r.py && \
 	ln -s /home/sublist3r/sublist3r.py /usr/bin/sublist3r.py
 # SSH scan as ssh_scan
@@ -69,7 +70,7 @@ RUN gem install ssh_scan
 
 # crtsh as crtsh.py
 COPY crtsh /home/crtsh
-RUN python3 -m pip install feedparser && \
+RUN pip3 install feedparser && \
 	chmod +x /home/crtsh/crtsh.py && \
 	ln -s /home/crtsh/crtsh.py /usr/bin/crtsh.py
 
@@ -81,7 +82,7 @@ RUN ./configure && make && make install
 
 # Smbmap as smbmap.py
 RUN git clone https://github.com/ShawnDEvans/smbmap /home/smbmap && \
-	python3 -m pip install -r /home/smbmap/requirements.txt && \
+	pip3 install -r /home/smbmap/requirements.txt && \
 	chmod +x /home/smbmap/smbmap.py && \
 	ln -s /home/smbmap/smbmap.py /usr/bin/smbmap.py
 # enum4linux as enum4linux.pl
@@ -113,13 +114,14 @@ COPY smtp-open-relay.nse /usr/share/nmap/scripts/smtp-open-relay.nse
 
 # Set timezone
 ENV TZ Europe/Paris
+
 #CME
 RUN git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec /home/cme/
 WORKDIR /home/cme/
 RUN python3.7 -m pip install --upgrade pynacl
 RUN python3.7 -m pip install --upgrade cryptography
 RUN python3.7 -m pip install --upgrade asn1crypto
-RUN python3.7 setup.py install
+RUN pip install .
 RUN cme smb
 #
 WORKDIR /home/Pollenisator/
