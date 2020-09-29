@@ -78,8 +78,8 @@ class ScanManager:
             self.scanTv.insert('','end', running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
         for children in self.workerTv.get_children():
             self.workerTv.delete(children)
+        registeredCommands = set()
         for workername in workernames:
-            registeredCommands = set()
             try:
                 worker_node = self.workerTv.insert(
                     '', 'end', workername, text=workername, image=self.ok_icon)
@@ -137,6 +137,7 @@ class ScanManager:
         self.workerTv.bind("<Double-Button-1>", self.OnWorkerDoubleClick)
         workernames = self.monitor.getWorkerList()
         total_registered_commands = 0
+        registeredCommands = set()
         for workername in workernames:
 
             worker_node = self.workerTv.insert(
