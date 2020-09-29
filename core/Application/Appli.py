@@ -1061,6 +1061,7 @@ class Appli(ttk.Frame):
                 if res:
                     default = os.path.join(Utils.getMainDir(), "exports/pollenisator_group_commands.gzip")
                     res = self.importCommands(default)
+            commands = Command.getList({"$or":[{"types":{"$elemMatch":{"$eq":pentest_type}}}, {"types":{"$elemMatch":{"$eq":"Commun"}}}]})
         #Duplicate commands in local database
         allcommands = Command.fetchObjects({})
         for command in allcommands:

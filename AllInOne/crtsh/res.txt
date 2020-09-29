@@ -1,0 +1,3 @@
+doc.api.trax-distribution.com. 3599 IN	CNAME	hosting.gitbook.com.
+hosting.gitbook.com.	299	IN	CNAME	fasthosting.gitbook.com.
+fasthosting.gitbook.com. 299	IN	A	207.154.212.156

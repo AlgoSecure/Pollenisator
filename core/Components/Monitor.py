@@ -46,7 +46,6 @@ class Monitor:
         else:
             self.app = Celery('tasks', broker='mongodb://' + userString + cfg["host"] + ":"+cfg["mongo_port"] +
                               '/broker_pollenisator?authSource=admin', connect_timeout=5000)
-
         self.state = self.app.events.State()
         self.tasks_running = []
         self.recv = None
@@ -215,7 +214,7 @@ class Monitor:
         mongoInstance.deleteFromDb("broker_pollenisator", "messages.routing", {
             "queue": {"$regex": "^.*&"+worker_hostname+"&.*$"}}, True)
         for agg_queue in agg_queues:
-            Utils.execute("celery -A slave purge -f -Q '" +
+            Utils.execute("celery -A AutoScanWorker purge -f -Q '" +
 
                           agg_queue["_id"]+"'", None, False)
         
@@ -238,10 +237,6 @@ class Monitor:
         queueName = str(worker_hostname)+"&getcommands"
         self.app.control.add_consumer(
             queue=queueName,
-            reply=True,
-            exchange="celery",
-            exchange_type="direct",
-            routing_key="transient",
             destination=[worker_hostname])
         # print "adding get command"
         from AutoScanWorker import getCommands
@@ -330,7 +325,6 @@ class Monitor:
         """
         worker_hostname = event["hostname"].strip()
         workers = self.getWorkerList()
-        # print "WORKER Heartbeat, can be received without having online if worker was already live :"+worker_hostname
         if worker_hostname not in workers:
             # datef "added worker already up"
             self.addOnlineWorker(worker_hostname)

@@ -240,6 +240,7 @@ class ScanManager:
         result_async = editToolConfig.apply_async(args=[command_name, remote_bin, plugin], queue=queueName, retry=False, serializer="json")
         if self.monitor is not None:
             self.monitor.workerRegisterCommands(worker)
+            
     def OnWorkerDoubleClick(self, event):
         """Callback for treeview double click.
         If a link treeview is defined, open mainview and focus on the item with same iid clicked.
