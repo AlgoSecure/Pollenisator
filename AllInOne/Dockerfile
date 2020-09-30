@@ -132,6 +132,7 @@ WORKDIR /home/Pollenisator/
 ARG CACHEBUST=1
 RUN git pull
 COPY config /home/Pollenisator/config
+COPY config /home/Pollenisator/worker/config
 RUN chmod +x /home/Pollenisator/startWorker.sh
 ## SERVER 
 RUN apt-get install -y openssh-server libcurl3 mongodb-org-shell mongodb-org-server mongodb-org
