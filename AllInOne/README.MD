@@ -8,19 +8,12 @@ docker build --no-cache -t allinone-pollenisator .
 
 # Run worker (if it's for local to local add --net=host)
 
-```
-sudo apt-get install x11-xserver-utils
-xhost +local:docker
-```
-
-```docker run --env="DISPLAY" -v `pwd`/results:/etc/Pollenisator/files/results --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -d allinone-pollenisator```
+```docker run -p 127.0.0.1:22222:22 -p 127.0.0.1:27017:27017 -v `pwd`/results:/etc/Pollenisator/files/results -d allinone-pollenisator```
 
 or enter docker
 
-```docker run --env="DISPLAY" -v `pwd`/results:/etc/Pollenisator/files/results --volume="$HOME/.Xauthority:/root/.Xauthority:rw" -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -ti allinone-pollenisator /bin/bash```
-
-and run
-./start.sh
+```docker run -p 127.0.0.1:22222:22 -p 127.0.0.1:27017:27017 -v `pwd`/results:/etc/Pollenisator/files/results -ti allinone-pollenisator /bin/bash```
+and run ./start.sh
 
 # Stop docker
 

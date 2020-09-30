@@ -1,7 +1,6 @@
 #!/bin/bash
 service ssh restart
 mongod --bind_ip_all &
-./pollenisator.py &
 ./startWorker.sh &
 myvar=`mongo pollenisator --quiet --eval "db.getCollectionNames()"`
 while [[ $myvar != *"calendars"* ]]; do

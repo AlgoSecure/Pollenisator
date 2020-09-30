@@ -143,8 +143,5 @@ RUN echo "Match User pollenisator\n\tChrootDirectory /etc/Pollenisator/\n\tPermi
 RUN service ssh stop
 RUN service ssh start
 ## CLIENT
-RUN apt-get install -y python3-tk python3-pil python3-pil.imagetk xsel xdg-utils gedit
-RUN python3 -m pip install -r requirements.txt
 COPY start.sh /home/Pollenisator/start.sh
-ENV DISPLAY :0
 CMD ["/bin/sh", "-c", "./start.sh"]
