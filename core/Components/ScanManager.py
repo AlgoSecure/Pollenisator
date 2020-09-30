@@ -139,14 +139,19 @@ class ScanManager:
         total_registered_commands = 0
         registeredCommands = set()
         for workername in workernames:
-
-            worker_node = self.workerTv.insert(
-                '', 'end', workername, text=workername, image=self.ok_icon)
+            try:
+                worker_node = self.workerTv.insert(
+                    '', 'end', workername, text=workername, image=self.ok_icon)
+            except tk.TclError:
+                pass
             commands_registered = mongoInstance.getRegisteredCommands(
                 workername)
             for command in commands_registered:
-                self.workerTv.insert(worker_node, 'end', None,
-                                   text=command, image=self.ok_icon)
+                try:
+                    self.workerTv.insert(worker_node, 'end', None,
+                                    text=command, image=self.ok_icon)
+                except tk.TclError:
+                    pass
                 registeredCommands.add(str(command))
             allCommands = Command.getList(None, mongoInstance.calendarName)
             for command in allCommands:

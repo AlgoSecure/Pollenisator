@@ -77,4 +77,4 @@ local/states/*
 venv/
 config/client.cfg
 config/settings.cfg
-
+AllInOne/results/*
