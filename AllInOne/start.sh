@@ -3,6 +3,10 @@ service ssh restart
 mongod --bind_ip_all &
 ./pollenisator.py &
 ./startWorker.sh &
-sleep 15
-ps -u | grep "celery -A" | cut -d ' ' -f 9 | xargs kill -9
+myvar=`mongo pollenisator --quiet --eval "db.getCollectionNames()"`
+while [[ $myvar != *"calendars"* ]]; do
+    sleep 2
+    myvar=`mongo pollenisator --quiet --eval "db.getCollectionNames()"`
+done
+ps -u | grep "celery -A" | awk 'NR>1 {print $2}' | xargs kill -9
 ./startWorker.sh

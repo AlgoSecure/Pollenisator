@@ -146,4 +146,5 @@ RUN service ssh start
 RUN apt-get install -y python3-tk python3-pil python3-pil.imagetk xsel xdg-utils gedit
 RUN python3 -m pip install -r requirements.txt
 COPY start.sh /home/Pollenisator/start.sh
+ENV DISPLAY :0
 CMD ["/bin/sh", "-c", "./start.sh"]
