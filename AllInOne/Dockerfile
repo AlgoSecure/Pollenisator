@@ -144,5 +144,6 @@ RUN echo "Match User pollenisator\n\tChrootDirectory /etc/Pollenisator/\n\tPermi
 RUN service ssh stop
 RUN service ssh start
 ## CLIENT
+
 COPY start.sh /home/Pollenisator/start.sh
 CMD ["/bin/sh", "-c", "./start.sh"]

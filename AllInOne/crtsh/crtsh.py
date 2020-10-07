@@ -14,6 +14,7 @@
 # products.example.com
 # support.example.com
 # www.example.com
+# TODO
 
 import dns.resolver
 import feedparser

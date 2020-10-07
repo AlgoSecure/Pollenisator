@@ -122,7 +122,7 @@ class CommandView(ViewElement):
         panel_bottom = self.form.addFormPanel(grid=True)
         panel_bottom.addFormLabel("Ports/Services")
         panel_bottom.addFormStr(
-            "Ports/Services", r"^((.{0})|(\d{1,5}|[^\, ]+)(?:, (\d{1,5}|[^\, ]+))*)$", "", width=50, column=1)
+            "Ports/Services", r"^[^, ]+(?:,[^, ]+)*", "", width=50, column=1)
         panel_bottom.addFormHelper(
             "Services, ports or port ranges.\nthis list must be separated by a comma, if no protocol is specified, tcp/ will be used.\n Example: ssl/http,https,http/ssl,0-65535,443...", column=2)
 
