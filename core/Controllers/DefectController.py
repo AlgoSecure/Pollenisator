@@ -87,8 +87,10 @@ class DefectController(ControllerElement):
             formValues: the view form values as a dict. Key "Proof "+str(index) must exist
             index: the proof index in the form to insert
         """
-        proof_i = formValues["Proof "+str(index)]
-        resName = self.model.uploadProof(proof_i)
+        proof_path = formValues["Proof "+str(index)]
+        if proof_path.strip() == "":
+            return
+        resName = self.model.uploadProof(proof_path)
         if index == len(self.model.proofs):
             self.model.proofs.append(resName)
         else:
