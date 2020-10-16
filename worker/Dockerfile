@@ -43,9 +43,6 @@ RUN git clone --depth 1 https://github.com/drwetter/testssl.sh.git /home/testssl
 
 
 RUN pip3 install --upgrade setuptools
-# Pollenisator
-RUN git clone https://github.com/AlgoSecure/Pollenisator.git /home/Pollenisator && \
-	python3 -m pip install -r /home/Pollenisator/requirements.txt
 # Dirsearch as dirsearch.py
 RUN git clone https://github.com/maurosoria/dirsearch.git /home/dirsearch/ && \
 	chmod +x /home/dirsearch/dirsearch.py && \
@@ -126,11 +123,8 @@ RUN python3.7 -m pip install --upgrade cryptography
 RUN python3.7 -m pip install --upgrade asn1crypto
 RUN pip install .
 RUN cme smb
-#
-WORKDIR /home/Pollenisator/
-ARG CACHEBUST=1
-RUN git pull
-COPY config /home/Pollenisator/config
-COPY ssl /home/Pollenisator/ssl
-RUN chmod +x /home/Pollenisator/startWorker.sh
-CMD ["/bin/bash", "-c", "./startWorker.sh"]
+# Pollenisator
+WORKDIR /home/
+COPY requirements.txt /tmp
+RUN python3 -m pip install -r /tmp/requirements.txt
+CMD ["/bin/bash", "-c", "/home/Pollenisator/startWorker.sh"]
