@@ -44,9 +44,6 @@ RUN git clone --depth 1 https://github.com/drwetter/testssl.sh.git /home/testssl
 
 
 RUN pip3 install --upgrade setuptools
-# Pollenisator
-RUN git clone https://github.com/AlgoSecure/Pollenisator.git /home/Pollenisator && \
-	python3 -m pip install -r /home/Pollenisator/requirements.txt
 # Dirsearch as dirsearch.py
 RUN git clone https://github.com/maurosoria/dirsearch.git /home/dirsearch/ && \
 	chmod +x /home/dirsearch/dirsearch.py && \
@@ -127,13 +124,6 @@ RUN python3.7 -m pip install --upgrade cryptography
 RUN python3.7 -m pip install --upgrade asn1crypto
 RUN pip install .
 RUN cme smb
-#
-WORKDIR /home/Pollenisator/
-ARG CACHEBUST=1
-RUN git pull
-COPY config /home/Pollenisator/config
-COPY config /home/Pollenisator/worker/config
-RUN chmod +x /home/Pollenisator/startWorker.sh
 ## SERVER 
 RUN apt-get install -y openssh-server libcurl3 mongodb-org-shell mongodb-org-server mongodb-org
 RUN mkdir -p /data/db
@@ -144,6 +134,9 @@ RUN echo "Match User pollenisator\n\tChrootDirectory /etc/Pollenisator/\n\tPermi
 RUN service ssh stop
 RUN service ssh start
 ## CLIENT
-
 COPY start.sh /home/Pollenisator/start.sh
+# Pollenisator
+WORKDIR /home/Pollenisator
+COPY requirements.txt /tmp
+RUN python3 -m pip install -r /tmp/requirements.txt
 CMD ["/bin/sh", "-c", "./start.sh"]
