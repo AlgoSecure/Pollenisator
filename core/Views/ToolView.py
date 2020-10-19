@@ -130,10 +130,10 @@ class ToolView(ViewElement):
 
         actions_panel = self.form.addFormPanel()
         #Ready is legacy, OOS and/or OOT should be used
-        if "ready" in self.controller.getStatus():
+        if "ready" in self.controller.getStatus() or "error" in self.controller.getStatus():
             actions_panel.addFormButton(
                 "Local launch", self.localLaunchCallback, side="right")
-            if self.mainApp.scanManager.monitor.hasWorkers():
+            if self.mainApp.scanManager.monitor.hasWorkers(excludeCurrentDb=True):
                 actions_panel.addFormButton(
                     "Run on worker", self.launchCallback, side="right")
             else:

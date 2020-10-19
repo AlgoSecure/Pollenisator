@@ -117,7 +117,7 @@ class Monitor:
         # Check all workers to see if any space is availiable
         from AutoScanWorker import executeCommand
         if workerName == "":
-            workers = mongoInstance.getWorkers()
+            workers = mongoInstance.getWorkers({"excludedDatabases":{"$nin":[mongoInstance.calendarName]}})
             for worker in workers:
                 if launchableTool is None:
                     continue
@@ -164,8 +164,7 @@ class Monitor:
 
     def getWorkerList(self):
         """
-        Return the worker list
-
+        Returns the worker list
         Returns:
             Return the workers name list
         """
@@ -175,15 +174,32 @@ class Monitor:
         for worker in workers:
             l.append(worker["name"])
         return l
+        
+    def isWorkerExcludedFrom(self, worker_hostname, dbName):
+        mongoInstance = MongoCalendar.getInstance()
+        worker = mongoInstance.findInDb("pollenisator", "workers", {"name": worker_hostname}, False)
+        if worker is None:
+            return True
+        return dbName in worker.get("excludedDatabases", [])
 
-    def hasWorkers(self):
+
+
+    def hasWorkers(self, excludeCurrentDb=False):
         """
         Check if any worker is availiable
-
+        Args:
+            excludeCurrentDb: Default to False. If true, will check if the workers are excluded from the opened database  
         Returns:
             Return True if at least one worker is availiable, False otherwise.
         """
-        return len(self.getWorkerList()) > 0
+        mongoInstance = MongoCalendar.getInstance()
+        liste = self.getWorkerList()
+        if excludeCurrentDb:
+            for name in liste:
+                if not self.isWorkerExcludedFrom(name, mongoInstance.calendarName):
+                    return True
+            return False
+        return len(liste) > 0
 
     def stop(self):
         """

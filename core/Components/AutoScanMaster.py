@@ -14,6 +14,7 @@ from core.Components.mongo import MongoCalendar
 from core.Components.Monitor import Monitor
 from core.Models.Wave import Wave
 from core.Models.Tool import Tool
+from shutil import copyfile
 
 dir_path = os.path.dirname(os.path.realpath(__file__))  # fullpath to this file
 ssldir = os.path.join(dir_path, "../../ssl/")  # fullepath to ssl directory
@@ -23,11 +24,17 @@ certs = {
     'ca_certs': ssldir+'ca.pem',
     'cert_reqs': ssl.CERT_REQUIRED
 }
-try:
-    cfg = Utils.loadCfg(os.path.join(dir_path, "../../config/client.cfg"))
-except FileNotFoundError:
-    print("No client config was found under Pollenisator/config/client.cfg. Create one from the sample provided in this directory.")
-    sys.exit(0)
+config_dir = os.path.join(dir_path, "../../config/")
+if not os.path.isfile(os.path.join(config_dir, "client.cfg")):
+    if os.path.isfile(os.path.join(config_dir, "clientSample.cfg")):
+        copyfile(os.path.join(config_dir, "clientSample.cfg"), os.path.join(config_dir, "client.cfg"))
+
+if os.path.isfile(os.path.join(config_dir, "client.cfg")):
+    cfg = Utils.loadCfg(os.path.join(config_dir, "client.cfg"))
+else:
+    print("No client config file found under "+str(config_dir))
+    sys.exit(1)
+
 user_string = cfg["user"]+':'+cfg["password"] + \
     '@' if cfg['user'].strip() != "" else ""
 if cfg["ssl"] == "True":
@@ -158,7 +165,7 @@ def main():
 def sendStartAutoScan(calendarName):
     mongoInstance = MongoCalendar.getInstance()
     mongoInstance.connectToDb(calendarName)
-    workers = mongoInstance.getWorkers()
+    workers = mongoInstance.getWorkers({"excludedDatabases":{"$nin":[mongoInstance.calendarName]}})
     launchedTasks = []
     for worker in workers:
         worker = worker["name"]

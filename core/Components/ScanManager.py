@@ -40,13 +40,19 @@ class ScanManager:
         self.linkTw = linkedTreeview
         abs_path = os.path.dirname(os.path.abspath(__file__))
         path = os.path.join(abs_path, "../../icon/")
-        self.ok_icon = ImageTk.PhotoImage(Image.open(path+"tool.png"))
+        self.tool_icon = ImageTk.PhotoImage(Image.open(path+"tool.png"))
         self.nok_icon = ImageTk.PhotoImage(Image.open(path+"cross.png"))
+        self.ok_icon = ImageTk.PhotoImage(Image.open(path+"done_tool.png"))
         self.running_icon = ImageTk.PhotoImage(Image.open(path+"running.png"))
 
     def startAutoscan(self):
         """Start an automatic scan. Will try to launch all undone tools."""
-
+        mongoInstance = MongoCalendar.getInstance()
+        workers = mongoInstance.getWorkers({"excludedDatabases":{"$nin":[mongoInstance.calendarName]}})
+        workers = [w for w in workers]
+        if len(workers) == 0:
+            tk.messagebox.showwarning("No selected worker found", "Check worker treeview to see if there are workers registered and double click on the disabled one to enable them")
+            return
         if self.settings.db_settings.get("include_all_domains", False):
             answer = tk.messagebox.askyesno(
                 "Autoscan warning", "The current settings will add every domain found in attack's scope. Are you sure ?")
@@ -75,14 +81,18 @@ class ScanManager:
         for children in self.scanTv.get_children():
             self.scanTv.delete(children)
         for running_scan in running_scans:
-            self.scanTv.insert('','end', running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
+            self.scanTv.insert('','end', running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.ok_icon)
         for children in self.workerTv.get_children():
             self.workerTv.delete(children)
         registeredCommands = set()
         for workername in workernames:
             try:
-                worker_node = self.workerTv.insert(
-                    '', 'end', workername, text=workername, image=self.ok_icon)
+                if self.monitor.isWorkerExcludedFrom(workername, mongoInstance.calendarName):
+                    worker_node = self.workerTv.insert(
+                        '', 'end', workername, text=workername, image=self.nok_icon)
+                else:
+                    worker_node = self.workerTv.insert(
+                        '', 'end', workername, text=workername, image=self.ok_icon)
             except tk.TclError:
                 worker_node = self.workerTv.item(workername)
             worker_registered = mongoInstance.findInDb("pollenisator", "workers", {"name":workername}, False)
@@ -90,7 +100,7 @@ class ScanManager:
             for command in commands_registered:
                 try:
                     self.workerTv.insert(
-                        worker_node, 'end', command, text=command, image=self.ok_icon)
+                        worker_node, 'end', command, text=command, image=self.tool_icon)
                 except tk.TclError:
                     pass
                 registeredCommands.add(str(command))
@@ -135,21 +145,26 @@ class ScanManager:
         self.workerTv.column("#0", anchor=tk.W)
         self.workerTv.pack(side=tk.TOP, padx=10, pady=10, fill=tk.X)
         self.workerTv.bind("<Double-Button-1>", self.OnWorkerDoubleClick)
+        self.workerTv.bind("<Delete>", self.OnWorkerDelete)
         workernames = self.monitor.getWorkerList()
         total_registered_commands = 0
         registeredCommands = set()
         for workername in workernames:
             try:
-                worker_node = self.workerTv.insert(
-                    '', 'end', workername, text=workername, image=self.ok_icon)
+                if self.monitor.isWorkerExcludedFrom(workername, mongoInstance.calendarName):
+                    worker_node = self.workerTv.insert(
+                        '', 'end', workername, text=workername, image=self.nok_icon)
+                else:
+                    worker_node = self.workerTv.insert(
+                        '', 'end', workername, text=workername, image=self.ok_icon)
             except tk.TclError:
                 pass
             commands_registered = mongoInstance.getRegisteredCommands(
                 workername)
             for command in commands_registered:
                 try:
-                    self.workerTv.insert(worker_node, 'end', None,
-                                    text=command, image=self.ok_icon)
+                    self.workerTv.insert(worker_node, 'end', 'registered|'+str(command),
+                                    text=command, image=self.tool_icon)
                 except tk.TclError:
                     pass
                 registeredCommands.add(str(command))
@@ -173,7 +188,7 @@ class ScanManager:
         self.scanTv.bind("<Double-Button-1>", self.OnDoubleClick)
         running_scans = Tool.fetchObjects({"status":"running"})
         for running_scan in running_scans:
-            self.scanTv.insert('','end', running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.running_icon)
+            self.scanTv.insert('','end', running_scan.getId(), text=running_scan.name, values=(running_scan.dated), image=self.ok_icn)
         #### BUTTONS FOR AUTO SCANNING ####
         if total_registered_commands > 0:
             if self.running_auto_scans:
@@ -255,10 +270,28 @@ class ScanManager:
         if self.workerTv is not None:
             tv = event.widget
             item = tv.identify("item", event.x, event.y)
-            if item.startswith("notRegistered|"):
-                worker = self.workerTv.parent(item)
+            parent = self.workerTv.parent(item)
+            if str(parent) != "": # child node = tool
+                print(str(item))
                 command_name = item.split("|")[1]
                 dialog = ChildDialogEditCommandSettings(self.parent, "Edit worker tools config")
                 self.parent.wait_window(dialog.app)
                 if isinstance(dialog.rvalue, tuple):
-                    tasks = self.sendEditToolConfig(worker, command_name, dialog.rvalue[0], dialog.rvalue[1])
+                    tasks = self.sendEditToolConfig(parent, command_name, dialog.rvalue[0], dialog.rvalue[1])
+            else: # no parent node = worker node
+                self.setUseForPentest(item)
+    
+    def setUseForPentest(self, worker_hostname):
+        mongoInstance = MongoCalendar.getInstance()
+        isExcluded = self.monitor.isWorkerExcludedFrom(worker_hostname, mongoInstance.calendarName)
+        mongoInstance.setWorkerExclusion(worker_hostname, mongoInstance.calendarName, not (isExcluded))
+
+    def OnWorkerDelete(self, event):
+        """Callback for a delete key press on a worker.
+        Force deletion of worker
+        Args:
+            event: Auto filled
+        """
+        mongoInstance = MongoCalendar.getInstance()
+        if "@" in str(self.workerTv.selection()[0]):
+            mongoInstance.deleteWorker(self.workerTv.selection()[0]) 

@@ -65,11 +65,27 @@ class MongoCalendar:
         """Reset client connection"""
         self.client = None
 
-    def getWorkers(self):
+    def getWorkers(self, pipeline=None):
         """Return workers documents from database
         Returns:
             Mongo result of workers. Cursor of dictionnary."""
-        return self.findInDb("pollenisator", "workers")
+        pipeline = {} if pipeline is None else pipeline
+        return self.findInDb("pollenisator", "workers", pipeline)
+    
+    def setWorkerExclusion(self, worker_hostname, db, setExcluded):
+        if setExcluded:
+            self.updateInDb("pollenisator", "workers", {"name": worker_hostname}, {
+                            "$push": {"excludedDatabases": db}}, False, True)
+        else:
+            self.updateInDb("pollenisator", "workers", {"name": worker_hostname}, {
+                            "$pull": {"excludedDatabases": db}}, False, True)
+
+    def deleteWorker(self, worker_hostname):
+        """Remove given worker.
+        Args:
+            worker_hostname: the worker shortname to update."""
+        res = self.deleteFromDb("pollenisator", "workers", {
+            "name": worker_hostname}, False, True)
 
     def removeInactiveWorkers(self):
         """Remove workers that did not sent a heart beat in 30 sec."""

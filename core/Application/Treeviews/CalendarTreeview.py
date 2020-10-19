@@ -382,7 +382,7 @@ class CalendarTreeview(PollenisatorTreeview):
             _event: not used but mandatory
         """
         mongoInstance = MongoCalendar.getInstance()
-        workers = self.appli.scanManager.monitor.getWorkerList()
+        workers = self.appli.scanManager.monitor.getWorkerList({"excludedDatabases":{"$nin":[mongoInstance.calendarName]}})
         workers.append("localhost")
         dialog = ChildDialogCustomCommand(
                     self, workers, "localhost")
