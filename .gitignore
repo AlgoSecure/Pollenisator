@@ -71,8 +71,6 @@ exports/*
 !exports/pollenisator_group_commands.gzip
 config/tools.d/*
 !config/tools.d/tools.json
-local/states/*
-!local/states
 .vscode
 venv/
 config/client.cfg
