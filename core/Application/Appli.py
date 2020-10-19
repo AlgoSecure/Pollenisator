@@ -24,6 +24,7 @@ from core.Application.Dialogs.ChildDialogConnect import ChildDialogConnect
 from core.Application.Dialogs.ChildDialogNewCalendar import ChildDialogNewCalendar
 from core.Application.Dialogs.ChildDialogException import ChildDialogException
 from core.Application.Dialogs.ChildDialogInfo import ChildDialogInfo
+from core.Application.Dialogs.ChildDialogFileParser import ChildDialogFileParser
 from core.Application.StatusBar import StatusBar
 from core.Components.mongo import MongoCalendar
 from core.Components.ScanManager import ScanManager
@@ -462,6 +463,8 @@ class Appli(ttk.Frame):
 
         fileMenu.add_command(label="Exit", command=self.onExit)
         fileMenu2 = tk.Menu(menubar, tearoff=0, background='#73B723', foreground='white', activebackground='#73B723', activeforeground='white')
+        fileMenu2.add_command(label="Import existing tools results ...",
+                              command=self.importExistingTools)
         fileMenu2.add_command(label="Reset unfinished tools",
                               command=self.resetUnfinishedTools)
         fileMenu2.add_command(label="Refresh (F5)",
@@ -471,7 +474,7 @@ class Appli(ttk.Frame):
         fileMenu3 = tk.Menu(menubar, tearoff=0, background='#73B723', foreground='white', activebackground='#73B723', activeforeground='white')
         fileMenu3.add_command(label="Submit a bug or feature",
                               command=self.submitIssue)
-        menubar.add_cascade(label="File", menu=fileMenu)
+        menubar.add_cascade(label="Database", menu=fileMenu)
         menubar.add_cascade(label="Scans", menu=fileMenu2)
         menubar.add_cascade(label="Help", menu=fileMenu3)
 
@@ -1121,3 +1124,10 @@ class Appli(ttk.Frame):
         """
         mongoInstance = MongoCalendar.getInstance()
         mongoInstance.copyDb()
+
+    def importExistingTools(self, _event=None):
+        """
+        Ask user to import existing files to import.
+        """
+        dialog = ChildDialogFileParser(self.parent)
+        self.parent.wait_window(dialog.app)
