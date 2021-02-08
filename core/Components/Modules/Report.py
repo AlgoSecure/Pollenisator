@@ -112,7 +112,7 @@ class Report:
             return
         self.parent = parent
         ### MAIN PAGE FRAME ###
-        self.reportFrame = ttk.Frame(parent)
+        self.reportFrame = ttk.LabelFrame(parent, text="Defects table")
         self.paned = tk.PanedWindow(self.reportFrame, orient=tk.VERTICAL, height=800)
         ### DEFECT TABLE ###
         self.rowHeight = 20
@@ -161,11 +161,11 @@ class Report:
         #lbl_help.constructView(frameBtn)
         btn_addDefect = ttk.Button(
             frameBtn, text="Add a security defect", command=self.addDefectCallback)
-        btn_addDefect.pack(side=tk.RIGHT)
+        btn_addDefect.pack(side=tk.RIGHT, padx=5)
         btn_setMainRedactor = ttk.Button(
             frameBtn, text="Set main redactor", command=self.setMainRedactor)
         btn_setMainRedactor.pack(side=tk.RIGHT)
-        frameBtn.pack(side=tk.TOP)
+        frameBtn.pack(side=tk.TOP, pady=5)
         officeFrame = ttk.LabelFrame(belowFrame, text=" Office reports ")
         ### INFORMATION EXPORT FRAME ###
         informations_frame = ttk.Frame(officeFrame)
@@ -179,48 +179,42 @@ class Report:
         self.ent_contract.grid(row=1, column=1, sticky=tk.W)
         informations_frame.pack(side=tk.TOP, pady=10)
         ### WORD EXPORT FRAME ###
-        wordFrame = ttk.Frame(officeFrame)
+        templatesFrame = ttk.Frame(officeFrame)
+        templatesFrame.grid_columnconfigure(2, minsize=70)
+        templatesFrame.grid_columnconfigure(3, minsize=300)
         lbl = ttk.Label(
-            wordFrame, text="Choose a word template : ", background="white")
-        lbl.pack(side=tk.LEFT)
+            templatesFrame, text="Word template", background="white")
+        lbl.grid(row=0, column=0, sticky=tk.E)
         self.val_word = tk.StringVar()
         self.entry_word = tk.Entry(
-            wordFrame, textvariable=self.val_word, width=50)
+            templatesFrame, textvariable=self.val_word, width=60)
         self.entry_word.bind("<Control-a>", self.selectAll)
-        self.entry_word.pack(side=tk.LEFT, padx=10)
+        self.entry_word.grid(row=0, column=1)
         self.val_word.set(self.default_word)
-        search_btn = ttk.Button(wordFrame, text="...",
+        search_btn = ttk.Button(templatesFrame, text="...",
                                 command=self.on_click, width=5)
-        search_btn.pack(side=tk.LEFT, padx=10)
+        search_btn.grid(row=0, column=2)
         btn_word = ttk.Button(
-            wordFrame, text="Generate Word report", command=self.generateReportWord, width=30)
-        btn_word.pack(side=tk.RIGHT, padx=10)
-        wordFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+            templatesFrame, text="Generate Word report", command=self.generateReportWord, width=30)
+        btn_word.grid(row=0, column=3, sticky=tk.E)
         ### POWERPOINT EXPORT FRAME ###
-        powerpointFrame = ttk.Frame(officeFrame)
-        lbl = ttk.Label(powerpointFrame,
-                        text="Choose a pptx template : ", background="white")
-        lbl.pack(side=tk.LEFT)
+        lbl = ttk.Label(templatesFrame,
+                        text="Powerpoint template", background="white",)
+        lbl.grid(row=1, column=0, sticky=tk.E, pady=20)
         self.val_ppt = tk.StringVar()
         self.entry_ppt = tk.Entry(
-            powerpointFrame, textvariable=self.val_ppt, width=50)
+            templatesFrame, textvariable=self.val_ppt, width=60)
         self.entry_ppt.bind("<Control-a>", self.selectAll)
-        self.entry_ppt.pack(side=tk.LEFT, padx=10)
+        self.entry_ppt.grid(row=1, column=1)
         self.val_ppt.set(self.default_ppt)
         search_btn = ttk.Button(
-            powerpointFrame, text="...", command=self.on_click_pptx, width=5)
-        search_btn.pack(side=tk.LEFT, padx=10)
+            templatesFrame, text="...", command=self.on_click_pptx, width=5)
+        search_btn.grid(row=1, column=2)
         btn_ppt = ttk.Button(
-            powerpointFrame, text="Generate Powerpoint report", command=self.generateReportPowerpoint, width=30)
-        btn_ppt.pack(side=tk.RIGHT, padx=10)
-        powerpointFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
-        #### EXCEL EXPORT FRAME ###
-        excelFrame = ttk.Frame(officeFrame)
-        btn_excel = ttk.Button(
-            excelFrame, text="Generate Excel report", command=self.generateReportExcel, width=30)
-        btn_excel.pack(side=tk.RIGHT, padx=10)
-        excelFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
-        officeFrame.pack(side=tk.TOP, fill=tk.BOTH, padx=10, pady=10)
+            templatesFrame, text="Generate Powerpoint report", command=self.generateReportPowerpoint, width=30)
+        btn_ppt.grid(row=1, column=3, sticky=tk.E)
+        templatesFrame.pack(side=tk.TOP, fill=tk.X, padx=10, pady=10)
+        officeFrame.pack(side=tk.TOP, fill=tk.BOTH, pady=10)
         self.paned.add(self.frameTw)
         self.paned.add(belowFrame)
         self.paned.pack(fill=tk.BOTH, expand=1)
