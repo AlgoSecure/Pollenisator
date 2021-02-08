@@ -162,7 +162,7 @@ class Monitor:
         # Execute this celery task
         return True
 
-    def getWorkerList(self):
+    def getWorkerList(self, searchPipeline):
         """
         Returns the worker list
         Returns:
@@ -170,7 +170,7 @@ class Monitor:
         """
         mongoInstance = MongoCalendar.getInstance()
         l = []
-        workers = mongoInstance.getWorkers()
+        workers = mongoInstance.getWorkers(searchPipeline)
         for worker in workers:
             l.append(worker["name"])
         return l
