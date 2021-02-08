@@ -433,6 +433,8 @@ class Report:
             event: automatically created with the event catch. stores data about line in treeview that was double clicked.
         """
         item = self.treevw.identify("item", event.x, event.y)
+        if item == "":
+            return
         defect_m = Defect.fetchObject({"_id": ObjectId(item)})
         dialog = ChildDialogDefectView(self.parent, self.settings, defect_m)
         self.parent.wait_window(dialog.app)
