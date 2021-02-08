@@ -82,7 +82,7 @@ class Summary:
     Store elements to summarize the ongoing pentest
     """
     iconName = "tab_summary.png"
-    tabName = " Summary "
+    tabName = "  Summary  "
     def __init__(self, root, settings):
         """Constructor
         Args:

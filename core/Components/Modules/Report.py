@@ -25,7 +25,7 @@ class Report:
     Store elements to report and create docx or xlsx with them
     """
     iconName = "tab_report.png"
-    tabName = "   Report   "
+    tabName = "    Report    "
 
     def __init__(self, parent, settings):
 

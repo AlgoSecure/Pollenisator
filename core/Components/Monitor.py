@@ -162,7 +162,7 @@ class Monitor:
         # Execute this celery task
         return True
 
-    def getWorkerList(self, searchPipeline):
+    def getWorkerList(self, searchPipeline=None):
         """
         Returns the worker list
         Returns:

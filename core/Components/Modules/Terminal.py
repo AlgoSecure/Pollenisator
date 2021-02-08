@@ -7,7 +7,7 @@ from core.Components.mongo import MongoCalendar
 
 class Terminal:
     iconName = "tab_terminal.png"
-    tabName = "  Terminal  "
+    tabName = "   Terminal  "
 
     def __init__(self, parent, settings):
         self.settings = settings

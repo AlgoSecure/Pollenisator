@@ -600,7 +600,7 @@ class Appli(ttk.Frame):
         self.paned.pack(fill=tk.BOTH, expand=1)
         self.frameTw.rowconfigure(0, weight=1) # Weight 1 sur un layout grid, sans ça le composant ne changera pas de taille en cas de resize
         self.frameTw.columnconfigure(0, weight=1) # Weight 1 sur un layout grid, sans ça le composant ne changera pas de taille en cas de resize
-        self.nbk.add(self.mainPageFrame, text="Main View ", image=self.main_tab_img, compound=tk.TOP, sticky='nsew')
+        self.nbk.add(self.mainPageFrame, text="  Main View ", image=self.main_tab_img, compound=tk.TOP, sticky='nsew')
     
     def searchbarSelectAll(self, _event):
         """
@@ -705,7 +705,7 @@ class Appli(ttk.Frame):
         self.commandsFrameTw.rowconfigure(0, weight=1) # Weight 1 sur un layout grid, sans ça le composant ne changera pas de taille en cas de resize
         self.commandsFrameTw.columnconfigure(0, weight=1) # Weight 1 sur un layout grid, sans ça le composant ne changera pas de taille en cas de resize
         self.nbk.bind("<<NotebookTabChanged>>", self.tabSwitch)
-        self.nbk.add(self.commandsPageFrame, text="Commands", image=self.commands_tab_img, compound=tk.TOP)
+        self.nbk.add(self.commandsPageFrame, text=" Commands", image=self.commands_tab_img, compound=tk.TOP)
 
     def resizeCanvasFrame(self, event):
         canvas_width = event.width
@@ -765,12 +765,12 @@ class Appli(ttk.Frame):
         self.settingViewFrame = ttk.Frame(self.nbk)
         self.settings.initUI(self.settingViewFrame)
         self.settingViewFrame.pack(fill=tk.BOTH, expand=1)
-        self.nbk.add(self.settingViewFrame, text="  Settings  ", image=self.settings_tab_img, compound=tk.TOP)
+        self.nbk.add(self.settingViewFrame, text="   Settings   ", image=self.settings_tab_img, compound=tk.TOP)
 
     def initScanView(self):
         """Add the scan view frame to the notebook widget. This does not initialize it as it needs a database to be opened."""
         self.scanViewFrame = ttk.Frame(self.nbk)
-        self.nbk.add(self.scanViewFrame, text="    Scan     ", image=self.scan_tab_img, compound=tk.TOP)
+        self.nbk.add(self.scanViewFrame, text="     Scan      ", image=self.scan_tab_img, compound=tk.TOP)
 
     def initUI(self):
         """
