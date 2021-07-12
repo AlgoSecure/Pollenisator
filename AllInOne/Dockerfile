@@ -48,15 +48,7 @@ RUN pip3 install --upgrade setuptools
 RUN git clone https://github.com/maurosoria/dirsearch.git /home/dirsearch/ && \
 	chmod +x /home/dirsearch/dirsearch.py && \
 	ln -s /home/dirsearch/dirsearch.py /usr/bin/dirsearch.py
-# Knockpy as knockpy.py
-RUN apt-get install -y python-dnspython python-pip
-RUN python2 -m pip install setuptools
-RUN git clone https://github.com/guelfoweb/knock.git /home/knock && \
-	cd /home/knock && \
-	chmod +x /home/knock/knockpy/knockpy.py && \
-	python2 /home/knock/setup.py install && \
-	ln -s /home/knock/knockpy/knockpy.py /usr/bin/knockpy.py && \
-	cp -r /home/knock/knockpy/wordlist /usr/bin/wordlist
+
 
 # Sublist3r as sublist3r.py
 RUN git clone https://github.com/aboul3la/Sublist3r.git /home/sublist3r/ && \
@@ -124,6 +116,14 @@ RUN python3.7 -m pip install --upgrade cryptography
 RUN python3.7 -m pip install --upgrade asn1crypto
 RUN pip install .
 RUN cme smb
+# Knockpy as knockpy.py
+RUN apt-get install -y python-dnspython python-pip
+RUN python3.7 -m pip install setuptools
+RUN git clone https://github.com/guelfoweb/knock.git /home/knock && \
+	cd /home/knock && \
+	chmod +x /home/knock/knockpy/knockpy.py && \
+	python3.7 /home/knock/setup.py install && \
+	ln -s /home/knock/knockpy/knockpy.py /usr/bin/knockpy.py
 ## SERVER 
 RUN apt-get install -y openssh-server libcurl3 mongodb-org-shell mongodb-org-server mongodb-org
 RUN mkdir -p /data/db
@@ -133,10 +133,9 @@ RUN sed -i 's/Subsystem\tsftp\t\/usr\/lib\/openssh\/sftp-server/Subsystem sftp i
 RUN echo "Match User pollenisator\n\tChrootDirectory /etc/Pollenisator/\n\tPermitTunnel no\n\tX11Forwarding no\n\tAllowTcpForwarding no\n\tForceCommand internal-sftp\n\tPasswordAuthentication yes\n" >> /etc/ssh/sshd_config
 RUN service ssh stop
 RUN service ssh start
-## CLIENT
-COPY start.sh /home/Pollenisator/start.sh
 # Pollenisator
+RUN git clone https://github.com/AlgoSecure/Pollenisator.git /home/Pollenisator && python3.7 -m pip install -r requirements.txt
+COPY start.sh /home/Pollenisator/
+## CLIENT
 WORKDIR /home/Pollenisator
-COPY requirements.txt /tmp
-RUN python3 -m pip install -r /tmp/requirements.txt
 CMD ["/bin/sh", "-c", "./start.sh"]
